@@ -1245,7 +1245,7 @@ $(document).ready(function () {
 	autorization4 = false;
 	autorization5 = false;
 	autorization6 = false;
-	auth_change = true;
+	auth_change = false;
 	document.getElementById("btn_confirm1").style.visibility = "hidden";
 	document.getElementById("btn_confirm2").style.visibility = "visible";
 	document.getElementById("btn_confirm3").style.visibility = "hidden";
@@ -1270,7 +1270,7 @@ $(document).ready(function () {
 	autorization4 = false;
 	autorization5 = false;
 	autorization6 = false;
-	auth_change = true;
+	auth_change = false;
 	document.getElementById("btn_confirm1").style.visibility = "hidden";
 	document.getElementById("btn_confirm2").style.visibility = "hidden";
 	document.getElementById("btn_confirm3").style.visibility = "visible";
@@ -1295,7 +1295,7 @@ $(document).ready(function () {
 	autorization4 = true;
 	autorization5 = false;
 	autorization6 = false;
-	auth_change = true;
+	auth_change = false;
 	document.getElementById("btn_confirm1").style.visibility = "hidden";
 	document.getElementById("btn_confirm2").style.visibility = "hidden";
 	document.getElementById("btn_confirm3").style.visibility = "hidden";
@@ -1320,7 +1320,7 @@ $(document).ready(function () {
 	autorization4 = false;
 	autorization5 = true;
 	autorization6 = false;
-	auth_change = true;
+	auth_change = false;
 	document.getElementById("btn_confirm1").style.visibility = "hidden";
 	document.getElementById("btn_confirm2").style.visibility = "hidden";
 	document.getElementById("btn_confirm3").style.visibility = "hidden";
@@ -1345,7 +1345,7 @@ $(document).ready(function () {
 	autorization4 = false;
 	autorization5 = false;
 	autorization6 = true;
-	auth_change = true;
+	auth_change = false;
 	document.getElementById("btn_confirm1").style.visibility = "hidden";
 	document.getElementById("btn_confirm2").style.visibility = "hidden";
 	document.getElementById("btn_confirm3").style.visibility = "hidden";
@@ -1391,6 +1391,7 @@ $( "#datepicker_inicial" ).datepicker({
 		document.getElementById("Date_Inicial_Texto_Teste1").innerHTML = "Month "+data_inicial1+" to";
 		}
 		}
+		auth_change = true;
 		}
 		if(autorization2 == true){
 		if(periodo != ""){
@@ -1413,6 +1414,7 @@ $( "#datepicker_inicial" ).datepicker({
 		document.getElementById("Date_Inicial_Texto_Teste2").innerHTML = "Month "+data_inicial2+" to";
 		}
 		}
+		auth_change = true;
 		}
 		if(autorization3 == true){
 		if(periodo != ""){
@@ -1435,6 +1437,7 @@ $( "#datepicker_inicial" ).datepicker({
 		document.getElementById("Date_Inicial_Texto_Teste3").innerHTML = "Month "+data_inicial3+" to";
 		}
 		}
+		auth_change = true;
 		}
 		if(autorization4 == true){
 		if(periodo != ""){
@@ -1457,6 +1460,7 @@ $( "#datepicker_inicial" ).datepicker({
 		document.getElementById("Date_Final_Texto_Teste4").innerHTML = "Month "+data_inicial4+" to";
 		}
 		}
+		auth_change = true;
 		}
 		if(autorization5 == true){
 		if(periodo != ""){
@@ -1479,6 +1483,7 @@ $( "#datepicker_inicial" ).datepicker({
 		document.getElementById("Date_Final_Texto_Teste5").innerHTML = "Month "+data_inicial5+" to";
 		}
 		}
+		auth_change = true;
 		}
 		if(autorization6 == true){
 		if(periodo != ""){
@@ -1501,6 +1506,7 @@ $( "#datepicker_inicial" ).datepicker({
 		document.getElementById("Date_Final_Texto_Teste6").innerHTML = "Month "+data_inicial6+" to";
 		}
 		}
+		auth_change = true;
 		}
      }
 });
@@ -1532,6 +1538,7 @@ $( "#datepicker_final" ).datepicker({
 		document.getElementById("Date_Final_Texto_Teste1").innerHTML = "Month "+data_final;
 		}
 		}
+		auth_change = true;
 		}
 		if(autorization2 == true){
 		if(periodo != ""){
@@ -1558,6 +1565,7 @@ $( "#datepicker_final" ).datepicker({
 		document.getElementById("Date_Final_Texto_Teste2").innerHTML = "Month "+data_final;
 		}
 		}
+		auth_change = true;
 		}
 		if(autorization3 == true){
 		if(periodo != ""){
@@ -1584,6 +1592,7 @@ $( "#datepicker_final" ).datepicker({
 		document.getElementById("Date_Final_Texto_Teste3").innerHTML = "Month "+data_final;
 		}
 		}
+		auth_change = true;
 		}
 		if(autorization4 == true){
 		if(periodo != ""){
@@ -1610,6 +1619,7 @@ $( "#datepicker_final" ).datepicker({
 		document.getElementById("Date_Final_Texto_Teste4").innerHTML = "Month "+data_final;
 		}
 		}
+		auth_change = true;
 		}
 		if(autorization5 == true){
 		if(periodo != ""){
@@ -1636,6 +1646,7 @@ $( "#datepicker_final" ).datepicker({
 		document.getElementById("Date_Final_Texto_Teste5").innerHTML = "Month "+data_final;
 		}
 		}
+		auth_change = true;
 		}
 		if(autorization6 == true){
 		if(periodo != ""){
@@ -1662,6 +1673,7 @@ $( "#datepicker_final" ).datepicker({
 		document.getElementById("Date_Final_Texto_Teste6").innerHTML = "Month "+data_final;
 		}
 		}
+		auth_change = true;
 		}		
      }
 });
@@ -1920,7 +1932,7 @@ function printclick_elementos_GSM_UF(node){
 	}		
 	
 	
-	// //document.getElementById("Texto_Teste").innerHTML = query;
+	auth_change = true;
 	
  }
 
@@ -1956,7 +1968,7 @@ function printclick_elementos_UMTS_City(node){
 	
 	
 	
-	//document.getElementById("Texto_Teste").innerHTML = query;
+	auth_change = true;
 	
 }
 
@@ -1987,8 +1999,9 @@ function printclick_elementos_UMTS_Cluster(node){
 	if(autorization6 == true){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
-	}	
-	//document.getElementById("Texto_Teste").innerHTML = query;
+	}
+	
+	auth_change = true;
 	
 }
 
@@ -2020,7 +2033,8 @@ function printclick_elementos_UMTS_CustomCluster(node){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
 	}	
-	//document.getElementById("Texto_Teste").innerHTML = query;
+	
+	auth_change = true;
 	
 }
 
@@ -2059,7 +2073,7 @@ function printclick_elementos_UMTS_NodeB(node){
 	}		
 	showCells(); 
 
-	//document.getElementById("Texto_Teste").innerHTML = query;
+	auth_change = true;
 	
 }
 
@@ -2092,9 +2106,7 @@ function printclick_elementos_UMTS_Reg(node){
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
 	}	
 	
-	
-	
-	//document.getElementById("Texto_Teste").innerHTML = query;
+	auth_change = true;
 	
 }
 
@@ -2126,7 +2138,8 @@ function printclick_elementos_UMTS_Rnc(node){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
 	}
-	//document.getElementById("Texto_Teste").innerHTML = query;
+	
+	auth_change = true;
 	
 }
 
@@ -2159,8 +2172,8 @@ function printclick_elementos_UMTS_UF(node){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
 	}	
-	//document.getElementById("Texto_Teste").innerHTML = query;
 	
+	auth_change = true;
 }
 
 ////////////////////////////////////////////////// LTE //////////////////////////////////////////////////////
@@ -2200,7 +2213,8 @@ function printclick_elementos_LTE_Cells(node){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = cellname;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
 	}
-	//document.getElementById("Texto_Teste").innerHTML = query;
+	
+	auth_change = true;
 	
 }
 
@@ -2232,7 +2246,8 @@ function printclick_elementos_lte_City(node){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
 	}
-	//document.getElementById("Texto_Teste").innerHTML = query;
+	
+	auth_change = true;
 	
 }
 
@@ -2264,7 +2279,8 @@ function printclick_elementos_lte_Reg(node){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
 	}	
-	//document.getElementById("Texto_Teste").innerHTML = query;
+	
+	auth_change = true;
 	
 }
 
@@ -2296,7 +2312,8 @@ function printclick_elementos_lte_UF(node){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
 	}
-	//document.getElementById("Texto_Teste").innerHTML = query;
+	
+	auth_change = true;
 	
 }
 
@@ -2335,7 +2352,8 @@ function printclick_elementos_lte_eNodeB(node){
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
 	}
 	showCells();
-	//document.getElementById("Texto_Teste").innerHTML = query;
+	
+	auth_change = true;
 	
 }
 
@@ -2366,8 +2384,9 @@ function printclick_elementos_lte_Cluster(node){
 	if(autorization6 == true){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
-	}	
-	//document.getElementById("Texto_Teste").innerHTML = query;
+	}
+	
+	auth_change = true;
 	
 }
 
@@ -2405,7 +2424,7 @@ function printclick_kpi(node){
 	document.getElementById("KPI_Seta_6").style.visibility = "visible";
 	}	
 
-	//document.getElementById("Texto_Teste").innerHTML = query;
+	auth_change = true;
 	
 }
 
@@ -2446,7 +2465,9 @@ function printclick_counter_GSM(node){
 	if(autorization6 == true){
 	document.getElementById("KPI_Texto_Teste6").innerHTML = counter_name;
 	document.getElementById("KPI_Seta_6").style.visibility = "visible";
-	}	
+	}
+
+	auth_change = true;
 
 }
 
@@ -2484,7 +2505,9 @@ function printclick_counter_UMTS(node){
 	if(autorization6 == true){
 	document.getElementById("KPI_Texto_Teste6").innerHTML = counter_name;
 	document.getElementById("KPI_Seta_6").style.visibility = "visible";
-	}	
+	}
+	
+	auth_change = true;
 
 }
 
@@ -2526,7 +2549,9 @@ function printclick_counter_LTE(node){
 	if(autorization6 == true){
 	document.getElementById("KPI_Texto_Teste6").innerHTML = counter_name;
 	document.getElementById("KPI_Seta_6").style.visibility = "visible";
-	}	
+	}
+
+	auth_change = true;
 
 }	
 
@@ -3071,7 +3096,8 @@ document.getElementById("Query_Menu1").style.opacity = 0.3;
 }
 
 function mostrar_charts2(){
-	
+
+if(auth_change == true){	
 if(hourly_selected == true){
 periodo = "hourly";	
 hora_inicial = 	$( "#Drop_Hora_Inicial option:selected" ).text();
@@ -3164,6 +3190,9 @@ document.getElementById("Query_Menu3").style.display = "inline-block";
 document.getElementById("chart_type2").disabled = true;
 document.getElementById("chart_position2").disabled = true;
 query_num = 3;
+}
+document.getElementById("btn_confirm2").style.visibility = "hidden";
+document.getElementById("Query_Menu2").style.opacity = 0.3;
 }			
 
 
@@ -3171,6 +3200,7 @@ function mostrar_charts3(){
 	
 query_num = 4;
 
+if(auth_change == true){
 if(hourly_selected == true){
 periodo = "hourly";	
 hora_inicial = 	$( "#Drop_Hora_Inicial option:selected" ).text();
@@ -3259,6 +3289,9 @@ $("#radio_query4").prop("checked", true);
 document.getElementById("Query_Menu4").style.display = "inline-block";
 document.getElementById("chart_type3").disabled = true;
 document.getElementById("chart_position3").disabled = true;
+}
+document.getElementById("btn_confirm3").style.visibility = "hidden";
+document.getElementById("Query_Menu3").style.opacity = 0.3;
 }			
 
 
@@ -3266,6 +3299,7 @@ function mostrar_charts4(){
 	
 query_num = 5;
 
+if(auth_change == true){
 if(hourly_selected == true){
 periodo = "hourly";	
 hora_inicial = 	$( "#Drop_Hora_Inicial option:selected" ).text();
@@ -3355,11 +3389,15 @@ document.getElementById("Query_Menu5").style.display = "inline-block";
 document.getElementById("chart_type4").disabled = true;
 document.getElementById("chart_position4").disabled = true;
 }
+document.getElementById("btn_confirm4").style.visibility = "hidden";
+document.getElementById("Query_Menu4").style.opacity = 0.3;
+}
 
 function mostrar_charts5(){
 	
 query_num = 6;
 
+if(auth_change == true){
 if(hourly_selected == true){
 periodo = "hourly";	
 hora_inicial = 	$( "#Drop_Hora_Inicial option:selected" ).text();
@@ -3449,11 +3487,15 @@ document.getElementById("Query_Menu6").style.display = "inline-block";
 document.getElementById("chart_type5").disabled = true;
 document.getElementById("chart_position5").disabled = true;
 }
+document.getElementById("btn_confirm5").style.visibility = "hidden";
+document.getElementById("Query_Menu5").style.opacity = 0.3;
+}
 
 function mostrar_charts6(){
 	
 query_num = 7;
 
+if(auth_change == true){
 if(hourly_selected == true){
 periodo = "hourly";	
 hora_inicial = 	$( "#Drop_Hora_Inicial option:selected" ).text();
@@ -3542,6 +3584,8 @@ document.getElementById("Query_Menu6").style.opacity = 0.3;
 // document.getElementById("Query_Menu6").style.display = "inline-block";
 document.getElementById("chart_type6").disabled = true;
 document.getElementById("chart_position6").disabled = true;
+}
+document.getElementById("Query_Menu6").style.opacity = 0.3;
 }			
 
 
@@ -3584,6 +3628,8 @@ document.getElementById("Div_Elementos_GSM").style.display = "block";
 document.getElementById("Div_Elementos_UMTS").style.display = "none";
 document.getElementById("Div_Elementos_LTE").style.display = "none";
 
+auth_change = true;
+
 }
 
 function mostrar_UMTS(){
@@ -3623,6 +3669,8 @@ document.getElementById("Div_Elementos_UMTS").style.display = "block";
 document.getElementById("Div_Elementos_LTE").style.display = "none";
 document.getElementById("Div_Elementos_GSM").style.display = "none";
 
+auth_change = true;
+
 }
 
 function mostrar_LTE(){
@@ -3661,6 +3709,8 @@ document.getElementById("Div_UMTS").style.display = "none";
 document.getElementById("Div_Elementos_LTE").style.display = "block";
 document.getElementById("Div_Elementos_UMTS").style.display = "none";
 document.getElementById("Div_Elementos_GSM").style.display = "none";
+
+auth_change = true;
 
 }
 
@@ -3736,6 +3786,8 @@ document.getElementById("Periodo_Seta_6").style.visibility = "visible";
 //document.getElementById("Texto_Teste").innerHTML = query;	
 document.getElementById("Time").innerHTML = "Daily";
 
+auth_change = true;
+
 }
 
 function mostrar_Weekly(){
@@ -3775,6 +3827,8 @@ if(autorization6 == true){
 document.getElementById("Periodo_Texto_Teste6").innerHTML = "Weekly";
 document.getElementById("Periodo_Seta_6").style.visibility = "visible";
 }
+
+auth_change = true;
 }
 
 function mostrar_Monthly(){
@@ -3817,6 +3871,8 @@ if(autorization6 == true){
 document.getElementById("Periodo_Texto_Teste6").innerHTML = "Monthly";
 document.getElementById("Periodo_Seta_6").style.visibility = "visible";
 }
+
+auth_change = true;
 }
 
 
