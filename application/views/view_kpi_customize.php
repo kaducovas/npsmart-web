@@ -951,6 +951,7 @@ document.getElementById("Hora_Final_Texto_Teste5").innerHTML = hora_final;
 document.getElementById("Hora_Inicial_Texto_Teste6").innerHTML = hora_inicial+" to ";
 document.getElementById("Hora_Final_Texto_Teste6").innerHTML = hora_final;
 }
+auth_change = true;
 });
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -2185,7 +2186,7 @@ function printclick_elementos_LTE_Cells(node){
 	
 	cellname = $(node).text();
 	
-	// elemento = cellname;
+	elemento = cellname;
 	
 	cellid = $(node).attr("id");
 	

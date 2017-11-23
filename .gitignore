@@ -14,4 +14,7 @@ application/logs/*
 *.csv
 *.xls
 *.json
-./json/view/*
+/json/view/*
+*.xlsb
+*.kmz
+*.jpg
