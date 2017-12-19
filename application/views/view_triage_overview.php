@@ -4,11 +4,16 @@
 var reportnename = "<?php echo $reportnename; ?>";
 var reportdate = "<?php echo $reportdate; ?>";
 </script>
+<div align="left">
+&emsp;<a target="_blank" class="link" href="/npsmart/output/cellmapping.csv">Download Network Cell Mapping</a>
+</div>
 <div class="triage_menu">
-&emsp;<font color="#A4A4A4" size="4"><b><a style = "color:#A4A4A4" onclick='selectkpitriage(this)'>Overview</a></b></font>
+&emsp;<font color="#8F8F8F" size="4"><b><a style = "color:#8F8F8F" href="#" onclick='selectkpitriage(this)'>Overview</a></b></font>
 </div>
 <div align="right">
-<font color="#A4A4A4" size="4"><b><a style = "color:#A4A4A4" onclick='selectkpitriage(this)'>Cell Mapping</a></b></font>&emsp;
+<?php
+echo "<font color='#8F8F8F' size='4'><b><a style = 'color:#8F8F8F' href='#' onclick='selectkpitriage(this)'>Cell Mapping</a></b></font>&emsp;";
+?>
 </div>
 <br>
 <br>

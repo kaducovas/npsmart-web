@@ -133,6 +133,7 @@ Highcharts.exportCharts = function(charts, options) {
 	///////////////////////////////////START charts////////////////////////////////////////////////
 $(function () {
     var chart;
+	var estado_acc = true;
     $(document).ready(function() {
 		var acc = new Highcharts.Chart({
 		chart: {
@@ -159,7 +160,30 @@ $(function () {
             y: 10
         },
         relativeTo: 'chart'
-    }},
+    },
+	
+		events: {
+						click: function(e) {
+						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// alert(e.xAxis[0].value);
+						//acc.chart.series[1].show();
+						if(estado_acc != false){
+							
+						if (e.shiftKey == 1) {	
+						acc.xAxis[0].options.plotLines[1].color = "red";
+						acc.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;
+						acc.xAxis[0].update();						
+						}else{	
+						acc.xAxis[0].options.plotLines[0].color = "red";
+						acc.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						acc.xAxis[0].update();
+						}						
+
+						}
+      }
+    }
+		},
+	
 				//	colors: ['#000099', '#CC0000', '#006600', '#FFCC00', '#D9CDB6'],
 					credits: {
 					   enabled: false
@@ -178,7 +202,22 @@ $(function () {
 						x: -20
 					},
 					xAxis: {
-						categories: [<?php echo join($date, ',') ?>]///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
+						categories: [<?php echo join($date, ',') ?>],///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
+						plotLines: [{
+								color: '#FF0000',
+								width: 2,
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							},{
+								color: '#FF0000',
+								width: 2,
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							}]
 					},
 					yAxis: {
 						max: 100,
@@ -205,6 +244,7 @@ $(function () {
 						floating: false,
 						borderWidth: 0
 					},	
+					
 					plotOptions: {
 						series: {
 							cursor: 'pointer',
@@ -236,53 +276,31 @@ $(function () {
 									  // 'Control: ' + event.ctrlKey + '\n'+
 									  // 'Shift: ' + event.shifkKey + '\n'+
 									  // 'Datetime: ' + date[event.point.x]);
-								}
+								},                
+						legendItemClick: function () {
+						if(this.name == "Marker"){
+						if(this.visible == true){
+						estado_acc = false;		
+						acc.xAxis[0].options.plotLines[0].color = "transparent";
+						acc.xAxis[0].options.plotLines[1].color = "transparent";						
+						acc.xAxis[0].update();					
+						}else
+						if(this.visible == false){	
+						estado_acc = true;	
+						acc.xAxis[0].options.plotLines[0].color = "red";
+						acc.xAxis[0].options.plotLines[1].color = "red";						
+						acc.xAxis[0].update();
+						}	
+						}
+						}
 							}
 						}
-					},					
-					// plotOptions: {
-						// series: {
-							// cursor: 'pointer',
-							// events: {
-								// click: function( event ) {
-								// // Log to console
-								// var kpis = ["QDA HS", "QDR HS", "3G-Retention HS", "Weighted-Availability","User Throughput"];
-								// var regions = ["CO", "PRSC", "NE", "BASE","ES","MG"];
-								// var kpi = this.name;
-								// kpi = kpi.toLowerCase();
-								// kpi = kpi.trim();
-								// var strkpi = kpi.replace(/(^\s+|\s+$)/g, '');
-								// //alert(node);$.inArray(this.name, kpis) > -1
-								// if (node.substring(0, 3) == 'RNC' && $.inArray(this.name, kpis) > -1) {
-									// //alert(node);
-									// document.getElementById('rnc').value = node;
-									// document.getElementById('date').value = date[event.point.x];
-									// document.getElementById('kpi').value = this.name;
-									// document.wcform.submit();
-								// } else if ($.inArray(node, regions) > -1) {
-									// document.getElementById('node').value = node;
-									// document.getElementById('week').value = date[event.point.x];
-									// document.getElementById('weeklykpi').value = this.name;
-									// document.weekwcform.submit();
-								// } 
-								
-								// else {
-									// alert("NPSmart current release does not support Worst Cells for the selected aggregation.")
-								// }
-								
-								// //var date = date[event.point.x];
-								// //alert(kpi + date + node);
-								// //	alert(kpi + ' clicked\n' + ' ' + node + ' ' +
-								// //	  'Alt: ' + event.altKey + '\n' +
-								// //	  'Control: ' + event.ctrlKey + '\n'+
-								// //	  'Shift: ' + event.shifkKey + '\n'+
-								// //	  'Datetime: ' + date[event.point.x]);
-								// }
-							// }
-						// }
-					// },
+					},
 					
 					series: [{
+					name: 'Marker',
+					color:'red'
+					},{
 						name: 'QDA HS',
 						data: [<?php echo join($qda_ps_f2h, ',') ?>]
 					},

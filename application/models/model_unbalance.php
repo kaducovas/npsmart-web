@@ -176,7 +176,13 @@ STRING_AGG(balanced::text, ',' order by year,week desc) AS balanced,
 STRING_AGG(highly_loaded_cell::text, ',' order by year,week desc) AS hl_cell
 FROM umts_kpi.load_ee
 		where (year,week) in ((".$yearnum4.",".$weeknum4."))	
-		and nodeb = '".$node."'
+		and 
+		CASE
+				WHEN left(nodeb,char_length(nodeb)- 2) like '%%S02%%' and char_length(nodeb)> 8 then concat('U',substring(nodeb,position('S02' in nodeb) + 3,(char_length(nodeb) - position('S02' in nodeb) + 3)))                       
+				WHEN left(nodeb,char_length(nodeb)- 2) like '%%S01%%' and char_length(nodeb)> 8 then concat('U',substring(nodeb,position('S01' in nodeb) + 3,(char_length(nodeb) - position('S01' in nodeb) + 3)))
+				WHEN left(nodeb,char_length(nodeb)- 2) like '%%IMP_%%' and nodeb not like '%%S01%%' then substring(nodeb,position('IMP_' in nodeb) + 4,char_length(nodeb) - position('IMP_' in nodeb) + 4)
+				else nodeb
+	end	  = '".$node."'
 		group by node
 		order by nodeb,azimuth,carrier
 ;");

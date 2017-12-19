@@ -33,7 +33,9 @@
 ///    text += cars[i] + "<br>";
 ///}
 var node = "<?php echo $ne; ?>";
-var datetime = <?php echo json_encode($date); ?>;	
+var datetime = <?php echo json_encode($date); ?>;
+
+
 
 var datetime = JSON.parse("[" + datetime + "]");
 ///alert(datetime[0]);	

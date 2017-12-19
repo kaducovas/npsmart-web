@@ -620,6 +620,7 @@ round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs,
 
 		FROM umts_kpi.triage
 	where (year,week) in ((".$yearnum4.",".$weeknum4."))
+	and area != 'NORMAL'
 	order by nodebname, region, rnc, node
 ;");
 
@@ -699,6 +700,7 @@ round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs,
 		FROM umts_kpi.triage
 	where (year,week) in ((".$yearnum4.",".$weeknum4."))
 	and region = '".$node."'
+	and area != 'NORMAL'
 	order by nodebname, region, rnc, node
 ;");
 

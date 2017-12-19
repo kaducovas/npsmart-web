@@ -53,7 +53,7 @@ class Model_mainkpis_lte extends CI_Model{
 	   cell_uplink_avg_thp_2600, cell_uplink_avg_thp_1800, cell_uplink_avg_thp_700, 
 	   average_user_volume_2600, average_user_volume_1800, average_user_volume_700,
 	   average_user_volume_2cc,average_user_volume_3cc,cell_downlink_avg_thp_ca,
-	   weighted_thp
+	   weighted_thp,interference_2600,interference_1800,interference_700,csfb_prep
   FROM lte_kpi.vw_main_kpis_network_rate_weekly 
   WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
   and week not in (53)
@@ -131,7 +131,7 @@ function region_weekly_report_graph($node,$reportdate){
 	   cell_uplink_avg_thp_2600, cell_uplink_avg_thp_1800, cell_uplink_avg_thp_700, 
 	   average_user_volume_2600, average_user_volume_1800, average_user_volume_700,
 	   average_user_volume_2cc,average_user_volume_3cc,cell_downlink_avg_thp_ca,
-	   weighted_thp
+	   weighted_thp,interference_2600,interference_1800,interference_700,csfb_prep
   FROM lte_kpi.vw_main_kpis_region_rate_weekly 
   WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
   and node = '".$node."'
@@ -143,6 +143,9 @@ function region_weekly_report_graph($node,$reportdate){
 	}
 	
 	function enodeb_monthly_report($node,$reportdate){
+		$this->load->model('model_cellsinfo');
+		$site_array = $this->model_cellsinfo->find_enodebid_from_enodeb($node);
+		$enodebid = $site_array[0]->enodebid;
 		$date = new DateTime($reportdate);
 		$monthnum = $date->format("m");
 			$query = $this->db->query(
@@ -169,7 +172,7 @@ function region_weekly_report_graph($node,$reportdate){
        rb_utilization_dl, rrc_signaling_ul, rb_preschedule_rb_urul, interference
 	  FROM lte_kpi.vw_main_kpis_cell_rate_monthly
 	  where month = ".$monthnum." 
-	  and enodeb = '".$node."'
+	  and enodebid = '".$enodebid."'
 	  order by month, node
 	;");
 
@@ -198,7 +201,7 @@ function region_weekly_report_graph($node,$reportdate){
 	   cell_uplink_avg_thp_2600, cell_uplink_avg_thp_1800, cell_uplink_avg_thp_700, 
 	   average_user_volume_2600, average_user_volume_1800, average_user_volume_700,
 	   average_user_volume_2cc,average_user_volume_3cc,cell_downlink_avg_thp_ca,
-	   weighted_thp
+	   weighted_thp,interference_2600,interference_1800,interference_700,csfb_prep
   FROM lte_kpi.vw_main_kpis_enodeb_rate_weekly 
   WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
   and node = '".$node."'
@@ -210,7 +213,8 @@ order by year,week
 	
 	function cell_monthly_report($node,$reportdate){
 		$site_array = $this->model_cellsinfo->find_enodeb_from_cell($node);
-		$enodeb = $site_array[0]->site;
+		$enodeb = $site_array[0]->enodeb;
+		$enodebid = $site_array[0]->enodebid;
 		$date = new DateTime($reportdate);
 		$monthnum = $date->format("m");
 			$query = $this->db->query(
@@ -237,7 +241,7 @@ order by year,week
        rb_utilization_dl, rrc_signaling_ul, rb_preschedule_rb_urul, interference
 	  FROM lte_kpi.vw_main_kpis_cell_rate_monthly
 	  where month = ".$monthnum." 
-	  and enodeb = '".$enodeb."'
+	  and enodebid = '".$enodebid."'
 	  order by month, node
 	;");
 
@@ -265,7 +269,7 @@ order by year,week
        cell_downlink_avg_thp_700, cell_uplink_avg_thp_2600, cell_uplink_avg_thp_1800, 
        cell_uplink_avg_thp_700, average_user_volume_2600, average_user_volume_1800, 
        average_user_volume_700,average_user_volume_2cc,average_user_volume_3cc,
-	   cell_downlink_avg_thp_ca,weighted_thp
+	   cell_downlink_avg_thp_ca,weighted_thp,interference_2600,interference_1800,interference_700,csfb_prep
   FROM lte_kpi.vw_main_kpis_cell_rate_weekly 
 WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
   and node = '".$node."'
@@ -337,7 +341,7 @@ order by year,week
 	   cell_uplink_avg_thp_2600, cell_uplink_avg_thp_1800, cell_uplink_avg_thp_700, 
 	   average_user_volume_2600, average_user_volume_1800, average_user_volume_700,
 	   average_user_volume_2cc,average_user_volume_3cc,cell_downlink_avg_thp_ca,
-	   weighted_thp
+	   weighted_thp,interference_2600,interference_1800,interference_700,csfb_prep
   FROM lte_kpi.vw_main_kpis_uf_rate_weekly 
   WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
   and node = '".$node."'
@@ -411,7 +415,7 @@ order by year,week
 	   cell_uplink_avg_thp_2600, cell_uplink_avg_thp_1800, cell_uplink_avg_thp_700, 
 	   average_user_volume_2600, average_user_volume_1800, average_user_volume_700,
 	   average_user_volume_2cc,average_user_volume_3cc,cell_downlink_avg_thp_ca,
-	   weighted_thp
+	   weighted_thp,interference_2600,interference_1800,interference_700,csfb_prep
   FROM lte_kpi.vw_main_kpis_cidade_rate_weekly 
 WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
   and uf = '".$uf."' and ibge = ".$ibge."
@@ -484,7 +488,7 @@ order by year,week
 	   cell_uplink_avg_thp_2600, cell_uplink_avg_thp_1800, cell_uplink_avg_thp_700, 
 	   average_user_volume_2600, average_user_volume_1800, average_user_volume_700,
 	   average_user_volume_2cc,average_user_volume_3cc,cell_downlink_avg_thp_ca,
-	   weighted_thp
+	   weighted_thp,interference_2600,interference_1800,interference_700,csfb_prep
   FROM lte_kpi.vw_main_kpis_cluster_rate_weekly 
 WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
   and node = '".$node."'
@@ -509,6 +513,9 @@ order by year,week
 	// }
 	
 	function enodeb_weekly_report($node,$weeknum){
+		$this->load->model('model_cellsinfo');
+		$site_array = $this->model_cellsinfo->find_enodebid_from_enodeb($node);
+		$enodebid = $site_array[0]->enodebid;
 		$weeknum = $weeknum;
 			 $query = $this->db->query(
 			 "SELECT week, node,'enodebs'::text as type,1 as sortcol, rrc_service, fails_rrc_service, rrc_signaling, 
@@ -531,7 +538,7 @@ order by year,week
        downlink_traffic_volume, uplink_traffic_volume, average_user_volume, 
        rb_utilization_dl, rrc_signaling_ul, rb_preschedule_rb_urul, interference
   from lte_kpi.vw_main_kpis_cell_rate_weekly
-  where week = ".$weeknum." and enodeb = '".$node."'
+  where week = ".$weeknum." and enodebid = '".$enodebid."'
   order by week,sortcol,node
 	;");
 
@@ -541,7 +548,8 @@ order by year,week
 	function cell_weekly_report($node,$weeknum){
 	$this->load->model('model_cellsinfo');
 		$site_array = $this->model_cellsinfo->find_enodeb_from_cell($node);
-		$enodeb = $site_array[0]->site;
+		$enodeb = $site_array[0]->enodeb;
+		$enodebid = $site_array[0]->enodebid;
 		$weeknum = $weeknum;
 			 $query = $this->db->query(
 			 "SELECT week, node,'enodebs'::text as type,1 as sortcol, rrc_service, fails_rrc_service, rrc_signaling, 
@@ -564,7 +572,7 @@ order by year,week
        downlink_traffic_volume, uplink_traffic_volume, average_user_volume, 
        rb_utilization_dl, rrc_signaling_ul, rb_preschedule_rb_urul, interference
   from lte_kpi.vw_main_kpis_cell_rate_weekly
-  where week = ".$weeknum." and enodeb = '".$enodeb."'
+  where week = ".$weeknum." and enodebid = '".$enodebid."'
   order by week,sortcol,node
 	;");
 
@@ -785,7 +793,7 @@ order by year,week
 	   cell_uplink_avg_thp_2600, cell_uplink_avg_thp_1800, cell_uplink_avg_thp_700, 
 	   average_user_volume_2600, average_user_volume_1800, average_user_volume_700,
 	   average_user_volume_2cc,average_user_volume_3cc,cell_downlink_avg_thp_ca,
-	   weighted_thp
+	   weighted_thp,interference_2600,interference_1800,interference_700,csfb_prep
   FROM lte_kpi.vw_main_kpis_enodeb_rate_daily
   WHERE node = '".$node."'  
   and date between '".$inidate."' and '".$findate."' order by date
@@ -814,7 +822,7 @@ order by year,week
        cell_downlink_avg_thp_700, cell_uplink_avg_thp_2600, cell_uplink_avg_thp_1800, 
        cell_uplink_avg_thp_700, average_user_volume_2600, average_user_volume_1800, 
        average_user_volume_700,average_user_volume_2cc,average_user_volume_3cc,
-	   cell_downlink_avg_thp_ca,weighted_thp
+	   cell_downlink_avg_thp_ca,weighted_thp,interference_2600,interference_1800,interference_700,csfb_prep
   FROM lte_kpi.vw_main_kpis_cell_rate_daily
   WHERE node = '".$node."'   
   and date between '".$inidate."' and '".$findate."' order by date
@@ -842,10 +850,12 @@ order by year,week
 	}	
 
 	function enodeb_daily_report_dash($node,$reportdate){
-		
+		$this->load->model('model_cellsinfo');
+		$site_array = $this->model_cellsinfo->find_enodebid_from_enodeb($node);
+		$enodebid = $site_array[0]->enodebid;
 			 $query = $this->db->query(
 			 "SELECT  
-			 date, node, 'enodebs'::text as type,1 as sortcol,rrc_service, fails_rrc_service, 
+			 date, '".$node."' node, 'enodebs'::text as type,1 as sortcol,rrc_service, fails_rrc_service, 
        rrc_signaling, fails_rrc_signaling, s1sig, fails_s1sig, e_rab, 
        fails_e_rab, call_setup, csfb, fails_csfb, availability, intra_freq_hoo_out, 
        inter_freq_hoo_out, handover_in, iratho_l2c, iratho_l2w, iratho_l2g, 
@@ -854,7 +864,7 @@ order by year,week
        downlink_traffic_volume, uplink_traffic_volume, average_user_volume, 
        rb_utilization_dl, rrc_signaling_ul, rb_preschedule_rb_urul, interference
   FROM lte_kpi.vw_main_kpis_enodeb_rate_daily_2
-  where date = '".$reportdate."' and node = '".$node."'
+  where date = '".$reportdate."' and enodebid = '".$enodebid."'
    union
   SELECT date, node,'cell'::text as type,2 as sortcol, rrc_service, fails_rrc_service, rrc_signaling, 
        fails_rrc_signaling, s1sig, fails_s1sig, e_rab, fails_e_rab, 
@@ -865,7 +875,7 @@ order by year,week
        downlink_traffic_volume, uplink_traffic_volume, average_user_volume, 
        rb_utilization_dl, rrc_signaling_ul, rb_preschedule_rb_urul, interference
   from lte_kpi.vw_main_kpis_cell_rate_daily_2
-  where  date = '".$reportdate."' and enodeb = '".$node."'
+  where  date = '".$reportdate."' and enodebid = ".$enodebid."
   order by date,sortcol,node
 	;");	
 
@@ -875,10 +885,11 @@ order by year,week
 	function cell_daily_report_dash($node,$reportdate){
 		$this->load->model('model_cellsinfo');
 		$site_array = $this->model_cellsinfo->find_enodeb_from_cell($node);
-		$enodeb = $site_array[0]->site;
+		$enodebid = $site_array[0]->enodebid;
+		$enodeb = $site_array[0]->enodeb;
 			 $query = $this->db->query(
 			 "SELECT  
-			 date, node, 'enodebs'::text as type,1 as sortcol,rrc_service, fails_rrc_service, 
+			 date, '".$enodeb."' node, 'enodebs'::text as type,1 as sortcol,rrc_service, fails_rrc_service, 
        rrc_signaling, fails_rrc_signaling, s1sig, fails_s1sig, e_rab, 
        fails_e_rab, call_setup, csfb, fails_csfb, availability, intra_freq_hoo_out, 
        inter_freq_hoo_out, handover_in, iratho_l2c, iratho_l2w, iratho_l2g, 
@@ -887,7 +898,7 @@ order by year,week
        downlink_traffic_volume, uplink_traffic_volume, average_user_volume, 
        rb_utilization_dl, rrc_signaling_ul, rb_preschedule_rb_urul, interference
   FROM lte_kpi.vw_main_kpis_enodeb_rate_daily_2
-  where date = '".$reportdate."' and node = '".$enodeb."'
+  where date = '".$reportdate."' and enodebid = ".$enodebid."
    union
   SELECT date, node,'cell'::text as type,2 as sortcol, rrc_service, fails_rrc_service, rrc_signaling, 
        fails_rrc_signaling, s1sig, fails_s1sig, e_rab, fails_e_rab, 
@@ -898,7 +909,7 @@ order by year,week
        downlink_traffic_volume, uplink_traffic_volume, average_user_volume, 
        rb_utilization_dl, rrc_signaling_ul, rb_preschedule_rb_urul, interference
   from lte_kpi.vw_main_kpis_cell_rate_daily_2
-  where  date = '".$reportdate."' and enodeb = '".$enodeb."'
+  where  date = '".$reportdate."' and enodebid = ".$enodebid."
   order by date,sortcol,node
 	;");	
 
@@ -1245,7 +1256,8 @@ function network_hourly_report($reportdate){
  cell_uplink_avg_thp_2600, cell_uplink_avg_thp_1800, cell_uplink_avg_thp_700, 
  average_user_volume_2600, average_user_volume_1800, average_user_volume_700,
  average_user_volume_2cc,average_user_volume_3cc,cell_downlink_avg_thp_ca,
- weighted_thp
+ weighted_thp,interference_2600,interference_1800,interference_700,
+ interference_2600,interference_1800,interference_700,csfb_prep
    FROM 
  lte_kpi.vw_main_kpis_region_rate_hourly  
  WHERE node = '".$node."'
@@ -1341,7 +1353,7 @@ function network_hourly_report($reportdate){
  cell_uplink_avg_thp_2600, cell_uplink_avg_thp_1800, cell_uplink_avg_thp_700, 
  average_user_volume_2600, average_user_volume_1800, average_user_volume_700,
  average_user_volume_2cc,average_user_volume_3cc,cell_downlink_avg_thp_ca,
- weighted_thp
+ weighted_thp,interference_2600,interference_1800,interference_700,csfb_prep
    FROM 
 lte_kpi.vw_main_kpis_uf_rate_hourly
 WHERE node = '".$node."'
@@ -1460,7 +1472,8 @@ function cidade_weekly_report($node,$weeknum){
 	   cell_uplink_avg_thp_2600, cell_uplink_avg_thp_1800, cell_uplink_avg_thp_700, 
 	   average_user_volume_2600, average_user_volume_1800, average_user_volume_700,
 	   average_user_volume_2cc,average_user_volume_3cc,cell_downlink_avg_thp_ca,
-	   weighted_thp
+	   weighted_thp,interference_2600,interference_1800,interference_700,
+	   interference_2600,interference_1800,interference_700,csfb_prep
 	   from lte_kpi.vw_main_kpis_cidade_rate_daily
 	where date between '".$inidate."' and '".$findate."' 
 	and ibge = ".$ibge."
@@ -1582,7 +1595,7 @@ function cidade_weekly_report($node,$weeknum){
 	   cell_uplink_avg_thp_2600, cell_uplink_avg_thp_1800, cell_uplink_avg_thp_700, 
 	   average_user_volume_2600, average_user_volume_1800, average_user_volume_700,
 	   average_user_volume_2cc,average_user_volume_3cc,cell_downlink_avg_thp_ca,
-	   weighted_thp
+	   weighted_thp,interference_2600,interference_1800,interference_700,csfb_prep
 	   from lte_kpi.vw_main_kpis_cidade_rate_hourly
 	where date between '".$inidate."' and '".$findate." 23:00' 
 	and ibge = ".$ibge."
@@ -1597,12 +1610,16 @@ function cidade_weekly_report($node,$weeknum){
 
 		
 	function enodeb_hourly_report($node,$reportdate){
+		$this->load->model('model_cellsinfo');
+		$site_array = $this->model_cellsinfo->find_enodebid_from_enodeb($node);
+		$enodebid = $site_array[0]->enodebid;
+		#$enodeb = $site_array[0]->enodeb;
 		$daterange = $reportdate;
 		$inidate = date('Y-m-d', strtotime($daterange.' -7 day'));
 		$enddate = date('Y-m-d', strtotime($daterange));
 			 $query = $this->db->query(
 			 "select
- date,node,rrc_service,fails_rrc_service,rrc_signaling,fails_rrc_signaling,s1sig,fails_s1sig,e_rab,
+ date,'".$node."' node,rrc_service,fails_rrc_service,rrc_signaling,fails_rrc_signaling,s1sig,fails_s1sig,e_rab,
  fails_e_rab,call_setup,csfb,fails_csfb,availability,intra_freq_hoo_out,inter_freq_hoo_out,handover_in,iratho_l2c,iratho_l2w,iratho_l2g,iratho_l2t,
  retention_4g,service_drop,cell_downlink_avg_thp,cell_uplink_avg_thp,
  rb_cell_downlink_avg_thp,rb_cell_uplink_avg_thp,downlink_traffic_volume,
@@ -1611,11 +1628,11 @@ function cidade_weekly_report($node,$weeknum){
  cell_uplink_avg_thp_2600, cell_uplink_avg_thp_1800, cell_uplink_avg_thp_700, 
  average_user_volume_2600, average_user_volume_1800, average_user_volume_700,
  average_user_volume_2cc,average_user_volume_3cc,cell_downlink_avg_thp_ca,
- weighted_thp
+ weighted_thp,interference_2600,interference_1800,interference_700,csfb_prep
    FROM 
 lte_kpi.vw_main_kpis_enodeb_rate_hourly
 where date between '".$inidate."' and '".$enddate." 23:00:00' 
-and node = '".$node."'
+and enodebid = '".$enodebid."'
 order by date
 	;");	
 
@@ -1638,7 +1655,7 @@ function cell_hourly_report($node,$reportdate){
        cell_downlink_avg_thp_700, cell_uplink_avg_thp_2600, cell_uplink_avg_thp_1800, 
        cell_uplink_avg_thp_700, average_user_volume_2600, average_user_volume_1800, 
        average_user_volume_700,average_user_volume_2cc,average_user_volume_3cc,
-	   cell_downlink_avg_thp_ca, weighted_thp
+	   cell_downlink_avg_thp_ca, weighted_thp,interference_2600,interference_1800,interference_700,csfb_prep
    FROM 
 lte_kpi.vw_main_kpis_cell_rate_hourly
 where date between '".$inidate."' and '".$enddate." 23:00:00' 

@@ -562,6 +562,9 @@ th, td {
 .container {
         width: 80%;
     }
+	th input {
+        width: 98%;
+    }
 </style>
 
 <script type="text/javascript">
@@ -609,6 +612,19 @@ function selectnenav(obj,type) {
 	document.getElementById('reportnename').value = obj
 	if(type == 'cidades' && reportagg == 'daily'){
 		alert("NPSmart current release does not support City Level Daily Report.")
+	} else {
+		document.reportopt.submit();
+	}	
+}
+
+function selectnenav_triage(obj,type) {
+	//alert(type);
+	document.getElementById('reportdate').value = reportdate;
+	document.getElementById('reportnetype').value = type;
+	document.getElementById('reportkpi').value = reportkpi;
+	document.getElementById('reportnename').value = obj
+	if(type == ''){
+		alert("Please, select some other option.")
 	} else {
 		document.reportopt.submit();
 	}	
@@ -801,17 +817,28 @@ document.reportopt.submit();
 function selectkpitriage(obj) {
 	if(obj.innerHTML == 'Overview'){
 		document.getElementById('reportkpi').value = 'overview';
-	} 
-	else if(obj.innerHTML == 'Cell Mapping') {
-		//alert(obj.innerHTML);
-			document.getElementById('reportkpi').value = 'cellmapping';
-		}
-	document.getElementById('reportnename').value = reportnename;
-	document.getElementById('reportdate').value = reportdate;
-	document.getElementById('reportnetype').value = reportnetype;
-	document.getElementById('reportcell').value = reportcell;
-document.reportopt.action = '/npsmart/umts/triage';
+		document.getElementById('reportnename').value = reportnename;
+		document.getElementById('reportdate').value = reportdate;
+		document.getElementById('reportnetype').value = reportnetype;
+		document.getElementById('reportcell').value = reportcell;
+		document.reportopt.action = '/npsmart/umts/triage';
 		document.reportopt.submit();
+		} 
+	else if(obj.innerHTML == 'Cell Mapping') {
+	 if (reportnetype == 'network'){
+	 alert("Cell Mapping don't support Network Level.")	 
+	 }
+	 else{
+		 document.getElementById('reportkpi').value = 'cellmapping';
+		 document.getElementById('reportnename').value = reportnename;
+		 document.getElementById('reportdate').value = reportdate;
+		 document.getElementById('reportnetype').value = reportnetype;
+		 document.getElementById('reportcell').value = reportcell;
+		 document.reportopt.action = '/npsmart/umts/triage';
+		 document.reportopt.submit();	 
+	 }
+	
+	}
 	//}
 }
 

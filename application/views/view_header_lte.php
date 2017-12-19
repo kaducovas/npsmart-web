@@ -243,7 +243,7 @@
 
 .border{
 	box-shadow: 7px 5px 3px grey;
-	border: 1px solid #637881;
+	border: 1px solid #CCCCCC;
 	Border-radius: 0px;
 	
 }
@@ -255,7 +255,7 @@
     margin-right: 0.5%;
 	margin-top:0.25%;
 	margin-bottom:0.25%;
-	border: 1px solid #637881;
+	border: 1px solid #CCCCCC;
 	Border-radius: 0px;
    width: 49%;
    height: 400px;
@@ -270,7 +270,7 @@
     margin-right: 1%;
 	margin-top:0.25%;
 	margin-bottom:0.25%;
-	border: 1px solid #637881;
+	border: 1px solid #CCCCCC;
 	Border-radius: 0px;
    width: 98%;
    height: 400px;
@@ -487,7 +487,7 @@ thead th {
     margin-right: 0.5%;
 	margin-top:0.25%;
 	margin-bottom:0.25%;
-	border: 1px solid #637881;
+	border: 1px solid #CCCCCC;
 	Border-radius: 0px;
    width: 49%;
    height: 800px;
@@ -502,21 +502,62 @@ thead th {
     
 }
 .radar_content {	
+	position: absolute;
 	margin-left: 1%;
     margin-right: 1%;
 	margin-top:0.1%;
 	margin-bottom:1%;
-	border: 1px solid #637881;
 	Border-radius: 0px;
     max-width: 48%;
 	min-width: 48%;
     height: 630px;
-	float: left;
+}
+
+.radar_info {	
+	position: absolute;
+	margin-left: 1%;
+    margin-right: 1%;
+	margin-top:0.1%;
+	margin-bottom:1%;
+	Border-radius: 0px;
+    max-width: 48%;
+	min-width: 48%;
+    height: 630px;
+}
+
+.radar_table {	
+	margin-left: 1%;
+    margin-right: 1%;
+	margin-top:0.1%;
+	margin-bottom:1%;
+	Border-radius: 0px;
+    max-width: 48%;
+	min-width: 48%;
+    height: 630px;
+	float: right;
 }
 .radar_chart {
     max-width: 50%;
 	min-width: 50%;
     height: 100%;
+}
+.pie_content {	
+	Border-radius: 0px;
+    max-width: 25%;
+	min-width: 25%;
+    height: 300px;
+	float: left;
+}
+.radar_menu {	
+	float: left;
+}
+.radar_menu_footer_left {
+	margin-top:560px;
+	float: left;
+}
+.radar_menu_footer_right {
+	margin-left: 90%;
+	margin-top:560px;
 }
 </style>
 
@@ -844,6 +885,147 @@ function selectmobaselineenodeb(obj) {
 document.reportopt.action = '/npsmart/lte/baseline_enodeb';
 		document.reportopt.submit();
 }		
+
+function selectkpiradar(obj) {
+	
+	if(obj.innerHTML == 'RF Health Index'){
+		document.getElementById('reportkpi').value = 'rf_health_index';
+		document.getElementById('reportnename').value = reportnename;
+		document.getElementById('reportdate').value = reportdate;
+		document.getElementById('reportnetype').value = reportnetype;
+	} 
+	else if(obj.innerHTML == 'Worst Aging Factor') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'worst_aging_factor';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}
+	else if(obj.innerHTML == 'Mobility') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'mobility';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == 'User Throughput (DL and UL)') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'throughput';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == 'Service Retention in 4G') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'retention_4g';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == 'Data Performance') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'data_performance';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == 'Voice Performance') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'voice_performance';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == 'Availability') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'availability';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}
+	else if(obj.innerHTML == 'Traffic Load') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'traffic_load';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}
+	else if(obj.innerHTML == 'Resources Blocking') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'resources_blocking';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == 'Efficiency') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'efficiency';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == 'Interface (UL RSSI)') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'interface';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == 'Quality UL') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'quality_ul';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == 'Overshooters') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'overshooters';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == 'Quality DL') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'quality_dl';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == '<i>Composite Radar Score</i>') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'composite';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}
+	else {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = obj.innerHTML;
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}
+document.reportopt.action = '/npsmart/lte/radar';
+		document.reportopt.submit();
+	//}
+}
  
 
 </script>

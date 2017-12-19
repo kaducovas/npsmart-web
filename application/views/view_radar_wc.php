@@ -3,7 +3,15 @@
 //var node = 'CO';
 var reportnename = "<?php echo $reportnename; ?>";
 var reportdate = "<?php echo $reportdate; ?>";
+jQuery(window).load(function () {
+    document.getElementById("loading").style.display = "none";
+	document.getElementById("loading_table").style.visibility = "visible";
+});
 </script>
+<div id="loading" style="display:block">
+    <p style="text-align:center;"><img src="/npsmart/images/loading_preto.gif" style="width:300px; height:300px;" alt="Loading" /></p>
+</div>
+<div id="loading_table" align="center" style="visibility:hidden">
 <div id="content" class="chart_content_large"><div id="acc" class="chart1"></div></div>
 <br>
 <div width="100%">
@@ -34,10 +42,7 @@ var reportdate = "<?php echo $reportdate; ?>";
 				<th rowspan="2" bgcolor='#394E58'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'>Node</font></th>
 				<th style='display:none;'rowspan="2" bgcolor='#394E58'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'>Node</font></th>
 				<?php
-				if ($nekpi == 'rf_health_index') {
-				echo "<th colspan='4' bgcolor='#394E58'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'>RF Health Index Score</font></th>";
-				}
-				else if($nekpi == 'process_tools') {
+				if($nekpi == 'process_tools') {
 				echo "<th colspan='4' bgcolor='#394E58'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'>SW Release & Features Score</font></th>";
 				}
 				else if($nekpi == 'worst_aging_factor') {
@@ -87,6 +92,9 @@ var reportdate = "<?php echo $reportdate; ?>";
 					echo "<th colspan='1' bgcolor='#909EA4' width='70px'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'><div class='vrt_radar'>MaxPower</div></font></th>";	
 				}
 				echo "<th colspan='4' bgcolor='#394E58'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'>CPICH Power Ratio Score</font></th>";	
+				}
+				else if ($nekpi == 'rf_health_index') {
+				echo "<th colspan='4' bgcolor='#394E58'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'>RF Health Index Score</font></th>";
 				}
 				else if($nekpi == 'composite') {
 				echo "<th colspan='4' bgcolor='#394E58'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'>Composite RADAR Score</font></th>";
@@ -232,13 +240,7 @@ var reportdate = "<?php echo $reportdate; ?>";
 					echo "<td value='".$row->node."'><font style='font-family: calibri; font-size:12pt'><a id='".$row->node."' onclick='selectne(this)' class='node' value='".$row->node."'>".$row->node."</a></font></td>";		
 					echo "<td style='display:none;'>".$row->type."</td>";	
 
-					if ($nekpi == 'rf_health_index'){
-					echo "<td bgcolor='".($array_rf_health_index[0] >= 8?$good:($array_rf_health_index[0] >= 6?$yellow:($array_rf_health_index[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_rf_health_index[0]."</font></td>";
-					echo "<td bgcolor='".($array_rf_health_index[1] >= 8?$good:($array_rf_health_index[1] >= 6?$yellow:($array_rf_health_index[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_rf_health_index[1]."</font></td>";
-					echo "<td bgcolor='".($array_rf_health_index[2] >= 8?$good:($array_rf_health_index[2] >= 6?$yellow:($array_rf_health_index[2] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_rf_health_index[2]."</font></td>";
-					echo "<td bgcolor='".($array_rf_health_index[3] >= 8?$good:($array_rf_health_index[3] >= 6?$yellow:($array_rf_health_index[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_rf_health_index[3]."</font></td>";
-					}
-					else if ($nekpi == 'process_tools'){
+					if ($nekpi == 'process_tools'){
 					echo "<td bgcolor='".($array_process_tools[0] >= 8?$good:($array_process_tools[0] >= 6?$yellow:($array_process_tools[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_process_tools[0]."</font></td>";
 					echo "<td bgcolor='".($array_process_tools[1] >= 8?$good:($array_process_tools[1] >= 6?$yellow:($array_process_tools[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_process_tools[1]."</font></td>";
 					echo "<td bgcolor='".($array_process_tools[2] >= 8?$good:($array_process_tools[2] >= 6?$yellow:($array_process_tools[2] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_process_tools[2]."</font></td>";
@@ -362,6 +364,12 @@ var reportdate = "<?php echo $reportdate; ?>";
 					echo "<td bgcolor='".($array_composite[2] >= 8?$good:($array_composite[2] >= 6?$yellow:($array_composite[2] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_composite[2]."</font></td>";
 					echo "<td bgcolor='".($array_composite[3] >= 8?$good:($array_composite[3] >= 6?$yellow:($array_composite[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_composite[3]."</font></td>";
 					}
+					else if ($nekpi == 'rf_health_index'){
+					echo "<td bgcolor='".($array_rf_health_index[0] >= 8?$good:($array_rf_health_index[0] >= 6?$yellow:($array_rf_health_index[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_rf_health_index[0]."</font></td>";
+					echo "<td bgcolor='".($array_rf_health_index[1] >= 8?$good:($array_rf_health_index[1] >= 6?$yellow:($array_rf_health_index[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_rf_health_index[1]."</font></td>";
+					echo "<td bgcolor='".($array_rf_health_index[2] >= 8?$good:($array_rf_health_index[2] >= 6?$yellow:($array_rf_health_index[2] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_rf_health_index[2]."</font></td>";
+					echo "<td bgcolor='".($array_rf_health_index[3] >= 8?$good:($array_rf_health_index[3] >= 6?$yellow:($array_rf_health_index[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_rf_health_index[3]."</font></td>";
+					}
 					else{}
 					echo "</tr>";	
 				}
@@ -369,6 +377,7 @@ var reportdate = "<?php echo $reportdate; ?>";
 	
 		</tbody>
 	</table>
+</div>
 </div>
 <br>
 </body>

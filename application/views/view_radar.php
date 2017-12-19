@@ -46,7 +46,7 @@ $title = "#394E58";
 <table id="table2" class="cell-border stripe hover" border="1 solid black" cellspacing="0" width="100%">
 			<tr>
 				<?php
-				echo "<th rowspan='2' bgcolor='#394E58'><a style= 'color:#FFFFFF' onclick='selectkpiradar(this)'>".$node[0]."</a></th>";
+				echo "<th rowspan='2' bgcolor='#394E58'><a style= 'color:#FFFFFF' href='#' onclick='selectkpiradar(this)'>".$node[0]."</a></th>";
 				?>			
 				<th colspan="4" bgcolor="#394E58"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">Radar KPI Score</font></th>
 				</tr>
@@ -76,16 +76,6 @@ $title = "#394E58";
 			</tr>
 			
 			<tr>
-			<th bgcolor="#FFFFFF"><font color = '#B0B0B0'>RF Health Index</font></th>		
-			<?php				   					
-				echo "<td bgcolor='orange'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$rf_health_index[0]."</font></td>";	
-				echo "<td bgcolor='orange'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$rf_health_index[1]."</font></td>";	
-				echo "<td bgcolor='orange'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$rf_health_index[2]."</font></td>";	
-				echo "<td bgcolor='orange'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$rf_health_index[3]."</font></td>";	
-			    ?>
-			</tr>
-
-			<tr>
 			<th bgcolor="#FFFFFF"><font color = '#B0B0B0'>SW Release & Features</font></th>
 			<?php					
 				echo "<td bgcolor='orange'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$process_tools[0]."</font></td>";
@@ -107,7 +97,7 @@ $title = "#394E58";
 			</tr>
 
 			<tr>
-			<th bgcolor="#FFFFFF"><a style= "color:black" onclick='selectkpiradar(this)'>Baseline (Consistency Check)</a></th>
+			<th bgcolor="#FFFFFF"><a style= "color:black" href='#' onclick='selectkpiradar(this)'>Baseline (Consistency Check)</a></th>
 			<?php		
 				echo "<td bgcolor='".($baseline[0] >= 8?$good:($baseline[0] >= 6?$yellow:($baseline[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$baseline[0]."</font></td>";
 				echo "<td bgcolor='".($baseline[1] >= 8?$good:($baseline[1] >= 6?$yellow:($baseline[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$baseline[1]."</font></td>";
@@ -117,7 +107,7 @@ $title = "#394E58";
 			</tr>
 
 			<tr>
-			<th bgcolor="#FFFFFF"><a style= "color:black" onclick='selectkpiradar(this)'>Throughput</a></th>
+			<th bgcolor="#FFFFFF"><a style= "color:black" href='#' onclick='selectkpiradar(this)'>Throughput</a></th>
 			<?php						
 				echo "<td bgcolor='".($throughput[0] >= 8?$good:($throughput[0] >= 6?$yellow:($throughput[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$throughput[0]."</font></td>";
 				echo "<td bgcolor='".($throughput[1] >= 8?$good:($throughput[1] >= 6?$yellow:($throughput[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$throughput[1]."</font></td>";
@@ -127,7 +117,7 @@ $title = "#394E58";
 			</tr>
 			
 			<tr>
-			<th bgcolor="#FFFFFF"><a style= "color:black" onclick='selectkpiradar(this)'>Service Retention in 3G</a></th>
+			<th bgcolor="#FFFFFF"><a style= "color:black" href='#' onclick='selectkpiradar(this)'>Service Retention in 3G</a></th>
 			<?php		
 				echo "<td bgcolor='".($retention_3g[0] >= 8?$good:($retention_3g[0] >= 6?$yellow:($retention_3g[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$retention_3g[0]."</font></td>";
 				echo "<td bgcolor='".($retention_3g[1] >= 8?$good:($retention_3g[1] >= 6?$yellow:($retention_3g[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$retention_3g[1]."</font></td>";
@@ -137,7 +127,7 @@ $title = "#394E58";
 			</tr>
 			
 			<tr>
-			<th bgcolor="#FFFFFF"><a style= "color:black" onclick='selectkpiradar(this)'>PS (Call Completion)</a></th>
+			<th bgcolor="#FFFFFF"><a style= "color:black" href='#' onclick='selectkpiradar(this)'>PS (Call Completion)</a></th>
 			<?php		
 				echo "<td bgcolor='".($ps_call_completion[0] >= 8?$good:($ps_call_completion[0] >= 6?$yellow:($ps_call_completion[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$ps_call_completion[0]."</font></td>";
 				echo "<td bgcolor='".($ps_call_completion[1] >= 8?$good:($ps_call_completion[1] >= 6?$yellow:($ps_call_completion[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$ps_call_completion[1]."</font></td>";
@@ -147,7 +137,7 @@ $title = "#394E58";
 			</tr>
 			
 			<tr>
-			<th bgcolor="#FFFFFF"><a style= "color:black" onclick='selectkpiradar(this)'>CS (Call Completion)</a></th>
+			<th bgcolor="#FFFFFF"><a style= "color:black" href='#' onclick='selectkpiradar(this)'>CS (Call Completion)</a></th>
 			<?php		
 				echo "<td bgcolor='".($cs_call_completion[0] >= 8?$good:($cs_call_completion[0] >= 6?$yellow:($cs_call_completion[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$cs_call_completion[0]."</font></td>";
 				echo "<td bgcolor='".($cs_call_completion[1] >= 8?$good:($cs_call_completion[1] >= 6?$yellow:($cs_call_completion[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$cs_call_completion[1]."</font></td>";
@@ -157,7 +147,7 @@ $title = "#394E58";
 			</tr>
 			
 			<tr>
-			<th bgcolor="#FFFFFF"><a style= "color:blue" onclick='selectkpiradar(this)'>Availability</a></th>
+			<th bgcolor="#FFFFFF"><a style= "color:blue" href='#' onclick='selectkpiradar(this)'>Availability</a></th>
 			<?php		
 				echo "<td bgcolor='".($availability[0] >= 8?$good:($availability[0] >= 6?$yellow:($availability[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$availability[0]."</font></td>";
 				echo "<td bgcolor='".($availability[1] >= 8?$good:($availability[1] >= 6?$yellow:($availability[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$availability[1]."</font></td>";
@@ -167,7 +157,7 @@ $title = "#394E58";
 			</tr>
 			
 			<tr>
-			<th bgcolor="#FFFFFF"><a style= "color:black" onclick='selectkpiradar(this)'>Traffic Load</a></th>
+			<th bgcolor="#FFFFFF"><a style= "color:black" href='#' onclick='selectkpiradar(this)'>Traffic Load</a></th>
 			<?php		
 				echo "<td bgcolor='".($traffic_load[0] >= 8?$good:($traffic_load[0] >= 6?$yellow:($traffic_load[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$traffic_load[0]."</font></td>";
 				echo "<td bgcolor='".($traffic_load[1] >= 8?$good:($traffic_load[1] >= 6?$yellow:($traffic_load[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$traffic_load[1]."</font></td>";
@@ -177,7 +167,7 @@ $title = "#394E58";
 			</tr>
 			
 			<tr>
-			<th bgcolor="#FFFFFF"><a style= "color:black" onclick='selectkpiradar(this)'>Hardware (NodeB: CE and Iub/RNC)</a></th>
+			<th bgcolor="#FFFFFF"><a style= "color:black" href='#' onclick='selectkpiradar(this)'>Hardware (NodeB: CE and Iub/RNC)</a></th>
 			<?php		
 				echo "<td bgcolor='".($hardware_nodeb[0] >= 8?$good:($hardware_nodeb[0] >= 6?$yellow:($hardware_nodeb[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$hardware_nodeb[0]."</font></td>";
 				echo "<td bgcolor='".($hardware_nodeb[1] >= 8?$good:($hardware_nodeb[1] >= 6?$yellow:($hardware_nodeb[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$hardware_nodeb[1]."</font></td>";
@@ -187,7 +177,7 @@ $title = "#394E58";
 			</tr>
 			
 			<tr>
-			<th bgcolor="#FFFFFF"><a style= "color:black" onclick='selectkpiradar(this)'>Air Interface UL (RTWP)</a></th>
+			<th bgcolor="#FFFFFF"><a style= "color:black" href='#' onclick='selectkpiradar(this)'>Air Interface UL (RTWP)</a></th>
 			<?php		
 				echo "<td bgcolor='".($air_interface_ul[0] >= 8?$good:($air_interface_ul[0] >= 6?$yellow:($air_interface_ul[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$air_interface_ul[0]."</font></td>";
 				echo "<td bgcolor='".($air_interface_ul[1] >= 8?$good:($air_interface_ul[1] >= 6?$yellow:($air_interface_ul[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$air_interface_ul[1]."</font></td>";
@@ -197,7 +187,7 @@ $title = "#394E58";
 			</tr>
 			
 			<tr>
-			<th bgcolor="#FFFFFF"><a style= "color:black" onclick='selectkpiradar(this)'>Air Interface DL (Codes and Power)</a></th>
+			<th bgcolor="#FFFFFF"><a style= "color:black" href='#' onclick='selectkpiradar(this)'>Air Interface DL (Codes and Power)</a></th>
 			<?php		
 				echo "<td bgcolor='".($air_interface_dl[0] >= 8?$good:($air_interface_dl[0] >= 6?$yellow:($air_interface_dl[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$air_interface_dl[0]."</font></td>";
 				echo "<td bgcolor='".($air_interface_dl[1] >= 8?$good:($air_interface_dl[1] >= 6?$yellow:($air_interface_dl[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$air_interface_dl[1]."</font></td>";
@@ -207,7 +197,7 @@ $title = "#394E58";
 			</tr>
 			
 			<tr>
-			<th bgcolor="#FFFFFF"><a style= "color:black" onclick='selectkpiradar(this)'>SHO Overhead</a></th>
+			<th bgcolor="#FFFFFF"><a style= "color:black" href='#' onclick='selectkpiradar(this)'>SHO Overhead</a></th>
 			<?php		
 				echo "<td bgcolor='".($sho_overhead[0] >= 8?$good:($sho_overhead[0] >= 6?$yellow:($sho_overhead[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$sho_overhead[0]."</font></td>";
 				echo "<td bgcolor='".($sho_overhead[1] >= 8?$good:($sho_overhead[1] >= 6?$yellow:($sho_overhead[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$sho_overhead[1]."</font></td>";
@@ -217,7 +207,7 @@ $title = "#394E58";
 			</tr>
 			
 			<tr>
-			<th bgcolor="#FFFFFF"><a style= "color:black" onclick='selectkpiradar(this)'>Overshooters</a></th>
+			<th bgcolor="#FFFFFF"><a style= "color:black" href='#' onclick='selectkpiradar(this)'>Overshooters</a></th>
 			<?php		
 				echo "<td bgcolor='".($overshooters[0] >= 8?$good:($overshooters[0] >= 6?$yellow:($overshooters[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$overshooters[0]."</font></td>";
 				echo "<td bgcolor='".($overshooters[1] >= 8?$good:($overshooters[1] >= 6?$yellow:($overshooters[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$overshooters[1]."</font></td>";
@@ -227,7 +217,7 @@ $title = "#394E58";
 			</tr>
 			
 			<tr>
-			<th bgcolor="#FFFFFF"><a style= "color:black" onclick='selectkpiradar(this)'>CPICH Power Ratio</a></th>
+			<th bgcolor="#FFFFFF"><a style= "color:black" href='#' onclick='selectkpiradar(this)'>CPICH Power Ratio</a></th>
 			<?php		
 				echo "<td bgcolor='".($cpich_power_ratio[0] >= 8?$good:($cpich_power_ratio[0] >= 6?$yellow:($cpich_power_ratio[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$cpich_power_ratio[0]."</font></td>";
 				echo "<td bgcolor='".($cpich_power_ratio[1] >= 8?$good:($cpich_power_ratio[1] >= 6?$yellow:($cpich_power_ratio[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$cpich_power_ratio[1]."</font></td>";
@@ -237,7 +227,17 @@ $title = "#394E58";
 			</tr>
 			
 			<tr>
-			<th bgcolor="#C1CCD2"><a style= "color:#0404B4" onclick='selectkpiradar(this)'><i>Composite Radar Score</i></a></th>
+			<th bgcolor="#FFFFFF"><font color = '#B0B0B0'>RF Health Index</font></th>		
+			<?php				   					
+				echo "<td bgcolor='orange'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$rf_health_index[0]."</font></td>";	
+				echo "<td bgcolor='orange'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$rf_health_index[1]."</font></td>";	
+				echo "<td bgcolor='orange'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$rf_health_index[2]."</font></td>";	
+				echo "<td bgcolor='orange'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$rf_health_index[3]."</font></td>";	
+			    ?>
+			</tr>
+			
+			<tr>
+			<th bgcolor="#C1CCD2"><a style= "color:#0404B4" href='#' onclick='selectkpiradar(this)'><i>Composite Radar Score</i></a></th>
 			<?php		
 				echo "<td bgcolor='".($composite[0] >= 8?$good:($composite[0] >= 6?$yellow:($composite[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'><b>".$composite[0]."</b></font></td>";
 				echo "<td bgcolor='".($composite[1] >= 8?$good:($composite[1] >= 6?$yellow:($composite[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'><b>".$composite[1]."</b></font></td>";
@@ -245,6 +245,7 @@ $title = "#394E58";
 				echo "<td bgcolor='".($composite[3] >= 8?$good:($composite[3] >= 6?$yellow:($composite[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'><b>".$composite[3]."</b></font></td>";
 			    ?>
 			</tr>
+
 	</table>
 	</div>
 </body>

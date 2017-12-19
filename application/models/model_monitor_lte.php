@@ -360,7 +360,7 @@ function rnc_main_kpis($node,$findate,$timeagg,$reportnetype){
 		$nodeid_main_kpis = 'ibge';
 		$nodeid_fails = 'ibge';
 		$this->load->model('model_cellsinfo');
-		$cidade_info = $this->model_cellsinfo->find_cidade_info($node);
+		$cidade_info = $this->model_cellsinfo->find_cidade_info_lte($node);
 		$node = $cidade_info[0]->ibge;		
 		} 
 		elseif ($reportnetype == "cluster"){
@@ -368,15 +368,20 @@ function rnc_main_kpis($node,$findate,$timeagg,$reportnetype){
 		$nodeid_fails = 'cluster_id';	
 		$this->load->model('model_cellsinfo');
 		$cluster_info = $this->model_cellsinfo->find_cluster_info_lte($node);
-		$node = $cluster_info[0]->cluster_id;			
+		$node = $cluster_info[0]->cluster_id;
 		}
-		elseif ($reportnetype == "rnc"){
-			$nodeid_main_kpis = 'node';
-			$nodeid_fails = 'rnc';
+		elseif ($reportnetype == "enodeb"){
+			#echo $node;
+			$this->load->model('model_cellsinfo');
+			$site_array = $this->model_cellsinfo->find_enodebid_from_enodeb($node);
+			$nodeid_main_kpis = 'enodebid';
+			$node = $site_array[0]->enodebid;
+			$nodeid_fails = 'enodebid';
+			
 		}		
 		else {
 			$nodeid_main_kpis = 'node';
-			$nodeid_fails = 'node';
+			$nodeid_fails = $reportnetype;
 		}	
 	
 		$query = $this->db->query(
@@ -392,6 +397,7 @@ COALESCE(e_rab,100) as e_rab,
 COALESCE(fails_e_rab,0) as fails_e_rab,
 COALESCE(call_setup,100) as call_setup,
 COALESCE(csfb,100) as csfb,
+COALESCE(csfb_prep,100) as csfbprep,
 COALESCE(fails_csfb,0) as fails_csfb,
 COALESCE(availability,100) as availability,
 COALESCE(intra_freq_hoo_out,100) as intra_freq_hoo_out,
@@ -403,6 +409,7 @@ COALESCE(iratho_l2g,100) as iratho_l2g,
 COALESCE(iratho_l2t,100) as iratho_l2t,
 COALESCE(retention_4g,100) as retention_4g,
 COALESCE(service_drop,100) as service_drop,
+COALESCE(service_drop_fails,100) as service_drop_fails,
 COALESCE(cell_downlink_avg_thp,100) as cell_downlink_avg_thp,
 COALESCE(cell_uplink_avg_thp,100) as cell_uplink_avg_thp,
 COALESCE(rb_cell_downlink_avg_thp,100) as rb_cell_downlink_avg_thp,
@@ -413,8 +420,35 @@ COALESCE(average_user_volume,0) as average_user_volume,
 COALESCE(rb_utilization_dl,100) as rb_utilization_dl,
 COALESCE(rrc_signaling_ul,100) as rrc_signaling_ul,
 COALESCE(rb_preschedule_rb_urul,100) as rb_preschedule_rb_urul,
-COALESCE(interference,-115) as interference
+interference,
+interference_2600,
+interference_1800,
+interference_700,
+COALESCE(fails_csfb_prep,0) as fails_csfb_prep,
+l_rrc_setupfail_noreply,
+l_rrc_setupfail_rej,
+l_e_rab_abnormrel_cong,
+l_e_rab_abnormrel_radio,
+l_rrc_connreq_msg_disc_flowctrl,
+l_e_rab_abnormrel,
+l_e_rab_abnormrel_mme,
+l_e_rab_failest_noreply,
+l_rrc_setupfail_resfail,
+l_e_rab_failest_mme,
+l_e_rab_failest_tnl,
+l_e_rab_failest_rnl,
+l_e_rab_failest_securmodefail,
+l_e_rab_failest_noradiores,
+l_e_rab_abnormrel_hoout,
+l_e_rab_abnormrel_tnl,
+l_e_rab_abnormrel_hofailure,
+l_e_rab_abnormrel_enbtot,
+l_rrc_reestfail_disc_flowctrl,
+l_e_rab_failest_other
+
 	FROM lte_kpi.vw_main_kpis_".$reportnetype."_rate_hourly m 
+	LEFT JOIN lte_kpi.fails_lte_".$reportnetype." f 
+	ON m.date=f.datetime and m.".$nodeid_main_kpis."=f.".$nodeid_fails."
 	where m.".$period." between '".$inidate."' and '".$findate.$time."'
 	AND m.".$nodeid_main_kpis." = '".$node."'
 	ORDER BY m.date;"
@@ -428,10 +462,10 @@ COALESCE(interference,-115) as interference
 	// echo '<br>';
 	// echo $findate;
 	// echo '<br>';
-	// echo $timeagg;
+	//echo $timeagg;
 	// echo '<br>';
 	if($timeagg == "weekly"){
-		$inidate = date('Y-m-d', strtotime($findate.' -7 day'));
+		$inidate = date('Y-m-d', strtotime($findate.' -30 day'));
 		$period = 'date';
 		$time =  ' 23:30:00';
 	} elseif ($timeagg == "daily"){
@@ -451,29 +485,30 @@ COALESCE(interference,-115) as interference
 		$cidade_info = $this->model_cellsinfo->find_cidade_info($node);
 		$node = $cidade_info[0]->ibge;		
 		} 
-		elseif ($reportnetype == "cluster"){
-		$nodeid_main_kpis = 'cluster_id';
-		$nodeid_fails = 'cluster_id';	
-		$this->load->model('model_cellsinfo');
-		$cluster_info = $this->model_cellsinfo->find_cluster_info_lte($node);
-		$node = $cluster_info[0]->cluster_id;			
-		}
-		elseif ($reportnetype == "rnc"){
+		
+		elseif ($reportnetype == "network"){
 			$nodeid_main_kpis = 'node';
 			$nodeid_fails = 'rnc';
 		}		
 		else {
-			$nodeid_main_kpis = 'node';
+			$nodeid_main_kpis = $reportnetype;
 			$nodeid_fails = 'node';
 		}	
 	
-		$query = $this->db->query(
-		"SELECT *
+		if ($reportnetype == "network") {
+		$query = $this->db->query("SELECT *
 		FROM lte_kpi.vw_nqi_daily_".$reportnetype." where ".$period." between '".$inidate."' and '".$findate."'
 		and date_part('year'::text, date) = 2017
 			AND ".$nodeid_main_kpis." = '".$node."'
 			ORDER BY date;"
-		);
+		);}
+		else{
+		$query = $this->db->query("SELECT *, ".$reportnetype." as node
+		FROM lte_kpi.vw_nqi_daily_".$reportnetype." where ".$period." between '".$inidate."' and '".$findate."'
+		and date_part('year'::text, date) = 2017
+			AND ".$nodeid_main_kpis." = '".$node."'
+			ORDER BY date;"
+		);}
 			
 	return $query->result();
 	}

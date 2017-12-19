@@ -139,6 +139,14 @@ Highcharts.exportCharts = function(charts, options) {
 	///////////////////////////////////START charts////////////////////////////////////////////////
 $(function () {
     var chart;
+	var estado_acc = true;
+	var estado_availability = true;
+	var estado_retainability_cs = true;
+	var estado_smp_5 = true;
+	var estado_smp_7 = true;
+	var estado_smp_8 = true;
+	var estado_smp_9 = true;
+	var estado_traffic = true;
     $(document).ready(function() {
 		var acc = new Highcharts.Chart({
 		chart: {
@@ -147,6 +155,39 @@ $(function () {
 				//backgroundColor:'transparent',
 				zoomType: 'xy'
 				,
+					events: {
+						click: function(e) {
+						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// alert(e.xAxis[0].value);
+						//acc.chart.series[1].show();
+						if(estado_acc != false){
+						acc.xAxis[0].options.plotLines[0].color = "red";
+						acc.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						availability.xAxis[0].options.plotLines[0].color = "red";
+						availability.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						retainability_cs.xAxis[0].options.plotLines[0].color = "red";
+						retainability_cs.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						smp_5.xAxis[0].options.plotLines[0].color = "red";
+						smp_5.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						smp_7.xAxis[0].options.plotLines[0].color = "red";
+						smp_7.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						smp_8.xAxis[0].options.plotLines[0].color = "red";
+						smp_8.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						smp_9.xAxis[0].options.plotLines[0].color = "red";
+						smp_9.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						traffic.xAxis[0].options.plotLines[0].color = "red";
+						traffic.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;					
+						acc.xAxis[0].update();
+						availability.xAxis[0].update();
+						retainability_cs.xAxis[0].update();
+						smp_5.xAxis[0].update();
+						smp_7.xAxis[0].update();
+						smp_8.xAxis[0].update();
+						smp_9.xAxis[0].update();
+						traffic.xAxis[0].update();					
+						}
+      }
+    }
 			//	backgroundColor: {
             //    linearGradient: [0, 0, 500, 500],
             //    stops: [
@@ -199,7 +240,10 @@ $(function () {
 					plotLines: [{
 								color: '#FF0000',
 								width: 2,
-								//value: 247
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
 							}]
 					},
 					yAxis: {
@@ -228,43 +272,61 @@ $(function () {
 						borderWidth: 0
 					},	
 					
-					// plotOptions: {
-						// series: {
-							// cursor: 'pointer',
-							// events: {
-								// click: function( event ) {
-								// // Log to console
-								// var kpi = this.name;
-								// kpi = kpi.toLowerCase();
-								// kpi = kpi.trim();
-								// var strkpi = kpi.replace(/(^\s+|\s+$)/g, '');
-								// // alert(node.substring(0, 3));
-								// // if (node.substring(0, 3) == 'RNC' && reportagg == 'weekly') {
-									// document.getElementById('wcreportnename').value = node;
-									// document.getElementById('wcreportnetype').value = reportnetype;
-									// document.getElementById('wctimeagg').value = reportagg;
-									// document.getElementById('wcreportdate').value = date[event.point.x];
-									// document.getElementById('wckpi').value = this.name;
-									// document.wcform.submit();
-								// // } 
-								// //	else {
-									// // //alert("NPSmart current release does not support Worst Cells for the selected aggregation.")
-								// // }
-								
-								// //var date = date[event.point.x];
-								// //alert(kpi + date + node);
-								// //alert(reportagg);
-									// // alert(kpi + ' clicked\n' + ' ' + node + ' ' +
-									  // // 'Alt: ' + event.altKey + '\n' +
-									  // // 'Control: ' + event.ctrlKey + '\n'+
-									  // // 'Shift: ' + event.shifkKey + '\n'+
-									  // // 'Datetime: ' + date[event.point.x]);
-								// }
-							// }
-						// }
-					// },
+					plotOptions: {
+						series: {
+							cursor: 'pointer',
+							events: {
+              
+						legendItemClick: function () {
+						if(this.name == "Marker"){
+						if(this.visible == true){
+						estado_acc = false;		
+						acc.xAxis[0].options.plotLines[0].color = "transparent";
+						availability.xAxis[0].options.plotLines[0].color = "transparent";
+						retainability_cs.xAxis[0].options.plotLines[0].color = "transparent";
+						smp_5.xAxis[0].options.plotLines[0].color = "transparent";
+						smp_7.xAxis[0].options.plotLines[0].color = "transparent";
+						smp_8.xAxis[0].options.plotLines[0].color = "transparent";
+						smp_9.xAxis[0].options.plotLines[0].color = "transparent";
+						traffic.xAxis[0].options.plotLines[0].color = "transparent";						
+						acc.xAxis[0].update();
+						availability.xAxis[0].update();
+						retainability_cs.xAxis[0].update();
+						smp_5.xAxis[0].update();
+						smp_7.xAxis[0].update();
+						smp_8.xAxis[0].update();
+						smp_9.xAxis[0].update();
+						traffic.xAxis[0].update();						
+						}else
+						if(this.visible == false){	
+						estado_acc = true;	
+						acc.xAxis[0].options.plotLines[0].color = "red";
+						availability.xAxis[0].options.plotLines[0].color = "red";
+						retainability_cs.xAxis[0].options.plotLines[0].color = "red";
+						smp_5.xAxis[0].options.plotLines[0].color = "red";
+						smp_7.xAxis[0].options.plotLines[0].color = "red";
+						smp_8.xAxis[0].options.plotLines[0].color = "red";
+						smp_9.xAxis[0].options.plotLines[0].color = "red";
+						traffic.xAxis[0].options.plotLines[0].color = "red";						
+						acc.xAxis[0].update();
+						availability.xAxis[0].update();
+						retainability_cs.xAxis[0].update();
+						smp_5.xAxis[0].update();
+						smp_7.xAxis[0].update();
+						smp_8.xAxis[0].update();
+						smp_9.xAxis[0].update();
+						traffic.xAxis[0].update();	
+						}	
+						}
+				}
+							}
+						}
+					},
 					
 					series: [{
+								name: 'Marker',
+								color:'red'
+							},{
 						name: 'CS Acc',
 						data: [<?php echo join($acc_cs, ',') ?>]
 					}
@@ -280,6 +342,18 @@ $(function () {
 						//backgroundColor:'transparent',
 						zoomType: 'xy'
 						,
+							events: {
+						click: function(e) {
+						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// alert(e.xAxis[0].value);
+						//acc.chart.series[1].show();
+						if(estado_availability != false){
+						availability.xAxis[0].options.plotLines[0].color = "red";
+						availability.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						availability.xAxis[0].update();
+						}
+      }
+    }
 					//	backgroundColor: {
 					//    linearGradient: [0, 0, 500, 500],
 					//    stops: [
@@ -313,7 +387,10 @@ $(function () {
 					plotLines: [{
 								color: '#FF0000',
 								width: 2,
-								//value: 247
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
 							}]
 								},
 							yAxis: {
@@ -342,33 +419,33 @@ $(function () {
 								borderWidth: 0
 							},	
 						
-							// plotOptions: {
-						// series: {
-							// cursor: 'pointer',
-							// events: {
-								// click: function( event ) {
-								// // Log to console
-								// var kpi = this.name;
-								// kpi = kpi.toLowerCase();
-								// kpi = kpi.trim();
-								// var strkpi = kpi.replace(/(^\s+|\s+$)/g, '');
-								// //alert(node.substring(0, 3));
-								// //if (node.substring(0, 3) == 'RNC' && reportagg == 'weekly' && reportagg == 'weekly') {
-									// document.getElementById('wcreportnename').value = node;
-									// document.getElementById('wcreportnetype').value = reportnetype;
-									// document.getElementById('wctimeagg').value = reportagg;
-									// document.getElementById('wcreportdate').value = date[event.point.x];
-									// document.getElementById('wckpi').value = this.name;
-									// document.wcform.submit();
-								// // } else {
-									// // alert("NPSmart current release does not support Worst Cells for the selected aggregation.")
-								// // }
-								// }
-							// }
-						// }
-					// },
+					plotOptions: {
+						series: {
+							cursor: 'pointer',
+							events: {
+               
+						legendItemClick: function () {
+						if(this.name == "Marker"){
+						if(this.visible == true){
+						estado_availability = false;		
+						availability.xAxis[0].options.plotLines[0].color = "transparent";
+						availability.xAxis[0].update();
+						}else
+						if(this.visible == false){	
+						estado_availability = true;	
+						availability.xAxis[0].options.plotLines[0].color = "red";
+						availability.xAxis[0].update();
+						}	
+						}
+				}
+							}
+						}
+					},
 						
 							series: [{
+								name: 'Marker',
+								color:'red'
+							},{
 								name: 'Availability',
 								data: [<?php echo join($availability, ',') ?>]
 							}
@@ -385,6 +462,18 @@ $(function () {
 						//backgroundColor:'transparent',
 						zoomType: 'xy'
 						,
+							events: {
+						click: function(e) {
+						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// alert(e.xAxis[0].value);
+						//acc.chart.series[1].show();
+						if(estado_retainability_cs != false){
+						retainability_cs.xAxis[0].options.plotLines[0].color = "red";
+						retainability_cs.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						retainability_cs.xAxis[0].update();
+						}
+      }
+    }
 					//	backgroundColor: {
 					//    linearGradient: [0, 0, 500, 500],
 					//    stops: [
@@ -418,7 +507,10 @@ $(function () {
 					plotLines: [{
 								color: '#FF0000',
 								width: 2,
-								//value: 247
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
 							}]
 								},
 							yAxis: {
@@ -447,33 +539,33 @@ $(function () {
 								borderWidth: 0
 							},	
 						
-							// plotOptions: {
-						// series: {
-							// cursor: 'pointer',
-							// events: {
-								// click: function( event ) {
-								// // Log to console
-								// var kpi = this.name;
-								// kpi = kpi.toLowerCase();
-								// kpi = kpi.trim();
-								// var strkpi = kpi.replace(/(^\s+|\s+$)/g, '');
-								// //alert(node.substring(0, 3));
-								// //if (node.substring(0, 3) == 'RNC' && reportagg == 'weekly' && reportagg == 'weekly') {
-									// document.getElementById('wcreportnename').value = node;
-									// document.getElementById('wcreportnetype').value = reportnetype;
-									// document.getElementById('wctimeagg').value = reportagg;
-									// document.getElementById('wcreportdate').value = date[event.point.x];
-									// document.getElementById('wckpi').value = this.name;
-									// document.wcform.submit();
-								// // } else {
-									// // alert("NPSmart current release does not support Worst Cells for the selected aggregation.")
-								// // }
-								// }
-							// }
-						// }
-					// },
+					plotOptions: {
+						series: {
+							cursor: 'pointer',
+							events: {
+              
+						legendItemClick: function () {
+						if(this.name == "Marker"){
+						if(this.visible == true){
+						estado_retainability_cs = false;		
+						retainability_cs.xAxis[0].options.plotLines[0].color = "transparent";
+						retainability_cs.xAxis[0].update();
+						}else
+						if(this.visible == false){	
+						estado_retainability_cs = true;	
+						retainability_cs.xAxis[0].options.plotLines[0].color = "red";
+						retainability_cs.xAxis[0].update();
+						}	
+						}
+				}
+							}
+						}
+					},
 						
 							series: [{
+								name: 'Marker',
+								color:'red'
+							},{
 								name: 'Retainability CS',
 								data: [<?php echo join($retainability_cs, ',') ?>]
 							}
@@ -490,6 +582,18 @@ $(function () {
 				//backgroundColor:'transparent',
 				zoomType: 'xy'
 				,
+					events: {
+						click: function(e) {
+						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// alert(e.xAxis[0].value);
+						//acc.chart.series[1].show();
+						if(estado_smp_5 != false){
+						smp_5.xAxis[0].options.plotLines[0].color = "red";
+						smp_5.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						smp_5.xAxis[0].update();
+						}
+      }
+    }
 				//backgroundColor: {
                 //linearGradient: [0, 0, 500, 500],
                 //stops: [
@@ -523,8 +627,11 @@ $(function () {
 					plotLines: [{
 								color: '#FF0000',
 								width: 2,
-								//value: 247
-							}]					
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							}]				
 					},
 					yAxis: {
 						max: 100,
@@ -552,33 +659,33 @@ $(function () {
 						borderWidth: 0
 					},
 
-					// plotOptions: {
-						// series: {
-							// cursor: 'pointer',
-							// events: {
-								// click: function( event ) {
-								// // Log to console
-								// var kpi = this.name;
-								// kpi = kpi.toLowerCase();
-								// kpi = kpi.trim();
-								// var strkpi = kpi.replace(/(^\s+|\s+$)/g, '');
-								// //alert(node.substring(0, 3));
-								// //if (node.substring(0, 3) == 'RNC' && reportagg == 'weekly') {
-									// document.getElementById('wcreportnename').value = node;
-									// document.getElementById('wcreportnetype').value = reportnetype;
-									// document.getElementById('wctimeagg').value = reportagg;
-									// document.getElementById('wcreportdate').value = date[event.point.x];
-									// document.getElementById('wckpi').value = this.name;
-									// document.wcform.submit();
-								// // } else {
-									// // alert("NPSmart current release does not support Worst Cells for the selected aggregation.")
-								// // }
-								// }
-							// }
-						// }
-					// },
+					plotOptions: {
+						series: {
+							cursor: 'pointer',
+							events: {
+            
+						legendItemClick: function () {
+						if(this.name == "Marker"){
+						if(this.visible == true){
+						estado_smp_5 = false;		
+						smp_5.xAxis[0].options.plotLines[0].color = "transparent";
+						smp_5.xAxis[0].update();
+						}else
+						if(this.visible == false){	
+						estado_smp_5 = true;	
+						smp_5.xAxis[0].options.plotLines[0].color = "red";
+						smp_5.xAxis[0].update();
+						}	
+						}
+				}
+							}
+						}
+					},
 					
 					series: [{
+								name: 'Marker',
+								color:'red'
+							},{
 						name: 'SMP 5 Huawei',
 						data: [<?php echo join($smp_5, ',') ?>]
 					},
@@ -605,6 +712,18 @@ $(function () {
 				//backgroundColor:'transparent',
 				zoomType: 'xy'
 				,
+					events: {
+						click: function(e) {
+						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// alert(e.xAxis[0].value);
+						//acc.chart.series[1].show();
+						if(estado_smp_7 != false){
+						smp_7.xAxis[0].options.plotLines[0].color = "red";
+						smp_7.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						smp_7.xAxis[0].update();
+						}
+      }
+    }
 				//backgroundColor: {
                 //linearGradient: [0, 0, 500, 500],
                 //stops: [
@@ -638,8 +757,11 @@ $(function () {
 					plotLines: [{
 								color: '#FF0000',
 								width: 2,
-								//value: 247
-							}]					
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							}]				
 					},
 					yAxis: {
 						//max: 100,
@@ -667,33 +789,33 @@ $(function () {
 						borderWidth: 0
 					},
 
-					// plotOptions: {
-						// series: {
-							// cursor: 'pointer',
-							// events: {
-								// click: function( event ) {
-								// // Log to console
-								// var kpi = this.name;
-								// kpi = kpi.toLowerCase();
-								// kpi = kpi.trim();
-								// var strkpi = kpi.replace(/(^\s+|\s+$)/g, '');
-								// //alert(node.substring(0, 3));
-								// //if (node.substring(0, 3) == 'RNC' && reportagg == 'weekly') {
-									// document.getElementById('wcreportnename').value = node;
-									// document.getElementById('wcreportnetype').value = reportnetype;
-									// document.getElementById('wctimeagg').value = reportagg;
-									// document.getElementById('wcreportdate').value = date[event.point.x];
-									// document.getElementById('wckpi').value = this.name;
-									// document.wcform.submit();
-								// // } else {
-									// // alert("NPSmart current release does not support Worst Cells for the selected aggregation.")
-								// // }
-								// }
-							// }
-						// }
-					// },
+					plotOptions: {
+						series: {
+							cursor: 'pointer',
+							events: {
+               
+						legendItemClick: function () {
+						if(this.name == "Marker"){
+						if(this.visible == true){
+						estado_smp_7 = false;		
+						smp_7.xAxis[0].options.plotLines[0].color = "transparent";
+						smp_7.xAxis[0].update();
+						}else
+						if(this.visible == false){	
+						estado_smp_7 = true;	
+						smp_7.xAxis[0].options.plotLines[0].color = "red";
+						smp_7.xAxis[0].update();
+						}	
+						}
+				}
+							}
+						}
+					},
 					
 					series: [{
+								name: 'Marker',
+								color:'red'
+							},{
 						name: 'SMP 7 Huawei',
 						data: [<?php echo join($smp_7, ',') ?>]
 					},
@@ -721,6 +843,18 @@ $(function () {
 				//backgroundColor:'transparent',
 				zoomType: 'xy'
 				,
+					events: {
+						click: function(e) {
+						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// alert(e.xAxis[0].value);
+						//acc.chart.series[1].show();
+						if(estado_smp_8 != false){
+						smp_8.xAxis[0].options.plotLines[0].color = "red";
+						smp_8.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						smp_8.xAxis[0].update();
+						}
+      }
+    }
 				//backgroundColor: {
                 //linearGradient: [0, 0, 500, 500],
                 //stops: [
@@ -754,7 +888,10 @@ $(function () {
 					plotLines: [{
 								color: '#FF0000',
 								width: 2,
-								//value: 247
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
 							}]					
 					},
 					yAxis: {
@@ -783,33 +920,33 @@ $(function () {
 						borderWidth: 0
 					},
 
-					// plotOptions: {
-						// series: {
-							// cursor: 'pointer',
-							// events: {
-								// click: function( event ) {
-								// // Log to console
-								// var kpi = this.name;
-								// kpi = kpi.toLowerCase();
-								// kpi = kpi.trim();
-								// var strkpi = kpi.replace(/(^\s+|\s+$)/g, '');
-								// //alert(node.substring(0, 3));
-								// //if (node.substring(0, 3) == 'RNC' && reportagg == 'weekly') {
-									// document.getElementById('wcreportnename').value = node;
-									// document.getElementById('wcreportnetype').value = reportnetype;
-									// document.getElementById('wctimeagg').value = reportagg;
-									// document.getElementById('wcreportdate').value = date[event.point.x];
-									// document.getElementById('wckpi').value = this.name;
-									// document.wcform.submit();
-								// // } else {
-									// // alert("NPSmart current release does not support Worst Cells for the selected aggregation.")
-								// // }
-								// }
-							// }
-						// }
-					// },
+					plotOptions: {
+						series: {
+							cursor: 'pointer',
+							events: {
+             
+						legendItemClick: function () {
+						if(this.name == "Marker"){
+						if(this.visible == true){
+						estado_smp_8 = false;		
+						smp_8.xAxis[0].options.plotLines[0].color = "transparent";
+						smp_8.xAxis[0].update();
+						}else
+						if(this.visible == false){	
+						estado_smp_8 = true;	
+						smp_8.xAxis[0].options.plotLines[0].color = "red";
+						smp_8.xAxis[0].update();
+						}	
+						}
+				}
+							}
+						}
+					},
 					
 					series: [{
+								name: 'Marker',
+								color:'red'
+							},{
 						name: 'SMP 8 Huawei',
 						data: [<?php echo join($smp_8, ',') ?>]
 					},
@@ -837,6 +974,18 @@ $(function () {
 				//backgroundColor:'transparent',
 				zoomType: 'xy'
 				,
+					events: {
+						click: function(e) {
+						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// alert(e.xAxis[0].value);
+						//acc.chart.series[1].show();
+						if(estado_smp_9 != false){
+						smp_9.xAxis[0].options.plotLines[0].color = "red";
+						smp_9.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						smp_9.xAxis[0].update();
+						}
+      }
+    }
 				//backgroundColor: {
                 //linearGradient: [0, 0, 500, 500],
                 //stops: [
@@ -870,7 +1019,10 @@ $(function () {
 					plotLines: [{
 								color: '#FF0000',
 								width: 2,
-								//value: 247
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
 							}]					
 					},
 					yAxis: {
@@ -899,33 +1051,33 @@ $(function () {
 						borderWidth: 0
 					},
 
-					// plotOptions: {
-						// series: {
-							// cursor: 'pointer',
-							// events: {
-								// click: function( event ) {
-								// // Log to console
-								// var kpi = this.name;
-								// kpi = kpi.toLowerCase();
-								// kpi = kpi.trim();
-								// var strkpi = kpi.replace(/(^\s+|\s+$)/g, '');
-								// //alert(node.substring(0, 3));
-								// //if (node.substring(0, 3) == 'RNC' && reportagg == 'weekly') {
-									// document.getElementById('wcreportnename').value = node;
-									// document.getElementById('wcreportnetype').value = reportnetype;
-									// document.getElementById('wctimeagg').value = reportagg;
-									// document.getElementById('wcreportdate').value = date[event.point.x];
-									// document.getElementById('wckpi').value = this.name;
-									// document.wcform.submit();
-								// // } else {
-									// // alert("NPSmart current release does not support Worst Cells for the selected aggregation.")
-								// // }
-								// }
-							// }
-						// }
-					// },
+					plotOptions: {
+						series: {
+							cursor: 'pointer',
+							events: {
+           
+						legendItemClick: function () {
+						if(this.name == "Marker"){
+						if(this.visible == true){
+						estado_smp_9 = false;		
+						smp_9.xAxis[0].options.plotLines[0].color = "transparent";
+						smp_9.xAxis[0].update();
+						}else
+						if(this.visible == false){	
+						estado_smp_9 = true;	
+						smp_9.xAxis[0].options.plotLines[0].color = "red";
+						smp_9.xAxis[0].update();
+						}	
+						}
+				}
+							}
+						}
+					},
 					
 					series: [{
+								name: 'Marker',
+								color:'red'
+							},{
 						name: 'SMP 9 Huawei',
 						data: [<?php echo join($smp_9, ',') ?>]
 					},
@@ -954,6 +1106,18 @@ $(function () {
 						//backgroundColor:'transparent',
 						zoomType: 'xy'
 						,
+							events: {
+						click: function(e) {
+						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// alert(e.xAxis[0].value);
+						//acc.chart.series[1].show();
+						if(estado_traffic != false){
+						traffic.xAxis[0].options.plotLines[0].color = "red";
+						traffic.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						traffic.xAxis[0].update();
+						}
+      }
+    }
 					//	backgroundColor: {
 					//    linearGradient: [0, 0, 500, 500],
 					//    stops: [
@@ -984,11 +1148,14 @@ $(function () {
 							},
 							xAxis: {
 								categories: [<?php echo join($date, ',') ?>],///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
-						plotLines: [{
-									color: '#FF0000',
-									width: 2,
-									//value: 247
-								}]							
+					plotLines: [{
+								color: '#FF0000',
+								width: 2,
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							}]							
 							},
 							yAxis: {
 								//max: 100,
@@ -1014,8 +1181,35 @@ $(function () {
 								verticalAlign: 'bottom',
 								floating: false,
 								borderWidth: 0
-							},				
+							},
+
+					plotOptions: {
+						series: {
+							cursor: 'pointer',
+							events: {
+            
+						legendItemClick: function () {
+						if(this.name == "Marker"){
+						if(this.visible == true){
+						estado_traffic = false;		
+						traffic.xAxis[0].options.plotLines[0].color = "transparent";
+						traffic.xAxis[0].update();
+						}else
+						if(this.visible == false){	
+						estado_traffic = true;	
+						traffic.xAxis[0].options.plotLines[0].color = "red";
+						traffic.xAxis[0].update();
+						}	
+						}
+				}
+							}
+						}
+					},
+							
 							series: [{
+								name: 'Marker',
+								color:'red'
+							},{
 								name: 'SDCCH Traffic',
 								data: [<?php echo join($sdcch_traffic, ',') ?>]
 							},

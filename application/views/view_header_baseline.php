@@ -2,47 +2,59 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-
-<script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="http://highcharts.github.io/export-csv/export-csv.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src='/npsmart/js/jquery-2.1.3.min.js'></script>
+<script src="/npsmart/js/jquery-1.10.2.js"></script>
+<script src="/npsmart/js/jquery-ui.js"></script> 
+<script src="/npsmart/js/highcharts.js"></script>
+<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script src="/npsmart/js/exporting.js"></script>
+<script src="/npsmart/js/export-csv.js"></script>
+<script src="/npsmart/js/grouped-categories.js"></script>
 <!--<script src="https://code.highcharts.com/modules/multicolor_series.js"></script>-->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/start/jquery-ui.css">
+<link rel="stylesheet" href="/npsmart/css/jquery-ui.css">
+
+<!------------------------------------------- JOÃO ------------------------------------------------>
+
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!--------------------------------------------------------------------------------------------------->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 
  <link rel="stylesheet" type="text/css" href="/npsmart/DataTables-1.10.9/media/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="/npsmart/DataTables-1.10.9/media/js/jquery.dataTables.js"></script>
-<script src="https://cdn.datatables.net/1.10.9/js/dataTables.bootstrap.min.js"></script>
+<script src="/npsmart/js/dataTables.bootstrap.min.js"></script>
 <!--<link rel="stylesheet" href="https://cdn.datatables.net/1.10.9/css/dataTables.bootstrap.min.css">-->
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="/npsmart/css/bootstrap.min.css">
 
 
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
+<script src="/npsmart/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/npsmart/css/datepicker.min.css" />
+<link rel="stylesheet" href="/npsmart/css/datepicker3.min.css" />
+<script src="/npsmart/js/bootstrap-datepicker.min.js"></script>
 
-<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" />
+<script src="/npsmart/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="/npsmart/css/jquery.dataTables.min.css" />
 <link rel="stylesheet" type="text/css" href="/npsmart/css/buttons.datatables.min.css">
 <!--<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.1.2/css/buttons.dataTables.min.css" />-->
-<script src="https://cdn.datatables.net/buttons/1.1.2/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.1.2/js/buttons.print.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.1.2/js/buttons.colVis.min.js"></script>
-<script src="//cdn.datatables.net/buttons/1.1.2/js/buttons.flash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.1.2/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/scroller/1.4.1/js/dataTables.scroller.min.js"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/scroller/1.4.1/css/scroller.dataTables.min.css" />
+<script src="/npsmart/js/dataTables.buttons.min.js"></script>
+<script src="/npsmart/js/buttons.print.min.js"></script>
+<script src="/npsmart/js/buttons.colVis.min.js"></script>
+<script src="/npsmart/js/buttons.flash.min.js"></script>
+<script src="/npsmart/js/jszip.min.js"></script>
+<script src="/npsmart/js/pdfmake.min.js"></script>
+<script src="/npsmart/js/vfs_fonts.js"></script>
+<script src="/npsmart/js/buttons.html5.min.js"></script>
+<script src="/npsmart/js/dataTables.scroller.min.js"></script>
+<link rel="stylesheet" href="/npsmart/css/scroller.dataTables.min.css" />
 
- 
- <script src="/npsmart/lib/js/bl.js" type="text/javascript"></script> 
+<!--<script type="text/javascript" charset="utf8" src="/npsmart/js/maplabel.js"></script>
+<script type="text/javascript" charset="utf8" src="/npsmart/js/maplabel-compiled.js"></script>-->
 
- 
 	<style>
   .ui-autocomplete {
     max-height: 200px;
@@ -174,7 +186,6 @@
     color: #6A7D86;
     background-color: transparent;
   }
-
 .navbar-custom .navbar-link {
   color: #ffffff;
 }
@@ -203,7 +214,7 @@
 .borda
 {
     box-shadow: 7px 5px 3px grey;
-	border: 1px solid #637881;
+	border: 1px solid #CCCCCC;
 	Border-radius: 0px;
 	margin-left: 0.25%;
     margin-right: 0.25%;
@@ -240,7 +251,7 @@
 
 .border{
 	box-shadow: 7px 5px 3px grey;
-	border: 1px solid #637881;
+	border: 1px solid #CCCCCC;
 	Border-radius: 0px;
 	
 }
@@ -252,7 +263,7 @@
     margin-right: 0.5%;
 	margin-top:0.25%;
 	margin-bottom:0.25%;
-	border: 1px solid #637881;
+	border: 1px solid #CCCCCC;
 	Border-radius: 0px;
    width: 49%;
    height: 400px;
@@ -267,12 +278,14 @@
     margin-right: 1%;
 	margin-top:0.25%;
 	margin-bottom:0.25%;
-	border: 1px solid #637881;
+	border: 1px solid #CCCCCC;
 	Border-radius: 0px;
    width: 98%;
    height: 400px;
    position:relative;
 }
+
+
 
 .wc_chart_content {
 	
@@ -281,7 +294,7 @@
     margin-right: 0.5%;
 	margin-top:0.25%;
 	margin-bottom:0.25%;
-	/*border: 1px solid #637881;*/
+	/*border: 1px solid #CCCCCC;*/
 	/*Border-radius: 0px;*/
    width: 49%;
    /* height: 440px; */
@@ -306,6 +319,11 @@
     max-width: 100%;
 }
 
+.alert_dashboard {
+    background-color: #FFFFFF;    
+    max-width: 100%;
+}
+
 .chart1 {
     
     max-width: 100%;
@@ -313,6 +331,7 @@
 	clear:both;
     
 }
+
 
 .modal {
     width: 1400px;
@@ -394,45 +413,232 @@ thead th {
 	margin: 0 0 0 0 ; 
 }
 
+.link{
+	text-align: left;
+}
+
+
+
+.shorty {
+	    background: red; 
+    height: 166px;
+    min-width: 90px; 
+    /* 
+      min-width is large enough to stop 
+      the longest header text you will have from 
+      overlapping when the table is the smallest it will be 
+    */
+	
+    min-width: 10px;
+    padding: 0px;
+	margin: 0 0 0 0 ; 
+	display: block;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    font-weight: normal;
+    text-transform: uppercase;
+    color: #FFF;
+    /*
+      max-width contains the span and 
+      must match the height of the th minus 
+      any padding you want 
+    */
+}
+
+/* 
+   You could give a class like this
+   to your shorter headers if you wanted 
+   maybe apply it with javascript or
+   if you use PHP / whatever you could
+   apply it to strings of a certain size.
+*/	
+
+.rotate > div {
+  	-webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+ 	width: 10px;
+ 	height: 50px;
+}
+
+.textH{
+    overflow:visible:
+        height: 50px !important;
+        width: 150px !important;
+    text-align:left;
+    margin-bottom:0px;
+	
+    
+}
+
+.vrt {
+  width: 10px;
+  margin: 0 auto;
+  writing-mode: vertical-lr;
+}
+
+.vrt_radar {
+  width: 10px;
+  margin: 0 auto;
+  writing-mode: vertical-lr;
+  height: 230px;
+}
+
+.baseline_content {
+	
+	margin-left: 0.5%;
+    margin-right: 0.5%;
+	margin-top:0.25%;
+	margin-bottom:0.25%;
+	border: 1px solid #CCCCCC;
+	Border-radius: 0px;
+   width: 49%;
+   height: 800px;
+   float: left;
+   position:relative;
+}
+.baseline_chart {
+    
+    max-width: 100%;
+    height: 800px;
+	clear:both;
+    
+}
+.radar_content {	
+	position: absolute;
+	margin-left: 1%;
+    margin-right: 1%;
+	margin-top:0.1%;
+	margin-bottom:1%;
+	Border-radius: 0px;
+    max-width: 48%;
+	min-width: 48%;
+    height: 630px;
+}
+
+.radar_info {	
+	position: absolute;
+	margin-left: 1%;
+    margin-right: 1%;
+	margin-top:0.1%;
+	margin-bottom:1%;
+	Border-radius: 0px;
+    max-width: 48%;
+	min-width: 48%;
+    height: 630px;
+}
+
+.radar_table {	
+	margin-left: 1%;
+    margin-right: 1%;
+	margin-top:0.1%;
+	margin-bottom:1%;
+	Border-radius: 0px;
+    max-width: 48%;
+	min-width: 48%;
+    height: 630px;
+	float: right;
+}
+.radar_chart {
+    max-width: 50%;
+	min-width: 50%;
+    height: 100%;
+}
+.pie_content {	
+	Border-radius: 0px;
+    max-width: 25%;
+	min-width: 25%;
+    height: 300px;
+	float: left;
+}
+.radar_menu {	
+	float: left;
+}
+.radar_menu_footer_left {
+	margin-top:560px;
+	float: left;
+}
+.radar_menu_footer_right {
+	margin-left: 90%;
+	margin-top:560px;
+}
 </style>
 
 <script type="text/javascript">
-// $(function() {
-// $('.node').on('click', function() {
-   // //e.preventDefault();
-   // //document.getElementById('node').value = cellinfo[document.getElementById('cellname').value];
-   // //$(this).parents('form').submit();
-   // //alert($(this).val());
-   // //alert("oi");
-// });
-// });
-//$(document).ready(function () {
+
 var mouseStick = "false";
 var selectedSquare;
 function selected(obj) {
-	document.getElementById('date').value = reportdate;
-	document.getElementById('kpi').value = reportkpi;
-	document.getElementById('rnc').value = reportnename;
-	document.getElementById('cellname').value = obj.innerHTML
+	// document.getElementById('date').value = reportdate;
+	// document.getElementById('kpi').value = reportkpi;
+	// document.getElementById('rnc').value = reportnename;
+	// document.getElementById('cellname').value = obj.innerHTML	
+	// document.wcform.submit();
+/////aqui comeca o certo
+	document.getElementById('wcreportnename').value = obj.innerHTML;
+	document.getElementById('wcreportnetype').value = 'cell';
+	document.getElementById('wctimeagg').value = reportagg;
+	document.getElementById('wcreportdate').value = reportdate;
+	document.getElementById('wckpi').value = reportkpi;
 	document.wcform.submit();
+
     //alert(obj.innerHTML);
 }
 
+
 ///send ne to main
 function selectne(obj) {
-	//alert(obj);
+	nename = $(obj).text();
+	netype = $(obj).closest('tr').find('td:eq(1)').text();
+	//alert(netype);
 	document.getElementById('reportdate').value = reportdate;
 	//document.getElementById('kpi').value = kpi;
 	//document.getElementById('rnc').value = rnc;
-	document.getElementById('reportnename').value = obj.innerHTML
+	document.getElementById('reportnename').value = nename;
+	document.getElementById('reportnetype').value = netype;
+	document.getElementById('reportkpi').value = reportkpi;	
 	document.reportopt.submit();
     //alert(obj.innerHTML);
+}
+
+function selectne_baseline(obj) {
+	nename = $(obj).text();
+	netype = $(obj).closest('tr').find('td:eq(1)').text();
+	//alert(netype);
+	document.getElementById('reportmoname').value = reportmoname;
+	document.getElementById('reportdate').value = reportdate;
+	//document.getElementById('kpi').value = kpi;
+	//document.getElementById('rnc').value = rnc;
+	document.getElementById('reportnename').value = nename;
+	document.getElementById('reportnetype').value = netype;
+	document.getElementById('reportkpi').value = reportkpi;	
+	document.reportopt.submit();
+    //alert(obj.innerHTML);
+}
+
+function selectnenav_baseline(obj,type) {
+	//alert(type);
+	document.getElementById('reportmoname').value = reportmoname;
+	document.getElementById('reportdate').value = reportdate;
+	document.getElementById('reportnetype').value = type;
+	document.getElementById('reportkpi').value = reportkpi;
+	document.getElementById('reportnename').value = obj
+	if(type == 'cidades' && reportagg == 'daily'){
+		alert("NPSmart current release does not support City Level Daily Report.")
+	} else {
+		document.reportopt.submit();
+	}	
 }
 
 function selectnenav(obj,type) {
 	//alert(type);
 	document.getElementById('reportdate').value = reportdate;
-	document.getElementById('reportnename').value = reportnename;
+	document.getElementById('reportnetype').value = type;
 	document.getElementById('reportkpi').value = reportkpi;
 	document.getElementById('reportnename').value = obj
 	if(type == 'cidades' && reportagg == 'daily'){
@@ -466,25 +672,50 @@ $(function() {
 		var date = year+'-'+month+'-'+day;
 		//document.getElementById('reportnetype').value = date;
 		document.getElementById('reportnename').value = reportnename;
+		document.getElementById('reportnetype').value = reportnetype;
 		document.getElementById('reportdate').value = date;
 		document.getElementById('reportkpi').value = reportkpi;
+		document.getElementById('reportmoname').value = reportmoname;
 		//document.getElementById('reportkpi').value = obj.innerHTML
 		document.reportopt.submit();
 	 })
 });
 
 function selecttimeagg(obj) {
-	if(obj.innerHTML == 'Weekly Report'){
-		document.reportopt.action = '/npsmart/umts/main'
-	} else if(obj.innerHTML == 'Daily Report') {
-		document.reportopt.action = '/npsmart/umts/daily'
-	} else if(obj.innerHTML == 'Commercial Hour Report') {
-		document.reportopt.action = '/npsmart/umts/ch'
-	}
+	if(obj.innerHTML == 'Weekly'){
+		if(reportkpi == 'all'){
+			document.reportopt.action = '/npsmart/umts/main';	
+		}
+		else if(reportkpi == 'nqihs'){
+			document.reportopt.action = '/npsmart/umts/nqi';
+		}
+		else if(reportkpi == 'nqics'){
+			document.reportopt.action = '/npsmart/umts/nqi';
+		}
+	} else if(obj.innerHTML == 'Daily') {
+		if(reportkpi == 'all'){
+			document.reportopt.action = '/npsmart/umts/daily';
+		}	
+	} else if(obj.innerHTML == 'Monthly') {
+		if(reportkpi == 'all'){
+			document.reportopt.action = '/npsmart/umts/monthly';
+		}
+		else if(reportkpi == 'nqihs'){
+			document.reportopt.action = '/npsmart/umts/nqi_monthly';
+		}
+		else if(reportkpi == 'nqics'){
+			document.reportopt.action = '/npsmart/umts/nqi_monthly';
+		}		
+	} 
+	// else if(obj.innerHTML == 'Commercial Hour Report') {
+		// document.reportopt.action = '/npsmart/umts/ch'
+	// }
+	document.getElementById('reportkpi').value = reportkpi;	
 	document.getElementById('reportdate').value = reportdate;
 	//document.getElementById('kpi').value = kpi;
 	//document.getElementById('rnc').value = rnc;
 	document.getElementById('reportnename').value = reportnename;
+	document.getElementById('reportnetype').value = reportnetype;
 	//if(reportnetype == 'city'){
 	//	alert("NPSmart current release does not support City Level Daily Report.")
 	//} else {
@@ -492,6 +723,192 @@ function selecttimeagg(obj) {
 	//}
 }
 
+
+function selectreportname(obj) {
+	if(obj.innerHTML == 'AMX NQI HS'){
+		document.getElementById('reportkpi').value = 'nqihs';
+		document.getElementById('reportnename').value = reportnename;
+		document.getElementById('reportdate').value = reportdate;
+		document.getElementById('reportnetype').value = reportnetype;
+
+	} else if(obj.innerHTML == 'AMX NQI CS') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'nqics';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+document.reportopt.action = '/npsmart/umts/nqi';
+		document.reportopt.submit();
+	//}
+}
+
+function selectmobaseline(obj) {
+//alert(obj.innerHTML);
+		if(obj.innerHTML == 'TOTAL'){}
+		else {
+		document.getElementById('reportmoname').value = obj.innerHTML;}
+		document.getElementById('reportnename').value = reportnename;
+		document.getElementById('reportdate').value = reportdate;
+		document.getElementById('reportnetype').value = reportnetype;
+document.reportopt.action = '/npsmart/umts/baseline';
+		document.reportopt.submit();
+}	
+
+function selectmobaselinenodeb(obj) {
+//alert(obj.innerHTML);
+		if(obj.innerHTML == 'TOTAL'){}
+		else {
+		document.getElementById('reportmoname').value = obj.innerHTML;}
+		document.getElementById('reportnename').value = reportnename;
+		document.getElementById('reportdate').value = reportdate;
+		document.getElementById('reportnetype').value = reportnetype;
+document.reportopt.action = '/npsmart/umts/baseline_nodeb';
+		document.reportopt.submit();
+}		
+
+function selectkpiradar(obj) {
+	
+	if(obj.innerHTML == 'RF Health Index'){
+		document.getElementById('reportkpi').value = 'rf_health_index';
+		document.getElementById('reportnename').value = reportnename;
+		document.getElementById('reportdate').value = reportdate;
+		document.getElementById('reportnetype').value = reportnetype;
+	} 
+	else if(obj.innerHTML == 'Worst Aging Factor') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'worst_aging_factor';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}
+	else if(obj.innerHTML == 'Baseline (Consistency Check)') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'baseline';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == 'Throughput') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'throughput';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == 'Service Retention in 3G') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'retention_3g';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == 'PS (Call Completion)') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'ps_call_completion';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == 'CS (Call Completion)') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'cs_call_completion';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == 'Availability') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'availability';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}
+	else if(obj.innerHTML == 'Traffic Load') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'traffic_load';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}
+	else if(obj.innerHTML == 'Hardware (NodeB: CE and Iub/RNC)') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'hardware_nodeb';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == 'Air Interface UL (RTWP)') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'air_interface_ul';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == 'Air Interface DL (Codes and Power)') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'air_interface_dl';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == 'SHO Overhead') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'sho_overhead';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == 'Overshooters') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'overshooters';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == 'CPICH Power Ratio') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'cpich_power_ratio';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}	
+	else if(obj.innerHTML == '<i>Composite Radar Score</i>') {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = 'composite';
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}
+	else {
+		//alert(obj.innerHTML);
+			document.getElementById('reportkpi').value = obj.innerHTML;
+			//alert(document.getElementById('reportkpi').value);
+			document.getElementById('reportnename').value = reportnename;
+			document.getElementById('reportdate').value = reportdate;
+			document.getElementById('reportnetype').value = reportnetype;
+		}
+document.reportopt.action = '/npsmart/umts/radar';
+		document.reportopt.submit();
+	//}
+}
+	
 function wcweek(obj) { 
 var regions = ["CO", "PRSC", "NE", "BASE","ES","MG"];
 var node = $(obj).closest('tr').find('td:first').text();
@@ -505,36 +922,18 @@ var node = $(obj).closest('tr').find('td:first').text();
 			}
 	
     }
-// if (node.substring(0, 3) == 'RNC') {
-									// document.getElementById('rnc').value = node;
-									// document.getElementById('date').value = date[event.point.x];
-									// document.getElementById('kpi').value = this.name;
-									// document.wcform.submit();
-								// } else {
-									// alert("NPSmart current release does not support Region Level Worst Cells.")
-								// }
-// $(document).ready(function () {
-//   ajax_articles();
-//   ajax_images();
-//   ajax_gallery();
-// });
-//  
-// function ajax_articles() {
-//   $('.node').click(function () {
-//     $.ajax({
-//       url: base_url+"/npsmart/performance/ajax_mainkpis_rncdaily",
-//       async: false,
-//       type: "POST",
-//       data: "type=article",
-//       dataType: "html",
-//       success: function(data) {
-//         $('#ajax-content-container').html(data);
-//       }
-//     })
-//   });
-//    
-// }
- 
+function selectmobaselineenodeb(obj) {
+//alert(obj.innerHTML);
+		if(obj.innerHTML == 'TOTAL'){}
+		else {
+		document.getElementById('reportmoname').value = obj.innerHTML;}
+		document.getElementById('reportnename').value = reportnename;
+		document.getElementById('reportdate').value = reportdate;
+		document.getElementById('reportnetype').value = reportnetype;
+document.reportopt.action = '/npsmart/lte/baseline_enodeb';
+		document.reportopt.submit();
+}	 
 
 </script>
+<META HTTP-EQUIV="Pragma" CONTENT="no cache">
 </head>

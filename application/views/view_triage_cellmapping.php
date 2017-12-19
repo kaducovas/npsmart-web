@@ -6,12 +6,19 @@ ini_set('memory_limit', '2048M');
 //var node = 'CO';
 var reportnename = "<?php echo $reportnename; ?>";
 var reportdate = "<?php echo $reportdate; ?>";
+jQuery(window).load(function () {
+    document.getElementById("loading").style.display = "none";
+	document.getElementById("Table_CellMaping").style.visibility = "visible";
+});
 </script>
+<div align="left">
+&emsp;<a target="_blank" class="link" href="/npsmart/output/cellmapping.csv">Download Network Cell Mapping</a>
+</div>
 <div class="triage_menu">
-&emsp;<font color="#8F8F8F" size="4"><b><a style = "color:#8F8F8F" onclick='selectkpitriage(this)'>Overview</a></b></font>
+&emsp;<font color="#8F8F8F" size="4"><b><a style = "color:#8F8F8F" href="#" onclick='selectkpitriage(this)'>Overview</a></b></font>
 </div>
 <div align="right">
-<font color="#8F8F8F" size="4"><b><a style = "color:#8F8F8F" onclick='selectkpitriage(this)'>Cell Mapping</a></b></font>&emsp;
+<font color="#8F8F8F" size="4"><b><a style = "color:#8F8F8F" href="#" onclick='selectkpitriage(this)'>Cell Mapping</a></b></font>&emsp;
 </div>
 <div align="center">
 <?php 
@@ -27,8 +34,11 @@ echo "<font color='#000000' size='5'><b>Week ".$triage_week[0]->week."</b></font
 ?>
 </div>
 <br>
-<div align="center">
-	<table id="table_id" class="cell-border compact hover" border="1 solid black" cellspacing="0" width="100%">
+<div id="loading" style="display:block">
+    <p style="text-align:center;"><img src="/npsmart/images/loading_preto.gif" style="width:300px; height:300px;" alt="Loading" /></p>
+</div>
+<div id="Table_CellMaping" align="center" style="visibility:hidden">
+	<table id="table_id" class="cell-border compact hover nowrap" border="1 solid black" cellspacing="0" width="100%">
 
 		<thead>
 			<tr>
@@ -153,10 +163,137 @@ echo "<font color='#000000' size='5'><b>Week ".$triage_week[0]->week."</b></font
 				<th bgcolor="#E74C3C"><div class='vrt_triage'><font color="#FFFFFF">ATIVIDADE</font></div></th>
 				<th bgcolor="#E74C3C"><div class='vrt_triage'><font color="#FFFFFF">STATUS</font></div></th>
 				<th bgcolor="#E74C3C"><div class='vrt_triage'><font color="#FFFFFF">ACTION PLAN</font></div></th>
-
+			
 				
 			</tr>		
 		</thead>
+		<tfoot>
+			<tr>
+			    <th>CELL</th>
+				<th>REGION</th>
+				<th>UF</th>
+				<th>CIDADE</th>
+				<th>CLUSTER</th>
+				<th>RNC</th>
+				<th>NODEB</th>
+				<th>RNC ID</th>
+				<th>ANI</th>
+				<th>CELL ID</th>
+				<th>PSC</th>
+				
+				<th>QDA CS</th>
+				<th>QDA HS</th>
+				<th>QDR CS</th>
+				<th>QDR HS</th>
+				<th>THROUGHPUT</th>
+				<th>AVAIABILITY</th>
+				<th>CS RETENTION</th>
+				<th>PS RETENTION</th>
+				<th>HSDPA USER RATIO</th>				
+				<th>RTWP</th>
+				<th>NQI CS</th>
+				<th>NQI HS</th>
+				<th>KPIS OUT</th>
+				<th>KPI</th>
+				
+				<th>STATUS AVAILABILITY</th>
+				<th>UNCLEARED ALARMS</th>
+				<th>NOTE</th>
+				<th>OMR</th>
+				
+				<th>TX TYPE</th>
+				<th>DELAY</th>
+				<th>JITTER</th>
+				<th>LOST</th>
+				<th>IUB FLOWCTRL DL DROP</th>
+				<th>IUB FLOWCTRL UL DROP</th>
+				<th>IUB FLOWCTRL DL CONG</th>
+				<th>IUB FLOWCTRL UL CONG</th>
+				<th>ATM DL UTILIZATION</th>
+				<th>ATM UL UTILIZATION</th>
+				<th>TX INTEGRITY</th>
+				<th>NOTE</th>	
+				<th>TX/OMR</th>
+				
+				<th>RTWP CHECK</th>
+				<th>UNBALANCE</th>
+				<th>OVERSHOOTER</th>
+				<th>COVERED SITES</th>
+				<th>COVERED SITES NAME</th>
+				<th>PARAMETER CHECK</th>
+				<th>MOS OUT OF BASELINE</th>
+				<th>NEIGHBOURING CHECK</th>
+				<th>OTM</th>
+				
+				<th>EE</th>
+				<th>LOAD %</th>
+				<th>CODE %</th>
+				<th>DL POWER %</th>
+				<th>FACH %</th>
+				<th>RACH %</th>
+				<th>PCH %</th>
+				<th>CNBAP %</th>
+				<th>DL CE %</th>
+				<th>UL CE %</th>
+				<th>CAPACITY</th>
+
+				<th>BOARD FOUND</th>
+				<th>BOARD CHECK</th>
+				<th>NP ACTION FOUND</th>
+				<th>NP SOLUTION</th>
+				<th>NOTE</th>				
+				<th>PLAN/ENG RF</th>
+
+				<th>LQW964QAM01</th>
+				<th>LQW9CCPIC01</th>
+				<th>LQW9CCPIC201</th>
+				<th>LQW9CEEFF01</th>
+				<th>LQW9CEOVER01</th>
+				<th>LQW9CCPIC301</th>
+				<th>LQW9DDC01</th>
+				<th>LQW9DLCE01</th>
+				<th>LQW9DHCPMP01</th>
+				<th>LQW9CQIPC01</th>
+				<th>LQW9DYNCCE01</th>
+				<th>LQW9HSDPA01</th>
+				<th>LQW9HDCODE01</th>
+				<th>LQW9HSUPA01</th>
+				<th>LQW9UPATDS01</th>
+				<th>LQW9HU2MS01</th>
+				<th>LQW9UIC01</th>
+				<th>LQW9LOCELL01</th>
+				<th>LQW9UTIC01</th>
+				<th>LQW9ULSHA01</th>
+				<th>LQW9ULCE01</th>
+				<th>LQW9COLPC01</th>
+				<th>IMP</th>
+				
+				<th>4W REC KPI</th>
+				<th>4W REC ANALYSIS</th>
+				<th>4W REC OMR</th>
+				<th>4W REC TX/OMR</th>
+				<th>4W REC OTM</th>
+				<th>4W REC CAP</th>
+				<th>4W REC PLAN/ENG RF</th>
+				<th>4W REC IMP</th>
+				<th>4W REC NORMAL</th>
+				<th>AREA/STATUS HISTORY</th>
+				<th>AREA/STATUS</th>
+
+				<th>ID</th>
+				<th>AREA</th>				
+				<th>CAUSAS</th>
+				<th>DATA CRIACAO WEEK</th>
+				<th>PLANEJAMENTO WEEK</th>
+				<th>CONCLUSAO WEEK</th>
+				<th>COMENTARIOS</th>
+				<th>ATIVIDADE</th>
+				<th>STATUS</th>
+				<th>ACTION PLAN</th>
+			
+				
+			</tr>		
+		</tfoot>
 	
 		<tbody>	
 
@@ -308,9 +445,9 @@ echo "<font color='#000000' size='5'><b>Week ".$triage_week[0]->week."</b></font
 					echo "<td bgcolor='#FFFFFF'>".$cellid."</td>";
 					echo "<td bgcolor='#FFFFFF'>".$psc."</td>";					
 
-					echo "<td bgcolor='".($qda_cs >= 90?$bggood:$bgbad)."'><font color='".($qda_cs >= 90?$good:$bad)."'>".$qda_cs."</font></td>";
-					echo "<td bgcolor='".($qda_hs >= 92?$bggood:$bgbad)."'><font color='".($qda_hs >= 92?$good:$bad)."'>".$qda_hs."</font></td>";
-					echo "<td bgcolor='".($qdr_cs >= 90?$bggood:$bgbad)."'><font color='".($qdr_cs >= 90?$good:$bad)."'>".$qdr_cs."</font></td>";					
+					echo "<td bgcolor='".($qda_cs >= 92?$bggood:$bgbad)."'><font color='".($qda_cs >= 92?$good:$bad)."'>".$qda_cs."</font></td>";
+					echo "<td bgcolor='".($qda_hs >= 90?$bggood:$bgbad)."'><font color='".($qda_hs >= 90?$good:$bad)."'>".$qda_hs."</font></td>";
+					echo "<td bgcolor='".($qdr_cs >= 92?$bggood:$bgbad)."'><font color='".($qdr_cs >= 92?$good:$bad)."'>".$qdr_cs."</font></td>";					
 					echo "<td bgcolor='".($qdr_ps >= 95?$bggood:$bgbad)."'><font color='".($qdr_ps >= 95?$good:$bad)."'>".$qdr_ps."</font></td>";
 					echo "<td bgcolor='".($throughput >= 92?$bggood:$bgbad)."'><font color='".($throughput >= 92?$good:$bad)."'>".$throughput."</font></td>";
 					echo "<td bgcolor='".($availability >= 99.50?$bggood:$bgbad)."'><font color='".($availability >= 99.50?$good:$bad)."'>".$availability."</font></td>";					
@@ -338,7 +475,7 @@ echo "<font color='#000000' size='5'><b>Week ".$triage_week[0]->week."</b></font
 					echo "<td bgcolor='#FFFFFF'>".$ul_congtime_lgcport1."</td>";					
 					echo "<td bgcolor='".($dl_utilization <= 80?$bggood:$bgbad)."'><font color='".($dl_utilization <=80?$good:$bad)."'>".$dl_utilization."</font></td>";
 					echo "<td bgcolor='".($ul_utilization <= 80?$bggood:$bgbad)."'><font color='".($ul_utilization <=80?$good:$bad)."'>".$ul_utilization."</font></td>";
-					echo "<td bgcolor='".($tx_integrity <= 92?$bggood:$bgbad)."'><font color='".($tx_integrity <=92?$good:$bad)."'>".$tx_integrity."</font></td>";
+					echo "<td bgcolor='".($tx_integrity >= 92?$bggood:$bgbad)."'><font color='".($tx_integrity >=92?$good:$bad)."'>".$tx_integrity."</font></td>";
 					echo "<td bgcolor='#FFFFFF'>".$note_tx_omr."</td>";
 					echo "<th bgcolor='".($tx_omr == 'OK'?$good:$bad)."'>".$tx_omr."</th>";
 
@@ -417,7 +554,7 @@ echo "<font color='#000000' size='5'><b>Week ".$triage_week[0]->week."</b></font
 					echo "<td bgcolor='#FFFFFF'>".$atividade_plano_nominal."</td>";
 					echo "<td bgcolor='#FFFFFF'>".$status_acao."</td>";
 					echo "<th bgcolor='#FFFFFF'>".$overall_plan_area."</th>";
-
+					
 					echo "</tr>";						
 					
 				}

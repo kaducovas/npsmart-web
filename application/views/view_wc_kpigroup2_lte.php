@@ -47,7 +47,13 @@ if ($this->input->post('kpi') == 'DL THP'){
 	$target = 2;
 	$bad = "#FF0000";	
 	$good = "#009900";
-} elseif ($this->input->post('kpi') == 'Interference'){
+} elseif ($this->input->post('kpi') == 'DL THP CA'){
+	$target = 2;
+	$bad = "#FF0000";	
+	$good = "#009900";
+
+} elseif ($this->input->post('kpi') == 'Interference' || $this->input->post('kpi') == 'Interference 2600'
+	|| $this->input->post('kpi') == 'Interference 1800' || $this->input->post('kpi') == 'Interference 700'){
 	$target = -115;
 	$good = "#FF0000";	
 	$bad = "#009900";

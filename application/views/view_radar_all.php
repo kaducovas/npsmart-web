@@ -3,8 +3,16 @@
 //var node = 'CO';
 var reportnename = "<?php echo $reportnename; ?>";
 var reportdate = "<?php echo $reportdate; ?>";
+jQuery(window).load(function () {
+    document.getElementById("loading").style.display = "none";
+	document.getElementById("loading_table").style.visibility = "visible";
+});
 </script>
-<div width="100%">
+<div id="loading" style="display:block">
+    <p style="text-align:center;"><img src="/npsmart/images/loading_preto.gif" style="width:300px; height:300px;" alt="Loading" /></p>
+</div>
+
+<div id="loading_table" align="center" style="visibility:hidden">
 
 	<form action="/npsmart/umts/worstcells" name="wcform" method="post">
 		<input type="hidden" id="wcreportnename" name="reportnename" value="" />
@@ -31,7 +39,6 @@ var reportdate = "<?php echo $reportdate; ?>";
 			<tr>
 				<th rowspan="2" bgcolor="#394E58"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">Node</font></th>
 				<th style='display:none;'rowspan="2" bgcolor="#394E58"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">Node</font></th>			
-				<th colspan="1" bgcolor="#394E58"><div class='vrt_radar'><font color="#B0B0B0" style="font-family: calibri; font-size:12pt">RF Health Index</font></div></th>
 				<th colspan="1" bgcolor="#394E58"><div class='vrt_radar'><font color="#B0B0B0" style="font-family: calibri; font-size:12pt">SW Release & Features</font></div></th>	
 				<th colspan="1" bgcolor="#394E58"><div class='vrt_radar'><font color="#B0B0B0" style="font-family: calibri; font-size:12pt">Worst Aging Factor</font></div></th>	
 				<th colspan="1" bgcolor="#394E58"><div class='vrt_radar'><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">Baseline (Consistency Check)</font></div></th>
@@ -47,6 +54,7 @@ var reportdate = "<?php echo $reportdate; ?>";
 				<th colspan="1" bgcolor="#394E58"><div class='vrt_radar'><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">SHO Overhead</font></div></th>		
 				<th colspan="1" bgcolor="#394E58"><div class='vrt_radar'><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">Overshooters</font></div></th>		
 				<th colspan="1" bgcolor="#394E58"><div class='vrt_radar'><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">CPICH Power Ratio</font></div></th>	
+				<th colspan="1" bgcolor="#394E58"><div class='vrt_radar'><font color="#B0B0B0" style="font-family: calibri; font-size:12pt">RF Health Index</font></div></th>
 				<th colspan="4" bgcolor="#909EA4"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt"><i>Composite RADAR Score</i></font></th>
 				</tr>
 			<tr>
@@ -184,8 +192,6 @@ var reportdate = "<?php echo $reportdate; ?>";
 					echo "<td value='".$row->node."'><font style='font-family: calibri; font-size:12pt'><a id='".$row->node."' onclick='selectne(this)' class='node' value='".$row->node."'>".$row->node."</a></font></td>";		
 					echo "<td style='display:none;'>".$row->type."</td>";	
 				
-					echo "<td bgcolor='".($array_rf_health_index[3] >= 8?$good:($array_rf_health_index[3] >= 6?$yellow:($array_rf_health_index[3] >= 4?$orange:$bad)))."'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$array_rf_health_index[3]."</font></td>";
-
 					echo "<td bgcolor='".($array_process_tools[3] >= 8?$good:($array_process_tools[3] >= 6?$yellow:($array_process_tools[3] >= 4?$orange:$bad)))."'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$array_process_tools[3]."</font></td>";
 							
 					echo "<td bgcolor='".($array_worst_aging_factor[3] >= 8?$good:($array_worst_aging_factor[3] >= 6?$yellow:($array_worst_aging_factor[3] >= 4?$orange:$bad)))."'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$array_worst_aging_factor[3]."</font></td>";
@@ -220,6 +226,8 @@ var reportdate = "<?php echo $reportdate; ?>";
 					echo "<td bgcolor='".($array_overshooters[3] >= 8?$good:($array_overshooters[3] >= 6?$yellow:($array_overshooters[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_overshooters[3]."</font></td>";
 
 					echo "<td bgcolor='".($array_cpich_power_ratio[3] >= 8?$good:($array_cpich_power_ratio[3] >= 6?$yellow:($array_cpich_power_ratio[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_cpich_power_ratio[3]."</font></td>";
+
+					echo "<td bgcolor='".($array_rf_health_index[3] >= 8?$good:($array_rf_health_index[3] >= 6?$yellow:($array_rf_health_index[3] >= 4?$orange:$bad)))."'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$array_rf_health_index[3]."</font></td>";
 
 					echo "<td bgcolor='".($array_composite[0] >= 8?$good:($array_composite[0] >= 6?$yellow:($array_composite[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_composite[0]."</font></td>";
 					echo "<td bgcolor='".($array_composite[1] >= 8?$good:($array_composite[1] >= 6?$yellow:($array_composite[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_composite[1]."</font></td>";

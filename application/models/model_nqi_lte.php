@@ -10,6 +10,7 @@ class Model_nqi_lte extends CI_Model{
 	
 	
 	function nqi_monthly_network($reportdate){
+		
 		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -93 day'));	
 		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -62 day'));	
 		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -31 day'));	
@@ -24,7 +25,7 @@ class Model_nqi_lte extends CI_Model{
 		$yearnum1= $date1->format("o");
 		$yearnum2= $date2->format("o");
 		$yearnum3 = $date3->format("o");
-		$yearnum4 = $date4->format("o");		
+		$yearnum4 = $date4->format("o");
 		
 		$query = $this->db->query(
 		"
@@ -64,9 +65,9 @@ STRING_AGG(nqi::text, ',' order by year,month) AS nqi
 		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -93 day'));	
 		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -62 day'));	
 		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -31 day'));	
-		$date1 = new DateTime($daymonth1);
-		$date2 = new DateTime($daymonth2);
-		$date3 = new DateTime($daymonth3);
+		$date1 = new DateTime($dayweek1);
+		$date2 = new DateTime($dayweek2);
+		$date3 = new DateTime($dayweek3);
 		$date4 = new DateTime($reportdate);
 		$monthnum1= $date1->format("m");
 		$monthnum2= $date2->format("m");
@@ -75,7 +76,7 @@ STRING_AGG(nqi::text, ',' order by year,month) AS nqi
 		$yearnum1= $date1->format("o");
 		$yearnum2= $date2->format("o");
 		$yearnum3 = $date3->format("o");
-		$yearnum4 = $date4->format("o");		
+		$yearnum4 = $date4->format("o");
 		
 		$query = $this->db->query(
 		"
@@ -117,9 +118,9 @@ STRING_AGG(nqi::text, ',' order by year,month) AS nqi
 		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -93 day'));	
 		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -62 day'));	
 		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -31 day'));	
-		$date1 = new DateTime($daymonth1);
-		$date2 = new DateTime($daymonth2);
-		$date3 = new DateTime($daymonth3);
+		$date1 = new DateTime($dayweek1);
+		$date2 = new DateTime($dayweek2);
+		$date3 = new DateTime($dayweek3);
 		$date4 = new DateTime($reportdate);
 		$monthnum1= $date1->format("m");
 		$monthnum2= $date2->format("m");
@@ -192,9 +193,9 @@ function nqi_monthly_cidade($node,$reportdate){
 		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -93 day'));	
 		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -62 day'));	
 		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -31 day'));	
-		$date1 = new DateTime($daymonth1);
-		$date2 = new DateTime($daymonth2);
-		$date3 = new DateTime($daymonth3);
+		$date1 = new DateTime($dayweek1);
+		$date2 = new DateTime($dayweek2);
+		$date3 = new DateTime($dayweek3);
 		$date4 = new DateTime($reportdate);
 		$monthnum1= $date1->format("m");
 		$monthnum2= $date2->format("m");
@@ -204,7 +205,7 @@ function nqi_monthly_cidade($node,$reportdate){
 		$yearnum2= $date2->format("o");
 		$yearnum3 = $date3->format("o");
 		$yearnum4 = $date4->format("o");
-		
+		//echo 'ksdjks';
 		
 		$query = $this->db->query(
 			"
@@ -232,7 +233,7 @@ STRING_AGG(qde_dl::text, ',' order by year,month) AS qde_dl,
 STRING_AGG(qde_ul::text, ',' order by year,month) AS qde_ul,
 STRING_AGG(nqi::text, ',' order by year,month) AS nqi
 		FROM lte_kpi.vw_nqi_monthly_cidade
-		where cidade not is null
+		where not cidade is null
 		and uf = '".$uf."'
 		and (year,month) in ((".$yearnum1.",".$monthnum1."),(".$yearnum2.",".$monthnum2."),(".$yearnum3.",".$monthnum3."),(".$yearnum4.",".$monthnum4."))
 		group by cidade,uf) t
@@ -246,9 +247,9 @@ function nqi_monthly_enodeb($node,$reportdate){
 		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -93 day'));	
 		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -62 day'));	
 		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -31 day'));	
-		$date1 = new DateTime($daymonth1);
-		$date2 = new DateTime($daymonth2);
-		$date3 = new DateTime($daymonth3);
+		$date1 = new DateTime($dayweek1);
+		$date2 = new DateTime($dayweek2);
+		$date3 = new DateTime($dayweek3);
 		$date4 = new DateTime($reportdate);
 		$monthnum1= $date1->format("m");
 		$monthnum2= $date2->format("m");
@@ -300,9 +301,9 @@ function nqi_monthly_cell($node,$reportdate){
 		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -93 day'));	
 		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -62 day'));	
 		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -31 day'));	
-		$date1 = new DateTime($daymonth1);
-		$date2 = new DateTime($daymonth2);
-		$date3 = new DateTime($daymonth3);
+		$date1 = new DateTime($dayweek1);
+		$date2 = new DateTime($dayweek2);
+		$date3 = new DateTime($dayweek3);
 		$date4 = new DateTime($reportdate);
 		$monthnum1= $date1->format("m");
 		$monthnum2= $date2->format("m");
@@ -805,7 +806,73 @@ STRING_AGG(nqi::text, ',' order by year,week) AS nqi
 	;");	
 
 	return $query->result();
-	}		
+	}
+	
+	function cidade_weekly_report_graph($node,$reportdate){
+		$this->load->model('model_cellsinfo');
+		$cidade_info = $this->model_cellsinfo->find_cidade_info_lte($node);
+		$ibge = $cidade_info[0]->ibge;
+		$date = new DateTime($reportdate);
+		$endweek = $date->format("W");
+		$strreportdate = date('Y-m-d', strtotime($reportdate.' -150 day'));
+		$strdate = new DateTime($strreportdate);
+		$strweek = $strdate->format("W");
+		$stryear = $strdate->format("o");
+		$endyear = $date->format("o");
+		#$weeknum_start = $weeknum -4;
+			 $query = $this->db->query(
+			 "SELECT year, week as date, concat(cidade,' - ',uf) as node, qda, qdr, availability, lte_retention, qde_dl, 
+       qde_ul, nqi
+  FROM lte_kpi.vw_nqi_weekly_cidade
+  WHERE (year,week) between (".$stryear.",'".$strweek."') and (".$endyear.",'".$endweek."')
+  and ibge = '".$ibge."'
+  order by year,week
+	;");	
+
+	return $query->result();
+	}
+
+	function enodeb_weekly_report_graph($node,$reportdate){
+		$date = new DateTime($reportdate);
+		$endweek = $date->format("W");
+		$strreportdate = date('Y-m-d', strtotime($reportdate.' -150 day'));
+		$strdate = new DateTime($strreportdate);
+		$strweek = $strdate->format("W");
+		$stryear = $strdate->format("o");
+		$endyear = $date->format("o");
+		#$weeknum_start = $weeknum -4;
+			 $query = $this->db->query(
+			 "SELECT year, week as date, enodeb as node, qda, qdr, availability, lte_retention, qde_dl, 
+       qde_ul, nqi
+  FROM lte_kpi.vw_nqi_weekly_enodeb
+  WHERE (year,week) between (".$stryear.",'".$strweek."') and (".$endyear.",'".$endweek."')
+  and enodeb = '".$node."'
+  order by year,week
+	;");	
+
+	return $query->result();
+	}
+	
+	function cell_weekly_report_graph($node,$reportdate){
+		$date = new DateTime($reportdate);
+		$endweek = $date->format("W");
+		$strreportdate = date('Y-m-d', strtotime($reportdate.' -150 day'));
+		$strdate = new DateTime($strreportdate);
+		$strweek = $strdate->format("W");
+		$stryear = $strdate->format("o");
+		$endyear = $date->format("o");
+		#$weeknum_start = $weeknum -4;
+			 $query = $this->db->query(
+			 "SELECT year, week as date, cell as node, qda, qdr, availability, lte_retention, qde_dl, 
+       qde_ul, nqi
+  FROM lte_kpi.vw_nqi_weekly_cell
+  WHERE (year,week) between (".$stryear.",'".$strweek."') and (".$endyear.",'".$endweek."') 
+  and cell = '".$node."'
+  order by year,week
+	;");	
+
+	return $query->result();
+	}
 
 	function cidade_weekly_report($node,$reportdate){
 		$this->load->model('model_cellsinfo');
@@ -866,7 +933,6 @@ STRING_AGG(nqi::text, ',' order by year,week) AS nqi
        qde_ul, nqi
   FROM lte_kpi.vw_nqi_weekly_cell
   WHERE (year,week) between (".$stryear.",'".$strweek."') and (".$endyear.",'".$endweek."') 
-  order by year,week
   and cell = '".$node."'
   order by year,week
 	;");	

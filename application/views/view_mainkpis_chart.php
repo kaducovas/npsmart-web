@@ -38,6 +38,7 @@
 		$ps_nonhs_users[] = $row->ps_nonhs_users;
 		$thp_hsdpa[] = $row->thp_hsdpa;
 		$thp_hsupa[] = $row->thp_hsupa;
+		
 		}	
 		
 			
@@ -51,6 +52,22 @@
 		{
 			if($n == ''){
 				$n = 0;
+				#return $n;				
+			}
+				return $n;
+		}
+		function tonull2($n)
+		{
+			if($n == ''){
+				$n = 'null';
+				#return $n;				
+			}
+				return $n;
+		}
+		function tonull3($n)
+		{
+			if($n > 100){
+				$n = 100;
 				#return $n;				
 			}
 				return $n;
@@ -153,14 +170,23 @@ Highcharts.exportCharts = function(charts, options) {
 	///////////////////////////////////START charts////////////////////////////////////////////////
 $(function () {
     var chart;
+	var estado_acc = true;
+	var estado_retain = true;
+	var estado_traffic = true;
+	var estado_users = true;
+	var estado_thpt = true;
+	var estado_3gret = true;
+	var estado_ho = true;
+	var estado_sho = true;
+	var estado_avail = true;
+	var estado_rtwp = true;
     $(document).ready(function() {
 		var acc = new Highcharts.Chart({
 		chart: {
 				renderTo: 'acc',
 				alignTicks:false,
 				//backgroundColor:'transparent',
-				zoomType: 'xy'
-				,
+				zoomType: 'xy',
 	resetZoomButton: {
         position: {
             align: 'left', // right by default
@@ -168,7 +194,80 @@ $(function () {
             x: 10,
             y: 10
         },
-        relativeTo: 'chart'
+		    relativeTo: 'chart'
+	},
+
+	events: {
+						click: function(e) {
+						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// alert(e.xAxis[0].value);
+						//acc.chart.series[1].show();
+						if(estado_acc != false){
+						if (e.shiftKey == 1) {
+						acc.xAxis[0].options.plotLines[1].color = "red";
+						acc.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;
+						drop.xAxis[0].options.plotLines[1].color = "red";
+						drop.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;
+						traffic.xAxis[0].options.plotLines[1].color = "red";
+						traffic.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;
+						users.xAxis[0].options.plotLines[1].color = "red";
+						users.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;
+						thp.xAxis[0].options.plotLines[1].color = "red";
+						thp.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;	
+						retention.xAxis[0].options.plotLines[1].color = "red";
+						retention.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;
+						handover.xAxis[0].options.plotLines[1].color = "red";
+						handover.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;
+						sho_overhead.xAxis[0].options.plotLines[1].color = "red";
+						sho_overhead.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;
+						availability.xAxis[0].options.plotLines[1].color = "red";
+						availability.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;
+						rtwp.xAxis[0].options.plotLines[1].color = "red";
+						rtwp.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;						
+						acc.xAxis[0].update();
+						drop.xAxis[0].update();
+						traffic.xAxis[0].update();
+						users.xAxis[0].update();
+						thp.xAxis[0].update();
+						retention.xAxis[0].update();
+						handover.xAxis[0].update();
+						sho_overhead.xAxis[0].update();
+						availability.xAxis[0].update();
+						rtwp.xAxis[0].update();						
+						}else{	
+						acc.xAxis[0].options.plotLines[0].color = "red";
+						acc.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						drop.xAxis[0].options.plotLines[0].color = "red";
+						drop.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						traffic.xAxis[0].options.plotLines[0].color = "red";
+						traffic.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						users.xAxis[0].options.plotLines[0].color = "red";
+						users.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						thp.xAxis[0].options.plotLines[0].color = "red";
+						thp.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;	
+						retention.xAxis[0].options.plotLines[0].color = "red";
+						retention.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						handover.xAxis[0].options.plotLines[0].color = "red";
+						handover.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						sho_overhead.xAxis[0].options.plotLines[0].color = "red";
+						sho_overhead.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						availability.xAxis[0].options.plotLines[0].color = "red";
+						availability.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						rtwp.xAxis[0].options.plotLines[0].color = "red";
+						rtwp.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;						
+						acc.xAxis[0].update();
+						drop.xAxis[0].update();
+						traffic.xAxis[0].update();
+						users.xAxis[0].update();
+						thp.xAxis[0].update();
+						retention.xAxis[0].update();
+						handover.xAxis[0].update();
+						sho_overhead.xAxis[0].update();
+						availability.xAxis[0].update();
+						rtwp.xAxis[0].update();
+						}
+						}
+      }
     }
 				},
 				//	colors: ['#000099', '#CC0000', '#006600', '#FFCC00', '#D9CDB6'],
@@ -212,7 +311,17 @@ $(function () {
 					plotLines: [{
 								color: '#FF0000',
 								width: 2,
-								//value: 247
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							},{
+								color: '#FF0000',
+								width: 2,
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
 							}]
 					},
 					yAxis: {
@@ -272,12 +381,86 @@ $(function () {
 									  // 'Control: ' + event.ctrlKey + '\n'+
 									  // 'Shift: ' + event.shifkKey + '\n'+
 									  // 'Datetime: ' + date[event.point.x]);
-								}
+								},                
+						legendItemClick: function () {
+						if(this.name == "Marker"){
+						if(this.visible == true){
+						estado_acc = false;		
+						acc.xAxis[0].options.plotLines[0].color = "transparent";
+						drop.xAxis[0].options.plotLines[0].color = "transparent";
+						traffic.xAxis[0].options.plotLines[0].color = "transparent";
+						users.xAxis[0].options.plotLines[0].color = "transparent";
+						thp.xAxis[0].options.plotLines[0].color = "transparent";
+						retention.xAxis[0].options.plotLines[0].color = "transparent";
+						handover.xAxis[0].options.plotLines[0].color = "transparent";
+						sho_overhead.xAxis[0].options.plotLines[0].color = "transparent";
+						availability.xAxis[0].options.plotLines[0].color = "transparent";
+						rtwp.xAxis[0].options.plotLines[0].color = "transparent";
+						acc.xAxis[0].options.plotLines[1].color = "transparent";
+						drop.xAxis[0].options.plotLines[1].color = "transparent";
+						traffic.xAxis[0].options.plotLines[1].color = "transparent";
+						users.xAxis[0].options.plotLines[1].color = "transparent";
+						thp.xAxis[0].options.plotLines[1].color = "transparent";
+						retention.xAxis[0].options.plotLines[1].color = "transparent";
+						handover.xAxis[0].options.plotLines[1].color = "transparent";
+						sho_overhead.xAxis[0].options.plotLines[1].color = "transparent";
+						availability.xAxis[0].options.plotLines[1].color = "transparent";
+						rtwp.xAxis[0].options.plotLines[1].color = "transparent";						
+						acc.xAxis[0].update();
+						drop.xAxis[0].update();
+						traffic.xAxis[0].update();
+						users.xAxis[0].update();
+						thp.xAxis[0].update();
+						retention.xAxis[0].update();
+						handover.xAxis[0].update();
+						sho_overhead.xAxis[0].update();
+						availability.xAxis[0].update();
+						rtwp.xAxis[0].update();						
+						}else
+						if(this.visible == false){	
+						estado_acc = true;	
+						acc.xAxis[0].options.plotLines[0].color = "red";
+						drop.xAxis[0].options.plotLines[0].color = "red";
+						traffic.xAxis[0].options.plotLines[0].color = "red";
+						users.xAxis[0].options.plotLines[0].color = "red";
+						thp.xAxis[0].options.plotLines[0].color = "red";
+						retention.xAxis[0].options.plotLines[0].color = "red";
+						handover.xAxis[0].options.plotLines[0].color = "red";
+						sho_overhead.xAxis[0].options.plotLines[0].color = "red";
+						availability.xAxis[0].options.plotLines[0].color = "red";
+						rtwp.xAxis[0].options.plotLines[0].color = "red";
+						acc.xAxis[0].options.plotLines[1].color = "red";
+						drop.xAxis[0].options.plotLines[1].color = "red";
+						traffic.xAxis[0].options.plotLines[1].color = "red";
+						users.xAxis[0].options.plotLines[1].color = "red";
+						thp.xAxis[0].options.plotLines[1].color = "red";
+						retention.xAxis[0].options.plotLines[1].color = "red";
+						handover.xAxis[0].options.plotLines[1].color = "red";
+						sho_overhead.xAxis[0].options.plotLines[1].color = "red";
+						availability.xAxis[0].options.plotLines[1].color = "red";
+						rtwp.xAxis[0].options.plotLines[1].color = "red";
+						acc.xAxis[0].update();
+						drop.xAxis[0].update();
+						traffic.xAxis[0].update();
+						users.xAxis[0].update();
+						thp.xAxis[0].update();
+						retention.xAxis[0].update();
+						handover.xAxis[0].update();
+						sho_overhead.xAxis[0].update();
+						availability.xAxis[0].update();
+						rtwp.xAxis[0].update();	
+						}	
+						}
+				}
 							}
 						}
 					},
 					
 					series: [{
+					name: 'Marker',
+					color:'red'
+					},
+					{
 						name: 'RRC Acc',
 						data: [<?php echo join($acc_rrc, ',') ?>]
 					},
@@ -314,6 +497,24 @@ $(function () {
             y: 10
         },
         relativeTo: 'chart'
+    },
+		events: {
+						click: function(e) {
+						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// alert(e.xAxis[0].value);
+						//acc.chart.series[1].show();
+						if(estado_retain != false){
+						if (e.shiftKey == 1) {
+						drop.xAxis[0].options.plotLines[1].color = "red";
+						drop.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;
+						drop.xAxis[0].update();
+						}else{
+						drop.xAxis[0].options.plotLines[0].color = "red";
+						drop.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						drop.xAxis[0].update();
+						}
+						}
+      }
     }
 				},
 				//	colors: ['#000099', '#CC0000', '#006600', '#FFCC00', '#D9CDB6'],
@@ -336,9 +537,18 @@ $(function () {
 					xAxis: {
 						categories: [<?php echo join($date, ',') ?>],///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
 					plotLines: [{
+								width: 2,
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							},{
 								color: '#FF0000',
 								width: 2,
-								//value: 247
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
 							}]					
 					},
 					yAxis: {
@@ -388,12 +598,31 @@ $(function () {
 								// } else {
 									// alert("NPSmart current release does not support Worst Cells for the selected aggregation.")
 								// }
-								}
+								},                
+						legendItemClick: function () {
+						if(this.name == "Marker"){
+						if(this.visible == true){
+						estado_retain = false;		
+						drop.xAxis[0].options.plotLines[0].color = "transparent";
+						drop.xAxis[0].options.plotLines[1].color = "transparent";						
+						drop.xAxis[0].update();
+						}else
+						if(this.visible == false){	
+						estado_retain = true;	
+						drop.xAxis[0].options.plotLines[0].color = "red";
+						drop.xAxis[0].options.plotLines[1].color = "red";						
+						drop.xAxis[0].update();
+						}	
+						}
+				}
 							}
 						}
 					},
 					
 					series: [{
+					name: 'Marker',
+					color:'red'
+					},{
 						name: 'Retainability CS',
 						data: [<?php echo join($drop_cs, ',') ?>]
 					},
@@ -429,7 +658,25 @@ $(function () {
 					y: 10
 				},
 				relativeTo: 'chart'
-			}
+			},
+		events: {
+						click: function(e) {
+						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// alert(e.xAxis[0].value);
+						//acc.chart.series[1].show();
+						if(estado_traffic != false){
+						if (e.shiftKey == 1) {
+						traffic.xAxis[0].options.plotLines[1].color = "red";
+						traffic.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;
+						traffic.xAxis[0].update();
+						}else{
+						traffic.xAxis[0].options.plotLines[0].color = "red";
+						traffic.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						traffic.xAxis[0].update();
+						}
+						}
+      }
+    }			
 						},
 						//	colors: ['#000099', '#CC0000', '#006600', '#FFCC00', '#D9CDB6'],
 							credits: {
@@ -450,11 +697,20 @@ $(function () {
 							},
 							xAxis: {
 								categories: [<?php echo join($date, ',') ?>],///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
-						plotLines: [{
-									color: '#FF0000',
-									width: 2,
-									//value: 247
-								}]							
+					plotLines: [{					
+								width: 2,
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							},{								
+								color: '#FF0000',
+								width: 2,
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							}]							
 							},
 
 					yAxis: [{ // Primary yAxis
@@ -501,8 +757,37 @@ $(function () {
 								verticalAlign: 'bottom',
 								floating: false,
 								borderWidth: 0
-							},				
+							},
+							
+						plotOptions: {
+						series: {
+							cursor: 'pointer',
+							events: {
+              
+						legendItemClick: function () {
+						if(this.name == "Marker"){
+						if(this.visible == true){
+						estado_traffic = false;		
+						traffic.xAxis[0].options.plotLines[0].color = "transparent";
+						traffic.xAxis[0].options.plotLines[1].color = "transparent";
+						traffic.xAxis[0].update();
+						}else
+						if(this.visible == false){	
+						estado_traffic = true;	
+						traffic.xAxis[0].options.plotLines[0].color = "red";
+						traffic.xAxis[0].options.plotLines[1].color = "red";
+						traffic.xAxis[0].update();
+						}	
+						}
+				}
+							}
+						}
+					},
+							
 							series: [{
+								name: 'Marker',
+								color:'red'
+							},{
 								name: 'R99 DL',
 								data: [<?php echo join($ps_r99_ul, ',') ?>]
 							},
@@ -541,7 +826,25 @@ $(function () {
 						y: 10
 					},
 					relativeTo: 'chart'
-				}
+				},
+		events: {
+						click: function(e) {
+						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// alert(e.xAxis[0].value);
+						//acc.chart.series[1].show();
+						if(estado_users != false){
+						if (e.shiftKey == 1) {
+						users.xAxis[0].options.plotLines[1].color = "red";
+						users.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;
+						users.xAxis[0].update();						
+						}else{
+						users.xAxis[0].options.plotLines[0].color = "red";
+						users.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						users.xAxis[0].update();
+						}
+						}
+      }
+    }
 							},
 						//	colors: ['#000099', '#CC0000', '#006600', '#FFCC00', '#D9CDB6'],
 							credits: {
@@ -562,11 +865,20 @@ $(function () {
 							},
 							xAxis: {
 								categories: [<?php echo join($date, ',') ?>],///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
-					plotLines: [{
+					plotLines: [{						
+								width: 2,
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							},{								
 								color: '#FF0000',
 								width: 2,
-								//value: 247
-							}]							
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							}]						
 							},
 							yAxis: {
 								//max: 100,
@@ -592,8 +904,37 @@ $(function () {
 								verticalAlign: 'bottom',
 								floating: false,
 								borderWidth: 0
-							},				
+							},
+
+					plotOptions: {
+						series: {
+							cursor: 'pointer',
+							events: {
+              
+						legendItemClick: function () {
+						if(this.name == "Marker"){
+						if(this.visible == true){
+						estado_users = false;		
+						users.xAxis[0].options.plotLines[0].color = "transparent";
+						users.xAxis[0].options.plotLines[1].color = "transparent";
+						users.xAxis[0].update();
+						}else
+						if(this.visible == false){	
+						estado_users = true;	
+						users.xAxis[0].options.plotLines[0].color = "red";
+						users.xAxis[0].options.plotLines[1].color = "red";
+						users.xAxis[0].update();
+						}	
+						}
+				}
+							}
+						}
+					},
+							
 							series: [{
+								name: 'Marker',
+								color:'red'
+							},{
 								name: 'HSDPA',
 								data: [<?php echo join($hsdpa_users, ',') ?>]
 							},
@@ -638,7 +979,25 @@ $(function () {
 						y: 10
 					},
 					relativeTo: 'chart'
-				}
+				},
+		events: {
+						click: function(e) {
+						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// alert(e.xAxis[0].value);
+						//acc.chart.series[1].show();
+						if(estado_thpt != false){
+						if (e.shiftKey == 1) {
+						thp.xAxis[0].options.plotLines[1].color = "red";
+						thp.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;
+						thp.xAxis[0].update();						
+						}else{
+						thp.xAxis[0].options.plotLines[0].color = "red";
+						thp.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						thp.xAxis[0].update();
+						}
+						}
+      }
+    }
 							},
 			
 					credits: {
@@ -657,11 +1016,20 @@ $(function () {
 					},
 					xAxis: {
 						categories: [<?php echo join($date, ',') ?>],///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
-					plotLines: [{
+					plotLines: [{						
+								width: 2,
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							},{								
 								color: '#FF0000',
 								width: 2,
-								//value: 247
-							}]					
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							}]						
 					},
 
 					yAxis: [{ // Primary yAxis
@@ -721,7 +1089,6 @@ $(function () {
 								kpi = kpi.toLowerCase();
 								kpi = kpi.trim();
 								var strkpi = kpi.replace(/(^\s+|\s+$)/g, '');
-								//alert(reportagg);
 								//alert(node.substring(0, 3));
 								//if (node.substring(0, 3) == 'RNC' && reportagg == 'weekly') {
 									document.getElementById('wcreportnename').value = node;
@@ -733,12 +1100,31 @@ $(function () {
 								// } else {
 									// alert("NPSmart current release does not support Worst Cells for the selected aggregation.")
 								// }
-								}
+								},                
+						legendItemClick: function () {
+						if(this.name == "Marker"){
+						if(this.visible == true){
+						estado_thpt = false;		
+						thp.xAxis[0].options.plotLines[0].color = "transparent";
+						thp.xAxis[0].options.plotLines[1].color = "transparent";
+						thp.xAxis[0].update();
+						}else
+						if(this.visible == false){	
+						estado_thpt = true;	
+						thp.xAxis[0].options.plotLines[0].color = "red";
+						thp.xAxis[0].options.plotLines[1].color = "red";
+						thp.xAxis[0].update();
+						}	
+						}
+				}
 							}
 						}
 					},
 					
 					series: [{
+								name: 'Marker',
+								color:'red'
+							},{
 					///	showInLegend: false,
 						name: 'HSDPA THP',
 						data: [<?php echo join($thp_hsdpa, ',') ?>]///[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
@@ -775,7 +1161,25 @@ $(function () {
 							y: 10
 						},
 						relativeTo: 'chart'
-					}
+					},
+		events: {
+						click: function(e) {
+						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// alert(e.xAxis[0].value);
+						//acc.chart.series[1].show();
+						if(estado_3gret != false){
+						if (e.shiftKey == 1) {
+						retention.xAxis[0].options.plotLines[1].color = "red";
+						retention.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;
+						retention.xAxis[0].update();						
+						}else{
+						retention.xAxis[0].options.plotLines[0].color = "red";
+						retention.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						retention.xAxis[0].update();
+						}
+						}
+      }
+    }
 								},
 						//	colors: ['#000099', '#CC0000', '#006600', '#FFCC00', '#D9CDB6'],
 							credits: {
@@ -797,10 +1201,19 @@ $(function () {
 							xAxis: {
 								categories: [<?php echo join($date, ',') ?>],///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
 					plotLines: [{
+								width: 2,
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							},{
 								color: '#FF0000',
 								width: 2,
-								//value: 247
-							}]
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							}]	
 								},
 							yAxis: {
 								max: 100,
@@ -828,33 +1241,52 @@ $(function () {
 								borderWidth: 0
 							},
 
-							plotOptions: {
-								series: {
-									cursor: 'pointer',
-									events: {
-										click: function( event ) {
-										// Log to console
-										var kpi = this.name;
-										kpi = kpi.toLowerCase();
-										kpi = kpi.trim();
-										var strkpi = kpi.replace(/(^\s+|\s+$)/g, '');
-										//alert(node.substring(0, 3));
-										//if (node.substring(0, 3) == 'RNC' && reportagg == 'weekly') {
+					plotOptions: {
+						series: {
+							cursor: 'pointer',
+							events: {
+								click: function( event ) {
+								// Log to console
+								var kpi = this.name;
+								kpi = kpi.toLowerCase();
+								kpi = kpi.trim();
+								var strkpi = kpi.replace(/(^\s+|\s+$)/g, '');
+								//alert(node.substring(0, 3));
+								//if (node.substring(0, 3) == 'RNC' && reportagg == 'weekly') {
 									document.getElementById('wcreportnename').value = node;
 									document.getElementById('wcreportnetype').value = reportnetype;
 									document.getElementById('wctimeagg').value = reportagg;
 									document.getElementById('wcreportdate').value = date[event.point.x];
 									document.getElementById('wckpi').value = this.name;
 									document.wcform.submit();
-										// } else {
-											// alert("NPSmart current release does not support Worst Cells for the selected aggregation.")
-										// }
-										}
-									}
-								}
-							},
+								// } else {
+									// alert("NPSmart current release does not support Worst Cells for the selected aggregation.")
+								// }
+								},                
+						legendItemClick: function () {
+						if(this.name == "Marker"){
+						if(this.visible == true){
+						estado_3gret = false;		
+						retention.xAxis[0].options.plotLines[0].color = "transparent";
+						retention.xAxis[0].options.plotLines[1].color = "transparent";
+						retention.xAxis[0].update();
+						}else
+						if(this.visible == false){	
+						estado_3gret = true;	
+						retention.xAxis[0].options.plotLines[0].color = "red";
+						retention.xAxis[0].options.plotLines[1].color = "red";
+						retention.xAxis[0].update();
+						}	
+						}
+				}
+							}
+						}
+					},
 							
 							series: [{
+								name: 'Marker',
+								color:'red'
+							},{
 								name: 'CS Retention',
 								data: [<?php echo join($retention_cs_succ_rate, ',') ?>]
 							},
@@ -882,7 +1314,25 @@ $(function () {
 								y: 10
 							},
 							relativeTo: 'chart'
+						},
+		events: {
+						click: function(e) {
+						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// alert(e.xAxis[0].value);
+						//acc.chart.series[1].show();
+						if(estado_ho != false){
+						if (e.shiftKey == 1) {
+						handover.xAxis[0].options.plotLines[1].color = "red";
+						handover.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;
+						handover.xAxis[0].update();						
+						}else{
+						handover.xAxis[0].options.plotLines[0].color = "red";
+						handover.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						handover.xAxis[0].update();
 						}
+						}
+      }
+    }
 									},
 						//	colors: ['#000099', '#CC0000', '#006600', '#FFCC00', '#D9CDB6'],
 							credits: {
@@ -904,10 +1354,19 @@ $(function () {
 							xAxis: {
 								categories: [<?php echo join($date, ',') ?>],///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
 					plotLines: [{
+								width: 2,
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							},{
 								color: '#FF0000',
 								width: 2,
-								//value: 247
-							}]
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							}]	
 								},
 							yAxis: {
 								max: 100,
@@ -935,32 +1394,51 @@ $(function () {
 								borderWidth: 0
 							},	
 
-							plotOptions: {
-								series: {
-									cursor: 'pointer',
-									events: {
-										click: function( event ) {
-										// Log to console
-										var kpi = this.name;
-										kpi = kpi.toLowerCase();
-										kpi = kpi.trim();
-										var strkpi = kpi.replace(/(^\s+|\s+$)/g, '');
-										//alert(node.substring(0, 3));
-										//if (node.substring(0, 3) == 'RNC' && reportagg == 'weekly') {
+					plotOptions: {
+						series: {
+							cursor: 'pointer',
+							events: {
+								click: function( event ) {
+								// Log to console
+								var kpi = this.name;
+								kpi = kpi.toLowerCase();
+								kpi = kpi.trim();
+								var strkpi = kpi.replace(/(^\s+|\s+$)/g, '');
+								//alert(node.substring(0, 3));
+								//if (node.substring(0, 3) == 'RNC' && reportagg == 'weekly') {
 									document.getElementById('wcreportnename').value = node;
 									document.getElementById('wcreportnetype').value = reportnetype;
 									document.getElementById('wctimeagg').value = reportagg;
 									document.getElementById('wcreportdate').value = date[event.point.x];
 									document.getElementById('wckpi').value = this.name;
 									document.wcform.submit();
-										// } else {
-											// alert("NPSmart current release does not support Worst Cells for the selected aggregation.")
-										// }
-										}
-									}
-								}
-							},							
+								// } else {
+									// alert("NPSmart current release does not support Worst Cells for the selected aggregation.")
+								// }
+								},                
+						legendItemClick: function () {
+						if(this.name == "Marker"){
+						if(this.visible == true){
+						estado_ho = false;		
+						handover.xAxis[0].options.plotLines[0].color = "transparent";
+						handover.xAxis[0].options.plotLines[1].color = "transparent";
+						handover.xAxis[0].update();
+						}else
+						if(this.visible == false){	
+						estado_ho = true;	
+						handover.xAxis[0].options.plotLines[0].color = "red";
+						handover.xAxis[0].options.plotLines[1].color = "red";
+						handover.xAxis[0].update();
+						}	
+						}
+				}
+							}
+						}
+					},						
 							series: [{
+								name: 'Marker',
+								color:'red'
+							},{
 								name: 'Soft HO',
 								data: [<?php echo join($soft_hand_succ_rate, ',') ?>]
 							},
@@ -1009,7 +1487,25 @@ $(function () {
 								y: 10
 							},
 							relativeTo: 'chart'
+						},
+		events: {
+						click: function(e) {
+						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// alert(e.xAxis[0].value);
+						//acc.chart.series[1].show();
+						if(estado_sho != false){
+						if (e.shiftKey == 1) {
+						sho_overhead.xAxis[0].options.plotLines[1].color = "red";
+						sho_overhead.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;
+						sho_overhead.xAxis[0].update();						
+						}else{
+						sho_overhead.xAxis[0].options.plotLines[0].color = "red";
+						sho_overhead.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						sho_overhead.xAxis[0].update();
 						}
+						}
+      }
+    }
 									},
 						//	colors: ['#000099', '#CC0000', '#006600', '#FFCC00', '#D9CDB6'],
 							credits: {
@@ -1031,10 +1527,19 @@ $(function () {
 							xAxis: {
 								categories: [<?php echo join($date, ',') ?>],///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
 					plotLines: [{
+								width: 2,
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							},{
 								color: '#FF0000',
 								width: 2,
-								//value: 247
-							}]
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							}]	
 								},
 							yAxis: {
 								//max: 100,
@@ -1060,8 +1565,36 @@ $(function () {
 								verticalAlign: 'bottom',
 								floating: false,
 								borderWidth: 0
-							},				
+							},
+
+					plotOptions: {
+						series: {
+							cursor: 'pointer',
+							events: {              
+						legendItemClick: function () {
+						if(this.name == "Marker"){
+						if(this.visible == true){
+						estado_sho = false;		
+						sho_overhead.xAxis[0].options.plotLines[0].color = "transparent";
+						sho_overhead.xAxis[0].options.plotLines[1].color = "transparent";
+						sho_overhead.xAxis[0].update();
+						}else
+						if(this.visible == false){	
+						estado_sho = true;	
+						sho_overhead.xAxis[0].options.plotLines[0].color = "red";
+						sho_overhead.xAxis[0].options.plotLines[1].color = "red";
+						sho_overhead.xAxis[0].update();
+						}	
+						}
+				}
+							}
+						}
+					},
+							
 							series: [{
+								name: 'Marker',
+								color:'red'
+							},{
 								name: 'SHO Overhead',
 								data: [<?php echo join($sho_over, ',') ?>]
 							}
@@ -1086,7 +1619,25 @@ $(function () {
 									y: 10
 								},
 								relativeTo: 'chart'
-							}
+							},
+		events: {
+						click: function(e) {
+						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// alert(e.xAxis[0].value);
+						//acc.chart.series[1].show();
+						if(estado_avail != false){
+						if (e.shiftKey == 1) {
+						availability.xAxis[0].options.plotLines[1].color = "red";
+						availability.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;
+						availability.xAxis[0].update();						
+						}else{
+						availability.xAxis[0].options.plotLines[0].color = "red";
+						availability.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						availability.xAxis[0].update();
+						}
+						}
+      }
+    }
 										},
 						//	colors: ['#000099', '#CC0000', '#006600', '#FFCC00', '#D9CDB6'],
 							credits: {
@@ -1108,10 +1659,19 @@ $(function () {
 							xAxis: {
 								categories: [<?php echo join($date, ',') ?>],///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
 					plotLines: [{
+								width: 2,
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							},{
 								color: '#FF0000',
 								width: 2,
-								//value: 247
-							}]
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							}]	
 								},
 							yAxis: {
 								max: 100,
@@ -1139,7 +1699,7 @@ $(function () {
 								borderWidth: 0
 							},	
 						
-							plotOptions: {
+					plotOptions: {
 						series: {
 							cursor: 'pointer',
 							events: {
@@ -1150,7 +1710,7 @@ $(function () {
 								kpi = kpi.trim();
 								var strkpi = kpi.replace(/(^\s+|\s+$)/g, '');
 								//alert(node.substring(0, 3));
-								//if (node.substring(0, 3) == 'RNC' && reportagg == 'weekly' && reportagg == 'weekly') {
+								//if (node.substring(0, 3) == 'RNC' && reportagg == 'weekly') {
 									document.getElementById('wcreportnename').value = node;
 									document.getElementById('wcreportnetype').value = reportnetype;
 									document.getElementById('wctimeagg').value = reportagg;
@@ -1160,12 +1720,31 @@ $(function () {
 								// } else {
 									// alert("NPSmart current release does not support Worst Cells for the selected aggregation.")
 								// }
-								}
+								},                
+						legendItemClick: function () {
+						if(this.name == "Marker"){
+						if(this.visible == true){
+						estado_avail = false;		
+						availability.xAxis[0].options.plotLines[0].color = "transparent";
+						availability.xAxis[0].options.plotLines[1].color = "transparent";
+						availability.xAxis[0].update();
+						}else
+						if(this.visible == false){	
+						estado_avail = true;	
+						availability.xAxis[0].options.plotLines[0].color = "red";
+						availability.xAxis[0].options.plotLines[1].color = "red";
+						availability.xAxis[0].update();
+						}	
+						}
+				}
 							}
 						}
 					},
 						
 							series: [{
+								name: 'Marker',
+								color:'red'
+							},{
 								name: 'Availability',
 								data: [<?php echo join($availability, ',') ?>]
 							}
@@ -1190,7 +1769,25 @@ $(function () {
 								y: 10
 							},
 							relativeTo: 'chart'
+						},
+		events: {
+						click: function(e) {
+						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// alert(e.xAxis[0].value);
+						//acc.chart.series[1].show();
+						if(estado_rtwp != false){
+						if (e.shiftKey == 1) {
+						rtwp.xAxis[0].options.plotLines[1].color = "red";
+						rtwp.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;
+						rtwp.xAxis[0].update();						
+						}else{
+						rtwp.xAxis[0].options.plotLines[0].color = "red";
+						rtwp.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						rtwp.xAxis[0].update();
 						}
+						}
+      }
+    }
 									},
 						//	colors: ['#000099', '#CC0000', '#006600', '#FFCC00', '#D9CDB6'],
 							credits: {
@@ -1212,10 +1809,19 @@ $(function () {
 							xAxis: {
 								categories: [<?php echo join($date, ',') ?>],///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
 					plotLines: [{
+								width: 2,
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							},{
 								color: '#FF0000',
 								width: 2,
-								//value: 247
-							}]
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							}]	
 								},
 							yAxis: {
 								//max: 100,
@@ -1243,36 +1849,55 @@ $(function () {
 								borderWidth: 0
 							},	
 
-							plotOptions: {
-								series: {
-									cursor: 'pointer',
-									events: {
-										click: function( event ) {
-										// Log to console
-										var kpi = this.name;
-										kpi = kpi.toLowerCase();
-										kpi = kpi.trim();
-										var strkpi = kpi.replace(/(^\s+|\s+$)/g, '');
-										//alert(node.substring(0, 3));
-										//if (node.substring(0, 3) == 'RNC' && reportagg == 'weekly' && reportagg == 'weekly') {
+					plotOptions: {
+						series: {
+							cursor: 'pointer',
+							events: {
+								click: function( event ) {
+								// Log to console
+								var kpi = this.name;
+								kpi = kpi.toLowerCase();
+								kpi = kpi.trim();
+								var strkpi = kpi.replace(/(^\s+|\s+$)/g, '');
+								//alert(node.substring(0, 3));
+								//if (node.substring(0, 3) == 'RNC' && reportagg == 'weekly') {
 									document.getElementById('wcreportnename').value = node;
 									document.getElementById('wcreportnetype').value = reportnetype;
 									document.getElementById('wctimeagg').value = reportagg;
 									document.getElementById('wcreportdate').value = date[event.point.x];
 									document.getElementById('wckpi').value = this.name;
 									document.wcform.submit();
-										// } else {
-											// alert("NPSmart current release does not support Worst Cells for the selected aggregation.")
-										// }
-										}
-									}
-								}
-							},
+								// } else {
+									// alert("NPSmart current release does not support Worst Cells for the selected aggregation.")
+								// }
+								},                
+						legendItemClick: function () {
+						if(this.name == "Marker"){
+						if(this.visible == true){
+						estado_rtwp = false;		
+						rtwp.xAxis[0].options.plotLines[0].color = "transparent";
+						rtwp.xAxis[0].options.plotLines[1].color = "transparent";
+						rtwp.xAxis[0].update();
+						}else
+						if(this.visible == false){	
+						estado_rtwp = true;	
+						rtwp.xAxis[0].options.plotLines[0].color = "red";
+						rtwp.xAxis[0].options.plotLines[1].color = "red";
+						rtwp.xAxis[0].update();
+						}	
+						}
+				}
+							}
+						}
+					},
 							
 							series: [{
+								name: 'Marker',
+								color:'red'
+							},{
 								name: 'RTWP',
 								data: [<?php echo join($rtwp, ',') ?>]
-							}
+							}						
 													
 							]							
 				});

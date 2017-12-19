@@ -27,7 +27,49 @@
 		//echo "<br><br>";
 		//echo join($acc_rrc, ',');
 		#echo '<span size="4" color="#E0E0E3">'.$ne.'</span>';
+		 function tonull($n)
+		{
+			if($n == ''){
+				$n = 0;
+				#return $n;				
+			}
+				return $n;
+		}
+		function tonull2($n)
+		{
+			if($n == ''){
+				$n = 'null';
+				#return $n;				
+			}
+				return $n;
+		}
+		function tonull3($n)
+		{
+			if($n > 100){
+				$n = 100;
+				#return $n;				
+			}
+				return $n;
+		}
+		$rf_health_index = array_map("tonull2",$rf_health_index);
+		$baseline = array_map("tonull2",$baseline);
+		$throughput = array_map("tonull2",$throughput);
+		$retention_3g = array_map("tonull2",$retention_3g);
+		$ps_call_completion = array_map("tonull2",$ps_call_completion);
+		$cs_call_completion = array_map("tonull2",$cs_call_completion);
+		$availability = array_map("tonull2",$availability);
+		$hardware_nodeb = array_map("tonull2",$hardware_nodeb);
+		$air_interface_ul = array_map("tonull2",$air_interface_ul);
+		$air_interface_dl = array_map("tonull2",$air_interface_dl);
+		$sho_overhead = array_map("tonull2",$sho_overhead);
+		$overshooters = array_map("tonull2",$overshooters);
+		$cpich_power_ratio = array_map("tonull2",$cpich_power_ratio);
+		$worst_aging_factor = array_map("tonull2",$worst_aging_factor);
+		$traffic_load = array_map("tonull2",$traffic_load);
+		$process_tools = array_map("tonull2",$process_tools);
+		$composite = array_map("tonull2",$composite);		
 		?>
+		
 		
 <script>
 ///	for (i = 0; i < cars.length; i++) { 

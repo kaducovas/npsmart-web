@@ -11,7 +11,7 @@ class Model_baseline_enodeb extends CI_Model{
 	 return $query->result();
 	 }
 	 
-	function mos(){
+	function mos($reportdate){
 	
 		 $query = $this->db->query(
 		 "SELECT  
@@ -27,7 +27,7 @@ class Model_baseline_enodeb extends CI_Model{
 		  from (select distinct site,mo,parameter from (select * from lte_control.cells) test1 cross join (select distinct mo,parameter from lte_baseline.consistency_check_nok_hist) test2) cdb
 		   left join 
 		   (select * from lte_baseline.consistency_check_nok_hist
-          WHERE (baseline_date IN ( SELECT max(baseline_date) AS max FROM lte_baseline.consistency_check_nok_hist consistency_check_1))) cck 
+          WHERE (baseline_date = '".$reportdate."')) cck 
 		  on cdb.site = cck.node and cdb.mo::text = cck.mo and cdb.parameter::text = cck.parameter) t1
 		  ) g where mo_total_discrepancies != 0) t
 ;");
@@ -54,7 +54,7 @@ class Model_baseline_enodeb extends CI_Model{
 		  from (select distinct site,mo,parameter from (select * from lte_control.cells) test1 cross join (select distinct mo,parameter from lte_baseline.consistency_check_nok_hist) test2) cdb
 		   left join 
 		   (select * from lte_baseline.consistency_check_nok_hist
-          WHERE (baseline_date IN ( SELECT max(baseline_date) AS max FROM lte_baseline.consistency_check_nok_hist consistency_check_1))) cck 
+          WHERE (baseline_date = '".$reportdate."')) cck 
 		  on cdb.site = cck.node and cdb.mo::text = cck.mo and cdb.parameter::text = cck.parameter) t1
 		  ) t
   GROUP BY t.node,type
@@ -64,7 +64,7 @@ class Model_baseline_enodeb extends CI_Model{
 	 return $query->result();
 	 }
 
-	 function ne_discrepancies($reportmoname){
+	 function ne_discrepancies($reportdate,$reportmoname){
 		 $cond = '';
 		 if($reportmoname){
 			$cond = " where r.mo = '".$reportmoname."' "; 
@@ -80,14 +80,14 @@ left join
 (select baseline_date,mo,parameter,status from lte_baseline.consistency_check_nok_hist CCK INNER JOIN (select distinct site from lte_control.cells) CB on cck.node = cb.site) c
 on r.mo = c.mo and r.parameter = c.parameter and r.baseline_date = c.baseline_date
 ".$cond.") t
-where baseline_date >= (SELECT max(baseline_date)-25 from lte_baseline.consistency_check_nok_hist)
+where baseline_date between '".date('Y-m-d', strtotime($reportdate.' -25 day'))."' and '".$reportdate."'
 group by baseline_date order by baseline_date
 ;");
 
 	 return $query->result();
 	 }	  
 	 
-	 function parameters_mo($reportmoname){
+	 function parameters_mo($reportdate,$reportmoname){
 		
 		 $query = $this->db->query(
 		 "SELECT distinct
@@ -97,7 +97,7 @@ group by baseline_date order by baseline_date
 		  from (select distinct site,mo,parameter from (select * from lte_control.cells) test1 cross join (select distinct mo,parameter from lte_baseline.consistency_check_nok_hist) test2) cdb
 		   left join 
 		   (select * from lte_baseline.consistency_check_nok_hist
-          WHERE (baseline_date IN ( SELECT max(baseline_date) AS max FROM lte_baseline.consistency_check_nok_hist consistency_check_1))) cck 
+          WHERE (baseline_date = '".$reportdate."')) cck 
 		  on cdb.site = cck.node and cdb.mo::text = cck.mo and cdb.parameter::text = cck.parameter) t1
 where mo = '".$reportmoname."'
 ;");
@@ -129,7 +129,7 @@ where mo = '".$reportmoname."'
 		  from (select distinct region,site,mo,parameter from (select * from lte_control.cells) test1 cross join (select distinct mo,parameter from lte_baseline.consistency_check_nok_hist) test2) cdb
 		   left join 
 		   (select * from lte_baseline.consistency_check_nok_hist
-          WHERE (baseline_date IN ( SELECT max(baseline_date) AS max FROM lte_baseline.consistency_check_nok_hist consistency_check_1))) cck 
+          WHERE (baseline_date = '".$reportdate."')) cck 
 		  on cdb.site = cck.node and cdb.mo::text = cck.mo and cdb.parameter::text = cck.parameter)t1
 		  )
     ) g )t
@@ -139,7 +139,7 @@ where mo = '".$reportmoname."'
 	 return $query->result();
 	 }	
 #######
-	 function region_parameters_mo($reportmoname,$node){
+	 function region_parameters_mo($reportdate,$reportmoname,$node){
 		
 		 $query = $this->db->query(
 		 "SELECT distinct
@@ -149,7 +149,7 @@ where mo = '".$reportmoname."'
 		  from (select distinct REGION,site,mo,parameter from (select * from lte_control.cells where REGION = '".$node."') test1 cross join (select distinct mo,parameter from lte_baseline.consistency_check_nok_hist) test2) cdb
 		   left join 
 		   (select * from lte_baseline.consistency_check_nok_hist
-          WHERE (baseline_date IN ( SELECT max(baseline_date) AS max FROM lte_baseline.consistency_check_nok_hist consistency_check_1))) cck 
+          WHERE (baseline_date = '".$reportdate."')) cck 
 		  on cdb.site = cck.node and cdb.mo::text = cck.mo and cdb.parameter::text = cck.parameter) t1
 where mo = '".$reportmoname."'
 ;");
@@ -157,7 +157,7 @@ where mo = '".$reportmoname."'
 	 return $query->result();
 	 }
 #######	 
-	 function region_ne_discrepancies($reportmoname,$node){	
+	 function region_ne_discrepancies($reportdate,$reportmoname,$node){	
 	 	$cond = '';
 		 if($reportmoname){
 			$cond = " and r.mo = '".$reportmoname."' "; 
@@ -175,7 +175,7 @@ left join
 on r.mo = c.mo and r.parameter = c.parameter and r.baseline_date = c.baseline_date and r.node = c.node
 where r.node = '".$node."'
 ".$cond.") t
-where baseline_date >= (SELECT max(baseline_date)-25 from lte_baseline.consistency_check_nok_hist)
+where baseline_date between '".date('Y-m-d', strtotime($reportdate.' -25 day'))."' and '".$reportdate."'
 group by baseline_date,node order by baseline_date
 ;");
 
@@ -185,7 +185,7 @@ group by baseline_date,node order by baseline_date
 	 
 ####################NODEB#############################
 #######	 
-	 function enodeb_baseline_by_mo($node){
+	 function enodeb_baseline_by_mo($reportdate,$node){
 	
 		 $query = $this->db->query(
 		 "SELECT  
@@ -207,7 +207,7 @@ group by baseline_date,node order by baseline_date
 		  from (select distinct site,mo,parameter from (select * from lte_control.cells) test1 cross join (select distinct mo,parameter from lte_baseline.consistency_check_nok_hist) test2) cdb
 		   left join 
 		   (select * from lte_baseline.consistency_check_nok_hist
-          WHERE (baseline_date IN ( SELECT max(baseline_date) AS max FROM lte_baseline.consistency_check_nok_hist consistency_check_1))) cck 
+          WHERE (baseline_date = '".$reportdate."')) cck 
 		  on cdb.site = cck.node and cdb.mo::text = cck.mo and cdb.parameter::text = cck.parameter) t1
 		  where node = '".$node."' ) g )t
   GROUP BY t.node,type, avg_discrepancies
@@ -216,7 +216,7 @@ group by baseline_date,node order by baseline_date
 	 return $query->result();
 	 }	
 #######
-	 function enodeb_parameters_mo($reportmoname,$node){
+	 function enodeb_parameters_mo($reportdate,$reportmoname,$node){
 		
 		 $query = $this->db->query(
 		 "SELECT distinct
@@ -226,7 +226,7 @@ group by baseline_date,node order by baseline_date
 		  from (select distinct site,mo,parameter from (select * from lte_control.cells where site = '".$node."') test1 cross join (select distinct mo,parameter from lte_baseline.consistency_check_nok_hist) test2) cdb
 		   left join 
 		   (select * from lte_baseline.consistency_check_nok_hist
-          WHERE (baseline_date IN ( SELECT max(baseline_date) AS max FROM lte_baseline.consistency_check_nok_hist consistency_check_1))) cck 
+          WHERE (baseline_date = '".$reportdate."')) cck 
 		  on cdb.site = cck.node and cdb.mo::text = cck.mo and cdb.parameter::text = cck.parameter) t1
 where mo = '".$reportmoname."'
 ;");
@@ -234,7 +234,7 @@ where mo = '".$reportmoname."'
 	 return $query->result();
 	 }
 #######	 
-	 function enodeb_ne_discrepancies($reportmoname,$node){	
+	 function enodeb_ne_discrepancies($reportdate,$reportmoname,$node){	
 	 	$cond = '';
 		 if($reportmoname){
 			$cond = " and r.mo = '".$reportmoname."' "; 
@@ -252,7 +252,7 @@ left join
 on r.mo = c.mo and r.parameter = c.parameter and r.baseline_date = c.baseline_date and r.node = c.node
 where r.node = '".$node."'
 ".$cond.") t
-where baseline_date >= (SELECT max(baseline_date)-25 from lte_baseline.consistency_check_nok_hist)
+where baseline_date between '".date('Y-m-d', strtotime($reportdate.' -25 day'))."' and '".$reportdate."'
 group by baseline_date,node order by baseline_date
 ;");
 
@@ -282,7 +282,7 @@ group by baseline_date,node order by baseline_date
 		  // from (select distinct site,cellid,mo,parameter from (select * from lte_control.cells where get_enodeb_name('".$node."','cell') = site) test1 cross join (select distinct mo,parameter from lte_baseline.consistency_check_nok_hist) test2) cdb
 		   // left join 
 		   // (select * from lte_baseline.consistency_check_nok_hist
-          // WHERE (baseline_date IN ( SELECT max(baseline_date) AS max FROM lte_baseline.consistency_check_nok_hist consistency_check_1))) cck 
+          // WHERE (baseline_date = '".$reportdate."')) cck 
 		  // on cdb.rnc = cck.node and cdb.cellid::text = cck.element_id and cdb.mo::text = cck.mo and cdb.parameter::text = cck.parameter) t1
 // union
 // SELECT distinct 'cell'::text as type,
@@ -293,7 +293,7 @@ group by baseline_date,node order by baseline_date
 		  // from (select distinct cell,cellid,mo,parameter from (select * from lte_control.cells where get_enodeb_name('".$node."','cell') = site ) test1 cross join (select distinct mo,parameter from lte_baseline.consistency_check_nok_hist) test2) cdb
 		   // left join 
 		   // (select * from lte_baseline.consistency_check_nok_hist
-          // WHERE (baseline_date IN ( SELECT max(baseline_date) AS max FROM lte_baseline.consistency_check_nok_hist consistency_check_1))) cck 
+          // WHERE (baseline_date = '".$reportdate."')) cck 
 		  // on cdb.rnc = cck.node and cdb.cellid::text = cck.element_id and cdb.mo::text = cck.mo and cdb.parameter::text = cck.parameter) t1
 		  // ) t
   // GROUP BY t.node,type
@@ -312,7 +312,7 @@ group by baseline_date,node order by baseline_date
 		  // from (select distinct cell,cellid,mo,parameter from (select * from lte_control.cells where cell = '".$node."') test1 cross join (select distinct mo,parameter from lte_baseline.consistency_check_nok_hist) test2) cdb
 		   // left join 
 		   // (select * from lte_baseline.consistency_check_nok_hist
-          // WHERE (baseline_date IN ( SELECT max(baseline_date) AS max FROM lte_baseline.consistency_check_nok_hist consistency_check_1))) cck 
+          // WHERE (baseline_date = '".$reportdate."')) cck 
 		  // on cdb.rnc = cck.node and cdb.cellid::text = cck.element_id and cdb.mo::text = cck.mo and cdb.parameter::text = cck.parameter) t1
 // where mo = '".$reportmoname."'
 // ;");
@@ -347,7 +347,7 @@ group by baseline_date,node order by baseline_date
 
 ####################CIDADE#############################
 #######	 
-	 function cidade_baseline_by_mo($node){
+	 function cidade_baseline_by_mo($reportdate,$node){
 		$this->load->model('model_cellsinfo');
 		$cidade_info = $this->model_cellsinfo->find_cidade_info($node);
 		$ibge = $cidade_info[0]->ibge;
@@ -372,7 +372,7 @@ group by baseline_date,node order by baseline_date
 		  from (select distinct cidade,site,mo,parameter from (select * from lte_control.cells where ibge = '".$ibge."') test1 cross join (select distinct mo,parameter from lte_baseline.consistency_check_nok_hist) test2) cdb
 		   left join 
 		   (select * from lte_baseline.consistency_check_nok_hist
-          WHERE (baseline_date IN ( SELECT max(baseline_date) AS max FROM lte_baseline.consistency_check_nok_hist consistency_check_1))) cck 
+          WHERE (baseline_date = '".$reportdate."')) cck 
 		  on cdb.site = cck.node and cdb.mo::text = cck.mo and cdb.parameter::text = cck.parameter) t1
 		    ) g )t
   GROUP BY concat(t.node,' - ','".$uf."'),type, avg_discrepancies
@@ -381,7 +381,7 @@ group by baseline_date,node order by baseline_date
 	 return $query->result();
 	 }	
 #######
-	 function cidade_parameters_mo($reportmoname,$node){
+	 function cidade_parameters_mo($reportdate,$reportmoname,$node){
 		$this->load->model('model_cellsinfo');
 		$cidade_info = $this->model_cellsinfo->find_cidade_info($node);
 		$ibge = $cidade_info[0]->ibge;	
@@ -393,7 +393,7 @@ group by baseline_date,node order by baseline_date
 		  from (select distinct cidade,site,mo,parameter from (select * from lte_control.cells where ibge = '".$ibge."') test1 cross join (select distinct mo,parameter from lte_baseline.consistency_check_nok_hist) test2) cdb
 		   left join 
 		   (select * from lte_baseline.consistency_check_nok_hist
-          WHERE (baseline_date IN ( SELECT max(baseline_date) AS max FROM lte_baseline.consistency_check_nok_hist consistency_check_1))) cck 
+          WHERE (baseline_date = '".$reportdate."')) cck 
 		  on cdb.site = cck.node and cdb.mo::text = cck.mo and cdb.parameter::text = cck.parameter) t1
 where mo = '".$reportmoname."'
 ;");
@@ -401,7 +401,7 @@ where mo = '".$reportmoname."'
 	 return $query->result();
 	 }
 #######	 
-	 function cidade_ne_discrepancies($reportmoname,$node){
+	 function cidade_ne_discrepancies($reportdate,$reportmoname,$node){
 		$this->load->model('model_cellsinfo');
 		$cidade_info = $this->model_cellsinfo->find_cidade_info($node);
 		$ibge = $cidade_info[0]->ibge;		 
@@ -422,7 +422,7 @@ left join
 on r.mo = c.mo and r.parameter = c.parameter and r.baseline_date = c.baseline_date and r.node = c.node
 where r.node = split_part('".$node."',' - ',1)
 ".$cond.") t
-where baseline_date >= (SELECT max(baseline_date)-25 from lte_baseline.consistency_check_nok_hist)
+where baseline_date between '".date('Y-m-d', strtotime($reportdate.' -25 day'))."' and '".$reportdate."'
 group by baseline_date,node order by baseline_date
 ;");
 
@@ -432,7 +432,7 @@ group by baseline_date,node order by baseline_date
 
 ####################CLUSTER#############################
 #######	 
-	 function cluster_baseline_by_mo($node){
+	 function cluster_baseline_by_mo($reportdate,$node){
 		$this->load->model('model_cellsinfo');
 		$cluster_info = $this->model_cellsinfo->find_cluster_info($node);
 		$cluster_id = $cluster_info[0]->cluster_id;
@@ -457,7 +457,7 @@ group by baseline_date,node order by baseline_date
 		  from (select distinct cluster,site,mo,parameter from (select * from lte_control.cells where cluster = '".$node."') test1 cross join (select distinct mo,parameter from lte_baseline.consistency_check_nok_hist) test2) cdb
 		   left join 
 		   (select * from lte_baseline.consistency_check_nok_hist
-          WHERE (baseline_date IN ( SELECT max(baseline_date) AS max FROM lte_baseline.consistency_check_nok_hist consistency_check_1))) cck 
+          WHERE (baseline_date = '".$reportdate."')) cck 
 		  on cdb.site = cck.node and cdb.mo::text = cck.mo and cdb.parameter::text = cck.parameter) t1
     ) g )t
   GROUP BY t.node,type, avg_discrepancies
@@ -466,7 +466,7 @@ group by baseline_date,node order by baseline_date
 	 return $query->result();
 	 }	
 #######
-	 function cluster_parameters_mo($reportmoname,$node){
+	 function cluster_parameters_mo($reportdate,$reportmoname,$node){
 		$this->load->model('model_cellsinfo');
 		$cluster_info = $this->model_cellsinfo->find_cluster_info($node);
 		$cluster_id = $cluster_info[0]->cluster_id;
@@ -479,7 +479,7 @@ group by baseline_date,node order by baseline_date
 		  from (select distinct cluster,site,mo,parameter from (select * from lte_control.cells where cluster = '".$node."') test1 cross join (select distinct mo,parameter from lte_baseline.consistency_check_nok_hist) test2) cdb
 		   left join 
 		   (select * from lte_baseline.consistency_check_nok_hist
-          WHERE (baseline_date IN ( SELECT max(baseline_date) AS max FROM lte_baseline.consistency_check_nok_hist consistency_check_1))) cck 
+          WHERE (baseline_date = '".$reportdate."')) cck 
 		  on cdb.site = cck.node and cdb.mo::text = cck.mo and cdb.parameter::text = cck.parameter) t1
 where mo = '".$reportmoname."'
 ;");
@@ -487,7 +487,7 @@ where mo = '".$reportmoname."'
 	 return $query->result();
 	 }
 #######	 
-	 function cluster_ne_discrepancies($reportmoname,$node){
+	 function cluster_ne_discrepancies($reportdate,$reportmoname,$node){
 		$this->load->model('model_cellsinfo');
 		$cluster_info = $this->model_cellsinfo->find_cluster_info($node);
 		$cluster_id = $cluster_info[0]->cluster_id;
@@ -509,7 +509,7 @@ left join
 on r.mo = c.mo and r.parameter = c.parameter and r.baseline_date = c.baseline_date and r.node = c.node
 where r.node = '".$node."'
 ".$cond.") t
-where baseline_date >= (SELECT max(baseline_date)-25 from lte_baseline.consistency_check_nok_hist)
+where baseline_date between '".date('Y-m-d', strtotime($reportdate.' -25 day'))."' and '".$reportdate."'
 group by baseline_date,node order by baseline_date
 ;");
 
@@ -559,7 +559,7 @@ group by baseline_date,node order by baseline_date
 		  // from (select distinct uf,cellid,mo,parameter from (select * from lte_control.cells where substring( 4, 2) = '".$node."') test1 cross join (select distinct mo,parameter from lte_baseline.consistency_check_nok_hist) test2) cdb
 		   // left join 
 		   // (select * from lte_baseline.consistency_check_nok_hist
-          // WHERE (baseline_date IN ( SELECT max(baseline_date) AS max FROM lte_baseline.consistency_check_nok_hist consistency_check_1))) cck 
+          // WHERE (baseline_date = '".$reportdate."')) cck 
 		  // on cdb.rnc = cck.node and cdb.cellid::text = cck.element_id and cdb.mo::text = cck.mo and cdb.parameter::text = cck.parameter) t1
 // where mo = '".$reportmoname."'
 // ;");

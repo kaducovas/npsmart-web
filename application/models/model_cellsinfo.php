@@ -95,7 +95,7 @@ class Model_cellsinfo extends CI_Model{
 
 	function clusters_nqi_lte(){
 		$query = $this->db->query(
-		"select distinct cluster as node,cluster_id from LTE_control.claro_cluster WHERE cluster_id > 20 order by cluster_id;");
+		"select distinct cluster as node,cluster_id from LTE_control.claro_cluster order by cluster_id;");
 
 	return $query->result();
 	}
@@ -115,6 +115,13 @@ class Model_cellsinfo extends CI_Model{
 	}
 
 	function enodebs(){
+		$query = $this->db->query(
+		#"SELECT distinct get_enodeb_name(main_kpis_lte_daily.enodeb,'enodeb') as node FROM lte_kpi.main_kpis_lte_daily WHERE date = (select max(date) FROM lte_control.log_daily)::date ORDER BY get_enodeb_name(main_kpis_lte_daily.enodeb,'enodeb');");
+		"SELECT distinct enodeb as node from lte_control.cells order by node;");
+	return $query->result();
+	}
+	
+	function enodebs_nqi(){
 		$query = $this->db->query(
 		#"SELECT distinct get_enodeb_name(main_kpis_lte_daily.enodeb,'enodeb') as node FROM lte_kpi.main_kpis_lte_daily WHERE date = (select max(date) FROM lte_control.log_daily)::date ORDER BY get_enodeb_name(main_kpis_lte_daily.enodeb,'enodeb');");
 		"SELECT distinct site as node from lte_control.cells order by node;");
@@ -203,7 +210,7 @@ class Model_cellsinfo extends CI_Model{
 	function find_cidade_info($cidade){
 			$query = $this->db->query(
 			#"select distinct ibge,uf from umts_control.cells_database where cidade = '".$cidade."' and ibge not in (4117602);");
-			"select distinct ibge,uf from umts_control.cells_db where cidade = split_part('".$cidade."',' - ',1) AND uf = split_part('".$cidade."',' - ',2);");
+			"select distinct ibge,uf from umts_control.cells_database where cidade = split_part('".$cidade."',' - ',1) AND uf = split_part('".$cidade."',' - ',2);");
 		return $query->result();
 		}
 		
@@ -243,7 +250,13 @@ class Model_cellsinfo extends CI_Model{
 		}
 	function find_enodeb_from_cell($cell){
 			$query = $this->db->query(
-			"SELECT site FROM lte_control.cells where cell = '".$cell."' limit 1;");
+			"SELECT enodeb,enodebid,site FROM lte_control.cells where cell = '".$cell."' limit 1;");
+
+		return $query->result();
+		}
+	function find_enodebid_from_enodeb($enodeb){
+			$query = $this->db->query(
+			"SELECT enodebid,site FROM lte_control.cells where enodeb = '".$enodeb."' limit 1;");
 
 		return $query->result();
 		}
@@ -268,7 +281,14 @@ class Model_cellsinfo extends CI_Model{
 		"select cellid,rnc from umts_control.cells_database where cell = '".$cellname."';");
 
 	return $query->result();
-	}			
+	}
+
+	function find_uf_lte($cellname){
+		$query = $this->db->query(
+		"select uf from lte_control.cells where cell = '".$cellname."';");
+
+	return $query->result();
+	}		
 
 	function reference_date($node){
 		$regions = array("CO", "PRSC", "NE", "BASE","ES","MG");

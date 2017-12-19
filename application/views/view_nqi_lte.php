@@ -4,14 +4,21 @@
 var reportnename = "<?php echo $reportnename; ?>";
 var reportdate = "<?php echo $reportdate; ?>";
 </script>
-<div id="container" class="main">
+<div width="100%">
 
 
 <form action="/npsmart/lte/worstcells" name="wcform" method="post">
-<input type="hidden" id="rnc" name="rnc" value="" />
-<input type="hidden" id="date" name="wcdate" value="" />
-<input type="hidden" id="kpi" name="kpi" value="" />
-</form>
+		<input type="hidden" id="wcreportnename" name="reportnename" value="" />
+		<input type="hidden" id="wcreportnetype" name="reportnetype" value="" />
+		<input type="hidden" id="wctimeagg" name="timeagg" value="" />
+		<input type="hidden" id="wcreportdate" name="reportdate" value="" />
+		<input type="hidden" id="wckpi" name="kpi" value="" />
+
+		<!--<form action="/npsmart/umts/worstcells" name="wcform" method="post">
+		<input type="hidden" id="rnc" name="rnc" value="" />
+		<input type="hidden" id="date" name="wcdate" value="" />
+		<input type="hidden" id="kpi" name="kpi" value="" />-->
+	</form>
 
 <form action="/npsmart/lte/weeklyworstcells" name="weekwcform" method="post">
 <input type="hidden" id="node" name="node" value="" />
@@ -46,7 +53,6 @@ var reportdate = "<?php echo $reportdate; ?>";
 						$week = explode(",", $weeks);
 						$months = array (1=>'Jan',2=>'Feb',3=>'Mar',4=>'Apr',5=>'May',6=>'Jun',7=>'Jul',8=>'Aug',9=>'Sep',10=>'Oct',11=>'Nov',12=>'Dec');
 						#$months[(int)$monthnum]; 
-
 						for ($i = 1; $i <= 7; $i++) 
 						{
 							echo "<th bgcolor='#C0504D'><font color='#FFFFFF' style='font-family: calibri; font-size:14pt'>".$months[(int)$week[0]]."</font></th>";
@@ -68,7 +74,6 @@ var reportdate = "<?php echo $reportdate; ?>";
 							echo "<th bgcolor='#C0504D'><font color='#FFFFFF' style='font-family: calibri; font-size:14pt'>W".$week[3]."</font></th>";
 						}
 					}
-
  ?>
         </tr>
 	</thead>
@@ -85,23 +90,19 @@ var reportdate = "<?php echo $reportdate; ?>";
 				$title = "#C0504D";
 	
 //onclick='selected(this)'
-
 foreach($nqi_weekly_region as $row){		
 	$qda = $row->qda;
 	$array_0 = array_fill(0, 3, 0);	
 	$array_qda = explode(",", $qda);	
 	$array_qda = array_merge($array_qda, $array_0);
-
 	$qdr = $row->qdr;
 	$array_0 = array_fill(0, 3, 0);	
 	$array_qdr = explode(",", $qdr);	
 	$array_qdr = array_merge($array_qdr, $array_0);
-
 	$lte_retention = $row->lte_retention;
 	$array_0 = array_fill(0, 3, 0);		
 	$array_lte_retention = explode(",", $lte_retention);	
 	$array_lte_retention = array_merge($array_lte_retention, $array_0);
-
 	$availability = $row->availability;
 	$array_0 = array_fill(0, 3, 0);		
 	$array_availability = explode(",", $availability);	
@@ -130,7 +131,6 @@ foreach($nqi_weekly_region as $row){
 			 echo "<td onclick='wcweek(this)'><font style='font-family: calibri; font-size:14pt' color='".($array_qda[1] >= 99?$good:($array_qda[1] >= 98?$yellow:$bad))."'>".$array_qda[1]."%</font></td>";
 			 echo "<td onclick='wcweek(this)'><font style='font-family: calibri; font-size:14pt' color='".($array_qda[2] >= 99?$good:($array_qda[2] >= 98?$yellow:$bad))."'>".$array_qda[2]."%</font></td>";
 			 echo "<td onclick='wcweek(this)'><font style='font-family: calibri; font-size:14pt' color='".($array_qda[3] >= 99?$good:($array_qda[3] >= 98?$yellow:$bad))."'>".$array_qda[3]."%</font></td>";
-
 			 echo "<td onclick='wcweek(this)'><font style='font-family: calibri; font-size:14pt' color='".($array_qdr[0] >= 99?$good:($array_qdr[0] >= 98?$yellow:$bad))."'>".$array_qdr[0]."%</font></td>";
 			 echo "<td onclick='wcweek(this)'><font style='font-family: calibri; font-size:14pt' color='".($array_qdr[1] >= 99?$good:($array_qdr[1] >= 98?$yellow:$bad))."'>".$array_qdr[1]."%</font></td>";
 			 echo "<td onclick='wcweek(this)'><font style='font-family: calibri; font-size:14pt' color='".($array_qdr[2] >= 99?$good:($array_qdr[2] >= 98?$yellow:$bad))."'>".$array_qdr[2]."%</font></td>";
@@ -140,7 +140,6 @@ foreach($nqi_weekly_region as $row){
 			 echo "<td><font style='font-family: calibri; font-size:14pt' color='".($array_availability[1] >= 99?$good:($array_availability[1] >= 97?$yellow:$bad))."'>".$array_availability[1]."%</font></td>";
 			 echo "<td><font style='font-family: calibri; font-size:14pt' color='".($array_availability[2] >= 99?$good:($array_availability[2] >= 97?$yellow:$bad))."'>".$array_availability[2]."%</font></td>";
 			 echo "<td><font style='font-family: calibri; font-size:14pt' color='".($array_availability[3] >= 99?$good:($array_availability[3] >= 97?$yellow:$bad))."'>".$array_availability[3]."%</font></td>";
-
 			 echo "<td onclick='wcweek(this)'><font style='font-family: calibri; font-size:14pt' color='".($array_lte_retention[0] >= 95?$good:($array_lte_retention[0] >= 90?$yellow:$bad))."'>".$array_lte_retention[0]."%</font></td>";
 			 echo "<td onclick='wcweek(this)'><font style='font-family: calibri; font-size:14pt' color='".($array_lte_retention[1] >= 95?$good:($array_lte_retention[1] >= 90?$yellow:$bad))."'>".$array_lte_retention[1]."%</font></td>";
 			 echo "<td onclick='wcweek(this)'><font style='font-family: calibri; font-size:14pt' color='".($array_lte_retention[2] >= 95?$good:($array_lte_retention[2] >= 90?$yellow:$bad))."'>".$array_lte_retention[2]."%</font></td>";
@@ -155,12 +154,10 @@ foreach($nqi_weekly_region as $row){
 			 echo "<td><font style='font-family: calibri; font-size:14pt' color='".($array_qde_ul[1] >= 95?$good:($array_qde_ul[1] >= 85?$yellow:$bad))."'>".$array_qde_ul[1]."%</font></td>";
 			 echo "<td><font style='font-family: calibri; font-size:14pt' color='".($array_qde_ul[2] >= 95?$good:($array_qde_ul[2] >= 85?$yellow:$bad))."'>".$array_qde_ul[2]."%</font></td>";
 			 echo "<td><font style='font-family: calibri; font-size:14pt' color='".($array_qde_ul[3] >= 95?$good:($array_qde_ul[3] >= 85?$yellow:$bad))."'>".$array_qde_ul[3]."%</font></td>";
-
 					echo "<td bgcolor='".($array_nqi[0] >= 85?$good:($array_nqi[0] >= 70?$yellow1:$bad))."'><font style='font-family: calibri; font-size:14pt'>".$array_nqi[0]."%</font></td>";
 					echo "<td bgcolor='".($array_nqi[1] >= 85?$good:($array_nqi[1] >= 70?$yellow1:$bad))."'><font style='font-family: calibri; font-size:14pt'>".$array_nqi[1]."%</font></td>";
 					echo "<td bgcolor='".($array_nqi[2] >= 85?$good:($array_nqi[2] >= 70?$yellow1:$bad))."'><font style='font-family: calibri; font-size:14pt'>".$array_nqi[2]."%</font></td>";
 					echo "<td bgcolor='".($array_nqi[3] >= 85?$good:($array_nqi[3] >= 70?$yellow1:$bad))."'><font style='font-family: calibri; font-size:14pt'>".$array_nqi[3]."%</font></td>";
-
 			 echo "</tr>";			
 			}
 	?>

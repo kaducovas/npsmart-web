@@ -3,9 +3,11 @@
 //var node = 'CO';
 var reportnename = "<?php echo $reportnename; ?>";
 var reportdate = "<?php echo $reportdate; ?>";
+jQuery(window).load(function () {
+    document.getElementById("loading").style.display = "none";
+	document.getElementById("loading_table").style.visibility = "visible";
+});
 </script>
-<div width="100%">
-
 	<form action="/npsmart/umts/worstcells" name="wcform" method="post">
 		<input type="hidden" id="wcreportnename" name="reportnename" value="" />
 		<input type="hidden" id="wcreportrnc" name="reportrnc" value="" />
@@ -24,7 +26,10 @@ var reportdate = "<?php echo $reportdate; ?>";
 		<input type="hidden" id="week" name="week" value="" />
 		<input type="hidden" id="weeklykpi" name="kpi" value="" />
 	</form>
-
+<div id="loading" style="display:block">
+    <p style="text-align:center;"><img src="/npsmart/images/loading_preto.gif" style="width:300px; height:300px;" alt="Loading" /></p>
+</div>
+<div id="loading_table" align="center" style="visibility:hidden">
 	<table id="table_id" class="cell-border compact hover" border="1 solid black" cellspacing="0" width="98%">
 
 		<thead>

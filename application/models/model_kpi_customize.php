@@ -16,7 +16,15 @@ and ordinal_position > 9 order by node");
 		where counter_enable = 't' order by counter_name");
 		
 		return $query->result();
-		}	
+		}
+
+		function nqi_customize_lte(){				
+		$query = $this->db->query(
+		"select INITCAP(column_name) as node from information_schema.columns where table_schema in ('lte_kpi') and table_name in ('vw_nqi_daily_cell') and ordinal_position > 10 order by table_name 
+");
+		
+		return $query->result();
+		}		
 
 /////////////////////////////////////////////////////// UMTS ///////////////////////////////////
 	
@@ -30,10 +38,17 @@ and ordinal_position > 7 order by node" );
 	
 		function counter_customize_umts(){				
 		$query = $this->db->query(
-		"SELECT distinct counter_name as node,functionsubset_id,counter_aggregation
+		"SELECT distinct counter_name as node,functionsubset_id,counter_aggregation,counter_description
 FROM umts_control.counter_reference
 where counter_enable = 't' 
 order by counter_name");
+		
+		return $query->result();
+		}
+		
+		function nqi_customize_umts(){				
+		$query = $this->db->query(
+		"select INITCAP(column_name) as node from information_schema.columns where table_schema in ('umts_kpi') and table_name in ('vw_nqi_daily_cell')  and column_name not in('cellid','date','gp','node','region','rnc','week','year') order by node ");
 		
 		return $query->result();
 		}
@@ -115,7 +130,7 @@ order by node");
 	
 	function kpi_customize_UMTS_Elementos_City(){				
 		$query = $this->db->query(
-		"select distinct (cidade) as node from umts_control.cells_database where cidade is not null
+		"select distinct (cidade) as node,uf from umts_control.cells_database where cidade is not null
 		order by node");
 
 
@@ -142,7 +157,7 @@ order by node");
 	
 	function kpi_customize_UMTS_Elementos_NodeB(){				
 		$query = $this->db->query(
-		"SELECT distinct nodeb as node FROM umts_control.cells_database order by nodeb");
+		"SELECT distinct nodeb as node FROM umts_control.cells_database order by nodeb"); 
 
 
 	return $query->result();
@@ -190,7 +205,7 @@ order by node");
 	
 	function kpi_customize_GSM_Elementos_City(){				
 		$query = $this->db->query(
-		"SELECT DISTINCT (node) as node FROM gsm_kpi.vw_main_kpis_cidade_rate_daily WHERE date = (SELECT MAX(date) FROM gsm_control.log_daily)::date
+		"SELECT DISTINCT (node) as node,uf FROM gsm_kpi.vw_main_kpis_cidade_rate_daily WHERE date = (SELECT MAX(date) FROM gsm_control.log_daily)::date
 		order by node");
 
 	return $query->result();
@@ -223,7 +238,7 @@ order by node");
 	
 	function kpi_customize_LTE_Elementos_City(){				
 		$query = $this->db->query(
-		"SELECT distinct cidade as node FROM lte_control.cells order by node"); 
+		"SELECT distinct cidade as node,uf FROM lte_control.cells order by node"); 
 
 	return $query->result();
 	}
@@ -238,7 +253,7 @@ order by node");
 	
 	function kpi_customize_LTE_Elementos_UF(){				
 		$query = $this->db->query(
-		"select distinct (substring(cluster,1,2)) as node from umts_control.cells_database where cluster is not null
+		"select distinct (substring(cluster,1,2)) as node from umts_control.cells_database where cluster is not null and (substring(cluster,1,2)) not in ('')
 		order by node"); 
 
 	return $query->result();

@@ -265,7 +265,12 @@ class Umts extends CI_Controller {
 		$this->load->view('view_header');
 		$this->load->view('view_nav',$data);
 		$this->load->view('view_mainkpis_chart',$data);
+		if (($netype == 'nodeb' or $netype == 'cell') and $reportdate == $referencedate){
+		$this->load->view('view_mainkpis_daily',$data);
+		}
+		else{
 		$this->load->view('view_mainkpis',$data);
+		}
 	}
 
 		public function monthly()
@@ -3324,8 +3329,9 @@ public function alert_worstcells()
 		}
 		
 		#echo $netype;
-		
-		$referencedate = $this->model_cellsinfo->reference_date($node);
+		$maxdate = $this->model_baseline->maxdate();
+		$referencedate = $maxdate[0]->date;
+		//$referencedate = $this->model_cellsinfo->reference_date($node);
 		#$referencedate = $this->model_cellsinfo->reference_date_daily($node);
 		#echo $referencedate;
 		
@@ -3342,12 +3348,10 @@ public function alert_worstcells()
 			#echo $reportdate;
 		}
 		$date = new DateTime($reportdate);
-		$weeknum = $date->format("W");
-		$data['weeknum'] = $weeknum;
 		$data['reportdate'] = $reportdate;
 		$data['reportmoname'] = $reportmoname;
-		$data['reportagg'] = 'weekly';
-		$data['reportkpi'] = 'all';
+		$data['reportagg'] = 'daily';
+		$data['reportkpi'] = 'baseline'; 
 		#echo $weeknum;
 		
 		$data['rncs'] = $this->model_cellsinfo->rncs();
@@ -3365,12 +3369,12 @@ public function alert_worstcells()
 		$regions = array("CO", "PRSC", "NE", "BASE","ES","MG");
 		
 		$data['maxdate'] = $this->model_baseline->maxdate();
-		$data['mos'] = $this->model_baseline->mos();
+		$data['mos'] = $this->model_baseline->mos($reportdate);
 		
 		if($netype == 'network'){
 			$data['baseline_by_mo'] = $this->model_baseline->baseline_by_mo($reportdate);
-			$data['parameters_mo'] = $this->model_baseline->parameters_mo($reportmoname);
-			$data['ne_discrepancies'] = $this->model_baseline->ne_discrepancies($reportmoname);
+			$data['parameters_mo'] = $this->model_baseline->parameters_mo($reportdate,$reportmoname);
+			$data['ne_discrepancies'] = $this->model_baseline->ne_discrepancies($reportdate,$reportmoname);
 			//$data['baseline_by_rnc'] = $this->model_baseline->baseline_by_rnc($reportdate);
 			//$data['reportnetype'] = 'network';
 		 }
@@ -3383,43 +3387,43 @@ public function alert_worstcells()
 		 // }
 		 elseif ($netype == 'region') {
 			$data['baseline_by_mo'] = $this->model_baseline->region_baseline_by_mo($reportdate,$node);
-			$data['parameters_mo'] = $this->model_baseline->region_parameters_mo($reportmoname,$node);
-			$data['ne_discrepancies'] = $this->model_baseline->region_ne_discrepancies($reportmoname,$node);
+			$data['parameters_mo'] = $this->model_baseline->region_parameters_mo($reportdate,$reportmoname,$node);
+			$data['ne_discrepancies'] = $this->model_baseline->region_ne_discrepancies($reportdate,$reportmoname,$node);
 		 }
 		 elseif($netype == 'rnc'){
 			$data['baseline_by_mo'] = $this->model_baseline->rnc_baseline_by_mo($reportdate,$node);
-			$data['parameters_mo'] = $this->model_baseline->rnc_parameters_mo($reportmoname,$node);
-			$data['ne_discrepancies'] = $this->model_baseline->rnc_ne_discrepancies($reportmoname,$node);
+			$data['parameters_mo'] = $this->model_baseline->rnc_parameters_mo($reportdate,$reportmoname,$node);
+			$data['ne_discrepancies'] = $this->model_baseline->rnc_ne_discrepancies($reportdate,$reportmoname,$node);
 			//$data['reportnetype'] = 'rnc';
 		 }
 		 elseif($netype == 'nodeb'){
-			$data['baseline_by_mo'] = $this->model_baseline->nodeb_baseline_by_mo($node);
-			$data['parameters_mo'] = $this->model_baseline->nodeb_parameters_mo($reportmoname,$node);
-			$data['ne_discrepancies'] = $this->model_baseline->nodeb_ne_discrepancies($reportmoname,$node);
+			$data['baseline_by_mo'] = $this->model_baseline->nodeb_baseline_by_mo($reportdate,$node);
+			$data['parameters_mo'] = $this->model_baseline->nodeb_parameters_mo($reportdate,$reportmoname,$node);
+			$data['ne_discrepancies'] = $this->model_baseline->nodeb_ne_discrepancies($reportdate,$reportmoname,$node);
 			// #$data['reportnetype'] = 'rnc';
 		 }
 		 elseif($netype == 'cell'){
-			$data['baseline_by_mo'] = $this->model_baseline->cell_baseline_by_mo($node);
-			$data['parameters_mo'] = $this->model_baseline->cell_parameters_mo($reportmoname,$node);
-			$data['ne_discrepancies'] = $this->model_baseline->cell_ne_discrepancies($reportmoname,$node);
+			$data['baseline_by_mo'] = $this->model_baseline->cell_baseline_by_mo($reportdate,$node);
+			$data['parameters_mo'] = $this->model_baseline->cell_parameters_mo($reportdate,$reportmoname,$node);
+			$data['ne_discrepancies'] = $this->model_baseline->cell_ne_discrepancies($reportdate,$reportmoname,$node);
 			// #$data['reportnetype'] = 'rnc';
 		 }
 		 elseif($netype == 'uf'){
-			$data['baseline_by_mo'] = $this->model_baseline->uf_baseline_by_mo($node);
-			$data['parameters_mo'] = $this->model_baseline->uf_parameters_mo($reportmoname,$node);
-			$data['ne_discrepancies'] = $this->model_baseline->uf_ne_discrepancies($reportmoname,$node);
+			$data['baseline_by_mo'] = $this->model_baseline->uf_baseline_by_mo($reportdate,$node);
+			$data['parameters_mo'] = $this->model_baseline->uf_parameters_mo($reportdate,$reportmoname,$node);
+			$data['ne_discrepancies'] = $this->model_baseline->uf_ne_discrepancies($reportdate,$reportmoname,$node);
 			// #$data['reportnetype'] = 'rnc';
 		 }			
 		 elseif($netype == 'cidade'){
-			$data['baseline_by_mo'] = $this->model_baseline->cidade_baseline_by_mo($node);
-			$data['parameters_mo'] = $this->model_baseline->cidade_parameters_mo($reportmoname,$node);
-			$data['ne_discrepancies'] = $this->model_baseline->cidade_ne_discrepancies($reportmoname,$node);
+			$data['baseline_by_mo'] = $this->model_baseline->cidade_baseline_by_mo($reportdate,$node);
+			$data['parameters_mo'] = $this->model_baseline->cidade_parameters_mo($reportdate,$reportmoname,$node);
+			$data['ne_discrepancies'] = $this->model_baseline->cidade_ne_discrepancies($reportdate,$reportmoname,$node);
 			// #$data['reportnetype'] = 'rnc';
 		 }
 		 elseif($netype == 'cluster'){
-			$data['baseline_by_mo'] = $this->model_baseline->cluster_baseline_by_mo($node);
-			$data['parameters_mo'] = $this->model_baseline->cluster_parameters_mo($reportmoname,$node);
-			$data['ne_discrepancies'] = $this->model_baseline->cluster_ne_discrepancies($reportmoname,$node);
+			$data['baseline_by_mo'] = $this->model_baseline->cluster_baseline_by_mo($reportdate,$node);
+			$data['parameters_mo'] = $this->model_baseline->cluster_parameters_mo($reportdate,$reportmoname,$node);
+			$data['ne_discrepancies'] = $this->model_baseline->cluster_ne_discrepancies($reportdate,$reportmoname,$node);
 			// #$data['reportnetype'] = 'rnc';
 		 }
 		// elseif($netype == 'custom'){
@@ -3490,7 +3494,8 @@ public function alert_worstcells()
 		
 		#echo $netype;
 		
-		$referencedate = $this->model_cellsinfo->reference_date($node);
+		$maxdate = $this->model_baseline_nodeb->maxdate();
+		$referencedate = $maxdate[0]->date;
 		#$referencedate = $this->model_cellsinfo->reference_date_daily($node);
 		#echo $referencedate;
 		
@@ -3507,12 +3512,10 @@ public function alert_worstcells()
 			#echo $reportdate;
 		}
 		$date = new DateTime($reportdate);
-		$weeknum = $date->format("W");
-		$data['weeknum'] = $weeknum;
 		$data['reportdate'] = $reportdate;
 		$data['reportmoname'] = $reportmoname;
-		$data['reportagg'] = 'weekly';
-		$data['reportkpi'] = 'all';
+		$data['reportagg'] = 'daily';
+		$data['reportkpi'] = 'baseline_nodeb';
 		#echo $weeknum;
 		
 		$data['rncs'] = $this->model_cellsinfo->rncs();
@@ -3530,57 +3533,57 @@ public function alert_worstcells()
 		$regions = array("CO", "PRSC", "NE", "BASE","ES","MG");
 		
 		$data['maxdate'] = $this->model_baseline_nodeb->maxdate();
-		$data['mos'] = $this->model_baseline_nodeb->mos();
+		$data['mos'] = $this->model_baseline_nodeb->mos($reportdate);
 		
 		if($netype == 'network'){
-			$data['baseline_by_mo'] = $this->model_baseline_nodeb->baseline_by_mo($reportdate,$node);
-			$data['parameters_mo'] = $this->model_baseline_nodeb->parameters_mo($reportmoname);
-			$data['ne_discrepancies'] = $this->model_baseline_nodeb->ne_discrepancies($reportmoname);
+			$data['baseline_by_mo'] = $this->model_baseline_nodeb->baseline_by_mo($reportdate);
+			$data['parameters_mo'] = $this->model_baseline_nodeb->parameters_mo($reportdate,$reportmoname);
+			$data['ne_discrepancies'] = $this->model_baseline_nodeb->ne_discrepancies($reportdate,$reportmoname);
 			//$data['baseline_by_rnc'] = $this->model_baseline->baseline_by_rnc($reportdate);
 			//$data['reportnetype'] = 'network';
 		 }
 		 elseif ($netype == 'region') {
 			$data['baseline_by_mo'] = $this->model_baseline_nodeb->region_baseline_by_mo($reportdate,$node);
-			$data['parameters_mo'] = $this->model_baseline_nodeb->region_parameters_mo($reportmoname,$node);
-			$data['ne_discrepancies'] = $this->model_baseline_nodeb->region_ne_discrepancies($reportmoname,$node);
+			$data['parameters_mo'] = $this->model_baseline_nodeb->region_parameters_mo($reportdate,$reportmoname,$node);
+			$data['ne_discrepancies'] = $this->model_baseline_nodeb->region_ne_discrepancies($reportdate,$reportmoname,$node);
 			
 			
 			// #$data['reportnetype'] = 'region';
 		 }
 		 elseif($netype == 'rnc'){
 			$data['baseline_by_mo'] = $this->model_baseline_nodeb->rnc_baseline_by_mo($reportdate,$node);
-			$data['parameters_mo'] = $this->model_baseline_nodeb->rnc_parameters_mo($reportmoname,$node);
-			$data['ne_discrepancies'] = $this->model_baseline_nodeb->rnc_ne_discrepancies($reportmoname,$node);
+			$data['parameters_mo'] = $this->model_baseline_nodeb->rnc_parameters_mo($reportdate,$reportmoname,$node);
+			$data['ne_discrepancies'] = $this->model_baseline_nodeb->rnc_ne_discrepancies($reportdate,$reportmoname,$node);
 			//$data['reportnetype'] = 'rnc';
 		 }
 		 elseif($netype == 'nodeb'){
-			$data['baseline_by_mo'] = $this->model_baseline_nodeb->nodeb_baseline_by_mo($node);
-			$data['parameters_mo'] = $this->model_baseline_nodeb->nodeb_parameters_mo($reportmoname,$node);
-			$data['ne_discrepancies'] = $this->model_baseline_nodeb->nodeb_ne_discrepancies($reportmoname,$node);
+			$data['baseline_by_mo'] = $this->model_baseline_nodeb->nodeb_baseline_by_mo($reportdate,$node);
+			$data['parameters_mo'] = $this->model_baseline_nodeb->nodeb_parameters_mo($reportdate,$reportmoname,$node);
+			$data['ne_discrepancies'] = $this->model_baseline_nodeb->nodeb_ne_discrepancies($reportdate,$reportmoname,$node);
 			// #$data['reportnetype'] = 'rnc';
 		 }
 		 elseif($netype == 'cell'){
-			$data['baseline_by_mo'] = $this->model_baseline_nodeb->cell_baseline_by_mo($node);
-			$data['parameters_mo'] = $this->model_baseline_nodeb->cell_parameters_mo($reportmoname,$node);
-			$data['ne_discrepancies'] = $this->model_baseline_nodeb->cell_ne_discrepancies($reportmoname,$node);
+			$data['baseline_by_mo'] = $this->model_baseline_nodeb->cell_baseline_by_mo($reportdate,$node);
+			$data['parameters_mo'] = $this->model_baseline_nodeb->cell_parameters_mo($reportdate,$reportmoname,$node);
+			$data['ne_discrepancies'] = $this->model_baseline_nodeb->cell_ne_discrepancies($reportdate,$reportmoname,$node);
 			// #$data['reportnetype'] = 'rnc';
 		 }
 		 elseif($netype == 'uf'){
-			$data['baseline_by_mo'] = $this->model_baseline_nodeb->uf_baseline_by_mo($node);
-			$data['parameters_mo'] = $this->model_baseline_nodeb->uf_parameters_mo($reportmoname,$node);
-			$data['ne_discrepancies'] = $this->model_baseline_nodeb->uf_ne_discrepancies($reportmoname,$node);
+			$data['baseline_by_mo'] = $this->model_baseline_nodeb->uf_baseline_by_mo($reportdate,$node);
+			$data['parameters_mo'] = $this->model_baseline_nodeb->uf_parameters_mo($reportdate,$reportmoname,$node);
+			$data['ne_discrepancies'] = $this->model_baseline_nodeb->uf_ne_discrepancies($reportdate,$reportmoname,$node);
 			// #$data['reportnetype'] = 'rnc';
 		 }			
 		 elseif($netype == 'cidade'){
-			$data['baseline_by_mo'] = $this->model_baseline_nodeb->cidade_baseline_by_mo($node);
-			$data['parameters_mo'] = $this->model_baseline_nodeb->cidade_parameters_mo($reportmoname,$node);
-			$data['ne_discrepancies'] = $this->model_baseline_nodeb->cidade_ne_discrepancies($reportmoname,$node);
+			$data['baseline_by_mo'] = $this->model_baseline_nodeb->cidade_baseline_by_mo($reportdate,$node);
+			$data['parameters_mo'] = $this->model_baseline_nodeb->cidade_parameters_mo($reportdate,$reportmoname,$node);
+			$data['ne_discrepancies'] = $this->model_baseline_nodeb->cidade_ne_discrepancies($reportdate,$reportmoname,$node);
 			// #$data['reportnetype'] = 'rnc';
 		 }
 		 elseif($netype == 'cluster'){
-			$data['baseline_by_mo'] = $this->model_baseline_nodeb->cluster_baseline_by_mo($node);
-			$data['parameters_mo'] = $this->model_baseline_nodeb->cluster_parameters_mo($reportmoname,$node);
-			$data['ne_discrepancies'] = $this->model_baseline_nodeb->cluster_ne_discrepancies($reportmoname,$node);
+			$data['baseline_by_mo'] = $this->model_baseline_nodeb->cluster_baseline_by_mo($reportdate,$node);
+			$data['parameters_mo'] = $this->model_baseline_nodeb->cluster_parameters_mo($reportdate,$reportmoname,$node);
+			$data['ne_discrepancies'] = $this->model_baseline_nodeb->cluster_ne_discrepancies($reportdate,$reportmoname,$node);
 			// #$data['reportnetype'] = 'rnc';
 		 }
 		// elseif($netype == 'custom'){
@@ -3944,8 +3947,10 @@ public function radar()
 		$data['nekpi'] = $nekpi;		
 		
 		#$referencedate = $this->model_cellsinfo->reference_date_daily($node);
-		$referencedate = $this->model_cellsinfo->reference_date_($node);
+		//$referencedate = $this->model_cellsinfo->reference_date_($node);
 		//echo $referencedate;
+		$maxdate = $this->model_radar->maxdate();
+		$referencedate = $maxdate[0]->date;
 		
 		//Set Date and Weeknumkp
 		if($this->input->post('reportdate')){
@@ -4216,7 +4221,7 @@ public function unbalance()
 
 public function triage()
 	{
-		ini_set('memory_limit', '1024M');
+		ini_set('memory_limit', '2048M');
 		$this->load->helper('form');
 		$this->load->model('model_monitor');
 		$this->load->model('model_triage');
@@ -4333,172 +4338,5 @@ public function triage()
 		}
 	}
 	
-		public function quickreport(){
-		
-
-		$this->load->helper('form');
-		//$this->load->model('model_monitor');
-		$this->load->model('model_mainkpis');
-		$this->load->model('model_kpi_customize');
-		$this->load->model('model_cellsinfo');
-		
- 		
-		//Set Node
-		if($this->input->post('reportnename')){
-			$node = $this->input->post('reportnename');
-		} else {
-			$node = 'NETWORK';
-		}
-		$data['reportnename'] = $node;
-		
-		//Set Type
-		if($this->input->post('reportnetype')){
-			$netype = $this->input->post('reportnetype');
-		} else {
-			$netype = 'network';
-		}
-		$data['reportnetype'] = $netype;
-		#echo $netype;
-		
-		$referencedate = $this->model_cellsinfo->reference_date_($node);
-		#$referencedate = $this->model_cellsinfo->reference_date_daily($node);
-		#echo $referencedate;
-		
-		//Set Date and Weeknum
-		if($this->input->post('reportdate')){
-			$reportdate = $this->input->post('reportdate');
-			#echo $reportdate;
-			if(strtotime($reportdate) > strtotime($referencedate)){ //IF the date if greater than yesterday then it changes to the reference date
-				$reportdate = $referencedate;
-			}
-		} 
-		else {
-			$reportdate = $referencedate;
-			#echo $reportdate;
-		}
-		$date = new DateTime($reportdate);
-		$weeknum = $date->format("W");
-		$data['weeknum'] = $weeknum;
-		$data['reportdate'] = $reportdate;
-		$data['reportagg'] = 'weekly';
-		$data['reportkpi'] = 'all';
-		#echo $weeknum;
-		
-		$data['rncs'] = $this->model_cellsinfo->rncs();
-		$data['regional'] = $this->model_cellsinfo->regional();
-		$data['cidades'] = $this->model_cellsinfo->cidades();
-		$data['clusters'] = $this->model_cellsinfo->clusters();
-		#$data['cells'] = $this->model_cellsinfo->cells();
-		$data['nodebs'] = $this->model_cellsinfo->nodebs();
-		$data['ufs'] = $this->model_cellsinfo->ufs();
-		$data['custom'] = $this->model_cellsinfo->custom();
-		
-		#############################HEADER#####################		
-		
-		
-		$regions = array("CO", "PRSC", "NE", "BASE","ES","MG");
-		
-		if($netype == 'network'){
-			$data['node_weekly_report'] = $this->model_mainkpis->region_weekly_report($weeknum);
-			$data['node_daily_report'] = $this->model_mainkpis->network_daily_report($reportdate);
-			#$data['reportnetype'] = 'network';
-		}
-		elseif ($netype == 'region') {
-			$data['node_weekly_report'] = $this->model_mainkpis->rnc_weekly_report($node,$reportdate);
-			$data['node_daily_report'] = $this->model_mainkpis->region_daily_report($node,$reportdate);
-			#$data['reportnetype'] = 'region';
-		}
-		elseif($netype == 'rnc'){
-			$data['node_weekly_report'] = $this->model_mainkpis->rnc_weekly_report_rncinput($node,$reportdate);
-			$data['node_daily_report'] = $this->model_mainkpis->rnc_daily_report($node,$reportdate);
-			#$data['reportnetype'] = 'rnc';
-		}
-		elseif($netype == 'nodeb'){
-			$data['node_weekly_report'] = $this->model_mainkpis->nodeb_weekly_report($node,$weeknum);
-			$data['node_daily_report'] = $this->model_mainkpis->nodeb_daily_report($node,$reportdate);
-			#$data['reportnetype'] = 'rnc';
-		}
-		elseif($netype == 'cell'){
-			$data['node_weekly_report'] = $this->model_mainkpis->cell_weekly_report($node,$weeknum);
-			$data['node_daily_report'] = $this->model_mainkpis->cell_daily_report($node,$reportdate);
-			#$data['reportnetype'] = 'rnc';
-		}
-		elseif($netype == 'uf'){
-			$data['node_weekly_report'] = $this->model_mainkpis->uf_weekly_report($node,$weeknum);
-			$data['node_daily_report'] = $this->model_mainkpis->uf_daily_report($node,$reportdate);
-			#$data['reportnetype'] = 'rnc';
-		}			
-		elseif($netype == 'cidade'){
-			$data['node_weekly_report'] = $this->model_mainkpis->cidade_weekly_report($node,$weeknum);
-			$data['node_daily_report'] = $this->model_mainkpis->cidade_daily_report($node,$reportdate);
-			#$data['reportnetype'] = 'rnc';
-		}
-		elseif($netype == 'cluster'){
-			$data['node_weekly_report'] = $this->model_mainkpis->cluster_weekly_report($node,$weeknum);
-			$data['node_daily_report'] = $this->model_mainkpis->cluster_daily_report($node,$reportdate);
-			#$data['reportnetype'] = 'rnc';
-		}
-		elseif($netype == 'custom'){
-			$data['node_weekly_report'] = $this->model_mainkpis->user_cluster_weekly_report_dash($node,$weeknum);
-			$data['node_daily_report'] = $this->model_mainkpis->cluster_daily_report($node,$reportdate);
-		}			
-		elseif($netype == 'other'){
-			$data['node_weekly_report'] = $this->model_mainkpis->region_weekly_report($weeknum);
-			$data['node_daily_report'] = $this->model_mainkpis->other_daily_report($node,$reportdate);
-			#$data['reportnetype'] = 'rnc';
-		}		
-
-		$data['kpi_customize_db_gsm'] = $this->model_kpi_customize->kpi_customize_gsm($data);
-		$data['kpi_customize_db_umts'] = $this->model_kpi_customize->kpi_customize_umts($data);
-		$data['kpi_customize_db_lte'] = $this->model_kpi_customize->kpi_customize_lte($data);
-		/////////////////////////////////////////////////////////////////////////////////////////////
-		$data['counter_customize_db_umts'] = $this->model_kpi_customize->counter_customize_umts();
-		$data['counter_customize_db_gsm'] = $this->model_kpi_customize->counter_customize_gsm();
-		$data['counter_customize_db_lte'] = $this->model_kpi_customize->counter_customize_lte();
-		////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		$data['celulas_kpi_customize'] = $this->model_kpi_customize->cells_kpi_customize();
-		///////////////////////////////////////////////////////////////////////////////////////////////////////
-		$data['kpi_customize_UMTS_Elementoos_RNC'] = $this->model_kpi_customize->kpi_customize_UMTS_Elementos_RNC();
-		$data['kpi_customize_UMTS_Elementoos_Reg'] = $this->model_kpi_customize->kpi_customize_UMTS_Elementos_Reg();
-		$data['kpi_customize_UMTS_Elementoos_UF'] = $this->model_kpi_customize->kpi_customize_UMTS_Elementos_UF();
-		$data['kpi_customize_UMTS_Elementoos_City'] = $this->model_kpi_customize->kpi_customize_UMTS_Elementos_City();
-		$data['kpi_customize_UMTS_Elementoos_Cluster'] = $this->model_kpi_customize->kpi_customize_UMTS_Elementos_Cluster();
-		$data['kpi_customize_UMTS_Elementoos_CustomCluster'] = $this->model_kpi_customize->kpi_customize_UMTS_Elementos_CustomCluster();
-		$data['kpi_customize_UMTS_Elementoos_NodeB'] = $this->model_kpi_customize->kpi_customize_UMTS_Elementos_NodeB();
-		////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		$data['kpi_customize_GSM_Elementoos_Reg'] = $this->model_kpi_customize->kpi_customize_GSM_Elementos_Reg();
-		$data['kpi_customize_GSM_Elementoos_BSC'] = $this->model_kpi_customize->kpi_customize_GSM_Elementos_BSC();
-		$data['kpi_customize_GSM_Elementoos_UF'] = $this->model_kpi_customize->kpi_customize_GSM_Elementos_UF();
-		$data['kpi_customize_GSM_Elementoos_City'] = $this->model_kpi_customize->kpi_customize_GSM_Elementos_City();
-		$data['kpi_customize_GSM_Elementoos_BTS'] = $this->model_kpi_customize->kpi_customize_GSM_Elementos_BTS();
-		/////////////////////////////////////////////////// TESTE //////////////////////////////////////////////////
-		$data['kpi_customize_LTE_Elementoos_City'] = $this->model_kpi_customize->kpi_customize_LTE_Elementos_City();
-		$data['kpi_customize_LTE_Elementoos_Reg'] = $this->model_kpi_customize->kpi_customize_LTE_Elementos_Reg();
-		$data['kpi_customize_LTE_Elementoos_UF'] = $this->model_kpi_customize->kpi_customize_LTE_Elementos_UF();
-		$data['kpi_customize_LTE_Elementoos_eNodeB'] = $this->model_kpi_customize->kpi_customize_LTE_Elementos_eNodeB();
-		$data['kpi_customize_LTE_Elementoos_Cluster'] = $this->model_kpi_customize->kpi_customize_LTE_Elementos_Cluster();
-		////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		$this->load->view('view_header');
-		$this->load->view('view_nav',$data);
-		$this->load->view('view_kpi_customize',$data);
-		//$this->load->view('view_kpi_customize_chart',$data);
-		//$this->load->view('View_Teste'); 
-
-	}
-	
-	public function action_plano()
-	{
-		
-		$this->load->view('getuser');
-		
-	}
-	
-	public function showCelulas()
-	{
-
-		$this->load->view('view_showCells');
-		
-	}
 		
 }

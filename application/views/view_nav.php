@@ -248,7 +248,7 @@ elseif (isset($weeknum)){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="http://support.huawei.com"><img src="/npsmart/images/huawei_logo_icon.png" style="padding:0px; top:0px; width:30px; height:30px;"/></a>
+                <a class="navbar-brand" href="http://support.huawei.com"><img src="/npsmart/images/huawei_logo_icon.png" style="padding:0px; top:0px; width:30px; margin-top:-15%; height:30px;"/></a>
                
                 <a class="navbar-brand" id="aTitleVersion" href="/npsmart/umts/" style="width:170px;"><span id="aTitle">NPSmart</span>&nbsp; <span id="sVersion" style="font-size:12px; font-family:Calibri;">
                      v2.1</span></a>
@@ -301,7 +301,8 @@ elseif (isset($weeknum)){
                         </ul>
                     </li>
 					
-					<li class="disabled"><a href="#">Action Plan</a></li>
+					<li class="menuItemnqi"><a href="/npsmart/umts/triage">Cell Mapping</a></li>
+					
 					<!--<li class="disabled"><a href="#">Degradation Summary</a></li>-->
 					<li id="menuItemwaf" class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Settings<span class="caret"></span></a>
@@ -312,7 +313,7 @@ elseif (isset($weeknum)){
 					</li>
                 
                     <li class="disabled"><a href="#">Log</a></li>
-					<li class="disabled"><a href="#">Quick Report</a></li>
+					<li><a href="/npsmart/quickreport">Quick Report</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">

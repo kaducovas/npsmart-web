@@ -108,6 +108,9 @@ $("#parent_selection").change(function() {
                 $("#child_selection").html('');  
                 break;
            }
+		   		    $(function() {
+  $('#child_selection').filterByText($('#myInput'));
+});
 });
 
 //function to populate child select box
@@ -119,17 +122,66 @@ function list(array_list)
     });
 }
 
-});	
+//jQuery extension method:
+jQuery.fn.filterByText = function(textbox) {
+  return this.each(function() {
+    var select = this;
+    var options = [];
+    $(select).find('option').each(function() {
+      options.push({
+        value: $(this).val(),
+        text: $(this).text()
+      });
+    });
+    $(select).data('options', options);
+
+    $(textbox).bind('change keyup', function() {
+      var options = $(select).empty().data('options');
+      var search = $.trim($(this).val());
+      var regex = new RegExp(search, "gi");
+
+      $.each(options, function(i) {
+        var option = options[i];
+        if (option.text.match(regex) !== null) {
+          $(select).append(
+            $('<option>').text(option.text).val(option.value)
+          );
+        }
+      });
+    });
+  });
+};
+
+
+
+});
 	
 </script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+<style>
+#Filtro {
+  width: 200px;
+  font-size: 16px;
+  padding: 5px 5px 6px 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
 
+#myInput{
+border: 1px solid transparent;
+margin-left: 10px;
+width:120px;
+}
 
+#myInput:focus{
+outline:none;
+}
 
-
-
-
-	
- </head>
+</style>
+</head>
 <body>
 <?php
  $attributes = array('name' => 'reportopt', 'method' => 'post');
@@ -179,7 +231,7 @@ elseif (isset($weeknum)){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="http://support.huawei.com"><img src="/npsmart/images/huawei_logo_icon.png" style="padding:0px; top:0px; width:30px; height:30px;"/></a>
+                <a class="navbar-brand" href="http://support.huawei.com"><img src="/npsmart/images/huawei_logo_icon.png" style="padding:0px; top:0px; width:30px; margin-top:-15%; height:30px;"/></a>
                
                 <a class="navbar-brand" id="aTitleVersion" href="/npsmart/umts/" style="width:170px;"><span id="aTitle">NPSmart</span>&nbsp; <span id="sVersion" style="font-size:12px; font-family:Calibri;">
                      v2.1</span></a>
@@ -233,7 +285,7 @@ elseif (isset($weeknum)){
                     </li>
 
 
-					<li class="disabled"><a href="#">Action Plan</a></li>
+					<li class="menuItemnqi"><a href="/npsmart/umts/triage">Cell Mapping</a></li>
 				   
 	
                 <li id="menuItemwaf" class="dropdown">
@@ -300,6 +352,12 @@ Network Node : <select name="parent_selection" id="parent_selection" style="widt
     <option value="">-- Please Select --</option>
     <option value="rnc">RNC</option>
 </select>
+<div id="Filtro">
+
+<span id="SearchIcon"><i class="fa fa-search" style="font-size:15px;color:gray"></i></span>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names ..." title="Type in a name">
+
+</div>
 <select name="child_selection" id="child_selection" style="width:200px;">
 </select>
 </div>

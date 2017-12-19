@@ -8,11 +8,19 @@ class Model_radar extends CI_Model{
 	// return $query->result();
 	// }
 
+function maxdate(){
+	
+		 $query = $this->db->query(
+		 "SELECT max(date) as date from umts_kpi.radar_network_daily where week = (select max(week) from umts_kpi.radar_network_weekly where year = (select max(year) from umts_kpi.radar_network_weekly));
+;");
+ return $query->result();
+	}
+	
 	function radar_weekly_network($reportdate, $nekpi){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));		
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));		
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -82,10 +90,10 @@ STRING_AGG(composite_radar_score::text, ',' order by year,week) AS composite
 	}
 	
 	function radar_weekly_region($node,$reportdate, $nekpi){		
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));	
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -157,10 +165,10 @@ and (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."),
 	}
 	
 	function radar_weekly_rnc($node,$reportdate, $nekpi){		
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));		
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));		
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -233,10 +241,10 @@ where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."
 	}
 
 	function radar_weekly_cell($node,$reportdate, $nekpi){		
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));	
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -313,10 +321,10 @@ where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."
 	}
 	
 	function chart_weekly_network($reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -359,10 +367,10 @@ where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."
 	}	
 
 	function chart_weekly_region($node,$reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));	
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -406,10 +414,10 @@ where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."
 	}	
 	
 	function chart_weekly_rnc($node,$reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));		
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));		
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -453,10 +461,10 @@ where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."
 	}
 	
 	function network_daily_report($reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -491,7 +499,7 @@ where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."
 	   composite_radar_score AS composite
     FROM umts_kpi.radar_network_daily
 	where (year,week) >= (".$yearnum1.",".$weeknum1.")
-    and composite_radar_score is not null 
+    
 	order by date
 	;");
 
@@ -500,10 +508,10 @@ where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."
 	}	
 
 	function region_daily_report($node,$reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));	
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -539,7 +547,7 @@ where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."
     FROM umts_kpi.radar_region_daily
 	where (year,week) >= (".$yearnum1.",".$weeknum1.")
  	and region = '".$node."'
-    and composite_radar_score is not null 
+    
     order by date
 	;");
 
@@ -548,10 +556,10 @@ where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."
 	}
 
 	function rnc_daily_report($node,$reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));	
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -587,7 +595,7 @@ where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."
     FROM umts_kpi.radar_rnc_daily
 	where (year,week) >= (".$yearnum1.",".$weeknum1.")
  	and rnc = '".$node."'
-	and composite_radar_score is not null 
+	
     order by date
 	;");
 
@@ -596,10 +604,10 @@ where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."
 	}
 	
 	function cell_daily_report($node,$reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));	
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -635,7 +643,7 @@ where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."
     FROM umts_kpi.radar_cell_daily
 	where (year,week) >= (".$yearnum1.",".$weeknum1.")
  	and cellname = '".$node."'
-	and composite_radar_score is not null 
+	
     order by date
 	;");
 
@@ -644,10 +652,10 @@ where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."
 	}
 
 	function extra_info($node,$reportdate,$nekpi,$netype){		
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));	
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);

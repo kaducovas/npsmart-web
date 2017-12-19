@@ -19,7 +19,46 @@
 		$process_tools[] = $row-> process_tools;
 		$node = $row->node;
 		}	
-				 
+				 // function tonull($n)
+		// {
+			// if($n == ''){
+				// $n = 0;
+				// #return $n;				
+			// }
+				// return $n;
+		// }
+		// function tonull2($n)
+		// {
+			// if($n == '' or $n == '-'){
+				// $n = 'null';
+				// #return $n;				
+			// }
+				// return $n;
+		// }
+		// function tonull3($n)
+		// {
+			// if($n > 100){
+				// $n = 100;
+				// #return $n;				
+			// }
+				// return $n;
+		// }
+		// $rf_health_index = array_map("tonull2",$rf_health_index);
+		// $baseline = array_map("tonull2",$baseline);
+		// $throughput = array_map("tonull2",$throughput);
+		// $retention_3g = array_map("tonull2",$retention_3g);
+		// $ps_call_completion = array_map("tonull2",$ps_call_completion);
+		// $cs_call_completion = array_map("tonull2",$cs_call_completion);
+		// $availability = array_map("tonull2",$availability);
+		// $hardware_nodeb = array_map("tonull2",$hardware_nodeb);
+		// $air_interface_ul = array_map("tonull2",$air_interface_ul);
+		// $air_interface_dl = array_map("tonull2",$air_interface_dl);
+		// $sho_overhead = array_map("tonull2",$sho_overhead);
+		// $overshooters = array_map("tonull2",$overshooters);
+		// $cpich_power_ratio = array_map("tonull2",$cpich_power_ratio);
+		// $worst_aging_factor = array_map("tonull2",$worst_aging_factor);
+		// $traffic_load = array_map("tonull2",$traffic_load);
+		// $process_tools = array_map("tonull2",$process_tools); 
 		?>
 		
 <script>
@@ -232,9 +271,9 @@ credits: { enabled: false },
 exporting: { enabled: false },					
 
     xAxis: {
-        categories: ['RF Health Index','SW Release & Features','Worst Aging Factor', 'Baseline (Consistency Check)','Throughput', 'Service Retention in 3G', 
+        categories: ['SW Release & Features','Worst Aging Factor', 'Baseline (Consistency Check)','Throughput', 'Service Retention in 3G', 
 	  'PS (Call Completion)', 'CS (Call Completion)','Availability','Traffic Load','Hardware (regionB: CE & Iub/RNC)','Air Interface UL (RTWP)', 'Air Interface DL (Codes & Power)',
-	  'SHO Overhead','Overshooters','CPICH Power Ratio'],
+	  'SHO Overhead','Overshooters','CPICH Power Ratio','RF Health Index'],
 		 labels: {
 			 autoRotation:[0],
 			 distance:12,
@@ -332,34 +371,34 @@ exporting: { enabled: false },
 	    type: 'line',
 		color: '#DF0101',
         name: 'W'+week[0],
-        data: [rf_health_index[0], process_tools[0], worst_aging_factor[0], baseline[0], throughput[0], 
+        data: [process_tools[0], worst_aging_factor[0], baseline[0], throughput[0], 
 		retention_3g[0], ps_call_completion[0], cs_call_completion[0], 
 		availability[0], traffic_load[0], hardware_nodeb[0], air_interface_ul[0], air_interface_dl[0], 
-		sho_overhead[0], overshooters[0], cpich_power_ratio[0]],
+		sho_overhead[0], overshooters[0], cpich_power_ratio[0], rf_health_index[0]],
     },{
 	    type: 'line',
 		color: 'green',
         name: 'W'+week[1],
-        data: [rf_health_index[1], process_tools[1], worst_aging_factor[1], baseline[1], throughput[1], 
+        data: [process_tools[1], worst_aging_factor[1], baseline[1], throughput[1], 
 		retention_3g[1], ps_call_completion[1], cs_call_completion[1], 
 		availability[1], traffic_load[1], hardware_nodeb[1], air_interface_ul[1], air_interface_dl[1], 
-		sho_overhead[1], overshooters[1], cpich_power_ratio[1]],
+		sho_overhead[1], overshooters[1], cpich_power_ratio[1], rf_health_index[1]],
     },{
 	    type: 'line',
 		color: '#000000',
         name: 'W'+week[2],
-        data: [rf_health_index[2], process_tools[2], worst_aging_factor[2], baseline[2], throughput[2], 
+        data: [process_tools[2], worst_aging_factor[2], baseline[2], throughput[2], 
 		retention_3g[2], ps_call_completion[2], cs_call_completion[2], 
 		availability[2], traffic_load[2], hardware_nodeb[2], air_interface_ul[2], air_interface_dl[2], 
-		sho_overhead[2], overshooters[2], cpich_power_ratio[2]],
+		sho_overhead[2], overshooters[2], cpich_power_ratio[2], rf_health_index[2]],
     },{
 	    type: 'line',
 		color: 'blue',
         name: 'W'+week[3],
-        data: [rf_health_index[3], process_tools[3], worst_aging_factor[3], baseline[3], throughput[3], 
+        data: [process_tools[3], worst_aging_factor[3], baseline[3], throughput[3], 
 		retention_3g[3], ps_call_completion[3], cs_call_completion[3], 
 		availability[3], traffic_load[3], hardware_nodeb[3], air_interface_ul[3], air_interface_dl[3], 
-		sho_overhead[3], overshooters[3], cpich_power_ratio[3]],
+		sho_overhead[3], overshooters[3], cpich_power_ratio[3], rf_health_index[3]],
     },]
 });
 

@@ -2,6 +2,12 @@
 <script type="text/javascript" >
 	
 $(document).ready( function () {
+	
+	$('#table_id tfoot th').each( function (i) {
+        var title = $('#table_id thead th').eq( $(this).index() ).text();
+        $(this).html( '<input type="text" placeholder="'+title+'" data-index="'+i+'" />' );
+    } );
+	
   var table = $('#table_id').removeAttr('width').DataTable ( {
 	scrollY:        "500px",
     scrollX:        true,
@@ -13,14 +19,14 @@ $(document).ready( function () {
 	"pageLength": 50,
 	dom: 'Bfrtip',
         buttons: [
-			// {
-                // text: "<b>CELL INFO<b>",
-				// action: function ( e, dt, node, config ) {
-				// for (k=1; k<11; k++) {
-                // dt.column(k).visible( ! dt.column(k).visible() );
-				// }
-				// },
-            // },
+			{
+                text: "<b>CELL INFO<b>",
+				action: function ( e, dt, node, config ) {
+				for (k=1; k<11; k++) {
+                dt.column(k).visible( ! dt.column(k).visible() );
+				}
+				},
+            },
             {
                 text: "<b>KPI<b>",
 				action: function ( e, dt, node, config ) {
@@ -101,9 +107,9 @@ $(document).ready( function () {
 		 { width: 30, targets: [24,28,41,50,61,67,90,91,92,93,94,95,96,97,98,99] },
 		 { width: 50, targets: [1,2,7,8,9,10,101,111,42,43,44,45,47]},
 		 { width: 40, targets: [11,12,13,14,15,16,17,18,19,20,21,22,23,25,63,64] },
-		 { width: 350, targets: [26,27,40,66,62]},
-		 { width: 350, targets: [46,65,110]},
-		 { width: 550, targets: [100,103,104,105,106,107,108,109]},
+		 //{ width: 350, targets: [26,27,40,66,62]},
+		 //{ width: 350, targets: [46,65,110]},
+		 //{ width: 550, targets: [100,103,104,105,106,107,108,109]},
 		 {
                 targets: [
 11,12,13,14,15,16,17,18,19,20,21,22,23,
@@ -119,9 +125,13 @@ $(document).ready( function () {
             }
         ]
   } );
-  $(window).resize(function() {
-table.fnAdjustColumnSizing();
-});
+  
+$( table.table().container() ).on( 'keyup', 'tfoot input', function () {
+        table
+            .column( $(this).data('index') )
+            .search( this.value )
+            .draw();
+    } );
 
   } );
 
@@ -233,6 +243,9 @@ $("#parent_selection").change(function() {
                 $("#child_selection").html('');  
                 break;
            }
+		   		    $(function() {
+  $('#child_selection').filterByText($('#myInput'));
+});
 });
 
 //function to populate child select box
@@ -244,17 +257,66 @@ function list(array_list)
     });
 }
 
-});	
+//jQuery extension method:
+jQuery.fn.filterByText = function(textbox) {
+  return this.each(function() {
+    var select = this;
+    var options = [];
+    $(select).find('option').each(function() {
+      options.push({
+        value: $(this).val(),
+        text: $(this).text()
+      });
+    });
+    $(select).data('options', options);
+
+    $(textbox).bind('change keyup', function() {
+      var options = $(select).empty().data('options');
+      var search = $.trim($(this).val());
+      var regex = new RegExp(search, "gi");
+
+      $.each(options, function(i) {
+        var option = options[i];
+        if (option.text.match(regex) !== null) {
+          $(select).append(
+            $('<option>').text(option.text).val(option.value)
+          );
+        }
+      });
+    });
+  });
+};
+
+
+
+});
 	
 </script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+<style>
+#Filtro {
+  width: 200px;
+  font-size: 16px;
+  padding: 5px 5px 6px 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
 
+#myInput{
+border: 1px solid transparent;
+margin-left: 10px;
+width:120px;
+}
 
+#myInput:focus{
+outline:none;
+}
 
-
-
-
-	
- </head>
+</style>
+</head>
 <body>
 <?php
  $attributes = array('name' => 'reportopt', 'method' => 'post');
@@ -307,7 +369,7 @@ elseif (isset($weeknum)){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="http://support.huawei.com"><img src="/npsmart/images/huawei_logo_icon.png" style="padding:0px; top:0px; width:30px; height:30px;"/></a>
+                <a class="navbar-brand" href="http://support.huawei.com"><img src="/npsmart/images/huawei_logo_icon.png" style="padding:0px; top:0px; width:30px; margin-top:-15%; height:30px;"/></a>
                
                 <a class="navbar-brand" id="aTitleVersion" href="/npsmart/umts/" style="width:170px;"><span id="aTitle">NPSmart</span>&nbsp; <span id="sVersion" style="font-size:12px; font-family:Calibri;">
                      v2.1</span></a>
@@ -359,7 +421,7 @@ elseif (isset($weeknum)){
                         </ul>
                     </li>
 					
-					<li class="disabled"><a href="#">Action Plan</a></li>
+					<li class="menuItemnqi"><a href="/npsmart/umts/triage">Cell Mapping</a></li>
 					<!--<li class="disabled"><a href="#">Degradation Summary</a></li>-->
 					<li id="menuItemwaf" class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Settings<span class="caret"></span></a>
@@ -430,6 +492,12 @@ Network Node : <select name="parent_selection" id="parent_selection" style="widt
     <option value="nodeb">NodeB</option>
     <!--<option value="cluster">Cluster</option>-->
 </select>
+<div id="Filtro">
+
+<span id="SearchIcon"><i class="fa fa-search" style="font-size:15px;color:gray"></i></span>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names ..." title="Type in a name">
+
+</div>
 <select name="child_selection" id="child_selection" style="width:200px;">
 </select>
 </div>
@@ -446,7 +514,7 @@ Network Node : <select name="parent_selection" id="parent_selection" style="widt
         <select class="form-control input-sm" Id="networkNodeSelector" style="max-width:200px;"></select>
       </div>-->
 
-     <a href="#" id="btnSubmit" class="btn btn-default btn-sm" onclick='selectnenav($("#child_selection").val(),$("#parent_selection").val())';>Update</a>
+     <a href="#" id="btnSubmit" class="btn btn-default btn-sm" onclick='selectnenav_triage($("#child_selection").val(),$("#parent_selection").val())';>Update</a>
      <div class="form-group">
       </div>
 

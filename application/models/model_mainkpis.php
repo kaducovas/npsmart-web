@@ -55,7 +55,7 @@ class Model_mainkpis extends CI_Model{
 		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
 		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
 		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
 	  FROM umts_kpi.vw_main_kpis_rnc_rate_monthly
 	  where month = ".$monthnum." and region = '".$node."'
 	union
@@ -66,7 +66,7 @@ class Model_mainkpis extends CI_Model{
 		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
 		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
 		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
 	  FROM umts_kpi.vw_main_kpis_region_rate_monthly
 	  where month = ".$monthnum." and node = '".$node."'
 	  order by month, node
@@ -88,7 +88,7 @@ class Model_mainkpis extends CI_Model{
 		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
 		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
 		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
 	  FROM umts_kpi.vw_main_kpis_rnc_rate_weekly
 	    WHERE (year,week) = ('".$endyear."','".$endweek."')  
 	  and region = '".$node."'
@@ -100,7 +100,7 @@ class Model_mainkpis extends CI_Model{
 		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
 		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
 		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
 	  FROM umts_kpi.vw_main_kpis_region_rate_weekly
 	    WHERE (year,week) = ('".$endyear."','".$endweek."') 
 	  and node = '".$node."'
@@ -122,7 +122,7 @@ class Model_mainkpis extends CI_Model{
 		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
 		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
 		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
 	  FROM umts_kpi.vw_main_kpis_rnc_rate_monthly
 	  where month = ".$monthnum." and 
 	  region = 
@@ -143,7 +143,7 @@ class Model_mainkpis extends CI_Model{
 		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
 		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
 		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
 	  FROM umts_kpi.vw_main_kpis_region_rate_monthly
 	  where month = ".$monthnum." and 
 	  node = 
@@ -175,7 +175,7 @@ class Model_mainkpis extends CI_Model{
 		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
 		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
 		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
 	  FROM umts_kpi.vw_main_kpis_rnc_rate_weekly
 	  WHERE (year,week) = ('".$endyear."','".$endweek."') 
 	  and region = 
@@ -196,7 +196,7 @@ class Model_mainkpis extends CI_Model{
 		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
 		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
 		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
 	  FROM umts_kpi.vw_main_kpis_region_rate_weekly
 	  	  WHERE (year,week) = ('".$endyear."','".$endweek."') 
 	  and node = 
@@ -227,7 +227,7 @@ class Model_mainkpis extends CI_Model{
 		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
 		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
 		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
 	  FROM umts_kpi.vw_main_kpis_uf_rate_monthly
 	  where month = ".$monthnum." and node = '".$node."'
 	union
@@ -238,7 +238,7 @@ class Model_mainkpis extends CI_Model{
 		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
 		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
 		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
 	  FROM umts_kpi.vw_main_kpis_cidade_rate_monthly
 	  where month = ".$monthnum." and uf = '".$node."'
 	  order by month, node
@@ -263,7 +263,7 @@ class Model_mainkpis extends CI_Model{
 		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
 		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
 		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
 	  FROM umts_kpi.vw_main_kpis_uf_rate_monthly
 	  where month = ".$monthnum." and node = '".$uf."'
 	union
@@ -274,7 +274,7 @@ class Model_mainkpis extends CI_Model{
 		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
 		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
 		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
 	  FROM umts_kpi.vw_main_kpis_cidade_rate_monthly
 	  where month = ".$monthnum." and uf = '".$uf."'
 	  order by month, node
@@ -299,7 +299,7 @@ class Model_mainkpis extends CI_Model{
 		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
 		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
 		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
 	  FROM umts_kpi.vw_main_kpis_uf_rate_monthly
 	  where month = ".$monthnum." and node = '".$uf."'
 	union
@@ -310,7 +310,7 @@ class Model_mainkpis extends CI_Model{
 		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
 		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
 		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
 	  FROM umts_kpi.vw_main_kpis_cluster_rate_monthly
 	  where month = ".$monthnum." and uf = '".$uf."'
 	  order by month, node
@@ -436,7 +436,7 @@ function uf_weekly_report($node,$weeknum){
        data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, voice_traffic_ul, 
        voice_erlangs_num, voice_erlangs_den, hsdpa_users, hsupa_users, 
        ps_nonhs_users, dch_users, pch_users, fach_users, thp_hsdpa, 
-       thp_hsupa,'cidade'::text as type,2 as sortcol 
+       thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850, 'cidade'::text as type,2 as sortcol 
   FROM umts_kpi.vw_main_kpis_cidade_rate_weekly
   where week = ".$weeknum." and uf = '".$node."'
   order by sortcol,week, node
@@ -465,7 +465,7 @@ function cidade_weekly_report($node,$weeknum){
        data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, voice_traffic_ul, 
        voice_erlangs_num, voice_erlangs_den, hsdpa_users, hsupa_users, 
        ps_nonhs_users, dch_users, pch_users, fach_users, thp_hsdpa, 
-       thp_hsupa,'cidade'::text as type,2 as sortcol 
+       thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850, 'cidade'::text as type,2 as sortcol 
   FROM umts_kpi.vw_main_kpis_cidade_rate_weekly
   where week = ".$weeknum." and uf = '".$uf."'
   order by sortcol,week, node
@@ -492,7 +492,7 @@ function user_cluster_weekly_report_dash($node,$weeknum){
        data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, voice_traffic_ul, 
        voice_erlangs_num, voice_erlangs_den, hsdpa_users, hsupa_users, 
        ps_nonhs_users, dch_users, pch_users, fach_users, thp_hsdpa, 
-       thp_hsupa,'custom'::text as type,1 as sortcol 
+       thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850, 'custom'::text as type,1 as sortcol 
   FROM umts_kpi.vw_main_kpis_cluster_rate_weekly_2
   where week = ".$weeknum." and cluster_id = '".$cluster_id."'
   order by week,sortcol, node
@@ -521,7 +521,7 @@ function cluster_weekly_report($node,$weeknum){
        data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, voice_traffic_ul, 
        voice_erlangs_num, voice_erlangs_den, hsdpa_users, hsupa_users, 
        ps_nonhs_users, dch_users, pch_users, fach_users, thp_hsdpa, 
-       thp_hsupa,'cluster'::text as type,2 as sortcol 
+       thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850, 'cluster'::text as type,2 as sortcol 
   FROM umts_kpi.vw_main_kpis_cluster_rate_weekly
   where week = ".$weeknum." and uf = '".$uf."'
   order by sortcol,week, node
@@ -651,7 +651,7 @@ end
        retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
        availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
        voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
   FROM umts_kpi.vw_main_kpis_network_rate_weekly 
   WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
   and week not in (53)
@@ -678,7 +678,7 @@ end
        retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
        availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
        voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
   FROM umts_kpi.vw_main_kpis_uf_rate_weekly 
   WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
   and node = '".$node."'
@@ -709,7 +709,7 @@ order by year,week
        retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
        availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
        voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
   FROM umts_kpi.vw_main_kpis_cidade_rate_weekly 
 WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
   and node = '".$node."'
@@ -741,7 +741,7 @@ order by year,week
        retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
        availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
        voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
   FROM umts_kpi.vw_main_kpis_cluster_rate_weekly 
 WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
   and node = '".$node."'
@@ -827,7 +827,7 @@ order by year,week
        retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
        availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
        voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
   FROM umts_kpi.vw_main_kpis_region_rate_weekly 
   WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
   and node = '".$node."'
@@ -855,7 +855,7 @@ order by year,week
        retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
        availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
        voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
   FROM umts_kpi.vw_main_kpis_rnc_rate_weekly 
 WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
   and node = '".$node."'
@@ -880,7 +880,7 @@ order by year,week
        retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
        availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
        voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
   FROM umts_kpi.vw_main_kpis_network_rate_daily 
   WHERE date between '".$inidate."' and '".$findate."'
   and date not in ('2017-03-03','2017-03-10')
@@ -946,6 +946,7 @@ function network_commercial_hour_report($reportdate){
 		$this->load->model('model_cellsinfo');
 		$cidade_info = $this->model_cellsinfo->find_cidade_info($node);
 		$ibge = $cidade_info[0]->ibge;
+		$uf = $cidade_info[0]->uf;
 		$daterange = $reportdate;
 		$inidate = date('Y-m-d', strtotime($daterange.' -30 day'));
 		$findate = date('Y-m-d', strtotime($daterange));	
@@ -961,9 +962,9 @@ function network_commercial_hour_report($reportdate){
        data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, voice_traffic_ul, 
        voice_erlangs_num, voice_erlangs_den, hsdpa_users, hsupa_users, 
        ps_nonhs_users, dch_users, pch_users, fach_users, thp_hsdpa, 
-       thp_hsupa from umts_kpi.vw_main_kpis_cidade_rate_daily
+       thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850 from umts_kpi.vw_main_kpis_cidade_rate_daily
 	where date between '".$inidate."' and '".$findate."' 
-	and ibge = ".$ibge."
+	and ibge = ".$ibge." and uf = '".$uf."'
 	and rtwp < 0 and drop_ps > 0 and thp_hsupa > 0 
 	order by date,node
 	;");	
@@ -980,7 +981,7 @@ function network_commercial_hour_report($reportdate){
 		$inidate = date('Y-m-d', strtotime($daterange.' -30 day'));
 		$findate = date('Y-m-d', strtotime($daterange));	
 			 $query = $this->db->query(
-			 "select * from umts_kpi.vw_main_kpis_cluster_rate_daily_2
+			 "select * from umts_kpi.vw_main_kpis_cluster_rate_daily
 	where date between '".$inidate."' and '".$findate."' 
 	and cluster_id = ".$cluster_id."
   and rtwp < 0 and drop_ps > 0 and thp_hsupa > 0 	
@@ -1064,7 +1065,7 @@ end = '".$node."'
 		   sho_over, rtwp, availability, data_hsdpa, data_hsupa, ps_r99_ul, 
 		   ps_r99_dl, voice_traffic_dl, voice_traffic_ul, voice_erlangs_num, 
 		   voice_erlangs_den, hsdpa_users, hsupa_users, ps_nonhs_users, dch_users, pch_users,fach_users, 
-		   thp_hsdpa, thp_hsupa
+		   thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
 	  FROM umts_kpi.vw_main_kpis_rnc_rate_daily
 	  where date = '".$reportdate."' and region = '".$node."'
 	union
@@ -1075,7 +1076,7 @@ end = '".$node."'
        retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
        availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
        voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-       hsupa_users, ps_nonhs_users, dch_users, pch_users,fach_users, thp_hsdpa, thp_hsupa
+       hsupa_users, ps_nonhs_users, dch_users, pch_users,fach_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
   FROM umts_kpi.vw_main_kpis_region_rate_daily
 	  where date = '".$reportdate."' and node = '".$node."'
 	  order by date, node
@@ -1095,7 +1096,7 @@ end = '".$node."'
 		   sho_over, rtwp, availability, data_hsdpa, data_hsupa, ps_r99_ul, 
 		   ps_r99_dl, voice_traffic_dl, voice_traffic_ul, voice_erlangs_num, 
 		   voice_erlangs_den, hsdpa_users, hsupa_users, ps_nonhs_users, dch_users, pch_users,fach_users, 
-		   thp_hsdpa, thp_hsupa
+		   thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
 	  FROM umts_kpi.vw_main_kpis_uf_rate_daily
 	  where date = '".$reportdate."' and node = '".$node."'
 	union
@@ -1106,7 +1107,7 @@ end = '".$node."'
        retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
        availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
        voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-       hsupa_users, ps_nonhs_users, dch_users, pch_users,fach_users, thp_hsdpa, thp_hsupa
+       hsupa_users, ps_nonhs_users, dch_users, pch_users,fach_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
   FROM umts_kpi.vw_main_kpis_cidade_rate_daily
 	  where date = '".$reportdate."' and uf = '".$node."'
 	  order by date,sortcol, node
@@ -1129,7 +1130,7 @@ end = '".$node."'
 		   sho_over, rtwp, availability, data_hsdpa, data_hsupa, ps_r99_ul, 
 		   ps_r99_dl, voice_traffic_dl, voice_traffic_ul, voice_erlangs_num, 
 		   voice_erlangs_den, hsdpa_users, hsupa_users, ps_nonhs_users, dch_users, pch_users,fach_users, 
-		   thp_hsdpa, thp_hsupa
+		   thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
 	  FROM umts_kpi.vw_main_kpis_uf_rate_daily
 	  where date = '".$reportdate."' and node = '".$uf."'
 	union
@@ -1140,7 +1141,7 @@ end = '".$node."'
        retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
        availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
        voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-       hsupa_users, ps_nonhs_users, dch_users, pch_users,fach_users, thp_hsdpa, thp_hsupa
+       hsupa_users, ps_nonhs_users, dch_users, pch_users,fach_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
   FROM umts_kpi.vw_main_kpis_cidade_rate_daily
 	  where date = '".$reportdate."' and uf = '".$uf."'
 	  order by date,sortcol, node
@@ -1164,7 +1165,7 @@ end = '".$node."'
 		   sho_over, rtwp, availability, data_hsdpa, data_hsupa, ps_r99_ul, 
 		   ps_r99_dl, voice_traffic_dl, voice_traffic_ul, voice_erlangs_num, 
 		   voice_erlangs_den, hsdpa_users, hsupa_users, ps_nonhs_users, dch_users, pch_users,fach_users, 
-		   thp_hsdpa, thp_hsupa
+		   thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
 	  FROM umts_kpi.vw_main_kpis_uf_rate_daily
 	  where date = '".$reportdate."' and node = '".$uf."'
 	union
@@ -1175,7 +1176,7 @@ end = '".$node."'
        retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
        availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
        voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-       hsupa_users, ps_nonhs_users, dch_users, pch_users,fach_users, thp_hsdpa, thp_hsupa
+       hsupa_users, ps_nonhs_users, dch_users, pch_users,fach_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
   FROM umts_kpi.vw_main_kpis_cluster_rate_daily
 	  where date = '".$reportdate."' and uf = '".$uf."'
 	  order by date,sortcol, node
@@ -1198,7 +1199,7 @@ end = '".$node."'
        retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
        availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
        voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-       hsupa_users, ps_nonhs_users, dch_users, pch_users,fach_users, thp_hsdpa, thp_hsupa
+       hsupa_users, ps_nonhs_users, dch_users, pch_users,fach_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
   FROM umts_kpi.vw_main_kpis_cluster_rate_hourly_2
 	  where date = '".$reportdate."' and cluster_id = '".$cluster_id."'
 	  order by date,sortcol, node
@@ -1219,7 +1220,7 @@ end = '".$node."'
 		   ps_r99_dl, voice_traffic_dl, voice_traffic_ul, voice_erlangs_num, 
 		   voice_erlangs_den, hsdpa_users, hsupa_users, ps_nonhs_users, dch_users, pch_users,fach_users, 
 		   thp_hsdpa, thp_hsupa,1 as sortcol
-	  FROM umts_kpi.vw_main_kpis_nodeb_rate_daily_2
+	  FROM umts_kpi.vw_main_kpis_nodeb_rate_daily
 	  where date = '".$reportdate."' 
 	  and CASE
 			WHEN left(node,char_length(node)- 2) like '%%S02%%' and char_length(node)> 8 then concat('U',substring(node,position('S02' in node) + 3,(char_length(node) - position('S02' in node) + 3)))                       
@@ -1236,13 +1237,13 @@ end = '".$node."'
        availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
        voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
        hsupa_users, ps_nonhs_users, dch_users, pch_users,fach_users, thp_hsdpa, thp_hsupa,2 as sortcol
-  FROM umts_kpi.vw_main_kpis_cell_rate_daily_2
+  FROM umts_kpi.vw_main_kpis_cell_rate_daily
 	  where date = '".$reportdate."' and 
 	  			   CASE
-				WHEN left(nodeb,char_length(nodeb)- 2) like '%%S02%%' and char_length(nodeb)> 8 then concat('U',substring(nodeb,position('S02' in nodeb) + 3,(char_length(nodeb) - position('S02' in nodeb) + 3)))                       
-				WHEN left(nodeb,char_length(nodeb)- 2) like '%%S01%%' and char_length(nodeb)> 8 then concat('U',substring(nodeb,position('S01' in nodeb) + 3,(char_length(nodeb) - position('S01' in nodeb) + 3)))
-				WHEN left(nodeb,char_length(nodeb)- 2) like '%%IMP_%%' and nodeb not like '%%S01%%' then substring(nodeb,position('IMP_' in nodeb) + 4,char_length(nodeb) - position('IMP_' in nodeb) + 4)
-				else nodeb
+				WHEN left(nodebname,char_length(nodebname)- 2) like '%%S02%%' and char_length(nodebname)> 8 then concat('U',substring(nodebname,position('S02' in nodebname) + 3,(char_length(nodebname) - position('S02' in nodebname) + 3)))                       
+				WHEN left(nodebname,char_length(nodebname)- 2) like '%%S01%%' and char_length(nodebname)> 8 then concat('U',substring(nodebname,position('S01' in nodebname) + 3,(char_length(nodebname) - position('S01' in nodebname) + 3)))
+				WHEN left(nodebname,char_length(nodebname)- 2) like '%%IMP_%%' and nodebname not like '%%S01%%' then substring(nodebname,position('IMP_' in nodebname) + 4,char_length(nodebname) - position('IMP_' in nodebname) + 4)
+				else nodebname
 	end = '".$node."'
 	  order by date,sortcol, node
 	;");
@@ -1262,7 +1263,7 @@ end = '".$node."'
 		   ps_r99_dl, voice_traffic_dl, voice_traffic_ul, voice_erlangs_num, 
 		   voice_erlangs_den, hsdpa_users, hsupa_users, ps_nonhs_users, dch_users, pch_users,fach_users, 
 		   thp_hsdpa, thp_hsupa,1 as sortcol
-	  FROM umts_kpi.vw_main_kpis_nodeb_rate_daily_2
+	  FROM umts_kpi.vw_main_kpis_nodeb_rate_daily
 	  where date = '".$reportdate."' and 
 	  CASE
 WHEN left('".$node."',char_length('".$node."')- 3) like '%%S02%%' and char_length('".$node."')> 9 then concat('U',substring(left('".$node."',char_length('".$node."')- 1),position('S02' in left('".$node."',char_length('".$node."')- 1)) + 3,(char_length(left('".$node."',char_length('".$node."')- 1)) - (position('S02' in left('".$node."',char_length('".$node."')- 1)) + 3))))                       
@@ -1285,7 +1286,7 @@ end
        availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
        voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
        hsupa_users, ps_nonhs_users, dch_users, pch_users,fach_users, thp_hsdpa, thp_hsupa,2 as sortcol
-  FROM umts_kpi.vw_main_kpis_cell_rate_daily_2
+  FROM umts_kpi.vw_main_kpis_cell_rate_daily
 	  where date = '".$reportdate."' and 
 	 CASE
 WHEN left('".$node."',char_length('".$node."')- 3) like '%%S02%%' and char_length('".$node."')> 9 then concat('U',substring(left('".$node."',char_length('".$node."')- 1),position('S02' in left('".$node."',char_length('".$node."')- 1)) + 3,(char_length(left('".$node."',char_length('".$node."')- 1)) - (position('S02' in left('".$node."',char_length('".$node."')- 1)) + 3))))                       
@@ -1294,10 +1295,10 @@ WHEN left('".$node."',char_length('".$node."')- 3) like '%%IMP_%%' and left('".$
 else left('".$node."',char_length('".$node."')- 1) 
 end = 
 CASE
-WHEN left(nodeb,char_length(nodeb)- 2) like '%%S02%%' and char_length(nodeb)> 8 then concat('U',substring(nodeb,position('S02' in nodeb) + 3,(char_length(nodeb) - position('S02' in nodeb) + 3)))                       
-WHEN left(nodeb,char_length(nodeb)- 2) like '%%S01%%' and char_length(nodeb)> 8 then concat('U',substring(nodeb,position('S01' in nodeb) + 3,(char_length(nodeb) - position('S01' in nodeb) + 3)))
-WHEN left(nodeb,char_length(nodeb)- 2) like '%%IMP_%%' and nodeb not like '%%S01%%' then substring(nodeb,position('IMP_' in nodeb) + 4,char_length(nodeb) - position('IMP_' in nodeb) + 4)
-else nodeb
+WHEN left(nodebname,char_length(nodebname)- 2) like '%%S02%%' and char_length(nodebname)> 8 then concat('U',substring(nodebname,position('S02' in nodebname) + 3,(char_length(nodebname) - position('S02' in nodebname) + 3)))                       
+WHEN left(nodebname,char_length(nodebname)- 2) like '%%S01%%' and char_length(nodebname)> 8 then concat('U',substring(nodebname,position('S01' in nodebname) + 3,(char_length(nodebname) - position('S01' in nodebname) + 3)))
+WHEN left(nodebname,char_length(nodebname)- 2) like '%%IMP_%%' and nodebname not like '%%S01%%' then substring(nodebname,position('IMP_' in nodebname) + 4,char_length(nodebname) - position('IMP_' in nodebname) + 4)
+else nodebname
 end
 	  order by date,sortcol, node
 	;");
@@ -1315,7 +1316,7 @@ end
 		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
 		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
 		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
 	  FROM umts_kpi.vw_main_kpis_rnc_rate_daily
 	  where date = '".$reportdate."' and 
 	  region = 
@@ -1336,7 +1337,7 @@ end
 		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
 		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
 		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
 	  FROM umts_kpi.vw_main_kpis_region_rate_daily
 	  where date = '".$reportdate."' and 
 	  node = 
@@ -1424,7 +1425,7 @@ function network_hourly_report($reportdate){
        retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
        availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
        voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
   FROM umts_kpi.vw_main_kpis_network_rate_hourly
   WHERE date::date between '".$inidate."' and '".$findate."'
   and rtwp < 0 and drop_ps > 0 and thp_hsupa > 0  
@@ -1467,6 +1468,7 @@ function network_hourly_report($reportdate){
 		$this->load->model('model_cellsinfo');
 		$cidade_info = $this->model_cellsinfo->find_cidade_info($node);
 		$ibge = $cidade_info[0]->ibge;
+		$uf = $cidade_info[0]->uf;
 		$daterange = $reportdate;
 		$inidate = date('Y-m-d', strtotime($daterange.' -7 day'));
 		$findate = date('Y-m-d', strtotime($daterange));	
@@ -1482,10 +1484,10 @@ function network_hourly_report($reportdate){
        data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, voice_traffic_ul, 
        voice_erlangs_num, voice_erlangs_den, hsdpa_users, hsupa_users, 
        dch_users, pch_users, fach_users, ps_nonhs_users, thp_hsdpa, 
-       thp_hsupa from umts_kpi.vw_main_kpis_cidade_rate_hourly
+       thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850 from umts_kpi.vw_main_kpis_cidade_rate_hourly
 	where date between '".$inidate."' and '".$findate." 23:30:00' 
 	and	rtwp < 0 and drop_ps > 0 and thp_hsupa > 0  
-	and ibge = '".$ibge."'
+	and ibge = ".$ibge." and uf = '".$uf."'
 	order by date,node
 	;");	
 
@@ -1544,7 +1546,7 @@ function network_hourly_report($reportdate){
     round((ps_r99_dl / (1024 * 1024)::real)::numeric, 2) AS ps_r99_dl,
 	voice_traffic_dl, voice_traffic_ul, voice_erlangs_num, 
        voice_erlangs_den, hsdpa_users, hsupa_users, ps_nonhs_users, dch_users, pch_users,fach_users, 
-       thp_hsdpa, thp_hsupa
+       thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
   FROM umts_kpi.vw_main_kpis_rnc_rate_hourly
 	where date between '".$inidate."' and '".$findate." 23:30:00' 
 	and	rtwp < 0 and drop_ps > 0 and thp_hsupa > 0  
