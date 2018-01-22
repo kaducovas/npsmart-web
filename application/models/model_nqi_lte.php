@@ -606,7 +606,7 @@ function nqi_weekly_cluster($node,$reportdate){
 		
 		$query = $this->db->query(
 			"
-			select * from (SELECT 1 as sortcol, uf as node, 'uf'::text as type,
+			select * from (SELECT 1 as sortcol, region as node, 'region'::text as type,
 STRING_AGG(week::text, ',' order by year,week) AS weeks,
 STRING_AGG(qda::text, ',' order by year,week) AS qda,
 STRING_AGG(qdr::text, ',' order by year,week) AS qdr,
@@ -615,10 +615,19 @@ STRING_AGG(lte_retention::text, ',' order by year,week) AS lte_retention,
 STRING_AGG(qde_dl::text, ',' order by year,week) AS qde_dl,
 STRING_AGG(qde_ul::text, ',' order by year,week) AS qde_ul,
 STRING_AGG(nqi::text, ',' order by year,week) AS nqi
-		FROM lte_kpi.vw_nqi_weekly_uf
+		FROM lte_kpi.vw_nqi_weekly_region
 		where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."),(".$yearnum3.",".$weeknum3."),(".$yearnum4.",".$weeknum4."))
-		and uf = '".$uf."'
-		group by uf
+		and region = 
+		CASE
+			WHEN '".$uf."' = ANY (ARRAY['AC'::text, 'DF'::text, 'MS'::text, 'MT'::text, 'RO'::text, 'GO'::text, 'TO'::text]) THEN 'CO'::text
+			WHEN '".$uf."' = ANY (ARRAY['AL'::text, 'CE'::text, 'PB'::text, 'PE'::text, 'PI'::text, 'RN'::text]) THEN 'NE'::text
+			WHEN '".$uf."' = 'BA'::text THEN 'BASE'::text
+			WHEN '".$uf."' = 'MG'::text THEN 'MG'::text
+			WHEN '".$uf."' = ANY (ARRAY['PR'::text, 'SC'::text]) THEN 'PRSC'::text
+			WHEN '".$uf."' = 'ES'::text THEN 'ES'::text
+		ELSE 'UNKNOWN'::text
+		END
+		group by node
 		UNION
 		SELECT 2 as sortcol, cluster as node, 'clusters'::text as type,
 STRING_AGG(week::text, ',' order by year,week) AS weeks,
@@ -630,11 +639,20 @@ STRING_AGG(qde_dl::text, ',' order by year,week) AS qde_dl,
 STRING_AGG(qde_ul::text, ',' order by year,week) AS qde_ul,
 STRING_AGG(nqi::text, ',' order by year,week) AS nqi
 		FROM lte_kpi.vw_nqi_weekly_cluster
-		where cluster = '".$node."'
-		and uf = '".$uf."'
+		where region = 
+		CASE
+			WHEN '".$uf."' = ANY (ARRAY['AC'::text, 'DF'::text, 'MS'::text, 'MT'::text, 'RO'::text, 'GO'::text, 'TO'::text]) THEN 'CO'::text
+			WHEN '".$uf."' = ANY (ARRAY['AL'::text, 'CE'::text, 'PB'::text, 'PE'::text, 'PI'::text, 'RN'::text]) THEN 'NE'::text
+			WHEN '".$uf."' = 'BA'::text THEN 'BASE'::text
+			WHEN '".$uf."' = 'MG'::text THEN 'MG'::text
+			WHEN '".$uf."' = ANY (ARRAY['PR'::text, 'SC'::text]) THEN 'PRSC'::text
+			WHEN '".$uf."' = 'ES'::text THEN 'ES'::text
+		ELSE 'UNKNOWN'::text
+		END
+		--and uf = '".$uf."'
 		and (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."),(".$yearnum3.",".$weeknum3."),(".$yearnum4.",".$weeknum4."))
-		group by cluster,uf) t
-		order by sortcol
+		group by cluster) t
+		order by sortcol,(regexp_split_to_array(nqi::TEXT, E','))[4]::real
 		;");
 
 		return $query->result();

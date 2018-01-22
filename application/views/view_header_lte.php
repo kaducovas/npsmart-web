@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="shortcut icon" href="http://freelogo2016cdn.b-cdn.net/wp-content/uploads/2016/12/huawei-logo.png">
 <meta charset="utf-8">
 
 <script src='/npsmart/js/jquery-2.1.3.min.js'></script>
@@ -23,6 +24,8 @@
 <!--<link rel="stylesheet" href="https://cdn.datatables.net/1.10.9/css/dataTables.bootstrap.min.css">-->
 <link rel="stylesheet" href="/npsmart/css/bootstrap.min.css">
 
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script src="/npsmart/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/npsmart/css/datepicker.min.css" />

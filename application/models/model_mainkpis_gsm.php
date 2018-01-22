@@ -383,7 +383,7 @@ function cidade_weekly_report($node,$weeknum){
 		$query = $this->db->query(
 			 "SELECT *,'uf'::text as type,1 as sortcol from gsm_kpi.vw_main_kpis_uf_rate_weekly where week = ".$weeknum." and node = '".$uf."'
 	  UNION
-	  SELECT week, concat(node,' - ',uf) as node, acc_cs, retainability_cs, availability, 
+	  SELECT year,week, concat(node,' - ',uf) as node, acc_cs, retainability_cs, availability, 
        smp_5, smp_7, smp_8, smp_9, sdcch_traffic, tch_traffic_fr, tch_traffic_hr,smp_5_ericsson,smp_5_nokia,smp_5_siemens, 
        smp_7_ericsson,smp_7_nokia,smp_7_siemens, smp_8_ericsson,smp_8_nokia,smp_8_siemens, 
 	   smp_9_ericsson,smp_9_nokia,smp_9_siemens,'cidade'::text as type,2 as sortcol 
@@ -430,7 +430,7 @@ function bts_weekly_report($node,$weeknum){
 			 "SELECT *,'bts'::text as type,1 as sortcol from gsm_kpi.vw_main_kpis_bts_rate_weekly where week = ".$weeknum."
 			 and node = '".$node."'
 	  UNION
-				SELECT week, region, bsc,node, acc_cs, round((retainability_cs::numeric),2), 
+				SELECT year,week, region, bsc,node, acc_cs, round((retainability_cs::numeric),2), 
        availability, smp_5, smp_7, smp_8, smp_9, sdcch_traffic, tch_traffic_fr, 
        tch_traffic_hr,smp_5_ericsson,smp_5_nokia,smp_5_siemens, 
        smp_7_ericsson,smp_7_nokia,smp_7_siemens, smp_8_ericsson,smp_8_nokia,smp_8_siemens, 

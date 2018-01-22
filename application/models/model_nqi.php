@@ -470,7 +470,7 @@ STRING_AGG(nqi_cs::text, ',' order by year,week) AS nqi_cs
 #		$monthnum = $date->format("m");		
 		$query = $this->db->query(
 		"
-		select * from (select * from (SELECT 1 as sortcol, node, 'uf'::text as type,
+		select * from (SELECT 1 as sortcol, node, 'uf'::text as type,
 STRING_AGG(month::text, ',' order by year,month) AS weeks,
 STRING_AGG(qda_ps_f2h::text, ',' order by year,month) AS qda_ps_f2h,
 STRING_AGG(qdr_ps::text, ',' order by year,month) AS qdr_ps,
@@ -572,7 +572,7 @@ STRING_AGG(nqi_cs::text, ',' order by year,week) AS nqi_cs
 		where node not in ('UNKNOWN')
 		and uf = '".$node."'
 	and (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."),(".$yearnum3.",".$weeknum3."),(".$yearnum4.",".$weeknum4."))
-		and year in (2016,2017)
+		and year in (2017,2018)
 		group by node,uf) t
 		order by sortcol,
 		(regexp_split_to_array(".$order."::TEXT, E','))[4]::real
@@ -861,7 +861,7 @@ STRING_AGG(retention_cs::text, ',' order by year,week) AS retention_cs,
 STRING_AGG(nqi_cs::text, ',' order by year,week) AS nqi_cs
 		FROM umts_kpi.vw_nqi_weekly_region
 		where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."),(".$yearnum3.",".$weeknum3."),(".$yearnum4.",".$weeknum4."))
-		and year in (2016,2017)
+		and year in (2017,2018)
 		and node = 
 		CASE
 			WHEN '".$uf."' = ANY (ARRAY['AC'::text, 'DF'::text, 'MS'::text, 'MT'::text, 'RO'::text, 'GO'::text, 'TO'::text]) THEN 'CO'::text
@@ -901,7 +901,7 @@ STRING_AGG(nqi_cs::text, ',' order by year,week) AS nqi_cs
 		ELSE 'UNKNOWN'::text
 		END 		
 		and (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."),(".$yearnum3.",".$weeknum3."),(".$yearnum4.",".$weeknum4."))
-		and year in (2016,2017)
+		and year in (2017,2018)
 		group by node) t
 		order by sortcol,
 		(regexp_split_to_array(".$order."::TEXT, E','))[4]::real 
@@ -1154,7 +1154,7 @@ STRING_AGG(nqi_cs::text, ',' order by year,week) AS nqi_cs
 		where node not in ('UNKNOWN')
 		and nodeb = '".$nodeb."'
 		and (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."),(".$yearnum3.",".$weeknum3."),(".$yearnum4.",".$weeknum4."))
-		and year in (2016,2017)
+		and year in (2017,2018)
 		group by node
 		order by sortcol,node
 	;");

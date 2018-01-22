@@ -265,7 +265,7 @@ class Umts extends CI_Controller {
 		$this->load->view('view_header');
 		$this->load->view('view_nav',$data);
 		$this->load->view('view_mainkpis_chart',$data);
-		if (($netype == 'nodeb' or $netype == 'cell') and $reportdate == $referencedate){
+		if (($netype == 'nodeb' or $netype == 'cell') and strtotime($reportdate) == strtotime($referencedate)){
 		$this->load->view('view_mainkpis_daily',$data);
 		}
 		else{
@@ -568,12 +568,21 @@ public function ch()
 		
 		
 		//Set Date and Weeknum
+		$maxdate = $this->model_capacity->maxdate();
+		$referencedate = $maxdate[0]->date;
+		
+		//Set Date and Weeknumkp
 		if($this->input->post('reportdate')){
 			$reportdate = $this->input->post('reportdate');
-		} else {
-			$reportdate = date("Y-m-d");
-			$reportdate = date('Y-m-d', strtotime($reportdate.' -7 day'));
+			if(strtotime($reportdate) > strtotime($referencedate)){ //IF the date if greater than yesterday then it changes to the reference date
+				$reportdate = $referencedate;
+			}
+		} 
+		else {
+			$reportdate = $referencedate;
 		}
+
+		
 		$date = new DateTime($reportdate);
 		$weeknum = $date->format("W");
 		$yearnum = $date->format("o");
@@ -614,7 +623,7 @@ public function ch()
 			$data['reportnetype'] = 'rnc';
 		}
 		
-		$this->load->view('view_header');
+		$this->load->view('view_header_capacity');
 		$this->load->view('view_nav_cell_nodeb_capacity',$data);
 		$this->load->view('view_capacity_chart',$data);
 		$this->load->view('view_capacity',$data);
@@ -1347,7 +1356,7 @@ function datatable()
 		#echo $nekpi;
 		$data['reportnetype'] = $netype;		
 		
-		$referencedate = $this->model_cellsinfo->reference_date_daily($node);
+		$referencedate = $this->model_cellsinfo->reference_date($node);
 		//echo $referencedate;
 		
 		//Set Date and Weeknum
@@ -2500,7 +2509,7 @@ public function event()
 			// $data['reportnetype'] = 'city';
 		// }
 		
-		$this->load->view('view_header');
+		$this->load->view('view_header_txintegrity');
 		$this->load->view('view_nav_event',$data);
 		$this->load->view('view_mainkpis_chart',$data);
 		#$this->load->view('view_mainkpis',$data);
@@ -2613,7 +2622,7 @@ public function event2()
 			// $data['reportnetype'] = 'city';
 		// }
 		
-		$this->load->view('view_header');
+		$this->load->view('view_header_txintegrity');
 		$this->load->view('view_nav_event',$data);
 		$this->load->view('view_mainkpis_chart2',$data);
 		#$this->load->view('view_mainkpis',$data);
@@ -4041,7 +4050,7 @@ public function radar()
 			// // // $data['reportnetype'] = 'city';
 			// // }
 		
-		$this->load->view('view_header');	
+		$this->load->view('view_header_radar');	
 		$this->load->view('view_nav_radar',$data);
 		if($netype == 'network' or $netype == 'region' or $netype == 'rnc' or $netype == 'cell'){
 		if($nekpi == 'radar'){
@@ -4160,8 +4169,11 @@ public function unbalance()
 		$data['reportnetype'] = $netype;		
 		
 		#$referencedate = $this->model_cellsinfo->reference_date_daily($node);
-		$referencedate = $this->model_cellsinfo->reference_date_($node);
+		//$referencedate = $this->model_cellsinfo->reference_date_($node);
 		//echo $referencedate;
+		
+		$maxdate = $this->model_unbalance->maxdate();
+		$referencedate = $maxdate[0]->date;
 		
 		//Set Date and Weeknumkp
 		if($this->input->post('reportdate')){
@@ -4260,8 +4272,11 @@ public function triage()
 		$data['reportcell'] = $reportcell;	
 		
 		#$referencedate = $this->model_cellsinfo->reference_date_daily($node);
-		$referencedate = $this->model_cellsinfo->reference_date_($node);
+		//$referencedate = $this->model_cellsinfo->reference_date_($node);
 		//echo $referencedate;
+		
+		$maxdate = $this->model_triage->maxdate();
+		$referencedate = $maxdate[0]->date;
 		
 		//Set Date and Weeknumkp
 		if($this->input->post('reportdate')){
@@ -4337,6 +4352,226 @@ public function triage()
 			$this->load->view('view_triage_cellmapping',$data);
 		}
 	}
-	
+
+public function tx_integrity()
+	{
+		ini_set('memory_limit', '2048M');
+		$this->load->helper('form');
+		$this->load->model('model_monitor');
+		$this->load->model('model_txintegrity');
+		$this->load->model('model_cellsinfo');
 		
+		if($this->input->post('reportnename')){
+			$node = $this->input->post('reportnename');
+		} else {
+			$node = 'NETWORK';
+		}
+		$data['reportnename'] = $node;
+
+		//Set Type
+		if($this->input->post('reportnetype')){
+			$netype = $this->input->post('reportnetype');
+		} else {
+			$netype = 'network';
+		}
+		$data['reportnetype'] = $netype;		
+
+			// Set KPI
+		if($this->input->post('kpi')){
+			$nekpi = $this->input->post('kpi');
+		} else {
+			$nekpi = 'overview';
+		}
+		
+		#echo $nekpi;
+		$data['nekpi'] = $nekpi;		
+
+		//Set CELL
+		if($this->input->post('reportcell')){
+			$reportcell = $this->input->post('reportcell');
+		} else {
+			$reportcell = false;
+		}
+		$data['reportcell'] = $reportcell;	
+		
+		#$referencedate = $this->model_cellsinfo->reference_date_daily($node);
+		//$referencedate = $this->model_cellsinfo->reference_date_($node);
+		//echo $referencedate;
+		
+		$maxdate = $this->model_txintegrity->maxdate();
+		$referencedate = $maxdate[0]->date;
+		
+		//Set Date and Weeknumkp
+		if($this->input->post('reportdate')){
+			$reportdate = $this->input->post('reportdate');
+			if(strtotime($reportdate) > strtotime($referencedate)){ //IF the date if greater than yesterday then it changes to the reference date
+				$reportdate = $referencedate;
+			}
+		} 
+		else {
+			$reportdate = $referencedate;
+		}
+
+		$date = new DateTime($reportdate);
+		$weeknum = $date->format("W");
+		$data['weeknum'] = $weeknum;
+		$data['reportdate'] = $reportdate;
+		$data['reportagg'] = 'weekly';
+		$data['reportkpi'] = $nekpi;
+		#echo $weeknum;
+
+		$data['rncs'] = $this->model_cellsinfo->rncs();
+		$data['regional'] = $this->model_cellsinfo->regional();
+		$data['cidades'] = $this->model_cellsinfo->cidades();
+		$data['clusters'] = $this->model_cellsinfo->clusters();
+		$data['nodebs'] = $this->model_cellsinfo->nodebs();
+		#$data['nodebs'] = $this->model_cellsinfo->nodebs_cells_db();
+		$data['ufs'] = $this->model_cellsinfo->ufs();
+		$data['custom'] = $this->model_cellsinfo->custom();		
+		#############################HEADER#####################		
+		
+		
+		$regions = array("CO", "PRSC", "NE", "BASE","ES","MG");
+		if($netype == 'nodeb'){
+		$data['txintegrity_daily'] = $this->model_txintegrity->txintegrity_nodeb_daily($node,$reportdate);
+		}
+		
+		if($netype == 'network'){
+		$data['txintegrity_chart'] = $this->model_txintegrity->txintegrity_network_chart($reportdate);
+		$data['txintegrity_week'] = $this->model_txintegrity->txintegrity_network($reportdate);
+		}
+		elseif($netype == 'region'){
+		$data['txintegrity_chart'] = $this->model_txintegrity->txintegrity_region_chart($node,$reportdate);
+		$data['txintegrity_week'] = $this->model_txintegrity->txintegrity_region($node,$reportdate);
+		}
+		elseif($netype == 'rnc'){
+		$data['txintegrity_chart'] = $this->model_txintegrity->txintegrity_rnc_chart($node,$reportdate);
+		$data['txintegrity_week'] = $this->model_txintegrity->txintegrity_rnc($node,$reportdate);
+		}
+		elseif($netype == 'nodeb'){
+		$data['txintegrity_chart'] = $this->model_txintegrity->txintegrity_nodeb_chart($node,$reportdate);
+		$data['txintegrity_week'] = $this->model_txintegrity->txintegrity_nodeb($node,$reportdate);
+		}
+		elseif($netype == 'uf'){
+		$data['txintegrity_chart'] = $this->model_txintegrity->txintegrity_uf_chart($node,$reportdate);
+		$data['txintegrity_week'] = $this->model_txintegrity->txintegrity_uf($node,$reportdate);
+		}
+		elseif($netype == 'cidade'){
+		$data['txintegrity_chart'] = $this->model_txintegrity->txintegrity_cidade_chart($node,$reportdate);
+		$data['txintegrity_week'] = $this->model_txintegrity->txintegrity_cidade($node,$reportdate);
+		}
+		elseif($netype == 'cluster'){
+		$data['txintegrity_chart'] = $this->model_txintegrity->txintegrity_cluster_chart($node,$reportdate);
+		$data['txintegrity_week'] = $this->model_txintegrity->txintegrity_cluster($node,$reportdate);
+		}
+		
+		$this->load->view('view_header_txintegrity');	
+		$this->load->view('view_nav_txintegrity',$data);
+		if($nekpi == 'overview'){
+			//$this->load->view('view_txintegrity_chart_new',$data);
+			$this->load->view('view_txintegrity_chart_pie',$data);
+			$this->load->view('view_txintegrity_overview',$data);		 
+		}
+		else{
+			
+			if($netype == 'nodeb'){
+			$this->load->view('view_txintegrity_chart_daily',$data);
+			}
+			$this->load->view('view_txintegrity',$data);
+		}
+	}	
+	
+	public function capacity_wc()
+	{
+		$this->load->helper('form');
+		$this->load->model('model_monitor');
+		$this->load->model('model_mainkpis');
+		$this->load->model('model_capacity_wc');
+		$this->load->model('model_cellsinfo');
+		
+		if($this->input->post('reportnename')){
+			$node = $this->input->post('reportnename');
+		} else {
+			$node = 'NETWORK';
+		}
+		$data['reportnename'] = $node;
+
+		//Set Type
+		if($this->input->post('reportnetype')){
+			$netype = $this->input->post('reportnetype');
+		} else {
+			$netype = 'network';
+		}
+		$data['reportnetype'] = $netype;		
+
+			// Set KPI
+		if($this->input->post('kpi')){
+			$nekpi = $this->input->post('kpi');
+		} else {
+			$nekpi = false;
+		}
+		
+		#echo $nekpi;
+		$data['nekpi'] = $nekpi;		
+		
+		//Set Date and Weeknum
+		$maxdate = $this->model_capacity_wc->maxdate();
+		$referencedate = $maxdate[0]->date;
+		
+		//Set Date and Weeknumkp
+		if($this->input->post('reportdate')){
+			$reportdate = $this->input->post('reportdate');
+			if(strtotime($reportdate) > strtotime($referencedate)){ //IF the date if greater than yesterday then it changes to the reference date
+				$reportdate = $referencedate;
+			}
+		} 
+		else {
+			$reportdate = $referencedate;
+		}
+
+		$date = new DateTime($reportdate);
+		$weeknum = $date->format("W");
+		$yearnum = $date->format("o");
+		$data['weeknum'] = $weeknum;
+		$data['reportdate'] = $reportdate;
+		$data['reportagg'] = 'weekly';
+		$data['reportkpi'] = $nekpi;
+		#echo $weeknum;
+
+		$data['rncs'] = $this->model_cellsinfo->rncs();
+		$data['regional'] = $this->model_cellsinfo->regional();
+		$data['cidades'] = $this->model_cellsinfo->cidades();
+		$data['clusters'] = $this->model_cellsinfo->clusters();
+		$data['nodebs'] = $this->model_cellsinfo->nodebs();
+		#$data['nodebs'] = $this->model_cellsinfo->nodebs_cells_db();
+		$data['ufs'] = $this->model_cellsinfo->ufs();
+		$data['custom'] = $this->model_cellsinfo->custom();		
+		#############################HEADER#####################		
+		
+		
+		$regions = array("CO", "PRSC", "NE", "BASE","ES","MG");
+		
+		if($netype == 'network'){
+			$data['capacity'] = $this->model_capacity_wc->network_capacity($yearnum,$weeknum,$nekpi);
+		}
+		elseif ($netype == 'region') {
+			$data['capacity'] = $this->model_capacity_wc->region_capacity($yearnum,$weeknum,$node,$nekpi);
+		}
+		elseif($netype == 'rnc'){
+			$data['capacity'] = $this->model_capacity_wc->rnc_capacity($yearnum,$weeknum,$node,$nekpi);
+		}
+		elseif($netype == 'node'){
+			$data['capacity'] = $this->model_capacity_wc->node_capacity($yearnum,$weeknum,$node,$nekpi);
+			$data['capacity_daily'] = $this->model_capacity_wc->node_capacity_daily($reportdate,$node,$nekpi);
+		}
+		
+		$this->load->view('view_header_capacity');
+		$this->load->view('view_nav_cell_nodeb_capacity',$data);
+		if($netype == 'node'){
+		$this->load->view('view_capacity_wc_chart_daily',$data);
+		}
+		$this->load->view('view_capacity_wc',$data);
+	}		
 }
+
+

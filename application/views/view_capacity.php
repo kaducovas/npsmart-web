@@ -39,41 +39,43 @@ foreach($dash_capacity as $row){
   
  <div id="container" class="main"> 
 
-<form action="/npsmart/umts/worstcells" name="wcform" method="post">
-<input type="hidden" id="rnc" name="rnc" value="" />
-<input type="hidden" id="date" name="wcdate" value="" />
-<input type="hidden" id="kpi" name="kpi" value="" />
+<form action="/npsmart/umts/capacity_wc" name="capwc" method="post">
+<input type="hidden" id="wcreportnetype" name="reportnetype" value="" />
+<input type="hidden" id="wcreportnename" name="reportnename" value="" />
+<input type="hidden" id="wcreportdate" name="reportdate" value="" />
+<input type="hidden" id="wckpi" name="kpi" value="" />
+
 <div align="left">
 <a target="_blank" class="link" href="/npsmart/output/cell_utilization_weekly.csv">Download Cell Capacity</a>
 <br>
 <a target="_blank" class="link" href="/npsmart/output/nodeb_utilization_weekly.csv">Download NodeB Capacity</a>
 </div>
-<div width="50%">
-<table id="table_id" class="cell-border compact hover" border="1 solid black" cellspacing="0" width="100%">
+<div width="100%">
+<table id="table_id" class="cell-border compact hover" border="1 solid black" cellspacing="0" width="99%">
 
     <thead>
 	<tr>
 	
 	<tr>
-		<th rowspan="3" bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">Node</font></th>
-        <th colspan="15" bgcolor="#3C6D7A" align="center"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">Cell Resource Utilization</font></th>
-        <th colspan="9" bgcolor="#3C6D7A" align="center"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">NodeB Resource Utilization</font></th>
+		<th style='border-right-width: 1px; border-right-color: #363636;' rowspan="3" bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">Node</font></th>
+        <th style='border-right-width: 1px; border-right-color: #363636; border-left-width: 1px; border-left-color: #363636;' colspan="15" bgcolor="#3C6D7A" align="center"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">Cell Resource Utilization</font></th>
+        <th style='border-left-width: 1px; border-left-color: #363636;' colspan="9" bgcolor="#3C6D7A" align="center"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">NodeB Resource Utilization</font></th>
 		</tr>
 			
-            <th colspan="3" bgcolor="#3C6D7A" align="center"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">Non-HS Power</font></th>
+            <th style='border-left-width: 1px; border-left-color: #363636;' colspan="3" bgcolor="#3C6D7A" align="center"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">Non-HS Power</font></th>
             <th colspan="3" bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">Non-HS Code</th>
             <th colspan="3" bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">FACH</font></th>
             <th colspan="3" bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">RACH</font></th>
-            <th colspan="3" bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">PCH</font></th>
+            <th style='border-right-width: 1px; border-right-color: #363636;' colspan="3" bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">PCH</font></th>
 			<!--<th colspan="3" bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">RTWP Free Time</font></th>
 			<th colspan="3" bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">RTWP Busy Time</font></th>-->
-            <th colspan="3" bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">DLCE</font></th>
+            <th style='border-left-width: 1px; border-left-color: #363636;' colspan="3" bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">DLCE</font></th>
             <th colspan="3" bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">ULCE</font></th>			
             <th colspan="3" bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">CNBAP</font></th>			
         </tr>
 		<tr>
 
-            <th bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">0-50%</font></th>
+            <th style='border-left-width: 1px; border-left-color: #363636;' bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">0-50%</font></th>
             <th bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt"> 50 - 70%</font></th>
             <th bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt"> 70 - 100%</font></th>
 			<th bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">0 - 50%</font></th>
@@ -87,14 +89,14 @@ foreach($dash_capacity as $row){
             <th bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt"> 70 - 100%</font></th>		
            <th bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">0 - 40%</font></th>
             <th bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt"> 40 - 60%</font></th>
-            <th bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt"> 60 - 100%</font></th>
+            <th style='border-right-width: 1px; border-right-color: #363636;' bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt"> 60 - 100%</font></th>
  <!--           <th bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">< -100dBm </font></th>
             <th bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">-100 - -90dBm</font></th> 
             <th bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">> -90dBm </font></th>
             <th bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">< -100dBm </font></th>
             <th bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">-100 - -90dBm</font></th> 
             <th bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">> -90dBm </font></th>-->
-            <th bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">0 - 50%</font></th>
+            <th style='border-left-width: 1px; border-left-color: #363636;' bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">0 - 50%</font></th>
             <th bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt"> 50 - 70%</font></th>
             <th bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt"> 70 - 100%</font></th>
             <th bgcolor="#3C6D7A"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">0 - 50%</font></th>
@@ -120,8 +122,8 @@ foreach($dash_capacity as $row){
 #href='/npsmart/umts/main?node=".$node[$k]."'
 foreach ($node as $k => $v) {
 					echo "<tr>";
-					echo "<td value='".$node[$k]."'><a id='".$node[$k]."' onclick='selectne(this)' class='node' value='".$node[$k]."'>".$node[$k]."</a></td>";
-					echo "<td><font color='".($dlpowerrange1[$k] <1 ?$good:$good)."'>".$dlpowerrange1[$k]."</font></td>";
+					echo "<td style='border-right-width: 1px; border-right-color: #363636;' value='".$node[$k]."'><a id='".$node[$k]."' onclick='selectne(this)' class='node' value='".$node[$k]."'>".$node[$k]."</a></td>";
+					echo "<td style='border-left-width: 1px; border-left-color: #363636;'><font color='".($dlpowerrange1[$k] <1 ?$good:$good)."'>".$dlpowerrange1[$k]."</font></td>";
 					echo "<td><font color='".($dlpowerrange2[$k] <1 ?$good:$yellow)."'>".$dlpowerrange2[$k]."</font></td>";
 					echo "<td><font color='".($dlpowerrange3[$k] < 1?$good:$bad)."'>".$dlpowerrange3[$k]."</font></td>";
 					echo "<td><font color='".($coderange1[$k] <1 ?$good:$good)."'>".$coderange1[$k]."</font></td>";
@@ -135,8 +137,8 @@ foreach ($node as $k => $v) {
 					echo "<td><font color='".($rachrange3[$k] < 1?$good:$bad)."'>".$rachrange3[$k]."</font></td>";
 					echo "<td><font color='".($pchrange1[$k] <1 ?$good:$good)."'>".$pchrange1[$k]."</font></td>";
 					echo "<td><font color='".($pchrange2[$k] <1 ?$good:$yellow)."'>".$pchrange2[$k]."</font></td>";
-					echo "<td><font color='".($pchrange3[$k] < 1?$good:$bad)."'>".$pchrange3[$k]."</font></td>";					
-					echo "<td><font color='".($dlcerange1[$k] <1 ?$good:$good)."'>".$dlcerange1[$k]."</font></td>";
+					echo "<td style='border-right-width: 1px; border-right-color: #363636;'><font color='".($pchrange3[$k] < 1?$good:$bad)."'>".$pchrange3[$k]."</font></td>";					
+					echo "<td style='border-left-width: 1px; border-left-color: #363636;'><font color='".($dlcerange1[$k] <1 ?$good:$good)."'>".$dlcerange1[$k]."</font></td>";
 					echo "<td><font color='".($dlcerange2[$k] <1 ?$good:$yellow)."'>".$dlcerange2[$k]."</font></td>";
 					echo "<td><font color='".($dlcerange3[$k] < 1?$good:$bad)."'>".$dlcerange3[$k]."</font></td>";
 					echo "<td><font color='".($ulcerange1[$k] <1 ?$good:$good)."'>".$ulcerange1[$k]."</font></td>";
@@ -155,19 +157,24 @@ foreach ($node as $k => $v) {
 	
 </div>
 
+<br>
+<div><font color="#363636" size="4"><b><i>Cell Resource Utilization</i></b></font></div>
+<br>
+<div class="sortable1">
+<div id="dlpower" class="chart_content"></div>
+<div id="code" class="chart_content"></div>		
+<div id="fach" class="chart_content"></div>		
+<div id="rach" class="chart_content"></div>
+<div id="pch" class="chart_content"></div>
+<div style="clear: both;"></div>
 <br><br>
-<div id="content" class="chart_content"><div id="dlpower" class="chart1"></div></div>
-<div id="content" class="chart_content"><div id="code" class="chart"></div></div>
-<div style="clear: both;"></div>			
-<div id="content" class="chart_content"><div id="fach" class="chart"></div></div>			
-<div id="content" class="chart_content"><div id="rach" class="chart"></div></div>
-<div style="clear: both;"></div>
-<div id="content" class="chart_content"><div id="dlce" class="chart"></div></div>
-<div id="content" class="chart_content"><div id="ulce" class="chart"></div></div>	
-<div style="clear: both;"></div>
-<div id="content" class="chart_content"><div id="pch" class="chart"></div></div>
-<div id="content" class="chart_content"><div id="cnbap" class="chart"></div></div>	
-<div style="clear: both;"></div>				
+<div><font color="#363636" size="4"><b><i>NodeB Resource Utilization</i></b></font></div>
+<br>
+<div id="dlce" class="chart_content"></div>
+<div id="ulce" class="chart_content"></div>				
+<div id="cnbap" class="chart_content"></div>
+</div>
+<br>	
 <!--<div id="content" class="chart_content"><div id="handover" class="chart"></div></div>
 <div id="content" class="chart_content"><div id="sho_overhead" class="chart"></div></div>
 <div style="clear: both;"></div>			

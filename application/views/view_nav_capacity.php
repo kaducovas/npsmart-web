@@ -252,7 +252,7 @@ elseif (isset($weeknum)){
                             <li class="menuItemnqi"><a href="/npsmart/umts/">Main KPIs</a></li>
                             <li class="menuItemnqi"><a href="/npsmart/umts/nqi">AMX NQI HS</a></li>
                             <li class="menuItemnqi"><a onclick='selectreportname(this)'>AMX NQI CS</a></li>
-                            <li class="menuItemnqi"><a href="/npsmart/umts/txintegrity">TX Integrity</a></li>
+                            <li class="menuItemnqi"><a href="/npsmart/umts/tx_integrity">TX Integrity</a></li>
                             <li class="menuItemnqi"><a href="/npsmart/umts/overshooters">Overshooters</a></li>
                             <!--<li class="menuItemnqi"><a href="/npsmart/umts/feature_phase2">Feature Report</a></li>-->
                             <li class="menuItemnqi"><a href="/npsmart/umts/radar">AMX Radar</a></li>

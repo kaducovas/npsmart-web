@@ -1,4 +1,4 @@
-<script>
+<script type="text/javascript" id="Sand_Signika">
 /**
  * Sand-Signika theme for Highcharts JS
  * @author Torstein Honsi
@@ -18,7 +18,7 @@ Highcharts.wrap(Highcharts.Chart.prototype, 'getContainer', function (proceed) {
 });
 
 
-Highcharts.theme = {
+var chart_Sand_Signika = {
 	colors: ["#f45b5b", "#8085e9", "#8d4654", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
 		"#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
 	chart: {
@@ -44,23 +44,48 @@ Highcharts.theme = {
 	},
 	legend: {
 		itemStyle: {
+			color: 'black',
 			fontWeight: 'bold',
 			fontSize: '13px'
 		}
 	},
 	xAxis: {
-		labels: {
-			style: {
-				color: '#6e6e70'
-			}
+		
+	visible: true,	
+	gridLineColor: 'transparent',
+	labels: {
+		style: {
+			color: 'black'
 		}
 	},
+    lineColor: 'transparent',
+    minorGridLineColor: 'transparent',
+    tickColor: 'transparent',
+    title: {
+        style: {
+         color: 'transparent'
+        }
+    }
+	
+	},
 	yAxis: {
-		labels: {
-			style: {
-				color: '#6e6e70'
-			}
+	
+	visible: true,
+	gridLineColor: '#D0D0D8',
+	labels: {
+		style: {
+			color: 'black'
 		}
+    },
+    lineColor: '#D0D0D8',
+    minorGridLineColor: '#D0D0D8',
+    tickColor: '#D0D0D8',
+    tickWidth: 1,
+    title: {
+        style: {
+            color: '#A0A0A3'
+        }
+    }
 	},
 	plotOptions: {
 		series: {
@@ -102,5 +127,5 @@ Highcharts.theme = {
 };
 
 // Apply the theme
-Highcharts.setOptions(Highcharts.theme);
+//Highcharts.setOptions(Highcharts.theme);
 </script>

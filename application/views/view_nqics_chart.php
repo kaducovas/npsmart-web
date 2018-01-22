@@ -216,7 +216,7 @@ $(function () {
 							cursor: 'pointer',
 							events: {
 								click: function( event ) {
-								// Log to console
+								//Log to console
 								var kpi = this.name;
 								kpi = kpi.toLowerCase();
 								kpi = kpi.trim();
@@ -228,9 +228,11 @@ $(function () {
 									document.getElementById('wctimeagg').value = reportagg;
 									document.getElementById('wcreportdate').value = date[event.point.x];
 									document.getElementById('wckpi').value = this.name;
+									if(kpi != 'nqi cs'){
 									document.wcform.submit();
+									}else {
 								// } 
-								//	else {
+									// else {
 									// //alert("NPSmart current release does not support Worst Cells for the selected aggregation.")
 								// }
 								
@@ -242,6 +244,8 @@ $(function () {
 									  // 'Control: ' + event.ctrlKey + '\n'+
 									  // 'Shift: ' + event.shifkKey + '\n'+
 									  // 'Datetime: ' + date[event.point.x]);
+									  alert("The NPSmart v2.1 does not support the function Worst Cells for NQI CS because it's calculated in several installments. But you can check the offenders of each installments.");
+								}
 								},                
 						legendItemClick: function () {
 						if(this.name == "Marker"){

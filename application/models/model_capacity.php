@@ -8,6 +8,14 @@ class Model_capacity extends CI_Model{
 	return $query->result();
 	}
 	
+	function maxdate(){
+	
+		 $query = $this->db->query(
+		 "select max(date) as date from umts_kpi.radar_network_daily where date_part('week', date + '1 day'::interval) = (select max(week) from umts_capacity.nodeb_utilization_weekly where year = (select max(year) from umts_capacity.nodeb_utilization_weekly));
+;");
+ return $query->result();
+	}
+	
 	// function rnc_capacity_histogram($weeknum,$node){
 			 // $query = $this->db->query(
 			 // "SELECT week, regional, rnc as node, range, dlpower_count, code_count, fach_count, 

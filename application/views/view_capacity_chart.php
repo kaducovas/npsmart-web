@@ -41,7 +41,8 @@ var node = "<?php echo $node; ?>";
 var range = <?php echo json_encode($range); ?>;	
 
 var range = JSON.parse("[" + range + "]");
-///alert(datetime[0]);	
+///alert(datetime[0]);
+	
 $(function () {
     var chart;
     $(document).ready(function() {
@@ -53,7 +54,7 @@ $(function () {
 		chart: {
 				renderTo: 'dlpower',
 				alignTicks:false,
-				//backgroundColor:'transparent',
+				backgroundColor:null,
 				zoomType: 'x'//,
 				//borderWidth: 2
 						///type: 'line',
@@ -130,18 +131,18 @@ $(function () {
 							cursor: 'pointer',
 							events: {
 								click: function(e) {
-								// Log to console
-									alert(this.name + ' clicked\n' +
-									  'Alt: ' + event.altKey + '\n' +
-									  'Control: ' + event.ctrlKey + '\n'+
-									  'Shift: ' + event.shifkKey + '\n'+
-									  'Datetime: ' + datetime[event.point.x]);
+									document.getElementById('wcreportdate').value = reportdate;
+									document.getElementById('wcreportnename').value = node;
+									document.getElementById('wcreportnetype').value = reportnetype;
+									document.getElementById('wckpi').value = 'dlpower_utilization';	
+									document.capwc.submit();
 								}
 							}
 						}
 					},
 
-					series: [{
+					series: [
+					{
 					///	showInLegend: false,
 					colorByPoint: false,
 					color: '#058DC7',
@@ -189,7 +190,7 @@ $(function () {
 		chart: {
 				renderTo: 'code',
 				alignTicks:false,
-				//backgroundColor:'transparent',
+				backgroundColor:null,
 				zoomType: 'x'//,
 				//borderWidth: 2
 						///type: 'line',
@@ -266,12 +267,11 @@ $(function () {
 							cursor: 'pointer',
 							events: {
 								click: function(e) {
-								// Log to console
-									alert(this.name + ' clicked\n' +
-									  'Alt: ' + event.altKey + '\n' +
-									  'Control: ' + event.ctrlKey + '\n'+
-									  'Shift: ' + event.shifkKey + '\n'+
-									  'Datetime: ' + datetime[event.point.x]);
+									document.getElementById('wcreportdate').value = reportdate;
+									document.getElementById('wcreportnename').value = node;
+									document.getElementById('wcreportnetype').value = reportnetype;
+									document.getElementById('wckpi').value = 'code_utilization';	
+									document.capwc.submit();
 								}
 							}
 						}
@@ -325,7 +325,7 @@ $(function () {
 		chart: {
 				renderTo: 'fach',
 				alignTicks:false,
-				//backgroundColor:'transparent',
+				backgroundColor:null,
 				zoomType: 'x'//,
 				//borderWidth: 2
 						///type: 'line',
@@ -402,13 +402,12 @@ $(function () {
 							cursor: 'pointer',
 							events: {
 								click: function(e) {
-								// Log to console
-									alert(this.name + ' clicked\n' +
-									  'Alt: ' + event.altKey + '\n' +
-									  'Control: ' + event.ctrlKey + '\n'+
-									  'Shift: ' + event.shifkKey + '\n'+
-									  'Datetime: ' + datetime[event.point.x]);
-								}
+									document.getElementById('wcreportdate').value = reportdate;
+									document.getElementById('wcreportnename').value = node;
+									document.getElementById('wcreportnetype').value = reportnetype;
+									document.getElementById('wckpi').value = 'fach_utilization';	
+									document.capwc.submit();								
+									}
 							}
 						}
 					},
@@ -480,7 +479,7 @@ $(function () {
 		chart: {
 				renderTo: 'rach',
 				alignTicks:false,
-				//backgroundColor:'transparent',
+				backgroundColor:null,
 				zoomType: 'x'//,
 				//borderWidth: 2
 						///type: 'line',
@@ -557,12 +556,11 @@ $(function () {
 							cursor: 'pointer',
 							events: {
 								click: function(e) {
-								// Log to console
-									alert(this.name + ' clicked\n' +
-									  'Alt: ' + event.altKey + '\n' +
-									  'Control: ' + event.ctrlKey + '\n'+
-									  'Shift: ' + event.shifkKey + '\n'+
-									  'Datetime: ' + datetime[event.point.x]);
+									document.getElementById('wcreportdate').value = reportdate;
+									document.getElementById('wcreportnename').value = node;
+									document.getElementById('wcreportnetype').value = reportnetype;
+									document.getElementById('wckpi').value = 'rach_utilization';	
+									document.capwc.submit();
 								}
 							}
 						}
@@ -589,7 +587,7 @@ $(function () {
 		chart: {
 				renderTo: 'dlce',
 				alignTicks:false,
-				//backgroundColor:'transparent',
+				backgroundColor:null,
 				zoomType: 'x'//,
 				//borderWidth: 2
 						///type: 'line',
@@ -666,46 +664,46 @@ $(function () {
 							cursor: 'pointer',
 							events: {
 								click: function(e) {
-								// Log to console
-									alert(this.name + ' clicked\n' +
-									  'Alt: ' + event.altKey + '\n' +
-									  'Control: ' + event.ctrlKey + '\n'+
-									  'Shift: ' + event.shifkKey + '\n'+
-									  'Datetime: ' + datetime[event.point.x]);
+									document.getElementById('wcreportdate').value = reportdate;
+									document.getElementById('wcreportnename').value = node;
+									document.getElementById('wcreportnetype').value = reportnetype;
+									document.getElementById('wckpi').value = 'dlce_utilization';	
+									document.capwc.submit();
 								}
 							}
 						}
 					},	
 
-					series: [{
-					///	showInLegend: false,
-					colorByPoint: false,
-					color: '#058DC7',
-						name: 'RRC DLCE Cong',
-						yAxis: 1,
-						data: [<?php echo join($vs_rrc_rej_dlce_cong, ',') ?>]///[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-						///data: JSON.parse("[" + acc_rrc + "]")
-					}
-					,{
-					///	showInLegend: false,
-					colorByPoint: false,
-					color: '#666699',
-						name: 'RAB CS DLCE Cong',
-						yAxis: 1,
-						data: [<?php echo join($vs_rab_failestabcs_dlce_cong, ',') ?>]///[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-						///data: JSON.parse("[" + acc_rrc + "]")
-					}
-					,{
-					///	showInLegend: false,
-					colorByPoint: false,
-					color: '#993300',
-						name: 'RAB PS DLCE Cong',
-						yAxis: 1,
-						data: [<?php echo join($vs_rab_failestabps_dlce_cong, ',') ?>]///[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-						///data: JSON.parse("[" + acc_rrc + "]")
-					}					
-					,{
-			            name: '#Cells',
+					series: [
+					// {
+					// ///	showInLegend: false,
+					// colorByPoint: false,
+					// color: '#058DC7',
+						// name: 'RRC DLCE Cong',
+						// yAxis: 1,
+						// data: [<?php echo join($vs_rrc_rej_dlce_cong, ',') ?>]///[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+						// ///data: JSON.parse("[" + acc_rrc + "]")
+					// }
+					// ,{
+					// ///	showInLegend: false,
+					// colorByPoint: false,
+					// color: '#666699',
+						// name: 'RAB CS DLCE Cong',
+						// yAxis: 1,
+						// data: [<?php echo join($vs_rab_failestabcs_dlce_cong, ',') ?>]///[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+						// ///data: JSON.parse("[" + acc_rrc + "]")
+					// }
+					// ,{
+					// ///	showInLegend: false,
+					// colorByPoint: false,
+					// color: '#993300',
+						// name: 'RAB PS DLCE Cong',
+						// yAxis: 1,
+						// data: [<?php echo join($vs_rab_failestabps_dlce_cong, ',') ?>]///[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+						// ///data: JSON.parse("[" + acc_rrc + "]")
+					// },
+					{
+			            name: '#NodeBs',
 						type: 'column',
 						color: 'rgba(0, 255, 0, 0.8)',
 						///borderColor:'#C80000',
@@ -725,7 +723,7 @@ $(function () {
 		chart: {
 				renderTo: 'ulce',
 				alignTicks:false,
-				//backgroundColor:'transparent',
+				backgroundColor:null,
 				zoomType: 'x'//,
 				//borderWidth: 2
 						///type: 'line',
@@ -802,45 +800,45 @@ $(function () {
 							cursor: 'pointer',
 							events: {
 								click: function(e) {
-								// Log to console
-									alert(this.name + ' clicked\n' +
-									  'Alt: ' + event.altKey + '\n' +
-									  'Control: ' + event.ctrlKey + '\n'+
-									  'Shift: ' + event.shifkKey + '\n'+
-									  'Datetime: ' + datetime[event.point.x]);
+									document.getElementById('wcreportdate').value = reportdate;
+									document.getElementById('wcreportnename').value = node;
+									document.getElementById('wcreportnetype').value = reportnetype;
+									document.getElementById('wckpi').value = 'ulce_utilization';	
+									document.capwc.submit();
 								}
 							}
 						}
 					},	
-					series: [{
-					///	showInLegend: false,
-					colorByPoint: false,
-					color: '#058DC7',
-						name: 'RRC ULCE Cong',
-						yAxis: 1,
-						data: [<?php echo join($vs_rrc_rej_ulce_cong, ',') ?>]///[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-						///data: JSON.parse("[" + acc_rrc + "]")
-					}
-					,{
-					///	showInLegend: false,
-					colorByPoint: false,
-					color: '#666699',
-						name: 'RAB CS ULCE Cong',
-						yAxis: 1,
-						data: [<?php echo join($vs_rab_failestabcs_ulce_cong, ',') ?>]///[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-						///data: JSON.parse("[" + acc_rrc + "]")
-					}
-					,{
-					///	showInLegend: false,
-					colorByPoint: false,
-					color: '#993300',
-						name: 'RAB PS ULCE Cong',
-						yAxis: 1,
-						data: [<?php echo join($vs_rab_failestabps_ulce_cong, ',') ?>]///[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-						///data: JSON.parse("[" + acc_rrc + "]")
-					}					
-					,{
-			            name: '#Cells',
+					series: [
+					// {
+					// ///	showInLegend: false,
+					// colorByPoint: false,
+					// color: '#058DC7',
+						// name: 'RRC ULCE Cong',
+						// yAxis: 1,
+						// data: [<?php echo join($vs_rrc_rej_ulce_cong, ',') ?>]///[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+						// ///data: JSON.parse("[" + acc_rrc + "]")
+					// }
+					// ,{
+					// ///	showInLegend: false,
+					// colorByPoint: false,
+					// color: '#666699',
+						// name: 'RAB CS ULCE Cong',
+						// yAxis: 1,
+						// data: [<?php echo join($vs_rab_failestabcs_ulce_cong, ',') ?>]///[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+						// ///data: JSON.parse("[" + acc_rrc + "]")
+					// }
+					// ,{
+					// ///	showInLegend: false,
+					// colorByPoint: false,
+					// color: '#993300',
+						// name: 'RAB PS ULCE Cong',
+						// yAxis: 1,
+						// data: [<?php echo join($vs_rab_failestabps_ulce_cong, ',') ?>]///[7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+						// ///data: JSON.parse("[" + acc_rrc + "]")
+					// },
+					{
+			            name: '#NodeBs',
 						type: 'column',
 						color: 'rgba(0, 255, 0, 0.8)',
 						///borderColor:'#C80000',
@@ -859,7 +857,7 @@ $(function () {
 		chart: {
 				renderTo: 'pch',
 				alignTicks:false,
-				//backgroundColor:'transparent',
+				backgroundColor:null,
 				zoomType: 'x'//,
 				//borderWidth: 2
 						///type: 'line',
@@ -936,12 +934,11 @@ $(function () {
 							cursor: 'pointer',
 							events: {
 								click: function(e) {
-								// Log to console
-									alert(this.name + ' clicked\n' +
-									  'Alt: ' + event.altKey + '\n' +
-									  'Control: ' + event.ctrlKey + '\n'+
-									  'Shift: ' + event.shifkKey + '\n'+
-									  'Datetime: ' + datetime[event.point.x]);
+									document.getElementById('wcreportdate').value = reportdate;
+									document.getElementById('wcreportnename').value = node;
+									document.getElementById('wcreportnetype').value = reportnetype;
+									document.getElementById('wckpi').value = 'pch_utilization';	
+									document.capwc.submit();
 								}
 							}
 						}
@@ -977,7 +974,7 @@ $(function () {
 		chart: {
 				renderTo: 'cnbap',
 				alignTicks:false,
-				//backgroundColor:'transparent',
+				backgroundColor:null,
 				zoomType: 'x'//,
 				//borderWidth: 2
 						///type: 'line',
@@ -1054,12 +1051,11 @@ $(function () {
 							cursor: 'pointer',
 							events: {
 								click: function(e) {
-								// Log to console
-									alert(this.name + ' clicked\n' +
-									  'Alt: ' + event.altKey + '\n' +
-									  'Control: ' + event.ctrlKey + '\n'+
-									  'Shift: ' + event.shifkKey + '\n'+
-									  'Datetime: ' + datetime[event.point.x]);
+									document.getElementById('wcreportdate').value = reportdate;
+									document.getElementById('wcreportnename').value = node;
+									document.getElementById('wcreportnetype').value = reportnetype;
+									document.getElementById('wckpi').value = 'cnbap_utilization';	
+									document.capwc.submit();
 								}
 							}
 						}
@@ -1075,7 +1071,7 @@ $(function () {
 						///data: JSON.parse("[" + acc_rrc + "]")
 					}				
 					,{
-			            name: '#Cells',
+			            name: '#NodeBs',
 						type: 'column',
 						colors: ['green', 'green', 'green', 'green', 'green', 'green', 'green', 'green', 'yellow', 'yellow', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red'],
 						//color: 'rgba(0, 255, 0, 0.8)',

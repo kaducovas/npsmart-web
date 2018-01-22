@@ -533,7 +533,18 @@ function cluster_weekly_report($node,$weeknum){
 function nodeb_weekly_report($node,$weeknum){
 		$weeknum = $weeknum;
 			 $query = $this->db->query(
-			 "SELECT *,'nodeb'::text as type,1 as sortcol from umts_kpi.vw_main_kpis_nodeb_rate_weekly where week = ".$weeknum."
+			 "SELECT week, region, rnc,node, acc_rrc, fails_acc_rrc, 
+		   eff_cs, fails_acc_cs, acc_cs, eff_ps, fails_acc_ps, acc_ps, eff_hsdpa, 
+		   fails_acc_hsdpa, eff_f2h, fails_f2h, acc_hsdpa, acc_hsdpa_f2h, 
+		   drop_cs, fails_drop_cs, drop_ps, fails_drop_ps, drop_hsdpa, fails_drop_hsdpa, 
+		   drop_hsupa, fails_drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
+		   hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
+		   hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
+		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
+		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
+		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
+		   hsupa_users, ps_nonhs_users, dch_users, pch_users, fach_users, 
+		   thp_hsdpa, thp_hsupa,'nodeb'::text as type,1 as sortcol from umts_kpi.vw_main_kpis_nodeb_rate_weekly where week = ".$weeknum."
 			 and
 			CASE
 			WHEN left(node,char_length(node)- 2) like '%%S02%%' and char_length(node)> 8 then concat('U',substring(node,position('S02' in node) + 3,(char_length(node) - position('S02' in node) + 3)))                       
@@ -572,7 +583,18 @@ function nodeb_weekly_report($node,$weeknum){
 function cell_weekly_report($node,$weeknum){
 		$weeknum = $weeknum;
 			 $query = $this->db->query(
-			 "SELECT *,'nodeb'::text as type,1 as sortcol from umts_kpi.vw_main_kpis_nodeb_rate_weekly where week = ".$weeknum."
+			 "SELECT week, region, rnc,node, acc_rrc, fails_acc_rrc, 
+		   eff_cs, fails_acc_cs, acc_cs, eff_ps, fails_acc_ps, acc_ps, eff_hsdpa, 
+		   fails_acc_hsdpa, eff_f2h, fails_f2h, acc_hsdpa, acc_hsdpa_f2h, 
+		   drop_cs, fails_drop_cs, drop_ps, fails_drop_ps, drop_hsdpa, fails_drop_hsdpa, 
+		   drop_hsupa, fails_drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
+		   hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
+		   hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
+		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
+		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
+		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
+		   hsupa_users, ps_nonhs_users, dch_users, pch_users, fach_users, 
+		   thp_hsdpa, thp_hsupa,'nodeb'::text as type,1 as sortcol from umts_kpi.vw_main_kpis_nodeb_rate_weekly where week = ".$weeknum."
 			 and
 			 CASE
 WHEN left('".$node."',char_length('".$node."')- 3) like '%%S02%%' and char_length('".$node."')> 9 then concat('U',substring(left('".$node."',char_length('".$node."')- 1),position('S02' in left('".$node."',char_length('".$node."')- 1)) + 3,(char_length(left('".$node."',char_length('".$node."')- 1)) - (position('S02' in left('".$node."',char_length('".$node."')- 1)) + 3))))                       

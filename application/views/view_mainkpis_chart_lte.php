@@ -51,6 +51,10 @@
 		$interference_1800[] = $row->interference_1800;
 		$interference_700[] = $row->interference_700;
 		$csfb_prep[] = $row->csfb_prep;
+		$data_volume[] = $row->data_volume;
+		$data_volume_1800[] = $row->data_volume_1800;
+		$data_volume_2600[] = $row->data_volume_2600;
+		$data_volume_700[] = $row->data_volume_700;
 		}
 
 		#echo $node;
@@ -110,7 +114,10 @@
 		$csfb_prep = array_map("tonull2", $csfb_prep);
 		$csfb_prep = array_map("tonull3", $csfb_prep);
 		$csfb = array_map("tonull3", $csfb);
-
+		$data_volume = array_map("tonull", $data_volume);
+		$data_volume_1800 = array_map("tonull", $data_volume_1800);
+		$data_volume_2600 = array_map("tonull", $data_volume_2600);
+		$data_volume_700 = array_map("tonull", $data_volume_700);
 		?>
 		
 <script>
@@ -1211,13 +1218,17 @@ $(function () {
 								name: 'Marker',
 								color:'red'
 							},{
-								name: 'DL',
-								data: [<?php echo join($downlink_traffic_volume, ',') ?>]
-							},
-							{
-								name: 'UL',
-								yAxis: 1,
-								data: [<?php echo join($uplink_traffic_volume, ',') ?>]
+								name: 'Data volume',
+								data: [<?php echo join($data_volume, ',') ?>]
+							},{
+								name: 'Data volume 700',
+								data: [<?php echo join($data_volume_700, ',') ?>]
+							},{
+								name: 'Data volume 1800',
+								data: [<?php echo join($data_volume_1800, ',') ?>]
+							},{
+								name: 'Data volume 2600',
+								data: [<?php echo join($data_volume_2600, ',') ?>]
 							}													
 							]							
 				});

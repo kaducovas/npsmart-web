@@ -1677,8 +1677,10 @@ public function radar()
 		$data['nekpi'] = $nekpi;		
 		
 		#$referencedate = $this->model_cellsinfo->reference_date_daily($node);
-		$referencedate = $this->model_cellsinfo->reference_date_lte($node);
+		//$referencedate = $this->model_cellsinfo->reference_date_lte($node);
 		//echo $referencedate;
+		$maxdate = $this->model_radar_lte->maxdate();
+		$referencedate = $maxdate[0]->date;
 		
 		//Set Date and Weeknumkp
 		if($this->input->post('reportdate')){

@@ -202,7 +202,7 @@ class Gsm extends CI_Controller {
 			$data['reportnetype'] = 'region';
 		}
 		elseif($netype == 'bsc'){
-			//$data['node_weekly_report'] = $this->model_mainkpis_gsm->bsc_daily_report_bscinput_dash($node,$reportdate);
+			$data['node_weekly_report'] = $this->model_mainkpis_gsm->bsc_daily_report_bscinput_dash($node,$reportdate);
 			$data['node_daily_report'] = $this->model_mainkpis_gsm->bsc_hourly_report($node,$reportdate);
 			$data['reportnetype'] = 'bsc';
 		}

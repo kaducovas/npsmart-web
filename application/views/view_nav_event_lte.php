@@ -198,7 +198,7 @@ elseif (isset($weeknum)){
             
                 <ul class="nav navbar-nav" id="mainMenu">
                      <li id="menuItemnqi" class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Monitoramento Taguatinga 4.5G<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">eNodeBs Report<span class="caret"></span></a>
                     </li>                
 
                 <ul class="nav navbar-nav navbar-right">

@@ -498,14 +498,14 @@ l_e_rab_failest_other
 		if ($reportnetype == "network") {
 		$query = $this->db->query("SELECT *
 		FROM lte_kpi.vw_nqi_daily_".$reportnetype." where ".$period." between '".$inidate."' and '".$findate."'
-		and date_part('year'::text, date) = 2017
+		--and date_part('year'::text, date) = 2017
 			AND ".$nodeid_main_kpis." = '".$node."'
 			ORDER BY date;"
 		);}
 		else{
 		$query = $this->db->query("SELECT *, ".$reportnetype." as node
 		FROM lte_kpi.vw_nqi_daily_".$reportnetype." where ".$period." between '".$inidate."' and '".$findate."'
-		and date_part('year'::text, date) = 2017
+		--and date_part('year'::text, date) = 2017
 			AND ".$nodeid_main_kpis." = '".$node."'
 			ORDER BY date;"
 		);}

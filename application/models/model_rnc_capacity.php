@@ -22,15 +22,15 @@ class Model_rnc_capacity extends CI_Model{
 		
 		$query = $this->db->query(
 		"select rnc as node, 'rnc'::text as type,
-STRING_AGG(week::text, ',' order by year,week desc) AS weeks,
-STRING_AGG(region::text, ',' order by year,week desc) AS region,
-STRING_AGG(netype::text, ',' order by year,week desc) AS netype,
-STRING_AGG(cpu_load::text, ',' order by year,week desc) AS cpu_load,
-STRING_AGG(dsp_load::text, ',' order by year,week desc) AS dsp_load,
-STRING_AGG(ib_cpu_load::text, ',' order by year,week desc) AS ib_cpu_load,
-STRING_AGG(ib_forward_load::text, ',' order by year,week desc) AS ib_forward_load,
-STRING_AGG(round((100*iu_ps::real)::numeric,2)::text, ',' order by year,week desc) AS iu_ps,
-STRING_AGG(round((iub::real/10)::numeric,2)::text, ',' order by year,week desc) AS iub
+STRING_AGG(week::text, ',' order by year desc,week desc) AS weeks,
+STRING_AGG(region::text, ',' order by year desc,week desc) AS region,
+STRING_AGG(netype::text, ',' order by year desc,week desc) AS netype,
+STRING_AGG(cpu_load::text, ',' order by year desc,week desc) AS cpu_load,
+STRING_AGG(dsp_load::text, ',' order by year desc,week desc) AS dsp_load,
+STRING_AGG(ib_cpu_load::text, ',' order by year desc,week desc) AS ib_cpu_load,
+STRING_AGG(ib_forward_load::text, ',' order by year desc,week desc) AS ib_forward_load,
+STRING_AGG(round((100*iu_ps::real)::numeric,2)::text, ',' order by year desc,week desc) AS iu_ps,
+STRING_AGG(round((iub::real/10)::numeric,2)::text, ',' order by year desc,week desc) AS iub
 		FROM umts_capacity.vw_rnc_capacity
 		where (year,week) in ((".$yearnum4.",".$weeknum4."),(".$yearnum2.",".$weeknum2."),(".$yearnum3.",".$weeknum3."),(".$yearnum1.",".$weeknum1."))
 and rnc not in ('RNCPE01','RNCRJT2','RNCSC03')

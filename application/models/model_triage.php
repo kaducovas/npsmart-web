@@ -7,12 +7,19 @@ class Model_triage extends CI_Model{
 
 	// return $query->result();
 	// }
-
+function maxdate(){
+	
+		 $query = $this->db->query(
+		 "select max(date) as date from umts_kpi.radar_network_daily where date_part('week', date + '1 day'::interval) = (select max(week) from umts_kpi.triage where year = (select max(year) from umts_kpi.triage));
+;");
+ return $query->result();
+	}
+	
 	function triage_network_chart($reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));		
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));		
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -77,17 +84,17 @@ count(*) OVER (PARTITION BY year,week) as total
 FROM umts_kpi.triage)f
 where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."),(".$yearnum3.",".$weeknum3."),(".$yearnum4.",".$weeknum4."))
 group by year,week,analysis,cap,imp,normal,omr,otm,rf,tx_omr,otm_nok,kpi_nok,omr_nok,tx_omr_nok,cap_nok,rf_nok,rtwp_nok,ee_nok,no_overshooter_nok,parameter_check_nok,total
-order by week desc, node
+order by year desc, week desc, node
 ;");
 
 	return $query->result();
 
 	}
 	function triage_region_chart($node,$reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));		
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));		
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -153,7 +160,7 @@ FROM umts_kpi.triage)f
 where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."),(".$yearnum3.",".$weeknum3."),(".$yearnum4.",".$weeknum4."))
 and region = '".$node."'
 group by year,week,region,analysis,cap,imp,normal,omr,otm,rf,tx_omr,otm_nok,kpi_nok,omr_nok,tx_omr_nok,cap_nok,rf_nok,rtwp_nok,ee_nok,no_overshooter_nok,parameter_check_nok,total
-order by week desc, node
+order by year desc, week desc, node
 ;");
 
 	return $query->result();
@@ -161,10 +168,10 @@ order by week desc, node
 	}
 
 	function triage_rnc_chart($node,$reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));		
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));		
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -230,17 +237,17 @@ FROM umts_kpi.triage)f
 where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."),(".$yearnum3.",".$weeknum3."),(".$yearnum4.",".$weeknum4."))
 and rnc = '".$node."'
 group by year,week,region,rnc,analysis,cap,imp,normal,omr,otm,rf,tx_omr,otm_nok,kpi_nok,omr_nok,tx_omr_nok,cap_nok,rf_nok,rtwp_nok,ee_nok,no_overshooter_nok,parameter_check_nok,total
-order by week desc, node
+order by year desc, week desc, node
 ;");
 
 	return $query->result();
 
 	}	
 	function triage_nodeb_chart($node,$reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));		
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));		
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -312,17 +319,17 @@ CASE
 				else nodebname
 	end	  = '".$node."'
 group by year,week,region,rnc,nodebname,analysis,cap,imp,normal,omr,otm,rf,tx_omr,otm_nok,kpi_nok,omr_nok,tx_omr_nok,cap_nok,rf_nok,rtwp_nok,ee_nok,no_overshooter_nok,parameter_check_nok,total
-order by week desc, node
+order by year desc, week desc, node
 ;");
 	return $query->result();
 
 }
 
 	function triage_uf_chart($node,$reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));		
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));		
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -388,7 +395,7 @@ FROM umts_kpi.triage)f
 where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."),(".$yearnum3.",".$weeknum3."),(".$yearnum4.",".$weeknum4."))
 and uf = '".$node."'
 group by year,week,uf,analysis,cap,imp,normal,omr,otm,rf,tx_omr,otm_nok,kpi_nok,omr_nok,tx_omr_nok,cap_nok,rf_nok,rtwp_nok,ee_nok,no_overshooter_nok,parameter_check_nok,total
-order by week desc, node
+order by year desc, week desc, node
 ;");
 
 	return $query->result();
@@ -396,10 +403,10 @@ order by week desc, node
 	}
 
 	function triage_cidade_chart($node,$reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));		
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));		
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -465,7 +472,7 @@ FROM umts_kpi.triage)f
 where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."),(".$yearnum3.",".$weeknum3."),(".$yearnum4.",".$weeknum4."))
 and concat(cidade,' - ',uf) = '".$node."'
 group by year,week,cidade,uf,analysis,cap,imp,normal,omr,otm,rf,tx_omr,otm_nok,kpi_nok,omr_nok,tx_omr_nok,cap_nok,rf_nok,rtwp_nok,ee_nok,no_overshooter_nok,parameter_check_nok,total
-order by week desc, node
+order by year desc, week desc, node
 ;");
 
 	return $query->result();
@@ -473,10 +480,10 @@ order by week desc, node
 	}
 
 	function triage_cluster_chart($node,$reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));		
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));		
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -542,7 +549,7 @@ FROM umts_kpi.triage)f
 where (year,week) in ((".$yearnum1.",".$weeknum1."),(".$yearnum2.",".$weeknum2."),(".$yearnum3.",".$weeknum3."),(".$yearnum4.",".$weeknum4."))
 and cluster = '".$node."'
 group by year,week,cluster,analysis,cap,imp,normal,omr,otm,rf,tx_omr,otm_nok,kpi_nok,omr_nok,tx_omr_nok,cap_nok,rf_nok,rtwp_nok,ee_nok,no_overshooter_nok,parameter_check_nok,total
-order by week desc, node
+order by year desc, week desc, node
 ;");
 
 	return $query->result();
@@ -550,10 +557,10 @@ order by week desc, node
 	}
 
 	function triage_network($reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));		
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));		
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -629,10 +636,10 @@ round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs,
 	}
 
 	function triage_region($node,$reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));		
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));		
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -709,10 +716,10 @@ round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs,
 	}	
 	
 	function triage_rnc($node,$reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));		
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));		
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -788,10 +795,10 @@ round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs,
 	}
 
 	function triage_nodeb($node,$reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));		
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));		
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -873,10 +880,10 @@ round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs,
 	}
 
 	function triage_uf($node,$reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));		
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));		
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -952,10 +959,10 @@ round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs,
 	}		
 
 	function triage_cidade($node,$reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));		
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));		
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);
@@ -1031,10 +1038,10 @@ round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs,
 	}		
 	
 	function triage_cluster($node,$reportdate){
-		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -28 day'));	
-		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
-		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -14 day'));
-		$dayweek4 = date('Y-m-d', strtotime($reportdate.' -7 day'));		
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));		
 		$date1 = new DateTime($dayweek1);
 		$date2 = new DateTime($dayweek2);
 		$date3 = new DateTime($dayweek3);

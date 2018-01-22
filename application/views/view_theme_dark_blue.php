@@ -1,10 +1,10 @@
-<script>
+<script type="text/javascript" id="Dark_Blue">
 /**
  * Dark blue theme for Highcharts JS
  * @author Torstein Honsi
  */
 
-Highcharts.theme = {
+var chart_Dark_Blue = {
    colors: ["#DDDF0D", "#55BF3B", "#DF5353", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
       "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
    chart: {
@@ -35,6 +35,7 @@ Highcharts.theme = {
       }
    },
    xAxis: {
+	  visible: true,
       gridLineColor: '#333333',
       gridLineWidth: 1,
       labels: {
@@ -55,6 +56,7 @@ Highcharts.theme = {
       }
    },
    yAxis: {
+	  visible: true,
       gridLineColor: '#333333',
       labels: {
          style: {
@@ -110,8 +112,9 @@ Highcharts.theme = {
    },
    legend: {
       itemStyle: {
-         font: '9pt Trebuchet MS, Verdana, sans-serif',
-         color: '#A0A0A0'
+         color: '#A0A0A0',
+         //font: '9pt Trebuchet MS, Verdana, sans-serif',
+		 fontWeight: 'bold',
       },
       itemHoverStyle: {
          color: '#FFF'
@@ -252,5 +255,5 @@ Highcharts.theme = {
 };
 
 // Apply the theme
-var highchartsOptions = Highcharts.setOptions(Highcharts.theme);
+//var highchartsOptions = Highcharts.setOptions(Highcharts.theme);
 </script>

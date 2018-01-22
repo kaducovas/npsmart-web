@@ -2,7 +2,7 @@
 
 class Model_KPI_Customize extends CI_Model{
 
-	function kpi_customize_lte($node){				
+	function kpi_customize_lte(){				
 		$query = $this->db->query(
 		"select INITCAP(column_name) as node from information_schema.columns where table_schema in ('lte_kpi') and table_name = 'vw_main_kpis_cell_rate_weekly'
 and ordinal_position > 9 order by node");
@@ -12,8 +12,8 @@ and ordinal_position > 9 order by node");
 	
 		function counter_customize_lte(){				
 		$query = $this->db->query(
-		"SELECT distinct counter_name as node,functionsubset_id,counter_aggregation FROM lte_control.counter_reference
-		where counter_enable = 't' order by counter_name");
+		"SELECT distinct counter_name as node,functionsubset_id,counter_aggregation,counter_description FROM lte_control.counter_reference
+		where counter_enable = 't' AND counter_name not in ('first_paging_succ_times','paging_req_times','paging_succ_times') order by counter_name");
 		
 		return $query->result();
 		}
@@ -28,7 +28,7 @@ and ordinal_position > 9 order by node");
 
 /////////////////////////////////////////////////////// UMTS ///////////////////////////////////
 	
-		function kpi_customize_umts($node){				
+		function kpi_customize_umts(){				
 		$query = $this->db->query(
 "select INITCAP(column_name) as node from information_schema.columns where table_schema in ('umts_kpi') and table_name = 'vw_main_kpis_cell_rate_weekly'
 and ordinal_position > 7 order by node" );
@@ -53,26 +53,20 @@ order by counter_name");
 		return $query->result();
 		}
 
-		 function cells_kpi_customize(){				
-		 $query = $this->db->query(
-		"SELECT distinct cell as node FROM umts_control.cells_database order by cell limit 10");
 		
-		 return $query->result();
-		 }		
-
 /////////////////////////////////////////////////////////////////////////////////////////////
 		
-	function kpi_customize_gsm($node){				
+	function kpi_customize_gsm(){				
 		$query = $this->db->query(
 		"select INITCAP(column_name) as node from information_schema.columns where table_schema in ('gsm_kpi') and table_name = 'vw_main_kpis_cell_rate_weekly'
-and ordinal_position > 6 order by node");
+and ordinal_position > 6 and column_name not in ('node') order by node");
 
 	return $query->result();
 	}
 	
 		function counter_customize_gsm(){				
 		$query = $this->db->query(
-		"SELECT distinct counter_name as node,functionsubset_id,counter_aggregation FROM gsm_control.counter_reference
+		"SELECT distinct counter_name as node,functionsubset_id,counter_aggregation,counter_description FROM gsm_control.counter_reference
 		where counter_enable = 't' order by counter_name");
 		
 		return $query->result();
@@ -270,7 +264,7 @@ ORDER BY ENODEB");
 	
 	function kpi_customize_LTE_Elementos_Cluster(){				
 		$query = $this->db->query(
-		"SELECT distinct cluster as node FROM lte_control.cells where cluster != '' order by cluster"); 
+		"select distinct cluster as node,cluster_id from LTE_control.claro_cluster order by node"); 
 
 	return $query->result();
 	}

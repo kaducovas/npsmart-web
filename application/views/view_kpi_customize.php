@@ -1,635 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
 
-.alert {
-	position: absolute;
-    padding: 20px;
-    background-color: #f44336;
-    color: white;
-    opacity: 1;
-    transition: opacity 0.6s;
-    margin-bottom: 15px;
-	z-index: 10;
-	display:none;
-}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112474813-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-.alert.success {background-color: #4CAF50;}
-.alert.info {background-color: #2196F3;}
-.alert.warning {background-color: #ff9800;}
+  gtag('config', 'UA-112474813-1');
+</script>
 
-#closebtn {
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-}
+<!------------------------------------------------- CSS DO QUICK REPORT --------------------------------------------->
 
-#closebtn:hover {
-    color: black;
-}
-
-.switch {
-  position: absolute;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-  margin-top: 5px;
-  margin-left: 150px;
-}
-
-.switch input {display:none;}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
-
-.KPI_Umts, .Counter_Umts,.KPI_Gsm, .Counter_Gsm,.KPI_Lte, .Counter_Lte, .NQI_Lte, .NQI_Umts{
-
-display:none;
-	
-}	
-
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:700");
-@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-.buttons {
-  text-align: center;
-}
-
-.set:not(:last-child) {
-  border-bottom: 1px dotted #aaa;
-}
-
-.btn {
-  padding: 10px 15px 12px;
-  font: 700 12px/1 "Open Sans", sans-serif;
-  border-radius: 3px;
-  margin-left:10px;
-  box-shadow: inset 0 -1px 0 1px rgba(0, 0, 0, 0.1), inset 0 -10px 20px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-}
-
-.btn.pri {
-  color: #fff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
-}
-
-.set.red .btn.pri {
-  background: #d33;
-}
-
-.set.red .btn.pri:hover {
-  background: #c22;
-}
-
-.btn.pri.ico {
-  position: relative;
-  padding-left: 40px;
-  text-align: left;
-}
-
-.btn.pri.ico:before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  width: 30px;
-  padding: 10px 0 12px;
-  font-family: fontawesome;
-  text-align: center;
-  border-radius: 3px 0 0 3px;
-  background: rgba(0, 0, 0, 0.15);
-}
-
-.set.red .btn.pri.ico:before {
-  content: "\f014";
-}
-
-
-select{
-
-font-size:20px;
-text-align:center;	
-	
-}
-
-#btn_confirm1{	
-visibility: visible;	
-}
-
-#btn_confirm2,#btn_confirm3,#btn_confirm4, #btn_confirm5, #btn_confirm6{	
-visibility: hidden;	
-}
-
-#btn_delete1,#btn_delete2,#btn_delete3,#btn_delete4,#btn_delete5,#btn_delete6{
-visibility: hidden;	
-}
-
-#Tecnologia_Texto_Teste1,#Elemento_Texto_Teste1,#KPI_Texto_Teste1, #Periodo_Texto_Teste1,
-#Date_Inicial_Texto_Teste1, #Date_Final_Texto_Teste1,#Hora_Inicial_Texto_Teste1, #Hora_Final_Texto_Teste1{	
-color:blue;
-font-size: 20px;
-margin-left: 10px;
-margin-right: 10px;
-
-}
-
-#Tecnologia_Texto_Teste2,#Elemento_Texto_Teste2,#KPI_Texto_Teste2, #Periodo_Texto_Teste2,
-#Date_Inicial_Texto_Teste2, #Date_Final_Texto_Teste2,#Hora_Inicial_Texto_Teste2, #Hora_Final_Texto_Teste2{	
-color:blue;
-font-size: 20px;
-margin-left: 10px;
-margin-right: 10px;
-
-}
-
-#Tecnologia_Texto_Teste3,#Elemento_Texto_Teste3,#KPI_Texto_Teste3, #Periodo_Texto_Teste3,
-#Date_Inicial_Texto_Teste3, #Date_Final_Texto_Teste3, #Hora_Inicial_Texto_Teste3, #Hora_Final_Texto_Teste3{	
-color:blue;
-font-size: 20px;
-margin-left: 10px;
-margin-right: 10px;
-
-}
-
-#Tecnologia_Texto_Teste4,#Elemento_Texto_Teste4,#KPI_Texto_Teste4, #Periodo_Texto_Teste4,
-#Date_Inicial_Texto_Teste4, #Date_Final_Texto_Teste4, #Hora_Inicial_Texto_Teste4, #Hora_Final_Texto_Teste4{	
-color:blue;
-font-size: 20px;
-margin-left: 10px;
-margin-right: 10px;
-
-}
-
-#Tecnologia_Texto_Teste5,#Elemento_Texto_Teste5,#KPI_Texto_Teste5, #Periodo_Texto_Teste5,
-#Date_Inicial_Texto_Teste5, #Date_Final_Texto_Teste5, #Hora_Inicial_Texto_Teste5, #Hora_Final_Texto_Teste5{	
-color:blue;
-font-size: 20px;
-margin-left: 10px;
-margin-right: 10px;
-
-}
-
-#Tecnologia_Texto_Teste6,#Elemento_Texto_Teste6,#KPI_Texto_Teste6, #Periodo_Texto_Teste6,
-#Date_Inicial_Texto_Teste6, #Date_Final_Texto_Teste6, #Hora_Inicial_Texto_Teste6, #Hora_Final_Texto_Teste6{	
-color:blue;
-font-size: 20px;
-margin-left: 10px;
-margin-right: 10px;
-
-}
-
-#Tecnologia_Seta_1,#Elemento_Seta_1,#KPI_Seta_1,#Periodo_Seta_1{
-
-color:green;
-font-size:25px;	
-visibility:hidden;	
-}
-
-#Tecnologia_Seta_2,#Elemento_Seta_2,#KPI_Seta_2,#Periodo_Seta_2{
-
-color:green;
-font-size:25px;	
-visibility:hidden;	
-}
-
-#Tecnologia_Seta_3,#Elemento_Seta_3,#KPI_Seta_3,#Periodo_Seta_3{
-
-color:green;
-font-size:25px;	
-visibility:hidden;	
-}
-
-#Tecnologia_Seta_4,#Elemento_Seta_4,#KPI_Seta_4,#Periodo_Seta_4{
-
-color:green;
-font-size:25px;	
-visibility:hidden;	
-}
-
-#Tecnologia_Seta_5,#Elemento_Seta_5,#KPI_Seta_5,#Periodo_Seta_5{
-
-color:green;
-font-size:25px;	
-visibility:hidden;	
-}
-
-#Tecnologia_Seta_6,#Elemento_Seta_6,#KPI_Seta_6,#Periodo_Seta_6{
-
-color:green;
-font-size:25px;	
-visibility:hidden;	
-}
-
-#containera {
-	min-width: 310px;
-	max-width: 800px;
-	height: 400px;
-	margin: 0 auto
-}
-
-#txtHint{
-	
-margin-left: 10px;
-	
-	
-}
-
-#MENU{
-	
-	border: 3px solid black;
-	border-radius:8px;
-	
-}
-
-#Resumo{
-	
-	margin: 10px;
-	width: 98.5%;
-	display:inline-block;
-	border: 3px solid black;
-	border-radius:8px;
-	background-color:white;
-	
-}
-
-#Resumo2{
-	
-	margin: 10px;
-	width: 98.5%;
-	display:inline-block;
-	border: 3px solid black;
-	border-radius:8px;
-	background-color:white;
-	
-}
-
-* {
-  box-sizing: border-box;
-}
-
-#myInput_GSM{
-  background-position: 10px 12px;
-  background-repeat: no-repeat;
-  width: 25%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-}
-
-#myInput_LTE{
-  background-position: 10px 12px;
-  background-repeat: no-repeat;
-  width: 25%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-}
-
-#myInput_UMTS{
-  background-position: 10px 12px;
-  background-repeat: no-repeat;
-  width: 25%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-}
-
-#myInput_KPI_UMTS{
-  background-position: 10px 12px;
-  background-repeat: no-repeat;
-  width: 25%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-}
-
-#myInput_KPI_GSM{
-  background-position: 10px 12px;
-  background-repeat: no-repeat;
-  width: 25%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-}
-
-#myInput_KPI_LTE{
-  background-position: 10px 12px;
-  background-repeat: no-repeat;
-  width: 25%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-}
-
-#myUL_GSM{
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  overflow-y:scroll;
-  height:350px;
-}
-
-#myUL_LTE{
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  overflow-y:scroll;
-  height:350px;
-}
-
-#myUL_UMTS{
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  overflow-y:scroll;
-  height:350px;
-}
-
-#myUL_KPI_GSM{
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  overflow-y:scroll;
-  height:350px;
-}
-
-#myUL_KPI_UMTS{
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  overflow-y:scroll;
-  height:350px;
-}
-
-#myUL_KPI_LTE{
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  overflow-y:scroll;
-  height:350px;
-}
-
-#SubParameters {
-  border: 1px solid #ddd;
-  margin-top: -1px; /* Prevent double borders */
-  background-color: #f6f6f6;
-  margin-top: 70px;
-  width: 100%;
-  height:350px;
-  display: block;
-}
- 
-
-#myUL_GSM li a {
-  border: 1px solid #ddd;
-  margin-top: -1px; /* Prevent double borders */
-  background-color: #f6f6f6;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  display: block;
-}
-
-#myUL_UMTS li a {
-  border: 1px solid #ddd;
-  margin-top: -1px; /* Prevent double borders */
-  background-color: #f6f6f6;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  display: block;
-}
-
-
-
-
-#myUL_LTE li a {
-  border: 1px solid #ddd;
-  margin-top: -1px; /* Prevent double borders */
-  background-color: #f6f6f6;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  display: block;
-}
-
-#myUL_KPI_GSM li a {
-  border: 1px solid #ddd;
-  margin-top: -1px; /* Prevent double borders */
-  background-color: #f6f6f6;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  display: block;
-}
-
-#myUL_KPI_UMTS li a {
-  border: 1px solid #ddd;
-  margin-top: -1px; /* Prevent double borders */
-  background-color: #f6f6f6;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  display: block;
-}
-
-#myUL_KPI_LTE li a {
-  border: 1px solid #ddd;
-  margin-top: -1px; /* Prevent double borders */
-  background-color: #f6f6f6;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  display: block;
-}
-
-#myUL_GSM li a:hover:not(.header) {
-  background-color: #eee;
-}
-
-#myUL_UMTS li a:hover:not(.header) {
-  background-color: #eee;
-}
-
-#myUL_LTE li a:hover:not(.header) {
-  background-color: #eee;
-}
-
-#myUL_KPI_GSM li a:hover:not(.header) {
-  background-color: #eee;
-}
-
-#myUL_KPI_UMTS li a:hover:not(.header) {
-  background-color: #eee;
-}
-
-#myUL_KPI_LTE li a:hover:not(.header) {
-  background-color: #eee;
-}
-
-#myInput_KPI{
-  background-image: url('/css/searchicon.png');
-  background-position: 10px 12px;
-  background-repeat: no-repeat;
-  width: 25%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-}
-
-
-
-.dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: #3e8e41;
-}
-
-#button_create{
-
-	display:block;
-    background-color: red;
-    border: 2px solid black;
-    color: white;
-    padding:20px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-	border-radius: 8px;
-	margin-bottom:20px;
-	
-	
-}
-
-.radiozinho{
-	
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-	
-  border-radius: 50%;
-  width: 16px;
-  height: 16px;
-
-  border: 2px solid #999;
-  transition: 0.2s all linear;
-  outline: none;
-  margin-right: 5px;
-
-  position: relative;
-  top: 4px;
-
-  
-	
-}
-
-.radiozinho:checked {
-  border: 6px solid black;
-}
-
-#Querys{
-	margin: 10px;	
-}
-	
-</style>
+<link rel="stylesheet" media="screen" type="text/css" href="/npsmart/QuickReport/style_quickreport.css"/>
 
 <!--------------------------------------------------------- CALENDARIO -------------------------------------->
 
@@ -639,6 +24,17 @@ margin-left: 10px;
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+	<link rel="stylesheet" media="screen" type="text/css" href="/npsmart/ColorPicker/css/colorpicker.css"/>
+	<script type="text/javascript" src="/npsmart/ColorPicker/js/colorpicker.js"></script>
+	<script type="text/javascript" src="/npsmart/ColorPicker/js/eye.js"></script>
+    <script type="text/javascript" src="/npsmart/ColorPicker/js/utils.js"></script>
+    <!--<script type="text/javascript" src="/npsmart/ColorPicker/js/layout.js"></script>-->
+	<script type="text/javascript" src="/npsmart/FontSelector/jquery.fontselect.js"></script>
+	<!--<script type="text/javascript" src="/npsmart/FontSelector/jquery.fontselect.min.js"></script>-->
+	<link rel="stylesheet" media="screen" type="text/css" href="/npsmart/FontSelector/fontselect-alternate.css"/>
+	<!--<link rel="stylesheet" media="screen" type="text/css" href="/npsmart/FontSelector/fontselect-default.css"/>-->
+	<script type="text/javascript" src="/npsmart/BlinkTitle/PageTitleNotification.js"></script>
+	<!--<script src="http://blacklabel.github.io/annotations/js/annotations.js"></script>-->
   <script>
   $( function() {
     $( "#datepicker_inicial" ).datepicker();
@@ -653,20 +49,22 @@ margin-left: 10px;
 
 <div id="Resumo2">
 
-<div style = "border-bottom: 2px solid black;"><span style="position:absolute;display: inline-block;font-size: 25px;margin-left: 10px; margin-top: 5px"><b>Change All</b></span><label class="switch"><input id="slider_menu" type="checkbox"><span class="slider round"></span></label><div style="font-size: 25px; text-align:center"><b>MENU</b><div style="float:right; display:inline-block; margin-right:10px"><button id="btn_add1" onclick="add_line()" class="w3-btn w3-xlarge w3-text-blue"><i class="fa fa-plus-square"></i></button></div></p></div></div>
-<div id= "Query1" style = "border-bottom: 2px solid black; width: 100%; display:inline-block"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query1" checked="checked"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu1" style="display:inline-block"><span id="Tecnologia_Texto_Teste1"></span><i id="Tecnologia_Seta_1" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste1"></span><i id="Elemento_Seta_1" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste1"></span><i id="KPI_Seta_1" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste1"></span><i id="Periodo_Seta_1" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste1"></span><span id="Date_Final_Texto_Teste1"></span><span id="Hora_Inicial_Texto_Teste1"></span><span id="Hora_Final_Texto_Teste1"></span><button id="chart_type1" class="w3-btn w3-white w3-xlarge"><i class="fa fa-line-chart w3-text-blue w3-xxlarge"></i></button><button id="chart_position1" class="w3-btn w3-white w3-xlarge"><i class="fa fa-long-arrow-right w3-text-blue w3-xxlarge"></i></button><button id="btn_confirm1" onclick="mostrar_charts1()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete1" onclick="delete_menu1()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><button id="btn_add2" onclick="remove_line1()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
-<div id= "Query2" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query2"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu2" style="display:none"><span id="Tecnologia_Texto_Teste2"></span><i id="Tecnologia_Seta_2" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste2"></span><i id="Elemento_Seta_2" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste2"></span><i id="KPI_Seta_2" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste2"></span><i id="Periodo_Seta_2" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste2"></span><span id="Date_Final_Texto_Teste2"></span><span id="Hora_Inicial_Texto_Teste2"></span><span id="Hora_Final_Texto_Teste2"></span><button id="chart_type2" class="w3-btn w3-white w3-xlarge"><i class="fa fa-line-chart w3-text-green w3-xxlarge"></i></button><button id="chart_position2" class="w3-btn w3-white w3-xlarge"><i class="fa fa-long-arrow-right w3-text-green w3-xxlarge"></i></button><button id="btn_confirm2" onclick="mostrar_charts2()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete2" onclick="delete_menu2()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><button id="btn_add2" onclick="remove_line2()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
-<div id= "Query3" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query3"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu3" style="display:none"><span id="Tecnologia_Texto_Teste3"></span><i id="Tecnologia_Seta_3" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste3"></span><i id="Elemento_Seta_3" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste3"></span><i id="KPI_Seta_3" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste3"></span><i id="Periodo_Seta_3" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste3"></span><span id="Date_Final_Texto_Teste3"></span><span id="Hora_Inicial_Texto_Teste3"></span><span id="Hora_Final_Texto_Teste3"></span><button id="chart_type3" class="w3-btn w3-white w3-xlarge"><i class="fa fa-line-chart w3-text-orange w3-xxlarge"></i></button><button id="chart_position3" class="w3-btn w3-white w3-xlarge"><i class="fa fa-long-arrow-right w3-text-orange w3-xxlarge"></i></button><button id="btn_confirm3" onclick="mostrar_charts3()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete3" onclick="delete_menu3()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><button id="btn_add3" onclick="remove_line3()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
-<div id= "Query4" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query4"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu4" style="display:none"><span id="Tecnologia_Texto_Teste4"></span><i id="Tecnologia_Seta_4" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste4"></span><i id="Elemento_Seta_4" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste4"></span><i id="KPI_Seta_4" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste4"></span><i id="Periodo_Seta_4" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste4"></span><span id="Date_Final_Texto_Teste4"></span><span id="Hora_Inicial_Texto_Teste4"></span><span id="Hora_Final_Texto_Teste4"></span><button id="chart_type4" class="w3-btn w3-white w3-xlarge"><i class="fa fa-line-chart w3-text-yellow w3-xxlarge"></i></button><button id="chart_position4" class="w3-btn w3-white w3-xlarge"><i class="fa fa-long-arrow-right w3-text-yellow w3-xxlarge"></i></button><button id="btn_confirm4" onclick="mostrar_charts4()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete4" onclick="delete_menu4()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><button id="btn_add4" onclick="remove_line4()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
-<div id= "Query5" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query5"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu5" style="display:none"><span id="Tecnologia_Texto_Teste5"></span><i id="Tecnologia_Seta_5" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste5"></span><i id="Elemento_Seta_5" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste5"></span><i id="KPI_Seta_5" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste5"></span><i id="Periodo_Seta_5" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste5"></span><span id="Date_Final_Texto_Teste5"></span><span id="Hora_Inicial_Texto_Teste5"></span><span id="Hora_Final_Texto_Teste5"></span><button id="chart_type5" class="w3-btn w3-white w3-xlarge"><i class="fa fa-line-chart w3-xxlarge" style="color: #24CBE5" ></i></button><button id="chart_position5" class="w3-btn w3-white w3-xlarge"><i class="fa fa-long-arrow-right w3-xxlarge" style="color: #24CBE5"></i></button><button id="btn_confirm5" onclick="mostrar_charts5()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete5" onclick="delete_menu5()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><button id="btn_add5" onclick="remove_line5()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
-<div id= "Query6" style = "width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query6"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu6" style="display:none"><span id="Tecnologia_Texto_Teste6"></span><i id="Tecnologia_Seta_6" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste6"></span><i id="Elemento_Seta_6" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste6"></span><i id="KPI_Seta_6" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste6"></span><i id="Periodo_Seta_6" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste6"></span><span id="Date_Final_Texto_Teste6"></span><span id="Hora_Inicial_Texto_Teste6"></span><span id="Hora_Final_Texto_Teste6"></span><button id="chart_type6" class="w3-btn w3-white w3-xlarge"><i class="fa fa-line-chart w3-xxlarge" style="color: #64E572"></i></button><button id="chart_position6" class="w3-btn w3-white w3-xlarge"><i class="fa fa-long-arrow-right w3-xxlarge" style="color: #64E572" ></i></button><button id="btn_confirm6" onclick="mostrar_charts6()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete6" onclick="delete_menu6()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><button id="btn_add6" onclick="remove_line6()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
+<div class="Painel" style = "border-bottom: 2px solid black"><span style="position:absolute;display: inline-block;font-size: 25px;margin-left: 10px; margin-top: 5px; color: white"><b>Change All</b></span><label class="switch"><input id="slider_menu" type="checkbox"/><span class="slider round"></span></label><div style="font-size: 25px; text-align:center; color: white"><b>MENU</b><div style="float:right; display:inline-block; margin-right:10px"><button id="btn_add1" onclick="add_line()" class="w3-btn w3-xlarge w3-text-blue"><i class="fa fa-plus-square"></i></button></div></p></div></div>
+<div class="Lines_Query" id= "Query1" style = "border-bottom: 2px solid black; width: 100%; display:inline-block"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query1" checked="checked"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu1" style="display:inline-block"><span id="Tecnologia_Texto_Teste1"></span><i id="Tecnologia_Seta_1" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste1"></span><i id="Elemento_Seta_1" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste1"></span><i id="KPI_Seta_1" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste1"></span><i id="Periodo_Seta_1" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste1"></span><span id="Date_Final_Texto_Teste1"></span><span id="Hora_Inicial_Texto_Teste1"></span><span id="Hora_Final_Texto_Teste1"></span><button id="chart_type1" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position1" class="w3-btn w3-xlarge" style="background-color: transparent"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm1" onclick="mostrar_charts1()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete1" onclick="delete_menu1()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><span id="template1" style="font-size: 25px; color:red">1</span><button id="btn_add2" onclick="remove_line1()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
+<div class="Lines_Query" id= "Query2" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query2"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu2" style="display:none"><span id="Tecnologia_Texto_Teste2"></span><i id="Tecnologia_Seta_2" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste2"></span><i id="Elemento_Seta_2" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste2"></span><i id="KPI_Seta_2" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste2"></span><i id="Periodo_Seta_2" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste2"></span><span id="Date_Final_Texto_Teste2"></span><span id="Hora_Inicial_Texto_Teste2"></span><span id="Hora_Final_Texto_Teste2"></span><button id="chart_type2" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position2" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm2" onclick="mostrar_charts2()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete2" onclick="delete_menu2()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><span id="template2" style="font-size: 25px; color:red">1</span><button id="btn_add2" onclick="remove_line2()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
+<div class="Lines_Query" id= "Query3" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query3"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu3" style="display:none"><span id="Tecnologia_Texto_Teste3"></span><i id="Tecnologia_Seta_3" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste3"></span><i id="Elemento_Seta_3" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste3"></span><i id="KPI_Seta_3" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste3"></span><i id="Periodo_Seta_3" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste3"></span><span id="Date_Final_Texto_Teste3"></span><span id="Hora_Inicial_Texto_Teste3"></span><span id="Hora_Final_Texto_Teste3"></span><button id="chart_type3" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position3" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm3" onclick="mostrar_charts3()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete3" onclick="delete_menu3()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><span id="template3" style="font-size: 25px; color:red">1</span><button id="btn_add3" onclick="remove_line3()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
+<div class="Lines_Query" id= "Query4" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query4"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu4" style="display:none"><span id="Tecnologia_Texto_Teste4"></span><i id="Tecnologia_Seta_4" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste4"></span><i id="Elemento_Seta_4" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste4"></span><i id="KPI_Seta_4" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste4"></span><i id="Periodo_Seta_4" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste4"></span><span id="Date_Final_Texto_Teste4"></span><span id="Hora_Inicial_Texto_Teste4"></span><span id="Hora_Final_Texto_Teste4"></span><button id="chart_type4" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position4" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm4" onclick="mostrar_charts4()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete4" onclick="delete_menu4()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><span id="template4" style="font-size: 25px; color:red">1</span><button id="btn_add4" onclick="remove_line4()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
+<div class="Lines_Query" id= "Query5" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query5"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu5" style="display:none"><span id="Tecnologia_Texto_Teste5"></span><i id="Tecnologia_Seta_5" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste5"></span><i id="Elemento_Seta_5" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste5"></span><i id="KPI_Seta_5" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste5"></span><i id="Periodo_Seta_5" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste5"></span><span id="Date_Final_Texto_Teste5"></span><span id="Hora_Inicial_Texto_Teste5"></span><span id="Hora_Final_Texto_Teste5"></span><button id="chart_type5" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position5" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm5" onclick="mostrar_charts5()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete5" onclick="delete_menu5()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><span id="template5" style="font-size: 25px; color:red">1</span><button id="btn_add5" onclick="remove_line5()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
+<div class="Lines_Query" id= "Query6" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query6"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu6" style="display:none"><span id="Tecnologia_Texto_Teste6"></span><i id="Tecnologia_Seta_6" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste6"></span><i id="Elemento_Seta_6" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste6"></span><i id="KPI_Seta_6" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste6"></span><i id="Periodo_Seta_6" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste6"></span><span id="Date_Final_Texto_Teste6"></span><span id="Hora_Inicial_Texto_Teste6"></span><span id="Hora_Final_Texto_Teste6"></span><button id="chart_type6" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position6" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm6" onclick="mostrar_charts6()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete6" onclick="delete_menu6()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><span id="template6" style="font-size: 25px; color:red">1</span><button id="btn_add6" onclick="remove_line6()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
+<div class="Lines_Query" id= "Query7" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query7"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu7" style="display:none"><span id="Tecnologia_Texto_Teste7"></span><i id="Tecnologia_Seta_7" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste7"></span><i id="Elemento_Seta_7" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste7"></span><i id="KPI_Seta_7" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste7"></span><i id="Periodo_Seta_7" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste7"></span><span id="Date_Final_Texto_Teste7"></span><span id="Hora_Inicial_Texto_Teste7"></span><span id="Hora_Final_Texto_Teste7"></span><button id="chart_type7" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position7" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm7" onclick="mostrar_charts7()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete7" onclick="delete_menu7()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><span id="template7" style="font-size: 25px; color:red">1</span><button id="btn_add7" onclick="remove_line7()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
+<div class="Lines_Query" id= "Query8" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query8"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu8" style="display:none"><span id="Tecnologia_Texto_Teste8"></span><i id="Tecnologia_Seta_8" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste8"></span><i id="Elemento_Seta_8" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste8"></span><i id="KPI_Seta_8" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste8"></span><i id="Periodo_Seta_8" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste8"></span><span id="Date_Final_Texto_Teste8"></span><span id="Hora_Inicial_Texto_Teste8"></span><span id="Hora_Final_Texto_Teste8"></span><button id="chart_type8" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position8" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm8" onclick="mostrar_charts8()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete8" onclick="delete_menu8()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><span id="template8" style="font-size: 25px; color:red">1</span><button id="btn_add8" onclick="remove_line8()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
+<div class="Lines_Query" id= "Query9" style = "width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query9"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu9" style="display:none"><span id="Tecnologia_Texto_Teste9"></span><i id="Tecnologia_Seta_9" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste9"></span><i id="Elemento_Seta_9" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste9"></span><i id="KPI_Seta_9" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste9"></span><i id="Periodo_Seta_9" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste9"></span><span id="Date_Final_Texto_Teste9"></span><span id="Hora_Inicial_Texto_Teste9"></span><span id="Hora_Final_Texto_Teste9"></span><button id="chart_type9" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position9" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge" ></i></button><button id="btn_confirm9" onclick="mostrar_charts9()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete9" onclick="delete_menu9()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><span id="template9" style="font-size: 25px; color:red">1</span><button id="btn_add9" onclick="remove_line9()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
 </div>
-
 
 <div id="MENU" style="background-color:white; height:500px; margin:10px 10px 10px 10px">
 
 <div  style="display:inline-block; width:45%; height:500px; position: relative; top:-47.5px; margin-left:10px; margin-top:5px">
-<p style="font-size:30px; font-family:Cornerstone; color:red; border: 1px solid black; text-align:center;background-color: #f6f6f6;"><b>PARAMETERS</b></p>
+<p style="font-size:30px; font-family: 'Rubik', sans-serif; color:white; border: 1px solid black; text-align:center;background-color: #3C6D7A;"><b>PARAMETERS</b></p>
 
 <div id="SubParameters">
 
@@ -753,7 +151,7 @@ margin-left: 10px;
 <div style="text-align:center">
 
 <div style="display:inline-block; margin-top: 10px">
-<p><button style="border-radius:15px" class="w3-btn w3-orange w3-xlarge" onclick="showUser()">Create<i class="w3-margin-left fa fa-line-chart"></i></button></p>
+<p><button style="border-radius:30px" class="w3-btn w3-orange w3-xlarge" onclick="showUser()">Create<i class="w3-margin-left fa fa-line-chart"></i></button></p>
 </div>
 
 </div>
@@ -764,11 +162,11 @@ margin-left: 10px;
 </div>
 
 <div id="Div_Elementos" style="display:inline-block; width:25%; margin-left:10px; margin-top:5px">
-<p style="font-size:30px; font-family:Cornerstone; color:red; border: 1px solid black; text-align:center;background-color: #f6f6f6;"><b>ELEMENTS</b></p>
+<p style="font-size:30px; font-family: 'Rubik', sans-serif; color:white; border: 1px solid black; text-align:center;background-color: #3C6D7A;"><b>ELEMENTS</b></p>
 
 <!--<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Elements" title="Type in a name" style="width:100%">-->
 
-<div id="Div_Elementos_UMTS" style="display:block">
+<div id="Div_Elementos_UMTS" style="display:none">
 <input type="text" id="myInput_UMTS" onkeyup="myFunction_UMTS()" placeholder="Search for UMTS Elements" title="Type in a UMTS Element" style="width:100%">
 <ul id="myUL_UMTS">
 <?php
@@ -783,9 +181,6 @@ echo '<li onclick="printclick_elementos_UMTS_CustomCluster(this)" value="'.$row-
 }
 foreach ($kpi_customize_UMTS_Elementoos_NodeB as $row){	
 echo '<li onclick="printclick_elementos_UMTS_NodeB(this)" id="'.$row->node.'"><a href="javascript:void(0)" ><input id="'.$row->node.'" class ="radiozinho" type="radio" name="radio_elementos"/><span style="margin-left:10px">'.$row->node.'</span></a></li>';
-}
-foreach ($celulas_kpi_customize as $row){
-echo '<li value="'.$row->node.'"><a href="javascript:void(0)" ><input class ="radiozinho" type="radio" name="radio_elementos"/><span style="margin-left:10px; color:red">'.$row->node.'</span></a></li>';
 }
 foreach ($kpi_customize_UMTS_Elementoos_Reg as $row){
 echo '<li onclick="printclick_elementos_UMTS_Reg(this)" value="'.$row->node.'"><a href="javascript:void(0)" ><input class ="radiozinho" type="radio" name="radio_elementos"/><span style="margin-left:10px">'.$row->node.'</span></a></li>';
@@ -823,7 +218,7 @@ echo '<li onclick="printclick_elementos_GSM_UF(this)" value="'.$row->node.'"><a 
 </ul>
 </div>
 
-<div id="Div_Elementos_LTE" style="display:none">
+<div id="Div_Elementos_LTE" style="display:block">
 <input type="text" id="myInput_LTE" onkeyup="myFunction_LTE()" placeholder="Search for LTE Elements" title="Type in a LTE Element" style="width:100%">
 <ul id="myUL_LTE">
 <?php
@@ -851,11 +246,11 @@ echo '<li onclick="printclick_elementos_lte_UF(this)" value="'.$row->node.'"><a 
 </div>
 
 <div id="Div_KPI" style="display:inline-block; width:25%; margin-left:10px">
-<p style="font-size:30px; font-family:Cornerstone; color:red; border: 1px solid black; text-align:center;background-color: #f6f6f6;"><b>KPIs / Counters / NQIs</b></p>
+<p style="font-size:30px; font-family: 'Rubik', sans-serif; color:white; border: 1px solid black; text-align:center;background-color: #3C6D7A;"><b>KPIs / Counters / NQIs</b></p>
 
 <!--<input type="search" id="myInput_KPI" onkeyup="myFunction_KPI()" placeholder="Search for KPI's" title="Type in a name" style="width:100%" ng-model="querytext" ng-minlength="2">-->
 
-<div id="Div_LTE" style="display:none">
+<div id="Div_LTE" style="display:block">
 <input type="search" id="myInput_KPI_LTE" onkeyup="myFunction_KPI_LTE()" placeholder="Search for LTE KPI's" title="Type in a LTE KPI " style="width:100%" ng-model="querytext" ng-minlength="2"/>
 <ul id="myUL_KPI_LTE">
 <li id="show_KPI_Lte"><a href="javascript:void(0)" ><input style="display:none" class ="radiozinho" type="radio" name="radio_kpi"/><span style="margin-left:10px"><b> KPIs </b></span><span style="float:right; margin-top:-12px"><button class="w3-btn w3-xlarge w3-text-black"><i id="Seta_KPI_Lte" class="fa fa-caret-down"></i></button></span></a></li>
@@ -867,7 +262,7 @@ echo '<li onclick="printclick_kpi(this)" class="KPI_Lte" value="'.$row->node.'">
 <li id="show_Counter_Lte"><a href="javascript:void(0)" ><input style="display:none" class ="radiozinho" type="radio" name="radio_kpi"/><span style="margin-left:10px"><b> Counters </b></span><span style="float:right; margin-top:-12px"><button class="w3-btn w3-xlarge w3-text-black"><i id="Seta_Counter_Lte" class="fa fa-caret-down"></i></button></span></a></li>
 <?php
 foreach ($counter_customize_db_lte as $row){
-echo '<li onclick="printclick_counter_LTE(this)" class="Counter_Lte" id="'.$row->counter_aggregation.'" value="'.$row->functionsubset_id.'"><a href="javascript:void(0)" ><input class ="radiozinho" type="radio" name="radio_kpi"/><span style="margin-left:10px">'.$row->node. '</span></a></li>';
+echo '<li onclick="printclick_counter_LTE(this)" class="Counter_Lte" id="'.$row->counter_aggregation.'" value="'.$row->functionsubset_id.'"><a href="javascript:void(0)" ><input class ="radiozinho" type="radio" name="radio_kpi"/><span style="margin-left:10px">'.$row->node. '</span><span style="display:none">'.$row->counter_description.'</span><span style="float:right"><button class = "btn_info_counter_lte" style = "margin-top: -12px" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-info-circle" style="color:lightblue;font-size:25px"></i></button></span></a></li>';
 }
 ?>
 <li id="show_NQI_Lte"><a href="javascript:void(0)" ><input style="display:none" class ="radiozinho" type="radio" name="radio_kpi"/><span style="margin-left:10px"><b> NQI </b></span><span style="float:right; margin-top:-12px"><button class="w3-btn w3-xlarge w3-text-black"><i id="Seta_NQI_Lte" class="fa fa-caret-down"></i></button></span></a></li>
@@ -879,7 +274,7 @@ echo '<li onclick="printclick_NQI(this)" class="NQI_Lte" id="'.$row->node.'" val
 </ul>
 </div>
 
-<div id="Div_UMTS" style="display:block">
+<div id="Div_UMTS" style="display:none">
 <input type="search" id="myInput_KPI_UMTS" onkeyup="myFunction_KPI_UMTS()" placeholder="Search for UMTS KPI's" title="Type in a UMTS KPI" style="width:100%" ng-model="querytext" ng-minlength="2">
 <ul id="myUL_KPI_UMTS">
 <li id="show_KPI_Umts"><a href="javascript:void(0)" ><input style="display:none" class ="radiozinho" type="radio" name="radio_kpi"/><span style="margin-left:10px"><b> KPIs </b></span><span style="float:right; margin-top:-12px"><button class="w3-btn w3-xlarge w3-text-black"><i id="Seta_KPI_Umts" class="fa fa-caret-down"></i></button></span></a></li>
@@ -892,7 +287,7 @@ echo '<li onclick="printclick_erlang(this)" class="KPI_Umts"><a href="javascript
 <li id="show_Counter_Umts"><a href="javascript:void(0)" ><input style="display:none" class ="radiozinho" type="radio" name="radio_kpi"/><span style="margin-left:10px"><b> Counters </b></span><span style="float:right; margin-top:-12px"><button class="w3-btn w3-xlarge w3-text-black"><i id="Seta_Counter_Umts" class="fa fa-caret-down"></i></button></span></a></li>
 <?php
 foreach ($counter_customize_db_umts as $row){
-echo '<li onclick="printclick_counter_UMTS(this)" class="Counter_Umts" id="'.$row->counter_aggregation.'" value="'.$row->functionsubset_id.'"><a href="javascript:void(0)" ><input class ="radiozinho" type="radio" name="radio_kpi"/><span style="margin-left:10px">'.$row->node. '</span><span style="display:none">'.$row->counter_description.'</span><span style="float:right"><button style = "margin-top: -12px" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-info-circle" style="color:lightblue;font-size:25px"></i></button></span></a></li>';
+echo '<li onclick="printclick_counter_UMTS(this)" class="Counter_Umts" id="'.$row->counter_aggregation.'" value="'.$row->functionsubset_id.'"><a href="javascript:void(0)" ><input class ="radiozinho" type="radio" name="radio_kpi"/><span style="margin-left:10px">'.$row->node. '</span><span style="display:none">'.$row->counter_description.'</span><span style="float:right"><button class = "btn_info_counter_umts" style = "margin-top: -12px" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-info-circle" style="color:lightblue;font-size:25px"></i></button></span></a></li>';
 }
 ?>
 <li id="show_NQI_Umts"><a href="javascript:void(0)" ><input style="display:none" class ="radiozinho" type="radio" name="radio_kpi"/><span style="margin-left:10px"><b> NQI </b></span><span style="float:right; margin-top:-12px"><button class="w3-btn w3-xlarge w3-text-black"><i id="Seta_NQI_Umts" class="fa fa-caret-down"></i></button></span></a></li>
@@ -916,7 +311,7 @@ echo '<li onclick="printclick_kpi(this)" class="KPI_Gsm" value="'.$row->node.'">
 <li id="show_Counter_Gsm"><a href="javascript:void(0)" ><input style="display:none" class ="radiozinho" type="radio" name="radio_kpi"/><span style="margin-left:10px"><b> Counters </b></span><span style="float:right; margin-top:-12px"><button class="w3-btn w3-xlarge w3-text-black"><i id="Seta_Counter_Gsm" class="fa fa-caret-down"></i></button></span></a></li>
 <?php
 foreach ($counter_customize_db_gsm as $row){
-echo '<li onclick="printclick_counter_GSM(this)" class="Counter_Gsm" id="'.$row->counter_aggregation.'" value="'.$row->functionsubset_id.'"><a href="javascript:void(0)" ><input class ="radiozinho" type="radio" name="radio_kpi"/><span style="margin-left:10px">'.$row->node. '</span></a></li>';
+echo '<li onclick="printclick_counter_GSM(this)" class="Counter_Gsm" id="'.$row->counter_aggregation.'" value="'.$row->functionsubset_id.'"><a href="javascript:void(0)" ><input class ="radiozinho" type="radio" name="radio_kpi"/><span style="margin-left:10px">'.$row->node. '</span><span style="display:none">'.$row->counter_description.'</span><span style="float:right"><button class = "btn_info_counter_gsm" style = "margin-top: -12px" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-info-circle" style="color:lightblue;font-size:25px"></i></button></span></span></a></li>';
 }
 ?>
 </ul>
@@ -928,14 +323,16 @@ echo '<li onclick="printclick_counter_GSM(this)" class="Counter_Gsm" id="'.$row-
 
 <div id="Resumo" >
 
-<div style = "border-bottom: 2px solid black;"><p style="font-size: 25px; text-align:center"><b>MENU</b></p></div>
-<div style = "border-bottom: 2px solid black;"><p style= "margin:10px;"><b>Query 1: </b><span id="Texto_Teste1" style="color:blue"></span></div>
-<div style = "border-bottom: 2px solid black;"><p style= "margin:10px"><b>Query 2: </b><span id="Texto_Teste2" style="color:blue"></span></div>
-<div style = "border-bottom: 2px solid black;"><p style= "margin:10px"><b>Query 3: </b><span id="Texto_Teste3" style="color:blue"></span></div>
-<div style = "border-bottom: 2px solid black;"><p style= "margin:10px"><b>Query 4: </b><span id="Texto_Teste4" style="color:blue"></span></div>
-<div style = "border-bottom: 2px solid black;"><p style= "margin:10px"><b>Query 5: </b><span id="Texto_Teste5" style="color:blue"></span></div>
-<p style= "margin:10px"><b>Query 6: </b><span id="Texto_Teste6" style="color:blue"></span></p>
-
+<div class="Painel" style = "border-bottom: 2px solid black;"><p style="font-size: 25px; text-align:center; color: white"><b>SQL SERVER MENU</b></p></div>
+<div class="Lines_Query" style = "border-bottom: 2px solid black;"><p style= "margin:10px"><b>Query 1: </b><span id="Texto_Teste1" style="color:blue"></span></div>
+<div class="Lines_Query" style = "border-bottom: 2px solid black;"><p style= "margin:10px"><b>Query 2: </b><span id="Texto_Teste2" style="color:blue"></span></div>
+<div class="Lines_Query" style = "border-bottom: 2px solid black;"><p style= "margin:10px"><b>Query 3: </b><span id="Texto_Teste3" style="color:blue"></span></div>
+<div class="Lines_Query" style = "border-bottom: 2px solid black;"><p style= "margin:10px"><b>Query 4: </b><span id="Texto_Teste4" style="color:blue"></span></div>
+<div class="Lines_Query" style = "border-bottom: 2px solid black;"><p style= "margin:10px"><b>Query 5: </b><span id="Texto_Teste5" style="color:blue"></span></div>
+<div class="Lines_Query" style = "border-bottom: 2px solid black;"><p style= "margin:10px"><b>Query 6: </b><span id="Texto_Teste6" style="color:blue"></span></div>
+<div class="Lines_Query" style = "border-bottom: 2px solid black;"><p style= "margin:10px"><b>Query 7: </b><span id="Texto_Teste7" style="color:blue"></span></div>
+<div class="Lines_Query" style = "border-bottom: 2px solid black;"><p style= "margin:10px"><b>Query 8: </b><span id="Texto_Teste8" style="color:blue"></span></div>
+<p class="Lines_Query" style= "margin:10px"><b>Query 9: </b><span id="Texto_Teste9" style="color:blue"></span></p>
 </div>
 
 
@@ -949,6 +346,9 @@ echo '<li onclick="printclick_counter_GSM(this)" class="Counter_Gsm" id="'.$row-
 </div>
 </div>
 
+<div id="loading" style="display:none">
+    <p style="text-align:center;"><img src="https://www.pulsar-entertainment.com/assets/images/loading.gif" style="width:150px; height:150px;" alt="Loading" /></p>
+</div>
 
 <div id="Querys" style="display:block">
 
@@ -958,6 +358,8 @@ echo '<li onclick="printclick_counter_GSM(this)" class="Counter_Gsm" id="'.$row-
 <div id="txtHint4"><b></b></div>
 <div id="txtHint5"><b></b></div>
 <div id="txtHint6"><b></b></div>
+<div id="txtHint7"><b></b></div>
+<div id="txtHint8"><b></b></div>
 
 </div>
 
@@ -966,9 +368,6 @@ echo '<li onclick="printclick_counter_GSM(this)" class="Counter_Gsm" id="'.$row-
   <span id="info_text"><strong></strong></span>
 </div>
 
-<div id="loading" style="display:none">
-    <p style="text-align:center;"><img src="https://www.pulsar-entertainment.com/assets/images/loading.gif" style="width:150px; height:150px;" alt="Loading" /></p>
-</div>
 <!------------------------------------------------------- END AJAX ----------------------------------------------->
 <script>
 var kpi1 = "";
@@ -977,17 +376,20 @@ var kpi3 = "";
 var kpi4 = "";
 var kpi5 = "";
 var kpi6 = "";
+var kpi7 = "";
+var kpi8 = "";
+var kpi9 = "";
 var counter_name = "";
 var table_name = "";
 var nqi_name = "";
 var nodeb = "";
 var locell = "";
 var rnc = "";
-var rncc = ['rnc0','rnc1','rnc2','rnc3','rnc4','rnc5','rnc6'];
+var rncc = ['rnc0','rnc1','rnc2','rnc3','rnc4','rnc5','rnc6','rnc7','rnc8','rnc9'];
 var bsc = "";
 var enodeb = "";
 var cellid = "";
-var cellidd = ['cellid0','cellid1','cellid2','cellid3','cellid4','cellid5','cellid6'];
+var cellidd = ['cellid0','cellid1','cellid2','cellid3','cellid4','cellid5','cellid6','cellid7','cellid8','cellid9'];
 var uf = "";
 var counter_aggregation = "";
 var type_of_counter = "";
@@ -1002,19 +404,27 @@ var elemento3 = "";
 var elemento4 = "";
 var elemento5 = "";
 var elemento6 = "";
+var elemento7 = "";
+var elemento8 = "";
+var elemento9 = "";
 var tecnologia1 = "";
 var tecnologia2 = "";
 var tecnologia3 = "";
 var tecnologia4 = "";
 var tecnologia5 = "";
 var tecnologia6 = "";
+var tecnologia7 = "";
+var tecnologia8 = "";
+var tecnologia9 = "";
 var periodo = "";
 var tempo = "";
 var familia = "";
 var abortar_query = false;
-var data_inicial = ["data_inicial1","data_inicial2","data_inicial3","data_inicial4","data_inicial5","data_inicial6"];
+var data_inicial = ["data_inicial1","data_inicial2","data_inicial3","data_inicial4","data_inicial5","data_inicial6","data_inicial7","data_inicial8","data_inicial9"];
 var data_final = "";
 var hora_inicial = "";
+var ano = ["","","","","","","","","",""];
+var ano_final = ["","","","","","","","","",""];
 var hora_final = "";
 var autorizacao = false;
 var autorization1 = true;
@@ -1023,6 +433,9 @@ var autorization3 = true;
 var autorization4 = true;
 var autorization5 = true;
 var autorization6 = true;
+var autorization7 = true;
+var autorization8 = true;
+var autorization9 = true;
 var hourly_selected = false;
 var pointStartHour = "";
 var lixeira1 = false;
@@ -1031,6 +444,9 @@ var lixeira3 = false;
 var lixeira4 = false;
 var lixeira5 = false;
 var lixeira6 = false;
+var lixeira7 = false;
+var lixeira8 = false;
+var lixeira9 = false;
 var query_aux = "";
 var query1 = "";
 var query2 = "";
@@ -1038,36 +454,54 @@ var query3 = "";
 var query4 = "";
 var query5 = "";
 var query6 = "";
+var query7 = "";
+var query8 = "";
+var query9 = "";
 var nome1 = "";
 var nome2 = "";
 var nome3 = "";
 var nome4 = "";
 var nome5 = "";
 var nome6 = "";
+var nome7 = "";
+var nome8 = "";
+var nome9 = "";
 var tipo_chart1 = 1;
 var tipo_chart2 = 1;
 var tipo_chart3 = 1;
 var tipo_chart4 = 1;
 var tipo_chart5 = 1;
 var tipo_chart6 = 1;
+var tipo_chart7 = 1;
+var tipo_chart8 = 1;
+var tipo_chart9 = 1;
 var tipo_chart_position1 = 0;
 var tipo_chart_position2 = 0;
 var tipo_chart_position3 = 0;
 var tipo_chart_position4 = 0;
 var tipo_chart_position5 = 0;
 var tipo_chart_position6 = 0;
+var tipo_chart_position7 = 0;
+var tipo_chart_position8 = 0;
+var tipo_chart_position9 = 0;
 var unidade1 = "";
 var unidade2 = "";
 var unidade3 = "";
 var unidade4 = "";
 var unidade5 = "";
 var unidade6 = "";
+var unidade7 = "";
+var unidade8 = "";
+var unidade9 = "";
 var add_menu1 = false;
 var add_menu2 = false;
 var add_menu3 = false;
 var add_menu4 = false;
 var add_menu5 = false;
 var add_menu6 = false;
+var add_menu7 = false;
+var add_menu8 = false;
+var add_menu9 = false;
 var VisibilidadeMenu = true;
 var str = "SELECT date,Acc_Cs as node FROM gsm_kpi.vw_main_kpis_bsc_rate_daily where node != 'UNKNOWN' and node = 'BSCBA58' and date between '10/01/2017' and '10/10/2017' order by date";
 var query_num = 1;
@@ -1080,6 +514,17 @@ var vis_q3 = document.getElementById("Query3");
 var vis_q4 = document.getElementById("Query4");
 var vis_q5 = document.getElementById("Query5");
 var vis_q6 = document.getElementById("Query6");
+var vis_q7 = document.getElementById("Query7");
+var vis_q8 = document.getElementById("Query8");
+var vis_q9 = document.getElementById("Query9");
+var btn_info_umts = false;
+var btn_info_gsm = false;
+var btn_info_lte = false;
+var family = ["","","","","","","","","",""];
+var count_template = [1,1,1,1,1,1,1,1,1,1];
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1091,6 +536,9 @@ var vis_q3 = document.getElementById("Query3");
 var vis_q4 = document.getElementById("Query4");
 var vis_q5 = document.getElementById("Query5");
 var vis_q6 = document.getElementById("Query6");
+var vis_q7 = document.getElementById("Query7");
+var vis_q8 = document.getElementById("Query8");
+var vis_q9 = document.getElementById("Query9");
 
 	if(slider == false){
 	//Ações ao clicar no Enable
@@ -1113,8 +561,17 @@ var vis_q6 = document.getElementById("Query6");
 	if(vis_q6.style.display == "inline-block"){	
 	autorization6 = true;
 	}
+	if(vis_q7.style.display == "inline-block"){	
+	autorization7 = true;
+	}
+	if(vis_q8.style.display == "inline-block"){	
+	autorization8 = true;
+	}
+	if(vis_q9.style.display == "inline-block"){	
+	autorization9 = true;
+	}	
 		
-	for(i = 1; i <= 6; i++){
+	for(i = 1; i <= 9; i++){
 	document.getElementById("Query_Menu"+i).style.opacity = 1;
 	document.getElementById("btn_confirm"+i).style.visibility = "visible";
 	document.getElementById("chart_type"+i).disabled = false;
@@ -1169,13 +626,25 @@ var vis_q6 = document.getElementById("Query6");
 	if((vis_q6.style.display == "inline-block") && (autorization6 == true)){		
 	mostrar_charts6();
 	}
+	if((vis_q7.style.display == "inline-block") && (autorization7 == true)){		
+	mostrar_charts7();
+	}
+	if((vis_q8.style.display == "inline-block") && (autorization8 == true)){		
+	mostrar_charts8();
+	}
+	if((vis_q9.style.display == "inline-block") && (autorization9 == true)){		
+	mostrar_charts9();
+	}	
 	}else{
 	$("#radio_query1").prop("checked", false);
 	$("#radio_query2").prop("checked", false);
 	$("#radio_query3").prop("checked", false);
 	$("#radio_query4").prop("checked", false);
 	$("#radio_query5").prop("checked", false);
-	$("#radio_query6").prop("checked", false);	
+	$("#radio_query6").prop("checked", false);
+	$("#radio_query7").prop("checked", false);	
+	$("#radio_query8").prop("checked", false);	
+	$("#radio_query9").prop("checked", false);		
 	}	
 	
 	if(vis_q1.style.display == "inline-block"){
@@ -1196,8 +665,17 @@ var vis_q6 = document.getElementById("Query6");
 	if(vis_q6.style.display == "inline-block"){	
 	autorization6 = false;
 	}
+	if(vis_q7.style.display == "inline-block"){	
+	autorization7 = false;
+	}
+	if(vis_q8.style.display == "inline-block"){	
+	autorization8 = false;
+	}
+	if(vis_q9.style.display == "inline-block"){	
+	autorization9 = false;
+	}	
 	
-	for(i = 1; i <= 6; i++){
+	for(i = 1; i <= 9; i++){
 	document.getElementById("Query_Menu"+i).style.opacity = 0.3;
 	document.getElementById("btn_confirm"+i).style.visibility = "hidden";
 	document.getElementById("chart_type"+i).disabled = true;
@@ -1237,6 +715,18 @@ document.getElementById("Hora_Final_Texto_Teste5").innerHTML = hora_final;
 if(autorization6 == true){
 document.getElementById("Hora_Inicial_Texto_Teste6").innerHTML = hora_inicial+" to ";
 document.getElementById("Hora_Final_Texto_Teste6").innerHTML = hora_final;
+}
+if(autorization7 == true){
+document.getElementById("Hora_Inicial_Texto_Teste7").innerHTML = hora_inicial+" to ";
+document.getElementById("Hora_Final_Texto_Teste7").innerHTML = hora_final;
+}
+if(autorization8 == true){
+document.getElementById("Hora_Inicial_Texto_Teste8").innerHTML = hora_inicial+" to ";
+document.getElementById("Hora_Final_Texto_Teste8").innerHTML = hora_final;
+}
+if(autorization9 == true){
+document.getElementById("Hora_Inicial_Texto_Teste9").innerHTML = hora_inicial+" to ";
+document.getElementById("Hora_Final_Texto_Teste9").innerHTML = hora_final;
 }
 auth_change = true;
 });
@@ -1279,7 +769,7 @@ Date.prototype.getWeekNumber = function(){
   var d = new Date(Date.UTC(this.getFullYear(), this.getMonth(), this.getDate()));
   d.setUTCDate(d.getUTCDate() - d.getUTCDay());
   var yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
-  return Math.ceil((((d - yearStart) / 86400000) + 1)/7)
+  return Math.ceil((((d - yearStart) / 86400000))/7)
 };
 
 
@@ -1294,6 +784,7 @@ $('#Mostrar_Menu_Query').click(function(){
 		// document.getElementById("Technology_Menu").style.display = "block";
 		document.getElementById("Esconder_Menu_Query").style.display = "block";
 		document.getElementById("Mostrar_Menu_Query").style.display = "none";
+		pageTitleNotification.off();
 		VisibilidadeMenu = true;
 	} else 
 	if(VisibilidadeMenu == true){
@@ -1303,6 +794,7 @@ $('#Mostrar_Menu_Query').click(function(){
 		// document.getElementById("Technology_Menu").style.display = "none";
 		document.getElementById("Esconder_Menu_Query").style.display = "none";
 		document.getElementById("Mostrar_Menu_Query").style.display = "block";
+		pageTitleNotification.off();
 		VisibilidadeMenu = false;
 	}
 }
@@ -1426,6 +918,54 @@ $('#chart_type6').click(function(){
 	}
 });
 
+$('#chart_type7').click(function(){
+	if(tipo_chart7 == 1){
+    $(this).next('ul').slideToggle('500');
+    $(this).find('i').toggleClass('fa-line-chart fa-area-chart');
+	tipo_chart7 = 2;
+	}else if(tipo_chart7 == 2){
+    $(this).next('ul').slideToggle('500');
+    $(this).find('i').toggleClass('fa-area-chart fa-bar-chart');
+	tipo_chart7 = 3;
+	}else if(tipo_chart7 == 3){
+    $(this).next('ul').slideToggle('500');
+    $(this).find('i').toggleClass('fa-bar-chart fa-line-chart');
+	tipo_chart7 = 1;
+	}
+});
+
+$('#chart_type8').click(function(){
+	if(tipo_chart8 == 1){
+    $(this).next('ul').slideToggle('500');
+    $(this).find('i').toggleClass('fa-line-chart fa-area-chart');
+	tipo_chart8 = 2;
+	}else if(tipo_chart8 == 2){
+    $(this).next('ul').slideToggle('500');
+    $(this).find('i').toggleClass('fa-area-chart fa-bar-chart');
+	tipo_chart8 = 3;
+	}else if(tipo_chart8 == 3){
+    $(this).next('ul').slideToggle('500');
+    $(this).find('i').toggleClass('fa-bar-chart fa-line-chart');
+	tipo_chart8 = 1;
+	}
+});
+
+$('#chart_type9').click(function(){
+	if(tipo_chart9 == 1){
+    $(this).next('ul').slideToggle('500');
+    $(this).find('i').toggleClass('fa-line-chart fa-area-chart');
+	tipo_chart9 = 2;
+	}else if(tipo_chart9 == 2){
+    $(this).next('ul').slideToggle('500');
+    $(this).find('i').toggleClass('fa-area-chart fa-bar-chart');
+	tipo_chart9 = 3;
+	}else if(tipo_chart9 == 3){
+    $(this).next('ul').slideToggle('500');
+    $(this).find('i').toggleClass('fa-bar-chart fa-line-chart');
+	tipo_chart9 = 1;
+	}
+});
+
 $('#chart_position1').click(function(){
 	if(tipo_chart_position1 == 0){
     $(this).next('ul').slideToggle('500');
@@ -1498,25 +1038,70 @@ $('#chart_position6').click(function(){
 	}	
 });
 
+$('#chart_position7').click(function(){
+	if(tipo_chart_position7 == 0){
+    $(this).next('ul').slideToggle('500');
+    $(this).find('i').toggleClass('fa-long-arrow-right fa-long-arrow-left');
+	tipo_chart_position7 = 1;
+	}else if(tipo_chart_position7 == 1){
+    $(this).next('ul').slideToggle('500');
+    $(this).find('i').toggleClass('fa-long-arrow-left fa-long-arrow-right');
+	tipo_chart_position7 = 0;
+	}	
+});
+
+$('#chart_position8').click(function(){
+	if(tipo_chart_position8 == 0){
+    $(this).next('ul').slideToggle('500');
+    $(this).find('i').toggleClass('fa-long-arrow-right fa-long-arrow-left');
+	tipo_chart_position8 = 1;
+	}else if(tipo_chart_position8 == 1){
+    $(this).next('ul').slideToggle('500');
+    $(this).find('i').toggleClass('fa-long-arrow-left fa-long-arrow-right');
+	tipo_chart_position8 = 0;
+	}	
+});
+
+$('#chart_position9').click(function(){
+	if(tipo_chart_position9 == 0){
+    $(this).next('ul').slideToggle('500');
+    $(this).find('i').toggleClass('fa-long-arrow-right fa-long-arrow-left');
+	tipo_chart_position9 = 1;
+	}else if(tipo_chart_position9 == 1){
+    $(this).next('ul').slideToggle('500');
+    $(this).find('i').toggleClass('fa-long-arrow-left fa-long-arrow-right');
+	tipo_chart_position9 = 0;
+	}	
+});
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 
 $(document).ready(function () {
    $("#radio_query1").click(function(){
-	if(vis_q2.style.display == "inline-block"){   
+	if((vis_q2.style.display == "inline-block") && (autorization2 == true)){   
 	mostrar_charts2();
 	}
-	if(vis_q3.style.display == "inline-block"){	
+	if((vis_q3.style.display == "inline-block") && (autorization3 == true)){	
 	mostrar_charts3();
     }
-	if(vis_q4.style.display == "inline-block"){		
+	if((vis_q4.style.display == "inline-block") && (autorization4 == true)){		
 	mostrar_charts4();
 	}
-	if(vis_q5.style.display == "inline-block"){		
+	if((vis_q5.style.display == "inline-block") && (autorization5 == true)){		
 	mostrar_charts5();
 	}
-	if(vis_q6.style.display == "inline-block"){	
+	if((vis_q6.style.display == "inline-block") && (autorization6 == true)){	
 	mostrar_charts6();
 	}
+	if((vis_q7.style.display == "inline-block") && (autorization7 == true)){	
+	mostrar_charts7();
+	}
+	if((vis_q8.style.display == "inline-block") && (autorization8 == true)){	
+	mostrar_charts8();
+	}
+	if((vis_q9.style.display == "inline-block") && (autorization9 == true)){	
+	mostrar_charts9();
+	}	
 	
 	autorization1 = true;
 	autorization2 = false;
@@ -1524,9 +1109,12 @@ $(document).ready(function () {
 	autorization4 = false;
 	autorization5 = false;
 	autorization6 = false;
+	autorization7 = false;
+	autorization8 = false;
+	autorization9 = false;	
 	//auth_change = false;
 
-	for(i = 1; i <= 6; i++){
+	for(i = 1; i <= 9; i++){
 	document.getElementById("btn_confirm"+i).style.visibility = "hidden";
     document.getElementById("Query_Menu"+i).style.opacity = 0.3;	
 	}
@@ -1539,21 +1127,30 @@ $(document).ready(function () {
    });
 
    $("#radio_query2").click(function(){
-	if(vis_q1.style.display == "inline-block"){   
+	if((vis_q1.style.display == "inline-block") && (autorization1 == true)){   
 	mostrar_charts1();
 	}
-	if(vis_q3.style.display == "inline-block"){	
+	if((vis_q3.style.display == "inline-block") && (autorization3 == true)){	
 	mostrar_charts3();
     }
-	if(vis_q4.style.display == "inline-block"){		
+	if((vis_q4.style.display == "inline-block") && (autorization4 == true)){		
 	mostrar_charts4();
 	}
-	if(vis_q5.style.display == "inline-block"){		
+	if((vis_q5.style.display == "inline-block") && (autorization5 == true)){		
 	mostrar_charts5();
 	}
-	if(vis_q6.style.display == "inline-block"){	
+	if((vis_q6.style.display == "inline-block") && (autorization6 == true)){	
 	mostrar_charts6();
-	}   
+	}
+	if((vis_q7.style.display == "inline-block") && (autorization7 == true)){	
+	mostrar_charts7();
+	}
+	if((vis_q8.style.display == "inline-block") && (autorization8 == true)){	
+	mostrar_charts8();
+	} 
+	if((vis_q9.style.display == "inline-block") && (autorization9 == true)){	
+	mostrar_charts9();
+	}  	
 	   
 	autorization1 = false;
 	autorization2 = true;
@@ -1561,9 +1158,12 @@ $(document).ready(function () {
 	autorization4 = false;
 	autorization5 = false;
 	autorization6 = false;
+	autorization7 = false;
+	autorization8 = false;
+	autorization9 = false;	
 	//auth_change = false;
 	
-	for(i = 1; i <= 6; i++){
+	for(i = 1; i <= 9; i++){
 	document.getElementById("btn_confirm"+i).style.visibility = "hidden";
     document.getElementById("Query_Menu"+i).style.opacity = 0.3;	
 	}
@@ -1576,21 +1176,30 @@ $(document).ready(function () {
    });
    
     $("#radio_query3").click(function(){
-	if(vis_q1.style.display == "inline-block"){   
+	if((vis_q1.style.display == "inline-block") && (autorization1 == true)){   
 	mostrar_charts1();
 	}
-	if(vis_q2.style.display == "inline-block"){	
+	if((vis_q2.style.display == "inline-block") && (autorization2 == true)){	
 	mostrar_charts2();
     }
-	if(vis_q4.style.display == "inline-block"){		
+	if((vis_q4.style.display == "inline-block") && (autorization4 == true)){		
 	mostrar_charts4();
 	}
-	if(vis_q5.style.display == "inline-block"){		
+	if((vis_q5.style.display == "inline-block") && (autorization5 == true)){		
 	mostrar_charts5();
 	}
-	if(vis_q6.style.display == "inline-block"){	
+	if((vis_q6.style.display == "inline-block") && (autorization6 == true)){	
 	mostrar_charts6();
 	}
+	if((vis_q7.style.display == "inline-block") && (autorization7 == true)){	
+	mostrar_charts7();
+	}
+	if((vis_q8.style.display == "inline-block") && (autorization8 == true)){	
+	mostrar_charts8();
+	}
+	if((vis_q9.style.display == "inline-block") && (autorization9 == true)){	
+	mostrar_charts9();
+	}	
 	
 	autorization1 = false;
 	autorization2 = false;
@@ -1598,9 +1207,12 @@ $(document).ready(function () {
 	autorization4 = false;
 	autorization5 = false;
 	autorization6 = false;
+	autorization7 = false;
+	autorization8 = false;
+	autorization9 = false;	
 	//auth_change = false;
 	
-	for(i = 1; i <= 6; i++){
+	for(i = 1; i <= 9; i++){
 	document.getElementById("btn_confirm"+i).style.visibility = "hidden";
     document.getElementById("Query_Menu"+i).style.opacity = 0.3;	
 	}
@@ -1613,20 +1225,29 @@ $(document).ready(function () {
    });
    
     $("#radio_query4").click(function(){
-	if(vis_q1.style.display == "inline-block"){   
+	if((vis_q1.style.display == "inline-block") && (autorization1 == true)){   
 	mostrar_charts1();
 	}
-	if(vis_q2.style.display == "inline-block"){	
+	if((vis_q2.style.display == "inline-block") && (autorization2 == true)){	
 	mostrar_charts2();
     }
-	if(vis_q3.style.display == "inline-block"){		
+	if((vis_q3.style.display == "inline-block") && (autorization3 == true)){		
 	mostrar_charts3();
 	}
-	if(vis_q5.style.display == "inline-block"){		
+	if((vis_q5.style.display == "inline-block") && (autorization5 == true)){		
 	mostrar_charts5();
 	}
-	if(vis_q6.style.display == "inline-block"){	
+	if((vis_q6.style.display == "inline-block") && (autorization6 == true)){	
 	mostrar_charts6();
+	}
+	if((vis_q7.style.display == "inline-block") && (autorization7 == true)){	
+	mostrar_charts7();
+	}
+	if((vis_q8.style.display == "inline-block") && (autorization8 == true)){	
+	mostrar_charts8();
+	}
+	if((vis_q9.style.display == "inline-block") && (autorization9 == true)){	
+	mostrar_charts9();
 	}	
 	
 	autorization1 = false;
@@ -1635,9 +1256,12 @@ $(document).ready(function () {
 	autorization4 = true;
 	autorization5 = false;
 	autorization6 = false;
+	autorization7 = false;
+	autorization8 = false;
+	autorization9 = false;	
 	//auth_change = false;
 	
-	for(i = 1; i <= 6; i++){
+	for(i = 1; i <= 9; i++){
 	document.getElementById("btn_confirm"+i).style.visibility = "hidden";
     document.getElementById("Query_Menu"+i).style.opacity = 0.3;	
 	}
@@ -1650,20 +1274,29 @@ $(document).ready(function () {
    });
    
     $("#radio_query5").click(function(){
-	if(vis_q1.style.display == "inline-block"){   
+	if((vis_q1.style.display == "inline-block") && (autorization1 == true)){   
 	mostrar_charts1();
 	}
-	if(vis_q2.style.display == "inline-block"){	
+	if((vis_q2.style.display == "inline-block") && (autorization2 == true)){	
 	mostrar_charts2();
     }
-	if(vis_q3.style.display == "inline-block"){		
+	if((vis_q3.style.display == "inline-block") && (autorization3 == true)){		
 	mostrar_charts3();
 	}
-	if(vis_q4.style.display == "inline-block"){		
+	if((vis_q4.style.display == "inline-block") && (autorization4 == true)){		
 	mostrar_charts4();
 	}
-	if(vis_q6.style.display == "inline-block"){	
+	if((vis_q6.style.display == "inline-block") && (autorization6 == true)){	
 	mostrar_charts6();
+	}
+	if((vis_q7.style.display == "inline-block") && (autorization7 == true)){	
+	mostrar_charts7();
+	}
+	if((vis_q8.style.display == "inline-block") && (autorization8 == true)){	
+	mostrar_charts8();
+	}
+	if((vis_q9.style.display == "inline-block") && (autorization9 == true)){	
+	mostrar_charts9();
 	}	
 	
 	autorization1 = false;
@@ -1672,9 +1305,12 @@ $(document).ready(function () {
 	autorization4 = false;
 	autorization5 = true;
 	autorization6 = false;
+	autorization7 = false;
+	autorization8 = false;
+	autorization9 = false;	
 	//auth_change = false;
 	
-	for(i = 1; i <= 6; i++){
+	for(i = 1; i <= 9; i++){
 	document.getElementById("btn_confirm"+i).style.visibility = "hidden";
     document.getElementById("Query_Menu"+i).style.opacity = 0.3;	
 	}
@@ -1687,20 +1323,29 @@ $(document).ready(function () {
    });
    
     $("#radio_query6").click(function(){
-	if(vis_q1.style.display == "inline-block"){   
+	if((vis_q1.style.display == "inline-block") && (autorization1 == true)){   
 	mostrar_charts1();
 	}
-	if(vis_q2.style.display == "inline-block"){	
+	if((vis_q2.style.display == "inline-block") && (autorization2 == true)){	
 	mostrar_charts2();
     }
-	if(vis_q3.style.display == "inline-block"){		
+	if((vis_q3.style.display == "inline-block") && (autorization3 == true)){		
 	mostrar_charts3();
 	}
-	if(vis_q4.style.display == "inline-block"){		
+	if((vis_q4.style.display == "inline-block") && (autorization4 == true)){		
 	mostrar_charts4();
 	}
-	if(vis_q5.style.display == "inline-block"){	
+	if((vis_q5.style.display == "inline-block") && (autorization5 == true)){	
 	mostrar_charts5();
+	}
+	if((vis_q7.style.display == "inline-block") && (autorization7 == true)){	
+	mostrar_charts7();
+	}
+	if((vis_q8.style.display == "inline-block") && (autorization8 == true)){	
+	mostrar_charts8();
+	}
+	if((vis_q9.style.display == "inline-block") && (autorization9 == true)){	
+	mostrar_charts9();
 	}	
 	
 	autorization1 = false;
@@ -1709,9 +1354,12 @@ $(document).ready(function () {
 	autorization4 = false;
 	autorization5 = false;
 	autorization6 = true;
+	autorization7 = false;
+	autorization8 = false;
+	autorization9 = false;	
 	//auth_change = false;
 	
-	for(i = 1; i <= 6; i++){
+	for(i = 1; i <= 9; i++){
 	document.getElementById("btn_confirm"+i).style.visibility = "hidden";
     document.getElementById("Query_Menu"+i).style.opacity = 0.3;	
 	}
@@ -1722,6 +1370,154 @@ $(document).ready(function () {
 	document.getElementById("chart_type6").disabled = false;
 	document.getElementById("chart_position6").disabled = false;	
    });
+   
+    $("#radio_query7").click(function(){
+	if((vis_q1.style.display == "inline-block") && (autorization1 == true)){   
+	mostrar_charts1();
+	}
+	if((vis_q2.style.display == "inline-block") && (autorization2 == true)){	
+	mostrar_charts2();
+    }
+	if((vis_q3.style.display == "inline-block") && (autorization3 == true)){		
+	mostrar_charts3();
+	}
+	if((vis_q4.style.display == "inline-block") && (autorization4 == true)){		
+	mostrar_charts4();
+	}
+	if((vis_q5.style.display == "inline-block") && (autorization5 == true)){	
+	mostrar_charts5();
+	}
+	if((vis_q6.style.display == "inline-block") && (autorization6 == true)){	
+	mostrar_charts7();
+	}
+	if((vis_q8.style.display == "inline-block") && (autorization8 == true)){	
+	mostrar_charts8();
+	}
+	if((vis_q9.style.display == "inline-block") && (autorization9 == true)){	
+	mostrar_charts9();
+	}	
+	
+	autorization1 = false;
+	autorization2 = false;
+	autorization3 = false;
+	autorization4 = false;
+	autorization5 = false;
+	autorization6 = false;
+	autorization7 = true;
+	autorization8 = false;
+	autorization9 = false;	
+	//auth_change = false;
+	
+	for(i = 1; i <= 9; i++){
+	document.getElementById("btn_confirm"+i).style.visibility = "hidden";
+    document.getElementById("Query_Menu"+i).style.opacity = 0.3;	
+	}
+
+	document.getElementById("btn_confirm7").style.visibility = "visible";
+	document.getElementById("Query_Menu7").style.opacity = 1;
+	
+	document.getElementById("chart_type7").disabled = false;
+	document.getElementById("chart_position7").disabled = false;	
+   });
+   
+    $("#radio_query8").click(function(){
+	if((vis_q1.style.display == "inline-block") && (autorization1 == true)){   
+	mostrar_charts1();
+	}
+	if((vis_q2.style.display == "inline-block") && (autorization2 == true)){	
+	mostrar_charts2();
+    }
+	if((vis_q3.style.display == "inline-block") && (autorization3 == true)){		
+	mostrar_charts3();
+	}
+	if((vis_q4.style.display == "inline-block") && (autorization4 == true)){		
+	mostrar_charts4();
+	}
+	if((vis_q5.style.display == "inline-block") && (autorization5 == true)){	
+	mostrar_charts5();
+	}
+	if((vis_q6.style.display == "inline-block") && (autorization6 == true)){	
+	mostrar_charts6();
+	}
+	if((vis_q7.style.display == "inline-block") && (autorization7 == true)){	
+	mostrar_charts7();
+	}
+	if((vis_q9.style.display == "inline-block") && (autorization9 == true)){	
+	mostrar_charts9();
+	}	
+	
+	autorization1 = false;
+	autorization2 = false;
+	autorization3 = false;
+	autorization4 = false;
+	autorization5 = false;
+	autorization6 = false;
+	autorization7 = false;
+	autorization8 = true;
+	autorization9 = false;	
+	//auth_change = false;
+	
+	for(i = 1; i <= 9; i++){
+	document.getElementById("btn_confirm"+i).style.visibility = "hidden";
+    document.getElementById("Query_Menu"+i).style.opacity = 0.3;	
+	}
+
+	document.getElementById("btn_confirm8").style.visibility = "visible";
+	document.getElementById("Query_Menu8").style.opacity = 1;
+	
+	document.getElementById("chart_type8").disabled = false;
+	document.getElementById("chart_position8").disabled = false;	
+   });
+
+    $("#radio_query9").click(function(){
+	if((vis_q1.style.display == "inline-block") && (autorization1 == true)){   
+	mostrar_charts1();
+	}
+	if((vis_q2.style.display == "inline-block") && (autorization2 == true)){	
+	mostrar_charts2();
+    }
+	if((vis_q3.style.display == "inline-block") && (autorization3 == true)){		
+	mostrar_charts3();
+	}
+	if((vis_q4.style.display == "inline-block") && (autorization4 == true)){		
+	mostrar_charts4();
+	}
+	if((vis_q5.style.display == "inline-block") && (autorization5 == true)){	
+	mostrar_charts5();
+	}
+	if((vis_q6.style.display == "inline-block") && (autorization6 == true)){	
+	mostrar_charts9();
+	}
+	if((vis_q7.style.display == "inline-block") && (autorization7 == true)){	
+	mostrar_charts7();
+	}
+	if((vis_q8.style.display == "inline-block") && (autorization8 == true)){	
+	mostrar_charts8();
+	}	
+	
+	autorization1 = false;
+	autorization2 = false;
+	autorization3 = false;
+	autorization4 = false;
+	autorization5 = false;
+	autorization6 = false;
+	autorization7 = false;
+	autorization8 = false;
+	autorization9 = true;	
+	//auth_change = false;
+	
+	for(i = 1; i <= 9; i++){
+	document.getElementById("btn_confirm"+i).style.visibility = "hidden";
+    document.getElementById("Query_Menu"+i).style.opacity = 0.3;	
+	}
+
+	document.getElementById("btn_confirm9").style.visibility = "visible";
+	document.getElementById("Query_Menu9").style.opacity = 1;
+	
+	document.getElementById("chart_type9").disabled = false;
+	document.getElementById("chart_position9").disabled = false;	
+   });   
+   
 });
 
 
@@ -1729,6 +1525,8 @@ $(document).ready(function () {
 
 ///////////////////////////////////////////////////// TESTE AJAX ///////////////////////////////////////////
 $( "#datepicker_inicial" ).datepicker({
+	showWeek: true,
+	maxDate: 'today',
      onClose: function(){
 		if(autorization1 == true){
 		if(periodo != ""){
@@ -1742,12 +1540,14 @@ $( "#datepicker_inicial" ).datepicker({
 		var s = data_inicial[0];
 		var m = moment(s, 'MM-DD-YYYY');
 		data_inicial[0] = m.toDate().getWeekNumber();
+		ano[0] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Inicial_Texto_Teste1").innerHTML = "Week "+data_inicial[0]+" to";
 		} else if(periodo = "monthly"){
 		data_inicial[0] = document.getElementById("datepicker_inicial").value;
 		var s = data_inicial[0];
 		var m = moment(s, 'MM-DD-YYYY');
 		data_inicial[0] = m.toDate().getUTCMonth() + 1;
+		ano[0] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Inicial_Texto_Teste1").innerHTML = "Month "+data_inicial[0]+" to";
 		}
 		}
@@ -1765,12 +1565,14 @@ $( "#datepicker_inicial" ).datepicker({
 		var s = data_inicial[1];
 		var m = moment(s, 'MM-DD-YYYY');
 		data_inicial[1] = m.toDate().getWeekNumber();
+		ano[1] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Inicial_Texto_Teste2").innerHTML = "Week "+data_inicial[1]+" to";
 		}else if(periodo = "monthly"){
 		data_inicial[1] = document.getElementById("datepicker_inicial").value;
 		var s = data_inicial[1];
 		var m = moment(s, 'MM-DD-YYYY');
 		data_inicial[1] = m.toDate().getUTCMonth() + 1;
+		ano[1] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Inicial_Texto_Teste2").innerHTML = "Month "+data_inicial[1]+" to";
 		}
 		}
@@ -1788,12 +1590,14 @@ $( "#datepicker_inicial" ).datepicker({
 		var s = data_inicial[2];
 		var m = moment(s, 'MM-DD-YYYY');
 		data_inicial[2] = m.toDate().getWeekNumber();
+		ano[2] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Inicial_Texto_Teste3").innerHTML = "Week "+data_inicial[2]+" to";
 		}else if(periodo = "monthly"){
 		data_inicial[2] = document.getElementById("datepicker_inicial").value;
 		var s = data_inicial[2];
 		var m = moment(s, 'MM-DD-YYYY');
 		data_inicial[2] = m.toDate().getUTCMonth() + 1;
+		ano[2] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Inicial_Texto_Teste3").innerHTML = "Month "+data_inicial[2]+" to";
 		}
 		}
@@ -1811,13 +1615,15 @@ $( "#datepicker_inicial" ).datepicker({
 		var s = data_inicial[3];
 		var m = moment(s, 'MM-DD-YYYY');
 		data_inicial[3] = m.toDate().getWeekNumber();
+		ano[3] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Inicial_Texto_Teste4").innerHTML = "Week "+data_inicial[3]+" to";
 		}else if(periodo = "monthly"){
 		data_inicial[3] = document.getElementById("datepicker_inicial").value;
 		var s = data_inicial[3];
 		var m = moment(s, 'MM-DD-YYYY');
 		data_inicial[3] = m.toDate().getUTCMonth() + 1;
-		document.getElementById("Date_Final_Texto_Teste4").innerHTML = "Month "+data_inicial[3]+" to";
+		ano[3] = m.toDate().getUTCFullYear();
+		document.getElementById("Date_Inicial_Texto_Teste4").innerHTML = "Month "+data_inicial[3]+" to";
 		}
 		}
 		auth_change = true;
@@ -1834,13 +1640,15 @@ $( "#datepicker_inicial" ).datepicker({
 		var s = data_inicial[4];
 		var m = moment(s, 'MM-DD-YYYY');
 		data_inicial[4] = m.toDate().getWeekNumber();
+		ano[4] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Inicial_Texto_Teste5").innerHTML = "Week "+data_inicial[4]+" to";
 		}else if(periodo = "monthly"){
 		data_inicial[4] = document.getElementById("datepicker_inicial").value;
 		var s = data_inicial[4];
 		var m = moment(s, 'MM-DD-YYYY');
 		data_inicial[4] = m.toDate().getUTCMonth() + 1;
-		document.getElementById("Date_Final_Texto_Teste5").innerHTML = "Month "+data_inicial[4]+" to";
+		ano[4] = m.toDate().getUTCFullYear();
+		document.getElementById("Date_Inicial_Texto_Teste5").innerHTML = "Month "+data_inicial[4]+" to";
 		}
 		}
 		auth_change = true;
@@ -1857,21 +1665,100 @@ $( "#datepicker_inicial" ).datepicker({
 		var s = data_inicial[5];
 		var m = moment(s, 'MM-DD-YYYY');
 		data_inicial[5] = m.toDate().getWeekNumber();
+		ano[5] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Inicial_Texto_Teste6").innerHTML = "Week "+data_inicial[5]+" to";
 		}else if(periodo = "monthly"){
 		data_inicial[5] = document.getElementById("datepicker_inicial").value;
 		var s = data_inicial[5];
 		var m = moment(s, 'MM-DD-YYYY');
 		data_inicial[5] = m.toDate().getUTCMonth() + 1;
-		document.getElementById("Date_Final_Texto_Teste6").innerHTML = "Month "+data_inicial[5]+" to";
+		ano[5] = m.toDate().getUTCFullYear();
+		document.getElementById("Date_Inicial_Texto_Teste6").innerHTML = "Month "+data_inicial[5]+" to";
 		}
 		}
 		auth_change = true;
 		}
+		if(autorization7 == true){
+		if(periodo != ""){
+		if(hourly_selected == true){
+		document.getElementById("Date_Inicial_Texto_Teste7").innerHTML = document.getElementById("datepicker_inicial").value+" to";	
+		}
+		else if(periodo == "daily"){	
+		document.getElementById("Date_Inicial_Texto_Teste7").innerHTML = document.getElementById("datepicker_inicial").value+" to";
+		} else if(periodo == "weekly"){
+		data_inicial[6] = document.getElementById("datepicker_inicial").value;
+		var s = data_inicial[6];
+		var m = moment(s, 'MM-DD-YYYY');
+		data_inicial[6] = m.toDate().getWeekNumber();
+		ano[6] = m.toDate().getUTCFullYear();
+		document.getElementById("Date_Inicial_Texto_Teste7").innerHTML = "Week "+data_inicial[6]+" to";
+		}else if(periodo = "monthly"){
+		data_inicial[6] = document.getElementById("datepicker_inicial").value;
+		var s = data_inicial[6];
+		var m = moment(s, 'MM-DD-YYYY');
+		data_inicial[6] = m.toDate().getUTCMonth() + 1;
+		ano[6] = m.toDate().getUTCFullYear();
+		document.getElementById("Date_Inicial_Texto_Teste7").innerHTML = "Month "+data_inicial[6]+" to";
+		}
+		}
+		auth_change = true;
+		}
+		if(autorization8 == true){
+		if(periodo != ""){
+		if(hourly_selected == true){
+		document.getElementById("Date_Inicial_Texto_Teste8").innerHTML = document.getElementById("datepicker_inicial").value+" to";	
+		}
+		else if(periodo == "daily"){	
+		document.getElementById("Date_Inicial_Texto_Teste8").innerHTML = document.getElementById("datepicker_inicial").value+" to";
+		} else if(periodo == "weekly"){
+		data_inicial[7] = document.getElementById("datepicker_inicial").value;
+		var s = data_inicial[7];
+		var m = moment(s, 'MM-DD-YYYY');
+		data_inicial[7] = m.toDate().getWeekNumber();
+		ano[7] = m.toDate().getUTCFullYear();
+		document.getElementById("Date_Inicial_Texto_Teste8").innerHTML = "Week "+data_inicial[7]+" to";
+		}else if(periodo = "monthly"){
+		data_inicial[7] = document.getElementById("datepicker_inicial").value;
+		var s = data_inicial[7];
+		var m = moment(s, 'MM-DD-YYYY');
+		data_inicial[7] = m.toDate().getUTCMonth() + 1;
+		ano[7] = m.toDate().getUTCFullYear();
+		document.getElementById("Date_Inicial_Texto_Teste8").innerHTML = "Month "+data_inicial[7]+" to";
+		}
+		}
+		auth_change = true;
+		}
+		if(autorization9 == true){
+		if(periodo != ""){
+		if(hourly_selected == true){
+		document.getElementById("Date_Inicial_Texto_Teste9").innerHTML = document.getElementById("datepicker_inicial").value+" to";	
+		}
+		else if(periodo == "daily"){	
+		document.getElementById("Date_Inicial_Texto_Teste9").innerHTML = document.getElementById("datepicker_inicial").value+" to";
+		} else if(periodo == "weekly"){
+		data_inicial[8] = document.getElementById("datepicker_inicial").value;
+		var s = data_inicial[8];
+		var m = moment(s, 'MM-DD-YYYY');
+		data_inicial[8] = m.toDate().getWeekNumber();
+		ano[8] = m.toDate().getUTCFullYear();
+		document.getElementById("Date_Inicial_Texto_Teste9").innerHTML = "Week "+data_inicial[8]+" to";
+		}else if(periodo = "monthly"){
+		data_inicial[8] = document.getElementById("datepicker_inicial").value;
+		var s = data_inicial[8];
+		var m = moment(s, 'MM-DD-YYYY');
+		data_inicial[8] = m.toDate().getUTCMonth() + 1;
+		ano[8] = m.toDate().getUTCFullYear();
+		document.getElementById("Date_Inicial_Texto_Teste9").innerHTML = "Month "+data_inicial[8]+" to";
+		}
+		}
+		auth_change = true;
+		}		
      }
 });
 
 $( "#datepicker_final" ).datepicker({
+	 showWeek: true,
+	 maxDate: 'today',
      onClose: function(){
 		if(autorization1 == true){
 		if(periodo != ""){
@@ -1889,12 +1776,14 @@ $( "#datepicker_final" ).datepicker({
 		var s = data_final;
 		var m = moment(s, 'MM-DD-YYYY');
 		data_final = m.toDate().getWeekNumber();
+		ano_final[0] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Final_Texto_Teste1").innerHTML = "Week "+data_final;
 		}else if(periodo = "monthly"){
 		data_final = document.getElementById("datepicker_final").value;
 		var s = data_final;
 		var m = moment(s, 'MM-DD-YYYY');
 		data_final = m.toDate().getUTCMonth() + 1;
+		ano_final[0] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Final_Texto_Teste1").innerHTML = "Month "+data_final;
 		}
 		}
@@ -1916,12 +1805,14 @@ $( "#datepicker_final" ).datepicker({
 		var s = data_final;
 		var m = moment(s, 'MM-DD-YYYY');
 		data_final = m.toDate().getWeekNumber();
+		ano_final[1] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Final_Texto_Teste2").innerHTML = "Week "+data_final;
 		}else if(periodo = "monthly"){
 		data_final = document.getElementById("datepicker_final").value;
 		var s = data_final;
 		var m = moment(s, 'MM-DD-YYYY');
 		data_final = m.toDate().getUTCMonth() + 1;
+		ano_final[1] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Final_Texto_Teste2").innerHTML = "Month "+data_final;
 		}
 		}
@@ -1943,12 +1834,14 @@ $( "#datepicker_final" ).datepicker({
 		var s = data_final;
 		var m = moment(s, 'MM-DD-YYYY');
 		data_final = m.toDate().getWeekNumber();
+		ano_final[2] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Final_Texto_Teste3").innerHTML = "Week "+data_final;
 		}else if(periodo = "monthly"){
 		data_final = document.getElementById("datepicker_final").value;
 		var s = data_final;
 		var m = moment(s, 'MM-DD-YYYY');
 		data_final = m.toDate().getUTCMonth() + 1;
+		ano_final[2] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Final_Texto_Teste3").innerHTML = "Month "+data_final;
 		}
 		}
@@ -1970,12 +1863,14 @@ $( "#datepicker_final" ).datepicker({
 		var s = data_final;
 		var m = moment(s, 'MM-DD-YYYY');
 		data_final = m.toDate().getWeekNumber();
+		ano_final[3] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Final_Texto_Teste4").innerHTML = "Week "+data_final;
 		}else if(periodo = "monthly"){
 		data_final = document.getElementById("datepicker_final").value;
 		var s = data_final;
 		var m = moment(s, 'MM-DD-YYYY');
 		data_final = m.toDate().getUTCMonth() + 1;
+		ano_final[3] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Final_Texto_Teste4").innerHTML = "Month "+data_final;
 		}
 		}
@@ -1997,12 +1892,14 @@ $( "#datepicker_final" ).datepicker({
 		var s = data_final;
 		var m = moment(s, 'MM-DD-YYYY');
 		data_final = m.toDate().getWeekNumber();
+		ano_final[4] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Final_Texto_Teste5").innerHTML = "Week "+data_final;
 		}else if(periodo = "monthly"){
 		data_final = document.getElementById("datepicker_final").value;
 		var s = data_final;
 		var m = moment(s, 'MM-DD-YYYY');
 		data_final = m.toDate().getUTCMonth() + 1;
+		ano_final[4] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Final_Texto_Teste5").innerHTML = "Month "+data_final;
 		}
 		}
@@ -2024,17 +1921,110 @@ $( "#datepicker_final" ).datepicker({
 		var s = data_final;
 		var m = moment(s, 'MM-DD-YYYY');
 		data_final = m.toDate().getWeekNumber();
+		ano_final[5] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Final_Texto_Teste6").innerHTML = "Week "+data_final;
 		}else if(periodo = "monthly"){
 		data_final = document.getElementById("datepicker_final").value;
 		var s = data_final;
 		var m = moment(s, 'MM-DD-YYYY');
 		data_final = m.toDate().getUTCMonth() + 1;
+		ano_final[5] = m.toDate().getUTCFullYear();
 		document.getElementById("Date_Final_Texto_Teste6").innerHTML = "Month "+data_final;
 		}
 		}
 		auth_change = true;
+		}
+
+		if(autorization7 == true){
+		if(periodo != ""){
+		if(hourly_selected == true){
+		document.getElementById("Date_Final_Texto_Teste7").innerHTML = document.getElementById("datepicker_final").value+" from";
+		hora_inicial = $("#Drop_Hora_Inicial option:selected").text();
+		hora_final = $("#Drop_Hora_Final option:selected").text();
+		document.getElementById("Hora_Inicial_Texto_Teste7").innerHTML = hora_inicial+" to ";
+		document.getElementById("Hora_Final_Texto_Teste7").innerHTML = hora_final;
+		}				
+		else if(periodo == "daily"){	
+		document.getElementById("Date_Final_Texto_Teste7").innerHTML = document.getElementById("datepicker_final").value;
+		} else if(periodo == "weekly"){
+		data_final = document.getElementById("datepicker_final").value;
+		var s = data_final;
+		var m = moment(s, 'MM-DD-YYYY');
+		data_final = m.toDate().getWeekNumber();
+		ano_final[6] = m.toDate().getUTCFullYear();
+		document.getElementById("Date_Final_Texto_Teste7").innerHTML = "Week "+data_final;
+		}else if(periodo = "monthly"){
+		data_final = document.getElementById("datepicker_final").value;
+		var s = data_final;
+		var m = moment(s, 'MM-DD-YYYY');
+		data_final = m.toDate().getUTCMonth() + 1;
+		ano_final[6] = m.toDate().getUTCFullYear();
+		document.getElementById("Date_Final_Texto_Teste7").innerHTML = "Month "+data_final;
+		}
+		}
+		auth_change = true;
+		}
+
+		if(autorization8 == true){
+		if(periodo != ""){
+		if(hourly_selected == true){
+		document.getElementById("Date_Final_Texto_Teste8").innerHTML = document.getElementById("datepicker_final").value+" from";
+		hora_inicial = $("#Drop_Hora_Inicial option:selected").text();
+		hora_final = $("#Drop_Hora_Final option:selected").text();
+		document.getElementById("Hora_Inicial_Texto_Teste8").innerHTML = hora_inicial+" to ";
+		document.getElementById("Hora_Final_Texto_Teste8").innerHTML = hora_final;
+		}				
+		else if(periodo == "daily"){	
+		document.getElementById("Date_Final_Texto_Teste8").innerHTML = document.getElementById("datepicker_final").value;
+		} else if(periodo == "weekly"){
+		data_final = document.getElementById("datepicker_final").value;
+		var s = data_final;
+		var m = moment(s, 'MM-DD-YYYY');
+		data_final = m.toDate().getWeekNumber();
+		ano_final[7] = m.toDate().getUTCFullYear();
+		document.getElementById("Date_Final_Texto_Teste8").innerHTML = "Week "+data_final;
+		}else if(periodo = "monthly"){
+		data_final = document.getElementById("datepicker_final").value;
+		var s = data_final;
+		var m = moment(s, 'MM-DD-YYYY');
+		data_final = m.toDate().getUTCMonth() + 1;
+		ano_final[7] = m.toDate().getUTCFullYear();
+		document.getElementById("Date_Final_Texto_Teste8").innerHTML = "Month "+data_final;
+		}
+		}
+		auth_change = true;
+		}
+
+		if(autorization9 == true){
+		if(periodo != ""){
+		if(hourly_selected == true){
+		document.getElementById("Date_Final_Texto_Teste9").innerHTML = document.getElementById("datepicker_final").value+" from";
+		hora_inicial = $("#Drop_Hora_Inicial option:selected").text();
+		hora_final = $("#Drop_Hora_Final option:selected").text();
+		document.getElementById("Hora_Inicial_Texto_Teste9").innerHTML = hora_inicial+" to ";
+		document.getElementById("Hora_Final_Texto_Teste9").innerHTML = hora_final;
+		}				
+		else if(periodo == "daily"){	
+		document.getElementById("Date_Final_Texto_Teste9").innerHTML = document.getElementById("datepicker_final").value;
+		} else if(periodo == "weekly"){
+		data_final = document.getElementById("datepicker_final").value;
+		var s = data_final;
+		var m = moment(s, 'MM-DD-YYYY');
+		data_final = m.toDate().getWeekNumber();
+		ano_final[8] = m.toDate().getUTCFullYear();
+		document.getElementById("Date_Final_Texto_Teste9").innerHTML = "Week "+data_final;
+		}else if(periodo = "monthly"){
+		data_final = document.getElementById("datepicker_final").value;
+		var s = data_final;
+		var m = moment(s, 'MM-DD-YYYY');
+		data_final = m.toDate().getUTCMonth() + 1;
+		ano_final[8] = m.toDate().getUTCFullYear();
+		document.getElementById("Date_Final_Texto_Teste9").innerHTML = "Month "+data_final;
+		}
+		}
+		auth_change = true;
 		}		
+		
      }
 });
 /////////////////////////////////////////////////// FIM TESTE AJAX /////////////////////////////////////////
@@ -2053,22 +2043,40 @@ function printclick_elementos_GSM_Cells(node){
 	
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	elemento1 = $(node).text();
+	family[1] = "cell";
 	}
 	if(((vis_q2.style.display == "inline-block") && (autorization2 == true)) || slider == true){
 	elemento2 = $(node).text();
+	family[2] = "cell";
 	}
 	if(((vis_q3.style.display == "inline-block") && (autorization3 == true)) || slider == true){
 	elemento3 = $(node).text();
+	family[3] = "cell";
 	}
 	if(((vis_q4.style.display == "inline-block") && (autorization4 == true)) || slider == true){
 	elemento4 = $(node).text();
+	family[4] = "cell";
 	}
 	if(((vis_q5.style.display == "inline-block") && (autorization5 == true)) || slider == true){
 	elemento5 = $(node).text();
+	family[5] = "cell";
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	elemento6 = $(node).text();
+	family[6] = "cell";
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	elemento7 = $(node).text();
+	family[7] = "cell";
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	elemento8 = $(node).text();
+	family[8] = "cell";
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	elemento9 = $(node).text();
+	family[9] = "cell";
+	}	
 		
 	if(autorization1 == true){
 	document.getElementById("Elemento_Texto_Teste1").innerHTML = elemento1;
@@ -2094,6 +2102,18 @@ function printclick_elementos_GSM_Cells(node){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento6;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
 	}
+	if(autorization7 == true){
+	document.getElementById("Elemento_Texto_Teste7").innerHTML = elemento7;
+	document.getElementById("Elemento_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("Elemento_Texto_Teste8").innerHTML = elemento8;
+	document.getElementById("Elemento_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("Elemento_Texto_Teste9").innerHTML = elemento9;
+	document.getElementById("Elemento_Seta_9").style.visibility = "visible";
+	}	
 	
 	auth_change = true;
 
@@ -2108,22 +2128,40 @@ function printclick_elementos_GSM_BSC(node){
 	elemento = $(node).text();
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	elemento1 = $(node).text();
+	family[1] = "bsc";
 	}
 	if(((vis_q2.style.display == "inline-block") && (autorization2 == true)) || slider == true){
 	elemento2 = $(node).text();
+	family[2] = "bsc";
 	}
 	if(((vis_q3.style.display == "inline-block") && (autorization3 == true)) || slider == true){
 	elemento3 = $(node).text();
+	family[3] = "bsc";
 	}
 	if(((vis_q4.style.display == "inline-block") && (autorization4 == true)) || slider == true){
 	elemento4 = $(node).text();
+	family[4] = "bsc";
 	}
 	if(((vis_q5.style.display == "inline-block") && (autorization5 == true)) || slider == true){
 	elemento5 = $(node).text();
+	family[5] = "bsc";
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	elemento6 = $(node).text();
+	family[6] = "bsc";
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	elemento7 = $(node).text();
+	family[7] = "bsc";
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	elemento8 = $(node).text();
+	family[8] = "bsc";
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	elemento9 = $(node).text();
+	family[9] = "bsc";
+	}		
 	
 	if(autorization1 == true){
 	document.getElementById("Elemento_Texto_Teste1").innerHTML = elemento1;
@@ -2149,6 +2187,18 @@ function printclick_elementos_GSM_BSC(node){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento6;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
 	}
+	if(autorization7 == true){
+	document.getElementById("Elemento_Texto_Teste7").innerHTML = elemento7;
+	document.getElementById("Elemento_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("Elemento_Texto_Teste8").innerHTML = elemento8;
+	document.getElementById("Elemento_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("Elemento_Texto_Teste9").innerHTML = elemento9;
+	document.getElementById("Elemento_Seta_9").style.visibility = "visible";
+	}	
 	
 	auth_change = true;
 	//document.getElementById("Texto_Teste").innerHTML = query;
@@ -2162,22 +2212,40 @@ function printclick_elementos_GSM_BTS(node){
 	elemento = $(node).text();
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	elemento1 = $(node).text();
+	family[1] = "bts";
 	}
 	if(((vis_q2.style.display == "inline-block") && (autorization2 == true)) || slider == true){
 	elemento2 = $(node).text();
+	family[2] = "bts";
 	}
 	if(((vis_q3.style.display == "inline-block") && (autorization3 == true)) || slider == true){
 	elemento3 = $(node).text();
+	family[3] = "bts";
 	}
 	if(((vis_q4.style.display == "inline-block") && (autorization4 == true)) || slider == true){
 	elemento4 = $(node).text();
+	family[4] = "bts";
 	}
 	if(((vis_q5.style.display == "inline-block") && (autorization5 == true)) || slider == true){
 	elemento5 = $(node).text();
+	family[5] = "bts";
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	elemento6 = $(node).text();
+	family[6] = "bts";
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	elemento7 = $(node).text();
+	family[7] = "bts";
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	elemento8 = $(node).text();
+	family[8] = "bts";
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	elemento9 = $(node).text();
+	family[9] = "bts";
+	}	
 	$(".CellsItems").remove();
 	
 	query_cells = "SELECT cellname,cellid,bsc FROM gsm_control.cells_db where bts='"+elemento+"' order by cellname DESC";
@@ -2206,6 +2274,18 @@ function printclick_elementos_GSM_BTS(node){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento6;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
 	}
+	if(autorization7 == true){
+	document.getElementById("Elemento_Texto_Teste7").innerHTML = elemento7;
+	document.getElementById("Elemento_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("Elemento_Texto_Teste8").innerHTML = elemento8;
+	document.getElementById("Elemento_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("Elemento_Texto_Teste9").innerHTML = elemento9;
+	document.getElementById("Elemento_Seta_9").style.visibility = "visible";
+	}	
 	showCells();	
 	
 	
@@ -2223,22 +2303,40 @@ function printclick_elementos_GSM_City(node){
 	
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	elemento1 = $(node).find('span:eq(0)').text();
+	family[1] = "cidade";
 	}
 	if(((vis_q2.style.display == "inline-block") && (autorization2 == true)) || slider == true){
 	elemento2 = $(node).find('span:eq(0)').text();
+	family[2] = "cidade";
 	}
 	if(((vis_q3.style.display == "inline-block") && (autorization3 == true)) || slider == true){
 	elemento3 = $(node).find('span:eq(0)').text();
+	family[3] = "cidade";
 	}
 	if(((vis_q4.style.display == "inline-block") && (autorization4 == true)) || slider == true){
 	elemento4 = $(node).find('span:eq(0)').text();
+	family[4] = "cidade";
 	}
 	if(((vis_q5.style.display == "inline-block") && (autorization5 == true)) || slider == true){
 	elemento5 = $(node).find('span:eq(0)').text();
+	family[5] = "cidade";
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	elemento6 = $(node).find('span:eq(0)').text();
+	family[6] = "cidade";
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	elemento7 = $(node).find('span:eq(0)').text();
+	family[7] = "cidade";
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	elemento8 = $(node).find('span:eq(0)').text();
+	family[8] = "cidade";
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	elemento9 = $(node).find('span:eq(0)').text();
+	family[9] = "cidade";
+	}	
 
 	
 	if(autorization1 == true){
@@ -2264,6 +2362,18 @@ function printclick_elementos_GSM_City(node){
 	if(autorization6 == true){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento6;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
+	}
+	if(autorization7 == true){
+	document.getElementById("Elemento_Texto_Teste7").innerHTML = elemento7;
+	document.getElementById("Elemento_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("Elemento_Texto_Teste8").innerHTML = elemento8;
+	document.getElementById("Elemento_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("Elemento_Texto_Teste9").innerHTML = elemento9;
+	document.getElementById("Elemento_Seta_9").style.visibility = "visible";
 	}	
 	
 	
@@ -2278,22 +2388,40 @@ function printclick_elementos_GSM_Reg(node){
 	elemento = $(node).text();
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	elemento1 = $(node).text();
+	family[1] = "region";
 	}
 	if(((vis_q2.style.display == "inline-block") && (autorization2 == true)) || slider == true){
 	elemento2 = $(node).text();
+	family[2] = "region";
 	}
 	if(((vis_q3.style.display == "inline-block") && (autorization3 == true)) || slider == true){
 	elemento3 = $(node).text();
+	family[3] = "region";
 	}
 	if(((vis_q4.style.display == "inline-block") && (autorization4 == true)) || slider == true){
 	elemento4 = $(node).text();
+	family[4] = "region";
 	}
 	if(((vis_q5.style.display == "inline-block") && (autorization5 == true)) || slider == true){
 	elemento5 = $(node).text();
+	family[5] = "region";
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	elemento6 = $(node).text();
+	family[6] = "region";
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	elemento7 = $(node).text();
+	family[7] = "region";
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	elemento8 = $(node).text();
+	family[8] = "region";
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	elemento9 = $(node).text();
+	family[9] = "region";
+	}	
 	
 	if(autorization1 == true){
 	document.getElementById("Elemento_Texto_Teste1").innerHTML = elemento1;
@@ -2318,6 +2446,18 @@ function printclick_elementos_GSM_Reg(node){
 	if(autorization6 == true){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento6;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
+	}
+	if(autorization7 == true){
+	document.getElementById("Elemento_Texto_Teste7").innerHTML = elemento7;
+	document.getElementById("Elemento_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("Elemento_Texto_Teste8").innerHTML = elemento8;
+	document.getElementById("Elemento_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("Elemento_Texto_Teste9").innerHTML = elemento9;
+	document.getElementById("Elemento_Seta_9").style.visibility = "visible";
 	}	
 	
 	
@@ -2332,22 +2472,40 @@ function printclick_elementos_GSM_UF(node){
 	elemento = $(node).text();
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	elemento1 = $(node).text();
+	family[1] = "uf";
 	}
 	if(((vis_q2.style.display == "inline-block") && (autorization2 == true)) || slider == true){
 	elemento2 = $(node).text();
+	family[2] = "uf";
 	}
 	if(((vis_q3.style.display == "inline-block") && (autorization3 == true)) || slider == true){
 	elemento3 = $(node).text();
+	family[3] = "uf";
 	}
 	if(((vis_q4.style.display == "inline-block") && (autorization4 == true)) || slider == true){
 	elemento4 = $(node).text();
+	family[4] = "uf";
 	}
 	if(((vis_q5.style.display == "inline-block") && (autorization5 == true)) || slider == true){
 	elemento5 = $(node).text();
+	family[5] = "uf";
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	elemento6 = $(node).text();
+	family[6] = "uf";
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	elemento7 = $(node).text();
+	family[7] = "uf";
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	elemento8 = $(node).text();
+	family[8] = "uf";
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	elemento9 = $(node).text();
+	family[9] = "uf";
+	}	
 	
 	if(autorization1 == true){
 	document.getElementById("Elemento_Texto_Teste1").innerHTML = elemento1;
@@ -2372,6 +2530,18 @@ function printclick_elementos_GSM_UF(node){
 	if(autorization6 == true){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento6;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
+	}
+	if(autorization7 == true){
+	document.getElementById("Elemento_Texto_Teste7").innerHTML = elemento7;
+	document.getElementById("Elemento_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("Elemento_Texto_Teste8").innerHTML = elemento8;
+	document.getElementById("Elemento_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("Elemento_Texto_Teste9").innerHTML = elemento9;
+	document.getElementById("Elemento_Seta_9").style.visibility = "visible";
 	}	
 	
 	
@@ -2395,32 +2565,56 @@ function printclick_elementos_GSM_UF(node){
 	elemento1 = $(node).text();
 	rncc[1] = $(node).attr("value");
 	cellidd[1] = $(node).attr("id");
+	family[1] = "cell";
 	}
 	if(((vis_q2.style.display == "inline-block") && (autorization2 == true)) || slider == true){
 	elemento2 = $(node).text();
 	rncc[2] = $(node).attr("value");
 	cellidd[2] = $(node).attr("id");
+	family[2] = "cell";
 	}
 	if(((vis_q3.style.display == "inline-block") && (autorization3 == true)) || slider == true){
 	elemento3 = $(node).text();
 	rncc[3] = $(node).attr("value");
 	cellidd[3] = $(node).attr("id");
+	family[3] = "cell";
 	}
 	if(((vis_q4.style.display == "inline-block") && (autorization4 == true)) || slider == true){
 	elemento4 = $(node).text();
 	rncc[4] = $(node).attr("value");
 	cellidd[4] = $(node).attr("id");
+	family[4] = "cell";
 	}
 	if(((vis_q5.style.display == "inline-block") && (autorization5 == true)) || slider == true){
 	elemento5 = $(node).text();
 	rncc[5] = $(node).attr("value");
 	cellidd[5] = $(node).attr("id");
+	family[5] = "cell";
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	elemento6 = $(node).text();
 	rncc[6] = $(node).attr("value");
 	cellidd[6] = $(node).attr("id");
+	family[6] = "cell";
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	elemento7 = $(node).text();
+	rncc[7] = $(node).attr("value");
+	cellidd[7] = $(node).attr("id");
+	family[7] = "cell";
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	elemento8 = $(node).text();
+	rncc[8] = $(node).attr("value");
+	cellidd[8] = $(node).attr("id");
+	family[8] = "cell";
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	elemento9 = $(node).text();
+	rncc[9] = $(node).attr("value");
+	cellidd[9] = $(node).attr("id");
+	family[9] = "cell";
+	}	
 	
 	if(autorization1 == true){
 	document.getElementById("Elemento_Texto_Teste1").innerHTML = elemento1;
@@ -2445,9 +2639,20 @@ function printclick_elementos_GSM_UF(node){
 	if(autorization6 == true){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento6;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
+	}
+	if(autorization7 == true){
+	document.getElementById("Elemento_Texto_Teste7").innerHTML = elemento7;
+	document.getElementById("Elemento_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("Elemento_Texto_Teste8").innerHTML = elemento8;
+	document.getElementById("Elemento_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("Elemento_Texto_Teste9").innerHTML = elemento9;
+	document.getElementById("Elemento_Seta_9").style.visibility = "visible";
 	}	
-	
-	
+
 	auth_change = true;
 	
  }
@@ -2462,22 +2667,40 @@ function printclick_elementos_UMTS_City(node){
 	
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	elemento1 = $(node).find('span:eq(0)').text();
+	family[1] = "cidade";
 	}
 	if(((vis_q2.style.display == "inline-block") && (autorization2 == true)) || slider == true){
 	elemento2 = $(node).find('span:eq(0)').text();
+	family[2] = "cidade";
 	}
 	if(((vis_q3.style.display == "inline-block") && (autorization3 == true)) || slider == true){
 	elemento3 = $(node).find('span:eq(0)').text();
+	family[3] = "cidade";
 	}
 	if(((vis_q4.style.display == "inline-block") && (autorization4 == true)) || slider == true){
 	elemento4 = $(node).find('span:eq(0)').text();
+	family[4] = "cidade";
 	}
 	if(((vis_q5.style.display == "inline-block") && (autorization5 == true)) || slider == true){
 	elemento5 = $(node).find('span:eq(0)').text();
+	family[5] = "cidade";
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	elemento6 = $(node).find('span:eq(0)').text();
+	family[6] = "cidade";
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	elemento7 = $(node).find('span:eq(0)').text();
+	family[7] = "cidade";
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	elemento8 = $(node).find('span:eq(0)').text();
+	family[8] = "cidade";
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	elemento9 = $(node).find('span:eq(0)').text();
+	family[9] = "cidade";
+	}	
 	
 	if(autorization1 == true){
 	document.getElementById("Elemento_Texto_Teste1").innerHTML = elemento1;
@@ -2502,6 +2725,18 @@ function printclick_elementos_UMTS_City(node){
 	if(autorization6 == true){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento6;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
+	}
+	if(autorization7 == true){
+	document.getElementById("Elemento_Texto_Teste7").innerHTML = elemento7;
+	document.getElementById("Elemento_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("Elemento_Texto_Teste8").innerHTML = elemento8;
+	document.getElementById("Elemento_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("Elemento_Texto_Teste9").innerHTML = elemento9;
+	document.getElementById("Elemento_Seta_9").style.visibility = "visible";
 	}	
 
 	auth_change = true;
@@ -2515,22 +2750,40 @@ function printclick_elementos_UMTS_Cluster(node){
 	elemento = $(node).text();
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	elemento1 = $(node).text();
+	family[1] = "cluster";
 	}
 	if(((vis_q2.style.display == "inline-block") && (autorization2 == true)) || slider == true){
 	elemento2 = $(node).text();
+	family[2] = "cluster";
 	}
 	if(((vis_q3.style.display == "inline-block") && (autorization3 == true)) || slider == true){
 	elemento3 = $(node).text();
+	family[3] = "cluster";
 	}
 	if(((vis_q4.style.display == "inline-block") && (autorization4 == true)) || slider == true){
 	elemento4 = $(node).text();
+	family[4] = "cluster";
 	}
 	if(((vis_q5.style.display == "inline-block") && (autorization5 == true)) || slider == true){
 	elemento5 = $(node).text();
+	family[5] = "cluster";
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	elemento6 = $(node).text();
+	family[6] = "cluster";
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	elemento7 = $(node).text();
+	family[7] = "cluster";
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	elemento8 = $(node).text();
+	family[8] = "cluster";
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	elemento9 = $(node).text();
+	family[9] = "cluster";
+	}	
 	
 	if(autorization1 == true){
 	document.getElementById("Elemento_Texto_Teste1").innerHTML = elemento1;
@@ -2556,6 +2809,18 @@ function printclick_elementos_UMTS_Cluster(node){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento6;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
 	}
+	if(autorization7 == true){
+	document.getElementById("Elemento_Texto_Teste7").innerHTML = elemento7;
+	document.getElementById("Elemento_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("Elemento_Texto_Teste8").innerHTML = elemento8;
+	document.getElementById("Elemento_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("Elemento_Texto_Teste9").innerHTML = elemento9;
+	document.getElementById("Elemento_Seta_9").style.visibility = "visible";
+	}	
 	
 	auth_change = true;
 	
@@ -2584,6 +2849,15 @@ function printclick_elementos_UMTS_CustomCluster(node){
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	elemento6 = $(node).text();
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	elemento7 = $(node).text();
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	elemento8 = $(node).text();
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	elemento9 = $(node).text();
+	}	
 	
 	if(autorization1 == true){
 	document.getElementById("Elemento_Texto_Teste1").innerHTML = elemento1;
@@ -2609,6 +2883,18 @@ function printclick_elementos_UMTS_CustomCluster(node){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento6;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
 	}
+	if(autorization7 == true){
+	document.getElementById("Elemento_Texto_Teste7").innerHTML = elemento7;
+	document.getElementById("Elemento_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("Elemento_Texto_Teste8").innerHTML = elemento8;
+	document.getElementById("Elemento_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("Elemento_Texto_Teste9").innerHTML = elemento9;
+	document.getElementById("Elemento_Seta_9").style.visibility = "visible";
+	}	
 	
 	auth_change = true;
 	
@@ -2622,22 +2908,40 @@ function printclick_elementos_UMTS_NodeB(node){
 	elemento = $(node).text();
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	elemento1 = $(node).text();
+	family[1] = "NodeB";
 	}
 	if(((vis_q2.style.display == "inline-block") && (autorization2 == true)) || slider == true){
 	elemento2 = $(node).text();
+	family[2] = "NodeB";
 	}
 	if(((vis_q3.style.display == "inline-block") && (autorization3 == true)) || slider == true){
 	elemento3 = $(node).text();
+	family[3] = "NodeB";
 	}
 	if(((vis_q4.style.display == "inline-block") && (autorization4 == true)) || slider == true){
 	elemento4 = $(node).text();
+	family[4] = "NodeB";
 	}
 	if(((vis_q5.style.display == "inline-block") && (autorization5 == true)) || slider == true){
 	elemento5 = $(node).text();
+	family[5] = "NodeB";
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	elemento6 = $(node).text();
+	family[6] = "NodeB";
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	elemento7 = $(node).text();
+	family[7] = "NodeB";
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	elemento8 = $(node).text();
+	family[8] = "NodeB";
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	elemento9 = $(node).text();
+	family[9] = "NodeB";
+	}	
 	query_cells = "SELECT distinct cell,rnc,cellid,locell,nodeb FROM umts_control.cells_database where nodeb = '"+elemento+"' order by cell DESC";
 	
 	$(".CellsItems").remove();
@@ -2665,7 +2969,20 @@ function printclick_elementos_UMTS_NodeB(node){
 	if(autorization6 == true){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento6;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
-	}		
+	}
+	if(autorization7 == true){
+	document.getElementById("Elemento_Texto_Teste7").innerHTML = elemento7;
+	document.getElementById("Elemento_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("Elemento_Texto_Teste8").innerHTML = elemento8;
+	document.getElementById("Elemento_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("Elemento_Texto_Teste9").innerHTML = elemento9;
+	document.getElementById("Elemento_Seta_9").style.visibility = "visible";
+	}	
+	
 	showCells(); 
 
 	auth_change = true;
@@ -2679,22 +2996,40 @@ function printclick_elementos_UMTS_Reg(node){
 	elemento = $(node).text();
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	elemento1 = $(node).text();
+	family[1] = "region";
 	}
 	if(((vis_q2.style.display == "inline-block") && (autorization2 == true)) || slider == true){
 	elemento2 = $(node).text();
+	family[2] = "region";
 	}
 	if(((vis_q3.style.display == "inline-block") && (autorization3 == true)) || slider == true){
 	elemento3 = $(node).text();
+	family[3] = "region";
 	}
 	if(((vis_q4.style.display == "inline-block") && (autorization4 == true)) || slider == true){
 	elemento4 = $(node).text();
+	family[4] = "region";
 	}
 	if(((vis_q5.style.display == "inline-block") && (autorization5 == true)) || slider == true){
 	elemento5 = $(node).text();
+	family[5] = "region";
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	elemento6 = $(node).text();
+	family[6] = "region";
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	elemento7 = $(node).text();
+	family[7] = "region";
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	elemento8 = $(node).text();
+	family[8] = "region";
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	elemento9 = $(node).text();
+	family[9] = "region";
+	}	
 	
 	if(autorization1 == true){
 	document.getElementById("Elemento_Texto_Teste1").innerHTML = elemento1;
@@ -2719,6 +3054,18 @@ function printclick_elementos_UMTS_Reg(node){
 	if(autorization6 == true){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento6;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
+	}
+	if(autorization7 == true){
+	document.getElementById("Elemento_Texto_Teste7").innerHTML = elemento7;
+	document.getElementById("Elemento_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("Elemento_Texto_Teste8").innerHTML = elemento8;
+	document.getElementById("Elemento_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("Elemento_Texto_Teste9").innerHTML = elemento9;
+	document.getElementById("Elemento_Seta_9").style.visibility = "visible";
 	}	
 	
 	auth_change = true;
@@ -2732,22 +3079,40 @@ function printclick_elementos_UMTS_Rnc(node){
 	elemento = $(node).text();
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	elemento1 = $(node).text();
+	family[1] = "rnc";
 	}
 	if(((vis_q2.style.display == "inline-block") && (autorization2 == true)) || slider == true){
 	elemento2 = $(node).text();
+	family[2] = "rnc";
 	}
 	if(((vis_q3.style.display == "inline-block") && (autorization3 == true)) || slider == true){
 	elemento3 = $(node).text();
+	family[3] = "rnc";
 	}
 	if(((vis_q4.style.display == "inline-block") && (autorization4 == true)) || slider == true){
 	elemento4 = $(node).text();
+	family[4] = "rnc";
 	}
 	if(((vis_q5.style.display == "inline-block") && (autorization5 == true)) || slider == true){
 	elemento5 = $(node).text();
+	family[5] = "rnc";
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	elemento6 = $(node).text();
+	family[6] = "rnc";
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	elemento7 = $(node).text();
+	family[7] = "rnc";
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	elemento8 = $(node).text();
+	family[8] = "rnc";
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	elemento9 = $(node).text();
+	family[9] = "rnc";
+	}	
 	
 	if(autorization1 == true){
 	document.getElementById("Elemento_Texto_Teste1").innerHTML = elemento1;
@@ -2772,6 +3137,18 @@ function printclick_elementos_UMTS_Rnc(node){
 	if(autorization6 == true){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento6;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
+	}
+	if(autorization7 == true){
+	document.getElementById("Elemento_Texto_Teste7").innerHTML = elemento7;
+	document.getElementById("Elemento_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("Elemento_Texto_Teste8").innerHTML = elemento8;
+	document.getElementById("Elemento_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("Elemento_Texto_Teste9").innerHTML = elemento9;
+	document.getElementById("Elemento_Seta_9").style.visibility = "visible";
 	}	
 	
 	auth_change = true;
@@ -2785,22 +3162,40 @@ function printclick_elementos_UMTS_UF(node){
 	elemento = $(node).text();
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	elemento1 = $(node).text();
+	family[1] = "uf";
 	}
 	if(((vis_q2.style.display == "inline-block") && (autorization2 == true)) || slider == true){
 	elemento2 = $(node).text();
+	family[2] = "uf";
 	}
 	if(((vis_q3.style.display == "inline-block") && (autorization3 == true)) || slider == true){
 	elemento3 = $(node).text();
+	family[3] = "uf";
 	}
 	if(((vis_q4.style.display == "inline-block") && (autorization4 == true)) || slider == true){
 	elemento4 = $(node).text();
+	family[4] = "uf";
 	}
 	if(((vis_q5.style.display == "inline-block") && (autorization5 == true)) || slider == true){
 	elemento5 = $(node).text();
+	family[5] = "uf";
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	elemento6 = $(node).text();
+	family[6] = "uf";
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	elemento7 = $(node).text();
+	family[7] = "uf";
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	elemento8 = $(node).text();
+	family[8] = "uf";
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	elemento9 = $(node).text();
+	family[9] = "uf";
+	}	
 	
 	if(autorization1 == true){
 	document.getElementById("Elemento_Texto_Teste1").innerHTML = elemento1;
@@ -2825,6 +3220,18 @@ function printclick_elementos_UMTS_UF(node){
 	if(autorization6 == true){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento6;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
+	}
+	if(autorization7 == true){
+	document.getElementById("Elemento_Texto_Teste7").innerHTML = elemento7;
+	document.getElementById("Elemento_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("Elemento_Texto_Teste8").innerHTML = elemento8;
+	document.getElementById("Elemento_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("Elemento_Texto_Teste9").innerHTML = elemento9;
+	document.getElementById("Elemento_Seta_9").style.visibility = "visible";
 	}	
 	
 	auth_change = true;
@@ -2839,22 +3246,40 @@ function printclick_elementos_LTE_Cells(node){
 	elemento = $(node).text();
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	elemento1 = $(node).text();
+	family[1] = "cell";
 	}
 	if(((vis_q2.style.display == "inline-block") && (autorization2 == true)) || slider == true){
 	elemento2 = $(node).text();
+	family[2] = "cell";
 	}
 	if(((vis_q3.style.display == "inline-block") && (autorization3 == true)) || slider == true){
 	elemento3 = $(node).text();
+	family[3] = "cell";
 	}
 	if(((vis_q4.style.display == "inline-block") && (autorization4 == true)) || slider == true){
 	elemento4 = $(node).text();
+	family[4] = "cell";
 	}
 	if(((vis_q5.style.display == "inline-block") && (autorization5 == true)) || slider == true){
 	elemento5 = $(node).text();
+	family[5] = "cell";
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	elemento6 = $(node).text();
+	family[6] = "cell";
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	elemento7 = $(node).text();
+	family[7] = "cell";
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	elemento8 = $(node).text();
+	family[8] = "cell";
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	elemento9 = $(node).text();
+	family[9] = "cell";
+	}	
 	cellid = $(node).attr("id");
 	enodeb = $(node).attr("value");
 	
@@ -2883,6 +3308,18 @@ function printclick_elementos_LTE_Cells(node){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento6;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
 	}
+	if(autorization7 == true){
+	document.getElementById("Elemento_Texto_Teste7").innerHTML = elemento7;
+	document.getElementById("Elemento_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("Elemento_Texto_Teste8").innerHTML = elemento8;
+	document.getElementById("Elemento_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("Elemento_Texto_Teste9").innerHTML = elemento9;
+	document.getElementById("Elemento_Seta_9").style.visibility = "visible";
+	}	
 	
 	auth_change = true;
 	
@@ -2898,22 +3335,40 @@ function printclick_elementos_lte_City(node){
 	
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	elemento1 = $(node).find('span:eq(0)').text();
+	family[1] = "cidade";
 	}
 	if(((vis_q2.style.display == "inline-block") && (autorization2 == true)) || slider == true){
 	elemento2 = $(node).find('span:eq(0)').text();
+	family[2] = "cidade";
 	}
 	if(((vis_q3.style.display == "inline-block") && (autorization3 == true)) || slider == true){
 	elemento3 = $(node).find('span:eq(0)').text();
+	family[3] = "cidade";
 	}
 	if(((vis_q4.style.display == "inline-block") && (autorization4 == true)) || slider == true){
 	elemento4 = $(node).find('span:eq(0)').text();
+	family[4] = "cidade";
 	}
 	if(((vis_q5.style.display == "inline-block") && (autorization5 == true)) || slider == true){
 	elemento5 = $(node).find('span:eq(0)').text();
+	family[5] = "cidade";
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	elemento6 = $(node).find('span:eq(0)').text();
+	family[6] = "cidade";
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	elemento7 = $(node).find('span:eq(0)').text();
+	family[7] = "cidade";
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	elemento8 = $(node).find('span:eq(0)').text();
+	family[8] = "cidade";
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	elemento9 = $(node).find('span:eq(0)').text();
+	family[9] = "cidade";
+	}	
 		
 	if(autorization1 == true){
 	document.getElementById("Elemento_Texto_Teste1").innerHTML = elemento1;
@@ -2939,6 +3394,18 @@ function printclick_elementos_lte_City(node){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento6;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
 	}
+	if(autorization7 == true){
+	document.getElementById("Elemento_Texto_Teste7").innerHTML = elemento7;
+	document.getElementById("Elemento_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("Elemento_Texto_Teste8").innerHTML = elemento8;
+	document.getElementById("Elemento_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("Elemento_Texto_Teste9").innerHTML = elemento9;
+	document.getElementById("Elemento_Seta_9").style.visibility = "visible";
+	}	
 	
 	auth_change = true;
 	
@@ -2951,22 +3418,40 @@ function printclick_elementos_lte_Reg(node){
 	elemento = $(node).text();
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	elemento1 = $(node).text();
+	family[1] = "Region";
 	}
 	if(((vis_q2.style.display == "inline-block") && (autorization2 == true)) || slider == true){
 	elemento2 = $(node).text();
+	family[2] = "Region";
 	}
 	if(((vis_q3.style.display == "inline-block") && (autorization3 == true)) || slider == true){
 	elemento3 = $(node).text();
+	family[3] = "Region";
 	}
 	if(((vis_q4.style.display == "inline-block") && (autorization4 == true)) || slider == true){
 	elemento4 = $(node).text();
+	family[4] = "Region";
 	}
 	if(((vis_q5.style.display == "inline-block") && (autorization5 == true)) || slider == true){
 	elemento5 = $(node).text();
+	family[5] = "Region";
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	elemento6 = $(node).text();
+	family[6] = "Region";
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	elemento7 = $(node).text();
+	family[7] = "Region";
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	elemento8 = $(node).text();
+	family[8] = "Region";
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	elemento9 = $(node).text();
+	family[9] = "Region";
+	}	
 	
 	if(autorization1 == true){
 	document.getElementById("Elemento_Texto_Teste1").innerHTML = elemento1;
@@ -2991,6 +3476,18 @@ function printclick_elementos_lte_Reg(node){
 	if(autorization6 == true){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento6;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
+	}
+	if(autorization7 == true){
+	document.getElementById("Elemento_Texto_Teste7").innerHTML = elemento7;
+	document.getElementById("Elemento_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("Elemento_Texto_Teste8").innerHTML = elemento8;
+	document.getElementById("Elemento_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("Elemento_Texto_Teste9").innerHTML = elemento9;
+	document.getElementById("Elemento_Seta_9").style.visibility = "visible";
 	}	
 	
 	auth_change = true;
@@ -3004,22 +3501,40 @@ function printclick_elementos_lte_UF(node){
 	elemento = $(node).text();
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	elemento1 = $(node).text();
+	family[1] = "UF";
 	}
 	if(((vis_q2.style.display == "inline-block") && (autorization2 == true)) || slider == true){
 	elemento2 = $(node).text();
+	family[2] = "UF";
 	}
 	if(((vis_q3.style.display == "inline-block") && (autorization3 == true)) || slider == true){
 	elemento3 = $(node).text();
+	family[3] = "UF";
 	}
 	if(((vis_q4.style.display == "inline-block") && (autorization4 == true)) || slider == true){
 	elemento4 = $(node).text();
+	family[4] = "UF";
 	}
 	if(((vis_q5.style.display == "inline-block") && (autorization5 == true)) || slider == true){
 	elemento5 = $(node).text();
+	family[5] = "UF";
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	elemento6 = $(node).text();
+	family[6] = "UF";
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	elemento7 = $(node).text();
+	family[7] = "UF";
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	elemento8 = $(node).text();
+	family[8] = "UF";
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	elemento9 = $(node).text();
+	family[9] = "UF";
+	}	
 	
 	if(autorization1 == true){
 	document.getElementById("Elemento_Texto_Teste1").innerHTML = elemento1;
@@ -3044,6 +3559,18 @@ function printclick_elementos_lte_UF(node){
 	if(autorization6 == true){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento6;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
+	}
+	if(autorization7 == true){
+	document.getElementById("Elemento_Texto_Teste7").innerHTML = elemento7;
+	document.getElementById("Elemento_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("Elemento_Texto_Teste8").innerHTML = elemento8;
+	document.getElementById("Elemento_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("Elemento_Texto_Teste9").innerHTML = elemento9;
+	document.getElementById("Elemento_Seta_9").style.visibility = "visible";
 	}	
 	
 	auth_change = true;
@@ -3057,22 +3584,40 @@ function printclick_elementos_lte_eNodeB(node){
 	elemento = $(node).text();
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	elemento1 = $(node).text();
+	family[1] = "eNodeB";
 	}
 	if(((vis_q2.style.display == "inline-block") && (autorization2 == true)) || slider == true){
 	elemento2 = $(node).text();
+	family[2] = "eNodeB";
 	}
 	if(((vis_q3.style.display == "inline-block") && (autorization3 == true)) || slider == true){
 	elemento3 = $(node).text();
+	family[3] = "eNodeB";
 	}
 	if(((vis_q4.style.display == "inline-block") && (autorization4 == true)) || slider == true){
 	elemento4 = $(node).text();
+	family[4] = "eNodeB";
 	}
 	if(((vis_q5.style.display == "inline-block") && (autorization5 == true)) || slider == true){
 	elemento5 = $(node).text();
+	family[5] = "eNodeB";
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	elemento6 = $(node).text();
+	family[6] = "eNodeB";
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	elemento7 = $(node).text();
+	family[7] = "eNodeB";
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	elemento8 = $(node).text();
+	family[8] = "eNodeB";
+	}	
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	elemento9 = $(node).text();
+	family[9] = "eNodeB";
+	}		
 	
 	$(".CellsItems").remove();
 	
@@ -3104,6 +3649,18 @@ function printclick_elementos_lte_eNodeB(node){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento6;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
 	}
+	if(autorization7 == true){
+	document.getElementById("Elemento_Texto_Teste7").innerHTML = elemento7;
+	document.getElementById("Elemento_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("Elemento_Texto_Teste8").innerHTML = elemento8;
+	document.getElementById("Elemento_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("Elemento_Texto_Teste9").innerHTML = elemento9;
+	document.getElementById("Elemento_Seta_9").style.visibility = "visible";
+	}	
 	showCells();
 	
 	auth_change = true;
@@ -3117,22 +3674,40 @@ function printclick_elementos_lte_Cluster(node){
 	elemento = $(node).text();
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	elemento1 = $(node).text();
+	family[1] = "Cluster";
 	}
 	if(((vis_q2.style.display == "inline-block") && (autorization2 == true)) || slider == true){
 	elemento2 = $(node).text();
+	family[2] = "Cluster";
 	}
 	if(((vis_q3.style.display == "inline-block") && (autorization3 == true)) || slider == true){
 	elemento3 = $(node).text();
+	family[3] = "Cluster";
 	}
 	if(((vis_q4.style.display == "inline-block") && (autorization4 == true)) || slider == true){
 	elemento4 = $(node).text();
+	family[4] = "Cluster";
 	}
 	if(((vis_q5.style.display == "inline-block") && (autorization5 == true)) || slider == true){
 	elemento5 = $(node).text();
+	family[5] = "Cluster";
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	elemento6 = $(node).text();
+	family[6] = "Cluster";
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	elemento7 = $(node).text();
+	family[7] = "Cluster";
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	elemento8 = $(node).text();
+	family[8] = "Cluster";
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	elemento9 = $(node).text();
+	family[9] = "Cluster";
+	}	
 	
 	if(autorization1 == true){
 	document.getElementById("Elemento_Texto_Teste1").innerHTML = elemento1;
@@ -3158,6 +3733,18 @@ function printclick_elementos_lte_Cluster(node){
 	document.getElementById("Elemento_Texto_Teste6").innerHTML = elemento6;
 	document.getElementById("Elemento_Seta_6").style.visibility = "visible";
 	}
+	if(autorization7 == true){
+	document.getElementById("Elemento_Texto_Teste7").innerHTML = elemento7;
+	document.getElementById("Elemento_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("Elemento_Texto_Teste8").innerHTML = elemento8;
+	document.getElementById("Elemento_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("Elemento_Texto_Teste9").innerHTML = elemento9;
+	document.getElementById("Elemento_Seta_9").style.visibility = "visible";
+	}	
 	
 	auth_change = true;
 	
@@ -3189,6 +3776,15 @@ function printclick_kpi(node){
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	kpi6 = $(node).text();
 	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	kpi7 = $(node).text();
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	kpi8 = $(node).text();
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	kpi9 = $(node).text();
+	}	
 	
 	if((autorization1 == true) && (vis_q1.style.display == "inline-block")){
 	if ((kpi1 == "Ps_R99_Dl") || (kpi1 == "Ps_R99_Ul") || (kpi1 == "Data_Hsdpa") || (kpi1 == "Data_Hsupa") || (kpi1 == "Downlink_Traffic_Volume") || (kpi1 == "Uplink_Traffic_Volume")  || (kpi1 == "Sdcch_Traffic") || (kpi1 == "Tch_Traffic_Fr") || (kpi1 == "Tch_Traffic_Hr")){
@@ -3295,7 +3891,7 @@ function printclick_kpi(node){
 	unidade6 = "GB";
 	}else
 	if((kpi6 == "Hsdpa_Users") || (kpi6 == "Hsupa_Users") || (kpi6 == "Ps_Nonhs_Users") || (kpi6 == "Dch_Users") || (kpi6 == "Pch_Users") || (kpi6 == "Fach_Users") || (kpi6 == "Average_User_Volume") || (kpi6 == "Average_User_Volume_1800") || (kpi6 == "Average_User_Volume_2600") || (kpi6 == "Average_User_Volume_2cc") || (kpi6 == "Average_User_Volume_700") || (kpi6 == "Average_User_Volume_3cc")){
-	unidade6 = "Users";
+	unidade6= "Users";
 	}else
 	if((kpi6 == "Thp_Hsdpa") || (kpi6 == "Thp_Hsupa")){
 	unidade6 = "Kbps";
@@ -3308,7 +3904,67 @@ function printclick_kpi(node){
 	}else	{
 	unidade6 = "%";
 	}
-	}		
+	}
+
+	if((autorization7 == true) && (vis_q7.style.display == "inline-block")){
+	if ((kpi7 == "Ps_R99_Dl") || (kpi7 == "Ps_R99_Ul") || (kpi7 == "Data_Hsdpa") || (kpi7 == "Data_Hsupa") || (kpi7 == "Downlink_Traffic_Volume") || (kpi7 == "Uplink_Traffic_Volume")  || (kpi7 == "Sdcch_Traffic") || (kpi7 == "Tch_Traffic_Fr") || (kpi7 == "Tch_Traffic_Hr")){
+	unidade7 = "GB";
+	}else
+	if((kpi7 == "Hsdpa_Users") || (kpi7 == "Hsupa_Users") || (kpi7 == "Ps_Nonhs_Users") || (kpi7 == "Dch_Users") || (kpi7 == "Pch_Users") || (kpi7 == "Fach_Users") || (kpi7 == "Average_User_Volume") || (kpi7 == "Average_User_Volume_1800") || (kpi7 == "Average_User_Volume_2600") || (kpi7 == "Average_User_Volume_2cc") || (kpi7 == "Average_User_Volume_700") || (kpi7 == "Average_User_Volume_3cc")){
+	unidade7= "Users";
+	}else
+	if((kpi7 == "Thp_Hsdpa") || (kpi7 == "Thp_Hsupa")){
+	unidade7 = "Kbps";
+	}else
+	if((kpi7 == "Rtwp") || (kpi7 == "Interference") || (kpi7 == "Interference_1800") || (kpi7 == "Interference_2600") || (kpi7 == "Interference_700")){
+	unidade7 = "dBm";
+	}else
+	if((kpi7 == "Cell_Downlink_Avg_Thp") || (kpi7 == "Cell_Downlink_Avg_Thp_1800") || (kpi7 == "Cell_Downlink_Avg_Thp_2600") || (kpi7 == "Cell_Downlink_Avg_Thp_700") || (kpi7 == "Cell_Downlink_Avg_Thp_Ca") || (kpi7 == "Cell_Uplink_Avg_Thp") || (kpi7 == "Cell_Uplink_Avg_Thp_1800") || (kpi7 == "Cell_Uplink_Avg_Thp_2600") || (kpi7 == "Cell_Uplink_Avg_Thp_700") || (kpi7 == "Rb_Cell_Downlink_Avg_Thp") || (kpi7 == "Rb_Cell_Uplink_Avg_Thp") || (kpi7 == "Weighted_Thp")){
+	unidade7 = "Mbps";
+	}else	{
+	unidade7 = "%";
+	}
+	}
+
+	if((autorization8 == true) && (vis_q8.style.display == "inline-block")){
+	if ((kpi8 == "Ps_R99_Dl") || (kpi8 == "Ps_R99_Ul") || (kpi8 == "Data_Hsdpa") || (kpi8 == "Data_Hsupa") || (kpi8 == "Downlink_Traffic_Volume") || (kpi8 == "Uplink_Traffic_Volume")  || (kpi8 == "Sdcch_Traffic") || (kpi8 == "Tch_Traffic_Fr") || (kpi8 == "Tch_Traffic_Hr")){
+	unidade8 = "GB";
+	}else
+	if((kpi8 == "Hsdpa_Users") || (kpi8 == "Hsupa_Users") || (kpi8 == "Ps_Nonhs_Users") || (kpi8 == "Dch_Users") || (kpi8 == "Pch_Users") || (kpi8 == "Fach_Users") || (kpi8 == "Average_User_Volume") || (kpi8 == "Average_User_Volume_1800") || (kpi8 == "Average_User_Volume_2600") || (kpi8 == "Average_User_Volume_2cc") || (kpi8 == "Average_User_Volume_700") || (kpi8 == "Average_User_Volume_3cc")){
+	unidade8= "Users";
+	}else
+	if((kpi8 == "Thp_Hsdpa") || (kpi8 == "Thp_Hsupa")){
+	unidade8 = "Kbps";
+	}else
+	if((kpi8 == "Rtwp") || (kpi8 == "Interference") || (kpi8 == "Interference_1800") || (kpi8 == "Interference_2600") || (kpi8 == "Interference_700")){
+	unidade8 = "dBm";
+	}else
+	if((kpi8 == "Cell_Downlink_Avg_Thp") || (kpi8 == "Cell_Downlink_Avg_Thp_1800") || (kpi8 == "Cell_Downlink_Avg_Thp_2600") || (kpi8 == "Cell_Downlink_Avg_Thp_700") || (kpi8 == "Cell_Downlink_Avg_Thp_Ca") || (kpi8 == "Cell_Uplink_Avg_Thp") || (kpi8 == "Cell_Uplink_Avg_Thp_1800") || (kpi8 == "Cell_Uplink_Avg_Thp_2600") || (kpi8 == "Cell_Uplink_Avg_Thp_700") || (kpi8 == "Rb_Cell_Downlink_Avg_Thp") || (kpi8 == "Rb_Cell_Uplink_Avg_Thp") || (kpi8 == "Weighted_Thp")){
+	unidade8 = "Mbps";
+	}else	{
+	unidade8 = "%";
+	}
+	}
+
+	if((autorization9 == true) && (vis_q9.style.display == "inline-block")){
+	if ((kpi9 == "Ps_R99_Dl") || (kpi9 == "Ps_R99_Ul") || (kpi9 == "Data_Hsdpa") || (kpi9 == "Data_Hsupa") || (kpi9 == "Downlink_Traffic_Volume") || (kpi9 == "Uplink_Traffic_Volume")  || (kpi9 == "Sdcch_Traffic") || (kpi9 == "Tch_Traffic_Fr") || (kpi9 == "Tch_Traffic_Hr")){
+	unidade9 = "GB";
+	}else
+	if((kpi9 == "Hsdpa_Users") || (kpi9 == "Hsupa_Users") || (kpi9 == "Ps_Nonhs_Users") || (kpi9 == "Dch_Users") || (kpi9 == "Pch_Users") || (kpi9 == "Fach_Users") || (kpi9 == "Average_User_Volume") || (kpi9 == "Average_User_Volume_1800") || (kpi9 == "Average_User_Volume_2600") || (kpi9 == "Average_User_Volume_2cc") || (kpi9 == "Average_User_Volume_700") || (kpi9 == "Average_User_Volume_3cc")){
+	unidade9= "Users";
+	}else
+	if((kpi9 == "Thp_Hsdpa") || (kpi9 == "Thp_Hsupa")){
+	unidade9 = "Kbps";
+	}else
+	if((kpi9 == "Rtwp") || (kpi9 == "Interference") || (kpi9 == "Interference_1800") || (kpi9 == "Interference_2600") || (kpi9 == "Interference_700")){
+	unidade9 = "dBm";
+	}else
+	if((kpi9 == "Cell_Downlink_Avg_Thp") || (kpi9 == "Cell_Downlink_Avg_Thp_1800") || (kpi9 == "Cell_Downlink_Avg_Thp_2600") || (kpi9 == "Cell_Downlink_Avg_Thp_700") || (kpi9 == "Cell_Downlink_Avg_Thp_Ca") || (kpi9 == "Cell_Uplink_Avg_Thp") || (kpi9 == "Cell_Uplink_Avg_Thp_1800") || (kpi9 == "Cell_Uplink_Avg_Thp_2600") || (kpi9 == "Cell_Uplink_Avg_Thp_700") || (kpi9 == "Rb_Cell_Downlink_Avg_Thp") || (kpi9 == "Rb_Cell_Uplink_Avg_Thp") || (kpi9 == "Weighted_Thp")){
+	unidade9 = "Mbps";
+	}else	{
+	unidade9 = "%";
+	}
+	}	
 	
 	if(autorization1 == true){
 	document.getElementById("KPI_Texto_Teste1").innerHTML = kpi1;
@@ -3333,20 +3989,57 @@ function printclick_kpi(node){
 	if(autorization6 == true){
 	document.getElementById("KPI_Texto_Teste6").innerHTML = kpi6;
 	document.getElementById("KPI_Seta_6").style.visibility = "visible";
+	}
+	if(autorization7 == true){
+	document.getElementById("KPI_Texto_Teste7").innerHTML = kpi7;
+	document.getElementById("KPI_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("KPI_Texto_Teste8").innerHTML = kpi8;
+	document.getElementById("KPI_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("KPI_Texto_Teste9").innerHTML = kpi9;
+	document.getElementById("KPI_Seta_9").style.visibility = "visible";
 	}	
 
 	auth_change = true;
 	
 }
 
+$('.btn_info_counter_gsm').click(function(node){
+
+btn_info_gsm = true;
+	
+});
+
 function printclick_counter_GSM(node){
 	
 	estado = 2;
 	contador = "GSM";
 	
-	counter_name = $(node).text();
+	counter_name = $(node).find('span:eq(0)').text();
 	counter_aggregation = $(node).attr("id");
 	table_name = $(node).attr("value");
+	
+	if(btn_info_gsm == true){
+	var index = $(node).index();
+    // $('#myUL_GSM input:radio').eq(index).prop('checked', true);
+	
+	var p = $( "#myUL_KPI_GSM input:radio" ).eq(index);
+	var position = p.position();
+	var y = (position.top) - 20;
+	var text_info = $(node).find('span:eq(1)').text();
+	if(text_info == ""){
+	text_info = "No information for this Counter";
+	}
+	
+	document.getElementById("info_counter").style.top = y+"px";
+	document.getElementById("info_counter").style.right = "30%";
+	document.getElementById("info_text").textContent = text_info;
+	document.getElementById("info_counter").style.display = "block";
+	btn_info_gsm = false;
+	}
 	
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	kpi1 = counter_name;
@@ -3365,6 +4058,15 @@ function printclick_counter_GSM(node){
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	kpi6 = counter_name;
+	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	kpi7 = counter_name;
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	kpi8 = counter_name;
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	kpi9 = counter_name;
 	}	
 			
 	if(autorization1 == true){
@@ -3391,10 +4093,28 @@ function printclick_counter_GSM(node){
 	document.getElementById("KPI_Texto_Teste6").innerHTML = counter_name;
 	document.getElementById("KPI_Seta_6").style.visibility = "visible";
 	}
+	if(autorization7 == true){
+	document.getElementById("KPI_Texto_Teste7").innerHTML = counter_name;
+	document.getElementById("KPI_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("KPI_Texto_Teste8").innerHTML = counter_name;
+	document.getElementById("KPI_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("KPI_Texto_Teste9").innerHTML = counter_name;
+	document.getElementById("KPI_Seta_9").style.visibility = "visible";
+	}	
 
 	auth_change = true;
 
 }
+
+$('.btn_info_counter_umts').click(function(node){
+
+btn_info_umts = true;
+	
+});
 
 function printclick_counter_UMTS(node){
 	
@@ -3405,6 +4125,7 @@ function printclick_counter_UMTS(node){
 	counter_aggregation = $(node).attr("id");
 	table_name = $(node).attr("value");
 	
+	if(btn_info_umts == true){
 	var index = $(node).index();
     // $('#myUL_GSM input:radio').eq(index).prop('checked', true);
 	
@@ -3412,11 +4133,16 @@ function printclick_counter_UMTS(node){
 	var position = p.position();
 	var y = (position.top) - 20;
 	var text_info = $(node).find('span:eq(1)').text();
+	if(text_info == ""){
+	text_info = "No information for this Counter";
+	}
 	
 	document.getElementById("info_counter").style.top = y+"px";
-	document.getElementById("info_counter").style.right = "550px";
+	document.getElementById("info_counter").style.right = "30%";
 	document.getElementById("info_text").textContent = text_info;
 	document.getElementById("info_counter").style.display = "block";
+	btn_info_umts = false;
+	}
 	
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	kpi1 = counter_name;
@@ -3435,7 +4161,16 @@ function printclick_counter_UMTS(node){
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	kpi6 = counter_name;
-	}		
+	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	kpi7 = counter_name;
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	kpi8 = counter_name;
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	kpi9 = counter_name;
+	}	
 	
 
 	if(autorization1 == true){
@@ -3462,6 +4197,18 @@ function printclick_counter_UMTS(node){
 	document.getElementById("KPI_Texto_Teste6").innerHTML = counter_name;
 	document.getElementById("KPI_Seta_6").style.visibility = "visible";
 	}
+	if(autorization7 == true){
+	document.getElementById("KPI_Texto_Teste7").innerHTML = counter_name;
+	document.getElementById("KPI_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("KPI_Texto_Teste8").innerHTML = counter_name;
+	document.getElementById("KPI_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("KPI_Texto_Teste9").innerHTML = counter_name;
+	document.getElementById("KPI_Seta_9").style.visibility = "visible";
+	}	
 	
 	auth_change = true;
 	
@@ -3496,6 +4243,15 @@ function printclick_NQI(node){
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	kpi6 = nqi_name;
+	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	kpi7 = nqi_name;
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	kpi8 = nqi_name;
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	kpi9 = nqi_name;
 	}	
 
 	if(autorization1 == true){
@@ -3522,10 +4278,28 @@ function printclick_NQI(node){
 	document.getElementById("KPI_Texto_Teste6").innerHTML = nqi_name;
 	document.getElementById("KPI_Seta_6").style.visibility = "visible";
 	}
+	if(autorization7 == true){
+	document.getElementById("KPI_Texto_Teste7").innerHTML = nqi_name;
+	document.getElementById("KPI_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("KPI_Texto_Teste8").innerHTML = nqi_name;
+	document.getElementById("KPI_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("KPI_Texto_Teste9").innerHTML = nqi_name;
+	document.getElementById("KPI_Seta_9").style.visibility = "visible";
+	}	
 	
 	auth_change = true;
 	
-}	
+}
+
+$('.btn_info_counter_lte').click(function(node){
+
+btn_info_lte = true;
+	
+});	
 
 function printclick_counter_LTE(node){
 	
@@ -3533,9 +4307,28 @@ function printclick_counter_LTE(node){
 	estado = 2;
 	contador = "LTE";
 	
-	counter_name = $(node).text();
+	counter_name = $(node).find('span:eq(0)').text();
 	counter_aggregation = $(node).attr("id");
 	table_name = $(node).attr("value");
+	
+	if(btn_info_lte == true){
+	var index = $(node).index();
+    // $('#myUL_GSM input:radio').eq(index).prop('checked', true);
+	
+	var p = $( "#myUL_KPI_LTE input:radio" ).eq(index);
+	var position = p.position();
+	var y = (position.top) - 20;
+	var text_info = $(node).find('span:eq(1)').text();
+	if(text_info == ""){
+	text_info = "No information for this Counter";
+	}
+	
+	document.getElementById("info_counter").style.top = y+"px";
+	document.getElementById("info_counter").style.right = "30%";
+	document.getElementById("info_text").textContent = text_info;
+	document.getElementById("info_counter").style.display = "block";
+	btn_info_lte = false;
+	}
 	
 	if(((vis_q1.style.display == "inline-block") && (autorization1 == true)) || slider == true){
 	kpi1 = counter_name;
@@ -3554,7 +4347,16 @@ function printclick_counter_LTE(node){
 	}
 	if(((vis_q6.style.display == "inline-block") && (autorization6 == true)) || slider == true){
 	kpi6 = counter_name;
-	}			
+	}
+	if(((vis_q7.style.display == "inline-block") && (autorization7 == true)) || slider == true){
+	kpi7 = counter_name;
+	}
+	if(((vis_q8.style.display == "inline-block") && (autorization8 == true)) || slider == true){
+	kpi8 = counter_name;
+	}
+	if(((vis_q9.style.display == "inline-block") && (autorization9 == true)) || slider == true){
+	kpi9 = counter_name;
+	}	
 		
 	if(autorization1 == true){
 	document.getElementById("KPI_Texto_Teste1").innerHTML = counter_name;
@@ -3580,6 +4382,18 @@ function printclick_counter_LTE(node){
 	document.getElementById("KPI_Texto_Teste6").innerHTML = counter_name;
 	document.getElementById("KPI_Seta_6").style.visibility = "visible";
 	}
+	if(autorization7 == true){
+	document.getElementById("KPI_Texto_Teste7").innerHTML = counter_name;
+	document.getElementById("KPI_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("KPI_Texto_Teste8").innerHTML = counter_name;
+	document.getElementById("KPI_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("KPI_Texto_Teste9").innerHTML = counter_name;
+	document.getElementById("KPI_Seta_9").style.visibility = "visible";
+	}	
 
 	auth_change = true;
 
@@ -3607,6 +4421,15 @@ function printclick_erlang(node){
 	}
 	if((vis_q6.style.display == "inline-block") || slider == true){
 	kpi6 = $(node).text();
+	}
+	if((vis_q7.style.display == "inline-block") || slider == true){
+	kpi7 = $(node).text();
+	}
+	if((vis_q8.style.display == "inline-block") || slider == true){
+	kpi8 = $(node).text();
+	}
+	if((vis_q9.style.display == "inline-block") || slider == true){
+	kpi9 = $(node).text();
 	}	
 	
 	if(autorization1 == true){
@@ -3632,6 +4455,18 @@ function printclick_erlang(node){
 	if(autorization6 == true){
 	document.getElementById("KPI_Texto_Teste6").innerHTML = kpi6;
 	document.getElementById("KPI_Seta_6").style.visibility = "visible";
+	}
+	if(autorization7 == true){
+	document.getElementById("KPI_Texto_Teste7").innerHTML = kpi7;
+	document.getElementById("KPI_Seta_7").style.visibility = "visible";
+	}
+	if(autorization8 == true){
+	document.getElementById("KPI_Texto_Teste8").innerHTML = kpi8;
+	document.getElementById("KPI_Seta_8").style.visibility = "visible";
+	}
+	if(autorization9 == true){
+	document.getElementById("KPI_Texto_Teste9").innerHTML = kpi9;
+	document.getElementById("KPI_Seta_9").style.visibility = "visible";
 	}	
 
 	auth_change = true;
@@ -3649,6 +4484,9 @@ var vis_q3 = document.getElementById("Query3");
 var vis_q4 = document.getElementById("Query4");
 var vis_q5 = document.getElementById("Query5");
 var vis_q6 = document.getElementById("Query6");
+var vis_q7 = document.getElementById("Query7");
+var vis_q8 = document.getElementById("Query8");
+var vis_q9 = document.getElementById("Query9");
 
 var vis_qm1 = document.getElementById("Query_Menu1");
 var vis_qm2 = document.getElementById("Query_Menu2");
@@ -3656,6 +4494,9 @@ var vis_qm3 = document.getElementById("Query_Menu3");
 var vis_qm4 = document.getElementById("Query_Menu4");
 var vis_qm5 = document.getElementById("Query_Menu5");
 var vis_qm6 = document.getElementById("Query_Menu6");
+var vis_qm7 = document.getElementById("Query_Menu7");
+var vis_qm8 = document.getElementById("Query_Menu8");
+var vis_qm9 = document.getElementById("Query_Menu9");
 
 var vis_btnconf1 = document.getElementById("btn_confirm1");
 var vis_btnconf2 = document.getElementById("btn_confirm2");
@@ -3663,6 +4504,9 @@ var vis_btnconf3 = document.getElementById("btn_confirm3");
 var vis_btnconf4 = document.getElementById("btn_confirm4");
 var vis_btnconf5 = document.getElementById("btn_confirm5");
 var vis_btnconf6 = document.getElementById("btn_confirm6");
+var vis_btnconf7 = document.getElementById("btn_confirm7");
+var vis_btnconf8 = document.getElementById("btn_confirm8");
+var vis_btnconf9 = document.getElementById("btn_confirm9");
 
 var opa_qm1 = document.getElementById("Query_Menu1");
 var opa_qm2 = document.getElementById("Query_Menu2");
@@ -3670,6 +4514,9 @@ var opa_qm3 = document.getElementById("Query_Menu3");
 var opa_qm4 = document.getElementById("Query_Menu4");
 var opa_qm5 = document.getElementById("Query_Menu5");
 var opa_qm6 = document.getElementById("Query_Menu6");
+var opa_qm7 = document.getElementById("Query_Menu7");
+var opa_qm8 = document.getElementById("Query_Menu8");
+var opa_qm9 = document.getElementById("Query_Menu9");
 
 var txt_tec1 = document.getElementById("Tecnologia_Texto_Teste1");
 var txt_tec2 = document.getElementById("Tecnologia_Texto_Teste2");
@@ -3677,6 +4524,9 @@ var txt_tec3 = document.getElementById("Tecnologia_Texto_Teste3");
 var txt_tec4 = document.getElementById("Tecnologia_Texto_Teste4");
 var txt_tec5 = document.getElementById("Tecnologia_Texto_Teste5");
 var txt_tec6 = document.getElementById("Tecnologia_Texto_Teste6");
+var txt_tec7 = document.getElementById("Tecnologia_Texto_Teste7");
+var txt_tec8 = document.getElementById("Tecnologia_Texto_Teste8");
+var txt_tec9 = document.getElementById("Tecnologia_Texto_Teste9");
 
 var txt_ele1 = document.getElementById("Elemento_Texto_Teste1");
 var txt_ele2 = document.getElementById("Elemento_Texto_Teste2");
@@ -3684,6 +4534,9 @@ var txt_ele3 = document.getElementById("Elemento_Texto_Teste3");
 var txt_ele4 = document.getElementById("Elemento_Texto_Teste4");
 var txt_ele5 = document.getElementById("Elemento_Texto_Teste5");
 var txt_ele6 = document.getElementById("Elemento_Texto_Teste6");
+var txt_ele7 = document.getElementById("Elemento_Texto_Teste7");
+var txt_ele8 = document.getElementById("Elemento_Texto_Teste8");
+var txt_ele9 = document.getElementById("Elemento_Texto_Teste9");
 
 var txt_kpi1 = document.getElementById("KPI_Texto_Teste1");
 var txt_kpi2 = document.getElementById("KPI_Texto_Teste2");
@@ -3691,6 +4544,9 @@ var txt_kpi3 = document.getElementById("KPI_Texto_Teste3");
 var txt_kpi4 = document.getElementById("KPI_Texto_Teste4");
 var txt_kpi5 = document.getElementById("KPI_Texto_Teste5");
 var txt_kpi6 = document.getElementById("KPI_Texto_Teste6");
+var txt_kpi7 = document.getElementById("KPI_Texto_Teste7");
+var txt_kpi8 = document.getElementById("KPI_Texto_Teste8");
+var txt_kpi9 = document.getElementById("KPI_Texto_Teste9");
 
 var vis_seta_tec1 = document.getElementById("Tecnologia_Seta_1");
 var vis_seta_tec2 = document.getElementById("Tecnologia_Seta_2");
@@ -3698,6 +4554,9 @@ var vis_seta_tec3 = document.getElementById("Tecnologia_Seta_3");
 var vis_seta_tec4 = document.getElementById("Tecnologia_Seta_4");
 var vis_seta_tec5 = document.getElementById("Tecnologia_Seta_5");
 var vis_seta_tec6 = document.getElementById("Tecnologia_Seta_6");
+var vis_seta_tec7 = document.getElementById("Tecnologia_Seta_7");
+var vis_seta_tec8 = document.getElementById("Tecnologia_Seta_8");
+var vis_seta_tec9 = document.getElementById("Tecnologia_Seta_9");
 
 var vis_seta_ele1 = document.getElementById("Elemento_Seta_1");
 var vis_seta_ele2 = document.getElementById("Elemento_Seta_2");
@@ -3705,6 +4564,9 @@ var vis_seta_ele3 = document.getElementById("Elemento_Seta_3");
 var vis_seta_ele4 = document.getElementById("Elemento_Seta_4");
 var vis_seta_ele5 = document.getElementById("Elemento_Seta_5");
 var vis_seta_ele6 = document.getElementById("Elemento_Seta_6");
+var vis_seta_ele7 = document.getElementById("Elemento_Seta_7");
+var vis_seta_ele8 = document.getElementById("Elemento_Seta_8");
+var vis_seta_ele9 = document.getElementById("Elemento_Seta_9");
 
 var vis_seta_kpi1 = document.getElementById("KPI_Seta_1");
 var vis_seta_kpi2 = document.getElementById("KPI_Seta_2");
@@ -3712,7 +4574,9 @@ var vis_seta_kpi3 = document.getElementById("KPI_Seta_3");
 var vis_seta_kpi4 = document.getElementById("KPI_Seta_4");
 var vis_seta_kpi5 = document.getElementById("KPI_Seta_5");
 var vis_seta_kpi6 = document.getElementById("KPI_Seta_6");
-
+var vis_seta_kpi7 = document.getElementById("KPI_Seta_7");
+var vis_seta_kpi8 = document.getElementById("KPI_Seta_8");
+var vis_seta_kpi9 = document.getElementById("KPI_Seta_9");
 
 if(vis_q1.style.display == "none"){
 vis_q1.style.display = "inline-block";
@@ -3738,6 +4602,7 @@ vis_seta_tec2.style.visibility = "visible";
 if(elemento1 != ""){
 elemento2 = elemento1;
 txt_ele2.innerHTML = txt_ele1.innerHTML;
+family[2] = family[1];
 vis_seta_ele2.style.visibility = "visible";
 }
 if(kpi1 != ""){
@@ -3763,6 +4628,7 @@ vis_seta_tec3.style.visibility = "visible";
 if(elemento2 != ""){
 elemento3 = elemento2;
 txt_ele3.innerHTML = txt_ele2.innerHTML;
+family[3] = family[2];
 vis_seta_ele3.style.visibility = "visible";
 }
 if(kpi2 != ""){
@@ -3788,6 +4654,7 @@ vis_seta_tec4.style.visibility = "visible";
 if(elemento3 != ""){
 elemento4 = elemento3;
 txt_ele4.innerHTML = txt_ele3.innerHTML;
+family[4] = family[3];
 vis_seta_ele4.style.visibility = "visible";
 }
 if(kpi3 != ""){
@@ -3813,6 +4680,7 @@ vis_seta_tec5.style.visibility = "visible";
 if(elemento4 != ""){
 elemento5 = elemento4;
 txt_ele5.innerHTML = txt_ele4.innerHTML;
+family[5] = family[4];
 vis_seta_ele5.style.visibility = "visible";
 }
 if(kpi4 != ""){
@@ -3838,6 +4706,7 @@ vis_seta_tec6.style.visibility = "visible";
 if(elemento5 != ""){
 elemento6 = elemento5;
 txt_ele6.innerHTML = txt_ele5.innerHTML;
+family[6] = family[5];
 vis_seta_ele6.style.visibility = "visible";
 }
 if(kpi5 != ""){
@@ -3848,6 +4717,84 @@ vis_seta_kpi6.style.visibility = "visible";
 document.getElementById("chart_type6").disabled = false;
 document.getElementById("chart_position6").disabled = false;
 autorization6 = true;		
+}else
+if(vis_q7.style.display == "none"){
+vis_q7.style.display = "inline-block";
+vis_qm7.style.display = "inline-block";	
+$("#radio_query7").prop("checked", true);
+vis_btnconf7.style.visibility = "visible";
+opa_qm7.style.opacity = 1;
+if(tecnologia6 != ""){
+tecnologia7 = tecnologia6;
+txt_tec7.innerHTML = txt_tec6.innerHTML;
+vis_seta_tec7.style.visibility = "visible";
+}
+if(elemento6 != ""){
+elemento7 = elemento6;
+txt_ele7.innerHTML = txt_ele6.innerHTML;
+family[7] = family[6];
+vis_seta_ele7.style.visibility = "visible";
+}
+if(kpi6 != ""){
+kpi7 = kpi6;
+txt_kpi7.innerHTML = txt_kpi6.innerHTML;
+vis_seta_kpi7.style.visibility = "visible";
+}
+document.getElementById("chart_type7").disabled = false;
+document.getElementById("chart_position7").disabled = false;
+autorization7 = true;		
+}else
+if(vis_q8.style.display == "none"){
+vis_q8.style.display = "inline-block";
+vis_qm8.style.display = "inline-block";	
+$("#radio_query8").prop("checked", true);
+vis_btnconf8.style.visibility = "visible";
+opa_qm8.style.opacity = 1;
+if(tecnologia7 != ""){
+tecnologia8 = tecnologia7;
+txt_tec8.innerHTML = txt_tec7.innerHTML;
+vis_seta_tec8.style.visibility = "visible";
+}
+if(elemento7 != ""){
+elemento8 = elemento7;
+txt_ele8.innerHTML = txt_ele7.innerHTML;
+family[8] = family[7];
+vis_seta_ele8.style.visibility = "visible";
+}
+if(kpi7 != ""){
+kpi8 = kpi7;
+txt_kpi8.innerHTML = txt_kpi7.innerHTML;
+vis_seta_kpi8.style.visibility = "visible";
+}
+document.getElementById("chart_type8").disabled = false;
+document.getElementById("chart_position8").disabled = false;
+autorization8 = true;		
+}else
+if(vis_q9.style.display == "none"){
+vis_q9.style.display = "inline-block";
+vis_qm9.style.display = "inline-block";	
+$("#radio_query9").prop("checked", true);
+vis_btnconf9.style.visibility = "visible";
+opa_qm9.style.opacity = 1;
+if(tecnologia8 != ""){
+tecnologia9 = tecnologia8;
+txt_tec9.innerHTML = txt_tec8.innerHTML;
+vis_seta_tec9.style.visibility = "visible";
+}
+if(elemento8 != ""){
+elemento9 = elemento8;
+txt_ele9.innerHTML = txt_ele8.innerHTML;
+family[9] = family[8];
+vis_seta_ele9.style.visibility = "visible";
+}
+if(kpi8 != ""){
+kpi9 = kpi8;
+txt_kpi9.innerHTML = txt_kpi8.innerHTML;
+vis_seta_kpi9.style.visibility = "visible";
+}
+document.getElementById("chart_type9").disabled = false;
+document.getElementById("chart_position9").disabled = false;
+autorization9 = true;		
 } else
 {
 alert("It's not possible include more querys.");
@@ -3927,11 +4874,44 @@ query6 = "";
 nome6 = "";
 document.getElementById("Texto_Teste6").innerHTML = "";
 
+}
+
+function remove_line7(){
+	
+document.getElementById("Query7").style.display = "none";
+document.getElementById("Query_Menu7").style.display = "none";
+
+query7 = "";
+nome7 = "";
+document.getElementById("Texto_Teste7").innerHTML = "";
+
+}
+
+function remove_line8(){
+	
+document.getElementById("Query8").style.display = "none";
+document.getElementById("Query_Menu8").style.display = "none";
+
+query8 = "";
+nome8 = "";
+document.getElementById("Texto_Teste8").innerHTML = "";
+
+}
+
+function remove_line9(){
+	
+document.getElementById("Query9").style.display = "none";
+document.getElementById("Query_Menu9").style.display = "none";
+
+query9 = "";
+nome9 = "";
+document.getElementById("Texto_Teste9").innerHTML = "";
+
 }	
 
 
 function mostrar_charts1(){
-	
+		
 if(tecnologia1 == ""){   
 	alert("Please select the Technology");
 } else
@@ -3957,6 +4937,8 @@ if(document.getElementById("datepicker_final").value == ""){
 if(autorizacao == true){
 elemento1 = document.getElementById("Elemento_Texto_Teste1").innerHTML;	
 kpi1 = document.getElementById("KPI_Texto_Teste1").innerHTML;
+counter_name = document.getElementById("KPI_Texto_Teste1").innerHTML;
+nqi_name = document.getElementById("KPI_Texto_Teste1").innerHTML;
 if(auth_change == true){	
 if(hourly_selected == true){
 periodo = "hourly";	
@@ -3966,10 +4948,10 @@ data_inicial[0] = document.getElementById("datepicker_inicial").value;
 data_final = document.getElementById("datepicker_final").value;
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = (SELECT get_enodeb_name('"+elemento1+"','enodeb'))::TEXT and "+tempo+" between '"+data_inicial[0]+"' and '"+data_final+" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
+if(family[1] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_main_kpis_"+family[1]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = (SELECT get_enodeb_name('"+elemento1+"','enodeb'))::TEXT and "+tempo+" between '"+data_inicial[0]+"' and '"+data_final+" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
 }else {	
-query = "SELECT "+tempo+", "+kpi1+" as node FROM " +tecnologia1 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
+query = "SELECT "+tempo+", "+kpi1+" as node FROM " +tecnologia1 +"_kpi.vw_main_kpis_"+family[1] +"_rate_"+periodo
 +" where node != 'UNKNOWN' and node = '"+elemento1 +"' and "+tempo+" between '"+data_inicial[0]+"' and '"+data_final
 +" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
 }
@@ -3990,43 +4972,43 @@ data_inicial[0] = document.getElementById("datepicker_inicial").value;
 data_final = document.getElementById("datepicker_final").value;
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento1+"' and date between '"+data_inicial[0]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[1] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_main_kpis_"+family[1]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento1+"' and date between '"+data_inicial[0]+"' and '"+data_final+"' order by "+tempo+"";
 }else {	
-query = "SELECT "+tempo+", "+kpi1+" as node FROM " +tecnologia1 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
+query = "SELECT "+tempo+", "+kpi1+" as node FROM " +tecnologia1 +"_kpi.vw_main_kpis_"+family[1] +"_rate_"+periodo
 +" where node != 'UNKNOWN' and node = '"+elemento1 +"' and "+tempo+" between '"+data_inicial[0]+"' and '"+data_final
 +"' order by "+tempo+"";
 }
 }else if(estado == 2){
 	
 if(tecnologia1 == "umts"){	
-if(familia == "cidade"){
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento1+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[1] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[1]+" = '"+elemento1+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+family[1]+",DATE ORDER BY DATE";
 }else
-if(familia == "rnc"){	
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento1+"' and DATE BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[1] == "rnc"){	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[1]+" = '"+elemento1+"' and DATE BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+family[1]+",DATE ORDER BY DATE";
 }else {
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento1+"' and DATE BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[1]+" = '"+elemento1+"' and DATE BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+family[1]+",DATE ORDER BY DATE";	
 }	
 }else
 if(tecnologia1 == "lte"){	
-if(familia == "cidade"){
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento1+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[1] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[1]+" = '"+elemento1+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+family[1]+",DATE ORDER BY DATE";
 }else {
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento1+"' and DATE BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[1]+" = '"+elemento1+"' and DATE BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+family[1]+",DATE ORDER BY DATE";	
 }	
 }else
 if(tecnologia1 == "gsm"){
-if(familia == "cell"){
+if(family[1] == "cell"){
 query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento1+"' and DATE BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b.cellname,DATE ORDER BY DATE";
 }else
-if(familia == "cidade"){
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento1+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[1] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[1]+" = '"+elemento1+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+family[1]+",DATE ORDER BY DATE";
 }else
-if(familia == "region"){
+if(family[1] == "region"){
 query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento1+"' and DATE BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b.regional,DATE ORDER BY DATE";
 }else	{
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento1+"' and DATE BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[1]+" = '"+elemento1+"' and DATE BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+family[1]+",DATE ORDER BY DATE";
 }	
 }	
 	
@@ -4034,7 +5016,7 @@ query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm
 
 if(tecnologia1 == "umts"){
 	
-query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_nqi_"+periodo+"_"+familia
+query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_nqi_"+periodo+"_"+family[1]
 +" where node != 'UNKNOWN' and node = '"+elemento1 +"' and "+tempo+" between '"+data_inicial[0]+"' and '"+data_final
 +"' order by "+tempo+"";
 
@@ -4042,11 +5024,11 @@ query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_nqi_"+pe
 
 if(tecnologia1 == "lte"){	
 
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_nqi_"+periodo+"_"+familia+" where "+familia+" != 'UNKNOWN' and "+familia+" = (SELECT get_enodeb_name('"+elemento1+"','enodeb'))::TEXT and date between '"+data_inicial[0]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[1] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_nqi_"+periodo+"_"+family[1]+" where "+family[1]+" != 'UNKNOWN' and "+family[1]+" = (SELECT get_enodeb_name('"+elemento1+"','enodeb'))::TEXT and date between '"+data_inicial[0]+"' and '"+data_final+"' order by "+tempo+"";
 }else {	
-query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where "+familia+" != 'UNKNOWN' and "+familia+" = '"+elemento1 +"' and "+tempo+" between '"+data_inicial[0]+"' and '"+data_final
+query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_nqi_"+periodo+"_"+family[1]
++" where "+family[1]+" != 'UNKNOWN' and "+family[1]+" = '"+elemento1 +"' and "+tempo+" between '"+data_inicial[0]+"' and '"+data_final
 +"' order by "+tempo+"";
 }
 }
@@ -4066,42 +5048,42 @@ var n = moment(t, 'MM-DD-YYYY');
 //document.getElementById("Teste_MonthNumber").innerHTML = m.toDate().getUTCMonth() + 1;
 data_inicial[0] = m.toDate().getWeekNumber();
 data_final = n.toDate().getWeekNumber();
+ano[0] = m.toDate().getUTCFullYear();
+ano_final[0] = n.toDate().getUTCFullYear();
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento1+"' and week between '"+data_inicial[0]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[1] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_main_kpis_"+family[1]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento1+"' and (year,week) between ("+ano[0]+","+data_inicial[0]+") and ("+ano_final[0]+","+data_final+") order by year,week";
 }else {	
-query = "SELECT "+tempo+", "+kpi1+" as node FROM " +tecnologia1 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
-+" where node != 'UNKNOWN' and node = '"+elemento1 +"' and "+tempo+" between '"+data_inicial[0]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_main_kpis_"+family[1]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento1+"' and (year,week) between ("+ano[0]+","+data_inicial[0]+") and ("+ano_final[0]+","+data_final+") order by year,week";
 }
 }else if(estado == 2){
 
 if(tecnologia1 == "umts"){	
-if(familia == "cidade"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento1+"' and uf = '"+uf+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[1] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[1]+" = '"+elemento1+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[0]+"','"+data_inicial[0]+"') AND ('"+ano_final[0]+"','"+data_final+"') GROUP BY b."+family[1]+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else {
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento1+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";	
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[1]+" = '"+elemento1+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[0]+"','"+data_inicial[0]+"') AND ('"+ano_final[0]+"','"+data_final+"') GROUP BY b."+family[1]+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";	
 }	
 }else
 if(tecnologia1 == "lte"){	
-if(familia == "cidade"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento1+"' and uf = '"+uf+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[1] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[1]+" = '"+elemento1+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[0]+"','"+data_inicial[0]+"') AND ('"+ano_final[0]+"','"+data_final+"') GROUP BY b."+family[1]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else {
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento1+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[1]+" = '"+elemento1+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[0]+"','"+data_inicial[0]+"') AND ('"+ano_final[0]+"','"+data_final+"') GROUP BY b."+family[1]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }	
 }else
 if(tecnologia1 == "gsm"){	
-if(familia == "cell"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento1+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b.cellname,date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[1] == "cell"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento1+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[0]+"','"+data_inicial[0]+"') AND ('"+ano_final[0]+"','"+data_final+"') GROUP BY b.cellname,date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)";
 }else
-if(familia == "cidade"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento1+"' and uf = '"+uf+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[1] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[1]+" = '"+elemento1+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[0]+"','"+data_inicial[0]+"') AND ('"+ano_final[0]+"','"+data_final+"') GROUP BY b."+family[1]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else
-if(familia == "region"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento1+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b.regional,date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[1] == "region"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento1+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[0]+"','"+data_inicial[0]+"') AND ('"+ano_final[0]+"','"+data_final+"') GROUP BY b.regional,date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else	{
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento1+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[1]+" = '"+elemento1+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[0]+"','"+data_inicial[0]+"') AND ('"+ano_final[0]+"','"+data_final+"') GROUP BY b."+family[1]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }	
 }	
 	
@@ -4109,20 +5091,16 @@ query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+c
 
 if(tecnologia1 == "umts"){
 	
-query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where node != 'UNKNOWN' and node = '"+elemento1 +"' and "+tempo+" between '"+data_inicial[0]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_nqi_"+periodo+"_"+family[1]+" where node != 'UNKNOWN' and node = '"+elemento1 +"' and (year,week) between ("+ano[0]+","+data_inicial[0]+") and ("+ano_final[0]+","+data_final+") order by year,week";
 
 }else
 
 if(tecnologia1 == "lte"){	
 
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_nqi_"+periodo+"_"+familia+" where "+familia+" != 'UNKNOWN' and "+familia+" = (SELECT get_enodeb_name('"+elemento1+"','enodeb'))::TEXT and week between '"+data_inicial[0]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[1] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_nqi_"+periodo+"_"+family[1]+" where "+family[1]+" != 'UNKNOWN' and "+family[1]+" = (SELECT get_enodeb_name('"+elemento1+"','enodeb'))::TEXT and (year,week) between ("+ano[0]+","+data_inicial[0]+") and ("+ano_final[0]+","+data_final+") order by year,week";
 }else {	
-query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where "+familia+" != 'UNKNOWN' and "+familia+" = '"+elemento1 +"' and "+tempo+" between '"+data_inicial[0]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_nqi_"+periodo+"_"+family[1]+" where "+family[1]+" != 'UNKNOWN' and "+family[1]+" = '"+elemento1 +"' and (year,week) between ("+ano[0]+","+data_inicial[0]+") and ("+ano_final[0]+","+data_final+") order by year,week";
 }
 }
 
@@ -4140,42 +5118,42 @@ var m = moment(s, 'MM-DD-YYYY');
 var n = moment(t, 'MM-DD-YYYY');
 data_inicial[0] = m.toDate().getUTCMonth() + 1;
 data_final = n.toDate().getUTCMonth() + 1;
+ano[0] = m.toDate().getUTCFullYear();
+ano_final[0] = n.toDate().getUTCFullYear();
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento1+"' and month between '"+data_inicial[0]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[1] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_main_kpis_"+family[1]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento1+"' and (year,month) between ('"+ano[0]+"','"+data_inicial[0]+"') and ('"+ano_final[0]+"','"+data_final+"') order by year,month";
 }else {	
-query = "SELECT "+tempo+", "+kpi1+" as node FROM " +tecnologia1 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
-+" where node != 'UNKNOWN' and node = '"+elemento1 +"' and "+tempo+" between '"+data_inicial[0]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_main_kpis_"+family[1]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento1+"' and (year,month) between ('"+ano[0]+"','"+data_inicial[0]+"') and ('"+ano_final[0]+"','"+data_final+"') order by year,month";
 }
 }else if(estado == 2){
 
 if(tecnologia1 == "umts"){	
-if(familia == "cidade"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento1+"' and uf = '"+uf+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date),date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[1] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[1]+" = '"+elemento1+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[0]+"','"+data_inicial[0]+"') AND ('"+ano_final[0]+"','"+data_final+"') GROUP BY b."+family[1]+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else {
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento1+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('month'::text, date)";	
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[1]+" = '"+elemento1+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[0]+"','"+data_inicial[0]+"') AND ('"+ano_final[0]+"','"+data_final+"') GROUP BY b."+family[1]+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";	
 }	
 }else
 if(tecnologia1 == "lte"){	
-if(familia == "cidade"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento1+"' and uf = '"+uf+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[1] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[1]+" = '"+elemento1+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[0]+"','"+data_inicial[0]+"') AND ('"+ano_final[0]+"','"+data_final+"') GROUP BY b."+family[1]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else {
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento1+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[1]+" = '"+elemento1+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[0]+"','"+data_inicial[0]+"') AND ('"+ano_final[0]+"','"+data_final+"') GROUP BY b."+family[1]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }	
 }else
 if(tecnologia1 == "gsm"){	
-if(familia == "cell"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento1+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b.cellname,date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[1] == "cell"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento1+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[0]+"','"+data_inicial[0]+"') AND ('"+ano_final[0]+"','"+data_final+"') GROUP BY b.cellname,date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else
-if(familia == "cidade"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento1+"' and uf = '"+uf+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[1] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[1]+" = '"+elemento1+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[0]+"','"+data_inicial[0]+"') AND ('"+ano_final[0]+"','"+data_final+"') GROUP BY b."+family[1]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else
-if(familia == "region"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento1+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b.regional,date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[1] == "region"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento1+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[0]+"','"+data_inicial[0]+"') AND ('"+ano_final[0]+"','"+data_final+"') GROUP BY b.regional,date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else	{
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento1+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[0]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[1]+" = '"+elemento1+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[0]+"','"+data_inicial[0]+"') AND ('"+ano_final[0]+"','"+data_final+"') GROUP BY b."+family[1]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }	
 }	
 	
@@ -4183,20 +5161,16 @@ query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"
 
 if(tecnologia1 == "umts"){
 	
-query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where node != 'UNKNOWN' and node = '"+elemento1 +"' and "+tempo+" between '"+data_inicial[0]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_nqi_"+periodo+"_"+family[1]+" where node != 'UNKNOWN' and node = '"+elemento1 +"' and (year,month) between ('"+ano[0]+"','"+data_inicial[0]+"') and ('"+ano_final[0]+"','"+data_final+"') order by year,month";
 
 }else
 
 if(tecnologia1 == "lte"){	
 
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_nqi_"+periodo+"_"+familia+" where "+familia+" != 'UNKNOWN' and "+familia+" = (SELECT get_enodeb_name('"+elemento1+"','enodeb'))::TEXT and month between '"+data_inicial[0]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[1] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_nqi_"+periodo+"_"+family[1]+" where "+family[1]+" != 'UNKNOWN' and "+family[1]+" = (SELECT get_enodeb_name('"+elemento1+"','enodeb'))::TEXT and (year,month) between ('"+ano[0]+"','"+data_inicial[0]+"') and ('"+ano_final[0]+"','"+data_final+"') order by year,month";
 }else {	
-query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where "+familia+" != 'UNKNOWN' and "+familia+" = '"+elemento1 +"' and "+tempo+" between '"+data_inicial[0]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi1+" as node FROM "+tecnologia1+"_kpi.vw_nqi_"+periodo+"_"+family[1]+" where "+family[1]+" != 'UNKNOWN' and "+family[1]+" = '"+elemento1 +"' and (year,month) between ('"+ano[0]+"','"+data_inicial[0]+"') and ('"+ano_final[0]+"','"+data_final+"') order by year,month";
 }
 }
 
@@ -4238,9 +5212,12 @@ document.getElementById("Query_Menu1").style.opacity = 0.3;
 }
 
 function mostrar_charts2(){
+		
 if(auth_change == true){
 elemento2 = document.getElementById("Elemento_Texto_Teste2").innerHTML;	
-kpi2 = document.getElementById("KPI_Texto_Teste2").innerHTML;	
+kpi2 = document.getElementById("KPI_Texto_Teste2").innerHTML;
+counter_name = document.getElementById("KPI_Texto_Teste2").innerHTML;
+nqi_name = document.getElementById("KPI_Texto_Teste2").innerHTML;	
 if(hourly_selected == true){
 periodo = "hourly";	
 hora_inicial = 	$( "#Drop_Hora_Inicial option:selected" ).text();
@@ -4249,10 +5226,10 @@ data_inicial[1] = document.getElementById("datepicker_inicial").value;
 data_final = document.getElementById("datepicker_final").value;
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = (SELECT get_enodeb_name('"+elemento2+"','enodeb'))::TEXT and "+tempo+" between '"+data_inicial[1]+"' and '"+data_final+" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
+if(family[2] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_main_kpis_"+family[2]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = (SELECT get_enodeb_name('"+elemento2+"','enodeb'))::TEXT and "+tempo+" between '"+data_inicial[1]+"' and '"+data_final+" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
 }else {	
-query = "SELECT "+tempo+", "+kpi2+" as node FROM " +tecnologia2 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
+query = "SELECT "+tempo+", "+kpi2+" as node FROM " +tecnologia2 +"_kpi.vw_main_kpis_"+family[2] +"_rate_"+periodo
 +" where node != 'UNKNOWN' and node = '"+elemento2 +"' and "+tempo+" between '"+data_inicial[1]+"' and '"+data_final
 +" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
 }
@@ -4273,43 +5250,43 @@ data_inicial[1] = document.getElementById("datepicker_inicial").value;
 data_final = document.getElementById("datepicker_final").value;
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento2+"' and date between '"+data_inicial[1]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[2] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_main_kpis_"+family[2]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento2+"' and date between '"+data_inicial[1]+"' and '"+data_final+"' order by "+tempo+"";
 }else {	
-query = "SELECT "+tempo+", "+kpi2+" as node FROM " +tecnologia2 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
+query = "SELECT "+tempo+", "+kpi2+" as node FROM " +tecnologia2 +"_kpi.vw_main_kpis_"+family[2] +"_rate_"+periodo
 +" where node != 'UNKNOWN' and node = '"+elemento2 +"' and "+tempo+" between '"+data_inicial[1]+"' and '"+data_final
 +"' order by "+tempo+"";
 }
 }else if(estado == 2){
 
 if(tecnologia2 == "umts"){	
-if(familia == "cidade"){
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento2+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[2] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[2]+" = '"+elemento2+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+family[2]+",DATE ORDER BY DATE";
 }else
-if(familia == "rnc"){	
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento2+"' and DATE BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[2] == "rnc"){	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[2]+" = '"+elemento2+"' and DATE BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+family[2]+",DATE ORDER BY DATE";
 }else {
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento2+"' and DATE BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[2]+" = '"+elemento2+"' and DATE BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+family[2]+",DATE ORDER BY DATE";	
 }	
 }else
 if(tecnologia2 == "lte"){	
-if(familia == "cidade"){
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento2+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[2] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[2]+" = '"+elemento2+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+family[2]+",DATE ORDER BY DATE";
 }else {
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento2+"' and DATE BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[2]+" = '"+elemento2+"' and DATE BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+family[2]+",DATE ORDER BY DATE";	
 }	
 }else
 if(tecnologia2 == "gsm"){	
-if(familia == "cell"){
+if(family[2] == "cell"){
 query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento2+"' and DATE BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b.cellname,DATE ORDER BY DATE";
 }else
-if(familia == "cidade"){
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento2+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[2] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[2]+" = '"+elemento2+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+family[2]+",DATE ORDER BY DATE";
 }else
-if(familia == "region"){
+if(family[2] == "region"){
 query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento2+"' and DATE BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b.regional,DATE ORDER BY DATE";
 }else	{
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento2+"' and DATE BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[2]+" = '"+elemento2+"' and DATE BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+family[2]+",DATE ORDER BY DATE";
 }	
 }	
 	
@@ -4317,7 +5294,7 @@ query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm
 
 if(tecnologia2 == "umts"){
 	
-query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_nqi_"+periodo+"_"+familia
+query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_nqi_"+periodo+"_"+family[2]
 +" where node != 'UNKNOWN' and node = '"+elemento2 +"' and "+tempo+" between '"+data_inicial[1]+"' and '"+data_final
 +"' order by "+tempo+"";
 
@@ -4325,11 +5302,11 @@ query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_nqi_"+pe
 
 if(tecnologia2 == "lte"){	
 
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_nqi_"+periodo+"_"+familia+" where "+familia+" != 'UNKNOWN' and "+familia+" = (SELECT get_enodeb_name('"+elemento2+"','enodeb'))::TEXT and date between '"+data_inicial[1]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[2] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_nqi_"+periodo+"_"+family[2]+" where "+family[2]+" != 'UNKNOWN' and "+family[2]+" = (SELECT get_enodeb_name('"+elemento2+"','enodeb'))::TEXT and date between '"+data_inicial[1]+"' and '"+data_final+"' order by "+tempo+"";
 }else {	
-query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where "+familia+" != 'UNKNOWN' and "+familia+" = '"+elemento2 +"' and "+tempo+" between '"+data_inicial[0]+"' and '"+data_final
+query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_nqi_"+periodo+"_"+family[2]
++" where "+family[2]+" != 'UNKNOWN' and "+family[2]+" = '"+elemento2 +"' and "+tempo+" between '"+data_inicial[0]+"' and '"+data_final
 +"' order by "+tempo+"";
 }
 }
@@ -4349,63 +5326,57 @@ var n = moment(t, 'MM-DD-YYYY');
 //document.getElementById("Teste_MonthNumber").innerHTML = m.toDate().getUTCMonth() + 1;
 data_inicial[1] = m.toDate().getWeekNumber();
 data_final = n.toDate().getWeekNumber();
+ano[1] = m.toDate().getUTCFullYear();
+ano_final[1] = n.toDate().getUTCFullYear();
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento2+"' and week between '"+data_inicial[1]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[2] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_main_kpis_"+family[2]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento2+"' and (year,week) between ("+ano[1]+","+data_inicial[1]+") and ("+ano_final[1]+","+data_final+") order by year,week";
 }else {	
-query = "SELECT "+tempo+", "+kpi2+" as node FROM " +tecnologia2 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
-+" where node != 'UNKNOWN' and node = '"+elemento2 +"' and "+tempo+" between '"+data_inicial[1]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi2+" as node FROM " +tecnologia2 +"_kpi.vw_main_kpis_"+family[2] +"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento2 +"' and (year,week) between ("+ano[1]+","+data_inicial[1]+") and ("+ano_final[1]+","+data_final+") order by year,week";
 }
 }else if(estado == 2){
 
 if(tecnologia2 == "umts"){	
-if(familia == "cidade"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento2+"' and uf = '"+uf+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[2] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[2]+" = '"+elemento2+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[1]+"','"+data_inicial[1]+"') AND ('"+ano_final[1]+"','"+data_final+"') GROUP BY b."+family[2]+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else {
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento2+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";	
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[2]+" = '"+elemento2+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[1]+"','"+data_inicial[1]+"') AND ('"+ano_final[1]+"','"+data_final+"') GROUP BY b."+family[2]+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";	
 }	
 }else
 if(tecnologia2 == "lte"){	
-if(familia == "cidade"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento2+"' and uf = '"+uf+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[2] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[2]+" = '"+elemento2+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[1]+"','"+data_inicial[1]+"') AND ('"+ano_final[1]+"','"+data_final+"') GROUP BY b."+family[2]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else {
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento2+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[2]+" = '"+elemento2+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[1]+"','"+data_inicial[1]+"') AND ('"+ano_final[1]+"','"+data_final+"') GROUP BY b."+family[2]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }	
 }else
 if(tecnologia2 == "gsm"){	
-if(familia == "cell"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento2+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b.cellname,date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[2] == "cell"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento2+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[1]+"','"+data_inicial[1]+"') AND ('"+ano_final[1]+"','"+data_final+"') GROUP BY b.cellname,date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)";
 }else
-if(familia == "cidade"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento2+"' and uf = '"+uf+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[2] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[2]+" = '"+elemento2+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[1]+"','"+data_inicial[1]+"') AND ('"+ano_final[1]+"','"+data_final+"') GROUP BY b."+family[2]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else
-if(familia == "region"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento2+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b.regional,date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[2] == "region"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento2+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[1]+"','"+data_inicial[1]+"') AND ('"+ano_final[1]+"','"+data_final+"') GROUP BY b.regional,date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else	{
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento2+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[2]+" = '"+elemento2+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[1]+"','"+data_inicial[1]+"') AND ('"+ano_final[1]+"','"+data_final+"') GROUP BY b."+family[2]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }	
 }	
 	
 }else if(estado == 3){
 
-if(tecnologia2 == "umts"){
-	
-query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where node != 'UNKNOWN' and node = '"+elemento2 +"' and "+tempo+" between '"+data_inicial[1]+"' and '"+data_final
-+"' order by "+tempo+"";
-
+if(tecnologia2 == "umts"){	
+query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_nqi_"+periodo+"_"+family[2]+" where node != 'UNKNOWN' and node = '"+elemento2 +"' and (year,week) between ("+ano[1]+","+data_inicial[1]+") and ("+ano_final[1]+","+data_final+") order by year,week";
 }else
 
 if(tecnologia2 == "lte"){	
 
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_nqi_"+periodo+"_"+familia+" where "+familia+" != 'UNKNOWN' and "+familia+" = (SELECT get_enodeb_name('"+elemento2+"','enodeb'))::TEXT and week between '"+data_inicial[1]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[2] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_nqi_"+periodo+"_"+family[2]+" where "+family[2]+" != 'UNKNOWN' and "+family[2]+" = (SELECT get_enodeb_name('"+elemento2+"','enodeb'))::TEXT and (year,week) between ("+ano[1]+","+data_inicial[1]+") and ("+ano_final[1]+","+data_final+") order by year,week";
 }else {	
-query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where "+familia+" != 'UNKNOWN' and "+familia+" = '"+elemento2 +"' and "+tempo+" between '"+data_inicial[1]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_nqi_"+periodo+"_"+family[2]+" where "+family[2]+" != 'UNKNOWN' and "+family[2]+" = '"+elemento2 +"' and (year,week) between ("+ano[1]+","+data_inicial[1]+") and ("+ano_final[1]+","+data_final+") order by year,week";
 }
 }
 
@@ -4422,63 +5393,59 @@ var m = moment(s, 'MM-DD-YYYY');
 var n = moment(t, 'MM-DD-YYYY');
 data_inicial[1] = m.toDate().getUTCMonth() + 1;
 data_final = n.toDate().getUTCMonth() + 1;
+ano[1] = m.toDate().getUTCFullYear();
+ano_final[1] = n.toDate().getUTCFullYear();
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento2+"' and month between '"+data_inicial[1]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[2] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_main_kpis_"+family[2]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento2+"' and (year,month) between ('"+ano[1]+"','"+data_inicial[1]+"') and ('"+ano_final[1]+"','"+data_final+"') order by year,month";
 }else {	
-query = "SELECT "+tempo+", "+kpi2+" as node FROM " +tecnologia2 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
-+" where node != 'UNKNOWN' and node = '"+elemento2 +"' and "+tempo+" between '"+data_inicial[1]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_main_kpis_"+family[2]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento2+"' and (year,month) between ('"+ano[1]+"','"+data_inicial[1]+"') and ('"+ano_final[1]+"','"+data_final+"') order by year,month";
 }
 }else if(estado == 2){
 
 if(tecnologia2 == "umts"){	
-if(familia == "cidade"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento2+"' and uf = '"+uf+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date),date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[2] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[2]+" = '"+elemento2+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[1]+"','"+data_inicial[1]+"') AND ('"+ano_final[1]+"','"+data_final+"') GROUP BY b."+family[2]+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else {
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento2+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('month'::text, date)";	
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[2]+" = '"+elemento2+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[1]+"','"+data_inicial[1]+"') AND ('"+ano_final[1]+"','"+data_final+"') GROUP BY b."+family[2]+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";	
 }	
 }else
 if(tecnologia2 == "lte"){	
-if(familia == "cidade"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento2+"' and uf = '"+uf+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[2] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[2]+" = '"+elemento2+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[1]+"','"+data_inicial[1]+"') AND ('"+ano_final[1]+"','"+data_final+"') GROUP BY b."+family[2]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else {
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento2+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[2]+" = '"+elemento2+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[1]+"','"+data_inicial[1]+"') AND ('"+ano_final[1]+"','"+data_final+"') GROUP BY b."+family[2]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }	
 }else
 if(tecnologia2 == "gsm"){	
-if(familia == "cell"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento2+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b.cellname,date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[2] == "cell"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento2+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[1]+"','"+data_inicial[1]+"') AND ('"+ano_final[1]+"','"+data_final+"') GROUP BY b.cellname,date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else
-if(familia == "cidade"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento2+"' and uf = '"+uf+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[2] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[2]+" = '"+elemento2+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[1]+"','"+data_inicial[1]+"') AND ('"+ano_final[1]+"','"+data_final+"') GROUP BY b."+family[2]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else
-if(familia == "region"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento2+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b.regional,date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[2] == "region"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento2+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[1]+"','"+data_inicial[1]+"') AND ('"+ano_final[1]+"','"+data_final+"') GROUP BY b.regional,date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else	{
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento2+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[1]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
-}	
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[2]+" = '"+elemento2+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[1]+"','"+data_inicial[1]+"') AND ('"+ano_final[1]+"','"+data_final+"') GROUP BY b."+family[2]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }	
 	
+}
 }else if(estado == 3){
 
 if(tecnologia2 == "umts"){
 	
-query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where node != 'UNKNOWN' and node = '"+elemento2 +"' and "+tempo+" between '"+data_inicial[1]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_nqi_"+periodo+"_"+family[2]+" where node != 'UNKNOWN' and node = '"+elemento2 +"' and (year,month) between ('"+ano[1]+"','"+data_inicial[1]+"') and ('"+ano_final[1]+"','"+data_final+"') order by year,month";
 
 }else
 
 if(tecnologia2 == "lte"){	
 
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_nqi_"+periodo+"_"+familia+" where "+familia+" != 'UNKNOWN' and "+familia+" = (SELECT get_enodeb_name('"+elemento2+"','enodeb'))::TEXT and month between '"+data_inicial[1]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[2] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_nqi_"+periodo+"_"+family[2]+" where "+family[2]+" != 'UNKNOWN' and "+family[2]+" = (SELECT get_enodeb_name('"+elemento2+"','enodeb'))::TEXT and (year,month) between ('"+ano[1]+"','"+data_inicial[1]+"') and ('"+ano_final[1]+"','"+data_final+"') order by year,month";
 }else {	
-query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where "+familia+" != 'UNKNOWN' and "+familia+" = '"+elemento2 +"' and "+tempo+" between '"+data_inicial[1]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi2+" as node FROM "+tecnologia2+"_kpi.vw_nqi_"+periodo+"_"+family[2]+" where "+family[2]+" != 'UNKNOWN' and "+family[2]+" = '"+elemento2 +"' and (year,month) between ('"+ano[1]+"','"+data_inicial[1]+"') and ('"+ano_final[1]+"','"+data_final+"') order by year,month";
 }
 }
 
@@ -4523,12 +5490,14 @@ document.getElementById("Query_Menu2").style.opacity = 0.3;
 
 
 function mostrar_charts3(){
-	
+			
 query_num = 4;
 
 if(auth_change == true){
 elemento3 = document.getElementById("Elemento_Texto_Teste3").innerHTML;	
-kpi3 = document.getElementById("KPI_Texto_Teste3").innerHTML;	
+kpi3 = document.getElementById("KPI_Texto_Teste3").innerHTML;
+counter_name = document.getElementById("KPI_Texto_Teste3").innerHTML;
+nqi_name = document.getElementById("KPI_Texto_Teste3").innerHTML;	
 if(hourly_selected == true){
 periodo = "hourly";	
 hora_inicial = 	$( "#Drop_Hora_Inicial option:selected" ).text();
@@ -4537,10 +5506,10 @@ data_inicial[2] = document.getElementById("datepicker_inicial").value;
 data_final = document.getElementById("datepicker_final").value;
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = (SELECT get_enodeb_name('"+elemento3+"','enodeb'))::TEXT and "+tempo+" between '"+data_inicial[2]+"' and '"+data_final+" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
+if(family[3] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_main_kpis_"+family[3]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = (SELECT get_enodeb_name('"+elemento3+"','enodeb'))::TEXT and "+tempo+" between '"+data_inicial[2]+"' and '"+data_final+" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
 }else {	
-query = "SELECT "+tempo+", "+kpi3+" as node FROM " +tecnologia3 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
+query = "SELECT "+tempo+", "+kpi3+" as node FROM " +tecnologia3 +"_kpi.vw_main_kpis_"+family[3] +"_rate_"+periodo
 +" where node != 'UNKNOWN' and node = '"+elemento3 +"' and "+tempo+" between '"+data_inicial[2]+"' and '"+data_final
 +" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
 }
@@ -4561,43 +5530,43 @@ data_inicial[2] = document.getElementById("datepicker_inicial").value;
 data_final = document.getElementById("datepicker_final").value;
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento3+"' and date between '"+data_inicial[2]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[3] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_main_kpis_"+family[3]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento3+"' and date between '"+data_inicial[2]+"' and '"+data_final+"' order by "+tempo+"";
 }else {	
-query = "SELECT "+tempo+", "+kpi3+" as node FROM " +tecnologia3 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
+query = "SELECT "+tempo+", "+kpi3+" as node FROM " +tecnologia3 +"_kpi.vw_main_kpis_"+family[3] +"_rate_"+periodo
 +" where node != 'UNKNOWN' and node = '"+elemento3 +"' and "+tempo+" between '"+data_inicial[2]+"' and '"+data_final
 +"' order by "+tempo+"";
 }
 }else if(estado == 2){
 
 if(tecnologia3 == "umts"){	
-if(familia == "cidade"){
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento3+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[3] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[3]+" = '"+elemento3+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+family[3]+",DATE ORDER BY DATE";
 }else
-if(familia == "rnc"){	
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento3+"' and DATE BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[3] == "rnc"){	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[3]+" = '"+elemento3+"' and DATE BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+family[3]+",DATE ORDER BY DATE";
 }else {
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento3+"' and DATE BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[3]+" = '"+elemento3+"' and DATE BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+family[3]+",DATE ORDER BY DATE";	
 }	
 }else
 if(tecnologia3 == "lte"){	
-if(familia == "cidade"){
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento3+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[3] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[3]+" = '"+elemento3+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+family[3]+",DATE ORDER BY DATE";
 }else {
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento3+"' and DATE BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[3]+" = '"+elemento3+"' and DATE BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+family[3]+",DATE ORDER BY DATE";	
 }	
 }else
 if(tecnologia3 == "gsm"){	
-if(familia == "cell"){
+if(family[3] == "cell"){
 query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento3+"' and DATE BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b.cellname,DATE ORDER BY DATE";
 }else
-if(familia == "cidade"){
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento3+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[3] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[3]+" = '"+elemento3+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+family[3]+",DATE ORDER BY DATE";
 }else
-if(familia == "region"){
+if(family[3] == "region"){
 query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento3+"' and DATE BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b.regional,DATE ORDER BY DATE";
 }else	{
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento3+"' and DATE BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[3]+" = '"+elemento3+"' and DATE BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+family[3]+",DATE ORDER BY DATE";
 }	
 }	
 	
@@ -4605,7 +5574,7 @@ query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm
 
 if(tecnologia3 == "umts"){
 	
-query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_nqi_"+periodo+"_"+familia
+query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_nqi_"+periodo+"_"+family[3]
 +" where node != 'UNKNOWN' and node = '"+elemento3 +"' and "+tempo+" between '"+data_inicial[2]+"' and '"+data_final
 +"' order by "+tempo+"";
 
@@ -4613,11 +5582,11 @@ query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_nqi_"+pe
 
 if(tecnologia3 == "lte"){	
 
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_nqi_"+periodo+"_"+familia+" where "+familia+" != 'UNKNOWN' and "+familia+" = (SELECT get_enodeb_name('"+elemento3+"','enodeb'))::TEXT and date between '"+data_inicial[2]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[3] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_nqi_"+periodo+"_"+family[3]+" where "+family[3]+" != 'UNKNOWN' and "+family[3]+" = (SELECT get_enodeb_name('"+elemento3+"','enodeb'))::TEXT and date between '"+data_inicial[2]+"' and '"+data_final+"' order by "+tempo+"";
 }else {	
-query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where "+familia+" != 'UNKNOWN' and "+familia+" = '"+elemento3 +"' and "+tempo+" between '"+data_inicial[2]+"' and '"+data_final
+query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_nqi_"+periodo+"_"+family[3]
++" where "+family[3]+" != 'UNKNOWN' and "+family[3]+" = '"+elemento3 +"' and "+tempo+" between '"+data_inicial[2]+"' and '"+data_final
 +"' order by "+tempo+"";
 }
 }
@@ -4637,42 +5606,42 @@ var n = moment(t, 'MM-DD-YYYY');
 //document.getElementById("Teste_MonthNumber").innerHTML = m.toDate().getUTCMonth() + 1;
 data_inicial[2] = m.toDate().getWeekNumber();
 data_final = n.toDate().getWeekNumber();
+ano[2] = m.toDate().getUTCFullYear();
+ano_final[2] = n.toDate().getUTCFullYear();
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento3+"' and week between '"+data_inicial[2]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[3] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_main_kpis_"+family[3]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento3+"' and (year,week) between ("+ano[2]+","+data_inicial[2]+") and ("+ano_final[2]+","+data_final+") order by year,week";
 }else {	
-query = "SELECT "+tempo+", "+kpi3+" as node FROM " +tecnologia3 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
-+" where node != 'UNKNOWN' and node = '"+elemento3 +"' and "+tempo+" between '"+data_inicial[2]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi3+" as node FROM " +tecnologia3 +"_kpi.vw_main_kpis_"+family[3] +"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento3 +"' and (year,week) between ("+ano[2]+","+data_inicial[2]+") and ("+ano_final[2]+","+data_final+") order by year,week";
 }
 }else if(estado == 2){
 
 if(tecnologia3 == "umts"){	
-if(familia == "cidade"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento3+"' and uf = '"+uf+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[3] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[3]+" = '"+elemento3+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[2]+"','"+data_inicial[2]+"') AND ('"+ano_final[2]+"','"+data_final+"') GROUP BY b."+family[3]+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else {
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento3+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";	
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[3]+" = '"+elemento3+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[2]+"','"+data_inicial[2]+"') AND ('"+ano_final[2]+"','"+data_final+"') GROUP BY b."+family[3]+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";	
 }	
 }else
 if(tecnologia3 == "lte"){	
-if(familia == "cidade"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento3+"' and uf = '"+uf+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[3] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[3]+" = '"+elemento3+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[2]+"','"+data_inicial[2]+"') AND ('"+ano_final[2]+"','"+data_final+"') GROUP BY b."+family[3]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else {
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento3+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[3]+" = '"+elemento3+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[2]+"','"+data_inicial[2]+"') AND ('"+ano_final[2]+"','"+data_final+"') GROUP BY b."+family[3]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }	
 }else
 if(tecnologia3 == "gsm"){	
-if(familia == "cell"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento3+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b.cellname,date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[3] == "cell"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento3+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[2]+"','"+data_inicial[2]+"') AND ('"+ano_final[2]+"','"+data_final+"') GROUP BY b.cellname,date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)";
 }else
-if(familia == "cidade"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento3+"' and uf = '"+uf+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[3] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[3]+" = '"+elemento3+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[2]+"','"+data_inicial[2]+"') AND ('"+ano_final[2]+"','"+data_final+"') GROUP BY b."+family[3]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else
-if(familia == "region"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento3+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b.regional,date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[3] == "region"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento3+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[2]+"','"+data_inicial[2]+"') AND ('"+ano_final[2]+"','"+data_final+"') GROUP BY b.regional,date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else	{
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento3+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[3]+" = '"+elemento3+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[2]+"','"+data_inicial[2]+"') AND ('"+ano_final[2]+"','"+data_final+"') GROUP BY b."+family[3]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }	
 }	
 	
@@ -4680,20 +5649,16 @@ query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+c
 
 if(tecnologia3 == "umts"){
 	
-query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where node != 'UNKNOWN' and node = '"+elemento3 +"' and "+tempo+" between '"+data_inicial[2]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_nqi_"+periodo+"_"+family[3]+" where node != 'UNKNOWN' and node = '"+elemento3 +"' and (year,week) between ("+ano[2]+","+data_inicial[2]+") and ("+ano_final[2]+","+data_final+") order by year,week";
 
 }else
 
 if(tecnologia3 == "lte"){	
 
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_nqi_"+periodo+"_"+familia+" where "+familia+" != 'UNKNOWN' and "+familia+" = (SELECT get_enodeb_name('"+elemento3+"','enodeb'))::TEXT and week between '"+data_inicial[2]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[3] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_nqi_"+periodo+"_"+family[3]+" where "+family[3]+" != 'UNKNOWN' and "+family[3]+" = (SELECT get_enodeb_name('"+elemento3+"','enodeb'))::TEXT and (year,week) between ("+ano[2]+","+data_inicial[2]+") and ("+ano_final[2]+","+data_final+") order by year,week";
 }else {	
-query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where "+familia+" != 'UNKNOWN' and "+familia+" = '"+elemento3 +"' and "+tempo+" between '"+data_inicial[2]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_nqi_"+periodo+"_"+family[3]+" where "+family[3]+" != 'UNKNOWN' and "+family[3]+" = '"+elemento3 +"' and (year,week) between ("+ano[2]+","+data_inicial[2]+") and ("+ano_final[2]+","+data_final+") order by year,week";
 }
 }
 
@@ -4710,63 +5675,59 @@ var m = moment(s, 'MM-DD-YYYY');
 var n = moment(t, 'MM-DD-YYYY');
 data_inicial[2] = m.toDate().getUTCMonth() + 1;
 data_final = n.toDate().getUTCMonth() + 1;
+ano[2] = m.toDate().getUTCFullYear();
+ano_final[2] = n.toDate().getUTCFullYear();
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento3+"' and month between '"+data_inicial[2]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[3] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_main_kpis_"+family[3]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento3+"' and (year,month) between ('"+ano[2]+"','"+data_inicial[2]+"') and ('"+ano_final[2]+"','"+data_final+"') order by year,month";
 }else {	
-query = "SELECT "+tempo+", "+kpi3+" as node FROM " +tecnologia3 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
-+" where node != 'UNKNOWN' and node = '"+elemento3 +"' and "+tempo+" between '"+data_inicial[2]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_main_kpis_"+family[3]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento3+"' and (year,month) between ('"+ano[2]+"','"+data_inicial[2]+"') and ('"+ano_final[2]+"','"+data_final+"') order by year,month";
 }
 }else if(estado == 2){
 
 if(tecnologia3 == "umts"){	
-if(familia == "cidade"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento3+"' and uf = '"+uf+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date),date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[3] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[3]+" = '"+elemento3+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[2]+"','"+data_inicial[2]+"') AND ('"+ano_final[2]+"','"+data_final+"') GROUP BY b."+family[3]+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else {
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento3+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('month'::text, date)";	
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[3]+" = '"+elemento3+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[2]+"','"+data_inicial[2]+"') AND ('"+ano_final[2]+"','"+data_final+"') GROUP BY b."+family[3]+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";	
 }	
 }else
 if(tecnologia3 == "lte"){	
-if(familia == "cidade"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento3+"' and uf = '"+uf+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[3] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[3]+" = '"+elemento3+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[2]+"','"+data_inicial[2]+"') AND ('"+ano_final[2]+"','"+data_final+"') GROUP BY b."+family[3]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else {
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento3+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[3]+" = '"+elemento3+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[2]+"','"+data_inicial[2]+"') AND ('"+ano_final[2]+"','"+data_final+"') GROUP BY b."+family[3]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }	
 }else
 if(tecnologia3 == "gsm"){	
-if(familia == "cell"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento3+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b.cellname,date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[3] == "cell"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento3+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[2]+"','"+data_inicial[2]+"') AND ('"+ano_final[2]+"','"+data_final+"') GROUP BY b.cellname,date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else
-if(familia == "cidade"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento3+"' and uf = '"+uf+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[3] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[3]+" = '"+elemento3+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[2]+"','"+data_inicial[2]+"') AND ('"+ano_final[2]+"','"+data_final+"') GROUP BY b."+family[3]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else
-if(familia == "region"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento3+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b.regional,date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[3] == "region"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento3+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[2]+"','"+data_inicial[2]+"') AND ('"+ano_final[2]+"','"+data_final+"') GROUP BY b.regional,date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else	{
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento3+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[2]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
-}	
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[3]+" = '"+elemento3+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[2]+"','"+data_inicial[2]+"') AND ('"+ano_final[2]+"','"+data_final+"') GROUP BY b."+family[3]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }	
 	
+}
 }else if(estado == 3){
 
 if(tecnologia3 == "umts"){
 	
-query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where node != 'UNKNOWN' and node = '"+elemento3 +"' and "+tempo+" between '"+data_inicial[2]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_nqi_"+periodo+"_"+family[3]+" where node != 'UNKNOWN' and node = '"+elemento3 +"' and (year,month) between ('"+ano[2]+"','"+data_inicial[2]+"') and ('"+ano_final[2]+"','"+data_final+"') order by year,month";
 
 }else
 
 if(tecnologia3 == "lte"){	
 
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_nqi_"+periodo+"_"+familia+" where "+familia+" != 'UNKNOWN' and "+familia+" = (SELECT get_enodeb_name('"+elemento3+"','enodeb'))::TEXT and month between '"+data_inicial[2]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[3] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_nqi_"+periodo+"_"+family[3]+" where "+family[3]+" != 'UNKNOWN' and "+family[3]+" = (SELECT get_enodeb_name('"+elemento3+"','enodeb'))::TEXT and (year,month) between ('"+ano[2]+"','"+data_inicial[2]+"') and ('"+ano_final[2]+"','"+data_final+"') order by year,month";
 }else {	
-query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where "+familia+" != 'UNKNOWN' and "+familia+" = '"+elemento3 +"' and "+tempo+" between '"+data_inicial[2]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi3+" as node FROM "+tecnologia3+"_kpi.vw_nqi_"+periodo+"_"+family[3]+" where "+family[3]+" != 'UNKNOWN' and "+family[3]+" = '"+elemento3 +"' and (year,month) between ('"+ano[2]+"','"+data_inicial[2]+"') and ('"+ano_final[2]+"','"+data_final+"') order by year,month";
 }
 }
 
@@ -4811,12 +5772,14 @@ document.getElementById("Query_Menu3").style.opacity = 0.3;
 
 
 function mostrar_charts4(){
-	
+		
 query_num = 5;
 
 if(auth_change == true){
 elemento4 = document.getElementById("Elemento_Texto_Teste4").innerHTML;	
-kpi4 = document.getElementById("KPI_Texto_Teste4").innerHTML;	
+kpi4 = document.getElementById("KPI_Texto_Teste4").innerHTML;
+counter_name = document.getElementById("KPI_Texto_Teste4").innerHTML;
+nqi_name = document.getElementById("KPI_Texto_Teste4").innerHTML;	
 if(hourly_selected == true){
 periodo = "hourly";	
 hora_inicial = 	$( "#Drop_Hora_Inicial option:selected" ).text();
@@ -4825,10 +5788,10 @@ data_inicial[3] = document.getElementById("datepicker_inicial").value;
 data_final = document.getElementById("datepicker_final").value;
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = (SELECT get_enodeb_name('"+elemento4+"','enodeb'))::TEXT and "+tempo+" between '"+data_inicial[3]+"' and '"+data_final+" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
+if(family[4] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_main_kpis_"+family[4]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = (SELECT get_enodeb_name('"+elemento4+"','enodeb'))::TEXT and "+tempo+" between '"+data_inicial[3]+"' and '"+data_final+" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
 }else {	
-query = "SELECT "+tempo+", "+kpi4+" as node FROM " +tecnologia4 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
+query = "SELECT "+tempo+", "+kpi4+" as node FROM " +tecnologia4 +"_kpi.vw_main_kpis_"+family[4] +"_rate_"+periodo
 +" where node != 'UNKNOWN' and node = '"+elemento4 +"' and "+tempo+" between '"+data_inicial[3]+"' and '"+data_final
 +" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
 }
@@ -4849,43 +5812,43 @@ data_inicial[3] = document.getElementById("datepicker_inicial").value;
 data_final = document.getElementById("datepicker_final").value;
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento4+"' and date between '"+data_inicial[3]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[4] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_main_kpis_"+family[4]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento4+"' and date between '"+data_inicial[3]+"' and '"+data_final+"' order by "+tempo+"";
 }else {	
-query = "SELECT "+tempo+", "+kpi4+" as node FROM " +tecnologia4 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
+query = "SELECT "+tempo+", "+kpi4+" as node FROM " +tecnologia4 +"_kpi.vw_main_kpis_"+family[4] +"_rate_"+periodo
 +" where node != 'UNKNOWN' and node = '"+elemento4 +"' and "+tempo+" between '"+data_inicial[3]+"' and '"+data_final
 +"' order by "+tempo+"";
 }
 }else if(estado == 2){
 
 if(tecnologia4 == "umts"){	
-if(familia == "cidade"){
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento4+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[4] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[4]+" = '"+elemento4+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+family[4]+",DATE ORDER BY DATE";
 }else
-if(familia == "rnc"){	
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento4+"' and DATE BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[4] == "rnc"){	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[4]+" = '"+elemento4+"' and DATE BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+family[4]+",DATE ORDER BY DATE";
 }else {
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento4+"' and DATE BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[4]+" = '"+elemento4+"' and DATE BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+family[4]+",DATE ORDER BY DATE";	
 }	
 }else
 if(tecnologia4 == "lte"){	
-if(familia == "cidade"){
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento4+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[4] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[4]+" = '"+elemento4+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+family[4]+",DATE ORDER BY DATE";
 }else {
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento4+"' and DATE BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[4]+" = '"+elemento4+"' and DATE BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+family[4]+",DATE ORDER BY DATE";	
 }	
 }else
 if(tecnologia4 == "gsm"){	
-if(familia == "cell"){
+if(family[4] == "cell"){
 query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento4+"' and DATE BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b.cellname,DATE ORDER BY DATE";
 }else
-if(familia == "cidade"){
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento4+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[4] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[4]+" = '"+elemento4+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+family[4]+",DATE ORDER BY DATE";
 }else
-if(familia == "region"){
+if(family[4] == "region"){
 query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento4+"' and DATE BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b.regional,DATE ORDER BY DATE";
 }else	{
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento4+"' and DATE BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[4]+" = '"+elemento4+"' and DATE BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+family[4]+",DATE ORDER BY DATE";
 }	
 }	
 	
@@ -4893,7 +5856,7 @@ query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm
 
 if(tecnologia4 == "umts"){
 	
-query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_nqi_"+periodo+"_"+familia
+query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_nqi_"+periodo+"_"+family[4]
 +" where node != 'UNKNOWN' and node = '"+elemento4 +"' and "+tempo+" between '"+data_inicial[3]+"' and '"+data_final
 +"' order by "+tempo+"";
 
@@ -4901,11 +5864,11 @@ query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_nqi_"+pe
 
 if(tecnologia4 == "lte"){	
 
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_nqi_"+periodo+"_"+familia+" where "+familia+" != 'UNKNOWN' and "+familia+" = (SELECT get_enodeb_name('"+elemento4+"','enodeb'))::TEXT and date between '"+data_inicial[3]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[4] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_nqi_"+periodo+"_"+family[4]+" where "+family[4]+" != 'UNKNOWN' and "+family[4]+" = (SELECT get_enodeb_name('"+elemento4+"','enodeb'))::TEXT and date between '"+data_inicial[3]+"' and '"+data_final+"' order by "+tempo+"";
 }else {	
-query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where "+familia+" != 'UNKNOWN' and "+familia+" = '"+elemento4 +"' and "+tempo+" between '"+data_inicial[3]+"' and '"+data_final
+query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_nqi_"+periodo+"_"+family[4]
++" where "+family[4]+" != 'UNKNOWN' and "+family[4]+" = '"+elemento4 +"' and "+tempo+" between '"+data_inicial[3]+"' and '"+data_final
 +"' order by "+tempo+"";
 }
 }
@@ -4925,63 +5888,57 @@ var n = moment(t, 'MM-DD-YYYY');
 //document.getElementById("Teste_MonthNumber").innerHTML = m.toDate().getUTCMonth() + 1;
 data_inicial[3] = m.toDate().getWeekNumber();
 data_final = n.toDate().getWeekNumber();
+ano[3] = m.toDate().getUTCFullYear();
+ano_final[3] = n.toDate().getUTCFullYear();
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento4+"' and week between '"+data_inicial[3]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[4] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_main_kpis_"+family[4]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento4+"' and (year,week) between ("+ano[3]+","+data_inicial[3]+") and ("+ano_final[3]+","+data_final+") order by year,week";
 }else {	
-query = "SELECT "+tempo+", "+kpi4+" as node FROM " +tecnologia4 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
-+" where node != 'UNKNOWN' and node = '"+elemento4 +"' and "+tempo+" between '"+data_inicial[3]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi4+" as node FROM " +tecnologia4 +"_kpi.vw_main_kpis_"+family[4] +"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento4 +"' and (year,week) between ("+ano[3]+","+data_inicial[3]+") and ("+ano_final[3]+","+data_final+") order by year,week";
 }
 }else if(estado == 2){
 
 if(tecnologia4 == "umts"){	
-if(familia == "cidade"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento4+"' and uf = '"+uf+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[4] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[4]+" = '"+elemento4+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[3]+"','"+data_inicial[3]+"') AND ('"+ano_final[3]+"','"+data_final+"') GROUP BY b."+family[4]+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else {
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento4+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";	
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[4]+" = '"+elemento4+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[3]+"','"+data_inicial[3]+"') AND ('"+ano_final[3]+"','"+data_final+"') GROUP BY b."+family[4]+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";	
 }	
 }else
 if(tecnologia4 == "lte"){	
-if(familia == "cidade"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento4+"' and uf = '"+uf+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[4] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[4]+" = '"+elemento4+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[2]+"','"+data_inicial[3]+"') AND ('"+ano_final[3]+"','"+data_final+"') GROUP BY b."+family[4]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else {
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento4+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[4]+" = '"+elemento4+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[3]+"','"+data_inicial[3]+"') AND ('"+ano_final[3]+"','"+data_final+"') GROUP BY b."+family[4]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }	
 }else
 if(tecnologia4 == "gsm"){	
-if(familia == "cell"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento4+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b.cellname,date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[4] == "cell"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento4+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[3]+"','"+data_inicial[3]+"') AND ('"+ano_final[3]+"','"+data_final+"') GROUP BY b.cellname,date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)";
 }else
-if(familia == "cidade"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento4+"' and uf = '"+uf+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[4] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[4]+" = '"+elemento4+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[3]+"','"+data_inicial[3]+"') AND ('"+ano_final[3]+"','"+data_final+"') GROUP BY b."+family[4]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else
-if(familia == "region"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento4+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b.regional,date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[4] == "region"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento4+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[3]+"','"+data_inicial[3]+"') AND ('"+ano_final[3]+"','"+data_final+"') GROUP BY b.regional,date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else	{
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento4+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[4]+" = '"+elemento4+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[3]+"','"+data_inicial[3]+"') AND ('"+ano_final[3]+"','"+data_final+"') GROUP BY b."+family[4]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }	
 }	
 	
 }else if(estado == 3){
 
-if(tecnologia4 == "umts"){
-	
-query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where node != 'UNKNOWN' and node = '"+elemento4 +"' and "+tempo+" between '"+data_inicial[3]+"' and '"+data_final
-+"' order by "+tempo+"";
-
+if(tecnologia4 == "umts"){	
+query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_nqi_"+periodo+"_"+family[4]+" where node != 'UNKNOWN' and node = '"+elemento4 +"' and (year,week) between ("+ano[3]+","+data_inicial[3]+") and ("+ano_final[3]+","+data_final+") order by year,week";
 }else
 
 if(tecnologia4 == "lte"){	
 
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_nqi_"+periodo+"_"+familia+" where "+familia+" != 'UNKNOWN' and "+familia+" = (SELECT get_enodeb_name('"+elemento4+"','enodeb'))::TEXT and week between '"+data_inicial[3]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[4] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_nqi_"+periodo+"_"+family[4]+" where "+family[4]+" != 'UNKNOWN' and "+family[4]+" = (SELECT get_enodeb_name('"+elemento4+"','enodeb'))::TEXT and (year,week) between ("+ano[3]+","+data_inicial[3]+") and ("+ano_final[4]+","+data_final+") order by year,week";
 }else {	
-query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where "+familia+" != 'UNKNOWN' and "+familia+" = '"+elemento4 +"' and "+tempo+" between '"+data_inicial[3]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_nqi_"+periodo+"_"+family[4]+" where "+family[4]+" != 'UNKNOWN' and "+family[4]+" = '"+elemento4 +"' and (year,week) between ("+ano[3]+","+data_inicial[3]+") and ("+ano_final[3]+","+data_final+") order by year,week";
 }
 }
 
@@ -4998,63 +5955,59 @@ var m = moment(s, 'MM-DD-YYYY');
 var n = moment(t, 'MM-DD-YYYY');
 data_inicial[3] = m.toDate().getUTCMonth() + 1;
 data_final = n.toDate().getUTCMonth() + 1;
+ano[3] = m.toDate().getUTCFullYear();
+ano_final[3] = n.toDate().getUTCFullYear();
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento4+"' and month between '"+data_inicial[3]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[4] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_main_kpis_"+family[4]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento4+"' and (year,month) between ('"+ano[3]+"','"+data_inicial[3]+"') and ('"+ano_final[3]+"','"+data_final+"') order by year,month";
 }else {	
-query = "SELECT "+tempo+", "+kpi4+" as node FROM " +tecnologia4 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
-+" where node != 'UNKNOWN' and node = '"+elemento4 +"' and "+tempo+" between '"+data_inicial[3]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_main_kpis_"+family[4]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento4+"' and (year,month) between ('"+ano[3]+"','"+data_inicial[3]+"') and ('"+ano_final[3]+"','"+data_final+"') order by year,month";
 }
 }else if(estado == 2){
 
 if(tecnologia4 == "umts"){	
-if(familia == "cidade"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento4+"' and uf = '"+uf+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date),date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[4] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[4]+" = '"+elemento4+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[3]+"','"+data_inicial[3]+"') AND ('"+ano_final[3]+"','"+data_final+"') GROUP BY b."+family[4]+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else {
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento4+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('month'::text, date)";	
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[4]+" = '"+elemento4+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[3]+"','"+data_inicial[3]+"') AND ('"+ano_final[3]+"','"+data_final+"') GROUP BY b."+family[4]+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";	
 }	
 }else
 if(tecnologia4 == "lte"){	
-if(familia == "cidade"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento4+"' and uf = '"+uf+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[4] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[4]+" = '"+elemento4+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[3]+"','"+data_inicial[3]+"') AND ('"+ano_final[3]+"','"+data_final+"') GROUP BY b."+family[4]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else {
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento4+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[4]+" = '"+elemento4+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[3]+"','"+data_inicial[3]+"') AND ('"+ano_final[3]+"','"+data_final+"') GROUP BY b."+family[4]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }	
 }else
 if(tecnologia4 == "gsm"){	
-if(familia == "cell"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento4+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b.cellname,date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[4] == "cell"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento4+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[3]+"','"+data_inicial[3]+"') AND ('"+ano_final[3]+"','"+data_final+"') GROUP BY b.cellname,date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else
-if(familia == "cidade"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento4+"' and uf = '"+uf+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[4] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[4]+" = '"+elemento4+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[3]+"','"+data_inicial[3]+"') AND ('"+ano_final[3]+"','"+data_final+"') GROUP BY b."+family[4]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else
-if(familia == "region"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento4+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b.regional,date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[4] == "region"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento4+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[3]+"','"+data_inicial[3]+"') AND ('"+ano_final[3]+"','"+data_final+"') GROUP BY b.regional,date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else	{
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento4+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[3]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
-}	
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[4]+" = '"+elemento4+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[3]+"','"+data_inicial[3]+"') AND ('"+ano_final[3]+"','"+data_final+"') GROUP BY b."+family[4]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }	
 	
+}
 }else if(estado == 3){
 
 if(tecnologia4 == "umts"){
 	
-query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where node != 'UNKNOWN' and node = '"+elemento4 +"' and "+tempo+" between '"+data_inicial[3]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_nqi_"+periodo+"_"+family[4]+" where node != 'UNKNOWN' and node = '"+elemento4 +"' and (year,month) between ('"+ano[3]+"','"+data_inicial[3]+"') and ('"+ano_final[3]+"','"+data_final+"') order by year,month";
 
 }else
 
 if(tecnologia4 == "lte"){	
 
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_nqi_"+periodo+"_"+familia+" where "+familia+" != 'UNKNOWN' and "+familia+" = (SELECT get_enodeb_name('"+elemento4+"','enodeb'))::TEXT and month between '"+data_inicial[3]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[4] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_nqi_"+periodo+"_"+family[4]+" where "+family[4]+" != 'UNKNOWN' and "+family[4]+" = (SELECT get_enodeb_name('"+elemento4+"','enodeb'))::TEXT and (year,month) between ('"+ano[3]+"','"+data_inicial[3]+"') and ('"+ano_final[3]+"','"+data_final+"') order by year,month";
 }else {	
-query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where "+familia+" != 'UNKNOWN' and "+familia+" = '"+elemento4 +"' and "+tempo+" between '"+data_inicial[3]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi4+" as node FROM "+tecnologia4+"_kpi.vw_nqi_"+periodo+"_"+family[4]+" where "+family[4]+" != 'UNKNOWN' and "+family[4]+" = '"+elemento4 +"' and (year,month) between ('"+ano[3]+"','"+data_inicial[3]+"') and ('"+ano_final[3]+"','"+data_final+"') order by year,month";
 }
 }
 
@@ -5097,12 +6050,14 @@ document.getElementById("Query_Menu4").style.opacity = 0.3;
 }
 
 function mostrar_charts5(){
-	
+		
 query_num = 6;
 
 if(auth_change == true){
 elemento5 = document.getElementById("Elemento_Texto_Teste5").innerHTML;	
-kpi5 = document.getElementById("KPI_Texto_Teste5").innerHTML;	
+kpi5 = document.getElementById("KPI_Texto_Teste5").innerHTML;
+counter_name = document.getElementById("KPI_Texto_Teste5").innerHTML;
+nqi_name = document.getElementById("KPI_Texto_Teste5").innerHTML;	
 if(hourly_selected == true){
 periodo = "hourly";	
 hora_inicial = 	$( "#Drop_Hora_Inicial option:selected" ).text();
@@ -5111,10 +6066,10 @@ data_inicial[4] = document.getElementById("datepicker_inicial").value;
 data_final = document.getElementById("datepicker_final").value;
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = (SELECT get_enodeb_name('"+elemento5+"','enodeb'))::TEXT and "+tempo+" between '"+data_inicial[4]+"' and '"+data_final+" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
+if(family[5] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_main_kpis_"+family[5]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = (SELECT get_enodeb_name('"+elemento5+"','enodeb'))::TEXT and "+tempo+" between '"+data_inicial[4]+"' and '"+data_final+" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
 }else {	
-query = "SELECT "+tempo+", "+kpi5+" as node FROM " +tecnologia5 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
+query = "SELECT "+tempo+", "+kpi5+" as node FROM " +tecnologia5 +"_kpi.vw_main_kpis_"+family[5] +"_rate_"+periodo
 +" where node != 'UNKNOWN' and node = '"+elemento5 +"' and "+tempo+" between '"+data_inicial[4]+"' and '"+data_final
 +" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
 }
@@ -5135,43 +6090,43 @@ data_inicial[4] = document.getElementById("datepicker_inicial").value;
 data_final = document.getElementById("datepicker_final").value;
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento5+"' and date between '"+data_inicial[4]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[5] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_main_kpis_"+family[5]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento5+"' and date between '"+data_inicial[4]+"' and '"+data_final+"' order by "+tempo+"";
 }else {	
-query = "SELECT "+tempo+", "+kpi5+" as node FROM " +tecnologia5 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
+query = "SELECT "+tempo+", "+kpi5+" as node FROM " +tecnologia5 +"_kpi.vw_main_kpis_"+family[5] +"_rate_"+periodo
 +" where node != 'UNKNOWN' and node = '"+elemento5 +"' and "+tempo+" between '"+data_inicial[4]+"' and '"+data_final
 +"' order by "+tempo+"";
 }
 }else if(estado == 2){
 
 if(tecnologia5 == "umts"){	
-if(familia == "cidade"){
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento5+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[5] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[5]+" = '"+elemento5+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+family[5]+",DATE ORDER BY DATE";
 }else
-if(familia == "rnc"){	
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento5+"' and DATE BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[5] == "rnc"){	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[5]+" = '"+elemento5+"' and DATE BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+family[5]+",DATE ORDER BY DATE";
 }else {
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento5+"' and DATE BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[5]+" = '"+elemento5+"' and DATE BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+family[5]+",DATE ORDER BY DATE";	
 }	
 }else
 if(tecnologia5 == "lte"){	
-if(familia == "cidade"){
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento5+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[5] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[5]+" = '"+elemento5+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+family[5]+",DATE ORDER BY DATE";
 }else {
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento5+"' and DATE BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[5]+" = '"+elemento5+"' and DATE BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+family[5]+",DATE ORDER BY DATE";	
 }	
 }else
 if(tecnologia5 == "gsm"){	
-if(familia == "cell"){
+if(family[5] == "cell"){
 query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento5+"' and DATE BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b.cellname,DATE ORDER BY DATE";
 }else
-if(familia == "cidade"){
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento5+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[5] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[5]+" = '"+elemento5+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+family[5]+",DATE ORDER BY DATE";
 }else
-if(familia == "region"){
+if(family[5] == "region"){
 query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento5+"' and DATE BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b.regional,DATE ORDER BY DATE";
 }else	{
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento5+"' and DATE BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[5]+" = '"+elemento5+"' and DATE BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+family[5]+",DATE ORDER BY DATE";
 }	
 }	
 	
@@ -5179,7 +6134,7 @@ query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm
 
 if(tecnologia5 == "umts"){
 	
-query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_nqi_"+periodo+"_"+familia
+query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_nqi_"+periodo+"_"+family[5]
 +" where node != 'UNKNOWN' and node = '"+elemento5 +"' and "+tempo+" between '"+data_inicial[4]+"' and '"+data_final
 +"' order by "+tempo+"";
 
@@ -5187,11 +6142,11 @@ query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_nqi_"+pe
 
 if(tecnologia5 == "lte"){	
 
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_nqi_"+periodo+"_"+familia+" where "+familia+" != 'UNKNOWN' and "+familia+" = (SELECT get_enodeb_name('"+elemento5+"','enodeb'))::TEXT and date between '"+data_inicial[4]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[5] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_nqi_"+periodo+"_"+family[5]+" where "+family[5]+" != 'UNKNOWN' and "+family[5]+" = (SELECT get_enodeb_name('"+elemento5+"','enodeb'))::TEXT and date between '"+data_inicial[4]+"' and '"+data_final+"' order by "+tempo+"";
 }else {	
-query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where "+familia+" != 'UNKNOWN' and "+familia+" = '"+elemento5 +"' and "+tempo+" between '"+data_inicial[4]+"' and '"+data_final
+query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_nqi_"+periodo+"_"+family[5]
++" where "+family[5]+" != 'UNKNOWN' and "+family[5]+" = '"+elemento5 +"' and "+tempo+" between '"+data_inicial[4]+"' and '"+data_final
 +"' order by "+tempo+"";
 }
 }
@@ -5211,63 +6166,59 @@ var n = moment(t, 'MM-DD-YYYY');
 //document.getElementById("Teste_MonthNumber").innerHTML = m.toDate().getUTCMonth() + 1;
 data_inicial[4] = m.toDate().getWeekNumber();
 data_final = n.toDate().getWeekNumber();
+ano[4] = m.toDate().getUTCFullYear();
+ano_final[4] = n.toDate().getUTCFullYear();
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento5+"' and week between '"+data_inicial[4]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[5] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_main_kpis_"+family[5]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento5+"' and (year,week) between ("+ano[4]+","+data_inicial[4]+") and ("+ano_final[4]+","+data_final+") order by year,week";
 }else {	
-query = "SELECT "+tempo+", "+kpi5+" as node FROM " +tecnologia5 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
-+" where node != 'UNKNOWN' and node = '"+elemento5 +"' and "+tempo+" between '"+data_inicial[4]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi5+" as node FROM " +tecnologia5 +"_kpi.vw_main_kpis_"+family[5] +"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento5 +"' and (year,week) between ("+ano[4]+","+data_inicial[4]+") and ("+ano_final[4]+","+data_final+") order by year,week";
 }
 }else if(estado == 2){
 
 if(tecnologia5 == "umts"){	
-if(familia == "cidade"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento5+"' and uf = '"+uf+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[5] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[5]+" = '"+elemento5+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[4]+"','"+data_inicial[4]+"') AND ('"+ano_final[4]+"','"+data_final+"') GROUP BY b."+family[5]+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY  date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else {
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento5+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";	
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[5]+" = '"+elemento5+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[4]+"','"+data_inicial[4]+"') AND ('"+ano_final[4]+"','"+data_final+"') GROUP BY b."+family[5]+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";	
 }	
 }else
 if(tecnologia5 == "lte"){	
-if(familia == "cidade"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento5+"' and uf = '"+uf+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[5] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[5]+" = '"+elemento5+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[2]+"','"+data_inicial[4]+"') AND ('"+ano_final[4]+"','"+data_final+"') GROUP BY b."+family[5]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else {
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento5+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[5]+" = '"+elemento5+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[4]+"','"+data_inicial[4]+"') AND ('"+ano_final[4]+"','"+data_final+"') GROUP BY b."+family[5]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }	
 }else
 if(tecnologia5 == "gsm"){	
-if(familia == "cell"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento5+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b.cellname,date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[5] == "cell"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento5+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[4]+"','"+data_inicial[4]+"') AND ('"+ano_final[4]+"','"+data_final+"') GROUP BY b.cellname,date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)";
 }else
-if(familia == "cidade"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento5+"' and uf = '"+uf+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[5] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[5]+" = '"+elemento5+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[4]+"','"+data_inicial[4]+"') AND ('"+ano_final[4]+"','"+data_final+"') GROUP BY b."+family[5]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else
-if(familia == "region"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento5+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b.regional,date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[5] == "region"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento5+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[4]+"','"+data_inicial[4]+"') AND ('"+ano_final[4]+"','"+data_final+"') GROUP BY b.regional,date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else	{
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento5+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[5]+" = '"+elemento5+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[4]+"','"+data_inicial[4]+"') AND ('"+ano_final[4]+"','"+data_final+"') GROUP BY b."+family[5]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }	
-}	
+}
 	
 }else if(estado == 3){
 
 if(tecnologia5 == "umts"){
 	
-query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where node != 'UNKNOWN' and node = '"+elemento5 +"' and "+tempo+" between '"+data_inicial[4]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_nqi_"+periodo+"_"+family[5]+" where node != 'UNKNOWN' and node = '"+elemento5 +"' and (year,week) between ("+ano[4]+","+data_inicial[4]+") and ("+ano_final[4]+","+data_final+") order by year,week";
 
 }else
 
 if(tecnologia5 == "lte"){	
 
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_nqi_"+periodo+"_"+familia+" where "+familia+" != 'UNKNOWN' and "+familia+" = (SELECT get_enodeb_name('"+elemento5+"','enodeb'))::TEXT and week between '"+data_inicial[4]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[5] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_nqi_"+periodo+"_"+family[5]+" where "+family[5]+" != 'UNKNOWN' and "+family[5]+" = (SELECT get_enodeb_name('"+elemento5+"','enodeb'))::TEXT and (year,week) between ("+ano[4]+","+data_inicial[4]+") and ("+ano_final[4]+","+data_final+") order by year,week";
 }else {	
-query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where "+familia+" != 'UNKNOWN' and "+familia+" = '"+elemento5 +"' and "+tempo+" between '"+data_inicial[4]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_nqi_"+periodo+"_"+family[5]+" where "+family[5]+" != 'UNKNOWN' and "+family[5]+" = '"+elemento5 +"' and (year,week) between ("+ano[4]+","+data_inicial[4]+") and ("+ano_final[4]+","+data_final+") order by year,week";
 }
 }
 
@@ -5284,42 +6235,42 @@ var m = moment(s, 'MM-DD-YYYY');
 var n = moment(t, 'MM-DD-YYYY');
 data_inicial[4] = m.toDate().getUTCMonth() + 1;
 data_final = n.toDate().getUTCMonth() + 1;
+ano[4] = m.toDate().getUTCFullYear();
+ano_final[4] = n.toDate().getUTCFullYear();
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento5+"' and month between '"+data_inicial[4]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[5] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_main_kpis_"+family[5]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento5+"' and (year,month) between ('"+ano[4]+"','"+data_inicial[4]+"') and ('"+ano_final[4]+"','"+data_final+"') order by year,month";
 }else {	
-query = "SELECT "+tempo+", "+kpi5+" as node FROM " +tecnologia5 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
-+" where node != 'UNKNOWN' and node = '"+elemento5 +"' and "+tempo+" between '"+data_inicial[4]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_main_kpis_"+family[5]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento5+"' and (year,month) between ('"+ano[4]+"','"+data_inicial[4]+"') and ('"+ano_final[4]+"','"+data_final+"') order by year,month";
 }
 }else if(estado == 2){
 
 if(tecnologia5 == "umts"){	
-if(familia == "cidade"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento5+"' and uf = '"+uf+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date),date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[5] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[5]+" = '"+elemento5+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[4]+"','"+data_inicial[4]+"') AND ('"+ano_final[4]+"','"+data_final+"') GROUP BY b."+family[5]+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else {
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento5+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('month'::text, date)";	
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[5]+" = '"+elemento5+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[4]+"','"+data_inicial[4]+"') AND ('"+ano_final[4]+"','"+data_final+"') GROUP BY b."+family[5]+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";	
 }	
 }else
 if(tecnologia5 == "lte"){	
-if(familia == "cidade"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento5+"' and uf = '"+uf+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[5] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[5]+" = '"+elemento5+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[4]+"','"+data_inicial[4]+"') AND ('"+ano_final[4]+"','"+data_final+"') GROUP BY b."+family[5]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else {
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento5+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[5]+" = '"+elemento5+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[4]+"','"+data_inicial[4]+"') AND ('"+ano_final[4]+"','"+data_final+"') GROUP BY b."+family[5]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }	
 }else
 if(tecnologia5 == "gsm"){	
-if(familia == "cell"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento5+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b.cellname,date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[5] == "cell"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento5+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[4]+"','"+data_inicial[4]+"') AND ('"+ano_final[4]+"','"+data_final+"') GROUP BY b.cellname,date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else
-if(familia == "cidade"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento5+"' and uf = '"+uf+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[5] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[5]+" = '"+elemento5+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[4]+"','"+data_inicial[4]+"') AND ('"+ano_final[4]+"','"+data_final+"') GROUP BY b."+family[5]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else
-if(familia == "region"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento5+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b.regional,date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[5] == "region"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento5+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[4]+"','"+data_inicial[4]+"') AND ('"+ano_final[4]+"','"+data_final+"') GROUP BY b.regional,date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else	{
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento5+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[4]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[5]+" = '"+elemento5+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[4]+"','"+data_inicial[4]+"') AND ('"+ano_final[4]+"','"+data_final+"') GROUP BY b."+family[5]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }	
 }	
 	
@@ -5327,20 +6278,16 @@ query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"
 
 if(tecnologia5 == "umts"){
 	
-query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where node != 'UNKNOWN' and node = '"+elemento5 +"' and "+tempo+" between '"+data_inicial[4]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_nqi_"+periodo+"_"+family[5]+" where node != 'UNKNOWN' and node = '"+elemento5 +"' and (year,month) between ('"+ano[4]+"','"+data_inicial[4]+"') and ('"+ano_final[4]+"','"+data_final+"') order by year,month";
 
 }else
 
 if(tecnologia4 == "lte"){	
 
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_nqi_"+periodo+"_"+familia+" where "+familia+" != 'UNKNOWN' and "+familia+" = (SELECT get_enodeb_name('"+elemento5+"','enodeb'))::TEXT and month between '"+data_inicial[4]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[5] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_nqi_"+periodo+"_"+family[5]+" where "+family[5]+" != 'UNKNOWN' and "+family[5]+" = (SELECT get_enodeb_name('"+elemento5+"','enodeb'))::TEXT and (year,month) between ('"+ano[4]+"','"+data_inicial[4]+"') and ('"+ano_final[4]+"','"+data_final+"') order by year,month";
 }else {	
-query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where "+familia+" != 'UNKNOWN' and "+familia+" = '"+elemento5 +"' and "+tempo+" between '"+data_inicial[4]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi5+" as node FROM "+tecnologia5+"_kpi.vw_nqi_"+periodo+"_"+family[5]+" where "+family[5]+" != 'UNKNOWN' and "+family[5]+" = '"+elemento5 +"' and (year,month) between ('"+ano[4]+"','"+data_inicial[4]+"') and ('"+ano_final[4]+"','"+data_final+"') order by year,month";
 }
 }
 
@@ -5383,12 +6330,14 @@ document.getElementById("Query_Menu5").style.opacity = 0.3;
 }
 
 function mostrar_charts6(){
-	
+		
 query_num = 7;
 
 if(auth_change == true){
 elemento6 = document.getElementById("Elemento_Texto_Teste6").innerHTML;	
-kpi6 = document.getElementById("KPI_Texto_Teste6").innerHTML;	
+kpi6 = document.getElementById("KPI_Texto_Teste6").innerHTML;
+counter_name = document.getElementById("KPI_Texto_Teste6").innerHTML;
+nqi_name = document.getElementById("KPI_Texto_Teste6").innerHTML;	
 if(hourly_selected == true){
 periodo = "hourly";	
 hora_inicial = 	$( "#Drop_Hora_Inicial option:selected" ).text();
@@ -5397,10 +6346,10 @@ data_inicial[5] = document.getElementById("datepicker_inicial").value;
 data_final = document.getElementById("datepicker_final").value;
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = (SELECT get_enodeb_name('"+elemento6+"','enodeb'))::TEXT and "+tempo+" between '"+data_inicial[5]+"' and '"+data_final+" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
+if(family[6] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_main_kpis_"+family[6]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = (SELECT get_enodeb_name('"+elemento6+"','enodeb'))::TEXT and "+tempo+" between '"+data_inicial[5]+"' and '"+data_final+" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
 }else {	
-query = "SELECT "+tempo+", "+kpi6+" as node FROM " +tecnologia6 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
+query = "SELECT "+tempo+", "+kpi6+" as node FROM " +tecnologia6 +"_kpi.vw_main_kpis_"+family[6] +"_rate_"+periodo
 +" where node != 'UNKNOWN' and node = '"+elemento6 +"' and "+tempo+" between '"+data_inicial[5]+"' and '"+data_final
 +" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
 }
@@ -5421,43 +6370,43 @@ data_inicial[5] = document.getElementById("datepicker_inicial").value;
 data_final = document.getElementById("datepicker_final").value;
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento6+"' and date between '"+data_inicial[5]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[6] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_main_kpis_"+family[6]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento6+"' and date between '"+data_inicial[5]+"' and '"+data_final+"' order by "+tempo+"";
 }else {	
-query = "SELECT "+tempo+", "+kpi6+" as node FROM " +tecnologia6 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
+query = "SELECT "+tempo+", "+kpi6+" as node FROM " +tecnologia6 +"_kpi.vw_main_kpis_"+family[6] +"_rate_"+periodo
 +" where node != 'UNKNOWN' and node = '"+elemento6 +"' and "+tempo+" between '"+data_inicial[5]+"' and '"+data_final
 +"' order by "+tempo+"";
 }
 }else if(estado == 2){
 
 if(tecnologia6 == "umts"){	
-if(familia == "cidade"){
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento6+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[6] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[6]+" = '"+elemento6+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+family[6]+",DATE ORDER BY DATE";
 }else
-if(familia == "rnc"){	
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento6+"' and DATE BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[6] == "rnc"){	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[6]+" = '"+elemento6+"' and DATE BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+family[6]+",DATE ORDER BY DATE";
 }else {
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento6+"' and DATE BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[6]+" = '"+elemento6+"' and DATE BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+family[6]+",DATE ORDER BY DATE";	
 }	
 }else
 if(tecnologia6 == "lte"){	
-if(familia == "cidade"){
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento6+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[6] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[6]+" = '"+elemento6+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+family[6]+",DATE ORDER BY DATE";
 }else {
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento6+"' and DATE BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[6]+" = '"+elemento6+"' and DATE BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+family[6]+",DATE ORDER BY DATE";	
 }	
 }else
 if(tecnologia6 == "gsm"){	
-if(familia == "cell"){
+if(family[6] == "cell"){
 query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento6+"' and DATE BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b.cellname,DATE ORDER BY DATE";
 }else
-if(familia == "cidade"){
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento6+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+if(family[6] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[6]+" = '"+elemento6+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+family[6]+",DATE ORDER BY DATE";
 }else
-if(familia == "region"){
+if(family[6] == "region"){
 query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento6+"' and DATE BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b.regional,DATE ORDER BY DATE";
 }else	{
-query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento6+"' and DATE BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+familia+",DATE ORDER BY DATE";
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[6]+" = '"+elemento6+"' and DATE BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+family[6]+",DATE ORDER BY DATE";
 }	
 }	
 	
@@ -5465,7 +6414,7 @@ query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm
 
 if(tecnologia6 == "umts"){
 	
-query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_nqi_"+periodo+"_"+familia
+query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_nqi_"+periodo+"_"+family[6]
 +" where node != 'UNKNOWN' and node = '"+elemento6 +"' and "+tempo+" between '"+data_inicial[5]+"' and '"+data_final
 +"' order by "+tempo+"";
 
@@ -5473,11 +6422,11 @@ query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_nqi_"+pe
 
 if(tecnologia6 == "lte"){	
 
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_nqi_"+periodo+"_"+familia+" where "+familia+" != 'UNKNOWN' and "+familia+" = (SELECT get_enodeb_name('"+elemento6+"','enodeb'))::TEXT and date between '"+data_inicial[5]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[6] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_nqi_"+periodo+"_"+family[6]+" where "+family[6]+" != 'UNKNOWN' and "+family[6]+" = (SELECT get_enodeb_name('"+elemento6+"','enodeb'))::TEXT and date between '"+data_inicial[5]+"' and '"+data_final+"' order by "+tempo+"";
 }else {	
-query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where "+familia+" != 'UNKNOWN' and "+familia+" = '"+elemento6 +"' and "+tempo+" between '"+data_inicial[5]+"' and '"+data_final
+query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_nqi_"+periodo+"_"+family[6]
++" where "+family[6]+" != 'UNKNOWN' and "+family[6]+" = '"+elemento6 +"' and "+tempo+" between '"+data_inicial[5]+"' and '"+data_final
 +"' order by "+tempo+"";
 }
 }
@@ -5497,42 +6446,42 @@ var n = moment(t, 'MM-DD-YYYY');
 //document.getElementById("Teste_MonthNumber").innerHTML = m.toDate().getUTCMonth() + 1;
 data_inicial[5] = m.toDate().getWeekNumber();
 data_final = n.toDate().getWeekNumber();
+ano[5] = m.toDate().getUTCFullYear();
+ano_final[5] = n.toDate().getUTCFullYear();
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento6+"' and week between '"+data_inicial[5]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[6] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_main_kpis_"+family[6]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento6+"' and (year,week) between ("+ano[5]+","+data_inicial[5]+") and ("+ano_final[5]+","+data_final+") order by year,week";
 }else {	
-query = "SELECT "+tempo+", "+kpi6+" as node FROM " +tecnologia6 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
-+" where node != 'UNKNOWN' and node = '"+elemento6 +"' and "+tempo+" between '"+data_inicial[5]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi6+" as node FROM " +tecnologia6 +"_kpi.vw_main_kpis_"+family[6] +"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento6 +"' and (year,week) between ("+ano[5]+","+data_inicial[5]+") and ("+ano_final[5]+","+data_final+") order by year,week";
 }
 }else if(estado == 2){
 
 if(tecnologia6 == "umts"){	
-if(familia == "cidade"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento6+"' and uf = '"+uf+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[6] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[6]+" = '"+elemento6+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[5]+"','"+data_inicial[5]+"') AND ('"+ano_final[5]+"','"+data_final+"') GROUP BY b."+family[6]+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY  date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else {
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento6+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";	
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[6]+" = '"+elemento6+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[5]+"','"+data_inicial[5]+"') AND ('"+ano_final[5]+"','"+data_final+"') GROUP BY b."+family[6]+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";	
 }	
 }else
 if(tecnologia6 == "lte"){	
-if(familia == "cidade"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento6+"' and uf = '"+uf+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[6] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[6]+" = '"+elemento6+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[2]+"','"+data_inicial[5]+"') AND ('"+ano_final[5]+"','"+data_final+"') GROUP BY b."+family[6]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else {
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento6+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[6]+" = '"+elemento6+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[5]+"','"+data_inicial[5]+"') AND ('"+ano_final[5]+"','"+data_final+"') GROUP BY b."+family[6]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }	
 }else
 if(tecnologia6 == "gsm"){	
-if(familia == "cell"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento6+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b.cellname,date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[6] == "cell"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento6+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[5]+"','"+data_inicial[5]+"') AND ('"+ano_final[5]+"','"+data_final+"') GROUP BY b.cellname,date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)";
 }else
-if(familia == "cidade"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento6+"' and uf = '"+uf+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[6] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[6]+" = '"+elemento6+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[5]+"','"+data_inicial[5]+"') AND ('"+ano_final[5]+"','"+data_final+"') GROUP BY b."+family[6]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else
-if(familia == "region"){
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento6+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b.regional,date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+if(family[6] == "region"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento6+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[5]+"','"+data_inicial[5]+"') AND ('"+ano_final[5]+"','"+data_final+"') GROUP BY b.regional,date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }else	{
-query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento6+"' and date_part('week'::text, date %2B '1 day'::interval) BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('week'::text, date %2B '1 day'::interval)";
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[6]+" = '"+elemento6+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[5]+"','"+data_inicial[5]+"') AND ('"+ano_final[5]+"','"+data_final+"') GROUP BY b."+family[6]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
 }	
 }	
 	
@@ -5540,20 +6489,16 @@ query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+c
 
 if(tecnologia6 == "umts"){
 	
-query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where node != 'UNKNOWN' and node = '"+elemento6 +"' and "+tempo+" between '"+data_inicial[5]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_nqi_"+periodo+"_"+family[6]+" where node != 'UNKNOWN' and node = '"+elemento6 +"' and (year,week) between ("+ano[5]+","+data_inicial[5]+") and ("+ano_final[5]+","+data_final+") order by year,week";
 
 }else
 
-if(tecnologia5 == "lte"){	
+if(tecnologia6 == "lte"){	
 
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_nqi_"+periodo+"_"+familia+" where "+familia+" != 'UNKNOWN' and "+familia+" = (SELECT get_enodeb_name('"+elemento6+"','enodeb'))::TEXT and week between '"+data_inicial[4]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[6] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_nqi_"+periodo+"_"+family[6]+" where "+family[6]+" != 'UNKNOWN' and "+family[6]+" = (SELECT get_enodeb_name('"+elemento6+"','enodeb'))::TEXT and (year,week) between ("+ano[5]+","+data_inicial[5]+") and ("+ano_final[5]+","+data_final+") order by year,week";
 }else {	
-query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where "+familia+" != 'UNKNOWN' and "+familia+" = '"+elemento6 +"' and "+tempo+" between '"+data_inicial[5]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_nqi_"+periodo+"_"+family[6]+" where "+family[6]+" != 'UNKNOWN' and "+family[6]+" = '"+elemento6 +"' and (year,week) between ("+ano[5]+","+data_inicial[5]+") and ("+ano_final[5]+","+data_final+") order by year,week";
 }
 }
 
@@ -5570,63 +6515,59 @@ var m = moment(s, 'MM-DD-YYYY');
 var n = moment(t, 'MM-DD-YYYY');
 data_inicial[5] = m.toDate().getUTCMonth() + 1;
 data_final = n.toDate().getUTCMonth() + 1;
+ano[5] = m.toDate().getUTCFullYear();
+ano_final[5] = n.toDate().getUTCFullYear();
 
 if(estado == 1){
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_main_kpis_"+familia+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento6+"' and month between '"+data_inicial[5]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[6] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_main_kpis_"+family[6]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento6+"' and (year,month) between ('"+ano[5]+"','"+data_inicial[5]+"') and ('"+ano_final[5]+"','"+data_final+"') order by year,month";
 }else {	
-query = "SELECT "+tempo+", "+kpi6+" as node FROM " +tecnologia6 +"_kpi.vw_main_kpis_"+familia +"_rate_"+periodo
-+" where node != 'UNKNOWN' and node = '"+elemento6 +"' and "+tempo+" between '"+data_inicial[5]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_main_kpis_"+family[6]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento6+"' and (year,month) between ('"+ano[5]+"','"+data_inicial[5]+"') and ('"+ano_final[5]+"','"+data_final+"') order by year,month";
 }
 }else if(estado == 2){
 
 if(tecnologia6 == "umts"){	
-if(familia == "cidade"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento6+"' and uf = '"+uf+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date),date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[6] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[6]+" = '"+elemento6+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[5]+"','"+data_inicial[5]+"') AND ('"+ano_final[5]+"','"+data_final+"') GROUP BY b."+family[6]+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else {
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+familia+" = '"+elemento6+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('month'::text, date)";	
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[6]+" = '"+elemento6+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[5]+"','"+data_inicial[5]+"') AND ('"+ano_final[5]+"','"+data_final+"') GROUP BY b."+family[6]+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";	
 }	
 }else
 if(tecnologia6 == "lte"){	
-if(familia == "cidade"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento6+"' and uf = '"+uf+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[6] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[6]+" = '"+elemento6+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[5]+"','"+data_inicial[5]+"') AND ('"+ano_final[5]+"','"+data_final+"') GROUP BY b."+family[6]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else {
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+familia+" = '"+elemento6+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[6]+" = '"+elemento6+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[5]+"','"+data_inicial[5]+"') AND ('"+ano_final[5]+"','"+data_final+"') GROUP BY b."+family[6]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }	
 }else
 if(tecnologia6 == "gsm"){	
-if(familia == "cell"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento6+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b.cellname,date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[6] == "cell"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento6+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[5]+"','"+data_inicial[5]+"') AND ('"+ano_final[5]+"','"+data_final+"') GROUP BY b.cellname,date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else
-if(familia == "cidade"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento6+"' and uf = '"+uf+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[6] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[6]+" = '"+elemento6+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[5]+"','"+data_inicial[5]+"') AND ('"+ano_final[5]+"','"+data_final+"') GROUP BY b."+family[6]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else
-if(familia == "region"){
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento6+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b.regional,date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+if(family[6] == "region"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento6+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[5]+"','"+data_inicial[5]+"') AND ('"+ano_final[5]+"','"+data_final+"') GROUP BY b.regional,date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }else	{
-query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+familia+" = '"+elemento6+"' and date_part('month'::text, date) BETWEEN '"+data_inicial[5]+"' AND '"+data_final+"' GROUP BY b."+familia+",date_part('month'::text, date) ORDER BY date_part('month'::text, date)";
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[6]+" = '"+elemento6+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[5]+"','"+data_inicial[5]+"') AND ('"+ano_final[5]+"','"+data_final+"') GROUP BY b."+family[6]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
 }	
 }	
 	
 }else if(estado == 3){
 
-if(tecnologia5 == "umts"){
+if(tecnologia6 == "umts"){
 	
-query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where node != 'UNKNOWN' and node = '"+elemento6 +"' and "+tempo+" between '"+data_inicial[5]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_nqi_"+periodo+"_"+family[6]+" where node != 'UNKNOWN' and node = '"+elemento6 +"' and (year,month) between ('"+ano[5]+"','"+data_inicial[5]+"') and ('"+ano_final[5]+"','"+data_final+"') order by year,month";
 
 }else
 
-if(tecnologia4 == "lte"){	
+if(tecnologia6 == "lte"){	
 
-if(familia == "eNodeB"){
-query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_nqi_"+periodo+"_"+familia+" where "+familia+" != 'UNKNOWN' and "+familia+" = (SELECT get_enodeb_name('"+elemento6+"','enodeb'))::TEXT and month between '"+data_inicial[5]+"' and '"+data_final+"' order by "+tempo+"";
+if(family[6] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_nqi_"+periodo+"_"+family[6]+" where "+family[6]+" != 'UNKNOWN' and "+family[6]+" = (SELECT get_enodeb_name('"+elemento6+"','enodeb'))::TEXT and (year,month) between ('"+ano[5]+"','"+data_inicial[5]+"') and ('"+ano_final[5]+"','"+data_final+"') order by year,month";
 }else {	
-query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_nqi_"+periodo+"_"+familia
-+" where "+familia+" != 'UNKNOWN' and "+familia+" = '"+elemento6 +"' and "+tempo+" between '"+data_inicial[4]+"' and '"+data_final
-+"' order by "+tempo+"";
+query = "SELECT "+tempo+", "+kpi6+" as node FROM "+tecnologia6+"_kpi.vw_nqi_"+periodo+"_"+family[6]+" where "+family[6]+" != 'UNKNOWN' and "+family[6]+" = '"+elemento6 +"' and (year,month) between ('"+ano[5]+"','"+data_inicial[5]+"') and ('"+ano_final[5]+"','"+data_final+"') order by year,month";
 }
 }
 
@@ -5664,6 +6605,840 @@ $("#radio_query6").prop("checked", false);
 document.getElementById("chart_type6").disabled = true;
 document.getElementById("chart_position6").disabled = true;
 document.getElementById("Query_Menu6").style.opacity = 0.3;
+}
+
+function mostrar_charts7(){
+		
+query_num = 8;
+
+if(auth_change == true){
+elemento7 = document.getElementById("Elemento_Texto_Teste7").innerHTML;	
+kpi7 = document.getElementById("KPI_Texto_Teste7").innerHTML;
+counter_name = document.getElementById("KPI_Texto_Teste7").innerHTML;
+nqi_name = document.getElementById("KPI_Texto_Teste7").innerHTML;	
+if(hourly_selected == true){
+periodo = "hourly";	
+hora_inicial = 	$( "#Drop_Hora_Inicial option:selected" ).text();
+hora_final = 	$( "#Drop_Hora_Final option:selected" ).text();
+data_inicial[6] = document.getElementById("datepicker_inicial").value;
+data_final = document.getElementById("datepicker_final").value;
+
+if(estado == 1){
+if(family[7] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi7+" as node FROM "+tecnologia7+"_kpi.vw_main_kpis_"+family[7]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = (SELECT get_enodeb_name('"+elemento7+"','enodeb'))::TEXT and "+tempo+" between '"+data_inicial[6]+"' and '"+data_final+" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
+}else {	
+query = "SELECT "+tempo+", "+kpi7+" as node FROM " +tecnologia7 +"_kpi.vw_main_kpis_"+family[7] +"_rate_"+periodo
++" where node != 'UNKNOWN' and node = '"+elemento7 +"' and "+tempo+" between '"+data_inicial[6]+"' and '"+data_final
++" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
+}
+}else
+if(estado == 4){
+if((rncc[7] != "rnc1") && (cellidd[7] != "cellid1")){	
+query = "SELECT datetime as date, ee as node FROM umts_kpi.amx_load WHERE rnc = '"+rncc[7]+"' and cellid = '"+cellidd[7]+"' and datetime between '"+data_inicial[6]+"' and '"+data_final+" 23:30' and datetime::time between '"+hora_inicial+"' and '"+hora_final+"' order by datetime";
+}else{
+alert("The Voice Eralng Equivalent is only supported for cells.");
+return 0;	
+}	
+}
+}	else if(periodo == "daily"){
+
+// alert(type_of_counter);
+	
+data_inicial[6] = document.getElementById("datepicker_inicial").value;
+data_final = document.getElementById("datepicker_final").value;
+
+if(estado == 1){
+if(family[7] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi7+" as node FROM "+tecnologia7+"_kpi.vw_main_kpis_"+family[7]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento7+"' and date between '"+data_inicial[6]+"' and '"+data_final+"' order by "+tempo+"";
+}else {	
+query = "SELECT "+tempo+", "+kpi7+" as node FROM " +tecnologia7 +"_kpi.vw_main_kpis_"+family[7] +"_rate_"+periodo
++" where node != 'UNKNOWN' and node = '"+elemento7 +"' and "+tempo+" between '"+data_inicial[6]+"' and '"+data_final
++"' order by "+tempo+"";
+}
+}else if(estado == 2){
+
+if(tecnologia7 == "umts"){	
+if(family[7] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[7]+" = '"+elemento7+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[6]+"' AND '"+data_final+"' GROUP BY b."+family[7]+",DATE ORDER BY DATE";
+}else
+if(family[7] == "rnc"){	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[7]+" = '"+elemento7+"' and DATE BETWEEN '"+data_inicial[6]+"' AND '"+data_final+"' GROUP BY b."+family[7]+",DATE ORDER BY DATE";
+}else {
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[7]+" = '"+elemento7+"' and DATE BETWEEN '"+data_inicial[6]+"' AND '"+data_final+"' GROUP BY b."+family[7]+",DATE ORDER BY DATE";	
+}	
+}else
+if(tecnologia7 == "lte"){	
+if(family[7] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[7]+" = '"+elemento7+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[6]+"' AND '"+data_final+"' GROUP BY b."+family[7]+",DATE ORDER BY DATE";
+}else {
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[7]+" = '"+elemento7+"' and DATE BETWEEN '"+data_inicial[6]+"' AND '"+data_final+"' GROUP BY b."+family[7]+",DATE ORDER BY DATE";	
+}	
+}else
+if(tecnologia7 == "gsm"){	
+if(family[7] == "cell"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento7+"' and DATE BETWEEN '"+data_inicial[6]+"' AND '"+data_final+"' GROUP BY b.cellname,DATE ORDER BY DATE";
+}else
+if(family[7] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[7]+" = '"+elemento7+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[6]+"' AND '"+data_final+"' GROUP BY b."+family[7]+",DATE ORDER BY DATE";
+}else
+if(family[7] == "region"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento7+"' and DATE BETWEEN '"+data_inicial[6]+"' AND '"+data_final+"' GROUP BY b.regional,DATE ORDER BY DATE";
+}else	{
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[7]+" = '"+elemento7+"' and DATE BETWEEN '"+data_inicial[6]+"' AND '"+data_final+"' GROUP BY b."+family[7]+",DATE ORDER BY DATE";
+}	
+}	
+	
+}else if(estado == 3){
+
+if(tecnologia7 == "umts"){
+	
+query = "SELECT "+tempo+", "+kpi7+" as node FROM "+tecnologia7+"_kpi.vw_nqi_"+periodo+"_"+family[7]
++" where node != 'UNKNOWN' and node = '"+elemento7 +"' and "+tempo+" between '"+data_inicial[6]+"' and '"+data_final
++"' order by "+tempo+"";
+
+}else
+
+if(tecnologia7 == "lte"){	
+
+if(family[7] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi7+" as node FROM "+tecnologia7+"_kpi.vw_nqi_"+periodo+"_"+family[7]+" where "+family[7]+" != 'UNKNOWN' and "+family[7]+" = (SELECT get_enodeb_name('"+elemento7+"','enodeb'))::TEXT and date between '"+data_inicial[6]+"' and '"+data_final+"' order by "+tempo+"";
+}else {	
+query = "SELECT "+tempo+", "+kpi7+" as node FROM "+tecnologia7+"_kpi.vw_nqi_"+periodo+"_"+family[7]
++" where "+family[7]+" != 'UNKNOWN' and "+family[7]+" = '"+elemento7 +"' and "+tempo+" between '"+data_inicial[6]+"' and '"+data_final
++"' order by "+tempo+"";
+}
+}
+
+}else if(estado == 4){
+alert("The Voice Eralng Equivalent is not supported for Daily Period.");
+return 0;
+}
+}
+else if(periodo == "weekly"){
+data_inicial[6] = document.getElementById("datepicker_inicial").value;
+data_final = document.getElementById("datepicker_final").value;	
+var s = data_inicial[6];
+var t = data_final;
+var m = moment(s, 'MM-DD-YYYY');
+var n = moment(t, 'MM-DD-YYYY');
+//document.getElementById("Teste_MonthNumber").innerHTML = m.toDate().getUTCMonth() + 1;
+data_inicial[6] = m.toDate().getWeekNumber();
+data_final = n.toDate().getWeekNumber();
+ano[6] = m.toDate().getUTCFullYear();
+ano_final[6] = n.toDate().getUTCFullYear();
+
+if(estado == 1){
+if(family[7] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi7+" as node FROM "+tecnologia7+"_kpi.vw_main_kpis_"+family[7]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento7+"' and (year,week) between ("+ano[6]+","+data_inicial[6]+") and ("+ano_final[6]+","+data_final+") order by year,week";
+}else {	
+query = "SELECT "+tempo+", "+kpi7+" as node FROM " +tecnologia7 +"_kpi.vw_main_kpis_"+family[7] +"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento7 +"' and (year,week) between ("+ano[6]+","+data_inicial[6]+") and ("+ano_final[6]+","+data_final+") order by year,week";
+}
+}else if(estado == 2){
+
+if(tecnologia7 == "umts"){	
+if(family[7] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[7]+" = '"+elemento7+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[6]+"','"+data_inicial[6]+"') AND ('"+ano_final[6]+"','"+data_final+"') GROUP BY b."+family[7]+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY  date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
+}else {
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[7]+" = '"+elemento7+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[6]+"','"+data_inicial[6]+"') AND ('"+ano_final[6]+"','"+data_final+"') GROUP BY b."+family[7]+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";	
+}	
+}else
+if(tecnologia7 == "lte"){	
+if(family[7] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[7]+" = '"+elemento7+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[2]+"','"+data_inicial[6]+"') AND ('"+ano_final[6]+"','"+data_final+"') GROUP BY b."+family[7]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
+}else {
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[7]+" = '"+elemento7+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[6]+"','"+data_inicial[6]+"') AND ('"+ano_final[6]+"','"+data_final+"') GROUP BY b."+family[7]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
+}	
+}else
+if(tecnologia7 == "gsm"){	
+if(family[7] == "cell"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento7+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[6]+"','"+data_inicial[6]+"') AND ('"+ano_final[6]+"','"+data_final+"') GROUP BY b.cellname,date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)";
+}else
+if(family[7] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[7]+" = '"+elemento7+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[6]+"','"+data_inicial[6]+"') AND ('"+ano_final[6]+"','"+data_final+"') GROUP BY b."+family[7]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
+}else
+if(family[7] == "region"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento7+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[6]+"','"+data_inicial[6]+"') AND ('"+ano_final[6]+"','"+data_final+"') GROUP BY b.regional,date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
+}else	{
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[7]+" = '"+elemento7+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[6]+"','"+data_inicial[6]+"') AND ('"+ano_final[6]+"','"+data_final+"') GROUP BY b."+family[7]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
+}	
+}	
+	
+}else if(estado == 3){
+
+if(tecnologia7 == "umts"){
+	
+query = "SELECT "+tempo+", "+kpi7+" as node FROM "+tecnologia7+"_kpi.vw_nqi_"+periodo+"_"+family[7]+" where node != 'UNKNOWN' and node = '"+elemento7 +"' and (year,week) between ("+ano[6]+","+data_inicial[6]+") and ("+ano_final[6]+","+data_final+") order by year,week";
+
+}else
+
+if(tecnologia7 == "lte"){	
+
+if(family[7] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi7+" as node FROM "+tecnologia7+"_kpi.vw_nqi_"+periodo+"_"+family[7]+" where "+family[7]+" != 'UNKNOWN' and "+family[7]+" = (SELECT get_enodeb_name('"+elemento7+"','enodeb'))::TEXT and (year,week) between ("+ano[6]+","+data_inicial[6]+") and ("+ano_final[6]+","+data_final+") order by year,week";
+}else {	
+query = "SELECT "+tempo+", "+kpi7+" as node FROM "+tecnologia7+"_kpi.vw_nqi_"+periodo+"_"+family[7]+" where "+family[7]+" != 'UNKNOWN' and "+family[7]+" = '"+elemento7 +"' and (year,week) between ("+ano[6]+","+data_inicial[6]+") and ("+ano_final[6]+","+data_final+") order by year,week";
+}
+}
+
+}else if(estado == 4){
+alert("The Voice Eralng Equivalent is not supported for Weekly Period.");
+return 0;
+}
+}else if(periodo == "monthly"){
+data_inicial[6] = document.getElementById("datepicker_inicial").value;
+data_final = document.getElementById("datepicker_final").value;	
+var s = data_inicial[6];
+var t = data_final;
+var m = moment(s, 'MM-DD-YYYY');
+var n = moment(t, 'MM-DD-YYYY');
+data_inicial[6] = m.toDate().getUTCMonth() + 1;
+data_final = n.toDate().getUTCMonth() + 1;
+ano[6] = m.toDate().getUTCFullYear();
+ano_final[6] = n.toDate().getUTCFullYear();
+
+if(estado == 1){
+if(family[7] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi7+" as node FROM "+tecnologia7+"_kpi.vw_main_kpis_"+family[7]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento7+"' and (year,month) between ('"+ano[6]+"','"+data_inicial[6]+"') and ('"+ano_final[6]+"','"+data_final+"') order by year,month";
+}else {	
+query = "SELECT "+tempo+", "+kpi7+" as node FROM "+tecnologia7+"_kpi.vw_main_kpis_"+family[7]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento7+"' and (year,month) between ('"+ano[6]+"','"+data_inicial[6]+"') and ('"+ano_final[6]+"','"+data_final+"') order by year,month";
+}
+}else if(estado == 2){
+
+if(tecnologia7 == "umts"){	
+if(family[7] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[7]+" = '"+elemento7+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[6]+"','"+data_inicial[6]+"') AND ('"+ano_final[6]+"','"+data_final+"') GROUP BY b."+family[7]+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}else {
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[7]+" = '"+elemento7+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[6]+"','"+data_inicial[6]+"') AND ('"+ano_final[6]+"','"+data_final+"') GROUP BY b."+family[7]+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";	
+}	
+}else
+if(tecnologia7 == "lte"){	
+if(family[7] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[7]+" = '"+elemento7+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[6]+"','"+data_inicial[6]+"') AND ('"+ano_final[6]+"','"+data_final+"') GROUP BY b."+family[7]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}else {
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[7]+" = '"+elemento7+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[6]+"','"+data_inicial[6]+"') AND ('"+ano_final[6]+"','"+data_final+"') GROUP BY b."+family[7]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}	
+}else
+if(tecnologia7 == "gsm"){	
+if(family[7] == "cell"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento7+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[6]+"','"+data_inicial[6]+"') AND ('"+ano_final[6]+"','"+data_final+"') GROUP BY b.cellname,date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}else
+if(family[7] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[7]+" = '"+elemento7+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[6]+"','"+data_inicial[6]+"') AND ('"+ano_final[6]+"','"+data_final+"') GROUP BY b."+family[7]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}else
+if(family[7] == "region"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento7+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[6]+"','"+data_inicial[6]+"') AND ('"+ano_final[6]+"','"+data_final+"') GROUP BY b.regional,date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}else	{
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[7]+" = '"+elemento7+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[6]+"','"+data_inicial[6]+"') AND ('"+ano_final[6]+"','"+data_final+"') GROUP BY b."+family[7]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}	
+}	
+	
+}else if(estado == 3){
+
+if(tecnologia7 == "umts"){
+	
+query = "SELECT "+tempo+", "+kpi7+" as node FROM "+tecnologia7+"_kpi.vw_nqi_"+periodo+"_"+family[7]+" where node != 'UNKNOWN' and node = '"+elemento7 +"' and (year,month) between ('"+ano[6]+"','"+data_inicial[6]+"') and ('"+ano_final[6]+"','"+data_final+"') order by year,month";
+
+}else
+
+if(tecnologia7 == "lte"){	
+
+if(family[7] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi7+" as node FROM "+tecnologia7+"_kpi.vw_nqi_"+periodo+"_"+family[7]+" where "+family[7]+" != 'UNKNOWN' and "+family[7]+" = (SELECT get_enodeb_name('"+elemento7+"','enodeb'))::TEXT and (year,month) between ('"+ano[6]+"','"+data_inicial[6]+"') and ('"+ano_final[6]+"','"+data_final+"') order by year,month";
+}else {	
+query = "SELECT "+tempo+", "+kpi7+" as node FROM "+tecnologia7+"_kpi.vw_nqi_"+periodo+"_"+family[7]+" where "+family[7]+" != 'UNKNOWN' and "+family[7]+" = '"+elemento7 +"' and (year,month) between ('"+ano[6]+"','"+data_inicial[6]+"') and ('"+ano_final[6]+"','"+data_final+"') order by year,month";
+}
+}
+
+}else if(estado == 4){
+alert("The Voice Eralng Equivalent is not supported for Monthly Period.");
+return 0;
+}	
+}
+
+if(estado != 2){
+nome7 = elemento7+" "+kpi7+" ("+unidade7+")";
+}else{
+nome7 = elemento7+" "+kpi7;	
+}
+
+query7 = query;
+document.getElementById("Texto_Teste7").innerHTML = query7;
+
+autorization7 = false;
+add_menu7 = true;
+
+document.getElementById("btn_confirm7").style.visibility = "hidden";
+// document.getElementById("btn_delete3").style.visibility = "visible";
+if(lixeira7 == false){
+// document.getElementById("btn_confirm7").style.visibility = "visible";
+}
+$("#radio_query7").prop("checked", false);
+document.getElementById("Query_Menu7").style.opacity = 0.3;
+
+document.getElementById("chart_type7").disabled = true;
+document.getElementById("chart_position7").disabled = true;
+}
+document.getElementById("btn_confirm7").style.visibility = "hidden";
+$("#radio_query7").prop("checked", false);
+document.getElementById("chart_type7").disabled = true;
+document.getElementById("chart_position7").disabled = true;
+document.getElementById("Query_Menu7").style.opacity = 0.3;
+}
+
+function mostrar_charts8(){
+		
+query_num = 8;
+
+if(auth_change == true){
+elemento8 = document.getElementById("Elemento_Texto_Teste8").innerHTML;	
+kpi8 = document.getElementById("KPI_Texto_Teste8").innerHTML;
+counter_name = document.getElementById("KPI_Texto_Teste8").innerHTML;
+nqi_name = document.getElementById("KPI_Texto_Teste8").innerHTML;	
+if(hourly_selected == true){
+periodo = "hourly";	
+hora_inicial = 	$( "#Drop_Hora_Inicial option:selected" ).text();
+hora_final = 	$( "#Drop_Hora_Final option:selected" ).text();
+data_inicial[7] = document.getElementById("datepicker_inicial").value;
+data_final = document.getElementById("datepicker_final").value;
+
+if(estado == 1){
+if(family[8] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi8+" as node FROM "+tecnologia8+"_kpi.vw_main_kpis_"+family[8]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = (SELECT get_enodeb_name('"+elemento8+"','enodeb'))::TEXT and "+tempo+" between '"+data_inicial[7]+"' and '"+data_final+" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
+}else {	
+query = "SELECT "+tempo+", "+kpi8+" as node FROM " +tecnologia8 +"_kpi.vw_main_kpis_"+family[8] +"_rate_"+periodo
++" where node != 'UNKNOWN' and node = '"+elemento8 +"' and "+tempo+" between '"+data_inicial[7]+"' and '"+data_final
++" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
+}
+}else
+if(estado == 4){
+if((rncc[8] != "rnc1") && (cellidd[8] != "cellid1")){	
+query = "SELECT datetime as date, ee as node FROM umts_kpi.amx_load WHERE rnc = '"+rncc[8]+"' and cellid = '"+cellidd[8]+"' and datetime between '"+data_inicial[7]+"' and '"+data_final+" 23:30' and datetime::time between '"+hora_inicial+"' and '"+hora_final+"' order by datetime";
+}else{
+alert("The Voice Eralng Equivalent is only supported for cells.");
+return 0;	
+}	
+}
+}	else if(periodo == "daily"){
+
+// alert(type_of_counter);
+	
+data_inicial[7] = document.getElementById("datepicker_inicial").value;
+data_final = document.getElementById("datepicker_final").value;
+
+if(estado == 1){
+if(family[8] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi8+" as node FROM "+tecnologia8+"_kpi.vw_main_kpis_"+family[8]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento8+"' and date between '"+data_inicial[7]+"' and '"+data_final+"' order by "+tempo+"";
+}else {	
+query = "SELECT "+tempo+", "+kpi8+" as node FROM " +tecnologia8 +"_kpi.vw_main_kpis_"+family[8] +"_rate_"+periodo
++" where node != 'UNKNOWN' and node = '"+elemento8 +"' and "+tempo+" between '"+data_inicial[7]+"' and '"+data_final
++"' order by "+tempo+"";
+}
+}else if(estado == 2){
+
+if(tecnologia8 == "umts"){	
+if(family[8] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[8]+" = '"+elemento8+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[7]+"' AND '"+data_final+"' GROUP BY b."+family[8]+",DATE ORDER BY DATE";
+}else
+if(family[8] == "rnc"){	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[8]+" = '"+elemento8+"' and DATE BETWEEN '"+data_inicial[7]+"' AND '"+data_final+"' GROUP BY b."+family[8]+",DATE ORDER BY DATE";
+}else {
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[8]+" = '"+elemento8+"' and DATE BETWEEN '"+data_inicial[7]+"' AND '"+data_final+"' GROUP BY b."+family[8]+",DATE ORDER BY DATE";	
+}	
+}else
+if(tecnologia8 == "lte"){	
+if(family[8] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[8]+" = '"+elemento8+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[7]+"' AND '"+data_final+"' GROUP BY b."+family[8]+",DATE ORDER BY DATE";
+}else {
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[8]+" = '"+elemento8+"' and DATE BETWEEN '"+data_inicial[7]+"' AND '"+data_final+"' GROUP BY b."+family[8]+",DATE ORDER BY DATE";	
+}	
+}else
+if(tecnologia8 == "gsm"){	
+if(family[8] == "cell"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento8+"' and DATE BETWEEN '"+data_inicial[7]+"' AND '"+data_final+"' GROUP BY b.cellname,DATE ORDER BY DATE";
+}else
+if(family[8] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[8]+" = '"+elemento8+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[7]+"' AND '"+data_final+"' GROUP BY b."+family[8]+",DATE ORDER BY DATE";
+}else
+if(family[8] == "region"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento8+"' and DATE BETWEEN '"+data_inicial[7]+"' AND '"+data_final+"' GROUP BY b.regional,DATE ORDER BY DATE";
+}else	{
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[8]+" = '"+elemento8+"' and DATE BETWEEN '"+data_inicial[7]+"' AND '"+data_final+"' GROUP BY b."+family[8]+",DATE ORDER BY DATE";
+}	
+}	
+	
+}else if(estado == 3){
+
+if(tecnologia8 == "umts"){
+	
+query = "SELECT "+tempo+", "+kpi8+" as node FROM "+tecnologia8+"_kpi.vw_nqi_"+periodo+"_"+family[8]
++" where node != 'UNKNOWN' and node = '"+elemento8 +"' and "+tempo+" between '"+data_inicial[7]+"' and '"+data_final
++"' order by "+tempo+"";
+
+}else
+
+if(tecnologia8 == "lte"){	
+
+if(family[8] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi8+" as node FROM "+tecnologia8+"_kpi.vw_nqi_"+periodo+"_"+family[8]+" where "+family[8]+" != 'UNKNOWN' and "+family[8]+" = (SELECT get_enodeb_name('"+elemento8+"','enodeb'))::TEXT and date between '"+data_inicial[7]+"' and '"+data_final+"' order by "+tempo+"";
+}else {	
+query = "SELECT "+tempo+", "+kpi8+" as node FROM "+tecnologia8+"_kpi.vw_nqi_"+periodo+"_"+family[8]
++" where "+family[8]+" != 'UNKNOWN' and "+family[8]+" = '"+elemento8 +"' and "+tempo+" between '"+data_inicial[7]+"' and '"+data_final
++"' order by "+tempo+"";
+}
+}
+
+}else if(estado == 4){
+alert("The Voice Eralng Equivalent is not supported for Daily Period.");
+return 0;
+}
+}
+else if(periodo == "weekly"){
+data_inicial[7] = document.getElementById("datepicker_inicial").value;
+data_final = document.getElementById("datepicker_final").value;	
+var s = data_inicial[7];
+var t = data_final;
+var m = moment(s, 'MM-DD-YYYY');
+var n = moment(t, 'MM-DD-YYYY');
+//document.getElementById("Teste_MonthNumber").innerHTML = m.toDate().getUTCMonth() + 1;
+data_inicial[7] = m.toDate().getWeekNumber();
+data_final = n.toDate().getWeekNumber();
+ano[7] = m.toDate().getUTCFullYear();
+ano_final[7] = n.toDate().getUTCFullYear();
+
+if(estado == 1){
+if(family[8] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi8+" as node FROM "+tecnologia8+"_kpi.vw_main_kpis_"+family[8]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento8+"' and (year,week) between ("+ano[7]+","+data_inicial[7]+") and ("+ano_final[7]+","+data_final+") order by year,week";
+}else {	
+query = "SELECT "+tempo+", "+kpi8+" as node FROM " +tecnologia8 +"_kpi.vw_main_kpis_"+family[8] +"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento8 +"' and (year,week) between ("+ano[7]+","+data_inicial[7]+") and ("+ano_final[7]+","+data_final+") order by year,week";
+}
+}else if(estado == 2){
+
+if(tecnologia8 == "umts"){	
+if(family[8] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[8]+" = '"+elemento8+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[7]+"','"+data_inicial[7]+"') AND ('"+ano_final[7]+"','"+data_final+"') GROUP BY b."+family[8]+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
+}else {
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[8]+" = '"+elemento8+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[7]+"','"+data_inicial[7]+"') AND ('"+ano_final[7]+"','"+data_final+"') GROUP BY b."+family[8]+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";	
+}	
+}else
+if(tecnologia8 == "lte"){	
+if(family[8] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[8]+" = '"+elemento8+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[2]+"','"+data_inicial[7]+"') AND ('"+ano_final[7]+"','"+data_final+"') GROUP BY b."+family[8]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
+}else {
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[8]+" = '"+elemento8+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[7]+"','"+data_inicial[7]+"') AND ('"+ano_final[7]+"','"+data_final+"') GROUP BY b."+family[8]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
+}	
+}else
+if(tecnologia8 == "gsm"){	
+if(family[8] == "cell"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento8+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[7]+"','"+data_inicial[7]+"') AND ('"+ano_final[7]+"','"+data_final+"') GROUP BY b.cellname,date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)";
+}else
+if(family[8] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[8]+" = '"+elemento8+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[7]+"','"+data_inicial[7]+"') AND ('"+ano_final[7]+"','"+data_final+"') GROUP BY b."+family[8]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
+}else
+if(family[8] == "region"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento8+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[7]+"','"+data_inicial[7]+"') AND ('"+ano_final[7]+"','"+data_final+"') GROUP BY b.regional,date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
+}else	{
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[8]+" = '"+elemento8+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[7]+"','"+data_inicial[7]+"') AND ('"+ano_final[7]+"','"+data_final+"') GROUP BY b."+family[8]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
+}	
+}	
+	
+}else if(estado == 3){
+
+if(tecnologia8 == "umts"){
+	
+query = "SELECT "+tempo+", "+kpi8+" as node FROM "+tecnologia8+"_kpi.vw_nqi_"+periodo+"_"+family[8]+" where node != 'UNKNOWN' and node = '"+elemento8 +"' and (year,week) between ("+ano[7]+","+data_inicial[7]+") and ("+ano_final[7]+","+data_final+") order by year,week";
+
+}else
+
+if(tecnologia8 == "lte"){	
+
+if(family[8] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi8+" as node FROM "+tecnologia8+"_kpi.vw_nqi_"+periodo+"_"+family[8]+" where "+family[8]+" != 'UNKNOWN' and "+family[8]+" = (SELECT get_enodeb_name('"+elemento8+"','enodeb'))::TEXT and (year,week) between ("+ano[7]+","+data_inicial[7]+") and ("+ano_final[7]+","+data_final+") order by year,week";
+}else {	
+query = "SELECT "+tempo+", "+kpi8+" as node FROM "+tecnologia8+"_kpi.vw_nqi_"+periodo+"_"+family[8]+" where "+family[8]+" != 'UNKNOWN' and "+family[8]+" = '"+elemento8 +"' and (year,week) between ("+ano[7]+","+data_inicial[7]+") and ("+ano_final[7]+","+data_final+") order by year,week";
+}
+}
+
+}else if(estado == 4){
+alert("The Voice Eralng Equivalent is not supported for Weekly Period.");
+return 0;
+}
+}else if(periodo == "monthly"){
+data_inicial[7] = document.getElementById("datepicker_inicial").value;
+data_final = document.getElementById("datepicker_final").value;	
+var s = data_inicial[7];
+var t = data_final;
+var m = moment(s, 'MM-DD-YYYY');
+var n = moment(t, 'MM-DD-YYYY');
+data_inicial[7] = m.toDate().getUTCMonth() + 1;
+data_final = n.toDate().getUTCMonth() + 1;
+ano[7] = m.toDate().getUTCFullYear();
+ano_final[7] = n.toDate().getUTCFullYear();
+
+if(estado == 1){
+if(family[8] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi8+" as node FROM "+tecnologia8+"_kpi.vw_main_kpis_"+family[8]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento8+"' and (year,month) between ('"+ano[7]+"','"+data_inicial[7]+"') and ('"+ano_final[7]+"','"+data_final+"') order by year,month";
+}else {	
+query = "SELECT "+tempo+", "+kpi8+" as node FROM "+tecnologia8+"_kpi.vw_main_kpis_"+family[8]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento8+"' and (year,month) between ('"+ano[7]+"','"+data_inicial[7]+"') and ('"+ano_final[7]+"','"+data_final+"') order by year,month";
+}
+}else if(estado == 2){
+
+if(tecnologia8 == "umts"){	
+if(family[8] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[8]+" = '"+elemento8+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[7]+"','"+data_inicial[7]+"') AND ('"+ano_final[7]+"','"+data_final+"') GROUP BY b."+family[8]+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}else {
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[8]+" = '"+elemento8+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[7]+"','"+data_inicial[7]+"') AND ('"+ano_final[7]+"','"+data_final+"') GROUP BY b."+family[8]+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";	
+}	
+}else
+if(tecnologia8 == "lte"){	
+if(family[8] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[8]+" = '"+elemento8+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[7]+"','"+data_inicial[7]+"') AND ('"+ano_final[7]+"','"+data_final+"') GROUP BY b."+family[8]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}else {
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[8]+" = '"+elemento8+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[7]+"','"+data_inicial[7]+"') AND ('"+ano_final[7]+"','"+data_final+"') GROUP BY b."+family[8]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}	
+}else
+if(tecnologia8 == "gsm"){	
+if(family[8] == "cell"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento8+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[7]+"','"+data_inicial[7]+"') AND ('"+ano_final[7]+"','"+data_final+"') GROUP BY b.cellname,date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}else
+if(family[8] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[8]+" = '"+elemento8+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[7]+"','"+data_inicial[7]+"') AND ('"+ano_final[7]+"','"+data_final+"') GROUP BY b."+family[8]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}else
+if(family[8] == "region"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento8+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[7]+"','"+data_inicial[7]+"') AND ('"+ano_final[7]+"','"+data_final+"') GROUP BY b.regional,date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}else	{
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[8]+" = '"+elemento8+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[7]+"','"+data_inicial[7]+"') AND ('"+ano_final[7]+"','"+data_final+"') GROUP BY b."+family[8]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}	
+}	
+	
+}else if(estado == 3){
+
+if(tecnologia8 == "umts"){
+	
+query = "SELECT "+tempo+", "+kpi8+" as node FROM "+tecnologia8+"_kpi.vw_nqi_"+periodo+"_"+family[8]+" where node != 'UNKNOWN' and node = '"+elemento8 +"' and (year,month) between ('"+ano[7]+"','"+data_inicial[7]+"') and ('"+ano_final[7]+"','"+data_final+"') order by year,month";
+
+}else
+
+if(tecnologia8 == "lte"){	
+
+if(family[8] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi8+" as node FROM "+tecnologia8+"_kpi.vw_nqi_"+periodo+"_"+family[8]+" where "+family[8]+" != 'UNKNOWN' and "+family[8]+" = (SELECT get_enodeb_name('"+elemento8+"','enodeb'))::TEXT and (year,month) between ('"+ano[7]+"','"+data_inicial[7]+"') and ('"+ano_final[7]+"','"+data_final+"') order by year,month";
+}else {	
+query = "SELECT "+tempo+", "+kpi8+" as node FROM "+tecnologia8+"_kpi.vw_nqi_"+periodo+"_"+family[8]+" where "+family[8]+" != 'UNKNOWN' and "+family[8]+" = '"+elemento8 +"' and (year,month) between ('"+ano[7]+"','"+data_inicial[7]+"') and ('"+ano_final[7]+"','"+data_final+"') order by year,month";
+}
+}
+
+}else if(estado == 4){
+alert("The Voice Eralng Equivalent is not supported for Monthly Period.");
+return 0;
+}	
+}
+
+if(estado != 2){
+nome8 = elemento8+" "+kpi8+" ("+unidade8+")";
+}else{
+nome8 = elemento8+" "+kpi8;	
+}
+
+query8 = query;
+document.getElementById("Texto_Teste8").innerHTML = query8;
+
+autorization8 = false;
+add_menu8 = true;
+
+document.getElementById("btn_confirm8").style.visibility = "hidden";
+// document.getElementById("btn_delete3").style.visibility = "visible";
+if(lixeira8 == false){
+// document.getElementById("btn_confirm8").style.visibility = "visible";
+}
+$("#radio_query8").prop("checked", false);
+document.getElementById("Query_Menu8").style.opacity = 0.3;
+
+document.getElementById("chart_type8").disabled = true;
+document.getElementById("chart_position8").disabled = true;
+}
+document.getElementById("btn_confirm8").style.visibility = "hidden";
+$("#radio_query8").prop("checked", false);
+document.getElementById("chart_type8").disabled = true;
+document.getElementById("chart_position8").disabled = true;
+document.getElementById("Query_Menu8").style.opacity = 0.3;
+}
+
+function mostrar_charts9(){
+		
+query_num = 9;
+
+if(auth_change == true){
+elemento9 = document.getElementById("Elemento_Texto_Teste9").innerHTML;	
+kpi9 = document.getElementById("KPI_Texto_Teste9").innerHTML;
+counter_name = document.getElementById("KPI_Texto_Teste9").innerHTML;
+nqi_name = document.getElementById("KPI_Texto_Teste9").innerHTML;	
+if(hourly_selected == true){
+periodo = "hourly";	
+hora_inicial = 	$( "#Drop_Hora_Inicial option:selected" ).text();
+hora_final = 	$( "#Drop_Hora_Final option:selected" ).text();
+data_inicial[8] = document.getElementById("datepicker_inicial").value;
+data_final = document.getElementById("datepicker_final").value;
+
+if(estado == 1){
+if(family[9] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi9+" as node FROM "+tecnologia9+"_kpi.vw_main_kpis_"+family[9]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = (SELECT get_enodeb_name('"+elemento9+"','enodeb'))::TEXT and "+tempo+" between '"+data_inicial[8]+"' and '"+data_final+" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
+}else {	
+query = "SELECT "+tempo+", "+kpi9+" as node FROM " +tecnologia9 +"_kpi.vw_main_kpis_"+family[9] +"_rate_"+periodo
++" where node != 'UNKNOWN' and node = '"+elemento9 +"' and "+tempo+" between '"+data_inicial[8]+"' and '"+data_final
++" 23:30' and date::time between '"+hora_inicial+"' and '"+hora_final+"'  order by "+tempo+"";
+}
+}else
+if(estado == 4){
+if((rncc[9] != "rnc1") && (cellidd[9] != "cellid1")){	
+query = "SELECT datetime as date, ee as node FROM umts_kpi.amx_load WHERE rnc = '"+rncc[9]+"' and cellid = '"+cellidd[9]+"' and datetime between '"+data_inicial[8]+"' and '"+data_final+" 23:30' and datetime::time between '"+hora_inicial+"' and '"+hora_final+"' order by datetime";
+}else{
+alert("The Voice Eralng Equivalent is only supported for cells.");
+return 0;	
+}	
+}
+}	else if(periodo == "daily"){
+
+// alert(type_of_counter);
+	
+data_inicial[8] = document.getElementById("datepicker_inicial").value;
+data_final = document.getElementById("datepicker_final").value;
+
+if(estado == 1){
+if(family[9] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi9+" as node FROM "+tecnologia9+"_kpi.vw_main_kpis_"+family[9]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento9+"' and date between '"+data_inicial[8]+"' and '"+data_final+"' order by "+tempo+"";
+}else {	
+query = "SELECT "+tempo+", "+kpi9+" as node FROM " +tecnologia9 +"_kpi.vw_main_kpis_"+family[9] +"_rate_"+periodo
++" where node != 'UNKNOWN' and node = '"+elemento9 +"' and "+tempo+" between '"+data_inicial[8]+"' and '"+data_final
++"' order by "+tempo+"";
+}
+}else if(estado == 2){
+
+if(tecnologia9 == "umts"){	
+if(family[9] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[9]+" = '"+elemento9+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[8]+"' AND '"+data_final+"' GROUP BY b."+family[9]+",DATE ORDER BY DATE";
+}else
+if(family[9] == "rnc"){	
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[9]+" = '"+elemento9+"' and DATE BETWEEN '"+data_inicial[8]+"' AND '"+data_final+"' GROUP BY b."+family[9]+",DATE ORDER BY DATE";
+}else {
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[9]+" = '"+elemento9+"' and DATE BETWEEN '"+data_inicial[8]+"' AND '"+data_final+"' GROUP BY b."+family[9]+",DATE ORDER BY DATE";	
+}	
+}else
+if(tecnologia9 == "lte"){	
+if(family[9] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[9]+" = '"+elemento9+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[8]+"' AND '"+data_final+"' GROUP BY b."+family[9]+",DATE ORDER BY DATE";
+}else {
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[9]+" = '"+elemento9+"' and DATE BETWEEN '"+data_inicial[8]+"' AND '"+data_final+"' GROUP BY b."+family[9]+",DATE ORDER BY DATE";	
+}	
+}else
+if(tecnologia9 == "gsm"){	
+if(family[9] == "cell"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento9+"' and DATE BETWEEN '"+data_inicial[8]+"' AND '"+data_final+"' GROUP BY b.cellname,DATE ORDER BY DATE";
+}else
+if(family[9] == "cidade"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[9]+" = '"+elemento9+"' and uf = '"+uf+"' and DATE BETWEEN '"+data_inicial[8]+"' AND '"+data_final+"' GROUP BY b."+family[9]+",DATE ORDER BY DATE";
+}else
+if(family[9] == "region"){
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento9+"' and DATE BETWEEN '"+data_inicial[8]+"' AND '"+data_final+"' GROUP BY b.regional,DATE ORDER BY DATE";
+}else	{
+query = "SELECT DATE, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[9]+" = '"+elemento9+"' and DATE BETWEEN '"+data_inicial[8]+"' AND '"+data_final+"' GROUP BY b."+family[9]+",DATE ORDER BY DATE";
+}	
+}	
+	
+}else if(estado == 3){
+
+if(tecnologia9 == "umts"){
+	
+query = "SELECT "+tempo+", "+kpi9+" as node FROM "+tecnologia9+"_kpi.vw_nqi_"+periodo+"_"+family[9]
++" where node != 'UNKNOWN' and node = '"+elemento9 +"' and "+tempo+" between '"+data_inicial[8]+"' and '"+data_final
++"' order by "+tempo+"";
+
+}else
+
+if(tecnologia9 == "lte"){	
+
+if(family[9] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi9+" as node FROM "+tecnologia9+"_kpi.vw_nqi_"+periodo+"_"+family[9]+" where "+family[9]+" != 'UNKNOWN' and "+family[9]+" = (SELECT get_enodeb_name('"+elemento9+"','enodeb'))::TEXT and date between '"+data_inicial[8]+"' and '"+data_final+"' order by "+tempo+"";
+}else {	
+query = "SELECT "+tempo+", "+kpi9+" as node FROM "+tecnologia9+"_kpi.vw_nqi_"+periodo+"_"+family[9]
++" where "+family[9]+" != 'UNKNOWN' and "+family[9]+" = '"+elemento9 +"' and "+tempo+" between '"+data_inicial[8]+"' and '"+data_final
++"' order by "+tempo+"";
+}
+}
+
+}else if(estado == 4){
+alert("The Voice Eralng Equivalent is not supported for Daily Period.");
+return 0;
+}
+}
+else if(periodo == "weekly"){
+data_inicial[8] = document.getElementById("datepicker_inicial").value;
+data_final = document.getElementById("datepicker_final").value;	
+var s = data_inicial[8];
+var t = data_final;
+var m = moment(s, 'MM-DD-YYYY');
+var n = moment(t, 'MM-DD-YYYY');
+//document.getElementById("Teste_MonthNumber").innerHTML = m.toDate().getUTCMonth() + 1;
+data_inicial[8] = m.toDate().getWeekNumber();
+data_final = n.toDate().getWeekNumber();
+ano[8] = m.toDate().getUTCFullYear();
+ano_final[8] = n.toDate().getUTCFullYear();
+
+if(estado == 1){
+if(family[9] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi9+" as node FROM "+tecnologia9+"_kpi.vw_main_kpis_"+family[9]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento9+"' and (year,week) between ("+ano[8]+","+data_inicial[8]+") and ("+ano_final[8]+","+data_final+") order by year,week";
+}else {	
+query = "SELECT "+tempo+", "+kpi9+" as node FROM " +tecnologia9 +"_kpi.vw_main_kpis_"+family[9] +"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento9 +"' and (year,week) between ("+ano[8]+","+data_inicial[8]+") and ("+ano_final[8]+","+data_final+") order by year,week";
+}
+}else if(estado == 2){
+
+if(tecnologia9 == "umts"){	
+if(family[9] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[9]+" = '"+elemento9+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[8]+"','"+data_inicial[8]+"') AND ('"+ano_final[8]+"','"+data_final+"') GROUP BY b."+family[9]+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY  date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
+}else {
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[9]+" = '"+elemento9+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[8]+"','"+data_inicial[8]+"') AND ('"+ano_final[8]+"','"+data_final+"') GROUP BY b."+family[9]+",date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";	
+}	
+}else
+if(tecnologia9 == "lte"){	
+if(family[9] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[9]+" = '"+elemento9+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[2]+"','"+data_inicial[8]+"') AND ('"+ano_final[8]+"','"+data_final+"') GROUP BY b."+family[9]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
+}else {
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[9]+" = '"+elemento9+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[8]+"','"+data_inicial[8]+"') AND ('"+ano_final[8]+"','"+data_final+"') GROUP BY b."+family[9]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
+}	
+}else
+if(tecnologia9 == "gsm"){	
+if(family[9] == "cell"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento9+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[8]+"','"+data_inicial[8]+"') AND ('"+ano_final[8]+"','"+data_final+"') GROUP BY b.cellname,date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)";
+}else
+if(family[9] == "cidade"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[9]+" = '"+elemento9+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[8]+"','"+data_inicial[8]+"') AND ('"+ano_final[8]+"','"+data_final+"') GROUP BY b."+family[9]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
+}else
+if(family[9] == "region"){
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento9+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[8]+"','"+data_inicial[8]+"') AND ('"+ano_final[8]+"','"+data_final+"') GROUP BY b.regional,date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
+}else	{
+query = "SELECT date_part('week'::text, date %2B '1 day'::interval) as week, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[9]+" = '"+elemento9+"' and (date_part('year'::text, date),date_part('week'::text, date %2B '1 day'::interval)) BETWEEN ('"+ano[8]+"','"+data_inicial[8]+"') AND ('"+ano_final[8]+"','"+data_final+"') GROUP BY b."+family[9]+",date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval) ORDER BY date_part('year'::text, date), date_part('week'::text, date %2B '1 day'::interval)";
+}	
+}
+	
+}else if(estado == 3){
+
+if(tecnologia9 == "umts"){
+	
+query = "SELECT "+tempo+", "+kpi9+" as node FROM "+tecnologia9+"_kpi.vw_nqi_"+periodo+"_"+family[9]+" where node != 'UNKNOWN' and node = '"+elemento9 +"' and (year,week) between ("+ano[8]+","+data_inicial[8]+") and ("+ano_final[8]+","+data_final+") order by year,week";
+
+}else
+
+if(tecnologia9 == "lte"){	
+
+if(family[9] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi9+" as node FROM "+tecnologia9+"_kpi.vw_nqi_"+periodo+"_"+family[9]+" where "+family[9]+" != 'UNKNOWN' and "+family[9]+" = (SELECT get_enodeb_name('"+elemento9+"','enodeb'))::TEXT and (year,week) between ("+ano[8]+","+data_inicial[8]+") and ("+ano_final[8]+","+data_final+") order by year,week";
+}else {	
+query = "SELECT "+tempo+", "+kpi9+" as node FROM "+tecnologia9+"_kpi.vw_nqi_"+periodo+"_"+family[9]+" where "+family[9]+" != 'UNKNOWN' and "+family[9]+" = '"+elemento9 +"' and (year,week) between ("+ano[8]+","+data_inicial[8]+") and ("+ano_final[8]+","+data_final+") order by year,week";
+}
+}
+
+}else if(estado == 4){
+alert("The Voice Eralng Equivalent is not supported for Weekly Period.");
+return 0;
+}
+}else if(periodo == "monthly"){
+data_inicial[8] = document.getElementById("datepicker_inicial").value;
+data_final = document.getElementById("datepicker_final").value;	
+var s = data_inicial[8];
+var t = data_final;
+var m = moment(s, 'MM-DD-YYYY');
+var n = moment(t, 'MM-DD-YYYY');
+data_inicial[8] = m.toDate().getUTCMonth() + 1;
+data_final = n.toDate().getUTCMonth() + 1;
+ano[8] = m.toDate().getUTCFullYear();
+ano_final[8] = n.toDate().getUTCFullYear();
+
+if(estado == 1){
+if(family[9] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi9+" as node FROM "+tecnologia9+"_kpi.vw_main_kpis_"+family[9]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento9+"' and (year,month) between ('"+ano[8]+"','"+data_inicial[8]+"') and ('"+ano_final[8]+"','"+data_final+"') order by year,month";
+}else {	
+query = "SELECT "+tempo+", "+kpi9+" as node FROM "+tecnologia9+"_kpi.vw_main_kpis_"+family[9]+"_rate_"+periodo+" where node != 'UNKNOWN' and node = '"+elemento9+"' and (year,month) between ('"+ano[8]+"','"+data_inicial[8]+"') and ('"+ano_final[8]+"','"+data_final+"') order by year,month";
+}
+}else if(estado == 2){
+
+if(tecnologia9 == "umts"){	
+if(family[9] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[9]+" = '"+elemento9+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[8]+"','"+data_inicial[8]+"') AND ('"+ano_final[8]+"','"+data_final+"') GROUP BY b."+family[9]+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}else {
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM umts_counter.fss_"+table_name+"_daily a JOIN umts_control.cells_database b on a."+type_of_counter+" = b."+type_of_counter+" and a."+lcorci+" = b."+lcorci+" WHERE b."+family[9]+" = '"+elemento9+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[8]+"','"+data_inicial[8]+"') AND ('"+ano_final[8]+"','"+data_final+"') GROUP BY b."+family[9]+",date_part('year'::text, date),date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";	
+}	
+}else
+if(tecnologia9 == "lte"){	
+if(family[9] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[9]+" = '"+elemento9+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[8]+"','"+data_inicial[8]+"') AND ('"+ano_final[8]+"','"+data_final+"') GROUP BY b."+family[9]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}else {
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM lte_counter.fss_"+table_name+"_daily a JOIN lte_control.cells b on a.enodeb = b.enodeb and a.locellid = b.cellid WHERE b."+family[9]+" = '"+elemento9+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[8]+"','"+data_inicial[8]+"') AND ('"+ano_final[8]+"','"+data_final+"') GROUP BY b."+family[9]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}	
+}else
+if(tecnologia9 == "gsm"){	
+if(family[9] == "cell"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.cellname = '"+elemento9+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[8]+"','"+data_inicial[8]+"') AND ('"+ano_final[8]+"','"+data_final+"') GROUP BY b.cellname,date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}else
+if(family[9] == "cidade"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[9]+" = '"+elemento9+"' and uf = '"+uf+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[8]+"','"+data_inicial[8]+"') AND ('"+ano_final[8]+"','"+data_final+"') GROUP BY b."+family[9]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}else
+if(family[9] == "region"){
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b.regional = '"+elemento9+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[8]+"','"+data_inicial[8]+"') AND ('"+ano_final[8]+"','"+data_final+"') GROUP BY b.regional,date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}else	{
+query = "SELECT date_part('month'::text, date) as month, "+counter_aggregation+"("+counter_name+") as node FROM gsm_counter.fss_"+table_name+"_daily a JOIN gsm_control.cells_db b on a.bsc = b.bsc and a.cellid = b.cellid WHERE b."+family[9]+" = '"+elemento9+"' and (date_part('year'::text, date),date_part('month'::text, date)) BETWEEN ('"+ano[8]+"','"+data_inicial[8]+"') AND ('"+ano_final[8]+"','"+data_final+"') GROUP BY b."+family[9]+",date_part('year'::text, date), date_part('month'::text, date) ORDER BY date_part('year'::text, date), date_part('month'::text, date)";
+}	
+}	
+	
+}else if(estado == 3){
+
+if(tecnologia9 == "umts"){
+	
+query = "SELECT "+tempo+", "+kpi9+" as node FROM "+tecnologia9+"_kpi.vw_nqi_"+periodo+"_"+family[9]+" where node != 'UNKNOWN' and node = '"+elemento9 +"' and (year,month) between ('"+ano[8]+"','"+data_inicial[8]+"') and ('"+ano_final[8]+"','"+data_final+"') order by year,month";
+
+}else
+
+if(tecnologia9 == "lte"){	
+
+if(family[9] == "eNodeB"){
+query = "SELECT "+tempo+", "+kpi9+" as node FROM "+tecnologia9+"_kpi.vw_nqi_"+periodo+"_"+family[9]+" where "+family[9]+" != 'UNKNOWN' and "+family[9]+" = (SELECT get_enodeb_name('"+elemento9+"','enodeb'))::TEXT and (year,month) between ('"+ano[8]+"','"+data_inicial[8]+"') and ('"+ano_final[8]+"','"+data_final+"') order by year,month";
+}else {	
+query = "SELECT "+tempo+", "+kpi9+" as node FROM "+tecnologia9+"_kpi.vw_nqi_"+periodo+"_"+family[9]+" where "+family[9]+" != 'UNKNOWN' and "+family[9]+" = '"+elemento9 +"' and (year,month) between ('"+ano[8]+"','"+data_inicial[8]+"') and ('"+ano_final[8]+"','"+data_final+"') order by year,month";
+}
+}
+
+}else if(estado == 4){
+alert("The Voice Eralng Equivalent is not supported for Monthly Period.");
+return 0;
+}	
+}
+
+if(estado != 2){
+nome9 = elemento9+" "+kpi9+" ("+unidade9+")";
+}else{
+nome9 = elemento9+" "+kpi9;	
+}
+
+query9 = query;
+document.getElementById("Texto_Teste9").innerHTML = query9;
+
+autorization9 = false;
+add_menu9 = true;
+
+document.getElementById("btn_confirm9").style.visibility = "hidden";
+// document.getElementById("btn_delete3").style.visibility = "visible";
+if(lixeira9 == false){
+// document.getElementById("btn_confirm9").style.visibility = "visible";
+}
+$("#radio_query9").prop("checked", false);
+document.getElementById("Query_Menu9").style.opacity = 0.3;
+
+document.getElementById("chart_type9").disabled = true;
+document.getElementById("chart_position9").disabled = true;
+}
+document.getElementById("btn_confirm9").style.visibility = "hidden";
+$("#radio_query9").prop("checked", false);
+document.getElementById("chart_type9").disabled = true;
+document.getElementById("chart_position9").disabled = true;
+document.getElementById("Query_Menu9").style.opacity = 0.3;
 }			
 
 
@@ -5674,7 +7449,10 @@ var vis_q2 = document.getElementById("Query2");
 var vis_q3 = document.getElementById("Query3");
 var vis_q4 = document.getElementById("Query4");
 var vis_q5 = document.getElementById("Query5");
-var vis_q6 = document.getElementById("Query6");	
+var vis_q6 = document.getElementById("Query6");
+var vis_q7 = document.getElementById("Query7");
+var vis_q8 = document.getElementById("Query8");
+var vis_q9 = document.getElementById("Query9");	
 
 if((vis_q1.style.display == "inline-block") || slider == true){
 tecnologia1 = "gsm";
@@ -5693,6 +7471,15 @@ tecnologia5 = "gsm";
 }
 if((vis_q6.style.display == "inline-block") || slider == true){
 tecnologia6 = "gsm";
+}
+if((vis_q7.style.display == "inline-block") || slider == true){
+tecnologia7 = "gsm";
+}
+if((vis_q8.style.display == "inline-block") || slider == true){
+tecnologia8 = "gsm";
+}
+if((vis_q9.style.display == "inline-block") || slider == true){
+tecnologia9 = "gsm";
 }
 
 
@@ -5720,6 +7507,18 @@ if(autorization6 == true){
 document.getElementById("Tecnologia_Texto_Teste6").innerHTML = "GSM";
 document.getElementById("Tecnologia_Seta_6").style.visibility = "visible";
 }
+if(autorization7 == true){
+document.getElementById("Tecnologia_Texto_Teste7").innerHTML = "GSM";
+document.getElementById("Tecnologia_Seta_7").style.visibility = "visible";
+}
+if(autorization8 == true){
+document.getElementById("Tecnologia_Texto_Teste8").innerHTML = "GSM";
+document.getElementById("Tecnologia_Seta_8").style.visibility = "visible";
+}
+if(autorization9 == true){
+document.getElementById("Tecnologia_Texto_Teste9").innerHTML = "GSM";
+document.getElementById("Tecnologia_Seta_9").style.visibility = "visible";
+}
 
 //document.getElementById("Texto_Teste").innerHTML = query;
 	
@@ -5743,6 +7542,9 @@ var vis_q3 = document.getElementById("Query3");
 var vis_q4 = document.getElementById("Query4");
 var vis_q5 = document.getElementById("Query5");
 var vis_q6 = document.getElementById("Query6");	
+var vis_q7 = document.getElementById("Query7");
+var vis_q8 = document.getElementById("Query8");
+var vis_q9 = document.getElementById("Query9");	
 	
 if((vis_q1.style.display == "inline-block") || slider == true){
 tecnologia1 = "umts";
@@ -5761,6 +7563,15 @@ tecnologia5 = "umts";
 }
 if((vis_q6.style.display == "inline-block") || slider == true){
 tecnologia6 = "umts";
+}
+if((vis_q7.style.display == "inline-block") || slider == true){
+tecnologia7 = "umts";
+}
+if((vis_q8.style.display == "inline-block") || slider == true){
+tecnologia8 = "umts";
+}
+if((vis_q9.style.display == "inline-block") || slider == true){
+tecnologia9 = "umts";
 }
 
 
@@ -5788,6 +7599,18 @@ if(autorization6 == true){
 document.getElementById("Tecnologia_Texto_Teste6").innerHTML = "UMTS";
 document.getElementById("Tecnologia_Seta_6").style.visibility = "visible";
 }
+if(autorization7 == true){
+document.getElementById("Tecnologia_Texto_Teste7").innerHTML = "UMTS";
+document.getElementById("Tecnologia_Seta_7").style.visibility = "visible";
+}
+if(autorization8 == true){
+document.getElementById("Tecnologia_Texto_Teste8").innerHTML = "UMTS";
+document.getElementById("Tecnologia_Seta_8").style.visibility = "visible";
+}
+if(autorization9 == true){
+document.getElementById("Tecnologia_Texto_Teste9").innerHTML = "UMTS";
+document.getElementById("Tecnologia_Seta_9").style.visibility = "visible";
+}
 //document.getElementById("Texto_Teste").innerHTML = query;	
 
 document.getElementById("Technology").innerHTML = "UMTS";
@@ -5809,7 +7632,10 @@ var vis_q2 = document.getElementById("Query2");
 var vis_q3 = document.getElementById("Query3");
 var vis_q4 = document.getElementById("Query4");
 var vis_q5 = document.getElementById("Query5");
-var vis_q6 = document.getElementById("Query6");	
+var vis_q6 = document.getElementById("Query6");
+var vis_q7 = document.getElementById("Query7");
+var vis_q8 = document.getElementById("Query8");
+var vis_q9 = document.getElementById("Query9");	
 	
 if((vis_q1.style.display == "inline-block") || slider == true){
 tecnologia1 = "lte";
@@ -5828,6 +7654,15 @@ tecnologia5 = "lte";
 }
 if((vis_q6.style.display == "inline-block") || slider == true){
 tecnologia6 = "lte";
+}
+if((vis_q7.style.display == "inline-block") || slider == true){
+tecnologia7 = "lte";
+}
+if((vis_q8.style.display == "inline-block") || slider == true){
+tecnologia8 = "lte";
+}
+if((vis_q9.style.display == "inline-block") || slider == true){
+tecnologia9 = "lte";
 }
 
 if(autorization1 == true){
@@ -5854,6 +7689,18 @@ if(autorization6 == true){
 document.getElementById("Tecnologia_Texto_Teste6").innerHTML = "LTE";
 document.getElementById("Tecnologia_Seta_6").style.visibility = "visible";
 }
+if(autorization7 == true){
+document.getElementById("Tecnologia_Texto_Teste7").innerHTML = "LTE";
+document.getElementById("Tecnologia_Seta_7").style.visibility = "visible";
+}
+if(autorization8 == true){
+document.getElementById("Tecnologia_Texto_Teste8").innerHTML = "LTE";
+document.getElementById("Tecnologia_Seta_8").style.visibility = "visible";
+}
+if(autorization9 == true){
+document.getElementById("Tecnologia_Texto_Teste9").innerHTML = "LTE";
+document.getElementById("Tecnologia_Seta_9").style.visibility = "visible";
+}
 //document.getElementById("Texto_Teste").innerHTML = query;	
 
 document.getElementById("Technology").innerHTML = "LTE";
@@ -5871,7 +7718,7 @@ auth_change = true;
 function mostrar_Hora(){
 
 if(periodo != ""){
-for(i = 0; i<= 5; i++){
+for(i = 0; i<= 8; i++){
 data_inicial[i] = document.getElementById("datepicker_inicial").value;
 data_final = document.getElementById("datepicker_final").value;
 
@@ -5900,7 +7747,7 @@ tempo = "date";
 
 document.getElementById("Div_Hora").style.display = "block";
 
-for(i = 1; i <= 6; i++){
+for(i = 1; i <= 9; i++){
 document.getElementById("Hora_Inicial_Texto_Teste"+i).style.display = "inline-block";
 document.getElementById("Hora_Final_Texto_Teste"+i).style.display = "inline-block";
 }
@@ -5929,6 +7776,18 @@ if(autorization6 == true){
 document.getElementById("Periodo_Texto_Teste6").innerHTML = "Hourly";
 document.getElementById("Periodo_Seta_6").style.visibility = "visible";
 }
+if(autorization7 == true){
+document.getElementById("Periodo_Texto_Teste7").innerHTML = "Hourly";
+document.getElementById("Periodo_Seta_7").style.visibility = "visible";
+}
+if(autorization8 == true){
+document.getElementById("Periodo_Texto_Teste8").innerHTML = "Hourly";
+document.getElementById("Periodo_Seta_8").style.visibility = "visible";
+}
+if(autorization9 == true){
+document.getElementById("Periodo_Texto_Teste9").innerHTML = "Hourly";
+document.getElementById("Periodo_Seta_9").style.visibility = "visible";
+}
 //document.getElementById("Texto_Teste").innerHTML = query;	
 document.getElementById("Time").innerHTML = "Hourly";
 }else
@@ -5943,7 +7802,7 @@ alert("The QuickReport doesn't support Hourly Period for NQI. Please change the 
 function mostrar_Daily(){
 
 if(periodo != ""){
-for(i = 0; i<= 5; i++){
+for(i = 0; i<= 8; i++){
 data_inicial[i] = document.getElementById("datepicker_inicial").value;
 data_final = document.getElementById("datepicker_final").value;
 
@@ -5957,7 +7816,7 @@ document.getElementById(df).innerHTML = data_final;
 }
 }
 
-for(i = 1; i <= 6; i++){
+for(i = 1; i <= 9; i++){
 document.getElementById("Hora_Inicial_Texto_Teste"+i).style.display = "none";
 document.getElementById("Hora_Final_Texto_Teste"+i).style.display = "none";
 }
@@ -5999,6 +7858,18 @@ if(autorization6 == true){
 document.getElementById("Periodo_Texto_Teste6").innerHTML = "Daily";
 document.getElementById("Periodo_Seta_6").style.visibility = "visible";
 }
+if(autorization7 == true){
+document.getElementById("Periodo_Texto_Teste7").innerHTML = "Daily";
+document.getElementById("Periodo_Seta_7").style.visibility = "visible";
+}
+if(autorization8 == true){
+document.getElementById("Periodo_Texto_Teste8").innerHTML = "Daily";
+document.getElementById("Periodo_Seta_8").style.visibility = "visible";
+}
+if(autorization9 == true){
+document.getElementById("Periodo_Texto_Teste9").innerHTML = "Daily";
+document.getElementById("Periodo_Seta_9").style.visibility = "visible";
+}
 //document.getElementById("Texto_Teste").innerHTML = query;	
 document.getElementById("Time").innerHTML = "Daily";
 
@@ -6009,7 +7880,7 @@ auth_change = true;
 function mostrar_Weekly(){
 
 if(periodo != ""){
-for(i = 0; i<= 5; i++){
+for(i = 0; i<= 8; i++){
 data_inicial[i] = document.getElementById("datepicker_inicial").value;
 data_final = document.getElementById("datepicker_final").value;	
 var s = data_inicial[i];
@@ -6028,7 +7899,7 @@ document.getElementById(df).innerHTML = "Week "+data_final;
 }
 }
 
-for(i = 1; i <= 6; i++){
+for(i = 1; i <= 9; i++){
 document.getElementById("Hora_Inicial_Texto_Teste"+i).style.display = "none";
 document.getElementById("Hora_Final_Texto_Teste"+i).style.display = "none";
 }
@@ -6070,6 +7941,18 @@ if(autorization6 == true){
 document.getElementById("Periodo_Texto_Teste6").innerHTML = "Weekly";
 document.getElementById("Periodo_Seta_6").style.visibility = "visible";
 }
+if(autorization7 == true){
+document.getElementById("Periodo_Texto_Teste7").innerHTML = "Weekly";
+document.getElementById("Periodo_Seta_7").style.visibility = "visible";
+}
+if(autorization8 == true){
+document.getElementById("Periodo_Texto_Teste8").innerHTML = "Weekly";
+document.getElementById("Periodo_Seta_8").style.visibility = "visible";
+}
+if(autorization9 == true){
+document.getElementById("Periodo_Texto_Teste9").innerHTML = "Weekly";
+document.getElementById("Periodo_Seta_9").style.visibility = "visible";
+}
 
 auth_change = true;
 }
@@ -6077,7 +7960,7 @@ auth_change = true;
 function mostrar_Monthly(){
 
 if(periodo != ""){
-for(i = 0; i<= 5; i++){
+for(i = 0; i<= 8; i++){
 data_inicial[i] = document.getElementById("datepicker_inicial").value;
 data_final = document.getElementById("datepicker_final").value;	
 var s = data_inicial[i];
@@ -6088,15 +7971,15 @@ var f = i + 1;
 var di = "Date_Inicial_Texto_Teste"+f;
 var df = "Date_Final_Texto_Teste"+f;
 
-data_inicial[i] = m.toDate().getUTCMonth();
-data_final = n.toDate().getUTCMonth();
+data_inicial[i] = m.toDate().getUTCMonth() + 1;
+data_final = n.toDate().getUTCMonth() + 1;
 		
 document.getElementById(di).innerHTML = "Month "+data_inicial[i]+" to";
 document.getElementById(df).innerHTML = "Month "+data_final;
 }
 }
 
-for(i = 1; i <= 6; i++){
+for(i = 1; i <= 9; i++){
 document.getElementById("Hora_Inicial_Texto_Teste"+i).style.display = "none";
 document.getElementById("Hora_Final_Texto_Teste"+i).style.display = "none";
 }
@@ -6137,6 +8020,18 @@ document.getElementById("Periodo_Seta_5").style.visibility = "visible";
 if(autorization6 == true){
 document.getElementById("Periodo_Texto_Teste6").innerHTML = "Monthly";
 document.getElementById("Periodo_Seta_6").style.visibility = "visible";
+}
+if(autorization7 == true){
+document.getElementById("Periodo_Texto_Teste7").innerHTML = "Monthly";
+document.getElementById("Periodo_Seta_7").style.visibility = "visible";
+}
+if(autorization8 == true){
+document.getElementById("Periodo_Texto_Teste8").innerHTML = "Monthly";
+document.getElementById("Periodo_Seta_8").style.visibility = "visible";
+}
+if(autorization9 == true){
+document.getElementById("Periodo_Texto_Teste9").innerHTML = "Monthly";
+document.getElementById("Periodo_Seta_9").style.visibility = "visible";
 }
 
 auth_change = true;
@@ -6461,11 +8356,127 @@ function sumir_info(){
 
 document.getElementById("info_counter").style.display = "none";
 
+}
+
+///////////////////////////////////////////////////////////// TEMPLATES ///////////////////////////////////////////
+
+$("#template1").click(function(){
+
+
+if(count_template[1] != 9){
+count_template[1] += 1;
+$("#template1").text(count_template[1]);
+}else{
+count_template[1] = 1;
+$("#template1").text(count_template[1]);	
 }	
-	
+
+});
+
+$("#template2").click(function(){
+
+
+if(count_template[2] != 9){
+count_template[2] += 1;
+$("#template2").text(count_template[2]);
+}else{
+count_template[2] = 1;
+$("#template2").text(count_template[2]);	
+}	
+
+});
+
+$("#template3").click(function(){
+
+if(count_template[3] != 9){
+count_template[3] += 1;
+$("#template3").text(count_template[3]);
+}else{
+count_template[3] = 1;
+$("#template3").text(count_template[3]);	
+}	
+
+});	
+
+$("#template4").click(function(){
+
+if(count_template[4] != 9){
+count_template[4] += 1;
+$("#template4").text(count_template[4]);
+}else{
+count_template[4] = 1;
+$("#template4").text(count_template[4]);	
+}	
+
+});
+
+$("#template5").click(function(){	
+
+if(count_template[5] != 9){
+count_template[5] += 1;
+$("#template5").text(count_template[5]);
+}else{
+count_template[5] = 1;
+$("#template5").text(count_template[5]);	
+}	
+
+});	
+
+$("#template6").click(function(){
+
+if(count_template[6] != 9){
+count_template[6] += 1;
+$("#template6").text(count_template[6]);
+}else{
+count_template[6] = 1;
+$("#template6").text(count_template[6]);	
+}	
+
+});	
+
+$("#template7").click(function(){
+
+if(count_template[7] != 9){
+count_template[7] += 1;
+$("#template7").text(count_template[7]);
+}else{
+count_template[7] = 1;
+$("#template7").text(count_template[7]);	
+}	
+
+});	
+
+$("#template8").click(function(){
+
+if(count_template[8] != 9){
+count_template[8] += 1;
+$("#template8").text(count_template[8]);
+}else{
+count_template[8] = 1;
+$("#template8").text(count_template[8]);	
+}	
+
+});	
+
+$("#template9").click(function(){
+
+if(count_template[9] != 9){
+count_template[9] += 1;
+$("#template9").text(count_template[9]);
+}else{
+count_template[9] = 1;
+$("#template9").text(count_template[9]);	
+}	
+
+});	
+
+
+/////////////////////////////////////////////////////////// AJAX REQUEST //////////////////////////////////////////////
+
+
 
 function showUser() {
-		
+			
 		if(abortar_query == false){
 		if(autorizacao == true){
 		document.getElementById("Resumo").style.display = "none";
@@ -6491,10 +8502,97 @@ function showUser() {
                 document.getElementById("txtHint1").innerHTML = this.responseText;
 				document.getElementById("loading").style.display = "none";
 				document.getElementById("Abort_Query").style.display = "none";
-				if(hourly_selected == true){
+				pageTitleNotification.on("Query Done !", 1000);
+				if(hourly_selected == true){	
 				eval(document.getElementById("runscript_hourly").innerHTML);
+				for(i = 2; i <= 9; i++){
+				eval(document.getElementById("runscript_hourly_"+i).innerHTML);	
+				}	
+				if((count_template[1] == 2) || (count_template[2] == 2) || (count_template[3] == 2) || (count_template[4] == 2) || (count_template[5] == 2) || (count_template[6] == 2) || (count_template[7] == 2) || (count_template[8] == 2) || (count_template[9] == 2)){
+				document.getElementById("container2").style.display = "block";	
+				}else{
+				document.getElementById("container2").style.display = "none";	
+				}	
+				if((count_template[1] == 3) || (count_template[2] == 3) || (count_template[3] == 3) || (count_template[4] == 3) || (count_template[5] == 3) || (count_template[6] == 3) || (count_template[7] == 3) || (count_template[8] == 3) || (count_template[9] == 3)){
+				document.getElementById("container3").style.display = "block";	
+				}else{
+				document.getElementById("container3").style.display = "none";	
+				}
+				if((count_template[1] == 4) || (count_template[2] == 4) || (count_template[3] == 4) || (count_template[4] == 4) || (count_template[5] == 4) || (count_template[6] == 4) || (count_template[7] == 4) || (count_template[8] == 4) || (count_template[9] == 4)){
+				document.getElementById("container4").style.display = "block";	
+				}else{
+				document.getElementById("container4").style.display = "none";	
+				}
+				if((count_template[1] == 5) || (count_template[2] == 5) || (count_template[3] == 5) || (count_template[4] == 5) || (count_template[5] == 5) || (count_template[6] == 5) || (count_template[7] == 5) || (count_template[8] == 5) || (count_template[9] == 5)){
+				document.getElementById("container5").style.display = "block";	
+				}else{
+				document.getElementById("container5").style.display = "none";	
+				}
+				if((count_template[1] == 6) || (count_template[2] == 6) || (count_template[3] == 6) || (count_template[4] == 6) || (count_template[5] == 6) || (count_template[6] == 6) || (count_template[7] == 6) || (count_template[8] == 6) || (count_template[9] == 6)){
+				document.getElementById("container6").style.display = "block";	
+				}else{
+				document.getElementById("container6").style.display = "none";	
+				}
+				if((count_template[1] == 7) || (count_template[2] == 7) || (count_template[3] == 7) || (count_template[4] == 7) || (count_template[5] == 7) || (count_template[6] == 7) || (count_template[7] == 7) || (count_template[8] == 7) || (count_template[9] == 7)){
+				document.getElementById("container7").style.display = "block";	
+				}else{
+				document.getElementById("container7").style.display = "none";	
+				}
+				if((count_template[1] == 8) || (count_template[2] == 8) || (count_template[3] == 8) || (count_template[4] == 8) || (count_template[5] == 8) || (count_template[6] == 8) || (count_template[7] == 8) || (count_template[8] == 8) || (count_template[9] == 8)){
+				document.getElementById("container8").style.display = "block";	
+				}else{
+				document.getElementById("container8").style.display = "none";	
+				}
+				if((count_template[1] == 9) || (count_template[2] == 9) || (count_template[3] == 9) || (count_template[4] == 9) || (count_template[5] == 9) || (count_template[6] == 9) || (count_template[7] == 9) || (count_template[8] == 9) || (count_template[9] == 9)){
+				document.getElementById("container9").style.display = "block";	
+				}else{
+				document.getElementById("container9").style.display = "none";	
+				}				
 				}else if(periodo == "daily"){
 				eval(document.getElementById("runscript").innerHTML);
+				for(i = 2; i <= 9; i++){
+				eval(document.getElementById("runscript_"+i).innerHTML);	
+				}
+				if((count_template[1] == 2) || (count_template[2] == 2) || (count_template[3] == 2) || (count_template[4] == 2) || (count_template[5] == 2) || (count_template[6] == 2) || (count_template[7] == 2) || (count_template[8] == 2) || (count_template[9] == 2)){
+				document.getElementById("container2").style.display = "block";	
+				}else{
+				document.getElementById("container2").style.display = "none";	
+				}	
+				if((count_template[1] == 3) || (count_template[2] == 3) || (count_template[3] == 3) || (count_template[4] == 3) || (count_template[5] == 3) || (count_template[6] == 3) || (count_template[7] == 3) || (count_template[8] == 3) || (count_template[9] == 3)){
+				document.getElementById("container3").style.display = "block";	
+				}else{
+				document.getElementById("container3").style.display = "none";	
+				}
+				if((count_template[1] == 4) || (count_template[2] == 4) || (count_template[3] == 4) || (count_template[4] == 4) || (count_template[5] == 4) || (count_template[6] == 4) || (count_template[7] == 4) || (count_template[8] == 4) || (count_template[9] == 4)){
+				document.getElementById("container4").style.display = "block";	
+				}else{
+				document.getElementById("container4").style.display = "none";	
+				}
+				if((count_template[1] == 5) || (count_template[2] == 5) || (count_template[3] == 5) || (count_template[4] == 5) || (count_template[5] == 5) || (count_template[6] == 5) || (count_template[7] == 5) || (count_template[8] == 5) || (count_template[9] == 5)){
+				document.getElementById("container5").style.display = "block";	
+				}else{
+				document.getElementById("container5").style.display = "none";	
+				}
+				if((count_template[1] == 6) || (count_template[2] == 6) || (count_template[3] == 6) || (count_template[4] == 6) || (count_template[5] == 6) || (count_template[6] == 6) || (count_template[7] == 6) || (count_template[8] == 6) || (count_template[9] == 6)){
+				document.getElementById("container6").style.display = "block";	
+				}else{
+				document.getElementById("container6").style.display = "none";	
+				}
+				if((count_template[1] == 7) || (count_template[2] == 7) || (count_template[3] == 7) || (count_template[4] == 7) || (count_template[5] == 7) || (count_template[6] == 7) || (count_template[7] == 7) || (count_template[8] == 7) || (count_template[9] == 7)){
+				document.getElementById("container7").style.display = "block";	
+				}else{
+				document.getElementById("container7").style.display = "none";	
+				}
+				if((count_template[1] == 8) || (count_template[2] == 8) || (count_template[3] == 8) || (count_template[4] == 8) || (count_template[5] == 8) || (count_template[6] == 8) || (count_template[7] == 8) || (count_template[8] == 8) || (count_template[9] == 8)){
+				document.getElementById("container8").style.display = "block";	
+				}else{
+				document.getElementById("container8").style.display = "none";	
+				}
+				if((count_template[1] == 9) || (count_template[2] == 9) || (count_template[3] == 9) || (count_template[4] == 9) || (count_template[5] == 9) || (count_template[6] == 9) || (count_template[7] == 9) || (count_template[8] == 9) || (count_template[9] == 9)){
+				document.getElementById("container9").style.display = "block";	
+				}else{
+				document.getElementById("container9").style.display = "none";	
+				}
 				}else if(periodo == "weekly"){
 				eval(document.getElementById("runscript_week").innerHTML);	
 				}else if(periodo == "monthly"){
@@ -6508,13 +8606,13 @@ function showUser() {
 			
 			
         };
-        xmlhttp.open("GET","/npsmart/quickreport/showCharts/?q1="+query1+"&q2="+query2+"&q3="+query3+"&q4="+query4+"&q5="+query5+"&q6="+query6+"&f1="+nome1+"&f2="+nome2+"&f3="+nome3+"&f4="+nome4+"&f5="+nome5+"&f6="+nome6+"&d1="+data_inicial[0]+"&d2="+data_inicial[1]+"&d3="+data_inicial[2]+"&d4="+data_inicial[3]+"&d5="+data_inicial[4]+"&d6="+data_inicial[5]+"&t1="+tipo_chart1+"&t2="+tipo_chart2+"&t3="+tipo_chart3+"&t4="+tipo_chart4+"&t5="+tipo_chart5+"&t6="+tipo_chart6+"&c1="+tipo_chart_position1+"&c2="+tipo_chart_position2+"&c3="+tipo_chart_position3+"&c4="+tipo_chart_position4+"&c5="+tipo_chart_position5+"&c6="+tipo_chart_position6,true);
+        xmlhttp.open("GET","/npsmart/quickreport/showCharts/?q1="+query1+"&q2="+query2+"&q3="+query3+"&q4="+query4+"&q5="+query5+"&q6="+query6+"&q7="+query7+"&q8="+query8+"&q9="+query9+"&f1="+nome1+"&f2="+nome2+"&f3="+nome3+"&f4="+nome4+"&f5="+nome5+"&f6="+nome6+"&f7="+nome7+"&f8="+nome8+"&f9="+nome9+"&d1="+data_inicial[0]+"&d2="+data_inicial[1]+"&d3="+data_inicial[2]+"&d4="+data_inicial[3]+"&d5="+data_inicial[4]+"&d6="+data_inicial[5]+"&d7="+data_inicial[6]+"&d8="+data_inicial[7]+"&d9="+data_inicial[8]+"&t1="+tipo_chart1+"&t2="+tipo_chart2+"&t3="+tipo_chart3+"&t4="+tipo_chart4+"&t5="+tipo_chart5+"&t6="+tipo_chart6+"&t7="+tipo_chart7+"&t8="+tipo_chart8+"&t9="+tipo_chart9+"&c1="+tipo_chart_position1+"&c2="+tipo_chart_position2+"&c3="+tipo_chart_position3+"&c4="+tipo_chart_position4+"&c5="+tipo_chart_position5+"&c6="+tipo_chart_position6+"&c7="+tipo_chart_position7+"&c8="+tipo_chart_position8+"&c9="+tipo_chart_position9+"&ct1="+count_template[1]+"&ct2="+count_template[2]+"&ct3="+count_template[3]+"&ct4="+count_template[4]+"&ct5="+count_template[5]+"&ct6="+count_template[6]+"&ct7="+count_template[7]+"&ct8="+count_template[8]+"&ct9="+count_template[9],true);
         xmlhttp.send();
 		
      
 		} else {
 		alert("You have to perform at least one query to create the chart");
-	}
+		}
 		} else if(abortar_query == true){
 			xmlhttp.abort();
 			document.getElementById("loading").style.display = "none";
@@ -6567,9 +8665,10 @@ function showContador() {
         xmlhttp.open("GET","/npsmart/quickreport/showCounter/?qa="+query_aux,true);
         xmlhttp.send();
 		
-    } 	
+    }
 	
 </script>
 
 </body>
 </html>
+

@@ -184,19 +184,16 @@ foreach ($node as $k => $v) {
 </div>
 
 <br><br>
+<div class="sortable1">
 <div id="content" class="chart_content"><div id="acc" class="chart1"></div></div>
-<div id="content" class="chart_content"><div id="availability" class="chart"></div></div>
-<div style="clear: both;"></div>			
+<div id="content" class="chart_content"><div id="availability" class="chart"></div></div>			
 <div id="content" class="chart_content"><div id="retainability_cs" class="chart"></div></div>
 <div id="content" class="chart_content"><div id="smp_5" class="chart"></div></div>			
-<div style="clear: both;"></div>
 <div id="content" class="chart_content"><div id="smp_7" class="chart"></div></div>
 <div id="content" class="chart_content"><div id="smp_8" class="chart"></div></div>	
-<div style="clear: both;"></div>			
 <div id="content" class="chart_content"><div id="smp_9" class="chart"></div></div>
 <div id="content" class="chart_content"><div id="traffic" class="chart"></div></div>
-
-<div style="clear: both;"></div>			
+</div>			
 <!--	<div id="content" class="chart_content"><div id="fails_rrc" class="chart1"></div></div>
 	<div id="content" class="chart_content"><div id="fails_hs" class="chart1"></div></div>
 	<div style="clear: both;"></div>

@@ -24,33 +24,6 @@ $(function() {
 	    });
   });
 
-// //let's create arrays
-	<?php 
-	// foreach($rncs as $row){
-		// echo $row->node;
-	// }
-#echo json_encode($rncs);
-
-// foreach($custom as $row){
-		// $custom_cluster[] = $row->node;
-		// }	
-
-
-?>
-var reportagg = "<?php echo $reportagg; ?>";
-var reportnetype = "<?php echo $reportnetype; ?>";
-var reportkpi = "<?php echo $reportkpi; ?>";
-var reportnename = "<?php echo $reportnename; ?>";
-var reportdate = "<?php echo $reportdate; ?>";
-var rnc = <?php echo json_encode($rncs); ?>;	
-var region = <?php echo json_encode($regional); ?>;	
-var cidade = <?php echo json_encode($cidades); ?>;	
-var cluster = <?php echo json_encode($clusters); ?>;	
-//var cell = <?php #echo json_encode($cells); ?>;	
-var nodeb = <?php echo json_encode($nodebs); ?>;	
-var uf = <?php echo json_encode($ufs); ?>;	
-var custom = <?php echo json_encode($custom); ?>;	
-
 // var chocolates = [
     // {display: "Dark chocolate", value: "dark-chocolate" },
     // {display: "Milk chocolate", value: "milk-chocolate" },
@@ -198,46 +171,13 @@ outline:none;
 </style>
 </head>
 <body>
-<?php
- $attributes = array('name' => 'reportopt', 'method' => 'post');
-echo form_open('', $attributes);
-?>
+
 <!--<input type="hidden" id="reportname" name="reportname" value="" />-->
-<input type="hidden" id="reportnetype" name="reportnetype" value="" />
+<!--<input type="hidden" id="reportnetype" name="reportnetype" value="" />
 <input type="hidden" id="reportnename" name="reportnename" value="" />
 <input type="hidden" id="reportdate" name="reportdate" value="" />
-<input type="hidden" id="reportkpi" name="kpi" value="" />
+<input type="hidden" id="reportkpi" name="kpi" value="" />-->
 </form>
-
-
-<?php 
-if (isset($monthnum)){
-	$calendarinfo = $monthnum;
-}
-elseif (isset($weeknum)){
-	$calendarinfo = "Week ".$weeknum;
-} else{
-	$calendarinfo = $reportdate;
-}
-
-#echo count($cells);
-		// foreach($cells as $row){
-			// $cellinfo[$row->cellname] = $row->cellid;
-			// $rnc[] = $row->rnc;
-			// $cellid[] =  $row->cellid;
-			// $cellname[] = $row->cellname;
-			// $site[] = $row->site;
-			// $regional[] = $row->regional;
-			// $uf[] = $row->uf;	
-			// $cluster[] = $row->cluster;
-			// $cidade[] = $row->cidade;
-			
-		// }
-		// $rncunique = $array = array_values(array_filter(array_unique($rnc)));;
-		// $clusterunique = $array = array_values(array_filter(array_unique($cluster)));;
-		// $cidadeunique = $array = array_values(array_filter(array_unique($cidade)));;
-		?>
-
 
        <nav class="navbar navbar-custom">
         <div class="container-fluid">
@@ -263,7 +203,7 @@ elseif (isset($weeknum)){
                             <li class="menuItemnqi"><a href="/npsmart/umts/">Main KPIs</a></li>
                             <li class="menuItemnqi"><a onclick='selectreportname(this)'>AMX NQI HS</a></li>
                             <li class="menuItemnqi"><a onclick='selectreportname(this)'>AMX NQI CS</a></li>
-                            <li class="menuItemnqi"><a href="/npsmart/umts/txintegrity">TX Integrity</a></li>
+                            <li class="menuItemnqi"><a href="/npsmart/umts/tx_integrity">TX Integrity</a></li>
                             <li class="menuItemnqi"><a href="/npsmart/umts/overshooters">Overshooters</a></li>
                             <!--<li class="menuItemnqi"><a href="/npsmart/umts/feature_phase2">Feature Report</a></li>-->
                             <li class="menuItemnqi"><a href="/npsmart/umts/radar">AMX Radar</a></li>

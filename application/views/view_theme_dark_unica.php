@@ -1,4 +1,4 @@
-<script>
+<script type="text/javascript" id="Dark_Unika">
 /**
  * Dark theme for Highcharts JS
  * @author Torstein Honsi
@@ -11,7 +11,7 @@ Highcharts.createElement('link', {
    type: 'text/css'
 }, null, document.getElementsByTagName('head')[0]);
 
-Highcharts.theme = {
+var chart_Dark_Unika = {
    colors: ["#2b908f", "#90ee7e", "#f45b5b", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
       "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
    chart: {
@@ -41,6 +41,7 @@ Highcharts.theme = {
       }
    },
    xAxis: {
+	  visible: true, 
       gridLineColor: '#707073',
       labels: {
          style: {
@@ -58,6 +59,7 @@ Highcharts.theme = {
       }
    },
    yAxis: {
+	  visible: true, 
       gridLineColor: '#707073',
       labels: {
          style: {
@@ -101,7 +103,8 @@ Highcharts.theme = {
    },
    legend: {
       itemStyle: {
-         color: '#E0E0E3'
+         color: '#E0E0E3',
+		 fontWeight: 'bold',		 
       },
       itemHoverStyle: {
          color: '#FFF'
@@ -211,5 +214,5 @@ Highcharts.theme = {
 };
 
 // Apply the theme
-Highcharts.setOptions(Highcharts.theme);
+//Highcharts.setOptions(Highcharts.theme);
 </script>
