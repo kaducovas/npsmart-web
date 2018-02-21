@@ -576,7 +576,7 @@ order by year desc, week desc, node
 		
 		$query = $this->db->query(
 		"
-SELECT year, week, region, uf, cidade, cluster, rnc, nodebname, rncid, ani, cellid, psc, node, 'NETWORK'::text as type, 
+SELECT year, week, region, uf, cidade, cluster, rnc, nodebname, rncid, ani, cellid, psc, node, 'cell'::text as type, 
 
 round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs, 
        round(qdr_ps,2) as qdr_ps, round(throughput,2) as throughput, round(availability,2) as availability, 
@@ -655,7 +655,7 @@ round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs,
 		
 		$query = $this->db->query(
 		"
-SELECT year, week, region, uf, cidade, cluster, rnc, nodebname, rncid, ani, cellid, psc, node, 'NETWORK'::text as type, 
+SELECT year, week, region, uf, cidade, cluster, rnc, nodebname, rncid, ani, cellid, psc, node, 'cell'::text as type, 
 
 round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs, 
        round(qdr_ps,2) as qdr_ps, round(throughput,2) as throughput, round(availability,2) as availability, 
@@ -735,7 +735,7 @@ round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs,
 		
 		$query = $this->db->query(
 		"
-SELECT year, week, region, uf, cidade, cluster, rnc, nodebname, rncid, ani, cellid, psc, node, 'NETWORK'::text as type,
+SELECT year, week, region, uf, cidade, cluster, rnc, nodebname, rncid, ani, cellid, psc, node, 'cell'::text as type,
 
 round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs, 
        round(qdr_ps,2) as qdr_ps, round(throughput,2) as throughput, round(availability,2) as availability, 
@@ -814,7 +814,7 @@ round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs,
 		
 		$query = $this->db->query(
 		"
-SELECT year, week, region, uf, cidade, cluster, rnc, nodebname, rncid, ani, cellid, psc, node, 'NETWORK'::text as type, 
+SELECT year, week, region, uf, cidade, cluster, rnc, nodebname, rncid, ani, cellid, psc, node, 'cell'::text as type, 
 
 round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs, 
        round(qdr_ps,2) as qdr_ps, round(throughput,2) as throughput, round(availability,2) as availability, 
@@ -899,7 +899,7 @@ round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs,
 		
 		$query = $this->db->query(
 		"
-SELECT year, week, region, uf, cidade, cluster, rnc, nodebname, rncid, ani, cellid, psc, node, 'NETWORK'::text as type, 
+SELECT year, week, region, uf, cidade, cluster, rnc, nodebname, rncid, ani, cellid, psc, node, 'cell'::text as type, 
 
 round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs, 
        round(qdr_ps,2) as qdr_ps, round(throughput,2) as throughput, round(availability,2) as availability, 
@@ -978,7 +978,7 @@ round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs,
 		
 		$query = $this->db->query(
 		"
-SELECT year, week, region, uf, cidade, cluster, rnc, nodebname, rncid, ani, cellid, psc, node, 'NETWORK'::text as type, 
+SELECT year, week, region, uf, cidade, cluster, rnc, nodebname, rncid, ani, cellid, psc, node, 'cell'::text as type, 
 
 round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs, 
        round(qdr_ps,2) as qdr_ps, round(throughput,2) as throughput, round(availability,2) as availability, 
@@ -1057,7 +1057,7 @@ round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs,
 		
 		$query = $this->db->query(
 		"
-SELECT year, week, region, uf, cidade, cluster, rnc, nodebname, rncid, ani, cellid, psc, node, 'NETWORK'::text as type, 
+SELECT year, week, region, uf, cidade, cluster, rnc, nodebname, rncid, ani, cellid, psc, node, 'cell'::text as type, 
 
 round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs, 
        round(qdr_ps,2) as qdr_ps, round(throughput,2) as throughput, round(availability,2) as availability, 
@@ -1110,6 +1110,84 @@ round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs,
 	where (year,week) in ((".$yearnum4.",".$weeknum4."))
 	and cluster = '".$node."'
 	order by nodebname, region, rnc, node
+;");
+
+	return $query->result();
+
+	}
+
+	function triage_cell($node,$reportdate){
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));		
+		$date1 = new DateTime($dayweek1);
+		$date2 = new DateTime($dayweek2);
+		$date3 = new DateTime($dayweek3);
+		$date4 = new DateTime($dayweek4);
+		$weeknum1= $date1->format("W");
+		$weeknum2= $date2->format("W");
+		$weeknum3 = $date3->format("W");
+		$weeknum4 = $date4->format("W");
+		$yearnum1= $date1->format("o");
+		$yearnum2= $date2->format("o");
+		$yearnum3 = $date3->format("o");
+		$yearnum4 = $date4->format("o");
+		
+		$query = $this->db->query(
+		"
+SELECT year, week, region, uf, cidade, cluster, rnc, nodebname, rncid, ani, cellid, psc, node, 'cell'::text as type, 
+
+round(qda_cs,2) as qda_cs, round(qda_hs,2) as qda_hs, round(qdr_cs,2) as qdr_cs, 
+       round(qdr_ps,2) as qdr_ps, round(throughput,2) as throughput, round(availability,2) as availability, 
+	   round(retention_cs,2) as retention_cs, round(retention_ps,2) as retention_ps, 
+	   round(hsdpa_users_ratio,2) as hsdpa_users_ratio, 
+	   round(rtwp,2) as rtwp, round(nqi_cs,2) as nqi_cs, round(nqi_hs,2) as nqi_hs, kpis_out, 
+	   kpi, 
+	   
+	   wbbp_total, status_availability, 
+       uncleared_alarms, omr_note, 
+	   omr, 
+	   
+	   tx_type, ping_meandelay, ping_meanjitter, 
+       ping_meanlost, vs_iub_flowctrol_dl_dropnum_lgcport1, vs_iub_flowctrol_ul_dropnum_lgcport1, 
+       vs_iub_flowctrol_dl_congtime_lgcport1, vs_iub_flowctrol_ul_congtime_lgcport1, 
+       atm_dl_utilization, atm_ul_utilization, tx_integrity, tx_note, 
+       tx_omr, 
+	   
+	   rtwp_check, ee_balanced, no_overshooter, covered_sites_count, 
+       covered_sites, parameter_check, mo_out, neighbour_check,  
+	   otm, 
+	   
+	   ee, load, code_utilization, 
+       dlpower_utilization, user_fach_utilization, rach_utilization, 
+       pch_utilization, cnbap_utilization, dlce_utilization, ulce_utilization, 
+       capacity, 
+	   
+       board_found, status_board, np_action_found, 
+       np_solution, plan_eng_nota, 
+       plan_eng_rf, 
+
+       lqw964qam01, lqw9ccpic01, 
+       lqw9ccpic201, lqw9ceeff01, lqw9ceover01, lqw9ccpic301, lqw9ddc01, 
+       lqw9dlce01, lqw9dhcpmp01, lqw9cqipc01, lqw9dyncce01, lqw9hsdpa01, 
+       lqw9hdcode01, lqw9hsupa01, lqw9upatds01, lqw9hu2ms01, lqw9uic01, 
+       lqw9locell01, lqw9utic01, lqw9ulsha01, lqw9ulce01, lqw9colpc01, 
+       imp, 
+
+       count_of_kpi, count_of_analysis, count_of_omr, count_of_tx_omr, 
+       count_of_otm, count_of_cap, count_of_plan_eng_rf, count_of_imp, 
+       count_of_normal, area_hist,
+       area, 
+
+       id, plan_area, causas, data_criacao_week, 
+       planejamento_week, conclusao_week, comentarios, atividade_plano_nominal, 
+       status_acao, 
+       overall_plan_area
+	   
+		FROM umts_kpi.triage
+	where (year,week) in ((".$yearnum4.",".$weeknum4."))
+	and node = '".$node."'
 ;");
 
 	return $query->result();

@@ -351,7 +351,8 @@ outline:none;
 	<option value=60<?php if ($resno==60) echo " selected";?>>60 last days</option>
 	</select> 
 	<input type=checkbox id=showweekend name=showweekend value=showweekend<?php if ($showweekend) echo " checked"?> > Weekends 
-	<input type=submit value="Update"><br><br>
+	<input type=checkbox id=usenearest name=usenearest value=usenearest<?php if ($usenearest) echo " checked"?> > Nearest instead of Grid <br>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=submit value="Update"><br><br>
 </div> 
  
  
@@ -366,7 +367,7 @@ outline:none;
     <div id=chart2 style="text-align:left;"></div>
 	
 	<br><br>
-	    <table   id='t01'><tr><td><b>Cell</b></td><td><b>Dateday</b></td><td><b>PD85</b></td><td><b>Grid</b></td><td><b>Oversh. Distance</b></td><td><b>Users</b></td><td><b>Sites in Coverage</b></td><td><b>X1</b></td><td><b>X2</b></td><td><b>X3</b></td><td><b>X4</b></td><td><b>X5</b></td><td><b>RF Shaping Rate(%) (AVG X1..X5)</b></td></tr>
+	    <table   id='t01'><tr><td><b>Cell</b></td><td><b>Dateday</b></td><td><b>PD85</b></td><td><b>Grid / Nearest</b></td><td><b>Oversh. Distance</b></td><td><b>Sites in Coverage</b></td><td><b>X1</b></td><td><b>X2</b></td><td><b>X3</b></td><td><b>X4</b></td><td><b>X5</b></td><td><b>RF Shaping Rate(%) (AVG X1..X5)</b></td></tr>
 		<?php echo implode(chr(13), $tableHTML); ?>
 		</table><br><br>
 
@@ -394,8 +395,9 @@ $(document).ready(function(){
         var ticks = ['<?php echo join('\',\'', $ticks); ?>'];
         var ticks2 = ['<?php echo join('\',\'', $ticks2); ?>'];
         var legend1 =  ["Over/Under Distance", "RF Shaping Rate"];
-        var legend2 =  ["Cell Health Index", "DL Users"];
+        var legend2 =  ["SHO Radar", "HSPDA Users"];
  
+		v_tech='<?php echo $tech; ?>';
  
  
         plot7 = $.jqplot('chart1', 
@@ -447,7 +449,7 @@ $(document).ready(function(){
             });
         
         
-      
+      if (v_tech=='3g') {
         plot8 = $.jqplot('chart2', [ s_sho, s_users], {
             title:'SHO Radar vs HSDPA Users, <?php echo $cellname; ?>',
             series:[{renderer:$.jqplot.BarRenderer, 
@@ -490,13 +492,13 @@ $(document).ready(function(){
   }
         });
     
-        
+	  } // end if 3g    
 		
 //autocomplete
 $( "#cell" ).autocomplete({
         source: function(request, response) {
             $.getJSON(
-                "cellov/completeTerm",
+                location.href.substring(0, location.href.indexOf("cellov")+6)+ "/completeTerm",
                 { term:request.term, tech:'3G'}, 
                 response
             );

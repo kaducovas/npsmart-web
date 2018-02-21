@@ -14,6 +14,8 @@ public function index()
 		$rnc='RNCRNC';
 		$resno=15;
 		$showweekend=false;
+		$usenearest=false;
+		$tech='2g';
 		
 		if ($this->input->post('cell'))  {
 			$cellname = $this->input->post('cell');
@@ -25,18 +27,23 @@ public function index()
 		if ($this->input->post('showweekend'))  {
 			$showweekend = $this->input->post('showweekend');
 		}
+		if ($this->input->post('usenearest'))  {
+			$usenearest = $this->input->post('usenearest');
+		}
 		
-			
-
+		
+		//determine which tech we are working with - 3G or 4G
+		$res = $this->model_overshooting->getCellTech($cellname);
+		if ($res) $tech= $res[0]->tech; //3g or 4g 
 	  
-		$res = $this->model_overshooting->getRFSRData($cellname, $resno);
+		$res = $this->model_overshooting->getRFSRData($cellname, $tech, $resno);
 	    //s1 - over/undershoot distance, s2 - RF Shaping Rate
 		// TODO: error check
 		
 		$data['tableHTML']=array();
  
 		if (!$res) { 
-		echo "no data found for cell ".$cellname." for last ".$resno." days <br>";
+		echo "no data found for ".$tech." cell ".$cellname." for last ".$resno." days <br>";
 		return;
 		}
  
@@ -46,6 +53,8 @@ public function index()
 		$data['mindate']=$res[0]->dateday;
 		$data['resno']=$resno;
 		$data['showweekend']=$showweekend;
+		$data['usenearest']=$usenearest;
+		$data['tech']=$tech;
  
 		
 		$data['s1'] = array();
@@ -63,14 +72,28 @@ public function index()
 				{
 					if (date('N', strtotime($row->dateday)) >= 6) continue;
 				}
-				array_push($data['s1'], $row->distance);
+				if (!$usenearest)
+				{
+					// default mode - using grid
+					array_push($data['s1'], $row->distance);
+					array_push($data['colors'], $row->isovershooter == 'YES' ? '#C7754C' : '#00749F');
+				}
+				else
+				{
+					//using nearest instead of grid
+					array_push($data['s1'], $row->distance_nr);
+					array_push($data['colors'], $row->pd_85 > $row->nearest ? '#C7754C' : '#00749F');
+				}
+				
+				
 				array_push($data['s2'], $row->rfsr);
-				array_push($data['colors'], $row->isovershooter == 'YES' ? '#C7754C' : '#00749F');
+				
 				array_push($data['ticks'], $row->tick); //$row->distance);
 				//array_push($data['s1'], $row->distance);
 				array_push($data['tableHTML'], '<tr><td>'.$row->cellname.'</td>
-				<td>'.$row->dateday.'</td><td>'.$row->pd_85.'</td><td>'.$row->grid.'</td>
-				<td>'.($row->pd_85 - $row->grid).'</td><td>0</td><td>'.$row->sitesincov.'</td>
+				<td>'.$row->dateday.'</td><td>'.$row->pd_85.'</td>
+				<td>'.($usenearest ? $row->nearest : $row->grid).'</td>
+				<td>'.round($row->pd_85 - ($usenearest ? $row->nearest : $row->grid),2).'</td><td>'.$row->sitesincov.'</td>
 				<td>'.round($row->x1,2).'</td><td>'.round($row->x2,2).'</td><td>'.round($row->x3,2).'</td>
 				<td>'.round($row->x4,2).'</td><td>'.round($row->x5,2).'</td><td>'.round($row->rfsr,2).'</td>
 				</tr>');
@@ -79,27 +102,36 @@ public function index()
 			
 		} 
 
- 	
-		$res = $this->model_overshooting->getRFSRKPIs($cellname, $data['rnc'], $data['cellid'], $data['mindate'], $data['maxdate']);
-	    
 		
-		if ($res) { 
-			foreach($res as $row){
-			if ($row->dateday!='') {
-				if (!$showweekend)
-				{
-					if (date('N', strtotime($row->dateday)) >= 6) continue;
-				}
-				array_push($data['sho'], $row->sho_overhead_radar_score);
-				array_push($data['users'], $row->hsdpa_users);
-				array_push($data['ticks2'], $row->tick);  
-			}
+		if ($tech=='3g') {
+ 	
+			$res = $this->model_overshooting->getRFSRKPIs($cellname, $data['rnc'], $data['cellid'], $data['mindate'], $data['maxdate']);
 			
-		} 	
-		}
+			if ($res) { 
+				foreach($res as $row){
+				if ($row->dateday!='') {
+					if (!$showweekend)
+					{
+						if (date('N', strtotime($row->dateday)) >= 6) continue;
+					}
+					array_push($data['sho'], $row->sho_overhead_radar_score);
+					array_push($data['users'], $row->hsdpa_users);
+					array_push($data['ticks2'], $row->tick);  
+				}
+				
+			} 	
+			}
+		
+		//todo: for 4g select some diferent KPIs
 	 
-		$data['maxRadar'] = max($data['sho']) + 0.3;
-		$data['minRadar'] = min($data['sho']) - 0.3;
+			$data['maxRadar'] = max($data['sho']) + 0.3;
+			$data['minRadar'] = min($data['sho']) - 0.3;
+		}
+		else
+		{
+			$data['maxRadar'] = 10;
+			$data['minRadar'] = 0;
+		}
 	 
 		//$data['s1'] = array(292.66,278.66,358.23,450.26,376.71,492.45,326.57,306.74,557.07,493.38,414.45,307.31,421.09,476.8,330.77,508.24,380.94,232.95,73.16,374.63,385.39,281.64,309.9,342.83);
 		//$data['s2'] = array(80.5,80.43,78.99,75.55,79.89,73.66,79.78,79.96,73.18,73.51,74.97,79.98,75.32,73.35,79.71,72.66,78.53,80.97,100,79.43,79.16,80.34,79.97,79.26);
@@ -151,16 +183,21 @@ public function index()
 	function overshooting()
 	{
 		$this->load->model('model_overshooting');
-		$last4weeks = [3,2,1,52];
+		$last4weeks = [6,5,4,3];
 		$regions = ['BASE','CO','ES','MG','NE','PRSC'];
 		$data['regions'] = $regions;
 		$data['seriesCode'] = array();
 		$data['last4weeks'] = $last4weeks;
+		$tech='3g';
+		
+		if (isset($_GET['tech'])) $tech=strtolower($_GET['tech']);
+		
+		$data['tech'] = $tech;
 		
 		//load data per week
 		for ($i=3;$i>=0;$i--)
 		{
-			$res= $this->model_overshooting->getRegionOvershootersWk($last4weeks[$i]);
+			$res= $this->model_overshooting->getRegionOvershootersWk($last4weeks[$i], $tech);
 			//Wk Region	<40			40<60		60<95		>95
 			//1	"BASE"	"0.2349"	"1.6873"	"6.8774"	"91.2003"
 			//...6 lines always ordered by week, region - regions are in alphabetical order
@@ -206,7 +243,7 @@ public function index()
 				//basically string will be formed explicitly following regions order
 				//and if for some reason data were not retrieved, 0 will be assigned
 				
-				for ($k=0;$k<count($regions)-1;$k++) 
+				for ($k=0;$k<count($regions);$k++) 
 				{
 					// < 40%	
 					if (array_key_exists($regions[$k], $cat_less_40))
@@ -289,16 +326,21 @@ public function index()
 	{
 		//
 		$this->load->model('model_overshooting');
-		$last4weeks = [3,2,1,52];
+		$last4weeks = [6,5,4,3];
 		$regions = ['CAMPINA GRANDE', 'RECIFE', 'CARUARU', 'PARNAMIRIM', 'JOÃO PESSOA', 'NATAL'];
 		$data['seriesCode'] = array();
 		$data['last4weeks'] = $last4weeks;
 		$data['regions'] = $regions;
+		$tech='3g';
 		
+		if (isset($_GET['tech'])) $tech=strtolower($_GET['tech']);
+		
+		$data['tech'] = $tech;
+				
 		//load data per week
 		for ($i=3;$i>=0;$i--)
 		{
-			$res= $this->model_overshooting->getClusterOvershootersWk_tmp($last4weeks[$i]);
+			$res= $this->model_overshooting->getClusterOvershootersWk_tmp($last4weeks[$i], $tech);
 			//Wk Region	<40			40<60		60<95		>95
 			//1	"BASE"	"0.2349"	"1.6873"	"6.8774"	"91.2003"
 			//...6 lines always ordered by week, region - regions are in alphabetical order
@@ -344,7 +386,7 @@ public function index()
 				//basically string will be formed explicitly following regions order
 				//and if for some reason data were not retrieved, 0 will be assigned
 				
-				for ($k=0;$k<count($regions)-1;$k++) 
+				for ($k=0;$k<count($regions);$k++) 
 				{
 					// < 40%	
 					if (array_key_exists($regions[$k], $cat_less_40))
@@ -427,16 +469,30 @@ public function index()
 	{
 		//ini_set('memory_limit', '2048M');
 		$p_week=1;
+		$p_region='NE';
+		$tech='3g';
+		
 		if ($this->input->post('week')) {
 			$p_week = $this->input->post('week');
 		}
+		if ($this->input->post('region')) {
+			$p_region = $this->input->post('region');
+			$p_region = strtoupper($p_region);
+		}
+		if ($this->input->post('regcsv')) {
+			$p_region = $this->input->post('regcsv');
+			$p_region = strtoupper($p_region);
+		}
+		if ($this->input->post('tech')) {
+			$tech = $this->input->post('tech');
+			$tech = strtolower($tech);
+		}
  
-		
 		//save to npsmart/output
 		$this->load->model('model_overshooting');
-		$res= $this->model_overshooting->getRawOvershooters($p_week);
+		$res= $this->model_overshooting->getRawOvershooters($p_week, $p_region, $tech);
 		 
-		$fileName= 'overshooters_wk'.$p_week.'_'.time().'.csv';
+		$fileName= 'overshooters_wk'.$p_week.'_'.$p_region.'_'.$tech.'_'.time().'.csv';
 		//$fileName='overshooters_wk1_1516392608.csv';
  
 		  $fp = fopen(__DIR__."/../../output/".$fileName, 'w');
@@ -457,6 +513,222 @@ public function index()
 		echo $fileName;
 		
 	}
+	
+	
+	function new_site_grid()
+	{
+		// some random values to use as default
+		$p_lat=-16.699186;
+		$p_lon=-49.299506;
+		$p_azm1=0;
+		$p_azm2=120;
+		$p_azm3=240;
+		$tilt1=10;
+		$tilt2=10;
+		$tilt3=10;
+		
+		
+		if ($this->input->post('txtLat')) $p_lat = $this->input->post('txtLat');
+		if ($this->input->post('txtLon')) $p_lon = $this->input->post('txtLon');
+		if ($this->input->post('txtAzm1')) $p_azm1 = $this->input->post('txtAzm1');
+		if ($this->input->post('txtAzm2')) $p_azm2 = $this->input->post('txtAzm2');
+		if ($this->input->post('txtAzm3')) $p_azm3 = $this->input->post('txtAzm3');
+		
+		$data['txtLat']=$p_lat;
+		$data['txtLon']=$p_lon;
+		$data['txtAzm1']=$p_azm1;
+		$data['txtAzm2']=$p_azm2;
+		$data['txtAzm3']=$p_azm3;
+	
+		$grid1=30000;
+		$grid2=30000;
+		$grid3=30000;
+		$nearest1=30000;
+		$nearest2=30000;
+		$nearest3=30000;
+		
+	
+		$this->load->model('model_overshooting');
+		$res= $this->model_overshooting->getGridNewSite($p_lat, $p_lon, round($p_azm1), round($p_azm2), round($p_azm3));
+ 
+		
+	 	
+		foreach($res as $row){
+				if ($row->cellname!='') {
+					if ($row->cellname=='sector_1') 
+					{
+						$grid1=$row->grid;
+						$nearest1=$row->nearest;
+					}
+					if ($row->cellname=='sector_2') 
+					{
+						$grid2=$row->grid;
+						$nearest2=$row->nearest;
+					}
+					if ($row->cellname=='sector_3') 
+					{
+						$grid3=$row->grid;
+						$nearest3=$row->nearest;
+					}
+				}
+			
+			} 
+			
+		$res= $this->model_overshooting->getTiltForGrid($grid1);
+		if ($res) $tilt1= $res[0]->tilt; 
+		$res= $this->model_overshooting->getTiltForGrid($grid2);
+		if ($res) $tilt2= $res[0]->tilt; 
+		$res= $this->model_overshooting->getTiltForGrid($grid3);
+		if ($res) $tilt3= $res[0]->tilt; 
+		
+		
+		$data['grid1']=$grid1;
+		$data['grid2']=$grid2;
+		$data['grid3']=$grid3;
+		$data['nearest1']=$nearest1;
+		$data['nearest2']=$nearest2;
+		$data['nearest3']=$nearest3;
+		$data['tilt1']=$tilt1;
+		$data['tilt2']=$tilt2;
+		$data['tilt3']=$tilt3;
+		
+		
+		$this->load->view('view_header');
+		$this->load->view('view_grid_new_site.php',$data);
+	}
+	
+	function new_sites()
+	{
+		$table="";
+		$sites=array();
+		$this->load->model('model_overshooting');
+		$res= $this->model_overshooting->getNewSites();
+ 
+		
+	 	
+		foreach($res as $row){
+				if ($row->nodebname!='') {
+					array_push($sites, '<td>'.$row->nodebname.'</td><td>'.$row->latitude.'</td><td>'.$row->longitude.'</td>');
+				}
+		}
+
+		echo "<b>Sites integrated within last 2-3 days:</b> <br><table border=1><tr><td>Site</td><td>Latitude</td><td>Longitude</td></tr><tr>".join("</tr><tr>",$sites)."</tr></table>";
+		
+	}
+	
+	
+	
+	function who_covers()
+	{
+		$p_lat=-22.242514;
+		$p_lon=-54.809016;
+		$p_radius=50;
+		$totalCov=0;
+		
+		if ($this->input->post('txtLat')) $p_lat = $this->input->post('txtLat');
+		if ($this->input->post('txtLon')) $p_lon = $this->input->post('txtLon');
+		if ($this->input->post('txtRadius')) $p_radius = $this->input->post('txtRadius');
+		
+		
+		$data['txtLat']=$p_lat;
+		$data['txtLon']=$p_lon;
+		$data['txtRadius']=$p_radius;
+		
+		$data['cells'] = array();
+		$data['azm'] = array();
+		$data['grid'] = array();
+		$data['nearest'] = array();
+		$data['pd_85'] = array();
+		$data['dist_to_point'] = array();
+		$data['bins_at_point'] = array();
+		$data['rscp_at_point'] = array();
+		
+		$this->load->model('model_overshooting');
+		$res= $this->model_overshooting->who_covers($p_lat, $p_lon, $p_radius);
+ 
+		
+	 	
+		foreach($res as $row){
+				if ($row->cellname!='') {
+					array_push($data['cells'], $row->cellname);
+					array_push($data['azm'], $row->azimuth);
+					array_push($data['grid'], $row->grid);
+					array_push($data['nearest'], $row->nearest);
+					array_push($data['pd_85'], $row->pd_85);
+					array_push($data['dist_to_point'], $row->dist_to_point);
+					array_push($data['bins_at_point'], $row->bins_at_point);
+					array_push($data['rscp_at_point'], $row->rscp_at_point);
+				}
+		}
+
+		$data['total_bins']=array_sum($data['bins_at_point']);
+		$this->load->view('view_header');
+		$this->load->view('view_who_covers.php',$data);
+		
+		
+	}
+	
+	
+	
+	
+	function intersections()
+	{
+		$p_name='UMGSAV060';
+		$totalCov=0;
+		
+		if ($this->input->post('txtCellName')) $p_name = $this->input->post('txtCellName');
+		if ($this->input->post('txtLon')) $p_lon = $this->input->post('txtLon');
+		if ($this->input->post('txtRadius')) $p_radius = $this->input->post('txtRadius');
+		
+		
+		$data['txtCellName']=$p_name;
+		$data['cell_grid']=0;
+		$data['cell_azm']=0;
+		$data['cell_pd_85']=0;
+					
+					
+		$data['cells'] = array();
+		$data['azm'] = array();
+		$data['grid'] = array();
+		$data['is_nb'] = array();
+		$data['pd_85'] = array();
+		$data['dist_to_point'] = array();
+		$data['bins_at_point'] = array();
+		
+		$this->load->model('model_overshooting');
+		$res= $this->model_overshooting->intersections($p_name);
+ 
+		if (!$res) { 
+		echo "no data found for cell ".$p_name."  <br>";
+		return;
+		}
+		
+		
+	 	
+		foreach($res as $row){
+				if ($row->cellname!='') {
+					
+					$data['cell_grid']=$row->grid;
+					$data['cell_azm']=$row->azimuth;
+					$data['cell_pd_85']=$row->pd_85;
+					
+					array_push($data['cells'], $row->ncellname);
+					array_push($data['azm'], $row->nb_azimuth);
+					array_push($data['grid'], round($row->n_grid,2));
+					array_push($data['pd_85'], round($row->n_pd85,2));
+					array_push($data['dist_to_point'], round($row->nearest_intersection,2));
+					array_push($data['bins_at_point'], $row->samples_in_intersection);
+					array_push($data['is_nb'], $row->nb_declared);
+				}
+		}
+
+		$data['total_bins']=array_sum($data['bins_at_point']);
+		$this->load->view('view_header');
+		$this->load->view('view_intersection.php',$data);
+		
+		
+	}
+	
 }	
 ?>
 	

@@ -49,7 +49,7 @@ if($reportnetype == 'custom'){
  (select * from lte_kpi.".$rank."('".$reportnetype."', '".$kpi."', '".$reportdate."', '".$reportnename."')) r
  inner join (select * from lte_kpi.".$fails."('".$reportnetype."', '".$kpi."', '".$reportdate."', '".$reportnename."')) f 
  on r.enodeb = f.enodeb and r.locellid = f.locellid
- order by rank LIMIT 1000");
+ order by rank LIMIT 200");
 	 return $query->result();
 	 }	
 

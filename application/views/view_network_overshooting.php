@@ -153,10 +153,13 @@ jQuery.fn.filterByText = function(textbox) {
 	
 function downloadCSV(p_week)
 {
- 
+var v_region=$('#regcsv').val();
+var v_tech='<?php echo $tech; ?>';
 $.post("overshcsv",
 		{
-			tech: "3G"
+			week: p_week,
+			region: v_region,
+			tech: v_tech
 		},
 		function(data, status){
 			//alert(data);
@@ -322,7 +325,7 @@ outline:none;
 	
 
  <form name="frmOv" id="frmOv" method="post" action="cellov/overshcsv">
- </form>
+ 
     
     <div id=container style=' background-color:#ccc'>
 </div>
@@ -330,7 +333,16 @@ outline:none;
 <div id="linkD"></div>
 
 <br>
-Download data for (CO & NE regions):<br>
+Download data for <select id="regcsv" name="regcsv">
+<option value=NE>NE</option>
+<option value=CO>CO</option>
+<option value=PRSC>PRSC</option>
+<option value=BASE>BASE</option>
+<option value=ES>ES</option>
+<option value=MG>MG</option>
+</select>
+</form>
+:<br>
 <ul>
 <li><a href=# onclick="downloadCSV(<?php echo $last4weeks[0]; ?>)">Week <?php echo $last4weeks[0]?></a></li>
 <li><a href=# onclick="downloadCSV(<?php echo $last4weeks[1]; ?>)">Week <?php echo $last4weeks[1]?></a></li>
@@ -350,7 +362,7 @@ Highcharts.chart('container', {
     },
 
     title: {
-        text: 'Cell Mapping - Overshooters; <?php echo "Weeks: ".$last4weeks[3].", ".$last4weeks[2].", ".$last4weeks[1].", ".$last4weeks[0]." " ?> '
+        text: 'Cell Mapping - Overshooters <?php echo strtoupper($tech)."; Weeks: ".$last4weeks[3].", ".$last4weeks[2].", ".$last4weeks[1].", ".$last4weeks[0]." " ?> '
     },
 
     xAxis: {

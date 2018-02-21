@@ -3,6 +3,7 @@
 $(document).ready( function () {
   $('#table_id').DataTable( {
     "bPaginate": true,
+	processing: true,
 	"aaSorting": [],
 	"bInfo": false,
 	"pageLength": 15

@@ -132,7 +132,11 @@ $( table.table().container() ).on( 'keyup', 'tfoot input', function () {
             .search( this.value )
             .draw();
     } );
-
+	 
+    $('button').click( function() {
+        var form = table.$('input, select').serialize();
+		alert(form);	
+    } );
   } );
 
 $(function() {	
@@ -321,6 +325,9 @@ outline:none;
 <?php
  $attributes = array('name' => 'reportopt', 'method' => 'post');
 echo form_open('', $attributes);
+$variavelphp = "<script>document.write(form)</script>";
+echo $variavelphp;
+echo 'oi';
 ?>
 <!--<input type="hidden" id="reportname" name="reportname" value="" />-->
 <input type="hidden" id="reportnetype" name="reportnetype" value="" />
@@ -526,3 +533,4 @@ Network Node : <select name="parent_selection" id="parent_selection" style="widt
             </div>
         </div>
     </nav>
+<p><a href='#' onclick='selectformtriage(".$reportnetype.")'><button>Submit</button></a></p>

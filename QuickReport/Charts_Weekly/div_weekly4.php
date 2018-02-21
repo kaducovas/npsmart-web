@@ -60,7 +60,6 @@ $ct7 = ($_GET['ct7']);
 $ct8 = ($_GET['ct8']);
 $ct9 = ($_GET['ct9']);
 
-
 if($q1 != ""){	
 $kpi_query1 = $this->db->query("".$q1."");	
 }	
@@ -153,7 +152,478 @@ $v9 = "false";
 
 ?>
 
-<script type="text/javascript" id="runscript_week_4">
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.btn_show4w {
+  
+  writing-mode: tb-rl;
+  cursor: pointer;
+  font-family: 'Open Sans', 'sans-serif';
+  border-radius: 5px;
+  padding: 5px 1px;
+  font-size: 22px;
+  text-decoration: none;
+  margin: 5px;
+  color: #fff;
+  display: inline-block;
+}
+
+.btn_show4w:active {
+  transform: translate(0px, 5px);
+  -webkit-transform: translate(0px, 5px);
+  box-shadow: 0px 1px 0px 0px;
+}
+
+.red {
+  margin-top: 240px;
+  background-color: #e74c3c;
+  box-shadow: 0px 0px 0px 5px #CE3323;
+  
+}
+
+.red:hover {
+  background-color: #FF6656;
+}
+
+.outer4w{
+	
+    width: 100%;
+	max-width: 100%;
+	max-height: 670px;
+	overflow: hidden;
+	white-space:nowrap;
+	
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 40%;
+}
+
+
+td, th {
+	
+    border: 1px solid #aaaaaa;
+    text-align:center;
+    padding: 8px;
+}
+
+th {
+
+font-size: 15px;	
+font-weight: bold;	
+	
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+#container4w {
+
+display: none;
+width: 95%;
+height: 650px;
+margin: 5px;
+		
+}
+
+#buttons_show4w{
+
+margin: 5px;	
+display: none;
+width: 2.5%;
+height: 650px;
+background-color: lightgray;
+vertical-align:top;
+width:45px;
+max-width: 45px;
+	
+}
+
+#Resumex4w{
+
+width: 25%;
+margin: 5px;
+display: none;
+height: 650px;
+display: none;
+vertical-align:top;
+
+}
+
+.cs_menu_theme4w, .cs_menu_txt4w, .cs_menu_color4w, .cs_menu_line_style4w{
+
+margin:10px 10px 10px 0px; 
+display:block; 
+width: 100%;
+background-color: #3C6D7A; 
+text-align:center;
+border: 1px solid black;
+
+	
+}
+
+.cs_menu_txt4w p, .cs_menu_color4w p, .cs_menu_line_style4w p, .cs_menu_theme4w p{
+
+text-align:left;
+margin: 10px;
+font-size:14px;
+
+}
+
+.cs_menu_txt4w p:first-child, .cs_menu_color4w p:first-child, .cs_menu_theme4w p:first-child, .cs_menu_line_style4w p:first-child {
+
+
+width: 100%;
+margin: 0px 0px 0px 10px;
+text-align:left;
+color:white;
+font-size:20px;
+font-family: 'Rubik', sans-serif;
+
+}
+	
+</style>
+</head>
+<body>
+
+<div id="escala4w" style="display: none"><div style="display:inline-block">min Y: <input id="scale_min4w" type="number" style="width:70px"/></div><div style="display:inline-block; margin-left: 20px">max Y: <input id="scale_max4w" type="number" style="width:70px"/></div></div>
+<div class= "outer4w">
+
+
+<div id="container4w"></div>
+
+<div id="buttons_show4w">
+ <span class="btn_show4w red">Customize Chart <i id="seta_show4w" class="fa fa-arrow-left"></i></span>
+</div>
+
+<div id="Resumex4w">
+
+<div class="Painel" style = "border: 2px solid black; width: 100%"><div style="font-size: 25px; text-align:center; margin-top: 10px; color: white"><div style="display:inline-block; margin-right: 10px; float: middle"><b>Custom your Charts</b></div></div></div>
+<div style = "border: 2px solid black; width: 100%; height: 600px">
+<div class="cs_menu_theme4w">
+<p> Layout <span style="float:right; margin-top:-12px"><button id="btn_theme4w" class="w3-btn w3-xlarge w3-text-black"><i id="Seta_theme4w" class="fa fa-caret-down"></i></button></span></p>
+<div id= "div_theme4w" style="display:none; background-color:white">
+<p style="color:black; font-size: 15px">theme4w: <br><select class="tema" id="theme4w" type="text"></p>
+<option value="" selected="selected">Select a theme</option>
+<option value="val_538">538</option>
+<option value="DarkBlue">Dark Blue</option>
+<option value="DarkGreen">Dark Green</option>
+<option value="DarkUnika">Dark Unika</option>
+<option value="Null">Empty</option>
+<option value="FlatDark">Flat Dark</option>
+<option value="val_ffx">FFX</option>
+<option value="Skies">Google</option>
+<option value="SandSignika">Sand Signika</option>
+</select>
+<p>Font Family: <br><input type="text" id="minha_Fonte4w"></input></p>
+<p>Font Size Axis: <br><input type="number" id="myFontSize_Axis4w" value="11"></input></p>
+<p>Font Size Title: <br><input type="number" id="myFontSize_Title4w" value="18"></input></p>
+<p>Color Axis: <br><input id="colorSelector_Axis4w" type="text"></input></p>
+<p>Color Title: <br><input id="colorSelector_Title4w" type="text"></input></p>
+</div>
+</div>
+<div class="cs_menu_txt4w">
+<p> Text <span style="float:right; margin-top:-12px"><button id="btn_text4w" class="w3-btn w3-xlarge w3-text-black"><i id="Seta_Text4w" class="fa fa-caret-down"></i></button></span></p>
+<div id= "div_text4w" style="display:none; background-color:white">
+<p style="color:black; font-size: 15px">Title: <br><input id="txt_title4w" type="text"></input></p>
+<p>Legend Item 1: <br><input id="txt_legend1_4w" type="text"></input></p>
+<p>Legend Item 2: <br><input id="txt_legend2_4w" type="text"></input></p>
+<p>Legend Item 3: <br><input id="txt_legend3_4w" type="text"></input></p>
+<p>Legend Item 4: <br><input id="txt_legend4_4w" type="text"></input></p>
+<p>Legend Item 5: <br><input id="txt_legend5_4w" type="text"></input></p>
+<p>Legend Item 6: <br><input id="txt_legend6_4w" type="text"></input></p>
+<p>Legend Item 7: <br><input id="txt_legend7_4w" type="text"></input></p>
+<p>Legend Item 8: <br><input id="txt_legend8_4w" type="text"></input></p>
+<p>Legend Item 9: <br><input id="txt_legend9_4w" type="text"></input></p>
+</div>
+</div>
+<div class="cs_menu_color4w">
+<p> Colors <span style="float:right; margin-top:-12px"><button id="btn_colors4w" class="w3-btn w3-xlarge w3-text-black"><i id="Seta_Colors4w" class="fa fa-caret-down"></i></button></span></p>
+<div id= "div_colors4w" style="display:none; background-color:white">
+<p style="color:black; font-size: 15px">Color Line 1: <br><input id="colorSelector1_4w" type="text"></input></p>
+<p>Color Line 2: <br><input id="colorSelector2_4w" type="text"></input></p>
+<p>Color Line 3: <br><input id="colorSelector3_4w" type="text"></input></p>
+<p>Color Line 4: <br><input id="colorSelector4_4w" type="text"></input></p>
+<p>Color Line 5: <br><input id="colorSelector5_4w" type="text"></input></p>
+<p>Color Line 6: <br><input id="colorSelector6_4w" type="text"></input></p>
+<p>Color Line 7: <br><input id="colorSelector7_4w" type="text"></input></p>
+<p>Color Line 8: <br><input id="colorSelector8_4w" type="text"></input></p>
+<p>Color Line 9: <br><input id="colorSelector9_4w" type="text"></input></p>
+</div>
+</div>
+<div class="cs_menu_line_style4w">
+<p> Line <span style="float:right; margin-top:-12px"><button id="btn_line4w" class="w3-btn w3-xlarge w3-text-black"><i id="Seta_Line4w" class="fa fa-caret-down"></i></button></span></p>
+<div id= "div_colors4w" style="display:block; background-color:white">
+<div id="div_line4w" style="display:none">
+<div style="display:inline-block">
+<p style="color:black; font-size: 14px">Line Style 1: <br><select id="linestyle1_4w" type="text">
+<option value="" selected="selected">Select a type</option>
+<option value="Solid">Solid</option><span style="margin-left: 10px">
+<option value="ShortDash">ShortDash</option>
+<option value="ShortDot">ShortDot</option>
+<option value="ShortDashDot">ShortDashDot</option>
+<option value="ShortDashDotDot">ShortDashDotDot</option>
+<option value="Dot">Dot</option>
+<option value="Dash">Dash</option>
+<option value="LongDash">LongDash</option>
+<option value="DashDot">DashDot</option>
+<option value="LongDashDot">LongDashDot</option>
+<option value="LongDashDotDot">LongDashDotDot</option>
+</select></p>
+<p>Line Style 2: <br><select id="linestyle2_4w" type="text">
+<option value="" selected="selected">Select a type</option>
+<option value="Solid">Solid</option>
+<option value="ShortDash">ShortDash</option>
+<option value="ShortDot">ShortDot</option>
+<option value="ShortDashDot">ShortDashDot</option>
+<option value="ShortDashDotDot">ShortDashDotDot</option>
+<option value="Dot">Dot</option>
+<option value="Dash">Dash</option>
+<option value="LongDash">LongDash</option>
+<option value="DashDot">DashDot</option>
+<option value="LongDashDot">LongDashDot</option>
+<option value="LongDashDotDot">LongDashDotDot</option>
+</select></p>
+<p>Line Style 3: <br><select id="linestyle3_4w" type="text">
+<option value="" selected="selected">Select a type</option>
+<option value="Solid">Solid</option>
+<option value="ShortDash">ShortDash</option>
+<option value="ShortDot">ShortDot</option>
+<option value="ShortDashDot">ShortDashDot</option>
+<option value="ShortDashDotDot">ShortDashDotDot</option>
+<option value="Dot">Dot</option>
+<option value="Dash">Dash</option>
+<option value="LongDash">LongDash</option>
+<option value="DashDot">DashDot</option>
+<option value="LongDashDot">LongDashDot</option>
+<option value="LongDashDotDot">LongDashDotDot</option>
+</select></p>
+<p>Line Style 4: <br><select id="linestyle4_4w" type="text">
+<option value="" selected="selected">Select a type</option>
+<option value="Solid">Solid</option>
+<option value="ShortDash">ShortDash</option>
+<option value="ShortDot">ShortDot</option>
+<option value="ShortDashDot">ShortDashDot</option>
+<option value="ShortDashDotDot">ShortDashDotDot</option>
+<option value="Dot">Dot</option>
+<option value="Dash">Dash</option>
+<option value="LongDash">LongDash</option>
+<option value="DashDot">DashDot</option>
+<option value="LongDashDot">LongDashDot</option>
+<option value="LongDashDotDot">LongDashDotDot</option>
+</select></p>
+<p>Line Style 5: <br><select id="linestyle5_4w" type="text">
+<option value="" selected="selected">Select a type</option>
+<option value="Solid">Solid</option>
+<option value="ShortDash">ShortDash</option>
+<option value="ShortDot">ShortDot</option>
+<option value="ShortDashDot">ShortDashDot</option>
+<option value="ShortDashDotDot">ShortDashDotDot</option>
+<option value="Dot">Dot</option>
+<option value="Dash">Dash</option>
+<option value="LongDash">LongDash</option>
+<option value="DashDot">DashDot</option>
+<option value="LongDashDot">LongDashDot</option>
+<option value="LongDashDotDot">LongDashDotDot</option>
+</select></p>
+<p>Line Style 6: <br><select id="linestyle6_4w" type="text">
+<option value="" selected="selected">Select a type</option>
+<option value="Solid">Solid</option>
+<option value="ShortDash">ShortDash</option>
+<option value="ShortDot">ShortDot</option>
+<option value="ShortDashDot">ShortDashDot</option>
+<option value="ShortDashDotDot">ShortDashDotDot</option>
+<option value="Dot">Dot</option>
+<option value="Dash">Dash</option>
+<option value="LongDash">LongDash</option>
+<option value="DashDot">DashDot</option>
+<option value="LongDashDot">LongDashDot</option>
+<option value="LongDashDotDot">LongDashDotDot</option>
+</select></p>
+<p>Line Style 7: <br><select id="linestyle7_4w" type="text">
+<option value="" selected="selected">Select a type</option>
+<option value="Solid">Solid</option>
+<option value="ShortDash">ShortDash</option>
+<option value="ShortDot">ShortDot</option>
+<option value="ShortDashDot">ShortDashDot</option>
+<option value="ShortDashDotDot">ShortDashDotDot</option>
+<option value="Dot">Dot</option>
+<option value="Dash">Dash</option>
+<option value="LongDash">LongDash</option>
+<option value="DashDot">DashDot</option>
+<option value="LongDashDot">LongDashDot</option>
+<option value="LongDashDotDot">LongDashDotDot</option>
+</select></p>
+<p>Line Style 8: <br><select id="linestyle8_4w" type="text">
+<option value="" selected="selected">Select a type</option>
+<option value="Solid">Solid</option>
+<option value="ShortDash">ShortDash</option>
+<option value="ShortDot">ShortDot</option>
+<option value="ShortDashDot">ShortDashDot</option>
+<option value="ShortDashDotDot">ShortDashDotDot</option>
+<option value="Dot">Dot</option>
+<option value="Dash">Dash</option>
+<option value="LongDash">LongDash</option>
+<option value="DashDot">DashDot</option>
+<option value="LongDashDot">LongDashDot</option>
+<option value="LongDashDotDot">LongDashDotDot</option>
+</select></p>
+<p>Line Style 9: <br><select id="linestyle9_4w" type="text">
+<option value="" selected="selected">Select a type</option>
+<option value="Solid">Solid</option>
+<option value="ShortDash">ShortDash</option>
+<option value="ShortDot">ShortDot</option>
+<option value="ShortDashDot">ShortDashDot</option>
+<option value="ShortDashDotDot">ShortDashDotDot</option>
+<option value="Dot">Dot</option>
+<option value="Dash">Dash</option>
+<option value="LongDash">LongDash</option>
+<option value="DashDot">DashDot</option>
+<option value="LongDashDot">LongDashDot</option>
+<option value="LongDashDotDot">LongDashDotDot</option>
+</select></p>
+</div>
+<div style="display:inline-block">
+<p style="color:black; font-size: 14px">Width 1: <br><select id="linewidth1_4w" type="text">
+<option value="0" selected="selected">Select a Width</option>
+<option value="1">1.0</option>
+<option value="2">2.0</option>
+<option value="3">3.0</option>
+<option value="4">4.0</option>
+<option value="5">5.0</option>
+<option value="6">6.0</option>
+<option value="7">7.0</option>
+<option value="8">8.0</option>
+<option value="9">9.0</option>
+<option value="10">10.0</option>
+</select></p>
+<p>Width 2: <br><select id="linewidth2_4w" type="text">
+<option value="" selected="selected">Select a Width</option>
+<option value="1">1.0</option>
+<option value="2">2.0</option>
+<option value="3">3.0</option>
+<option value="4">4.0</option>
+<option value="5">5.0</option>
+<option value="6">6.0</option>
+<option value="7">7.0</option>
+<option value="8">8.0</option>
+<option value="9">9.0</option>
+<option value="10">10.0</option>
+</select></p>
+<p>Width 3: <br><select id="linewidth3_4w" type="text">
+<option value="" selected="selected">Select a Width</option>
+<option value="1">1.0</option>
+<option value="2">2.0</option>
+<option value="3">3.0</option>
+<option value="4">4.0</option>
+<option value="5">5.0</option>
+<option value="6">6.0</option>
+<option value="7">7.0</option>
+<option value="8">8.0</option>
+<option value="9">9.0</option>
+<option value="10">10.0</option>
+</select></p>
+<p>Width 4: <br><select id="linewidth4_4w" type="text">
+<option value="" selected="selected">Select a Width</option>
+<option value="1">1.0</option>
+<option value="2">2.0</option>
+<option value="3">3.0</option>
+<option value="4">4.0</option>
+<option value="5">5.0</option>
+<option value="6">6.0</option>
+<option value="7">7.0</option>
+<option value="8">8.0</option>
+<option value="9">9.0</option>
+<option value="10">10.0</option>
+</select></p>
+<p>Width 5: <br><select id="linewidth5_4w" type="text">
+<option value="" selected="selected">Select a Width</option>
+<option value="1">1.0</option>
+<option value="2">2.0</option>
+<option value="3">3.0</option>
+<option value="4">4.0</option>
+<option value="5">5.0</option>
+<option value="6">6.0</option>
+<option value="7">7.0</option>
+<option value="8">8.0</option>
+<option value="9">9.0</option>
+<option value="10">10.0</option>
+</select></p>
+<p>Width 6: <br><select id="linewidth6_4w" type="text">
+<option value="" selected="selected">Select a Width</option>
+<option value="1">1.0</option>
+<option value="2">2.0</option>
+<option value="3">3.0</option>
+<option value="4">4.0</option>
+<option value="5">5.0</option>
+<option value="6">6.0</option>
+<option value="7">7.0</option>
+<option value="8">8.0</option>
+<option value="9">9.0</option>
+<option value="10">10.0</option>
+</select></p>
+<p>Width 7: <br><select id="linewidth7_4w" type="text">
+<option value="" selected="selected">Select a Width</option>
+<option value="1">1.0</option>
+<option value="2">2.0</option>
+<option value="3">3.0</option>
+<option value="4">4.0</option>
+<option value="5">5.0</option>
+<option value="6">6.0</option>
+<option value="7">7.0</option>
+<option value="8">8.0</option>
+<option value="9">9.0</option>
+<option value="10">10.0</option>
+</select></p>
+<p>Width 8: <br><select id="linewidth8_4w" type="text">
+<option value="" selected="selected">Select a Width</option>
+<option value="1">1.0</option>
+<option value="2">2.0</option>
+<option value="3">3.0</option>
+<option value="4">4.0</option>
+<option value="5">5.0</option>
+<option value="6">6.0</option>
+<option value="7">7.0</option>
+<option value="8">8.0</option>
+<option value="9">9.0</option>
+<option value="10">10.0</option>
+</select></p>
+<p>Width 9: <br><select id="linewidth9_4w" type="text">
+<option value="" selected="selected">Select a Width</option>
+<option value="1">1.0</option>
+<option value="2">2.0</option>
+<option value="3">3.0</option>
+<option value="4">4.0</option>
+<option value="5">5.0</option>
+<option value="6">6.0</option>
+<option value="7">7.0</option>
+<option value="8">8.0</option>
+<option value="9">9.0</option>
+<option value="10">10.0</option>
+</select></p>
+</div>
+</div>
+</div>
+</div>
+<div style="width: 100%; height: 100px; margin-top: 50px; align:center; text-align:center">
+<button id="btn_default4w" style="border-radius:30px" class="w3-btn w3-gray w3-text-white w3-xlarge">Default</button>
+</div>
+</div>
+</div>
+
+</div>
+
+</body>
+
+<script type="text/javascript" id="runscript_week4">
 $(function () {
 	
 var chart;
@@ -172,18 +642,19 @@ var legend_old7 = "<?php echo $f7; ?>";
 var legend_old8 = "<?php echo $f8; ?>";
 var legend_old9 = "<?php echo $f9; ?>";
 var pipoco = 0;
-var vis_theme = false;
+var vis_theme4w = false;
 var vis_text = false;
 var vis_colors = false;
 var vis_line = false;
 var fonte = "Arial+Black";
+var vis_menu_person = false;
 
 $(document).ready(function() {
 	
-var acc = new Highcharts.Chart({
+var acc4w = new Highcharts.Chart({
 	chart: {
-				renderTo: 'container4',
-				alignTicks:false,
+				renderTo: 'container4w',
+				alignTicks:false,				
 				//backgroundColor:'transparent',
 				zoomType: 'xy',
 				resetZoomButton: {
@@ -201,13 +672,13 @@ var acc = new Highcharts.Chart({
 						// alert(e.xAxis[0].value);
 						if(estado != false){
 						if(e.shiftKey == 1){
-						acc.xAxis[0].options.plotLines[1].color = "red";
-						acc.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;							
-						acc.xAxis[0].update();
+						acc4w.xAxis[0].options.plotLines[1].color = "red";
+						acc4w.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;							
+						acc4w.xAxis[0].update();
 						}else{
-						acc.xAxis[0].options.plotLines[0].color = "red";
-						acc.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
-						acc.xAxis[0].update();						
+						acc4w.xAxis[0].options.plotLines[0].color = "red";
+						acc4w.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						acc4w.xAxis[0].update();						
 						}	
 						}
       }
@@ -293,15 +764,15 @@ yAxis: [{
 						if(this.name == "Marker"){
 						if(this.visible == true){
 						estado = false;		
-						acc.xAxis[0].options.plotLines[0].color = "transparent";
-						acc.xAxis[0].options.plotLines[1].color = "transparent";
-						acc.xAxis[0].update();
+						acc4w.xAxis[0].options.plotLines[0].color = "transparent";
+						acc4w.xAxis[0].options.plotLines[1].color = "transparent";
+						acc4w.xAxis[0].update();
 						}else
 						if(this.visible == false){	
 						estado = true;	
-						acc.xAxis[0].options.plotLines[0].color = "red";
-						acc.xAxis[0].options.plotLines[1].color = "red";
-						acc.xAxis[0].update();
+						acc4w.xAxis[0].options.plotLines[0].color = "red";
+						acc4w.xAxis[0].options.plotLines[1].color = "red";
+						acc4w.xAxis[0].update();
 						}	
 						}
 				}
@@ -369,7 +840,7 @@ yAxis: [{
 		name: '<?php echo $f2 ?>',
 		
         data: [<?php
-		if($ct2 == 4){
+		if($ct2 == 4){		
         if($q2 != ""){    
 		for ($i = 0; $i < $kpi_query2->num_rows(); $i++) {
 		$row = $kpi_query2->row_array($i);
@@ -429,7 +900,7 @@ yAxis: [{
 		name: '<?php echo $f4 ?>',
 		
         data: [<?php
-		if($ct4 == 4){
+		if($ct4 == 4){		
         if($q4 != ""){    
 		for ($i = 0; $i < $kpi_query4->num_rows(); $i++) {
 		$row = $kpi_query4->row_array($i);
@@ -489,7 +960,7 @@ yAxis: [{
 		name: '<?php echo $f6 ?>',
 		
         data: [<?php
-		if($ct6 == 4){
+		if($ct6 == 4){		
         if($q6 != ""){    
 		for ($i = 0; $i < $kpi_query6->num_rows(); $i++) {
 		$row = $kpi_query6->row_array($i);
@@ -549,7 +1020,7 @@ yAxis: [{
 		name: '<?php echo $f8 ?>',
 		
         data: [<?php
-		if($ct8 == 4){
+		if($ct8 == 4){		
         if($q8 != ""){    
 		for ($i = 0; $i < $kpi_query8->num_rows(); $i++) {
 		$row = $kpi_query8->row_array($i);
@@ -579,7 +1050,7 @@ yAxis: [{
 		name: '<?php echo $f9 ?>',
 		
         data: [<?php
-		if($ct9 == 4){
+		if($ct9 == 4){		
         if($q9 != ""){    
 		for ($i = 0; $i < $kpi_query9->num_rows(); $i++) {
 		$row = $kpi_query9->row_array($i);
@@ -601,15 +1072,15 @@ yAxis: [{
 
 //////////////////////////////////////// SETA O VALOR DEFAULT DAS INPUT TEXT DAS ESCALAS ///////////////////////////
 
-var acc = $("#container").highcharts();
-$('#scale_max').val(acc.yAxis[0].getExtremes().dataMax);
-$('#scale_min').val(acc.yAxis[0].getExtremes().dataMin);
+var acc4w = $("#container4w").highcharts();
+$('#scale_max4w').val(acc4w.yAxis[0].getExtremes().dataMax);
+$('#scale_min4w').val(acc4w.yAxis[0].getExtremes().dataMin);
 
 });
 
 //////////////////////////////////////////////////////// CORES DAS LINHAS ////////////////////////////////////////
 
-$('#colorSelector1').ColorPicker({
+$('#colorSelector1_4w').ColorPicker({
 	color: '#0000ff',
 	onShow: function (colpkr) {
 		$(colpkr).fadeIn(500);
@@ -620,14 +1091,14 @@ $('#colorSelector1').ColorPicker({
 		return false;
 	},
 	onChange: function (hsb, hex, rgb) {
-		var acc = $("#container").highcharts();
-		$('#colorSelector1').css('backgroundColor', '#' + hex);
+		var acc4w = $("#container4w").highcharts();
+		$('#colorSelector1_4w').css('backgroundColor', '#' + hex);
 		color[1] = hex;
-		acc.series[1].update({color: "#"+color[1]+""});
+		acc4w.series[1].update({color: "#"+color[1]+""});
 	}
 });
 
-$('#colorSelector2').ColorPicker({
+$('#colorSelector2_4w').ColorPicker({
 	color: '#0000ff',
 	onShow: function (colpkr) {
 		$(colpkr).fadeIn(500);
@@ -638,14 +1109,14 @@ $('#colorSelector2').ColorPicker({
 		return false;
 	},
 	onChange: function (hsb, hex, rgb) {
-		var acc = $("#container").highcharts();
-		$('#colorSelector2').css('backgroundColor', '#' + hex);
+		var acc4w = $("#container4w").highcharts();
+		$('#colorSelector2_4w').css('backgroundColor', '#' + hex);
 		color[2] = hex;
-		acc.series[2].update({color: "#"+color[2]+""});
+		acc4w.series[2].update({color: "#"+color[2]+""});
 	}
 });
 
-$('#colorSelector3').ColorPicker({
+$('#colorSelector3_4w').ColorPicker({
 	color: '#0000ff',
 	onShow: function (colpkr) {
 		$(colpkr).fadeIn(500);
@@ -656,14 +1127,14 @@ $('#colorSelector3').ColorPicker({
 		return false;
 	},
 	onChange: function (hsb, hex, rgb) {
-		var acc = $("#container").highcharts();
-		$('#colorSelector3').css('backgroundColor', '#' + hex);
+		var acc4w = $("#container4w").highcharts();
+		$('#colorSelector3_4w').css('backgroundColor', '#' + hex);
 		color[3] = hex;
-		acc.series[3].update({color: "#"+color[3]+""});
+		acc4w.series[3].update({color: "#"+color[3]+""});
 	}
 });
 
-$('#colorSelector4').ColorPicker({
+$('#colorSelector4_4w').ColorPicker({
 	color: '#0000ff',
 	onShow: function (colpkr) {
 		$(colpkr).fadeIn(500);
@@ -674,14 +1145,14 @@ $('#colorSelector4').ColorPicker({
 		return false;
 	},
 	onChange: function (hsb, hex, rgb) {
-		var acc = $("#container").highcharts();
-		$('#colorSelector4').css('backgroundColor', '#' + hex);
+		var acc4w = $("#container4w").highcharts();
+		$('#colorSelector4_4w').css('backgroundColor', '#' + hex);
 		color[4] = hex;
-		acc.series[4].update({color: "#"+color[4]+""});
+		acc4w.series[4].update({color: "#"+color[4]+""});
 	}
 });
 
-$('#colorSelector5').ColorPicker({
+$('#colorSelector5_4w').ColorPicker({
 	color: '#0000ff',
 	onShow: function (colpkr) {
 		$(colpkr).fadeIn(500);
@@ -692,14 +1163,14 @@ $('#colorSelector5').ColorPicker({
 		return false;
 	},
 	onChange: function (hsb, hex, rgb) {
-		var acc = $("#container").highcharts();
-		$('#colorSelector5').css('backgroundColor', '#' + hex);
+		var acc4w = $("#container4w").highcharts();
+		$('#colorSelector5_4w').css('backgroundColor', '#' + hex);
 		color[5] = hex;
-		acc.series[5].update({color: "#"+color[5]+""});
+		acc4w.series[5].update({color: "#"+color[5]+""});
 	}
 });
 
-$('#colorSelector6').ColorPicker({
+$('#colorSelector6_4w').ColorPicker({
 	color: '#0000ff',
 	onShow: function (colpkr) {
 		$(colpkr).fadeIn(500);
@@ -710,14 +1181,14 @@ $('#colorSelector6').ColorPicker({
 		return false;
 	},
 	onChange: function (hsb, hex, rgb) {
-		var acc = $("#container").highcharts();
-		$('#colorSelector6').css('backgroundColor', '#' + hex);
+		var acc4w = $("#container4w").highcharts();
+		$('#colorSelector6_4w').css('backgroundColor', '#' + hex);
 		color[6] = hex;
-		acc.series[6].update({color: "#"+color[6]+""});
+		acc4w.series[6].update({color: "#"+color[6]+""});
 	}
 });
 
-$('#colorSelector7').ColorPicker({
+$('#colorSelector7_4w').ColorPicker({
 	color: '#0000ff',
 	onShow: function (colpkr) {
 		$(colpkr).fadeIn(500);
@@ -728,14 +1199,14 @@ $('#colorSelector7').ColorPicker({
 		return false;
 	},
 	onChange: function (hsb, hex, rgb) {
-		var acc = $("#container").highcharts();
-		$('#colorSelector7').css('backgroundColor', '#' + hex);
+		var acc4w = $("#container4w").highcharts();
+		$('#colorSelector7_4w').css('backgroundColor', '#' + hex);
 		color[7] = hex;
-		acc.series[7].update({color: "#"+color[7]+""});
+		acc4w.series[7].update({color: "#"+color[7]+""});
 	}
 });
 
-$('#colorSelector8').ColorPicker({
+$('#colorSelector8_4w').ColorPicker({
 	color: '#0000ff',
 	onShow: function (colpkr) {
 		$(colpkr).fadeIn(500);
@@ -746,14 +1217,14 @@ $('#colorSelector8').ColorPicker({
 		return false;
 	},
 	onChange: function (hsb, hex, rgb) {
-		var acc = $("#container").highcharts();
-		$('#colorSelector8').css('backgroundColor', '#' + hex);
+		var acc4w = $("#container4w").highcharts();
+		$('#colorSelector8_4w').css('backgroundColor', '#' + hex);
 		color[8] = hex;
-		acc.series[8].update({color: "#"+color[1]+""});
+		acc4w.series[8].update({color: "#"+color[1]+""});
 	}
 });
 
-$('#colorSelector9').ColorPicker({
+$('#colorSelector9_4w').ColorPicker({
 	color: '#0000ff',
 	onShow: function (colpkr) {
 		$(colpkr).fadeIn(500);
@@ -764,404 +1235,405 @@ $('#colorSelector9').ColorPicker({
 		return false;
 	},
 	onChange: function (hsb, hex, rgb) {
-		var acc = $("#container").highcharts();
-		$('#colorSelector9').css('backgroundColor', '#' + hex);
+		var acc4w = $("#container4w").highcharts();
+		$('#colorSelector9_4w').css('backgroundColor', '#' + hex);
 		color[9] = hex;
-		acc.series[9].update({color: "#"+color[1]+""});
+		acc4w.series[9].update({color: "#"+color[1]+""});
 	}
 });
 
 //////////////////////////////////////////////////////////////// TEMAS /////////////////////////////////////////////
 
-$('#theme').change(function(){
-var acc = $("#container").highcharts();		
+$('#theme4w').change(function(){
+var acc4w = $("#container4w").highcharts();		
 var x = $(this).val();	
 if(x == "SandSignika"){
-acc.destroy();	
+acc4w.destroy();	
 eval(document.getElementById("Sand_Signika").innerHTML);
 Highcharts.setOptions(chart_Sand_Signika);
-eval(document.getElementById("runscript_week").innerHTML);	 
+eval(document.getElementById("runscript_week4").innerHTML);	 
 }else
 if(x == "DarkUnika"){
-acc.destroy();	
+acc4w.destroy();	
 eval(document.getElementById("Dark_Unika").innerHTML);
 Highcharts.setOptions(chart_Dark_Unika);
-eval(document.getElementById("runscript_week").innerHTML);	 
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
+eval(document.getElementById("runscript_week4").innerHTML);	 
 }else
 if(x == "DarkBlue"){
-acc.destroy();	
+acc4w.destroy();	
 eval(document.getElementById("Dark_Blue").innerHTML);
 Highcharts.setOptions(chart_Dark_Blue);
-eval(document.getElementById("runscript_week").innerHTML);	 
+eval(document.getElementById("runscript_week4").innerHTML);	 
 }else
 if(x == "Skies"){
-acc.destroy();	
+acc4w.destroy();	
 eval(document.getElementById("Nuvem").innerHTML);
 Highcharts.setOptions(chart_Skies);
-eval(document.getElementById("runscript_week").innerHTML);	 
+eval(document.getElementById("runscript_week4").innerHTML);	 
 }else
 if(x == "DarkGreen"){
-acc.destroy();	
+acc4w.destroy();	
 eval(document.getElementById("Dark_Green").innerHTML);
 Highcharts.setOptions(chart_Dark_Green);
-eval(document.getElementById("runscript_week").innerHTML);	 
+eval(document.getElementById("runscript_week4").innerHTML);	 
 }else
 if(x == "FlatDark"){
-acc.destroy();	
+acc4w.destroy();	
 eval(document.getElementById("Flat_Dark").innerHTML);
 Highcharts.setOptions(chart_Flat_Dark);
-eval(document.getElementById("runscript_week").innerHTML);	 
+eval(document.getElementById("runscript_week4").innerHTML);	 
 }else
 if(x == "Null"){
-acc.destroy();	
+acc4w.destroy();	
 eval(document.getElementById("Empty").innerHTML);
 Highcharts.setOptions(chart_null);
-eval(document.getElementById("runscript_week").innerHTML);	 
+eval(document.getElementById("runscript_week4").innerHTML);	 
 }else
 if(x == "val_ffx"){
-acc.destroy();	
+acc4w.destroy();	
 eval(document.getElementById("ffx").innerHTML);
 Highcharts.setOptions(chart_ffx);
-eval(document.getElementById("runscript_week").innerHTML);	 
+eval(document.getElementById("runscript_week4").innerHTML);	 
 }else
 if(x == "val_538"){
-acc.destroy();	
+acc4w.destroy();	
 eval(document.getElementById("538").innerHTML);
 Highcharts.setOptions(chart_538);
-eval(document.getElementById("runscript_week").innerHTML);	 
+eval(document.getElementById("runscript_week4").innerHTML);	 
 }	
 });
 
 //////////////////////////////////////////////////////////////// TÍTULO ///////////////////////////////////////////
 
-$('#txt_title').on('keyup mouseup', function(){
-var acc = $("#container").highcharts();	
-var title = document.getElementById('txt_title').value;	
+$('#txt_title4w').on('keyup mouseup', function(){
+var acc4w = $("#container4w").highcharts();	
+var title = document.getElementById('txt_title4w').value;	
 if(title != ""){
-acc.setTitle({text: ""+title+""});
+acc4w.setTitle({text: ""+title+""});
 }else{
-acc.setTitle({text: "NPSmart"});
+acc4w.setTitle({text: "NPSmart"});
 }	
 });
 
 //////////////////////////////////////////////////////////////// LEGENDAS //////////////////////////////////////////
 
-$('#txt_legend1').on('keyup mouseup', function(){
-var acc = $("#container").highcharts();	
-if($("#txt_legend1").val() != ""){
-legend[1] = $("#txt_legend1").val();	
-acc.legend.allItems[1].update({name:""+legend[1]+""});
+$('#txt_legend1_4w').on('keyup mouseup', function(){
+var acc4w = $("#container4w").highcharts();	
+if($("#txt_legend1_4w").val() != ""){
+legend[1] = $("#txt_legend1_4w").val();	
+acc4w.legend.allItems[1].update({name:""+legend[1]+""});
 }else{
-acc.legend.allItems[1].update({name:""+legend_old1+""});
+acc4w.legend.allItems[1].update({name:""+legend_old1+""});
 }	
 });
 
-$('#txt_legend2').on('keyup mouseup', function(){
-var acc = $("#container").highcharts();	
-if($("#txt_legend2").val() != ""){
-legend[2] = $("#txt_legend2").val();	
-acc.legend.allItems[2].update({name:""+legend[2]+""});
+$('#txt_legend2_4w').on('keyup mouseup', function(){
+var acc4w = $("#container4w").highcharts();	
+if($("#txt_legend2_4w").val() != ""){
+legend[2] = $("#txt_legend2_4w").val();	
+acc4w.legend.allItems[2].update({name:""+legend[2]+""});
 }else{
-acc.legend.allItems[2].update({name:""+legend_old2+""});
+acc4w.legend.allItems[2].update({name:""+legend_old2+""});
 }	
 });
 
-$('#txt_legend3').on('keyup mouseup', function(){
-var acc = $("#container").highcharts();	
-if($("#txt_legend3").val() != ""){
-legend[3] = $("#txt_legend3").val();	
-acc.legend.allItems[3].update({name:""+legend[3]+""});
+$('#txt_legend3_4w').on('keyup mouseup', function(){
+var acc4w = $("#container4w").highcharts();	
+if($("#txt_legend3_4w").val() != ""){
+legend[3] = $("#txt_legend3_4w").val();	
+acc4w.legend.allItems[3].update({name:""+legend[3]+""});
 }else{
-acc.legend.allItems[3].update({name:""+legend_old3+""});
+acc4w.legend.allItems[3].update({name:""+legend_old3+""});
 }	
 });
 
-$('#txt_legend4').on('keyup mouseup', function(){
-var acc = $("#container").highcharts();	
-if($("#txt_legend4").val() != ""){
-legend[4] = $("#txt_legend4").val();	
-acc.legend.allItems[4].update({name:""+legend[4]+""});
+$('#txt_legend4_4w').on('keyup mouseup', function(){
+var acc4w = $("#container4w").highcharts();	
+if($("#txt_legend4_4w").val() != ""){
+legend[4] = $("#txt_legend4_4w").val();	
+acc4w.legend.allItems[4].update({name:""+legend[4]+""});
 }else{
-acc.legend.allItems[4].update({name:""+legend_old4+""});
+acc4w.legend.allItems[4].update({name:""+legend_old4+""});
 }	
 });
 
-$('#txt_legend5').on('keyup mouseup', function(){
-var acc = $("#container").highcharts();	
-if($("#txt_legend5").val() != ""){
-legend[5] = $("#txt_legend5").val();	
-acc.legend.allItems[5].update({name:""+legend[5]+""});
+$('#txt_legend5_4w').on('keyup mouseup', function(){
+var acc4w = $("#container4w").highcharts();	
+if($("#txt_legend5_4w").val() != ""){
+legend[5] = $("#txt_legend5_4w").val();	
+acc4w.legend.allItems[5].update({name:""+legend[5]+""});
 }else{
-acc.legend.allItems[5].update({name:""+legend_old5+""});
+acc4w.legend.allItems[5].update({name:""+legend_old5+""});
 }	
 });
 
-$('#txt_legend6').on('keyup mouseup', function(){
-var acc = $("#container").highcharts();	
-if($("#txt_legend6").val() != ""){
-legend[6] = $("#txt_legend6").val();	
-acc.legend.allItems[6].update({name:""+legend[6]+""});
+$('#txt_legend6_4w').on('keyup mouseup', function(){
+var acc4w = $("#container4w").highcharts();	
+if($("#txt_legend6_4w").val() != ""){
+legend[6] = $("#txt_legend6_4w").val();	
+acc4w.legend.allItems[6].update({name:""+legend[6]+""});
 }else{
-acc.legend.allItems[6].update({name:""+legend_old6+""});
+acc4w.legend.allItems[6].update({name:""+legend_old6+""});
 }	
 });
 
-$('#txt_legend7').on('keyup mouseup', function(){
-var acc = $("#container").highcharts();	
-if($("#txt_legend7").val() != ""){
-legend[7] = $("#txt_legend7").val();	
-acc.legend.allItems[7].update({name:""+legend[7]+""});
+$('#txt_legend7_4w').on('keyup mouseup', function(){
+var acc4w = $("#container4w").highcharts();	
+if($("#txt_legend7_4w").val() != ""){
+legend[7] = $("#txt_legend7_4w").val();	
+acc4w.legend.allItems[7].update({name:""+legend[7]+""});
 }else{
-acc.legend.allItems[7].update({name:""+legend_old7+""});
+acc4w.legend.allItems[7].update({name:""+legend_old7+""});
 }	
 });
 
-$('#txt_legend8').on('keyup mouseup', function(){
-var acc = $("#container").highcharts();	
-if($("#txt_legend8").val() != ""){
-legend[8] = $("#txt_legend8").val();	
-acc.legend.allItems[8].update({name:""+legend[8]+""});
+$('#txt_legend8_4w').on('keyup mouseup', function(){
+var acc4w = $("#container4w").highcharts();	
+if($("#txt_legend8_4w").val() != ""){
+legend[8] = $("#txt_legend8_4w").val();	
+acc4w.legend.allItems[8].update({name:""+legend[8]+""});
 }else{
-acc.legend.allItems[8].update({name:""+legend_old8+""});
+acc4w.legend.allItems[8].update({name:""+legend_old8+""});
 }	
 });
 
-$('#txt_legend9').on('keyup mouseup', function(){
-var acc = $("#container").highcharts();	
-if($("#txt_legend9").val() != ""){
-legend[9] = $("#txt_legend9").val();	
-acc.legend.allItems[9].update({name:""+legend[9]+""});
+$('#txt_legend9_4w').on('keyup mouseup', function(){
+var acc4w = $("#container4w").highcharts();	
+if($("#txt_legend9_4w").val() != ""){
+legend[9] = $("#txt_legend9_4w").val();	
+acc4w.legend.allItems[9].update({name:""+legend[9]+""});
 }else{
-acc.legend.allItems[9].update({name:""+legend_old9+""});
+acc4w.legend.allItems[9].update({name:""+legend_old9+""});
 }	
 });
 
 //////////////////////////////////////////////////////////////// LINE STYLE ////////////////////////////////////////
 
-$('#linestyle1').change(function(){
-var acc = $("#container").highcharts();
-if($("#linestyle1").val() != ""){
-typeline[1] = $("#linestyle1").val();
-acc.series[1].update({dashStyle: ""+typeline[1]+""});
+$('#linestyle1_4w').change(function(){
+var acc4w = $("#container4w").highcharts();
+if($("#linestyle1_4w").val() != ""){
+typeline[1] = $("#linestyle1_4w").val();
+acc4w.series[1].update({dashStyle: ""+typeline[1]+""});
 }else{
-acc.series[1].update({dashStyle: "Solid"});	
+acc4w.series[1].update({dashStyle: "Solid"});	
 }
 });
 
-$('#linestyle2').change(function(){
-var acc = $("#container").highcharts();
-if($("#linestyle2").val() != ""){
-typeline[2] = $("#linestyle2").val();
-acc.series[2].update({dashStyle: ""+typeline[2]+""});
+$('#linestyle2_4w').change(function(){
+var acc4w = $("#container4w").highcharts();
+if($("#linestyle2_4w").val() != ""){
+typeline[2] = $("#linestyle2_4w").val();
+acc4w.series[2].update({dashStyle: ""+typeline[2]+""});
 }else{
-acc.series[2].update({dashStyle: "Solid"});	
+acc4w.series[2].update({dashStyle: "Solid"});	
 }
 });
 
-$('#linestyle3').change(function(){
-var acc = $("#container").highcharts();
-if($("#linestyle3").val() != ""){
-typeline[3] = $("#linestyle3").val();
-acc.series[3].update({dashStyle: ""+typeline[3]+""});
+$('#linestyle3_4w').change(function(){
+var acc4w = $("#container4w").highcharts();
+if($("#linestyle3_4w").val() != ""){
+typeline[3] = $("#linestyle3_4w").val();
+acc4w.series[3].update({dashStyle: ""+typeline[3]+""});
 }else{
-acc.series[3].update({dashStyle: "Solid"});	
+acc4w.series[3].update({dashStyle: "Solid"});	
 }
 });
 
-$('#linestyle4').change(function(){
-var acc = $("#container").highcharts();
-if($("#linestyle4").val() != ""){
-typeline[4] = $("#linestyle4").val();
-acc.series[4].update({dashStyle: ""+typeline[4]+""});
+$('#linestyle4_4w').change(function(){
+var acc4w = $("#container4w").highcharts();
+if($("#linestyle4_4w").val() != ""){
+typeline[4] = $("#linestyle4_4w").val();
+acc4w.series[4].update({dashStyle: ""+typeline[4]+""});
 }else{
-acc.series[4].update({dashStyle: "Solid"});	
+acc4w.series[4].update({dashStyle: "Solid"});	
 }
 });
 
-$('#linestyle5').change(function(){
-var acc = $("#container").highcharts();
-if($("#linestyle5").val() != ""){
-typeline[5] = $("#linestyle5").val();
-acc.series[5].update({dashStyle: ""+typeline[5]+""});
+$('#linestyle5_4w').change(function(){
+var acc4w = $("#container4w").highcharts();
+if($("#linestyle5_4w").val() != ""){
+typeline[5] = $("#linestyle5_4w").val();
+acc4w.series[5].update({dashStyle: ""+typeline[5]+""});
 }else{
-acc.series[5].update({dashStyle: "Solid"});	
+acc4w.series[5].update({dashStyle: "Solid"});	
 }
 });
 
-$('#linestyle6').change(function(){
-var acc = $("#container").highcharts();
-if($("#linestyle6").val() != ""){
-typeline[6] = $("#linestyle6").val();
-acc.series[6].update({dashStyle: ""+typeline[6]+""});
+$('#linestyle6_4w').change(function(){
+var acc4w = $("#container4w").highcharts();
+if($("#linestyle6_4w").val() != ""){
+typeline[6] = $("#linestyle6_4w").val();
+acc4w.series[6].update({dashStyle: ""+typeline[6]+""});
 }else{
-acc.series[6].update({dashStyle: "Solid"});	
+acc4w.series[6].update({dashStyle: "Solid"});	
 }
 });
 
-$('#linestyle7').change(function(){
-var acc = $("#container").highcharts();
-if($("#linestyle7").val() != ""){
-typeline[7] = $("#linestyle7").val();
-acc.series[7].update({dashStyle: ""+typeline[7]+""});
+$('#linestyle7_4w').change(function(){
+var acc4w = $("#container4w").highcharts();
+if($("#linestyle7_4w").val() != ""){
+typeline[7] = $("#linestyle7_4w").val();
+acc4w.series[7].update({dashStyle: ""+typeline[7]+""});
 }else{
-acc.series[7].update({dashStyle: "Solid"});	
+acc4w.series[7].update({dashStyle: "Solid"});	
 }
 });
 
-$('#linestyle8').change(function(){
-var acc = $("#container").highcharts();
-if($("#linestyle8").val() != ""){
-typeline[8] = $("#linestyle8").val();
-acc.series[8].update({dashStyle: ""+typeline[8]+""});
+$('#linestyle8_4w').change(function(){
+var acc4w = $("#container4w").highcharts();
+if($("#linestyle8_4w").val() != ""){
+typeline[8] = $("#linestyle8_4w").val();
+acc4w.series[8].update({dashStyle: ""+typeline[8]+""});
 }else{
-acc.series[8].update({dashStyle: "Solid"});	
+acc4w.series[8].update({dashStyle: "Solid"});	
 }
 });
 
-$('#linestyle9').change(function(){
-var acc = $("#container").highcharts();
-if($("#linestyle9").val() != ""){
-typeline[9] = $("#linestyle9").val();
-acc.series[9].update({dashStyle: ""+typeline[9]+""});
+$('#linestyle9_4w').change(function(){
+var acc4w = $("#container4w").highcharts();
+if($("#linestyle9_4w").val() != ""){
+typeline[9] = $("#linestyle9_4w").val();
+acc4w.series[9].update({dashStyle: ""+typeline[9]+""});
 }else{
-acc.series[9].update({dashStyle: "Solid"});	
+acc4w.series[9].update({dashStyle: "Solid"});	
 }
 });
 
 //////////////////////////////////////////////////////////////// LINE WIDTH ////////////////////////////////////////
 
-$('#linewidth1').change(function(){
-var acc = $("#container").highcharts();	
-if($("#linewidth1").val() != 0){
-var width_line = $("#linewidth1").val();
+$('#linewidth1_4w').change(function(){
+var acc4w = $("#container4w").highcharts();	
+if($("#linewidth1_4w").val() != 0){
+var width_line = $("#linewidth1_4w").val();
 var int_width_line	= parseInt(width_line);
-acc.series[1].update({lineWidth: int_width_line});
+acc4w.series[1].update({lineWidth: int_width_line});
 }else{
-acc.series[1].update({lineWidth: 2});	
+acc4w.series[1].update({lineWidth: 2});	
 }	
 });
 
-$('#linewidth2').change(function(){
-var acc = $("#container").highcharts();	
-if($("#linewidth2").val() != 0){
-var width_line = $("#linewidth2").val();
+$('#linewidth2_4w').change(function(){
+var acc4w = $("#container4w").highcharts();	
+if($("#linewidth2_4w").val() != 0){
+var width_line = $("#linewidth2_4w").val();
 var int_width_line	= parseInt(width_line);
-acc.series[2].update({lineWidth: int_width_line});
+acc4w.series[2].update({lineWidth: int_width_line});
 }else{
-acc.series[2].update({lineWidth: 2});	
+acc4w.series[2].update({lineWidth: 2});	
 }
 });
 
-$('#linewidth3').change(function(){
-var acc = $("#container").highcharts();	
-if($("#linewidth3").val() != 0){
-var width_line = $("#linewidth3").val();
+$('#linewidth3_4w').change(function(){
+var acc4w = $("#container4w").highcharts();	
+if($("#linewidth3_4w").val() != 0){
+var width_line = $("#linewidth3_4w").val();
 var int_width_line	= parseInt(width_line);
-acc.series[3].update({lineWidth: int_width_line});
+acc4w.series[3].update({lineWidth: int_width_line});
 }else{
-acc.series[3].update({lineWidth: 2});	
+acc4w.series[3].update({lineWidth: 2});	
 }
 });
 
-$('#linewidth4').change(function(){
-var acc = $("#container").highcharts();	
-if($("#linewidth4").val() != 0){
-var width_line = $("#linewidth4").val();
+$('#linewidth4_4w').change(function(){
+var acc4w = $("#container4w").highcharts();	
+if($("#linewidth4_4w").val() != 0){
+var width_line = $("#linewidth4_4w").val();
 var int_width_line	= parseInt(width_line);
-acc.series[4].update({lineWidth: int_width_line});
+acc4w.series[4].update({lineWidth: int_width_line});
 }else{
-acc.series[4].update({lineWidth: 2});	
+acc4w.series[4].update({lineWidth: 2});	
 }
 });
 
-$('#linewidth5').change(function(){
-var acc = $("#container").highcharts();	
-if($("#linewidth5").val() != 0){
-var width_line = $("#linewidth5").val();
+$('#linewidth5_4w').change(function(){
+var acc4w = $("#container4w").highcharts();	
+if($("#linewidth5_4w").val() != 0){
+var width_line = $("#linewidth5_4w").val();
 var int_width_line	= parseInt(width_line);
-acc.series[5].update({lineWidth: int_width_line});
+acc4w.series[5].update({lineWidth: int_width_line});
 }else{
-acc.series[5].update({lineWidth: 2});	
+acc4w.series[5].update({lineWidth: 2});	
 }
 });
 
-$('#linewidth6').change(function(){
-var acc = $("#container").highcharts();	
-if($("#linewidth6").val() != 0){
-var width_line = $("#linewidth6").val();
+$('#linewidth6_4w').change(function(){
+var acc4w = $("#container4w").highcharts();	
+if($("#linewidth6_4w").val() != 0){
+var width_line = $("#linewidth6_4w").val();
 var int_width_line	= parseInt(width_line);
-acc.series[6].update({lineWidth: int_width_line});
+acc4w.series[6].update({lineWidth: int_width_line});
 }else{
-acc.series[6].update({lineWidth: 2});	
+acc4w.series[6].update({lineWidth: 2});	
 }
 });
 
-$('#linewidth7').change(function(){
-var acc = $("#container").highcharts();	
-if($("#linewidth7").val() != 0){
-var width_line = $("#linewidth7").val();
+$('#linewidth7_4w').change(function(){
+var acc4w = $("#container4w").highcharts();	
+if($("#linewidth7_4w").val() != 0){
+var width_line = $("#linewidth7_4w").val();
 var int_width_line	= parseInt(width_line);
-acc.series[7].update({lineWidth: int_width_line});
+acc4w.series[7].update({lineWidth: int_width_line});
 }else{
-acc.series[7].update({lineWidth: 2});	
+acc4w.series[7].update({lineWidth: 2});	
 }
 });
 
-$('#linewidth8').change(function(){
-var acc = $("#container").highcharts();	
-if($("#linewidth8").val() != 0){
-var width_line = $("#linewidth8").val();
+$('#linewidth8_4w').change(function(){
+var acc4w = $("#container4w").highcharts();	
+if($("#linewidth8_4w").val() != 0){
+var width_line = $("#linewidth8_4w").val();
 var int_width_line	= parseInt(width_line);
-acc.series[8].update({lineWidth: int_width_line});
+acc4w.series[8].update({lineWidth: int_width_line});
 }else{
-acc.series[8].update({lineWidth: 2});	
+acc4w.series[8].update({lineWidth: 2});	
 }
 });
 
-$('#linewidth9').change(function(){
-var acc = $("#container").highcharts();	
-if($("#linewidth9").val() != 0){
-var width_line = $("#linewidth9").val();
+$('#linewidth9_4w').change(function(){
+var acc4w = $("#container4w").highcharts();	
+if($("#linewidth9_4w").val() != 0){
+var width_line = $("#linewidth9_4w").val();
 var int_width_line	= parseInt(width_line);
-acc.series[9].update({lineWidth: int_width_line});
+acc4w.series[9].update({lineWidth: int_width_line});
 }else{
-acc.series[9].update({lineWidth: 2});	
+acc4w.series[9].update({lineWidth: 2});	
 }
 });
 
 //////////////////////////////////////////////////////////////// SCALE /////////////////////////////////////////////
 
-$('#scale_max').on('keyup mouseup', function(){
+$('#scale_max4w').on('keyup mouseup', function(){
 	
-var x = $('#scale_max').val();
-var acc = $("#container").highcharts();
+var x = $('#scale_max4w').val();
+var acc4w = $("#container4w").highcharts();
 if(x != ""){	
-acc.yAxis[0].update({max: ""+x+""});
+acc4w.yAxis[0].update({max: ""+x+""});
 }else{
-$('#scale_max').val(acc.yAxis[0].getExtremes().dataMax);	
-acc.yAxis[0].update({max: null});
+$('#scale_max4w').val(acc4w.yAxis[0].getExtremes().dataMax);	
+acc4w.yAxis[0].update({max: null});
 }	
 });
 
-$('#scale_min').on('keyup mouseup', function(){
+$('#scale_min4w').on('keyup mouseup', function(){
 	
-var x = $('#scale_min').val();
-var acc = $("#container").highcharts();
+var x = $('#scale_min4w').val();
+var acc4w = $("#container4w").highcharts();
 if(x != ""){	
-acc.yAxis[0].update({min: ""+x+""});
+acc4w.yAxis[0].update({min: ""+x+""});
 }else{
-$('#scale_min').val(acc.yAxis[0].getExtremes().dataMin);	
-acc.yAxis[0].update({min: null});
+$('#scale_min4w').val(acc4w.yAxis[0].getExtremes().dataMin);	
+acc4w.yAxis[0].update({min: null});
 }	
 });
 
 //////////////////////////////////////////////////////////////// FONT STYLE ///////////////////////////////////////
 
-$('#myFont').fontselect().change(function(){
+$('#minha_Fonte4w').fontselect().change(function(){
         
 // replace + signs with spaces for css
 var font = $(this).val().replace(/\+/g, ' ');
-var acc = $("#container").highcharts();
+var acc4w = $("#container4w").highcharts();
 // split font into family and weight
 font = font.split(':');
 
@@ -1169,7 +1641,7 @@ font = font.split(':');
 //$('p').css('font-family', font[0]);
  //console.log(font[0]);
 fonte = font[0];
-acc.update({
+acc4w.update({
 chart: {
 style: {
 fontFamily: "'"+fonte+"', sans-serif"
@@ -1180,14 +1652,14 @@ fontFamily: "'"+fonte+"', sans-serif"
 
 ///////////////////////////////////////////////////////////////// FONT SIZE ////////////////////////////////////////
 
-$('#myFontSize_Axis').on('keyup mouseup', function(){
+$('#myFontSize_Axis4w').on('keyup mouseup', function(){
 
 var SizeFont = $(this).val();
-var acc = $("#container").highcharts();
+var acc4w = $("#container4w").highcharts();
 
 console.log(SizeFont);
-// acc.xAxis[0].options.labels.style.fontSize = "'"+SizeFont+"px'";
-acc.update({
+// acc4w.xAxis[0].options.labels.style.fontSize = "'"+SizeFont+"px'";
+acc4w.update({
 xAxis:{
 labels: {
 style:{
@@ -1197,7 +1669,7 @@ fontSize: ""+SizeFont+"px"
 }	
 });
 
-acc.update({
+acc4w.update({
 yAxis:{
 labels: {
 style:{
@@ -1211,14 +1683,14 @@ fontSize: ""+SizeFont+"px"
 
 /////////////////////////////////////////////////////// FONT SIZE TITLE ////////////////////////////////////////////
 
-$('#myFontSize_Title').on('keyup mouseup', function(){
+$('#myFontSize_Title4w').on('keyup mouseup', function(){
 
 var SizeFont = $(this).val();
-var acc = $("#container").highcharts();
+var acc4w = $("#container4w").highcharts();
 
 console.log(SizeFont);
-// acc.xAxis[0].options.labels.style.fontSize = "'"+SizeFont+"px'";
-acc.update({
+// acc4w.xAxis[0].options.labels.style.fontSize = "'"+SizeFont+"px'";
+acc4w.update({
 title:{
 // labels: {
 style:{
@@ -1232,7 +1704,7 @@ fontSize: ""+SizeFont+"px"
 
 ////////////////////////////////////////////////////////////////// COR DOS EIXOS ///////////////////////////////////
 
-$('#colorSelector_Axis').ColorPicker({
+$('#colorSelector_Axis4w').ColorPicker({
 	color: '#0000ff',
 	onShow: function (colpkr) {
 		$(colpkr).fadeIn(500);
@@ -1243,9 +1715,9 @@ $('#colorSelector_Axis').ColorPicker({
 		return false;
 	},
 	onChange: function (hsb, hex, rgb) {
-		var acc = $("#container").highcharts();
-		$('#colorSelector_Axis').css('backgroundColor', '#' + hex);
-		acc.update({
+		var acc4w = $("#container4w").highcharts();
+		$('#colorSelector_Axis4w').css('backgroundColor', '#' + hex);
+		acc4w.update({
 		xAxis:{
 		labels: {
 		style:{
@@ -1255,7 +1727,7 @@ $('#colorSelector_Axis').ColorPicker({
 		}	
 		});
 
-		acc.update({
+		acc4w.update({
 		yAxis:{
 		labels: {
 		style:{
@@ -1269,7 +1741,7 @@ $('#colorSelector_Axis').ColorPicker({
 
 ////////////////////////////////////////////////////// COR DO TÍTULO ////////////////////////////////////////////////
 
-$('#colorSelector_Title').ColorPicker({
+$('#colorSelector_Title4w').ColorPicker({
 	color: '#0000ff',
 	onShow: function (colpkr) {
 		$(colpkr).fadeIn(500);
@@ -1280,9 +1752,9 @@ $('#colorSelector_Title').ColorPicker({
 		return false;
 	},
 	onChange: function (hsb, hex, rgb) {
-		var acc = $("#container").highcharts();
-		$('#colorSelector_Title').css('backgroundColor', '#' + hex);
-		acc.update({
+		var acc4w = $("#container4w").highcharts();
+		$('#colorSelector_Title4w').css('backgroundColor', '#' + hex);
+		acc4w.update({
 		title:{
 		// labels: {
 		style:{
@@ -1296,90 +1768,108 @@ $('#colorSelector_Title').ColorPicker({
 
 /////////////////////////////////////////// FUNÇOES AO CLICAR NA SETINHA ///////////////////////////////////////////
 
-$( "#btn_theme" ).click(function() {
+$( "#btn_theme4w" ).click(function() {
 
-if(vis_theme == true){
-document.getElementById("div_theme").style.display = "none";
-$( "#Seta_Theme" ).attr( "class", "fa fa-caret-down");
-vis_theme = false;	
-}else if(vis_theme == false){	
-document.getElementById("div_theme").style.display = "block";
-document.getElementById("div_text").style.display = "none";
-document.getElementById("div_line").style.display = "none";
-document.getElementById("div_colors").style.display = "none";
-$( "#Seta_Theme" ).attr( "class", "fa fa-caret-up");
-$( "#Seta_Line" ).attr( "class", "fa fa-caret-down");
-$( "#Seta_Colors" ).attr( "class", "fa fa-caret-down");
-$( "#Seta_Text" ).attr( "class", "fa fa-caret-down");
-vis_theme = true;
+if(vis_theme4w == true){
+document.getElementById("div_theme4w").style.display = "none";
+$( "#Seta_theme4w" ).attr( "class", "fa fa-caret-down");
+vis_theme4w = false;	
+}else if(vis_theme4w == false){	
+document.getElementById("div_theme4w").style.display = "block";
+document.getElementById("div_text4w").style.display = "none";
+document.getElementById("div_line4w").style.display = "none";
+document.getElementById("div_colors4w").style.display = "none";
+$( "#Seta_theme4w" ).attr( "class", "fa fa-caret-up");
+$( "#Seta_Line4w" ).attr( "class", "fa fa-caret-down");
+$( "#Seta_Colors4w" ).attr( "class", "fa fa-caret-down");
+$( "#Seta_Text4w" ).attr( "class", "fa fa-caret-down");
+vis_theme4w = true;
 }
 
 });
 
-$( "#btn_text" ).click(function() {
+$( "#btn_text4w" ).click(function() {
 
 if(vis_text == true){
-document.getElementById("div_text").style.display = "none";
-$( "#Seta_Text" ).attr( "class", "fa fa-caret-down");
+document.getElementById("div_text4w").style.display = "none";
+$( "#Seta_Text4w" ).attr( "class", "fa fa-caret-down");
 vis_text = false;	
 }else if(vis_text == false){	
-document.getElementById("div_text").style.display = "block";
-document.getElementById("div_theme").style.display = "none";
-document.getElementById("div_line").style.display = "none";
-document.getElementById("div_colors").style.display = "none";
-$( "#Seta_Theme" ).attr( "class", "fa fa-caret-down");
-$( "#Seta_Line" ).attr( "class", "fa fa-caret-down");
-$( "#Seta_Colors" ).attr( "class", "fa fa-caret-down");
-$( "#Seta_Text" ).attr( "class", "fa fa-caret-up");
+document.getElementById("div_text4w").style.display = "block";
+document.getElementById("div_theme4w").style.display = "none";
+document.getElementById("div_line4w").style.display = "none";
+document.getElementById("div_colors4w").style.display = "none";
+$( "#Seta_theme4w" ).attr( "class", "fa fa-caret-down");
+$( "#Seta_Line4w" ).attr( "class", "fa fa-caret-down");
+$( "#Seta_Colors4w" ).attr( "class", "fa fa-caret-down");
+$( "#Seta_Text4w" ).attr( "class", "fa fa-caret-up");
 vis_text = true;
 }
 
 });	
 
-$( "#btn_colors" ).click(function() {
+$( "#btn_colors4w" ).click(function() {
 
 if(vis_colors == true){
-document.getElementById("div_colors").style.display = "none";
-$( "#Seta_Colors" ).attr( "class", "fa fa-caret-down");
+document.getElementById("div_colors4w").style.display = "none";
+$( "#Seta_Colors4w" ).attr( "class", "fa fa-caret-down");
 vis_colors = false;	
 }else if(vis_colors == false){	
-document.getElementById("div_text").style.display = "none";
-document.getElementById("div_theme").style.display = "none";
-document.getElementById("div_line").style.display = "none";
-document.getElementById("div_colors").style.display = "block";
-$( "#Seta_Theme" ).attr( "class", "fa fa-caret-down");
-$( "#Seta_Line" ).attr( "class", "fa fa-caret-down");
-$( "#Seta_Colors" ).attr( "class", "fa fa-caret-up");
-$( "#Seta_Text" ).attr( "class", "fa fa-caret-down");
+document.getElementById("div_text4w").style.display = "none";
+document.getElementById("div_theme4w").style.display = "none";
+document.getElementById("div_line4w").style.display = "none";
+document.getElementById("div_colors4w").style.display = "block";
+$( "#Seta_theme4w" ).attr( "class", "fa fa-caret-down");
+$( "#Seta_Line4w" ).attr( "class", "fa fa-caret-down");
+$( "#Seta_Colors4w" ).attr( "class", "fa fa-caret-up");
+$( "#Seta_Text4w" ).attr( "class", "fa fa-caret-down");
 vis_colors = true;
 }
 
 });	
 
-$( "#btn_line" ).click(function() {
+$( "#btn_line4w" ).click(function() {
 
 if(vis_line == true){
-document.getElementById("div_line").style.display = "none";
-$( "#Seta_Line" ).attr( "class", "fa fa-caret-down");
+document.getElementById("div_line4w").style.display = "none";
+$( "#Seta_Line4w" ).attr( "class", "fa fa-caret-down");
 vis_line = false;	
 }else if(vis_line == false){	
-document.getElementById("div_text").style.display = "none";
-document.getElementById("div_theme").style.display = "none";
-document.getElementById("div_line").style.display = "block";
-document.getElementById("div_colors").style.display = "none";
-$( "#Seta_Theme" ).attr( "class", "fa fa-caret-down");
-$( "#Seta_Line" ).attr( "class", "fa fa-caret-up");
-$( "#Seta_Colors" ).attr( "class", "fa fa-caret-down");
-$( "#Seta_Text" ).attr( "class", "fa fa-caret-down");
+document.getElementById("div_text4w").style.display = "none";
+document.getElementById("div_theme4w").style.display = "none";
+document.getElementById("div_line4w").style.display = "block";
+document.getElementById("div_colors4w").style.display = "none";
+$( "#Seta_theme4w" ).attr( "class", "fa fa-caret-down");
+$( "#Seta_Line4w" ).attr( "class", "fa fa-caret-up");
+$( "#Seta_Colors4w" ).attr( "class", "fa fa-caret-down");
+$( "#Seta_Text4w" ).attr( "class", "fa fa-caret-down");
 vis_line = true;
 }
 
 });
 
-$( "#btn_default" ).click(function() {
-var acc = $("#container").highcharts();	
-acc.destroy();
-eval(document.getElementById("runscript_week").innerHTML);
+$( "#btn_default4w" ).click(function() {
+var acc4w = $("#container4w").highcharts();	
+acc4w.destroy();
+eval(document.getElementById("runscript_week4").innerHTML);
+});
+
+$( ".btn_show4w" ).click(function() {
+var acc4w = $("#container4w").highcharts();
+var cont4w = $("#container4w"); 	
+if(vis_menu_person == false){
+cont4w.css('width','70%');
+acc4w.setSize(cont4w.width(), 650, true);
+document.getElementById("Resumex4w").style.display = "inline-block";
+$( "#seta_show4w" ).attr( "class", "fa fa-arrow-right");
+vis_menu_person = true;
+}else if (vis_menu_person == true){
+document.getElementById("Resumex4w").style.display = "none";
+cont4w.css('width','95%');
+acc4w.setSize(cont4w.width(), 650, true);
+$( "#seta_show4w" ).attr( "class", "fa fa-arrow-left");
+vis_menu_person = false;
+}	
 });		
 	
 });

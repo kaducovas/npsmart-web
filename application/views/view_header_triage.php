@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112474813-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-112474813-1');
+</script>
 <link rel="shortcut icon" href="http://freelogo2016cdn.b-cdn.net/wp-content/uploads/2016/12/huawei-logo.png">
 <meta charset="utf-8">
 <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -591,16 +599,15 @@ function selected(obj) {
 
 ///send ne to main
 function selectne(obj) {
-	cell = $(obj).text();
+	nename = $(obj).text();
+	netype = $(obj).closest('tr').find('td:eq(1)').text();
 	//alert(netype);
-	document.getElementById('reportcell').value = cell;
-	document.getElementById('reportnename').value = reportnename;
 	document.getElementById('reportdate').value = reportdate;
-	document.getElementById('reportnetype').value = reportnetype;
-	document.getElementById('reportkpi').value = 'cellmapping';
-	
-	document.getElementById('reportcell').value = cell;
-	
+	//document.getElementById('kpi').value = kpi;
+	//document.getElementById('rnc').value = rnc;
+	document.getElementById('reportnename').value = nename;
+	document.getElementById('reportnetype').value = 'cell';
+	document.getElementById('reportkpi').value = reportkpi;	
 	document.reportopt.submit();
     //alert(obj.innerHTML);
 }
@@ -837,10 +844,19 @@ function selectkpitriage(obj) {
 		 document.getElementById('reportcell').value = reportcell;
 		 document.reportopt.action = '/npsmart/umts/triage';
 		 document.reportopt.submit();	 
-	 }
-	
+	 }	
 	}
 	//}
+}
+
+function selectformtriage(obj) {
+		 document.getElementById('reportkpi').value = 'cellmapping';
+		 document.getElementById('reportnename').value = reportnename;
+		 document.getElementById('reportdate').value = reportdate;
+		 document.getElementById('reportnetype').value = reportnetype;
+		 document.getElementById('reportcell').value = obj;
+		 document.reportopt.action = '/npsmart/umts/triage';
+		 document.reportopt.submit();	 
 }
 
 // function selecttypetriage(obj) {

@@ -20,7 +20,7 @@
 					 $sdcch_traffic[$row->node] = $row->sdcch_traffic;
 					 $tch_traffic_fr[$row->node] = $row->tch_traffic_fr;
 					 $tch_traffic_hr[$row->node] = $row->tch_traffic_hr;
-				 }
+				}
 			 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 								//FORGET ABOUT IT!!!

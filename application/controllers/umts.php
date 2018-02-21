@@ -3151,7 +3151,8 @@ public function alert_worstcells()
 
 		#} 
 		
-		$this->load->view('view_header');
+		#$this->load->view('view_header');
+		$this->load->view('view_header_txintegrity');
 		#$this->load->view('view_nav_event',$data);
 		#$trimmed = preg_replace('/\s+/', '', $this->input->post('kpi'));
 		#echo $this->input->post('wcdate');
@@ -3923,6 +3924,7 @@ public function alert_worstcells()
 
 public function radar()
 	{
+		ini_set('memory_limit', '1024M');
 		$this->load->helper('form');
 		$this->load->model('model_monitor');
 		$this->load->model('model_radar');
@@ -4026,6 +4028,10 @@ public function radar()
 			$data['node_daily_report'] = $this->model_radar->cell_daily_report($node,$reportdate);
 			$data['extra_info'] = $this->model_radar->extra_info($node,$reportdate,$nekpi,$netype);
 		}
+		elseif($netype == 'wc'){
+			$data['radar_weekly_region'] = $this->model_radar->radar_weekly_wc($node,$reportdate, $nekpi);
+			$data['node_daily_report'] = $this->model_radar->region_daily_report($node,$reportdate);
+		}
 			//$data['node_daily_report'] = $this->model_radar->nqi_daily_cell($node,$reportdate);
 			// // $data['reportnetype'] = 'rnc';
 		 //}
@@ -4052,7 +4058,7 @@ public function radar()
 		
 		$this->load->view('view_header_radar');	
 		$this->load->view('view_nav_radar',$data);
-		if($netype == 'network' or $netype == 'region' or $netype == 'rnc' or $netype == 'cell'){
+		if($netype == 'network' or $netype == 'region' or $netype == 'rnc' or $netype == 'cell' or $netype == 'wc'){
 		if($nekpi == 'radar'){
 			$this->load->view('view_radar_chart',$data);
 			$this->load->view('view_radar',$data);	
@@ -4338,6 +4344,9 @@ public function triage()
 		$data['triage_chart'] = $this->model_triage->triage_cluster_chart($node,$reportdate);
 		$data['triage_week'] = $this->model_triage->triage_cluster($node,$reportdate);
 		}
+		elseif($netype == 'cell'){
+		$data['triage_week'] = $this->model_triage->triage_cell($node,$reportdate);	
+		}
 		
 		$this->load->view('view_header_triage');	
 		$this->load->view('view_nav_triage',$data);
@@ -4349,7 +4358,7 @@ public function triage()
 			$this->load->view('view_triage_overview',$data);		 
 		}
 		else{
-			$this->load->view('view_triage_cellmapping',$data);
+			$this->load->view('view_triage_cellmapping_form',$data);
 		}
 	}
 

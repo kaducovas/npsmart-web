@@ -803,7 +803,7 @@ public function nqi_monthly()
 		#$this->load->view('view_mainkpis',$data);
 	}		
 
-		public function baseline_enodeb()
+public function baseline_enodeb()
 	{
 		#############################HEADER#####################
 		$this->load->helper('form');
@@ -950,7 +950,7 @@ public function nqi_monthly()
 	
 public function worstcells()
 	{
-		ini_set('memory_limit', '2048M');
+		#ini_set('memory_limit', '2048M');
 		$this->load->model('model_worstcells_lte');
 		$this->load->model('model_monitor_lte');
 		$this->load->model('model_cellsinfo');
@@ -1005,9 +1005,6 @@ public function worstcells()
 		// $data['reportdate'] = $daterange;	
 		// $data['reportnename'] = $node_query;
 		
-		$kpi = preg_replace('/\s+/', '', $this->input->post('kpi'));
-		$kpi = strtolower($kpi);
-
 		$kpimap = [
 			"rrcservice" => "rrc_service",
 			"rrcsignaling" => "rrc_signaling",
@@ -1080,7 +1077,8 @@ public function worstcells()
 	// echo '<br>';
 	// echo $timeagg;
 	// echo '<br>';
-
+	
+	
 	$kpis_group1 = array("accessibility", "mobility","availability"); //KPIs with num and den
 	$kpis_group2 = array("throughput","interference"); //KPIs without num and den		
 	$kpis_group3 = array("coverage"); //KPIs without num and den		
@@ -1132,7 +1130,7 @@ public function worstcells()
 			// }
 			
 			if(in_array($kpi_family_map[$kpi], $kpis_group1)){
-				#echo "ola";
+				//echo "olaaaaaaaaaaaaaaaaaaaaaaa";
 				$data['wc'] = $this->model_worstcells_lte->rncwc($kpimap[$kpi],$reportnename,$reportdate,$reportnetype,$timeagg);
 			}
 			 elseif (in_array($kpi_family_map[$kpi], $kpis_group2)) {
@@ -1201,7 +1199,7 @@ public function worstcells()
 		#$this->load->view('view_theme_dark_unica');
 		#$this->load->view('view_sparklines',$data);
 		$this->load->view('view_sparklines_new',$data);
-		$this->load->view('view_menu');
+		//$this->load->view('view_menu');
 		
 		if($this->input->post('node') || $this->input->post('cluster') || $this->input->post('cidade')){
 			$wc_view = "view_wc_lte_".$kpimap[$kpi];
@@ -1747,6 +1745,12 @@ public function radar()
 			$data['node_daily_report'] = $this->model_radar_lte->cell_daily_report($node,$reportdate);
 			//$data['extra_info'] = $this->model_radar_lte->extra_info($node,$reportdate,$nekpi,$netype);
 		}
+		elseif ($netype == 'wc') {
+			$data['radar_weekly_region'] = $this->model_radar_lte->radar_weekly_wc($node,$reportdate,$nekpi);
+			$data['node_daily_report'] = $this->model_radar_lte->region_daily_report($node,$reportdate);
+			// $data['node_daily_report'] = $this->model_radar->region_daily_report($node,$reportdate);
+			// // $data['reportnetype'] = 'region';
+		}
 			//$data['node_daily_report'] = $this->model_radar->nqi_daily_cell($node,$reportdate);
 			// // $data['reportnetype'] = 'rnc';
 		 //}
@@ -1771,9 +1775,9 @@ public function radar()
 			// // // $data['reportnetype'] = 'city';
 			// // }
 		
-		$this->load->view('view_header_lte');	
+		$this->load->view('view_header_radar_lte');	
 		$this->load->view('view_nav_radar_lte',$data);
-		if($netype == 'network' or $netype == 'region' or $netype == 'uf' or $netype == 'cell'){
+		if($netype == 'network' or $netype == 'region' or $netype == 'uf' or $netype == 'cell' or $netype == 'wc'){
 		if($nekpi == 'radar'){
 			$this->load->view('view_radar_chart_lte',$data);
 			$this->load->view('view_radar_lte',$data);	
@@ -1793,5 +1797,122 @@ public function radar()
 		else{
 			$this->load->view('view_radar_error',$data);
 		}
-	}	
+	}
+
+public function neighbor_lte()
+	{
+		#############################HEADER#####################
+		$this->load->helper('form');
+		$this->load->model('model_cellsinfo');
+		$this->load->model('model_neighbor_lte');
+		
+ 		
+		//Set Node
+		if($this->input->post('reportnename')){
+			$node = $this->input->post('reportnename');
+		} else {
+			$node = 'NETWORK';
+		}
+		$data['reportnename'] = $node;
+		
+		//Set Type
+		if($this->input->post('reportnetype')){
+			$netype = $this->input->post('reportnetype');
+		} else {
+			$netype = 'network';
+		}
+		$data['reportnetype'] = $netype;
+		
+		
+		if($this->input->post('reportmoname')){
+			$reportmoname = $this->input->post('reportmoname');
+		} else {
+			$reportmoname = false;
+			
+		}
+		
+		#echo $netype;
+		$maxdate = $this->model_neighbor_lte->maxdate();
+		$referencedate = $maxdate[0]->date;
+		
+		//Set Date and Weeknum
+		if($this->input->post('reportdate')){
+			$reportdate = $this->input->post('reportdate');
+			#echo $reportdate;
+			if(strtotime($reportdate) > strtotime($referencedate)){ //IF the date if greater than yesterday then it changes to the reference date
+				$reportdate = $referencedate;
+			}
+		} 
+		else {
+			$reportdate = $referencedate;
+			#echo $reportdate;
+		}
+		
+		$date = new DateTime($reportdate);
+		$data['reportdate'] = $reportdate;
+		$data['reportmoname'] = $reportmoname;
+		$data['reportagg'] = 'daily';
+		$data['reportkpi'] = 'neighbor_lte';
+		#echo $weeknum;
+		
+		$data['ufs'] = $this->model_cellsinfo->ufs_lte();
+		$data['regional'] = $this->model_cellsinfo->regional_lte();
+		$data['cidades'] = $this->model_cellsinfo->cidades_lte();
+		$data['clusters'] = $this->model_cellsinfo->clusters_lte();
+		$data['enodebs'] = $this->model_cellsinfo->enodebs();
+		
+		
+		$regions = array("CO", "PRSC", "NE", "BASE","ES","MG");
+		
+		$data['mos'] = $this->model_neighbor_lte->mos($reportdate);
+		
+		if($netype == 'network'){
+			$data['baseline_by_mo'] = $this->model_neighbor_lte->region_baseline_by_mo($reportdate,$node);
+			$data['parameters_mo'] = $this->model_neighbor_lte->parameters_mo($reportdate,$reportmoname);
+			$data['ne_discrepancies'] = $this->model_neighbor_lte->ne_discrepancies($reportdate,$reportmoname);
+
+		 }
+		 elseif ($netype == 'region') {
+			$data['baseline_by_mo'] = $this->model_neighbor_lte->region_baseline_by_mo($reportdate,$node);
+			$data['parameters_mo'] = $this->model_neighbor_lte->region_parameters_mo($reportdate,$reportmoname,$node);
+			$data['ne_discrepancies'] = $this->model_neighbor_lte->region_ne_discrepancies($reportdate,$reportmoname,$node);
+
+		 }
+		 elseif($netype == 'enodebs'){
+			$data['baseline_by_mo'] = $this->model_neighbor_lte->enodeb_baseline_by_mo($reportdate,$node);
+			$data['parameters_mo'] = $this->model_neighbor_lte->enodeb_parameters_mo($reportdate,$reportmoname,$node);
+			$data['ne_discrepancies'] = $this->model_neighbor_lte->enodeb_ne_discrepancies($reportdate,$reportmoname,$node);
+			// #$data['reportnetype'] = 'rnc';
+		 }
+		 elseif($netype == 'ufs'){
+			$data['baseline_by_mo'] = $this->model_neighbor_lte->uf_baseline_by_mo($reportdate,$node);
+			$data['parameters_mo'] = $this->model_neighbor_lte->uf_parameters_mo($reportdate,$reportmoname,$node);
+			$data['ne_discrepancies'] = $this->model_neighbor_lte->uf_ne_discrepancies($reportdate,$reportmoname,$node);
+			// #$data['reportnetype'] = 'rnc';
+		 }			
+		 elseif($netype == 'cidades'){
+			$data['baseline_by_mo'] = $this->model_neighbor_lte->cidade_baseline_by_mo($reportdate,$node);
+			$data['parameters_mo'] = $this->model_neighbor_lte->cidade_parameters_mo($reportdate,$reportmoname,$node);
+			$data['ne_discrepancies'] = $this->model_neighbor_lte->cidade_ne_discrepancies($reportdate,$reportmoname,$node);
+			// #$data['reportnetype'] = 'rnc';
+		 }
+		 elseif($netype == 'clusters'){
+			$data['baseline_by_mo'] = $this->model_neighbor_lte->cluster_baseline_by_mo($reportdate,$node);
+			$data['parameters_mo'] = $this->model_neighbor_lte->cluster_parameters_mo($reportdate,$reportmoname,$node);
+			$data['ne_discrepancies'] = $this->model_neighbor_lte->cluster_ne_discrepancies($reportdate,$reportmoname,$node);
+			// #$data['reportnetype'] = 'rnc';
+		 }
+		
+		// $this->load->view('view_header_baseline');
+		// $this->load->view('view_nav_baselineenodeb',$data);
+		// $this->load->view('view_theme_sand_signika');
+		
+		
+		// if ($reportmoname) {
+			// $this->load->view('view_baseline_mo_chart',$data);
+		// }
+		// $this->load->view('view_baseline_disc_chart',$data);
+		// $this->load->view('view_baseline_enodeb',$data);
+	}
+
 }

@@ -42,7 +42,47 @@
   } );
   </script>
 <!------------------------------------------------------- FIM DO CALENDÁRIO --------------------------------->
+<style>
 
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.chart_number{
+display:inline-block;
+margin-right: 15px;
+width: 100px;
+border-collapse: collapse;
+font-family: 'Open Sans', 'sans-serif';
+border-radius: 5px;
+font-size: 14px;
+text-decoration: none;
+color: #fff;
+}
+
+.templates{
+width: 100px; 
+font-size: 17px; 
+color: red; 
+text-align: center;
+border: 1px solid black;
+border-collapse: collapse;
+}
+
+.txt_chart_number{
+border: 1px solid black;
+border-collapse: collapse;
+background-color: #e74c3c;
+}
+
+.txt_chart_number span{
+margin-left: 2px;
+font-weight: bold;
+}
+
+#btn_add2, #btn_add3,#btn_add4,#btn_add5,#btn_add6,#btn_add7,#btn_add8,#btn_add9{
+vertical-align: top;	
+}	
+
+</style>
 </head>
 <body>
 
@@ -50,15 +90,15 @@
 <div id="Resumo2">
 
 <div class="Painel" style = "border-bottom: 2px solid black"><span style="position:absolute;display: inline-block;font-size: 25px;margin-left: 10px; margin-top: 5px; color: white"><b>Change All</b></span><label class="switch"><input id="slider_menu" type="checkbox"/><span class="slider round"></span></label><div style="font-size: 25px; text-align:center; color: white"><b>MENU</b><div style="float:right; display:inline-block; margin-right:10px"><button id="btn_add1" onclick="add_line()" class="w3-btn w3-xlarge w3-text-blue"><i class="fa fa-plus-square"></i></button></div></p></div></div>
-<div class="Lines_Query" id= "Query1" style = "border-bottom: 2px solid black; width: 100%; display:inline-block"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query1" checked="checked"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu1" style="display:inline-block"><span id="Tecnologia_Texto_Teste1"></span><i id="Tecnologia_Seta_1" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste1"></span><i id="Elemento_Seta_1" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste1"></span><i id="KPI_Seta_1" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste1"></span><i id="Periodo_Seta_1" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste1"></span><span id="Date_Final_Texto_Teste1"></span><span id="Hora_Inicial_Texto_Teste1"></span><span id="Hora_Final_Texto_Teste1"></span><button id="chart_type1" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position1" class="w3-btn w3-xlarge" style="background-color: transparent"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm1" onclick="mostrar_charts1()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete1" onclick="delete_menu1()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><span id="template1" style="font-size: 25px; color:red">1</span><button id="btn_add2" onclick="remove_line1()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
-<div class="Lines_Query" id= "Query2" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query2"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu2" style="display:none"><span id="Tecnologia_Texto_Teste2"></span><i id="Tecnologia_Seta_2" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste2"></span><i id="Elemento_Seta_2" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste2"></span><i id="KPI_Seta_2" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste2"></span><i id="Periodo_Seta_2" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste2"></span><span id="Date_Final_Texto_Teste2"></span><span id="Hora_Inicial_Texto_Teste2"></span><span id="Hora_Final_Texto_Teste2"></span><button id="chart_type2" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position2" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm2" onclick="mostrar_charts2()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete2" onclick="delete_menu2()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><span id="template2" style="font-size: 25px; color:red">1</span><button id="btn_add2" onclick="remove_line2()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
-<div class="Lines_Query" id= "Query3" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query3"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu3" style="display:none"><span id="Tecnologia_Texto_Teste3"></span><i id="Tecnologia_Seta_3" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste3"></span><i id="Elemento_Seta_3" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste3"></span><i id="KPI_Seta_3" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste3"></span><i id="Periodo_Seta_3" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste3"></span><span id="Date_Final_Texto_Teste3"></span><span id="Hora_Inicial_Texto_Teste3"></span><span id="Hora_Final_Texto_Teste3"></span><button id="chart_type3" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position3" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm3" onclick="mostrar_charts3()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete3" onclick="delete_menu3()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><span id="template3" style="font-size: 25px; color:red">1</span><button id="btn_add3" onclick="remove_line3()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
-<div class="Lines_Query" id= "Query4" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query4"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu4" style="display:none"><span id="Tecnologia_Texto_Teste4"></span><i id="Tecnologia_Seta_4" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste4"></span><i id="Elemento_Seta_4" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste4"></span><i id="KPI_Seta_4" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste4"></span><i id="Periodo_Seta_4" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste4"></span><span id="Date_Final_Texto_Teste4"></span><span id="Hora_Inicial_Texto_Teste4"></span><span id="Hora_Final_Texto_Teste4"></span><button id="chart_type4" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position4" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm4" onclick="mostrar_charts4()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete4" onclick="delete_menu4()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><span id="template4" style="font-size: 25px; color:red">1</span><button id="btn_add4" onclick="remove_line4()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
-<div class="Lines_Query" id= "Query5" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query5"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu5" style="display:none"><span id="Tecnologia_Texto_Teste5"></span><i id="Tecnologia_Seta_5" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste5"></span><i id="Elemento_Seta_5" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste5"></span><i id="KPI_Seta_5" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste5"></span><i id="Periodo_Seta_5" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste5"></span><span id="Date_Final_Texto_Teste5"></span><span id="Hora_Inicial_Texto_Teste5"></span><span id="Hora_Final_Texto_Teste5"></span><button id="chart_type5" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position5" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm5" onclick="mostrar_charts5()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete5" onclick="delete_menu5()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><span id="template5" style="font-size: 25px; color:red">1</span><button id="btn_add5" onclick="remove_line5()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
-<div class="Lines_Query" id= "Query6" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query6"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu6" style="display:none"><span id="Tecnologia_Texto_Teste6"></span><i id="Tecnologia_Seta_6" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste6"></span><i id="Elemento_Seta_6" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste6"></span><i id="KPI_Seta_6" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste6"></span><i id="Periodo_Seta_6" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste6"></span><span id="Date_Final_Texto_Teste6"></span><span id="Hora_Inicial_Texto_Teste6"></span><span id="Hora_Final_Texto_Teste6"></span><button id="chart_type6" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position6" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm6" onclick="mostrar_charts6()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete6" onclick="delete_menu6()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><span id="template6" style="font-size: 25px; color:red">1</span><button id="btn_add6" onclick="remove_line6()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
-<div class="Lines_Query" id= "Query7" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query7"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu7" style="display:none"><span id="Tecnologia_Texto_Teste7"></span><i id="Tecnologia_Seta_7" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste7"></span><i id="Elemento_Seta_7" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste7"></span><i id="KPI_Seta_7" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste7"></span><i id="Periodo_Seta_7" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste7"></span><span id="Date_Final_Texto_Teste7"></span><span id="Hora_Inicial_Texto_Teste7"></span><span id="Hora_Final_Texto_Teste7"></span><button id="chart_type7" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position7" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm7" onclick="mostrar_charts7()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete7" onclick="delete_menu7()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><span id="template7" style="font-size: 25px; color:red">1</span><button id="btn_add7" onclick="remove_line7()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
-<div class="Lines_Query" id= "Query8" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query8"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu8" style="display:none"><span id="Tecnologia_Texto_Teste8"></span><i id="Tecnologia_Seta_8" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste8"></span><i id="Elemento_Seta_8" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste8"></span><i id="KPI_Seta_8" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste8"></span><i id="Periodo_Seta_8" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste8"></span><span id="Date_Final_Texto_Teste8"></span><span id="Hora_Inicial_Texto_Teste8"></span><span id="Hora_Final_Texto_Teste8"></span><button id="chart_type8" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position8" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm8" onclick="mostrar_charts8()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete8" onclick="delete_menu8()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><span id="template8" style="font-size: 25px; color:red">1</span><button id="btn_add8" onclick="remove_line8()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
-<div class="Lines_Query" id= "Query9" style = "width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query9"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu9" style="display:none"><span id="Tecnologia_Texto_Teste9"></span><i id="Tecnologia_Seta_9" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste9"></span><i id="Elemento_Seta_9" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste9"></span><i id="KPI_Seta_9" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste9"></span><i id="Periodo_Seta_9" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste9"></span><span id="Date_Final_Texto_Teste9"></span><span id="Hora_Inicial_Texto_Teste9"></span><span id="Hora_Final_Texto_Teste9"></span><button id="chart_type9" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position9" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge" ></i></button><button id="btn_confirm9" onclick="mostrar_charts9()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete9" onclick="delete_menu9()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><span id="template9" style="font-size: 25px; color:red">1</span><button id="btn_add9" onclick="remove_line9()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
+<div class="Lines_Query" id= "Query1" style = "border-bottom: 2px solid black; width: 100%; display:inline-block"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query1" checked="checked"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu1" style="display:inline-block"><span id="Tecnologia_Texto_Teste1"></span><i id="Tecnologia_Seta_1" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste1"></span><i id="Elemento_Seta_1" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste1"></span><i id="KPI_Seta_1" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste1"></span><i id="Periodo_Seta_1" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste1"></span><span id="Date_Final_Texto_Teste1"></span><span id="Hora_Inicial_Texto_Teste1"></span><span id="Hora_Final_Texto_Teste1"></span><button id="chart_type1" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position1" class="w3-btn w3-xlarge" style="background-color: transparent"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm1" onclick="mostrar_charts1()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete1" onclick="delete_menu1()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><div class="chart_number"><div class="txt_chart_number"><span>Chart Number</span></div><div><input class="templates" id="template1" type="number" value="1" min="1" max="9"/></div></div><button id="btn_add2" onclick="remove_line1()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
+<div class="Lines_Query" id= "Query2" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query2"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu2" style="display:none"><span id="Tecnologia_Texto_Teste2"></span><i id="Tecnologia_Seta_2" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste2"></span><i id="Elemento_Seta_2" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste2"></span><i id="KPI_Seta_2" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste2"></span><i id="Periodo_Seta_2" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste2"></span><span id="Date_Final_Texto_Teste2"></span><span id="Hora_Inicial_Texto_Teste2"></span><span id="Hora_Final_Texto_Teste2"></span><button id="chart_type2" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position2" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm2" onclick="mostrar_charts2()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete2" onclick="delete_menu2()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><div class="chart_number"><div class="txt_chart_number"><span>Chart Number</span></div><div><input class="templates" id="template2" type="number" value="1" min="1" max="9"/></div></div><button id="btn_add2" onclick="remove_line2()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
+<div class="Lines_Query" id= "Query3" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query3"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu3" style="display:none"><span id="Tecnologia_Texto_Teste3"></span><i id="Tecnologia_Seta_3" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste3"></span><i id="Elemento_Seta_3" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste3"></span><i id="KPI_Seta_3" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste3"></span><i id="Periodo_Seta_3" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste3"></span><span id="Date_Final_Texto_Teste3"></span><span id="Hora_Inicial_Texto_Teste3"></span><span id="Hora_Final_Texto_Teste3"></span><button id="chart_type3" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position3" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm3" onclick="mostrar_charts3()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete3" onclick="delete_menu3()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><div class="chart_number"><div class="txt_chart_number"><span>Chart Number</span></div><div><input class="templates" id="template3" type="number" value="1" min="1" max="9"/></div></div><button id="btn_add3" onclick="remove_line3()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
+<div class="Lines_Query" id= "Query4" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query4"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu4" style="display:none"><span id="Tecnologia_Texto_Teste4"></span><i id="Tecnologia_Seta_4" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste4"></span><i id="Elemento_Seta_4" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste4"></span><i id="KPI_Seta_4" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste4"></span><i id="Periodo_Seta_4" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste4"></span><span id="Date_Final_Texto_Teste4"></span><span id="Hora_Inicial_Texto_Teste4"></span><span id="Hora_Final_Texto_Teste4"></span><button id="chart_type4" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position4" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm4" onclick="mostrar_charts4()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete4" onclick="delete_menu4()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><div class="chart_number"><div class="txt_chart_number"><span>Chart Number</span></div><div><input class="templates" id="template4" type="number" value="1" min="1" max="9"/></div></div><button id="btn_add4" onclick="remove_line4()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
+<div class="Lines_Query" id= "Query5" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query5"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu5" style="display:none"><span id="Tecnologia_Texto_Teste5"></span><i id="Tecnologia_Seta_5" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste5"></span><i id="Elemento_Seta_5" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste5"></span><i id="KPI_Seta_5" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste5"></span><i id="Periodo_Seta_5" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste5"></span><span id="Date_Final_Texto_Teste5"></span><span id="Hora_Inicial_Texto_Teste5"></span><span id="Hora_Final_Texto_Teste5"></span><button id="chart_type5" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position5" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm5" onclick="mostrar_charts5()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete5" onclick="delete_menu5()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><div class="chart_number"><div class="txt_chart_number"><span>Chart Number</span></div><div><input class="templates" id="template5" type="number" value="1" min="1" max="9"/></div></div><button id="btn_add5" onclick="remove_line5()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
+<div class="Lines_Query" id= "Query6" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query6"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu6" style="display:none"><span id="Tecnologia_Texto_Teste6"></span><i id="Tecnologia_Seta_6" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste6"></span><i id="Elemento_Seta_6" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste6"></span><i id="KPI_Seta_6" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste6"></span><i id="Periodo_Seta_6" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste6"></span><span id="Date_Final_Texto_Teste6"></span><span id="Hora_Inicial_Texto_Teste6"></span><span id="Hora_Final_Texto_Teste6"></span><button id="chart_type6" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position6" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm6" onclick="mostrar_charts6()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete6" onclick="delete_menu6()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><div class="chart_number"><div class="txt_chart_number"><span>Chart Number</span></div><div><input class="templates" id="template6" type="number" value="1" min="1" max="9"/></div></div><button id="btn_add6" onclick="remove_line6()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
+<div class="Lines_Query" id= "Query7" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query7"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu7" style="display:none"><span id="Tecnologia_Texto_Teste7"></span><i id="Tecnologia_Seta_7" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste7"></span><i id="Elemento_Seta_7" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste7"></span><i id="KPI_Seta_7" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste7"></span><i id="Periodo_Seta_7" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste7"></span><span id="Date_Final_Texto_Teste7"></span><span id="Hora_Inicial_Texto_Teste7"></span><span id="Hora_Final_Texto_Teste7"></span><button id="chart_type7" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position7" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm7" onclick="mostrar_charts7()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete7" onclick="delete_menu7()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><div class="chart_number"><div class="txt_chart_number"><span>Chart Number</span></div><div><input class="templates" id="template7" type="number" value="1" min="1" max="9"/></div></div><button id="btn_add7" onclick="remove_line7()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
+<div class="Lines_Query" id= "Query8" style = "border-bottom: 2px solid black; width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query8"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu8" style="display:none"><span id="Tecnologia_Texto_Teste8"></span><i id="Tecnologia_Seta_8" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste8"></span><i id="Elemento_Seta_8" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste8"></span><i id="KPI_Seta_8" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste8"></span><i id="Periodo_Seta_8" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste8"></span><span id="Date_Final_Texto_Teste8"></span><span id="Hora_Inicial_Texto_Teste8"></span><span id="Hora_Final_Texto_Teste8"></span><button id="chart_type8" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position8" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge"></i></button><button id="btn_confirm8" onclick="mostrar_charts8()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete8" onclick="delete_menu8()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><div class="chart_number"><div class="txt_chart_number"><span>Chart Number</span></div><div><input class="templates" id="template8" type="number" value="1" min="1" max="9"/></div></div><button id="btn_add8" onclick="remove_line8()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
+<div class="Lines_Query" id= "Query9" style = "width: 100%; display:none"><div style= "margin:10px;"><input class ="radiozinho" type="radio" name="radio_menu" id="radio_query9"><span style="margin-left: 10px"><b></b></span><div id="Query_Menu9" style="display:none"><span id="Tecnologia_Texto_Teste9"></span><i id="Tecnologia_Seta_9" class="fa fa-arrow-right"></i><span id="Elemento_Texto_Teste9"></span><i id="Elemento_Seta_9" class="fa fa-arrow-right"></i><span id="KPI_Texto_Teste9"></span><i id="KPI_Seta_9" class="fa fa-arrow-right"></i><span id="Periodo_Texto_Teste9"></span><i id="Periodo_Seta_9" class="fa fa-arrow-right"></i><span id="Date_Inicial_Texto_Teste9"></span><span id="Date_Final_Texto_Teste9"></span><span id="Hora_Inicial_Texto_Teste9"></span><span id="Hora_Final_Texto_Teste9"></span><button id="chart_type9" class="w3-btn w3-xlarge"><i class="fa fa-line-chart w3-text-black w3-xxlarge"></i></button><button id="chart_position9" class="w3-btn w3-xlarge"><i class="fa fa-long-arrow-right w3-text-black w3-xxlarge" ></i></button><button id="btn_confirm9" onclick="mostrar_charts9()" class="w3-btn w3-xlarge w3-text-green"><i class="fa fa-check"></i></button><button id="btn_delete9" onclick="delete_menu9()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-trash"></i></button></div><div style="float:right; display:inline-block"><div class="chart_number"><div class="txt_chart_number"><span>Chart Number</span></div><div><input class="templates" id="template9" type="number" value="1" min="1" max="9"/></div></div><button id="btn_add9" onclick="remove_line9()" class="w3-btn w3-xlarge w3-text-red"><i class="fa fa-minus-square"></i></button></div></div></div>
 </div>
 
 <div id="MENU" style="background-color:white; height:500px; margin:10px 10px 10px 10px">
@@ -4015,6 +4055,7 @@ btn_info_gsm = true;
 
 function printclick_counter_GSM(node){
 	
+	if(periodo != "hourly"){
 	estado = 2;
 	contador = "GSM";
 	
@@ -4107,7 +4148,9 @@ function printclick_counter_GSM(node){
 	}	
 
 	auth_change = true;
-
+	}else if(periodo == "hourly"){
+	alert("The QuickReport doesn't support hourly period to Counter Information. Please change the period for Daily, Weekly or Monthly to continue.");	
+	}	
 }
 
 $('.btn_info_counter_umts').click(function(node){
@@ -4118,6 +4161,7 @@ btn_info_umts = true;
 
 function printclick_counter_UMTS(node){
 	
+	if(periodo != "hourly"){
 	estado = 2;
 	contador = "UMTS";
 	
@@ -4216,7 +4260,9 @@ function printclick_counter_UMTS(node){
 	
 	showContador();
 	
-
+	}else if(periodo == "hourly"){
+	alert("The QuickReport doesn't support hourly period to Counter Information. Please change the period for Daily, Weekly or Monthly to continue.");	
+	}	
 }
 
 function printclick_NQI(node){
@@ -4303,7 +4349,7 @@ btn_info_lte = true;
 
 function printclick_counter_LTE(node){
 	
-	
+	if(periodo != "hourly"){
 	estado = 2;
 	contador = "LTE";
 	
@@ -4396,12 +4442,15 @@ function printclick_counter_LTE(node){
 	}	
 
 	auth_change = true;
-
+	}else if(periodo == "hourly"){
+	alert("The QuickReport doesn't support hourly period to Counter Information. Please change the period for Daily, Weekly or Monthly to continue.");		
+	}	
 }
 
 function printclick_erlang(node){
 	
 	if(hourly_selected == true){
+	if(familia == "cell"){	
 	estado = 4;
 	
 	if((vis_q1.style.display == "inline-block") || slider == true){
@@ -4470,6 +4519,9 @@ function printclick_erlang(node){
 	}	
 
 	auth_change = true;
+	}else{
+	alert("The Voice Erlang Equivalent KPI only support Cell Information, please change the element to yours respective cells to check the Eralng Equivalent.");	
+	}	
 	}else {	
 	alert("The Voice Erlang Equivalent KPI only support Hourly Period, please change the Period to hourly or change the KPI.");
 	}	
@@ -8360,115 +8412,41 @@ document.getElementById("info_counter").style.display = "none";
 
 ///////////////////////////////////////////////////////////// TEMPLATES ///////////////////////////////////////////
 
-$("#template1").click(function(){
-
-
-if(count_template[1] != 9){
-count_template[1] += 1;
-$("#template1").text(count_template[1]);
-}else{
-count_template[1] = 1;
-$("#template1").text(count_template[1]);	
-}	
-
+$('#template1').on('keyup mouseup', function(){
+count_template[1] = $("#template1").val();	
 });
 
-$("#template2").click(function(){
-
-
-if(count_template[2] != 9){
-count_template[2] += 1;
-$("#template2").text(count_template[2]);
-}else{
-count_template[2] = 1;
-$("#template2").text(count_template[2]);	
-}	
-
+$('#template2').on('keyup mouseup', function(){
+count_template[2] = $("#template2").val();	
 });
 
-$("#template3").click(function(){
-
-if(count_template[3] != 9){
-count_template[3] += 1;
-$("#template3").text(count_template[3]);
-}else{
-count_template[3] = 1;
-$("#template3").text(count_template[3]);	
-}	
-
-});	
-
-$("#template4").click(function(){
-
-if(count_template[4] != 9){
-count_template[4] += 1;
-$("#template4").text(count_template[4]);
-}else{
-count_template[4] = 1;
-$("#template4").text(count_template[4]);	
-}	
-
+$('#template3').on('keyup mouseup', function(){
+count_template[3] = $("#template3").val();	
 });
 
-$("#template5").click(function(){	
+$('#template4').on('keyup mouseup', function(){
+count_template[4] = $("#template4").val();	
+});
 
-if(count_template[5] != 9){
-count_template[5] += 1;
-$("#template5").text(count_template[5]);
-}else{
-count_template[5] = 1;
-$("#template5").text(count_template[5]);	
-}	
+$('#template5').on('keyup mouseup', function(){
+count_template[5] = $("#template5").val();	
+});
 
-});	
+$('#template6').on('keyup mouseup', function(){
+count_template[6] = $("#template6").val();	
+});
 
-$("#template6").click(function(){
+$('#template7').on('keyup mouseup', function(){
+count_template[7] = $("#template7").val();	
+});
 
-if(count_template[6] != 9){
-count_template[6] += 1;
-$("#template6").text(count_template[6]);
-}else{
-count_template[6] = 1;
-$("#template6").text(count_template[6]);	
-}	
+$('#template8').on('keyup mouseup', function(){
+count_template[8] = $("#template8").val();	
+});
 
-});	
-
-$("#template7").click(function(){
-
-if(count_template[7] != 9){
-count_template[7] += 1;
-$("#template7").text(count_template[7]);
-}else{
-count_template[7] = 1;
-$("#template7").text(count_template[7]);	
-}	
-
-});	
-
-$("#template8").click(function(){
-
-if(count_template[8] != 9){
-count_template[8] += 1;
-$("#template8").text(count_template[8]);
-}else{
-count_template[8] = 1;
-$("#template8").text(count_template[8]);	
-}	
-
-});	
-
-$("#template9").click(function(){
-
-if(count_template[9] != 9){
-count_template[9] += 1;
-$("#template9").text(count_template[9]);
-}else{
-count_template[9] = 1;
-$("#template9").text(count_template[9]);	
-}	
-
-});	
+$('#template9').on('keyup mouseup', function(){
+count_template[9] = $("#template9").val();	
+});
 
 
 /////////////////////////////////////////////////////////// AJAX REQUEST //////////////////////////////////////////////
@@ -8487,7 +8465,16 @@ function showUser() {
 		document.getElementById("Mostrar_Menu_Query").style.display = "inline-block";
 		document.getElementById("Esconder_Menu_Query").style.display = "none";
 		document.getElementById("Abort_Query").style.display = "inline-block";
-		VisibilidadeMenu = false;	
+		VisibilidadeMenu = false;
+		var vis_qm1 = document.getElementById("Query_Menu1");
+		var vis_qm2 = document.getElementById("Query_Menu2");
+		var vis_qm3 = document.getElementById("Query_Menu3");
+		var vis_qm4 = document.getElementById("Query_Menu4");
+		var vis_qm5 = document.getElementById("Query_Menu5");
+		var vis_qm6 = document.getElementById("Query_Menu6");
+		var vis_qm7 = document.getElementById("Query_Menu7");
+		var vis_qm8 = document.getElementById("Query_Menu8");
+		var vis_qm9 = document.getElementById("Query_Menu9");		
 			
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -8505,98 +8492,336 @@ function showUser() {
 				pageTitleNotification.on("Query Done !", 1000);
 				if(hourly_selected == true){	
 				eval(document.getElementById("runscript_hourly").innerHTML);
-				for(i = 2; i <= 9; i++){
-				eval(document.getElementById("runscript_hourly_"+i).innerHTML);	
+				
+				if((((count_template[1] == 2) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 2) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 2) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 2) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 2) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 2) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 2) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 2) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 2) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_hourly_2").innerHTML);
+				document.getElementById("container2").style.display = "inline-block";
+				document.getElementById("buttons_show2").style.display = "inline-block";
+				document.getElementById("escala2").style.display = "block";
+				}else{	
+				document.getElementById("container2").style.display = "none";
+				document.getElementById("buttons_show2").style.display = "none";
+				document.getElementById("escala2").style.display = "none";	
 				}	
-				if((count_template[1] == 2) || (count_template[2] == 2) || (count_template[3] == 2) || (count_template[4] == 2) || (count_template[5] == 2) || (count_template[6] == 2) || (count_template[7] == 2) || (count_template[8] == 2) || (count_template[9] == 2)){
-				document.getElementById("container2").style.display = "block";	
+				if((((count_template[1] == 3) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 3) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 3) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 3) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 3) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 3) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 3) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 3) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 3) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_hourly_3").innerHTML);
+				document.getElementById("container3").style.display = "inline-block";
+				document.getElementById("buttons_show3").style.display = "inline-block";
+				document.getElementById("escala3").style.display = "block";	
 				}else{
-				document.getElementById("container2").style.display = "none";	
-				}	
-				if((count_template[1] == 3) || (count_template[2] == 3) || (count_template[3] == 3) || (count_template[4] == 3) || (count_template[5] == 3) || (count_template[6] == 3) || (count_template[7] == 3) || (count_template[8] == 3) || (count_template[9] == 3)){
-				document.getElementById("container3").style.display = "block";	
-				}else{
-				document.getElementById("container3").style.display = "none";	
+				document.getElementById("container3").style.display = "none";
+				document.getElementById("buttons_show3").style.display = "none";
+				document.getElementById("escala3").style.display = "none";	
 				}
-				if((count_template[1] == 4) || (count_template[2] == 4) || (count_template[3] == 4) || (count_template[4] == 4) || (count_template[5] == 4) || (count_template[6] == 4) || (count_template[7] == 4) || (count_template[8] == 4) || (count_template[9] == 4)){
-				document.getElementById("container4").style.display = "block";	
+				if((((count_template[1] == 4) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 4) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 4) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 4) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 4) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 4) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 4) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 4) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 4) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_hourly_4").innerHTML);
+				document.getElementById("container4").style.display = "inline-block";
+				document.getElementById("buttons_show4").style.display = "inline-block";
+				document.getElementById("escala4").style.display = "block";	
 				}else{
-				document.getElementById("container4").style.display = "none";	
+				document.getElementById("container4").style.display = "none";
+				document.getElementById("buttons_show4").style.display = "none";
+				document.getElementById("escala4").style.display = "none";	
 				}
-				if((count_template[1] == 5) || (count_template[2] == 5) || (count_template[3] == 5) || (count_template[4] == 5) || (count_template[5] == 5) || (count_template[6] == 5) || (count_template[7] == 5) || (count_template[8] == 5) || (count_template[9] == 5)){
-				document.getElementById("container5").style.display = "block";	
+				if((((count_template[1] == 5) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 5) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 5) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 5) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 5) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 5) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 5) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 5) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 5) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_hourly_5").innerHTML);
+				document.getElementById("container5").style.display = "inline-block";
+				document.getElementById("buttons_show5").style.display = "inline-block";
+				document.getElementById("escala5").style.display = "block";	
 				}else{
-				document.getElementById("container5").style.display = "none";	
+				document.getElementById("container5").style.display = "none";
+				document.getElementById("buttons_show5").style.display = "none";
+				document.getElementById("escala5").style.display = "none";	
 				}
-				if((count_template[1] == 6) || (count_template[2] == 6) || (count_template[3] == 6) || (count_template[4] == 6) || (count_template[5] == 6) || (count_template[6] == 6) || (count_template[7] == 6) || (count_template[8] == 6) || (count_template[9] == 6)){
-				document.getElementById("container6").style.display = "block";	
+				if((((count_template[1] == 6) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 6) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 6) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 6) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 6) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 6) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 6) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 6) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 6) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_hourly_6").innerHTML);
+				document.getElementById("container6").style.display = "inline-block";
+				document.getElementById("buttons_show6").style.display = "inline-block";
+				document.getElementById("escala6").style.display = "block";	
 				}else{
-				document.getElementById("container6").style.display = "none";	
+				document.getElementById("container6").style.display = "none";
+				document.getElementById("buttons_show6").style.display = "none";
+				document.getElementById("escala6").style.display = "none";	
 				}
-				if((count_template[1] == 7) || (count_template[2] == 7) || (count_template[3] == 7) || (count_template[4] == 7) || (count_template[5] == 7) || (count_template[6] == 7) || (count_template[7] == 7) || (count_template[8] == 7) || (count_template[9] == 7)){
-				document.getElementById("container7").style.display = "block";	
+				if((((count_template[1] == 7) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 7) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 7) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 7) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 7) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 7) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 7) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 7) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 7) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_hourly_7").innerHTML);
+				document.getElementById("container7").style.display = "inline-block";
+				document.getElementById("buttons_show7").style.display = "inline-block";
+				document.getElementById("escala7").style.display = "block";	
 				}else{
-				document.getElementById("container7").style.display = "none";	
+				document.getElementById("container7").style.display = "none";
+				document.getElementById("buttons_show7").style.display = "none";
+				document.getElementById("escala7").style.display = "none";	
 				}
-				if((count_template[1] == 8) || (count_template[2] == 8) || (count_template[3] == 8) || (count_template[4] == 8) || (count_template[5] == 8) || (count_template[6] == 8) || (count_template[7] == 8) || (count_template[8] == 8) || (count_template[9] == 8)){
-				document.getElementById("container8").style.display = "block";	
+				if((((count_template[1] == 8) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 8) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 8) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 8) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 8) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 8) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 8) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 8) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 8) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_hourly_8").innerHTML);
+				document.getElementById("container8").style.display = "inline-block";
+				document.getElementById("buttons_show8").style.display = "inline-block";
+				document.getElementById("escala8").style.display = "block";	
 				}else{
-				document.getElementById("container8").style.display = "none";	
+				document.getElementById("container8").style.display = "none";
+				document.getElementById("buttons_show8").style.display = "none";
+				document.getElementById("escala8").style.display = "none";	
 				}
-				if((count_template[1] == 9) || (count_template[2] == 9) || (count_template[3] == 9) || (count_template[4] == 9) || (count_template[5] == 9) || (count_template[6] == 9) || (count_template[7] == 9) || (count_template[8] == 9) || (count_template[9] == 9)){
-				document.getElementById("container9").style.display = "block";	
+				if((((count_template[1] == 9) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 9) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 9) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 9) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 9) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 9) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 9) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 9) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 9) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_hourly_9").innerHTML);
+				document.getElementById("container9").style.display = "inline-block";
+				document.getElementById("buttons_show9").style.display = "inline-block";
+				document.getElementById("escala9").style.display = "block";	
 				}else{
-				document.getElementById("container9").style.display = "none";	
+				document.getElementById("container9").style.display = "none";
+				document.getElementById("buttons_show9").style.display = "none";
+				document.getElementById("escala9").style.display = "none";	
 				}				
 				}else if(periodo == "daily"){
 				eval(document.getElementById("runscript").innerHTML);
-				for(i = 2; i <= 9; i++){
-				eval(document.getElementById("runscript_"+i).innerHTML);	
-				}
-				if((count_template[1] == 2) || (count_template[2] == 2) || (count_template[3] == 2) || (count_template[4] == 2) || (count_template[5] == 2) || (count_template[6] == 2) || (count_template[7] == 2) || (count_template[8] == 2) || (count_template[9] == 2)){
-				document.getElementById("container2").style.display = "block";	
-				}else{
-				document.getElementById("container2").style.display = "none";	
+				
+				if((((count_template[1] == 2) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 2) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 2) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 2) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 2) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 2) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 2) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 2) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 2) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_2").innerHTML);
+				document.getElementById("container2d").style.display = "inline-block";
+				document.getElementById("buttons_show2d").style.display = "inline-block";
+				document.getElementById("escala2d").style.display = "block";
+				}else{	
+				document.getElementById("container2d").style.display = "none";
+				document.getElementById("buttons_show2d").style.display = "none";
+				document.getElementById("escala2d").style.display = "none";	
 				}	
-				if((count_template[1] == 3) || (count_template[2] == 3) || (count_template[3] == 3) || (count_template[4] == 3) || (count_template[5] == 3) || (count_template[6] == 3) || (count_template[7] == 3) || (count_template[8] == 3) || (count_template[9] == 3)){
-				document.getElementById("container3").style.display = "block";	
-				}else{
-				document.getElementById("container3").style.display = "none";	
+				if((((count_template[1] == 3) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 3) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 3) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 3) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 3) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 3) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 3) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 3) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 3) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_3").innerHTML);
+				document.getElementById("container3d").style.display = "inline-block";
+				document.getElementById("buttons_show3d").style.display = "inline-block";
+				document.getElementById("escala3d").style.display = "block";
+				}else{	
+				document.getElementById("container3d").style.display = "none";
+				document.getElementById("buttons_show3d").style.display = "none";
+				document.getElementById("escala3d").style.display = "none";	
 				}
-				if((count_template[1] == 4) || (count_template[2] == 4) || (count_template[3] == 4) || (count_template[4] == 4) || (count_template[5] == 4) || (count_template[6] == 4) || (count_template[7] == 4) || (count_template[8] == 4) || (count_template[9] == 4)){
-				document.getElementById("container4").style.display = "block";	
-				}else{
-				document.getElementById("container4").style.display = "none";	
+				if((((count_template[1] == 4) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 4) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 4) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 4) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 4) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 4) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 4) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 4) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 4) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_4").innerHTML);
+				document.getElementById("container4d").style.display = "inline-block";
+				document.getElementById("buttons_show4d").style.display = "inline-block";
+				document.getElementById("escala4d").style.display = "block";
+				}else{	
+				document.getElementById("container4d").style.display = "none";
+				document.getElementById("buttons_show4d").style.display = "none";
+				document.getElementById("escala4d").style.display = "none";	
 				}
-				if((count_template[1] == 5) || (count_template[2] == 5) || (count_template[3] == 5) || (count_template[4] == 5) || (count_template[5] == 5) || (count_template[6] == 5) || (count_template[7] == 5) || (count_template[8] == 5) || (count_template[9] == 5)){
-				document.getElementById("container5").style.display = "block";	
-				}else{
-				document.getElementById("container5").style.display = "none";	
+				if((((count_template[1] == 5) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 5) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 5) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 5) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 5) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 5) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 5) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 5) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 5) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_5").innerHTML);
+				document.getElementById("container5d").style.display = "inline-block";
+				document.getElementById("buttons_show5d").style.display = "inline-block";
+				document.getElementById("escala5d").style.display = "block";
+				}else{	
+				document.getElementById("container5d").style.display = "none";
+				document.getElementById("buttons_show5d").style.display = "none";
+				document.getElementById("escala5d").style.display = "none";	
 				}
-				if((count_template[1] == 6) || (count_template[2] == 6) || (count_template[3] == 6) || (count_template[4] == 6) || (count_template[5] == 6) || (count_template[6] == 6) || (count_template[7] == 6) || (count_template[8] == 6) || (count_template[9] == 6)){
-				document.getElementById("container6").style.display = "block";	
-				}else{
-				document.getElementById("container6").style.display = "none";	
+				if((((count_template[1] == 6) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 6) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 6) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 6) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 6) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 6) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 6) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 6) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 6) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_6").innerHTML);
+				document.getElementById("container6d").style.display = "inline-block";
+				document.getElementById("buttons_show6d").style.display = "inline-block";
+				document.getElementById("escala6d").style.display = "block";
+				}else{	
+				document.getElementById("container6d").style.display = "none";
+				document.getElementById("buttons_show6d").style.display = "none";
+				document.getElementById("escala6d").style.display = "none";	
 				}
-				if((count_template[1] == 7) || (count_template[2] == 7) || (count_template[3] == 7) || (count_template[4] == 7) || (count_template[5] == 7) || (count_template[6] == 7) || (count_template[7] == 7) || (count_template[8] == 7) || (count_template[9] == 7)){
-				document.getElementById("container7").style.display = "block";	
-				}else{
-				document.getElementById("container7").style.display = "none";	
+				if((((count_template[1] == 7) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 7) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 7) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 7) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 7) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 7) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 7) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 7) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 7) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_7").innerHTML);
+				document.getElementById("container7d").style.display = "inline-block";
+				document.getElementById("buttons_show7d").style.display = "inline-block";
+				document.getElementById("escala7d").style.display = "block";
+				}else{	
+				document.getElementById("container7d").style.display = "none";
+				document.getElementById("buttons_show7d").style.display = "none";
+				document.getElementById("escala7d").style.display = "none";	
 				}
-				if((count_template[1] == 8) || (count_template[2] == 8) || (count_template[3] == 8) || (count_template[4] == 8) || (count_template[5] == 8) || (count_template[6] == 8) || (count_template[7] == 8) || (count_template[8] == 8) || (count_template[9] == 8)){
-				document.getElementById("container8").style.display = "block";	
-				}else{
-				document.getElementById("container8").style.display = "none";	
+				if((((count_template[1] == 8) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 8) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 8) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 8) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 8) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 8) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 8) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 8) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 8) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_8").innerHTML);
+				document.getElementById("container8d").style.display = "inline-block";
+				document.getElementById("buttons_show8d").style.display = "inline-block";
+				document.getElementById("escala8d").style.display = "block";
+				}else{	
+				document.getElementById("container8d").style.display = "none";
+				document.getElementById("buttons_show8d").style.display = "none";
+				document.getElementById("escala8d").style.display = "none";	
 				}
-				if((count_template[1] == 9) || (count_template[2] == 9) || (count_template[3] == 9) || (count_template[4] == 9) || (count_template[5] == 9) || (count_template[6] == 9) || (count_template[7] == 9) || (count_template[8] == 9) || (count_template[9] == 9)){
-				document.getElementById("container9").style.display = "block";	
-				}else{
-				document.getElementById("container9").style.display = "none";	
+				if((((count_template[1] == 9) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 9) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 9) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 9) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 9) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 9) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 9) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 9) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 9) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_9").innerHTML);
+				document.getElementById("container9d").style.display = "inline-block";
+				document.getElementById("buttons_show9d").style.display = "inline-block";
+				document.getElementById("escala9d").style.display = "block";
+				}else{	
+				document.getElementById("container9d").style.display = "none";
+				document.getElementById("buttons_show9d").style.display = "none";
+				document.getElementById("escala9d").style.display = "none";	
 				}
 				}else if(periodo == "weekly"){
-				eval(document.getElementById("runscript_week").innerHTML);	
+				eval(document.getElementById("runscript_week").innerHTML);
+
+				if((((count_template[1] == 2) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 2) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 2) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 2) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 2) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 2) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 2) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 2) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 2) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_week2").innerHTML);
+				document.getElementById("container2w").style.display = "inline-block";
+				document.getElementById("buttons_show2w").style.display = "inline-block";
+				document.getElementById("escala2w").style.display = "block";
+				}else{	
+				document.getElementById("container2w").style.display = "none";
+				document.getElementById("buttons_show2w").style.display = "none";
+				document.getElementById("escala2w").style.display = "none";	
+				}
+				if((((count_template[1] == 3) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 3) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 3) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 3) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 3) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 3) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 3) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 3) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 3) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_week3").innerHTML);
+				document.getElementById("container3w").style.display = "inline-block";
+				document.getElementById("buttons_show3w").style.display = "inline-block";
+				document.getElementById("escala3w").style.display = "block";
+				}else{	
+				document.getElementById("container3w").style.display = "none";
+				document.getElementById("buttons_show3w").style.display = "none";
+				document.getElementById("escala3w").style.display = "none";	
+				}
+				if((((count_template[1] == 4) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 4) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 4) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 4) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 4) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 4) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 4) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 4) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 4) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_week4").innerHTML);
+				document.getElementById("container4w").style.display = "inline-block";
+				document.getElementById("buttons_show4w").style.display = "inline-block";
+				document.getElementById("escala4w").style.display = "block";
+				}else{	
+				document.getElementById("container4w").style.display = "none";
+				document.getElementById("buttons_show4w").style.display = "none";
+				document.getElementById("escala4w").style.display = "none";	
+				}
+				if((((count_template[1] == 5) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 5) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 5) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 5) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 5) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 5) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 5) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 5) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 5) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_week5").innerHTML);
+				document.getElementById("container5w").style.display = "inline-block";
+				document.getElementById("buttons_show5w").style.display = "inline-block";
+				document.getElementById("escala5w").style.display = "block";
+				}else{	
+				document.getElementById("container5w").style.display = "none";
+				document.getElementById("buttons_show5w").style.display = "none";
+				document.getElementById("escala5w").style.display = "none";	
+				}
+				if((((count_template[1] == 6) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 6) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 6) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 6) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 6) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 6) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 6) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 6) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 6) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_week6").innerHTML);
+				document.getElementById("container6w").style.display = "inline-block";
+				document.getElementById("buttons_show6w").style.display = "inline-block";
+				document.getElementById("escala6w").style.display = "block";
+				}else{	
+				document.getElementById("container6w").style.display = "none";
+				document.getElementById("buttons_show6w").style.display = "none";
+				document.getElementById("escala6w").style.display = "none";	
+				}
+				if((((count_template[1] == 7) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 7) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 7) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 7) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 7) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 7) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 7) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 7) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 7) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_week7").innerHTML);
+				document.getElementById("container7w").style.display = "inline-block";
+				document.getElementById("buttons_show7w").style.display = "inline-block";
+				document.getElementById("escala7w").style.display = "block";
+				}else{	
+				document.getElementById("container7w").style.display = "none";
+				document.getElementById("buttons_show7w").style.display = "none";
+				document.getElementById("escala7w").style.display = "none";	
+				}
+				if((((count_template[1] == 8) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 8) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 8) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 8) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 8) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 8) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 8) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 8) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 8) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_week8").innerHTML);
+				document.getElementById("container8w").style.display = "inline-block";
+				document.getElementById("buttons_show8w").style.display = "inline-block";
+				document.getElementById("escala8w").style.display = "block";
+				}else{	
+				document.getElementById("container8w").style.display = "none";
+				document.getElementById("buttons_show8w").style.display = "none";
+				document.getElementById("escala8w").style.display = "none";	
+				}
+				if((((count_template[1] == 9) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 9) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 9) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 9) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 9) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 9) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 9) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 9) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 9) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_week9").innerHTML);
+				document.getElementById("container9w").style.display = "inline-block";
+				document.getElementById("buttons_show9w").style.display = "inline-block";
+				document.getElementById("escala9w").style.display = "block";
+				}else{	
+				document.getElementById("container9w").style.display = "none";
+				document.getElementById("buttons_show9w").style.display = "none";
+				document.getElementById("escala9w").style.display = "none";	
+				}				
 				}else if(periodo == "monthly"){
-				eval(document.getElementById("runscript_month").innerHTML);	
+				eval(document.getElementById("runscript_month").innerHTML);
+
+				if((((count_template[1] == 2) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 2) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 2) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 2) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 2) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 2) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 2) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 2) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 2) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_month2").innerHTML);
+				document.getElementById("container2m").style.display = "inline-block";
+				document.getElementById("buttons_show2m").style.display = "inline-block";
+				document.getElementById("escala2m").style.display = "block";
+				}else{	
+				document.getElementById("container2m").style.display = "none";
+				document.getElementById("buttons_show2m").style.display = "none";
+				document.getElementById("escala2m").style.display = "none";	
+				}
+				if((((count_template[1] == 3) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 3) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 3) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 3) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 3) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 3) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 3) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 3) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 3) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_month3").innerHTML);
+				document.getElementById("container3m").style.display = "inline-block";
+				document.getElementById("buttons_show3m").style.display = "inline-block";
+				document.getElementById("escala3m").style.display = "block";
+				}else{	
+				document.getElementById("container3m").style.display = "none";
+				document.getElementById("buttons_show3m").style.display = "none";
+				document.getElementById("escala3m").style.display = "none";	
+				}
+				if((((count_template[1] == 4) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 4) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 4) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 4) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 4) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 4) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 4) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 4) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 4) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_month4").innerHTML);
+				document.getElementById("container4m").style.display = "inline-block";
+				document.getElementById("buttons_show4m").style.display = "inline-block";
+				document.getElementById("escala4m").style.display = "block";
+				}else{	
+				document.getElementById("container4m").style.display = "none";
+				document.getElementById("buttons_show4m").style.display = "none";
+				document.getElementById("escala4m").style.display = "none";	
+				}
+				if((((count_template[1] == 5) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 5) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 5) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 5) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 5) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 5) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 5) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 5) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 5) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_month5").innerHTML);
+				document.getElementById("container5m").style.display = "inline-block";
+				document.getElementById("buttons_show5m").style.display = "inline-block";
+				document.getElementById("escala5m").style.display = "block";
+				}else{	
+				document.getElementById("container5m").style.display = "none";
+				document.getElementById("buttons_show5m").style.display = "none";
+				document.getElementById("escala5m").style.display = "none";	
+				}
+				if((((count_template[1] == 6) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 6) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 6) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 6) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 6) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 6) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 6) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 6) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 6) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_month6").innerHTML);
+				document.getElementById("container6m").style.display = "inline-block";
+				document.getElementById("buttons_show6m").style.display = "inline-block";
+				document.getElementById("escala6m").style.display = "block";
+				}else{	
+				document.getElementById("container6m").style.display = "none";
+				document.getElementById("buttons_show6m").style.display = "none";
+				document.getElementById("escala6m").style.display = "none";	
+				}
+				if((((count_template[1] == 7) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 7) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 7) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 7) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 7) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 7) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 7) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 7) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 7) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_month7").innerHTML);
+				document.getElementById("container7m").style.display = "inline-block";
+				document.getElementById("buttons_show7m").style.display = "inline-block";
+				document.getElementById("escala7m").style.display = "block";
+				}else{	
+				document.getElementById("container7m").style.display = "none";
+				document.getElementById("buttons_show7m").style.display = "none";
+				document.getElementById("escala7m").style.display = "none";	
+				}
+				if((((count_template[1] == 8) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 8) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 8) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 8) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 8) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 8) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 8) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 8) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 8) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_month8").innerHTML);
+				document.getElementById("container8m").style.display = "inline-block";
+				document.getElementById("buttons_show8m").style.display = "inline-block";
+				document.getElementById("escala8m").style.display = "block";
+				}else{	
+				document.getElementById("container8m").style.display = "none";
+				document.getElementById("buttons_show8m").style.display = "none";
+				document.getElementById("escala8m").style.display = "none";	
+				}
+				if((((count_template[1] == 9) && (vis_qm1.style.display == "inline-block")) || ((count_template[2] == 9) && (vis_qm2.style.display == "inline-block")) || ((count_template[3] == 9) && (vis_qm3.style.display == "inline-block")) || ((count_template[4] == 9) && (vis_qm4.style.display == "inline-block")) || ((count_template[5] == 9) && (vis_qm5.style.display == "inline-block")) || ((count_template[6] == 9) && (vis_qm6.style.display == "inline-block")) || ((count_template[7] == 9) && (vis_qm7.style.display == "inline-block")) || ((count_template[8] == 9) && (vis_qm8.style.display == "inline-block")) || ((count_template[9] == 9) && (vis_qm9.style.display == "inline-block")))){
+				eval(document.getElementById("runscript_month9").innerHTML);
+				document.getElementById("container9m").style.display = "inline-block";
+				document.getElementById("buttons_show9m").style.display = "inline-block";
+				document.getElementById("escala9m").style.display = "block";
+				}else{	
+				document.getElementById("container9m").style.display = "none";
+				document.getElementById("buttons_show9m").style.display = "none";
+				document.getElementById("escala9m").style.display = "none";	
+				}				
 				}
             }
 			 if (xmlhttp.status >= 500){ //SE DER ERRO !

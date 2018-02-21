@@ -351,8 +351,7 @@ elseif (isset($weeknum)){
                     <li id="menuItemwaf" class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Capacity<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-						<li class="disabled"><a href="#">Cell & NodeB Capacity</a></li>
-						<li class="disabled"><a href="#">BSC Capacity</a></li>
+						<li class="menuItemnqi"><a href="/npsmart/gsm/bsc_capacity">BSC Capacity</a></li>
                         </ul>
 					</li>	
 						
@@ -366,7 +365,6 @@ elseif (isset($weeknum)){
                     <li id="menuItemwaf" class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Baseline<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-							<li class="menuItemnqi"><a href="/npsmart/umts/baseline_nodeb">Baseline NodeB Audit</a></li>
                             <li class="disabled"><a href="#">Baseline Cell & BSC Audit</a></li>
                         </ul>
                     </li>

@@ -209,7 +209,14 @@ group by baseline_date,node order by baseline_date
 		   (select * from lte_baseline.consistency_check_nok_hist
           WHERE (baseline_date = '".$reportdate."')) cck 
 		  on cdb.site = cck.node and cdb.mo::text = cck.mo and cdb.parameter::text = cck.parameter) t1
-		  where node = '".$node."' ) g )t
+		  where node = CASE
+				WHEN char_length('".$node."')> 9 then concat('E',right('".$node."',7))
+				WHEN '".$node."' like '%%S02%%' and char_length('".$node."')> 8 then concat('E',substring('".$node."',position('S02' in '".$node."') + 3,(char_length('".$node."') - position('S02' in '".$node."') + 3)))
+				WHEN '".$node."' like '%%S01%%' and char_length('".$node."')> 8 then concat('E',substring('".$node."',position('S01' in '".$node."') + 3,(char_length('".$node."') - position('S01' in '".$node."') + 3)))
+				WHEN '".$node."' like '%%E01%%' and char_length('".$node."')> 8 then concat('E',substring('".$node."',position('E01' in '".$node."') + 3,(char_length('".$node."') - position('E01' in '".$node."') + 3)))
+				WHEN '".$node."' like '%%IMP_%%' and '".$node."' not like '%%S01%%' then substring('".$node."',position('IMP_' in '".$node."') + 4,char_length('".$node."') - position('IMP_' in '".$node."') + 4)
+			else '".$node."'
+			end ) g )t
   GROUP BY t.node,type, avg_discrepancies
   order by total_discrepancies DESC
 ;");
@@ -223,7 +230,14 @@ group by baseline_date,node order by baseline_date
             mo,parameter,
             sum(case label when 'NOK' then 1 else 0 end) OVER (PARTITION BY mo,parameter) AS discrepancies
             from (select site node,cdb.mo,cdb.parameter,case when status = 'NOK' then 'NOK' else 'OK' END AS label
-		  from (select distinct site,mo,parameter from (select * from lte_control.cells where site = '".$node."') test1 cross join (select distinct mo,parameter from lte_baseline.consistency_check_nok_hist) test2) cdb
+		  from (select distinct site,mo,parameter from (select * from lte_control.cells where site = CASE
+				WHEN char_length('".$node."')> 9 then concat('E',right('".$node."',7))
+				WHEN '".$node."' like '%%S02%%' and char_length('".$node."')> 8 then concat('E',substring('".$node."',position('S02' in '".$node."') + 3,(char_length('".$node."') - position('S02' in '".$node."') + 3)))
+				WHEN '".$node."' like '%%S01%%' and char_length('".$node."')> 8 then concat('E',substring('".$node."',position('S01' in '".$node."') + 3,(char_length('".$node."') - position('S01' in '".$node."') + 3)))
+				WHEN '".$node."' like '%%E01%%' and char_length('".$node."')> 8 then concat('E',substring('".$node."',position('E01' in '".$node."') + 3,(char_length('".$node."') - position('E01' in '".$node."') + 3)))
+				WHEN '".$node."' like '%%IMP_%%' and '".$node."' not like '%%S01%%' then substring('".$node."',position('IMP_' in '".$node."') + 4,char_length('".$node."') - position('IMP_' in '".$node."') + 4)
+			else '".$node."'
+			end) test1 cross join (select distinct mo,parameter from lte_baseline.consistency_check_nok_hist) test2) cdb
 		   left join 
 		   (select * from lte_baseline.consistency_check_nok_hist
           WHERE (baseline_date = '".$reportdate."')) cck 
@@ -245,12 +259,26 @@ where mo = '".$reportmoname."'
 case when status = 'NOK' then 'NOK' else 'OK' END AS label from 
 (select distinct baseline_date,node,mo,parameter from umts_baseline.rules  
 cross join (select distinct baseline_date from lte_baseline.consistency_check_nok_hist) test
-cross join (select site node from lte_control.cells where site = '".$node."') test2
+cross join (select site node from lte_control.cells where site = CASE
+				WHEN char_length('".$node."')> 9 then concat('E',right('".$node."',7))
+				WHEN '".$node."' like '%%S02%%' and char_length('".$node."')> 8 then concat('E',substring('".$node."',position('S02' in '".$node."') + 3,(char_length('".$node."') - position('S02' in '".$node."') + 3)))
+				WHEN '".$node."' like '%%S01%%' and char_length('".$node."')> 8 then concat('E',substring('".$node."',position('S01' in '".$node."') + 3,(char_length('".$node."') - position('S01' in '".$node."') + 3)))
+				WHEN '".$node."' like '%%E01%%' and char_length('".$node."')> 8 then concat('E',substring('".$node."',position('E01' in '".$node."') + 3,(char_length('".$node."') - position('E01' in '".$node."') + 3)))
+				WHEN '".$node."' like '%%IMP_%%' and '".$node."' not like '%%S01%%' then substring('".$node."',position('IMP_' in '".$node."') + 4,char_length('".$node."') - position('IMP_' in '".$node."') + 4)
+			else '".$node."'
+			end) test2
 where act = true) r 
 left join 
 (select baseline_date,site node,mo,parameter,status from lte_baseline.consistency_check_nok_hist CCK INNER JOIN (select distinct site from lte_control.cells) CB on cck.node = cb.site) c
 on r.mo = c.mo and r.parameter = c.parameter and r.baseline_date = c.baseline_date and r.node = c.node
-where r.node = '".$node."'
+where r.node = CASE
+				WHEN char_length('".$node."')> 9 then concat('E',right('".$node."',7))
+				WHEN '".$node."' like '%%S02%%' and char_length('".$node."')> 8 then concat('E',substring('".$node."',position('S02' in '".$node."') + 3,(char_length('".$node."') - position('S02' in '".$node."') + 3)))
+				WHEN '".$node."' like '%%S01%%' and char_length('".$node."')> 8 then concat('E',substring('".$node."',position('S01' in '".$node."') + 3,(char_length('".$node."') - position('S01' in '".$node."') + 3)))
+				WHEN '".$node."' like '%%E01%%' and char_length('".$node."')> 8 then concat('E',substring('".$node."',position('E01' in '".$node."') + 3,(char_length('".$node."') - position('E01' in '".$node."') + 3)))
+				WHEN '".$node."' like '%%IMP_%%' and '".$node."' not like '%%S01%%' then substring('".$node."',position('IMP_' in '".$node."') + 4,char_length('".$node."') - position('IMP_' in '".$node."') + 4)
+			else '".$node."'
+			end
 ".$cond.") t
 where baseline_date between '".date('Y-m-d', strtotime($reportdate.' -25 day'))."' and '".$reportdate."'
 group by baseline_date,node order by baseline_date

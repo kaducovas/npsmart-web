@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112474813-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-112474813-1');
+</script>
 <link rel="shortcut icon" href="http://freelogo2016cdn.b-cdn.net/wp-content/uploads/2016/12/huawei-logo.png">
 <meta charset="utf-8">
 <script src='/npsmart/js/jquery-2.1.3.min.js'></script>
 <script src="/npsmart/js/jquery-1.10.2.js"></script>
 <script src="/npsmart/js/jquery-ui.js"></script> 
-<script src="/npsmart/js/highcharts.js"></script>
-<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="/npsmart/js/exporting.js"></script>
 <script src="/npsmart/js/export-csv.js"></script>
 <script src="/npsmart/js/grouped-categories.js"></script>

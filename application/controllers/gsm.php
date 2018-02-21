@@ -2446,4 +2446,72 @@ public function event_worstcells()
 		$this->load->view('view_mainkpis',$data);
 	}
 	
+	public function bsc_capacity()
+	{
+		$this->load->helper('form');
+		$this->load->model('model_monitor');
+		$this->load->model('model_bsc_capacity');
+		$this->load->model('model_cellsinfo');
+
+		
+		if($this->input->post('reportnename')){
+			$node = $this->input->post('reportnename');
+		} else {
+			$node = 'NETWORK';
+		}
+		$data['reportnename'] = $node;
+
+		//Set Type
+		if($this->input->post('reportnetype')){
+			$netype = $this->input->post('reportnetype');
+		} else {
+			$netype = 'network';
+		}
+		$data['reportnetype'] = $netype;		
+		
+$referencedate = $this->model_cellsinfo->reference_date_gsm($node);
+		#$referencedate = $this->model_cellsinfo->reference_date_daily($node);
+		#echo $referencedate;
+		
+		//Set Date and Weeknum
+		if($this->input->post('reportdate')){
+			$reportdate = $this->input->post('reportdate');
+			#echo $reportdate;
+			if(strtotime($reportdate) > strtotime($referencedate)){ //IF the date if greater than yesterday then it changes to the reference date
+				$reportdate = $referencedate;
+			}
+		} 
+		else {
+			$reportdate = $referencedate;
+			#echo $reportdate;
+		}
+		$date = new DateTime($reportdate);
+		$weeknum = $date->format("W");
+		$data['weeknum'] = $weeknum;
+		$data['reportdate'] = $reportdate;
+		$data['reportagg'] = 'weekly';
+		$data['reportkpi'] = 'bsc_capacity';
+		#echo $weeknum;
+		
+		$data['bsc'] = $this->model_cellsinfo->bsc();
+		$data['regional_gsm'] = $this->model_cellsinfo->regional_gsm();
+		$data['cidades_gsm'] = $this->model_cellsinfo->cidades_gsm();
+		#$data['clusters'] = $this->model_cellsinfo->clusters();
+		#$data['cells'] = $this->model_cellsinfo->cells();
+		$data['bts'] = $this->model_cellsinfo->bts();
+		$data['ufs'] = $this->model_cellsinfo->ufs_gsm();
+		#############################HEADER#####################		
+		
+		$regions = array("CO", "PRSC", "NE", "BASE","ES","MG");
+		
+		$data['bsc_capacity_weekly'] = $this->model_bsc_capacity->bsc_capacity_weekly($node,$reportdate);
+		$data['node_report'] = $this->model_bsc_capacity->bsc_capacity_report($node,$reportdate);
+		
+		$this->load->view('view_header_gsm');	
+		$this->load->view('view_nav_bsc_capacity',$data);
+		if ($netype == 'bsc') {
+		$this->load->view('view_bsc_capacity_chart',$data);
+		}
+		$this->load->view('view_bsc_capacity',$data);	
+	}	
 }

@@ -190,7 +190,7 @@ $(function () {
 						
 					},
 					tooltip: {
-					shared: false
+					shared: true
 					},
 					legend: {
 						layout: 'horizontal',

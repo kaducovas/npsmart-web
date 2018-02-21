@@ -8,6 +8,9 @@ jQuery(window).load(function () {
 	document.getElementById("loading_table").style.visibility = "visible";
 });
 </script>
+<div align="left">
+&emsp;<a target="_blank" class="link" href="/npsmart/output/weekly_tx_integrity.csv">Download TX Integrity</a>
+</div>
 <div class="triage_menu">
 &emsp;<font color="#8F8F8F" size="4"><b><a style = "color:#8F8F8F" href="#" onclick='selectkpitriage(this)'>Overview</a></b></font>
 </div>

@@ -120,27 +120,23 @@ $(function () {
         for (i = 0; i < len; i += 1) {
             $td = $($tds[i]);
             stringdata = $td.data('sparkline');
-			//alert(stringdata);
 			
 			if (stringdata.toString().indexOf(',') != -1)
 			{
-			
 			 arr = stringdata.split('; ');
 			 data = $.map(arr[0].split(', '), parseFloat);
+			 //alert(data);
 			}else 
 			{
 			 continue;
 			} 
-           // alert(arr);
-		
-		
-            
-			//alert(data);
+
             chart = {};
 
             if (arr[1]) {
                 chart.type = arr[1];
             }
+
             $td.highcharts('SparkLine', {
                 series: [{
                     data: data,
@@ -148,7 +144,7 @@ $(function () {
                 }],
                 tooltip: {
                     headerFormat: '<span style="font-size: 10px">' + $td.parent().find('th').html() + ', Q{point.x}:</span><br/>',
-                    pointFormat: '<b>{point.y}</b> %'
+                    pointFormat: '<b>{point.y}</b>'
                 },
                 chart: chart
             });

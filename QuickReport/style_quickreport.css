@@ -1,5 +1,9 @@
 <style>
 
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:700");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+
 .Lines_Query{
 background-color: #f6f6f6;	
 }	
@@ -112,8 +116,6 @@ display:none;
 	
 }	
 
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:700");
-@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 .buttons {
   text-align: center;
 }

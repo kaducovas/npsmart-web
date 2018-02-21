@@ -23,7 +23,7 @@ jQuery(window).load(function () {
 <div align="center">
 <?php 
 if ($reportcell){
-echo $reportcell;
+#echo $reportcell;
 }
 ?>
 </div>
@@ -431,8 +431,8 @@ echo "<font color='#000000' size='5'><b>Week ".$triage_week[0]->week."</b></font
 				
 					echo "<tr>";			
 
-					//echo "<td bgcolor='EDEDEB' value='".$row->node."'><font style='font-family: calibri; font-size:12pt'><a id='".$row->node."' style='color:black'onclick='selectne(this)' class='node' value='".$row->node."'>".$row->node."</a></font></td>";
-					echo "<td bgcolor='EDEDEB'>".$row->node."</td>";
+					echo "<td bgcolor='EDEDEB' value='".$row->node."'><font style='font-family: calibri; font-size:12pt'><a id='".$row->node."' style='color:black'onclick='selectne(this)' class='node' value='".$row->node."'>".$row->node."</a></font></td>";
+					//echo "<td bgcolor='EDEDEB'>".$row->node."</td>";
 					
 					echo "<td bgcolor='#FFFFFF'>".$region."</td>";
 					echo "<td bgcolor='#FFFFFF'>".$uf."</td>";

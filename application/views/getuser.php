@@ -60,7 +60,6 @@ $ct7 = ($_GET['ct7']);
 $ct8 = ($_GET['ct8']);
 $ct9 = ($_GET['ct9']);
 
-
 if($q1 != ""){	
 $kpi_query1 = $this->db->query("".$q1."");	
 }	
@@ -158,6 +157,49 @@ $v9 = "false";
 <head>
 <style>
 
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.btn_show {
+  
+  writing-mode: tb-rl;
+  cursor: pointer;
+  font-family: 'Open Sans', 'sans-serif';
+  border-radius: 5px;
+  padding: 5px 1px;
+  font-size: 22px;
+  text-decoration: none;
+  margin: 5px;
+  color: #fff;
+  display: inline-block;
+}
+
+.btn_show:active {
+  transform: translate(0px, 5px);
+  -webkit-transform: translate(0px, 5px);
+  box-shadow: 0px 1px 0px 0px;
+}
+
+.red {
+  margin-top: 240px;
+  background-color: #e74c3c;
+  box-shadow: 0px 0px 0px 5px #CE3323;
+  
+}
+
+.red:hover {
+  background-color: #FF6656;
+}
+
+.outer{
+	
+    width: 100%;
+	max-width: 100%;
+	max-height: 670px;
+	overflow: hidden;
+	white-space:nowrap;
+	
+}
+
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -184,19 +226,36 @@ tr:nth-child(even) {
 }
 
 #container {
-	width: 74%;
-	height: 650px;
-	margin-top: 5px;
-	
+
+display: inline-block;
+width: 95%;
+height: 650px;
+margin: 5px;
+		
+}
+
+#buttons_show{
+
+margin: 5px;	
+display: inline-block;
+width: 2.5%;
+height: 650px;
+background-color: lightgray;
+vertical-align:top;
+width:45px;
+max-width: 45px;
 	
 }
 
-#container2, #container3, #container4, #container5, #container6, #container7, #container8, #container9 {
-	width: 100%;
-	height: 650px;
-	margin-top: 5px;
-	
-	
+#Resumex{
+
+width: 25%;
+margin: 5px;
+display: none;
+height: 650px;
+display: none;
+vertical-align:top;
+
 }
 
 .cs_menu_theme, .cs_menu_txt, .cs_menu_color, .cs_menu_line_style{
@@ -228,6 +287,7 @@ text-align:left;
 color:white;
 font-size:20px;
 font-family: 'Rubik', sans-serif;
+
 }
 	
 </style>
@@ -235,12 +295,16 @@ font-family: 'Rubik', sans-serif;
 <body>
 
 <div><div style="display:inline-block">min Y: <input id="scale_min" type="number" style="width:70px"/></div><div style="display:inline-block; margin-left: 20px">max Y: <input id="scale_max" type="number" style="width:70px"/></div></div>
-<div style="width:100%">
-
-<div id="container" style="display:inline-block"></div>
+<div class= "outer">
 
 
-<div id="Resumex" style="display:inline-block; width: 25%; height: 650px; margin-top: 5px; position:absolute; margin-left:10px">
+<div id="container"></div>
+
+<div id="buttons_show">
+ <span class="btn_show red">Customize Chart <i id="seta_show" class="fa fa-arrow-left"></i></span>
+</div>
+
+<div id="Resumex">
 
 <div class="Painel" style = "border: 2px solid black; width: 100%"><div style="font-size: 25px; text-align:center; margin-top: 10px; color: white"><div style="display:inline-block; margin-right: 10px; float: middle"><b>Custom your Charts</b></div></div></div>
 <div style = "border: 2px solid black; width: 100%; height: 600px">
@@ -259,7 +323,7 @@ font-family: 'Rubik', sans-serif;
 <option value="Skies">Google</option>
 <option value="SandSignika">Sand Signika</option>
 </select>
-<p>Font Family: <br><input type="text" id="myFont"></input></p>
+<p>Font Family: <br><input type="text" id="minha_Fonte"></input></p>
 <p>Font Size Axis: <br><input type="number" id="myFontSize_Axis" value="11"></input></p>
 <p>Font Size Title: <br><input type="number" id="myFontSize_Title" value="18"></input></p>
 <p>Color Axis: <br><input id="colorSelector_Axis" type="text"></input></p>
@@ -555,16 +619,8 @@ font-family: 'Rubik', sans-serif;
 </div>
 </div>
 
-<div id="container2" style="display:none"></div>
-<div id="container3" style="display:none"></div>
-<div id="container4" style="display:none"></div>
-<div id="container5" style="display:none"></div>
-<div id="container6" style="display:none"></div>
-<div id="container7" style="display:none"></div>
-<div id="container8" style="display:none"></div>
-<div id="container9" style="display:none"></div>
-
 </div>
+
 </body>
 
 <!------------------------------------------------------------- TEMAS ----------------------------------------------->
@@ -609,6 +665,15 @@ font-family: 'Rubik', sans-serif;
 <?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Weekly/div_weekly8.php'); ?>
 <?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Weekly/div_weekly9.php'); ?>
 
+<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Monthly/div_monthly2.php'); ?>
+<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Monthly/div_monthly3.php'); ?>
+<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Monthly/div_monthly4.php'); ?>
+<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Monthly/div_monthly5.php'); ?>
+<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Monthly/div_monthly6.php'); ?>
+<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Monthly/div_monthly7.php'); ?>
+<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Monthly/div_monthly8.php'); ?>
+<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Monthly/div_monthly9.php'); ?>
+
 <script type="text/javascript" id="runscript_hourly">
 $(function () {
 	
@@ -634,6 +699,7 @@ var vis_text = false;
 var vis_colors = false;
 var vis_line = false;
 var fonte = "Arial+Black";
+var vis_menu_person = false;
 
 $(document).ready(function() {
 	
@@ -1351,7 +1417,7 @@ $('#colorSelector8').ColorPicker({
 		var acc = $("#container").highcharts();
 		$('#colorSelector8').css('backgroundColor', '#' + hex);
 		color[8] = hex;
-		acc.series[8].update({color: "#"+color[1]+""});
+		acc.series[8].update({color: "#"+color[8]+""});
 	}
 });
 
@@ -1369,7 +1435,7 @@ $('#colorSelector9').ColorPicker({
 		var acc = $("#container").highcharts();
 		$('#colorSelector9').css('backgroundColor', '#' + hex);
 		color[9] = hex;
-		acc.series[9].update({color: "#"+color[1]+""});
+		acc.series[9].update({color: "#"+color[9]+""});
 	}
 });
 
@@ -1382,54 +1448,63 @@ if(x == "SandSignika"){
 acc.destroy();	
 eval(document.getElementById("Sand_Signika").innerHTML);
 Highcharts.setOptions(chart_Sand_Signika);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_hourly").innerHTML);	 
 }else
 if(x == "DarkUnika"){
 acc.destroy();	
 eval(document.getElementById("Dark_Unika").innerHTML);
 Highcharts.setOptions(chart_Dark_Unika);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_hourly").innerHTML);	 
 }else
 if(x == "DarkBlue"){
 acc.destroy();	
 eval(document.getElementById("Dark_Blue").innerHTML);
 Highcharts.setOptions(chart_Dark_Blue);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_hourly").innerHTML);	 
 }else
 if(x == "Skies"){
 acc.destroy();	
 eval(document.getElementById("Nuvem").innerHTML);
 Highcharts.setOptions(chart_Skies);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_hourly").innerHTML);	 
 }else
 if(x == "DarkGreen"){
 acc.destroy();	
 eval(document.getElementById("Dark_Green").innerHTML);
 Highcharts.setOptions(chart_Dark_Green);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_hourly").innerHTML);	 
 }else
 if(x == "FlatDark"){
 acc.destroy();	
 eval(document.getElementById("Flat_Dark").innerHTML);
 Highcharts.setOptions(chart_Flat_Dark);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_hourly").innerHTML);	 
 }else
 if(x == "Null"){
 acc.destroy();	
 eval(document.getElementById("Empty").innerHTML);
 Highcharts.setOptions(chart_null);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_hourly").innerHTML);	 
 }else
 if(x == "val_ffx"){
 acc.destroy();	
 eval(document.getElementById("ffx").innerHTML);
 Highcharts.setOptions(chart_ffx);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_hourly").innerHTML);	 
 }else
 if(x == "val_538"){
 acc.destroy();	
 eval(document.getElementById("538").innerHTML);
 Highcharts.setOptions(chart_538);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_hourly").innerHTML);	 
 }	
 });
@@ -1759,7 +1834,7 @@ acc.yAxis[0].update({min: null});
 
 //////////////////////////////////////////////////////////////// FONT STYLE ///////////////////////////////////////
 
-$('#myFont').fontselect().change(function(){
+$('#minha_Fonte').fontselect().change(function(){
         
 // replace + signs with spaces for css
 var font = $(this).val().replace(/\+/g, ' ');
@@ -1982,7 +2057,25 @@ $( "#btn_default" ).click(function() {
 var acc = $("#container").highcharts();	
 acc.destroy();
 eval(document.getElementById("runscript_hourly").innerHTML);
-});		
+});	
+
+$( ".btn_show" ).click(function() {
+var acc = $("#container").highcharts();
+var cont = $("#container"); 	
+if(vis_menu_person == false){
+cont.css('width','70%');
+acc.setSize(cont.width(), 650, true);
+document.getElementById("Resumex").style.display = "inline-block";
+$( "#seta_show" ).attr( "class", "fa fa-arrow-right");
+vis_menu_person = true;
+}else if (vis_menu_person == true){
+document.getElementById("Resumex").style.display = "none";
+cont.css('width','95%');
+acc.setSize(cont.width(), 650, true);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
+vis_menu_person = false;
+}	
+});	
 	
 });
 </script>
@@ -2012,6 +2105,7 @@ var vis_text = false;
 var vis_colors = false;
 var vis_line = false;
 var fonte = "Arial+Black";
+var vis_menu_person = false;
 
 $(document).ready(function() {
 
@@ -2720,54 +2814,63 @@ if(x == "SandSignika"){
 acc.destroy();	
 eval(document.getElementById("Sand_Signika").innerHTML);
 Highcharts.setOptions(chart_Sand_Signika);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript").innerHTML);	 
 }else
 if(x == "DarkUnika"){
 acc.destroy();	
 eval(document.getElementById("Dark_Unika").innerHTML);
 Highcharts.setOptions(chart_Dark_Unika);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript").innerHTML);	 
 }else
 if(x == "DarkBlue"){
 acc.destroy();	
 eval(document.getElementById("Dark_Blue").innerHTML);
 Highcharts.setOptions(chart_Dark_Blue);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript").innerHTML);	 
 }else
 if(x == "Skies"){
 acc.destroy();	
 eval(document.getElementById("Nuvem").innerHTML);
 Highcharts.setOptions(chart_Skies);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript").innerHTML);	 
 }else
 if(x == "DarkGreen"){
 acc.destroy();	
 eval(document.getElementById("Dark_Green").innerHTML);
 Highcharts.setOptions(chart_Dark_Green);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript").innerHTML);	 
 }else
 if(x == "FlatDark"){
 acc.destroy();	
 eval(document.getElementById("Flat_Dark").innerHTML);
 Highcharts.setOptions(chart_Flat_Dark);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript").innerHTML);	 
 }else
 if(x == "Null"){
 acc.destroy();	
 eval(document.getElementById("Empty").innerHTML);
 Highcharts.setOptions(chart_null);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript").innerHTML);	 
 }else
 if(x == "val_ffx"){
 acc.destroy();	
 eval(document.getElementById("ffx").innerHTML);
 Highcharts.setOptions(chart_ffx);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript").innerHTML);	 
 }else
 if(x == "val_538"){
 acc.destroy();	
 eval(document.getElementById("538").innerHTML);
 Highcharts.setOptions(chart_538);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript").innerHTML);	 
 }	
 });
@@ -3097,7 +3200,7 @@ acc.yAxis[0].update({min: null});
 
 //////////////////////////////////////////////////////////////// FONT STYLE ///////////////////////////////////////
 
-$('#myFont').fontselect().change(function(){
+$('#minha_Fonte').fontselect().change(function(){
         
 // replace + signs with spaces for css
 var font = $(this).val().replace(/\+/g, ' ');
@@ -3320,10 +3423,28 @@ $( "#btn_default" ).click(function() {
 var acc = $("#container").highcharts();	
 acc.destroy();
 eval(document.getElementById("runscript").innerHTML);
-});		
-	
 });
-  </script>
+
+$( ".btn_show" ).click(function() {
+var acc = $("#container").highcharts();
+var cont = $("#container"); 	
+if(vis_menu_person == false){
+cont.css('width','70%');
+acc.setSize(cont.width(), 650, true);
+document.getElementById("Resumex").style.display = "inline-block";
+$( "#seta_show" ).attr( "class", "fa fa-arrow-right");
+vis_menu_person = true;
+}else if (vis_menu_person == true){
+document.getElementById("Resumex").style.display = "none";
+cont.css('width','95%');
+acc.setSize(cont.width(), 650, true);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
+vis_menu_person = false;
+}	
+});	
+	
+});		
+</script>
 
 <script type="text/javascript" id="runscript_week">
 $(function () {
@@ -3349,13 +3470,14 @@ var vis_text = false;
 var vis_colors = false;
 var vis_line = false;
 var fonte = "Arial+Black";
+var vis_menu_person = false;
 
 $(document).ready(function() {
 	
 var acc = new Highcharts.Chart({
 	chart: {
 				renderTo: 'container',
-				alignTicks:false,
+				alignTicks:false,				
 				//backgroundColor:'transparent',
 				zoomType: 'xy',
 				resetZoomButton: {
@@ -3511,6 +3633,7 @@ yAxis: [{
 		name: '<?php echo $f1 ?>',
 		
         data: [<?php
+		if($ct1 == 1){
         if($q1 != ""){    
 		for ($i = 0; $i < $kpi_query1->num_rows(); $i++) {
 		$row = $kpi_query1->row_array($i);
@@ -3519,7 +3642,8 @@ yAxis: [{
 		}		
 		echo "['".$row['week']."', ".$row['node']."], ";	
 		}
-		}		
+		}
+		}
         ?>],
 		
 		showInLegend: <?php echo $v1 ?>,
@@ -3539,6 +3663,7 @@ yAxis: [{
 		name: '<?php echo $f2 ?>',
 		
         data: [<?php
+		if($ct2 == 1){		
         if($q2 != ""){    
 		for ($i = 0; $i < $kpi_query2->num_rows(); $i++) {
 		$row = $kpi_query2->row_array($i);
@@ -3547,7 +3672,8 @@ yAxis: [{
 		}		
 		echo "['".$row['week']."', ".$row['node']."], ";	
 		}
-		}		
+		}
+		}
         ?>],
 		
 		showInLegend: <?php echo $v2 ?>,
@@ -3567,6 +3693,7 @@ yAxis: [{
 		name: '<?php echo $f3 ?>',
 		
         data: [<?php
+		if($ct3 == 1){
         if($q3 != ""){    
 		for ($i = 0; $i < $kpi_query3->num_rows(); $i++) {
 		$row = $kpi_query3->row_array($i);
@@ -3575,7 +3702,8 @@ yAxis: [{
 		}		
 		echo "['".$row['week']."', ".$row['node']."], ";	
 		}
-		}		
+		}
+		}
         ?>],
 		
 		showInLegend: <?php echo $v3 ?>,
@@ -3595,6 +3723,7 @@ yAxis: [{
 		name: '<?php echo $f4 ?>',
 		
         data: [<?php
+		if($ct4 == 1){		
         if($q4 != ""){    
 		for ($i = 0; $i < $kpi_query4->num_rows(); $i++) {
 		$row = $kpi_query4->row_array($i);
@@ -3603,7 +3732,8 @@ yAxis: [{
 		}		
 		echo "['".$row['week']."', ".$row['node']."], ";	
 		}
-		}		
+		}
+		}
         ?>],
 		
 		showInLegend: <?php echo $v4 ?>,
@@ -3623,6 +3753,7 @@ yAxis: [{
 		name: '<?php echo $f5 ?>',
 		
         data: [<?php
+		if($ct5 == 1){
         if($q5 != ""){    
 		for ($i = 0; $i < $kpi_query5->num_rows(); $i++) {
 		$row = $kpi_query5->row_array($i);
@@ -3631,7 +3762,8 @@ yAxis: [{
 		}		
 		echo "['".$row['week']."', ".$row['node']."], ";	
 		}
-		}		
+		}
+		}
         ?>],
 		
 		showInLegend: <?php echo $v5 ?>,
@@ -3651,6 +3783,7 @@ yAxis: [{
 		name: '<?php echo $f6 ?>',
 		
         data: [<?php
+		if($ct6 == 1){		
         if($q6 != ""){    
 		for ($i = 0; $i < $kpi_query6->num_rows(); $i++) {
 		$row = $kpi_query6->row_array($i);
@@ -3659,7 +3792,8 @@ yAxis: [{
 		}		
 		echo "['".$row['week']."', ".$row['node']."], ";	
 		}
-		}		
+		}
+		}
         ?>],
 		
 		showInLegend: <?php echo $v6 ?>,
@@ -3679,6 +3813,7 @@ yAxis: [{
 		name: '<?php echo $f7 ?>',
 		
         data: [<?php
+		if($ct7 == 1){
         if($q7 != ""){    
 		for ($i = 0; $i < $kpi_query7->num_rows(); $i++) {
 		$row = $kpi_query7->row_array($i);
@@ -3687,7 +3822,8 @@ yAxis: [{
 		}		
 		echo "['".$row['week']."', ".$row['node']."], ";	
 		}
-		}		
+		}
+		}
         ?>],
 		
 		showInLegend: <?php echo $v7 ?>,
@@ -3707,6 +3843,7 @@ yAxis: [{
 		name: '<?php echo $f8 ?>',
 		
         data: [<?php
+		if($ct8 == 1){		
         if($q8 != ""){    
 		for ($i = 0; $i < $kpi_query8->num_rows(); $i++) {
 		$row = $kpi_query8->row_array($i);
@@ -3715,7 +3852,8 @@ yAxis: [{
 		}		
 		echo "['".$row['week']."', ".$row['node']."], ";	
 		}
-		}		
+		}
+		}
         ?>],
 		
 		showInLegend: <?php echo $v8 ?>,
@@ -3735,6 +3873,7 @@ yAxis: [{
 		name: '<?php echo $f9 ?>',
 		
         data: [<?php
+		if($ct9 == 1){		
         if($q9 != ""){    
 		for ($i = 0; $i < $kpi_query9->num_rows(); $i++) {
 		$row = $kpi_query9->row_array($i);
@@ -3743,7 +3882,8 @@ yAxis: [{
 		}		
 		echo "['".$row['week']."', ".$row['node']."], ";	
 		}
-		}		
+		}
+		}
         ?>],
 		
 		showInLegend: <?php echo $v9 ?>,
@@ -3934,54 +4074,63 @@ if(x == "SandSignika"){
 acc.destroy();	
 eval(document.getElementById("Sand_Signika").innerHTML);
 Highcharts.setOptions(chart_Sand_Signika);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_week").innerHTML);	 
 }else
 if(x == "DarkUnika"){
 acc.destroy();	
 eval(document.getElementById("Dark_Unika").innerHTML);
 Highcharts.setOptions(chart_Dark_Unika);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_week").innerHTML);	 
 }else
 if(x == "DarkBlue"){
 acc.destroy();	
 eval(document.getElementById("Dark_Blue").innerHTML);
 Highcharts.setOptions(chart_Dark_Blue);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_week").innerHTML);	 
 }else
 if(x == "Skies"){
 acc.destroy();	
 eval(document.getElementById("Nuvem").innerHTML);
 Highcharts.setOptions(chart_Skies);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_week").innerHTML);	 
 }else
 if(x == "DarkGreen"){
 acc.destroy();	
 eval(document.getElementById("Dark_Green").innerHTML);
 Highcharts.setOptions(chart_Dark_Green);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_week").innerHTML);	 
 }else
 if(x == "FlatDark"){
 acc.destroy();	
 eval(document.getElementById("Flat_Dark").innerHTML);
 Highcharts.setOptions(chart_Flat_Dark);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_week").innerHTML);	 
 }else
 if(x == "Null"){
 acc.destroy();	
 eval(document.getElementById("Empty").innerHTML);
 Highcharts.setOptions(chart_null);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_week").innerHTML);	 
 }else
 if(x == "val_ffx"){
 acc.destroy();	
 eval(document.getElementById("ffx").innerHTML);
 Highcharts.setOptions(chart_ffx);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_week").innerHTML);	 
 }else
 if(x == "val_538"){
 acc.destroy();	
 eval(document.getElementById("538").innerHTML);
 Highcharts.setOptions(chart_538);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_week").innerHTML);	 
 }	
 });
@@ -4311,7 +4460,7 @@ acc.yAxis[0].update({min: null});
 
 //////////////////////////////////////////////////////////////// FONT STYLE ///////////////////////////////////////
 
-$('#myFont').fontselect().change(function(){
+$('#minha_Fonte').fontselect().change(function(){
         
 // replace + signs with spaces for css
 var font = $(this).val().replace(/\+/g, ' ');
@@ -4534,6 +4683,24 @@ $( "#btn_default" ).click(function() {
 var acc = $("#container").highcharts();	
 acc.destroy();
 eval(document.getElementById("runscript_week").innerHTML);
+});
+
+$( ".btn_show" ).click(function() {
+var acc = $("#container").highcharts();
+var cont = $("#container"); 	
+if(vis_menu_person == false){
+cont.css('width','70%');
+acc.setSize(cont.width(), 650, true);
+document.getElementById("Resumex").style.display = "inline-block";
+$( "#seta_show" ).attr( "class", "fa fa-arrow-right");
+vis_menu_person = true;
+}else if (vis_menu_person == true){
+document.getElementById("Resumex").style.display = "none";
+cont.css('width','95%');
+acc.setSize(cont.width(), 650, true);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
+vis_menu_person = false;
+}	
 });		
 	
 });
@@ -4564,6 +4731,7 @@ var vis_text = false;
 var vis_colors = false;
 var vis_line = false;
 var fonte = "Arial+Black";
+var vis_menu_person = false;
 
 $(document).ready(function() {
 
@@ -4597,7 +4765,7 @@ Highcharts.createElement('link', {
 var acc = new Highcharts.Chart({
 	chart: {
 				renderTo: 'container',
-				alignTicks:false,
+				alignTicks:false,				
 				//backgroundColor:'transparent',
 				zoomType: 'xy',
 				style: {
@@ -4759,6 +4927,7 @@ yAxis: [{
 		name: '<?php echo $f1 ?>',
 		
         data: [<?php
+		if($ct1 == 1){
         if($q1 != ""){    
 		for ($i = 0; $i < $kpi_query1->num_rows(); $i++) {
 		$row = $kpi_query1->row_array($i);
@@ -4767,7 +4936,8 @@ yAxis: [{
 		}		
 		echo "['".$row['month']."', ".$row['node']."], ";	
 		}
-		}		
+		}
+		}
         ?>],
 		
 		showInLegend: <?php echo $v1 ?>,
@@ -4787,6 +4957,7 @@ yAxis: [{
 		name: '<?php echo $f2 ?>',
 		
         data: [<?php
+		if($ct2 == 1){
         if($q2 != ""){    
 		for ($i = 0; $i < $kpi_query2->num_rows(); $i++) {
 		$row = $kpi_query2->row_array($i);
@@ -4795,7 +4966,8 @@ yAxis: [{
 		}		
 		echo "['".$row['month']."', ".$row['node']."], ";	
 		}
-		}		
+		}
+		}
         ?>],
 		
 		showInLegend: <?php echo $v2 ?>,
@@ -4815,12 +4987,14 @@ yAxis: [{
 		name: '<?php echo $f3 ?>',
 		
         data: [<?php
+		if($ct3 == 1){
         if($q3 != ""){    
 		for ($i = 0; $i < $kpi_query3->num_rows(); $i++) {
 		$row = $kpi_query3->row_array($i);
 		echo "['".$row['month']."', ".$row['node']."], ";	
 		}
-		}		
+		}
+		}
         ?>],
 		
 		showInLegend: <?php echo $v3 ?>,
@@ -4840,6 +5014,7 @@ yAxis: [{
 		name: '<?php echo $f4 ?>',
 		
         data: [<?php
+		if($ct4 == 1){
         if($q4 != ""){    
 		for ($i = 0; $i < $kpi_query4->num_rows(); $i++) {
 		$row = $kpi_query4->row_array($i);
@@ -4848,7 +5023,8 @@ yAxis: [{
 		}		
 		echo "['".$row['month']."', ".$row['node']."], ";	
 		}
-		}		
+		}
+		}
         ?>],
 		
 		showInLegend: <?php echo $v4 ?>,
@@ -4868,6 +5044,7 @@ yAxis: [{
 		name: '<?php echo $f5 ?>',
 		
         data: [<?php
+		if($ct5 == 1){
         if($q5 != ""){    
 		for ($i = 0; $i < $kpi_query5->num_rows(); $i++) {
 		$row = $kpi_query5->row_array($i);
@@ -4876,7 +5053,8 @@ yAxis: [{
 		}		
 		echo "['".$row['month']."', ".$row['node']."], ";	
 		}
-		}		
+		}
+		}
         ?>],
 		
 		showInLegend: <?php echo $v5 ?>,
@@ -4896,6 +5074,7 @@ yAxis: [{
 		name: '<?php echo $f6 ?>',
 		
         data: [<?php
+		if($ct6 == 1){
         if($q6 != ""){    
 		for ($i = 0; $i < $kpi_query6->num_rows(); $i++) {
 		$row = $kpi_query6->row_array($i);
@@ -4904,7 +5083,8 @@ yAxis: [{
 		}		
 		echo "['".$row['month']."', ".$row['node']."], ";	
 		}
-		}		
+		}
+		}
         ?>],
 		
 		showInLegend: <?php echo $v6 ?>,
@@ -4924,6 +5104,7 @@ yAxis: [{
 		name: '<?php echo $f7 ?>',
 		
         data: [<?php
+		if($ct7 == 1){
         if($q7 != ""){    
 		for ($i = 0; $i < $kpi_query7->num_rows(); $i++) {
 		$row = $kpi_query7->row_array($i);
@@ -4932,7 +5113,8 @@ yAxis: [{
 		}		
 		echo "['".$row['month']."', ".$row['node']."], ";	
 		}
-		}		
+		}
+		}
         ?>],
 		
 		showInLegend: <?php echo $v7 ?>,
@@ -4952,6 +5134,7 @@ yAxis: [{
 		name: '<?php echo $f8 ?>',
 		
         data: [<?php
+		if($ct8 == 1){
         if($q8 != ""){    
 		for ($i = 0; $i < $kpi_query8->num_rows(); $i++) {
 		$row = $kpi_query8->row_array($i);
@@ -4960,7 +5143,8 @@ yAxis: [{
 		}		
 		echo "['".$row['month']."', ".$row['node']."], ";	
 		}
-		}		
+		}
+		}
         ?>],
 		
 		showInLegend: <?php echo $v8 ?>,
@@ -4980,6 +5164,7 @@ yAxis: [{
 		name: '<?php echo $f9 ?>',
 		
         data: [<?php
+		if($ct9 == 1){
         if($q9 != ""){    
 		for ($i = 0; $i < $kpi_query9->num_rows(); $i++) {
 		$row = $kpi_query9->row_array($i);
@@ -4988,7 +5173,8 @@ yAxis: [{
 		}		
 		echo "['".$row['month']."', ".$row['node']."], ";	
 		}
-		}		
+		}
+		}
         ?>],
 		
 		showInLegend: <?php echo $v9 ?>,
@@ -5179,54 +5365,63 @@ if(x == "SandSignika"){
 acc.destroy();	
 eval(document.getElementById("Sand_Signika").innerHTML);
 Highcharts.setOptions(chart_Sand_Signika);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_month").innerHTML);	 
 }else
 if(x == "DarkUnika"){
 acc.destroy();	
 eval(document.getElementById("Dark_Unika").innerHTML);
 Highcharts.setOptions(chart_Dark_Unika);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_month").innerHTML);	 
 }else
 if(x == "DarkBlue"){
 acc.destroy();	
 eval(document.getElementById("Dark_Blue").innerHTML);
 Highcharts.setOptions(chart_Dark_Blue);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_month").innerHTML);	 
 }else
 if(x == "Skies"){
 acc.destroy();	
 eval(document.getElementById("Nuvem").innerHTML);
 Highcharts.setOptions(chart_Skies);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_month").innerHTML);	 
 }else
 if(x == "DarkGreen"){
 acc.destroy();	
 eval(document.getElementById("Dark_Green").innerHTML);
 Highcharts.setOptions(chart_Dark_Green);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_month").innerHTML);	 
 }else
 if(x == "FlatDark"){
 acc.destroy();	
 eval(document.getElementById("Flat_Dark").innerHTML);
 Highcharts.setOptions(chart_Flat_Dark);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_month").innerHTML);	 
 }else
 if(x == "Null"){
 acc.destroy();	
 eval(document.getElementById("Empty").innerHTML);
 Highcharts.setOptions(chart_null);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_month").innerHTML);	 
 }else
 if(x == "val_ffx"){
 acc.destroy();	
 eval(document.getElementById("ffx").innerHTML);
 Highcharts.setOptions(chart_ffx);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_month").innerHTML);	 
 }else
 if(x == "val_538"){
 acc.destroy();	
 eval(document.getElementById("538").innerHTML);
 Highcharts.setOptions(chart_538);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
 eval(document.getElementById("runscript_month").innerHTML);	 
 }	
 });
@@ -5556,7 +5751,7 @@ acc.yAxis[0].update({min: null});
 
 //////////////////////////////////////////////////////////////// FONT STYLE ///////////////////////////////////////
 
-$('#myFont').fontselect().change(function(){
+$('#minha_Fonte').fontselect().change(function(){
         
 // replace + signs with spaces for css
 var font = $(this).val().replace(/\+/g, ' ');
@@ -5779,9 +5974,27 @@ $( "#btn_default" ).click(function() {
 var acc = $("#container").highcharts();	
 acc.destroy();
 eval(document.getElementById("runscript_month").innerHTML);
-});		
-	
 });
+
+$( ".btn_show" ).click(function() {
+var acc = $("#container").highcharts();
+var cont = $("#container"); 	
+if(vis_menu_person == false){
+cont.css('width','70%');
+acc.setSize(cont.width(), 650, true);
+document.getElementById("Resumex").style.display = "inline-block";
+$( "#seta_show" ).attr( "class", "fa fa-arrow-right");
+vis_menu_person = true;
+}else if (vis_menu_person == true){
+document.getElementById("Resumex").style.display = "none";
+cont.css('width','95%');
+acc.setSize(cont.width(), 650, true);
+$( "#seta_show" ).attr( "class", "fa fa-arrow-left");
+vis_menu_person = false;
+}	
+});	
+	
+});		
 </script>
 
 </html>

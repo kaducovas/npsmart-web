@@ -238,6 +238,7 @@ exporting: { enabled: false },
 		 labels: {
 			 autoRotation:[0],
 			 distance:12,
+			 overflow:false,
             style: {
                 color: '#525151',
                 font: '12px Calilbri',

@@ -3,6 +3,7 @@
 			// $node = $row->region;
 			#$cellname =  $row->cellname;
 			#$cellid = $row->cellid;
+			//$node = $row->node;
 			$datetime[] = $row->datetime;
 			$availability[] = $row->availability;
 			
