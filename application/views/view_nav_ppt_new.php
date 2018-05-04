@@ -115,17 +115,7 @@ $(function() {
 
 
 ?>
-var reportagg = "<?php echo $reportagg; ?>";
-var reportnetype = "<?php echo $reportnetype; ?>";
-var reportkpi = "<?php echo $reportkpi; ?>";
-var reportnename = "<?php echo $reportnename; ?>";
-var reportdate = "<?php echo $reportdate; ?>";
-var bsc = <?php echo json_encode($bsc); ?>;	
-var region = <?php echo json_encode($regional_gsm); ?>;	
-var bts = <?php echo json_encode($bts); ?>;	
-var uf = <?php echo json_encode($ufs); ?>;	
-var cidade = <?php echo json_encode($cidades_gsm); ?>;	
-
+	
 // var chocolates = [
     // {display: "Dark chocolate", value: "dark-chocolate" },
     // {display: "Milk chocolate", value: "milk-chocolate" },
@@ -297,23 +287,7 @@ elseif (isset($weeknum)){
 	$calendarinfo = $reportdate;
 }
 
-#echo count($cells);
-		// foreach($cells as $row){
-			// $cellinfo[$row->cellname] = $row->cellid;
-			// $BSC[] = $row->BSC;
-			// $cellid[] =  $row->cellid;
-			// $cellname[] = $row->cellname;
-			// $site[] = $row->site;
-			// $regional[] = $row->regional;
-			// $uf[] = $row->uf;	
-			// $cluster[] = $row->cluster;
-			// $cidade[] = $row->cidade;
-			
-		// }
-		// $BSCunique = $array = array_values(array_filter(array_unique($BSC)));;
-		// $clusterunique = $array = array_values(array_filter(array_unique($cluster)));;
-		// $cidadeunique = $array = array_values(array_filter(array_unique($cidade)));;
-		?>
+?>
 
 
        <nav class="navbar navbar-custom">
@@ -334,7 +308,7 @@ elseif (isset($weeknum)){
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             
                 <ul class="nav navbar-nav" id="mainMenu">
-                     <li id="menuItemnqi" class="dropdown">
+                     <li id="menuItemnqi" class="disabled">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Performance<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <!--<li id="menuItemnqi"><a onclick='selecttimeagg(this)'>Commercial Hour Report</a></li>-->
@@ -349,14 +323,14 @@ elseif (isset($weeknum)){
                         </ul>
                     </li>
 
-                    <li id="menuItemwaf" class="dropdown">
+                    <li id="menuItemwaf" class="disabled">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Capacity<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
 						<li class="menuItemnqi"><a href="/npsmart/gsm/bsc_capacity">BSC Capacity</a></li>
                         </ul>
 					</li>	
 						
-                    <li id="menuItemwaf" class="dropdown">
+                    <li id="menuItemwaf" class="disabled">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RNP<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
 						<li class="menuItemnqi"><a href="/npsmart/main_map/map_region_gsm">Network Overview</a></li>
@@ -364,7 +338,7 @@ elseif (isset($weeknum)){
                         </ul>
                     </li>	
 
-                    <li id="menuItemwaf" class="dropdown">
+                    <li class="disabled" id="menuItemwaf" class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Consistency Check<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li class="disabled"><a href="#">Baseline Cell & BSC Audit</a></li>
@@ -374,7 +348,7 @@ elseif (isset($weeknum)){
 					
 					<li class="disabled"><a href="#">Cell Mapping</a></li>
 					
-					<li id="menuItemwaf" class="dropdown">
+					<li class="disabled" id="menuItemwaf" class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Settings<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li class="disabled"><a href="/npsmart/umts/baseline_configuration">Baseline Configuration</a></li>
@@ -384,135 +358,24 @@ elseif (isset($weeknum)){
                         </ul>
 					</li>
                 
-                    <li href="/npsmart/welcome"><a href="#">Log</a></li>
-					<li><a href="/npsmart/quickreport">Quick Report</a></li>
+                    <li class="disabled" href="/npsmart/welcome"><a href="#">Log</a></li>
+					<li class="disabled"><a href="/npsmart/quickreport">Quick Report</a></li>
 					
 					<li id="menuItemwaf" class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Auto Reports<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li id="ppt_cto" onmouseover="mostrar_cto()" onmouseout="esconder_cto()"><a href="#">Claro - CTO Meeting Presentation <span class="glyphicon glyphicon-chevron-down"></span></a>
 								<ul>
-									<li id="2018-16" class="cto" style="display:none;font-size: 18px;"><a href="/npsmart/AutoReport/CTO/Claro - CTO Meeting Presentation W16.pptx">Week 16</a></li>
-									<li id="2018-17" class="cto" style="display:none;font-size: 18px;"><a href="/npsmart/AutoReport/CTO/Claro - CTO Meeting Presentation W17.pptx" download>Week 17</a></li>
+									<li id="2018-16" class="cto" style="display:none;font-size: 18px;" onclick="gerar_ppt(this)"><a href="#">Week 16 (2018)</a></li>
+									<li id="2018-17" class="cto" style="display:none;font-size: 18px;" onclick="gerar_ppt(this)"><a href="#">Week 17 (2018)</a></li>
 								</ul>
 							</li>
 						</ul>
 					</li>					
                 </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-	
-	 <li class="dropdown" id="dateMenu1">
-	 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">GSM<span class="glyphicon glyphicon-phone pull-left" style="margin-top:2px;margin-right:4px;"></span><span class="caret"></span></a>
-		<ul class="dropdown-menu" role="menu">
-                              <li id="menuItemwaf"><a href="/npsmart/gsm/">GSM</a></li>
-                              <li id="menuItemwaf"><a href="/npsmart/umts/">UMTS</a></li>
-                              <li id="menuItemwaf"><a href="/npsmart/lte/">LTE</a></li>
-         </ul>
-     </li>
-
-	 <li class="dropdown" id="dateMenu1">
-	 <a style="text-transform: capitalize" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $reportagg ?> <span class="glyphicon glyphicon-calendar pull-left" style="margin-top:2px;margin-right:4px;"></span><span id="caretOptions1" class="caret"></span></a>
-		<ul class="dropdown-menu" role="menu">
-				
-				<li id="menuItemnqi"><a onclick='selecttimeagg(this)'>Monthly</a></li>
-                <li id="menuItemnqi"><a onclick='selecttimeagg(this)'>Weekly</a></li>
-                <li id="menuItemnqi"><a onclick='selecttimeagg(this)'>Daily</a></li>
-        </ul>
-     </li>	 
- 
-    <li class="dropdown" id="dateMenu1">
-        <a href="#" id="daterange" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span id="spDate"><?php echo $calendarinfo;?></span> <span class="glyphicon glyphicon-calendar pull-left" style="margin-top:2px;margin-right:4px;"></span><span id="caretOptions1" class="caret"></span></a>
-        <div class="week-picker" id="calendarDiv" style="position:absolute;z-index:10"></div>
-    </li>
-
-                    <li class="dropdown" id="optionsMenu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span id="spOptions"><?php echo $reportnename;?></span> <span class="glyphicon glyphicon-th-list pull-left" style="margin-top:2px;margin-right:4px;"></span><span id="caretOptions" class="caret"></span></a>
-                        <div class="dropdown-menu" style="padding:12px;margin-bottom:0px;padding-bottom:0px;">
-                            <form class="form" id="formOptions">
-                                     
-    
-
-
-   <!--   <div class="form-group">
-        <label class="control-label" for="inputSmall">Network Node</label>
-	<select name="parent_selection" id="parent_selection">
-    <option value="">-- Please Select --</option>
-    <option value="regional">Region</option>
-    <option value="BSCs">BSC</option>
-    <option value="cidades">City</option>
-    <option value="clusters">Cluster</option>
-</select>
-<select name="child_selection" id="child_selection">
-</select>
-</div>-->
-
-<div class="form-group">
-<?php
-if ($reportagg == 'weekly') {
-echo "Network Node : <select name='parent_selection' id='parent_selection' style='width:200px;'>
-    <option value=''>-- Please Select --</option>
-    <option value='region'>Region</option>
-    <option value='bsc'>BSC</option>
-    <option value='uf'>UF</option>
-    <option value='cidade'>City</option>
-    <option value='bts'>BTS</option>
-    <!--<option value='cluster'>Cluster</option>-->
-</select>";}
-if ($reportagg == 'daily') {
-echo "Network Node : <select name='parent_selection' id='parent_selection' style='width:200px;'>
-   <option value=''>-- Please Select --</option>
-   <option value='region'>Region</option>
-    <option value='bsc'>BSC</option>
-    <option value='uf'>UF</option>
-    <option value='cidade'>City</option>
-    <!--<option value='cluster'>Cluster</option>-->
-</select>";}
-if ($reportagg == 'monthly') {
-echo "Network Node : <select name='parent_selection' id='parent_selection' style='width:200px;'>
-    <option value=''>-- Please Select --</option>
-    <option value='region'>Region</option>
-    <option value='bsc'>BSC</option>
-    <option value='uf'>UF</option>
-    <option value='cidade'>City</option>
-    <option value='bts'>BTS</option>
-    <!--<option value='cluster'>Cluster</option>-->
-</select>";}
-?>
-<div id="Filtro">
-
-<span id="SearchIcon"><i class="fa fa-search" style="font-size:15px;color:gray"></i></span>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names ..." title="Type in a name">
-
-</div>
-<select name="child_selection" id="child_selection" style="width:200px;">
-</select>
-</div>
-
-
-	
-      <!--<div class="form-group">
-        <label class="control-label" for="inputSmall">Network Node</label>
-		<select id="selectne" class="form-control" style="max-width:200px;">
-			<option value="book">Network</option>
-			<option value="article">node</option>
-			<option value="three">City</option>
-			<option value="four">Cluster</option>
-			<option value="four">BSC</option>
-		</select>
-        <select class="form-control input-sm" Id="networkNodeSelector" style="max-width:200px;"></select>
-      </div>-->
-
-     <a href="#" id="btnSubmit" class="btn btn-default btn-sm" onclick='selectnenav($("#child_selection").val(),$("#parent_selection").val())';>Update</a>
-     <div class="form-group">
-      </div>
-
-                            </form>
-                        </div>
-                    </li>
-<!--                    <li id="liAmdocsLogo"><img src="/npsmart/images/huawei-logo.png" width="130" height="30"" style="margin-top:5px;margin-right:-8px;padding-left:4px;" /></li>-->
-                </ul>
             </div>
         </div>
     </nav>
+	<img id="loading_ppt" src="/npsmart/images/Loading_Red.gif" style="position:absolute; top: 40%; left: 45%; display: none; z-index: 999;"></img>
+	<p id="creting_ppt"	style="font-family: 'Do Hyeon', sans-serif; font-size: 45px; color: black; font-weight: bold;position:absolute; top: 65%; left: 30%; display: none; z-index: 999;"></p>	
 </body>

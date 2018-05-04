@@ -8,6 +8,8 @@
 		$ib_forward_load[] = $row-> ib_forward_load;
 		$iu_ps[] = $row-> iu_ps;
 		$iub[] = $row-> iub;
+		$iups_tx[] = $row-> iups_tx;
+		$iub_tx[] = $row-> iub_tx;
 		}	
 				 
 		array_walk($date, create_function('&$str', '$str = "\"$str\"";')); //put quotes in datetime
@@ -16,6 +18,22 @@
 		//echo "<br><br>";
 		//echo join($acc_rrc, ',');
 		#echo '<span size="4" color="#E0E0E3">'.$ne.'</span>';
+
+		function tonull2($n)
+		{
+			if($n == ''){
+				$n = 'null';
+				#return $n;				
+			}
+			if($n == 0.00){
+				$n = 'null';
+				#return $n;				
+			}
+				return $n;
+		}
+		
+		$iups_tx = array_map("tonull2",$iups_tx);
+		$iub_tx = array_map("tonull2",$iub_tx);
 		?>
 		
 <script>
@@ -219,7 +237,15 @@ $(function () {
 					{
 			            name: 'IuB Utilizantion',
 						data: [<?php echo join($iub, ',') ?>]
-			        }									
+			        },									
+					{
+			            name: 'IuPS TX',
+						data: [<?php echo join($iups_tx, ',') ?>]
+			        },				
+					{
+			            name: 'IuB TX',
+						data: [<?php echo join($iub_tx, ',') ?>]
+			        }	
 					]							
 		});
 

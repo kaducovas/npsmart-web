@@ -200,10 +200,7 @@ foreach ($node as $k => $v) {
 		<div style="text-align:center">
 			<button class="button" id="export">Export all</button>
 		</div>
-		
-<img id="loading_ppt" src="/npsmart/images/Loading_Red.gif" style="position:absolute; top: 40%; left: 45%; display: none; z-index: 999;"></img>
-<p id="creting_ppt"	style="font-family: 'Do Hyeon', sans-serif; font-size: 45px; color: white; font-weight: bold;position:absolute; top: 65%; left: 30%; display: none; z-index: 999;"></p>
-			
+					
 <!--	<div id="content" class="chart_content"><div id="fails_rrc" class="chart1"></div></div>
 	<div id="content" class="chart_content"><div id="fails_hs" class="chart1"></div></div>
 	<div style="clear: both;"></div>

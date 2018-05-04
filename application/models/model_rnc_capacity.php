@@ -61,7 +61,17 @@ and rnc not in ('RNCPE01','RNCRJT2','RNCSC03','RNCDF02')
 		$yearnum4 = $date4->format("o");
 		
 		$query = $this->db->query(
-	"SELECT year, week, date, rnc as node, 
+	"select a.year, a.week, a.date, a.node, a.region,
+		a.rnc,
+		cpu_load,
+		dsp_load,
+		ib_cpu_load,
+		ib_forward_load,
+		iu_ps,
+		iub,
+		iups_tx,
+		iub_tx
+ from (SELECT year, week, date, rnc as node, 
 		region,
 		rnc,
 		cpu_load,
@@ -69,13 +79,19 @@ and rnc not in ('RNCPE01','RNCRJT2','RNCSC03','RNCDF02')
 		ib_cpu_load,
 		ib_forward_load,
 		round((100*iu_ps::real)::numeric,2) as iu_ps,
-		round((iub::real/10)::numeric,2) as iub,
-		iups_tx,
-		iub_tx
-    FROM umts_capacity.vw_rnc_capacity_daily
+		round((iub::real/10)::numeric,2) as iub
+	FROM umts_capacity.vw_rnc_capacity_daily
 	where (year,week) >= (".$yearnum1.",".$weeknum1.")
  	and rnc = '".$node."'
-    order by date
+    order by date) a left join 
+(SELECT year, week, date, rnc as node, 
+	iups_tx,
+	iub_tx
+	FROM umts_capacity.vw_rnc_capacity_daily
+	where (year,week) >= (".$yearnum1.",".$weeknum1.")
+ 	and rnc = '".$node."'
+ 	and iups_tx != 0 AND iub_tx!=0
+    order by date) b on a.date::date = b.date::date and extract(hour from a.date) = extract(hour from b.date)
 	;");
 
 	return $query->result();

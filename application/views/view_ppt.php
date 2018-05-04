@@ -48,6 +48,8 @@ $bbggood = "white";
 			
 			}
 			
+			/* MUDE AQUI EMBAIXO O CORPO DA TABELA */
+			
 			td{
 				text-align:center;
 				font-weight: bold;
@@ -55,10 +57,16 @@ $bbggood = "white";
 				font-size:14pt;
 			}
 			
+			/* MUDE AQUI EMBAIXO O CABEÇALHO DA TABELA */
+			
 			th{
 				
+				text-align:center;
+				font-weight: bold;
+				font-family: calibri;
 				background-color:#C0504D;
-				
+				color: white;
+				font-size:16pt;
 			}	
 			
 			#tabela4,#tabela5,#tabela6{
@@ -127,6 +135,7 @@ $bbggood = "white";
 			<div class="graficos" id="grafics54"></div>
 			<div class="graficos" id="grafics55"></div>		
 			
+			<!-- TABELA CQI CS -->
 			<div id="tabela">
 				<table id="table_id" class="cell-border compact hover" border="1 solid black" cellspacing="0" width="100%">
 					<thead>
@@ -141,10 +150,10 @@ $bbggood = "white";
 							<th colspan="4" style="background-color: white;color: black"><span style="color:red"><b>TARGET </b></span><span style="color:green"><b>&#8805 99</b></span></th>
 							<th colspan="4" style="background-color: white;color: black"><span style="color:red"><b>TARGET </b></span><span style="color:green"><b>&#8805 99</b></span></th>
 							<th colspan="4" style="background-color: white;color: black"><span style="color:red"><b>TARGET </b></span><span style="color:green"><b>&#8805 99</b></span></th>
-							<th style="background-color: red"><span><b> &#8804 </b></span><span><b>95</b></span></th>
-							<th style="background-color: yellow"><span><b>&#8805 </b></span><span><b>95</b></span></th>
-							<th style="background-color: green"><span><b>&#8805 </b></span><span><b>97</b></span></th>
-							<th style="background-color: #327cf2"><span><b>&#8805 </b></span><span><b> 98.5</b></span></th>
+							<th style="background-color: red; color:black"><span><b> &#8804 </b></span><span><b>95</b></span></th>
+							<th style="background-color: yellow; color:black"><span><b>&#8805 </b></span><span><b>95</b></span></th>
+							<th style="background-color: green; color:black"><span><b>&#8805 </b></span><span><b>97</b></span></th>
+							<th style="background-color: #327cf2; color:black"><span><b>&#8805 </b></span><span><b> 98.5</b></span></th>
 						</tr>					
 						<tr>
 							<th >W<?php echo $w4;  ?></th>
@@ -175,7 +184,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_cs); $i++) {
 									if($umts_kpi_cs[$i]->node == "BELO HORIZONTE"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->acc_cs) >= 99?$bggood:$bgbad)."'>".$umts_kpi_cs[$i]->acc_cs."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->acc_cs) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->acc_cs) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_cs[$i]->acc_cs."</td>
 										";
 									}
 								}
@@ -184,7 +193,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_cs); $i++) {
 									if($umts_kpi_cs[$i]->node == "BELO HORIZONTE"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->drop_cs) >= 99?$bggood:$bgbad)."'>".$umts_kpi_cs[$i]->drop_cs."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->drop_cs) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->drop_cs) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_cs[$i]->drop_cs."</td>
 										";
 									}
 								}
@@ -193,7 +202,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_cs); $i++) {
 									if($umts_kpi_cs[$i]->node == "BELO HORIZONTE"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->availability) >= 99?$bggood:$bgbad)."'>".$umts_kpi_cs[$i]->availability."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->availability) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->availability) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_cs[$i]->availability."</td>
 										";
 									}
 								}
@@ -228,7 +237,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_cs); $i++) {
 									if($umts_kpi_cs[$i]->node == "BRASÍLIA"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->acc_cs) >= 99?$bggood:$bgbad)."'>".$umts_kpi_cs[$i]->acc_cs."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->acc_cs) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->acc_cs) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_cs[$i]->acc_cs."</td>
 										";
 									}
 								}
@@ -237,7 +246,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_cs); $i++) {
 									if($umts_kpi_cs[$i]->node == "BRASÍLIA"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->drop_cs) >= 99?$bggood:$bgbad)."'>".$umts_kpi_cs[$i]->drop_cs."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->drop_cs) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->drop_cs) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_cs[$i]->drop_cs."</td>
 										";
 									}
 								}
@@ -246,7 +255,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_cs); $i++) {
 									if($umts_kpi_cs[$i]->node == "BRASÍLIA"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->availability) >= 99?$bggood:$bgbad)."'>".$umts_kpi_cs[$i]->availability."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->availability) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->availability) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_cs[$i]->availability."</td>
 										";
 									}
 								}
@@ -281,7 +290,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_cs); $i++) {
 									if($umts_kpi_cs[$i]->node == "CURITIBA"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->acc_cs) >= 99?$bggood:$bgbad)."'>".$umts_kpi_cs[$i]->acc_cs."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->acc_cs) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->acc_cs) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_cs[$i]->acc_cs."</td>
 										";
 									}
 								}
@@ -290,7 +299,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_cs); $i++) {
 									if($umts_kpi_cs[$i]->node == "CURITIBA"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->drop_cs) >= 99?$bggood:$bgbad)."'>".$umts_kpi_cs[$i]->drop_cs."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->drop_cs) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->drop_cs) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_cs[$i]->drop_cs."</td>
 										";
 									}
 								}
@@ -299,7 +308,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_cs); $i++) {
 									if($umts_kpi_cs[$i]->node == "CURITIBA"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->availability) >= 99?$bggood:$bgbad)."'>".$umts_kpi_cs[$i]->availability."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->availability) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->availability) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_cs[$i]->availability."</td>
 										";
 									}
 								}
@@ -334,7 +343,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_cs); $i++) {
 									if($umts_kpi_cs[$i]->node == "FLORIANÓPOLIS" && $umts_kpi_cs[$i]->uf == "SC"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->acc_cs) >= 99?$bggood:$bgbad)."'>".$umts_kpi_cs[$i]->acc_cs."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->acc_cs) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->acc_cs) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_cs[$i]->acc_cs."</td>
 										";
 									}
 								}
@@ -343,7 +352,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_cs); $i++) {
 									if($umts_kpi_cs[$i]->node == "FLORIANÓPOLIS" && $umts_kpi_cs[$i]->uf == "SC"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->drop_cs) >= 99?$bggood:$bgbad)."'>".$umts_kpi_cs[$i]->drop_cs."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->drop_cs) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->drop_cs) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_cs[$i]->drop_cs."</td>
 										";
 									}
 								}
@@ -352,7 +361,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_cs); $i++) {
 									if($umts_kpi_cs[$i]->node == "FLORIANÓPOLIS" && $umts_kpi_cs[$i]->uf == "SC"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->availability) >= 99?$bggood:$bgbad)."'>".$umts_kpi_cs[$i]->availability."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->availability) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->availability) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_cs[$i]->availability."</td>
 										";
 									}
 								}
@@ -387,7 +396,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_cs); $i++) {
 									if($umts_kpi_cs[$i]->node == "RECIFE"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->acc_cs) >= 99?$bggood:$bgbad)."'>".$umts_kpi_cs[$i]->acc_cs."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->acc_cs) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->acc_cs) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_cs[$i]->acc_cs."</td>
 										";
 									}
 								}
@@ -396,7 +405,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_cs); $i++) {
 									if($umts_kpi_cs[$i]->node == "RECIFE"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->drop_cs) >= 99?$bggood:$bgbad)."'>".$umts_kpi_cs[$i]->drop_cs."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->drop_cs) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->drop_cs) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_cs[$i]->drop_cs."</td>
 										";
 									}
 								}
@@ -405,7 +414,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_cs); $i++) {
 									if($umts_kpi_cs[$i]->node == "RECIFE"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->availability) >= 99?$bggood:$bgbad)."'>".$umts_kpi_cs[$i]->availability."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->availability) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->availability) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_cs[$i]->availability."</td>
 										";
 									}
 								}
@@ -440,7 +449,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_cs); $i++) {
 									if($umts_kpi_cs[$i]->node == "SALVADOR"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->acc_cs) >= 99?$bggood:$bgbad)."'>".$umts_kpi_cs[$i]->acc_cs."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->acc_cs) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->acc_cs) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_cs[$i]->acc_cs."</td>
 										";
 									}
 								}
@@ -449,7 +458,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_cs); $i++) {
 									if($umts_kpi_cs[$i]->node == "SALVADOR"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->drop_cs) >= 99?$bggood:$bgbad)."'>".$umts_kpi_cs[$i]->drop_cs."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->drop_cs) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->drop_cs) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_cs[$i]->drop_cs."</td>
 										";
 									}
 								}
@@ -458,7 +467,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_cs); $i++) {
 									if($umts_kpi_cs[$i]->node == "SALVADOR"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->availability) >= 99?$bggood:$bgbad)."'>".(sprintf('%0.2f',($umts_kpi_cs[$i]->availability)))."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->availability) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_cs[$i]->availability) >= 99?$bbggood:$bbgbad)."'>".(sprintf('%0.2f',($umts_kpi_cs[$i]->availability)))."</td>
 										";
 									}
 								}
@@ -492,6 +501,7 @@ $bbggood = "white";
 				</table>
 			</div>
 
+			<!-- TABELA CQI HS -->
 			<div id="tabela2">
 				<table id="table_id" class="cell-border compact hover" border="1 solid black" cellspacing="0" width="100%">
 					<thead>
@@ -509,10 +519,10 @@ $bbggood = "white";
 							<th colspan="4" style="background-color: white;color: black"><span style="color:red"><b>TARGET </b></span><span style="color:green"><b>&#8805 99</b></span></th>
 							<th colspan="4" style="background-color: white;color: black"><span style="color:red"><b>TARGET </b></span><span style="color:green"><b>&#8805 99</b></span></th>
 							<th colspan="4" style="background-color: white;color: black"><span style="color:red"><b>TARGET </b></span><span style="color:green"><b>&#8805 99</b></span></th>
-							<th style="background-color: red"><span><b> &#8804 </b></span><span><b>95</b></span></th>
-							<th style="background-color: yellow"><span><b>&#8805 </b></span><span><b>95</b></span></th>
-							<th style="background-color: green"><span><b>&#8805 </b></span><span><b>97</b></span></th>
-							<th style="background-color: #327cf2"><span><b>&#8805 </b></span><span><b> 98.5</b></span></th>
+							<th style="background-color: red; color:black"><span><b> &#8804 </b></span><span><b>95</b></span></th>
+							<th style="background-color: yellow; color:black"><span><b>&#8805 </b></span><span><b>95</b></span></th>
+							<th style="background-color: green; color:black"><span><b>&#8805 </b></span><span><b>97</b></span></th>
+							<th style="background-color: #327cf2; color:black"><span><b>&#8805 </b></span><span><b> 98.5</b></span></th>
 						</tr>					
 						<tr>
 							<th >W<?php echo $w4;  ?></th>
@@ -548,7 +558,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_hs); $i++) {
 									if($umts_kpi_hs[$i]->node == "BELO HORIZONTE"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->acc_ps) >= 99?$bggood:$bgbad)."'>".$umts_kpi_hs[$i]->acc_ps."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->acc_ps) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->acc_ps) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_hs[$i]->acc_ps."</td>
 										";
 									}
 								}
@@ -557,7 +567,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_hs); $i++) {
 									if($umts_kpi_hs[$i]->node == "BELO HORIZONTE"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->drop_ps) >= 99?$bggood:$bgbad)."'>".$umts_kpi_hs[$i]->drop_ps."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->drop_ps) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->drop_ps) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_hs[$i]->drop_ps."</td>
 										";
 									}
 								}
@@ -566,7 +576,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_hs); $i++) {
 									if($umts_kpi_hs[$i]->node == "BELO HORIZONTE"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->availability) >= 99?$bggood:$bgbad)."'>".$umts_kpi_hs[$i]->availability."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->availability) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->availability) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_hs[$i]->availability."</td>
 										";
 									}
 								}
@@ -610,7 +620,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_hs); $i++) {
 									if($umts_kpi_hs[$i]->node == "BRASÍLIA"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->acc_ps) >= 99?$bggood:$bgbad)."'>".$umts_kpi_hs[$i]->acc_ps."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->acc_ps) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->acc_ps) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_hs[$i]->acc_ps."</td>
 										";
 									}
 								}
@@ -619,7 +629,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_hs); $i++) {
 									if($umts_kpi_hs[$i]->node == "BRASÍLIA"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->drop_ps) >= 99?$bggood:$bgbad)."'>".$umts_kpi_hs[$i]->drop_ps."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->drop_ps) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->drop_ps) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_hs[$i]->drop_ps."</td>
 										";
 									}
 								}
@@ -628,7 +638,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_hs); $i++) {
 									if($umts_kpi_hs[$i]->node == "BRASÍLIA"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->availability) >= 99?$bggood:$bgbad)."'>".$umts_kpi_hs[$i]->availability."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->availability) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->availability) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_hs[$i]->availability."</td>
 										";
 									}
 								}
@@ -672,7 +682,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_hs); $i++) {
 									if($umts_kpi_hs[$i]->node == "CURITIBA"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->acc_ps) >= 99?$bggood:$bgbad)."'>".$umts_kpi_hs[$i]->acc_ps."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->acc_ps) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->acc_ps) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_hs[$i]->acc_ps."</td>
 										";
 									}
 								}
@@ -681,7 +691,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_hs); $i++) {
 									if($umts_kpi_hs[$i]->node == "CURITIBA"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->drop_ps) >= 99?$bggood:$bgbad)."'>".$umts_kpi_hs[$i]->drop_ps."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->drop_ps) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->drop_ps) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_hs[$i]->drop_ps."</td>
 										";
 									}
 								}
@@ -690,7 +700,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_hs); $i++) {
 									if($umts_kpi_hs[$i]->node == "CURITIBA"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->availability) >= 99?$bggood:$bgbad)."'>".$umts_kpi_hs[$i]->availability."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->availability) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->availability) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_hs[$i]->availability."</td>
 										";
 									}
 								}
@@ -734,7 +744,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_hs); $i++) {
 									if($umts_kpi_hs[$i]->node == "FLORIANÓPOLIS" && $umts_kpi_hs[$i]->uf == "SC"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->acc_ps) >= 99?$bggood:$bgbad)."'>".$umts_kpi_hs[$i]->acc_ps."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->acc_ps) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->acc_ps) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_hs[$i]->acc_ps."</td>
 										";
 									}
 								}
@@ -743,7 +753,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_hs); $i++) {
 									if($umts_kpi_hs[$i]->node == "FLORIANÓPOLIS" && $umts_kpi_hs[$i]->uf == "SC"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->drop_ps) >= 99?$bggood:$bgbad)."'>".$umts_kpi_hs[$i]->drop_ps."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->drop_ps) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->drop_ps) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_hs[$i]->drop_ps."</td>
 										";
 									}
 								}
@@ -752,7 +762,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_hs); $i++) {
 									if($umts_kpi_hs[$i]->node == "FLORIANÓPOLIS" && $umts_kpi_hs[$i]->uf == "SC"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->availability) >= 99?$bggood:$bgbad)."'>".$umts_kpi_hs[$i]->availability."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->availability) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->availability) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_hs[$i]->availability."</td>
 										";
 									}
 								}
@@ -796,7 +806,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_hs); $i++) {
 									if($umts_kpi_hs[$i]->node == "RECIFE"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->acc_ps) >= 99?$bggood:$bgbad)."'>".$umts_kpi_hs[$i]->acc_ps."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->acc_ps) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->acc_ps) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_hs[$i]->acc_ps."</td>
 										";
 									}
 								}
@@ -805,7 +815,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_hs); $i++) {
 									if($umts_kpi_hs[$i]->node == "RECIFE"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->drop_ps) >= 99?$bggood:$bgbad)."'>".$umts_kpi_hs[$i]->drop_ps."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->drop_ps) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->drop_ps) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_hs[$i]->drop_ps."</td>
 										";
 									}
 								}
@@ -814,7 +824,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_hs); $i++) {
 									if($umts_kpi_hs[$i]->node == "RECIFE"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->availability) >= 99?$bggood:$bgbad)."'>".$umts_kpi_hs[$i]->availability."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->availability) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->availability) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_hs[$i]->availability."</td>
 										";
 									}
 								}
@@ -858,7 +868,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_hs); $i++) {
 									if($umts_kpi_hs[$i]->node == "SALVADOR"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->acc_ps) >= 99?$bggood:$bgbad)."'>".$umts_kpi_hs[$i]->acc_ps."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->acc_ps) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->acc_ps) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_hs[$i]->acc_ps."</td>
 										";
 									}
 								}
@@ -867,7 +877,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_hs); $i++) {
 									if($umts_kpi_hs[$i]->node == "SALVADOR"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->drop_ps) >= 99?$bggood:$bgbad)."'>".$umts_kpi_hs[$i]->drop_ps."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->drop_ps) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->drop_ps) >= 99?$bbggood:$bbgbad)."'>".$umts_kpi_hs[$i]->drop_ps."</td>
 										";
 									}
 								}
@@ -876,7 +886,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($umts_kpi_hs); $i++) {
 									if($umts_kpi_hs[$i]->node == "SALVADOR"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->availability) >= 99?$bggood:$bgbad)."'>".(sprintf('%0.2f',($umts_kpi_hs[$i]->availability)))."</td>
+											<td style='color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->availability) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$umts_kpi_hs[$i]->availability) >= 99?$bbggood:$bbgbad)."'>".(sprintf('%0.2f',($umts_kpi_hs[$i]->availability)))."</td>
 										";
 									}
 								}
@@ -919,6 +929,7 @@ $bbggood = "white";
 				</table>
 			</div>
 
+			<!-- TABELA CQI LTE -->
 			<div id="tabela3">
 				<table id="table_id3" class="cell-border compact hover" border="1 solid black" cellspacing="0" width="100%">
 					<thead>
@@ -936,10 +947,10 @@ $bbggood = "white";
 							<th colspan="4" style="background-color: white;color: black"><span style="color:red"><b>TARGET </b></span><span style="color:green"><b>&#8805 99</b></span></th>
 							<th colspan="4" style="background-color: white;color: black"><span style="color:red"><b>TARGET </b></span><span style="color:green"><b>&#8805 99</b></span></th>
 							<th colspan="4" style="background-color: white;color: black"><span style="color:red"><b>TARGET </b></span><span style="color:green"><b>&#8805 99</b></span></th>
-							<th style="background-color: red"><span><b> &#8804 </b></span><span><b>95</b></span></th>
-							<th style="background-color: yellow"><span><b>&#8805 </b></span><span><b>95</b></span></th>
-							<th style="background-color: green"><span><b>&#8805 </b></span><span><b>97</b></span></th>
-							<th style="background-color: #327cf2"><span><b>&#8805 </b></span><span><b> 98.5</b></span></th>
+							<th style="background-color: red; color:black"><span><b> &#8804 </b></span><span><b>95</b></span></th>
+							<th style="background-color: yellow; color:black"><span><b>&#8805 </b></span><span><b>95</b></span></th>
+							<th style="background-color: green; color:black"><span><b>&#8805 </b></span><span><b>97</b></span></th>
+							<th style="background-color: #327cf2; color:black"><span><b>&#8805 </b></span><span><b> 98.5</b></span></th>
 						</tr>					
 						<tr>
 							<th >W<?php echo $w4;  ?></th>
@@ -975,7 +986,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($cqi_lte); $i++) {
 									if($cqi_lte[$i]->node == "BELO HORIZONTE"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab)) >= 99?$bggood:$bgbad)."'>".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab))/100)."</td>
+											<td style='color: ".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab)) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab)) >= 99?$bbggood:$bbgbad)."'>".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab))/100)."</td>
 										";
 									}
 								}
@@ -984,7 +995,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($cqi_lte); $i++) {
 									if($cqi_lte[$i]->node == "BELO HORIZONTE"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->service_drop) >= 99?$bggood:$bgbad)."'>".$cqi_lte[$i]->service_drop."</td>
+											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->service_drop) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$cqi_lte[$i]->service_drop) >= 99?$bbggood:$bbgbad)."'>".$cqi_lte[$i]->service_drop."</td>
 										";
 									}
 								}
@@ -993,7 +1004,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($cqi_lte); $i++) {
 									if($cqi_lte[$i]->node == "BELO HORIZONTE"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->availability) >= 99?$bggood:$bgbad)."'>".$cqi_lte[$i]->availability."</td>
+											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->availability) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$cqi_lte[$i]->availability) >= 99?$bbggood:$bbgbad)."'>".$cqi_lte[$i]->availability."</td>
 										";
 									}
 								}
@@ -1037,7 +1048,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($cqi_lte); $i++) {
 									if($cqi_lte[$i]->node == "BRASÍLIA"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab)) >= 99?$bggood:$bgbad)."'>".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab))/100)."</td>
+											<td style='color: ".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab)) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab)) >= 99?$bbggood:$bbgbad)."'>".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab))/100)."</td>
 										";
 									}
 								}
@@ -1046,7 +1057,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($cqi_lte); $i++) {
 									if($cqi_lte[$i]->node == "BRASÍLIA"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->service_drop) >= 99?$bggood:$bgbad)."'>".$cqi_lte[$i]->service_drop."</td>
+											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->service_drop) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$cqi_lte[$i]->service_drop) >= 99?$bbggood:$bbgbad)."'>".$cqi_lte[$i]->service_drop."</td>
 										";
 									}
 								}
@@ -1055,7 +1066,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($cqi_lte); $i++) {
 									if($cqi_lte[$i]->node == "BRASÍLIA"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->availability) >= 99?$bggood:$bgbad)."'>".$cqi_lte[$i]->availability."</td>
+											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->availability) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$cqi_lte[$i]->availability) >= 99?$bbggood:$bbgbad)."'>".$cqi_lte[$i]->availability."</td>
 										";
 									}
 								}
@@ -1099,7 +1110,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($cqi_lte); $i++) {
 									if($cqi_lte[$i]->node == "CURITIBA"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab)) >= 99?$bggood:$bgbad)."'>".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab))/100)."</td>
+											<td style='color: ".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab)) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab)) >= 99?$bbggood:$bbgbad)."'>".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab))/100)."</td>
 										";
 									}
 								}
@@ -1108,7 +1119,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($cqi_lte); $i++) {
 									if($cqi_lte[$i]->node == "CURITIBA"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->service_drop) >= 99?$bggood:$bgbad)."'>".$cqi_lte[$i]->service_drop."</td>
+											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->service_drop) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$cqi_lte[$i]->service_drop) >= 99?$bbggood:$bbgbad)."'>".$cqi_lte[$i]->service_drop."</td>
 										";
 									}
 								}
@@ -1117,7 +1128,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($cqi_lte); $i++) {
 									if($cqi_lte[$i]->node == "CURITIBA"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->availability) >= 99?$bggood:$bgbad)."'>".$cqi_lte[$i]->availability."</td>
+											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->availability) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$cqi_lte[$i]->availability) >= 99?$bbggood:$bbgbad)."'>".$cqi_lte[$i]->availability."</td>
 										";
 									}
 								}
@@ -1161,7 +1172,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($cqi_lte); $i++) {
 									if($cqi_lte[$i]->node == "FLORIANÓPOLIS" && $cqi_lte[$i]->uf == "SC"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab)) >= 99?$bggood:$bgbad)."'>".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab))/100)."</td>
+											<td style='color: ".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab)) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab)) >= 99?$bbggood:$bbgbad)."'>".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab))/100)."</td>
 										";
 									}
 								}
@@ -1170,7 +1181,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($cqi_lte); $i++) {
 									if($cqi_lte[$i]->node == "FLORIANÓPOLIS" && $cqi_lte[$i]->uf == "SC"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->service_drop) >= 99?$bggood:$bgbad)."'>".$cqi_lte[$i]->service_drop."</td>
+											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->service_drop) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$cqi_lte[$i]->service_drop) >= 99?$bbggood:$bbgbad)."'>".$cqi_lte[$i]->service_drop."</td>
 										";
 									}
 								}
@@ -1179,7 +1190,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($cqi_lte); $i++) {
 									if($cqi_lte[$i]->node == "FLORIANÓPOLIS" && $cqi_lte[$i]->uf == "SC"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->availability) >= 99?$bggood:$bgbad)."'>".$cqi_lte[$i]->availability."</td>
+											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->availability) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$cqi_lte[$i]->availability) >= 99?$bbggood:$bbgbad)."'>".$cqi_lte[$i]->availability."</td>
 										";
 									}
 								}
@@ -1223,7 +1234,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($cqi_lte); $i++) {
 									if($cqi_lte[$i]->node == "RECIFE"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab)) >= 99?$bggood:$bgbad)."'>".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab))/100)."</td>
+											<td style='color: ".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab)) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab)) >= 99?$bbggood:$bbgbad)."'>".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab))/100)."</td>
 										";
 									}
 								}
@@ -1232,7 +1243,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($cqi_lte); $i++) {
 									if($cqi_lte[$i]->node == "RECIFE"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->service_drop) >= 99?$bggood:$bgbad)."'>".$cqi_lte[$i]->service_drop."</td>
+											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->service_drop) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$cqi_lte[$i]->service_drop) >= 99?$bbggood:$bbgbad)."'>".$cqi_lte[$i]->service_drop."</td>
 										";
 									}
 								}
@@ -1241,7 +1252,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($cqi_lte); $i++) {
 									if($cqi_lte[$i]->node == "RECIFE"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->availability) >= 99?$bggood:$bgbad)."'>".$cqi_lte[$i]->availability."</td>
+											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->availability) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$cqi_lte[$i]->availability) >= 99?$bbggood:$bbgbad)."'>".$cqi_lte[$i]->availability."</td>
 										";
 									}
 								}
@@ -1285,7 +1296,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($cqi_lte); $i++) {
 									if($cqi_lte[$i]->node == "SALVADOR"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab)) >= 99?$bggood:$bgbad)."'>".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab))/100)."</td>
+											<td style='color: ".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab)) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab)) >= 99?$bbggood:$bbgbad)."'>".(sprintf('%0.2f',($cqi_lte[$i]->rrc_service) * ($cqi_lte[$i]->e_rab))/100)."</td>
 										";
 									}
 								}
@@ -1294,7 +1305,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($cqi_lte); $i++) {
 									if($cqi_lte[$i]->node == "SALVADOR"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->service_drop) >= 99?$bggood:$bgbad)."'>".$cqi_lte[$i]->service_drop."</td>
+											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->service_drop) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$cqi_lte[$i]->service_drop) >= 99?$bbggood:$bbgbad)."'>".$cqi_lte[$i]->service_drop."</td>
 										";
 									}
 								}
@@ -1303,7 +1314,7 @@ $bbggood = "white";
 								for ($i = 0; $i < sizeof($cqi_lte); $i++) {
 									if($cqi_lte[$i]->node == "SALVADOR"){
 										echo "
-											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->availability) >= 99?$bggood:$bgbad)."'>".(sprintf('%0.2f',($cqi_lte[$i]->availability)))."</td>
+											<td style='color: ".(sprintf('%0.2f',$cqi_lte[$i]->availability) >= 99?$bggood:$bgbad).";background-color: ".(sprintf('%0.2f',$cqi_lte[$i]->availability) >= 99?$bbggood:$bbgbad)."'>".(sprintf('%0.2f',($cqi_lte[$i]->availability)))."</td>
 										";
 									}
 								}
@@ -1346,6 +1357,7 @@ $bbggood = "white";
 				</table>
 			</div>
 
+			<!-- TABELA % CELL CRITICAS CQI CS -->
 			<div id="tabela4">
 				<table id="table_id4" class="cell-border compact hover" border="1 solid black" cellspacing="0" width="100%">
 					<thead>
@@ -1541,6 +1553,7 @@ $bbggood = "white";
 				</table>
 			</div>	
 
+			<!-- TABELA % CELL CRITICAS CQI HS -->
 			<div id="tabela5">
 				<table id="table_id5" class="cell-border compact hover" border="1 solid black" cellspacing="0" width="100%">
 					<thead>
@@ -1736,6 +1749,7 @@ $bbggood = "white";
 				</table>
 			</div>
 
+			<!-- TABELA % CELL CRITICAS CQI LTE -->
 			<div id="tabela6">
 				<table id="table_id6" class="cell-border compact hover" border="1 solid black" cellspacing="0" width="100%">
 					<thead>
@@ -2374,6 +2388,13 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '25px',
 			}
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
 		},	
 		tooltip: {
 		shared: true,
@@ -2439,7 +2460,7 @@ $bbggood = "white";
 		},{
 			name: "LTE_Avg_User_Total",
 			color: "#f7a918",
-			type: "line",
+			type: "spline",
 			data: [
 				<?php
 					foreach($lte_cities_dashboard as $row){
@@ -2512,7 +2533,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '25px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -2632,7 +2660,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '25px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -2761,7 +2796,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '25px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -2826,7 +2868,7 @@ $bbggood = "white";
 		},{
 			name: "LTE_Avg_User_Total",
 			color: "#f7a918",
-			type: "line",
+			type: "spline",
 			data: [
 				<?php
 					foreach($lte_cities_dashboard as $row){
@@ -2899,7 +2941,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '25px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -3019,7 +3068,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '25px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -3148,7 +3204,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '25px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -3213,7 +3276,7 @@ $bbggood = "white";
 		},{
 			name: "LTE_Avg_User_Total",
 			color: "#f7a918",
-			type: "line",
+			type: "spline",
 			data: [
 				<?php
 					foreach($lte_cities_dashboard as $row){
@@ -3286,7 +3349,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '25px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -3406,7 +3476,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '25px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -3535,7 +3612,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '25px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -3600,7 +3684,7 @@ $bbggood = "white";
 		},{
 			name: "LTE_Avg_User_Total",
 			color: "#f7a918",
-			type: "line",
+			type: "spline",
 			data: [
 				<?php
 					foreach($lte_cities_dashboard as $row){
@@ -3673,7 +3757,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '25px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -3793,7 +3884,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '25px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -3922,7 +4020,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '25px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -3987,7 +4092,7 @@ $bbggood = "white";
 		},{
 			name: "LTE_Avg_User_Total",
 			color: "#f7a918",
-			type: "line",
+			type: "spline",
 			data: [
 				<?php
 					foreach($lte_cities_dashboard as $row){
@@ -4060,7 +4165,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '25px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -4180,7 +4292,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '25px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -4309,7 +4428,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '25px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -4374,7 +4500,7 @@ $bbggood = "white";
 		},{
 			name: "LTE_Avg_User_Total",
 			color: "#f7a918",
-			type: "line",
+			type: "spline",
 			data: [
 				<?php
 					foreach($lte_cities_dashboard as $row){
@@ -4447,7 +4573,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '25px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -4567,7 +4700,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '25px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -4699,7 +4839,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '20px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -4795,7 +4942,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '20px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -4891,7 +5045,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '20px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -4987,7 +5148,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '20px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -5083,7 +5251,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '20px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -5176,7 +5351,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '20px',
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -5265,7 +5447,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '20px'
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -5465,7 +5654,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '20px'
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -5665,7 +5861,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '20px'
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 		shared: true,
 		headerFormat: '<span>{point.key}</span><br/>',	
@@ -9188,7 +9391,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '20px'
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 			shared: true,
 			headerFormat: '<span>{point.key}</span><br/>',	
@@ -9310,7 +9520,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '20px'
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 			shared: true,
 			headerFormat: '<span>{point.key}</span><br/>',	
@@ -9432,7 +9649,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '20px'
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 			shared: true,
 			headerFormat: '<span>{point.key}</span><br/>',	
@@ -9554,7 +9778,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '20px'
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 			shared: true,
 			headerFormat: '<span>{point.key}</span><br/>',	
@@ -9676,7 +9907,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '20px'
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 			shared: true,
 			headerFormat: '<span>{point.key}</span><br/>',	
@@ -9798,7 +10036,14 @@ $bbggood = "white";
 			itemStyle: {
 				fontSize: '20px'
 			}
-		},	
+		},
+		plotOptions:{
+			series:{
+				label:{
+					enabled: false	
+				}
+			}
+		},		
 		tooltip: {
 			shared: true,
 			headerFormat: '<span>{point.key}</span><br/>',	
@@ -9997,7 +10242,7 @@ $bbggood = "white";
 		},{
 			name: "Efficiency",
 			color: "#f4c542",
-			type: "line",
+			type: "spline",
 			data: [
 				<?php
 					foreach($total_degradations as $row){

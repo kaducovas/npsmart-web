@@ -4892,9 +4892,27 @@ public function tx_integrity()
 			
 			$this->load->view('view_header_ppt');
 			$this->load->view('view_theme_sand_signika');
-			$this->load->view('view_nav_ppt',$data);
+			//$this->load->view('view_nav_ppt',$data);
 			$this->load->view('view_ppt',$data);			
-		} 
+		}else{
+			
+			$reportyear = $this->input->post('reportyear');
+			$reportweek = $this->input->post('reportweek');
+						
+			$year = (int)$reportyear;
+			$w1 = (int)$reportweek;
+			$w4 = $w1 - 3;
+			
+			$data['weeknum'] = $w1;
+			
+			$data['w1'] = $w1;
+			$data['w2'] = $w1 - 1;
+			$data['w3'] = $w1 - 2;
+			$data['w4'] = $w1 - 3;
+			
+			$this->load->view('view_header_gsm');
+			$this->load->view('view_nav_ppt_new',$data);
+		}
 	}
 	
 	public function kpis_anatel(){
