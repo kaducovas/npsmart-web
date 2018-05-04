@@ -13,6 +13,7 @@
 <meta charset="utf-8">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
   <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
   <script src="/js/themes/gray.js"></script>
   
 <!-- Include Required Prerequisites -->

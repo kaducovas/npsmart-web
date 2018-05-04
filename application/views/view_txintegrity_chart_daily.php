@@ -150,18 +150,20 @@ $(function () {
 				renderTo: 'acc',
 				alignTicks:false,
 				backgroundColor:null,
-				zoomType: 'xy'
-				,
-			//	backgroundColor: {
-            //    linearGradient: [0, 0, 500, 500],
-            //    stops: [
-            //        [0, 'rgb(255, 255, 255)'],
-            //        [1, 'rgb(200, 200, 255)']
-            //    ]
-           // }
-				//borderWidth: 2		
-						///type: 'line',
-						///height: 195		
+				zoomType: 'xy',
+				events: {
+						click: function(e) {
+						if (e.shiftKey == 1) {
+						acc.xAxis[0].options.plotLines[1].color = "red";
+						acc.xAxis[0].options.plotLines[1].value = e.xAxis[0].value;
+						acc.xAxis[0].update();
+						}else{
+						acc.xAxis[0].options.plotLines[0].color = "red";
+						acc.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						acc.xAxis[0].update();
+						}
+      }
+    }
 				},
 				//	colors: ['#000099', '#CC0000', '#006600', '#FFCC00', '#D9CDB6'],
 					credits: {
@@ -183,7 +185,21 @@ $(function () {
       }
 					},
 					xAxis: {
-						categories: [<?php echo join($date, ',') ?>]///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
+						categories: [<?php echo join($date, ',') ?>],///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
+						plotLines: [{
+								width: 2,
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							},{
+								color: '#FF0000',
+								width: 2,
+								dashStyle: 'dash',
+								color: 'red',
+								width: 2,
+								zIndex: 10
+							}]
 					},
 					yAxis: [{ // Primary yAxis
 						title: {
@@ -213,8 +229,36 @@ $(function () {
 						floating: false,
 						borderWidth: 0
 					},	
+					
+					plotOptions: {
+						series: {
+							cursor: 'pointer',
+							events: {       
+						legendItemClick: function () {
+						if(this.name == "Marker"){
+						if(this.visible == true){
+						estado_retain = false;		
+						acc.xAxis[0].options.plotLines[0].color = "transparent";
+						acc.xAxis[0].options.plotLines[1].color = "transparent";						
+						acc.xAxis[0].update();
+						}else
+						if(this.visible == false){	
+						estado_retain = true;	
+						acc.xAxis[0].options.plotLines[0].color = "red";
+						acc.xAxis[0].options.plotLines[1].color = "red";						
+						acc.xAxis[0].update();
+						}	
+						}
+				}
+							}
+						}
+					},
 
 					series: [
+					{
+					name: 'Marker',
+					color:'red'
+					},
 					{
 						tooltip: {valueSuffix: ' ms',},
 			            name: 'JITTER',

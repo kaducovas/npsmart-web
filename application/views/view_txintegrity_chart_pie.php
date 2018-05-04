@@ -165,7 +165,7 @@ $(function () {
 		type: 'pie',
 		options3d: {
             enabled: true,
-            alpha: 60,
+            alpha: 70,
         },
 		backgroundColor: "#F8F8F8"
       },
@@ -193,14 +193,14 @@ $(function () {
 	
     plotOptions: {
       pie: {
-         depth: 35,
+         depth: 65,
 		 innerSize: 140
     },
 	},
 	
     series: [
 	{	type: 'pie',
-		slicedOffset:15,
+		slicedOffset:30,
         name: 'W'+week[0],
         data:[
             {   sliced: true, name: 'NOK '+bad_tx_per[0]+'%',

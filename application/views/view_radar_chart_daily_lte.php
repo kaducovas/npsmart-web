@@ -3,18 +3,18 @@
 		$date[] = $row->date;
 		$node = $row->node;
 		$rf_health_index[] = $row->rf_health_index;
-		$baseline[] = $row->baseline;
+		$mobility[] = $row->mobility;
 		$throughput[] = $row->throughput;
-		$retention_3g[] = $row->retention_3g;
-		$ps_call_completion[] = $row->ps_call_completion;
-		$cs_call_completion[] = $row->cs_call_completion;
+		$retention_4g[] = $row->retention_4g;
+		$data_performance[] = $row->data_performance;
+		$voice_performance[] = $row->voice_performance;
 		$availability[] = $row->availability;
-		$hardware_nodeb[] = $row->hardware_nodeb;
-		$air_interface_ul[] = $row->air_interface_ul;
-		$air_interface_dl[] = $row-> air_interface_dl;	
-		$sho_overhead[] = $row-> sho_overhead;
+		$resources_blocking[] = $row->resources_blocking;
+		$efficiency[] = $row->efficiency;
+		$interface[] = $row-> interface;	
+		$quality_ul[] = $row-> quality_ul;
 		$overshooters[] = $row-> overshooters;
-		$cpich_power_ratio[] = $row-> cpich_power_ratio;
+		$quality_dl[] = $row-> quality_dl;
 		$worst_aging_factor[] = $row-> worst_aging_factor;
 		$traffic_load[] = $row-> traffic_load;
 		$process_tools[] = $row-> process_tools;
@@ -52,18 +52,18 @@
 				return $n;
 		}
 		$rf_health_index = array_map("tonull2",$rf_health_index);
-		$baseline = array_map("tonull2",$baseline);
+		$mobility = array_map("tonull2",$mobility);
 		$throughput = array_map("tonull2",$throughput);
-		$retention_3g = array_map("tonull2",$retention_3g);
-		$ps_call_completion = array_map("tonull2",$ps_call_completion);
-		$cs_call_completion = array_map("tonull2",$cs_call_completion);
+		$retention_4g = array_map("tonull2",$retention_4g);
+		$data_performance = array_map("tonull2",$data_performance);
+		$voice_performance = array_map("tonull2",$voice_performance);
 		$availability = array_map("tonull2",$availability);
-		$hardware_nodeb = array_map("tonull2",$hardware_nodeb);
-		$air_interface_ul = array_map("tonull2",$air_interface_ul);
-		$air_interface_dl = array_map("tonull2",$air_interface_dl);
-		$sho_overhead = array_map("tonull2",$sho_overhead);
+		$resources_blocking = array_map("tonull2",$resources_blocking);
+		$efficiency = array_map("tonull2",$efficiency);
+		$interface = array_map("tonull2",$interface);
+		$quality_ul = array_map("tonull2",$quality_ul);
 		$overshooters = array_map("tonull2",$overshooters);
-		$cpich_power_ratio = array_map("tonull2",$cpich_power_ratio);
+		$quality_dl = array_map("tonull2",$quality_dl);
 		$worst_aging_factor = array_map("tonull2",$worst_aging_factor);
 		$traffic_load = array_map("tonull2",$traffic_load);
 		$process_tools = array_map("tonull2",$process_tools);
@@ -201,7 +201,7 @@ $(function () {
 					
 					series: [{
 						name: 'mobility',
-						data: [<?php echo join($baseline, ',') ?>]
+						data: [<?php echo join($mobility, ',') ?>]
 					},	
 					{
 						name: 'throughput',
@@ -209,15 +209,15 @@ $(function () {
 					},		
 					{
 						name: 'retention_4g',
-						data: [<?php echo join($retention_3g, ',') ?>]
+						data: [<?php echo join($retention_4g, ',') ?>]
 					},		
 					{
 						name: 'data_performance',
-						data: [<?php echo join($ps_call_completion, ',') ?>]
+						data: [<?php echo join($data_performance, ',') ?>]
 					},		
 					{
 						name: 'voice_performance',
-						data: [<?php echo join($cs_call_completion, ',') ?>]
+						data: [<?php echo join($voice_performance, ',') ?>]
 					},		
 					{
 						name: 'availability',
@@ -225,19 +225,19 @@ $(function () {
 					},		
 					{
 						name: 'resources_blocking',
-						data: [<?php echo join($hardware_nodeb, ',') ?>]
+						data: [<?php echo join($resources_blocking, ',') ?>]
 					},		
 					{
 						name: 'efficiency',
-						data: [<?php echo join($air_interface_ul, ',') ?>]
+						data: [<?php echo join($efficiency, ',') ?>]
 					},	
 					{
 						name: 'interface',
-						data: [<?php echo join($air_interface_dl, ',') ?>]
+						data: [<?php echo join($interface, ',') ?>]
 					},	
 					{
 						name: 'quality_ul',
-						data: [<?php echo join($sho_overhead, ',') ?>]
+						data: [<?php echo join($quality_ul, ',') ?>]
 					},	
 					{
 						name: 'overshooters',
@@ -245,7 +245,7 @@ $(function () {
 					},	
 					{
 						name: 'quality_dl',
-						data: [<?php echo join($cpich_power_ratio, ',') ?>]
+						data: [<?php echo join($quality_dl, ',') ?>]
 					},
 					{
 						name: 'traffic_load',
@@ -261,7 +261,7 @@ $(function () {
 
 //////////////////////////////////////////////////////////////////////////////////////////FIM//////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $('#export').click(function() {
-    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,sho_overhead,availability,rtwp]);
+    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,quality_ul,availability,rtwp]);
 });		
   });	
 
@@ -322,7 +322,7 @@ $(function () {
 					
 					series: [{
 						name: 'mobility',
-						data: [<?php echo join($baseline, ',') ?>]
+						data: [<?php echo join($mobility, ',') ?>]
 					},							
 					]
 					
@@ -330,7 +330,7 @@ $(function () {
 
 //////////////////////////////////////////////////////////////////////////////////////////FIM//////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $('#export').click(function() {
-    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,sho_overhead,availability,rtwp]);
+    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,quality_ul,availability,rtwp]);
 });		
   });	
 
@@ -400,7 +400,7 @@ $(function () {
 
 //////////////////////////////////////////////////////////////////////////////////////////FIM//////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $('#export').click(function() {
-    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,sho_overhead,availability,rtwp]);
+    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,quality_ul,availability,rtwp]);
 });		
   });	
 
@@ -462,7 +462,7 @@ $(function () {
 					series: [
 					{
 						name: 'retention_4g',
-						data: [<?php echo join($retention_3g, ',') ?>]
+						data: [<?php echo join($retention_4g, ',') ?>]
 					},		
 					]
 					
@@ -470,7 +470,7 @@ $(function () {
 
 //////////////////////////////////////////////////////////////////////////////////////////FIM//////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $('#export').click(function() {
-    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,sho_overhead,availability,rtwp]);
+    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,quality_ul,availability,rtwp]);
 });		
   });	
 
@@ -531,7 +531,7 @@ $(function () {
 					series: [
 					{
 						name: 'data_performance',
-						data: [<?php echo join($ps_call_completion, ',') ?>]
+						data: [<?php echo join($data_performance, ',') ?>]
 					},		
 					]
 					
@@ -539,7 +539,7 @@ $(function () {
 
 //////////////////////////////////////////////////////////////////////////////////////////FIM//////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $('#export').click(function() {
-    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,sho_overhead,availability,rtwp]);
+    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,quality_ul,availability,rtwp]);
 });		
   });	
 
@@ -601,7 +601,7 @@ $(function () {
 					series: [
 					{
 						name: 'voice_performance',
-						data: [<?php echo join($cs_call_completion, ',') ?>]
+						data: [<?php echo join($voice_performance, ',') ?>]
 					},		
 					]
 					
@@ -609,7 +609,7 @@ $(function () {
 
 //////////////////////////////////////////////////////////////////////////////////////////FIM//////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $('#export').click(function() {
-    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,sho_overhead,availability,rtwp]);
+    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,quality_ul,availability,rtwp]);
 });		
   });	
 
@@ -679,7 +679,7 @@ $(function () {
 
 //////////////////////////////////////////////////////////////////////////////////////////FIM//////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $('#export').click(function() {
-    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,sho_overhead,availability,rtwp]);
+    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,quality_ul,availability,rtwp]);
 });		
   });	
 
@@ -741,7 +741,7 @@ $(function () {
 					series: [		
 					{
 						name: 'resources_blocking',
-						data: [<?php echo join($hardware_nodeb, ',') ?>]
+						data: [<?php echo join($resources_blocking, ',') ?>]
 					},		
 					]
 					
@@ -749,7 +749,7 @@ $(function () {
 
 //////////////////////////////////////////////////////////////////////////////////////////FIM//////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $('#export').click(function() {
-    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,sho_overhead,availability,rtwp]);
+    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,quality_ul,availability,rtwp]);
 });		
   });	
 
@@ -811,7 +811,7 @@ $(function () {
 					series: [		
 					{
 						name: 'efficiency',
-						data: [<?php echo join($air_interface_ul, ',') ?>]
+						data: [<?php echo join($efficiency, ',') ?>]
 					},		
 					]
 					
@@ -819,7 +819,7 @@ $(function () {
 
 //////////////////////////////////////////////////////////////////////////////////////////FIM//////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $('#export').click(function() {
-    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,sho_overhead,availability,rtwp]);
+    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,quality_ul,availability,rtwp]);
 });		
   });	
 
@@ -881,7 +881,7 @@ $(function () {
 					series: [		
 					{
 						name: 'interface',
-						data: [<?php echo join($air_interface_dl, ',') ?>]
+						data: [<?php echo join($interface, ',') ?>]
 					},		
 					]
 					
@@ -889,7 +889,7 @@ $(function () {
 
 //////////////////////////////////////////////////////////////////////////////////////////FIM//////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $('#export').click(function() {
-    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,sho_overhead,availability,rtwp]);
+    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,quality_ul,availability,rtwp]);
 });		
   });	
 
@@ -951,7 +951,7 @@ $(function () {
 					series: [		
 					{
 						name: 'quality_ul',
-						data: [<?php echo join($sho_overhead, ',') ?>]
+						data: [<?php echo join($quality_ul, ',') ?>]
 					},		
 					]
 					
@@ -959,7 +959,7 @@ $(function () {
 
 //////////////////////////////////////////////////////////////////////////////////////////FIM//////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $('#export').click(function() {
-    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,sho_overhead,availability,rtwp]);
+    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,quality_ul,availability,rtwp]);
 });		
   });	
 
@@ -1029,7 +1029,7 @@ $(function () {
 
 //////////////////////////////////////////////////////////////////////////////////////////FIM//////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $('#export').click(function() {
-    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,sho_overhead,availability,rtwp]);
+    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,quality_ul,availability,rtwp]);
 });		
   });	
 
@@ -1091,7 +1091,7 @@ $(function () {
 					series: [		
 					{
 						name: 'quality_dl',
-						data: [<?php echo join($cpich_power_ratio, ',') ?>]
+						data: [<?php echo join($quality_dl, ',') ?>]
 					},		
 					]
 					
@@ -1099,7 +1099,7 @@ $(function () {
 
 //////////////////////////////////////////////////////////////////////////////////////////FIM//////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $('#export').click(function() {
-    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,sho_overhead,availability,rtwp]);
+    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,quality_ul,availability,rtwp]);
 });		
   });	
 
@@ -1169,7 +1169,7 @@ $(function () {
 
 //////////////////////////////////////////////////////////////////////////////////////////FIM//////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $('#export').click(function() {
-    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,sho_overhead,availability,rtwp]);
+    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,quality_ul,availability,rtwp]);
 });		
   });	
 

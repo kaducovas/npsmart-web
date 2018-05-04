@@ -334,6 +334,7 @@ outline:none;
 
 <br>
 Download data for <select id="regcsv" name="regcsv">
+<option value=ALL>ALL</option>
 <option value=NE>NE</option>
 <option value=CO>CO</option>
 <option value=PRSC>PRSC</option>

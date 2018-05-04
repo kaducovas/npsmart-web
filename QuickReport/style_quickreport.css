@@ -181,11 +181,11 @@ text-align:center;
 visibility: visible;	
 }
 
-#btn_confirm2,#btn_confirm3,#btn_confirm4, #btn_confirm5, #btn_confirm6, #btn_confirm7, #btn_confirm8, #btn_confirm9{	
+#btn_confirm2,#btn_confirm3,#btn_confirm4, #btn_confirm5, #btn_confirm6, #btn_confirm7, #btn_confirm8, #btn_confirm9, #btn_confirm10, #btn_confirm11, #btn_confirm12{	
 visibility: hidden;	
 }
 
-#btn_delete1,#btn_delete2,#btn_delete3,#btn_delete4,#btn_delete5,#btn_delete6, #btn_delete7, #btn_delete8, #btn_delete9{
+#btn_delete1,#btn_delete2,#btn_delete3,#btn_delete4,#btn_delete5,#btn_delete6, #btn_delete7, #btn_delete8, #btn_delete9, #btn_delete10, #btn_delete11, #btn_delete12{
 visibility: hidden;	
 }
 

@@ -10,64 +10,41 @@
 		$otm[] = $row->otm;
 		$rf[] = $row->rf;
 		$tx_omr[] = $row->tx_omr;
+		$analysis_no[] = $row->analysis_no;
+		$cap_no[] = $row->cap_no;
+		$imp_no[] = $row->imp_no;
+		$normal_no[] = $row->normal_no;
+		$omr_no[] = $row->omr_no;
+		$otm_no[] = $row->otm_no;
+		$rf_no[] = $row->rf_no;
+		$tx_omr_no[] = $row->tx_omr_no;
 		}	
 		?>
 <script>
 week = new Array(4);
 week[0] = "<?php echo $week[0]; ?>";
-week[1] = "<?php echo $week[1]; ?>";
-week[2] = "<?php echo $week[2]; ?>";
-week[3] = "<?php echo $week[3]; ?>";
 
 var node = "<?php echo $node; ?>";
 
-analysis = new Array(4);
-analysis[0] = <?php echo $analysis[0]; ?>;
-analysis[1] = <?php echo $analysis[1]; ?>;
-analysis[2] = <?php echo $analysis[2]; ?>;
-analysis[3] = <?php echo $analysis[3]; ?>;
+order = new Array(8);
+order[0] = {name: 'NORMAL'+'<br>'+<?php echo $normal_no[0]; ?>, y: <?php echo $normal[0]; ?>, color: '#00B050',k: <?php echo $normal_no[0]; ?>};
+order[1] = {name: 'ANALYSIS'+'<br>'+<?php echo $analysis_no[0]; ?>, y: <?php echo $analysis[0]; ?>, color: '#8F8F8F'};
+order[2] = {name: 'OMR'+'<br>'+<?php echo $omr_no[0]; ?>, y: <?php echo $omr[0]; ?>, color: '#7A30A0'};
+order[3] = {name: 'TX/OMR'+'<br>'+<?php echo $tx_omr_no[0]; ?>, y: <?php echo $tx_omr[0]; ?>, color: '#F4E1E1'};
+order[4] = {name: 'OTM'+'<br>'+<?php echo $otm_no[0]; ?>, y: <?php echo $otm[0]; ?>, color: '#0070C0'};
+order[5] = {name: 'CAP'+'<br>'+<?php echo $cap_no[0]; ?>, y: <?php echo $cap[0]; ?>, color: '#FFC000'};
+order[6] = {name: 'PLAN/ENG RF'+'<br>'+<?php echo $rf_no[0]; ?>, y: <?php echo $rf[0]; ?>, color: '#C00000'};
+order[7] = {name: 'IMP'+'<br>'+<?php echo $imp_no[0]; ?>, y: <?php echo $imp[0]; ?>, color: '#002060'};
 
-cap = new Array(4);
-cap[0] = <?php echo $cap[0]; ?>;
-cap[1] = <?php echo $cap[1]; ?>;
-cap[2] = <?php echo $cap[2]; ?>;
-cap[3] = <?php echo $cap[3]; ?>;
-
-imp = new Array(4);
-imp[0] = <?php echo $imp[0]; ?>;
-imp[1] = <?php echo $imp[1]; ?>;
-imp[2] = <?php echo $imp[2]; ?>;
-imp[3] = <?php echo $imp[3]; ?>;
-
-normal = new Array(4);
-normal[0] = <?php echo $normal[0]; ?>;
-normal[1] = <?php echo $normal[1]; ?>;
-normal[2] = <?php echo $normal[2]; ?>;
-normal[3] = <?php echo $normal[3]; ?>;
-
-omr = new Array(4);
-omr[0] = <?php echo $omr[0]; ?>;
-omr[1] = <?php echo $omr[1]; ?>;
-omr[2] = <?php echo $omr[2]; ?>;
-omr[3] = <?php echo $omr[3]; ?>;
-
-otm = new Array(4);
-otm[0] = <?php echo $otm[0]; ?>;
-otm[1] = <?php echo $otm[1]; ?>;
-otm[2] = <?php echo $otm[2]; ?>;
-otm[3] = <?php echo $otm[3]; ?>;
-
-rf = new Array(4);
-rf[0] = <?php echo $rf[0]; ?>;
-rf[1] = <?php echo $rf[1]; ?>;
-rf[2] = <?php echo $rf[2]; ?>;
-rf[3] = <?php echo $rf[3]; ?>;
-
-tx_omr = new Array(4);
-tx_omr[0] = <?php echo $tx_omr[0]; ?>;
-tx_omr[1] = <?php echo $tx_omr[1]; ?>;
-tx_omr[2] = <?php echo $tx_omr[2]; ?>;
-tx_omr[3] = <?php echo $tx_omr[3]; ?>;
+for (i=0; i<8; i++){
+	for (j=0; j<8; j++) {
+		if (order[i].y > order[j].y){
+			aux = order[i]
+			order[i] = order[j]
+			order[j] = aux;
+		}
+}
+}
 /**
  * Create a global getSVG method that takes an array of charts as an argument
  */
@@ -155,20 +132,33 @@ $(function () {
 		type: 'pie',
 		options3d: {
             enabled: true,
-            alpha: 45,
+            alpha: 65,
         },
-		backgroundColor: "#F8F8F8"
+		backgroundColor: null,
       },
  
     title: {
-        text: "<b>W"+week[0]+" TRIAGE</b>",
+        text: "<b>W"+week[0]+" CELL MAPPING</b>",
+		y: 130,
+     floating: true,
 		style: {
          fontSize: '23px'
       }
     },
+	
+	legend: {
+	floating:true,
+	y: -80,
+	labelFormatter: function () {
+            return this.name.split('<br>')[0];
+        }
+	},
 
 	subtitle: {
 	 text: '<i>'+node+'</i>',
+	 //x: 100,
+     y: 160,
+     floating: true,
 	 style: {
          textTransform: 'uppercase',
          fontSize: '15px'
@@ -178,56 +168,155 @@ credits: {
 					   enabled: false
 					},			
 	 tooltip: {
-        pointFormat: '',
-							series: {
-							cursor: 'pointer',
-							events: {
-								click: function( event ) {
-								var kpi = this.name;
-								kpi = kpi.toLowerCase();
-								kpi = kpi.trim();
-								var strkpi = kpi.replace(/(^\s+|\s+$)/g, '');
-									document.getElementById('wcreportnename').value = node;
-									document.getElementById('wcreportnetype').value = reportnetype;
-									document.getElementById('wctimeagg').value = reportagg;
-									document.getElementById('wcreportdate').value = date[event.point.x];
-									document.getElementById('wckpi').value = this.name;
-									document.wcform.submit();
+		 headerFormat: null,
+		 //enabled: false,
+        pointFormat: '{point.name} | {point.y}%'
+							// series: {
+							// cursor: 'pointer',
+							// // events: {
+								// // click: function( event ) {
+								// // var kpi = this.name;
+								// // kpi = kpi.toLowerCase();
+								// // kpi = kpi.trim();
+								// // var strkpi = kpi.replace(/(^\s+|\s+$)/g, '');
+									// // document.getElementById('wcreportnename').value = node;
+									// // document.getElementById('wcreportnetype').value = reportnetype;
+									// // document.getElementById('wctimeagg').value = reportagg;
+									// // document.getElementById('wcreportdate').value = date[event.point.x];
+									// // document.getElementById('wckpi').value = this.name;
+									// // document.wcform.submit();
 
-								}
-							}
-						}
+								// // }
+							// // }
+						// }
     },
 	
     plotOptions: {
       pie: {
             allowPointSelect: true,
             cursor: 'pointer',
-            depth: 35,
+            depth: 100,
+			showInLegend: true,
             dataLabels: {
             enabled: true,
-            format: '{point.name}',
+			//formart: '{point.name} <br> {point.y}%',
+            formatter: function () {
+        if (this.point.y != 0) {
+            return [this.point.name+' | '+this.point.y+'%'];
+        }
+    },
+style:{
+fontSize: '12px',
+}	,
 			connectorWidth:2,
-			style: {
-                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-            },
             },
     },
 	},
 	
     series: [
 	{	type: 'pie',
-		slicedOffset:30,
+		slicedOffset:65,
         name: 'W'+week[0],
-        data:[
-		{name: 'ANALYSIS '+analysis[0]+'%', y: analysis[0]},
-		{name: 'OMR '+omr[0]+'%', y: omr[0]},
-		{name: 'TX/OMR '+tx_omr[0]+'%', y: tx_omr[0]},
-		{name: 'OTM '+otm[0]+'%', y: otm[0]},
-		{name: 'CAP '+cap[0]+'%', y: cap[0]},
-		{name: 'PLAN/ENG RF '+rf[0]+'%', y: rf[0]},
-		{name: 'IMP '+imp[0]+'%', y: imp[0]},
-		{name: 'NORMAL '+normal[0]+'%', y: normal[0]}]
+        data:
+		[
+		
+		{name: order[0].name, y: order[0].y, sliced:true,
+		color: { 
+		radialGradient: {
+            cx: 0.5,
+            cy: 0.3,
+            r: 0.7
+        }, 
+		stops: [[0, order[0].color],
+			   [1, Highcharts.Color(order[0].color).brighten(-0.3).get('rgb')]]
+		}},
+		
+		{name: order[1].name, y: order[1].y, sliced:true,
+		color: { 
+		radialGradient: {
+            cx: 0.5,
+            cy: 0.3,
+            r: 0.7
+        }, 
+		stops: [[0, order[1].color],
+			   [1, Highcharts.Color(order[1].color).brighten(-0.3).get('rgb')]]
+		}},
+		
+		{name: order[2].name, y: order[2].y, sliced:true,
+		color: { 
+		radialGradient: {
+            cx: 0.5,
+            cy: 0.3,
+            r: 0.7
+        }, 
+		stops: [[0, order[2].color],
+			   [1, Highcharts.Color(order[2].color).brighten(-0.3).get('rgb')]]
+		}},
+		
+		{name: order[3].name, y: order[3].y, sliced:true,
+		color: { 
+		radialGradient: {
+            cx: 0.5,
+            cy: 0.3,
+            r: 0.7
+        }, 
+		stops: [[0, order[3].color],
+			   [1, Highcharts.Color(order[3].color).brighten(-0.3).get('rgb')]]
+		}},
+		
+		{name: order[4].name, y: order[4].y, sliced:true,
+		color: { 
+		radialGradient: {
+            cx: 0.5,
+            cy: 0.3,
+            r: 0.7
+        }, 
+		stops: [[0, order[4].color],
+			   [1, Highcharts.Color(order[4].color).brighten(-0.3).get('rgb')]]
+		}},
+		
+		{name: order[5].name, y: order[5].y, sliced:true,
+		color: { 
+		radialGradient: {
+            cx: 0.5,
+            cy: 0.3,
+            r: 0.7
+        }, 
+		stops: [[0, order[5].color],
+			   [1, Highcharts.Color(order[5].color).brighten(-0.3).get('rgb')]]
+		}},
+		
+		{name: order[6].name, y: order[6].y, sliced:true,
+		color: { 
+		radialGradient: {
+            cx: 0.5,
+            cy: 0.3,
+            r: 0.7
+        }, 
+		stops: [[0, order[6].color],
+			   [1, Highcharts.Color(order[6].color).brighten(-0.3).get('rgb')]]
+		}},
+		
+		{name: order[7].name, y: order[7].y, sliced:true,
+		color: { 
+		radialGradient: {
+            cx: 0.5,
+            cy: 0.3,
+            r: 0.7
+        }, 
+		stops: [[0, order[7].color],
+			   [1, Highcharts.Color(order[7].color).brighten(-0.3).get('rgb')]]
+		}}
+		]
+		// [
+		// {legendIndex: parseInt(100 - analysis[0]), name: 'ANALYSIS', y: analysis[0]},
+		// {legendIndex: parseInt(100 - omr[0]), name: 'OMR', y: omr[0]},
+		// {legendIndex: parseInt(100 - tx_omr[0]), name: 'TX/OMR', y: tx_omr[0]},
+		// {legendIndex: parseInt(100 - otm[0]), name: 'OTM', y: otm[0]},
+		// {legendIndex: parseInt(100 - cap[0]), name: 'CAP', y: cap[0]},
+		// {legendIndex: parseInt(100 - rf[0]), name: 'PLAN/ENG RF', y: rf[0]},
+		// {legendIndex: parseInt(100 - imp[0]), name: 'IMP', y: imp[0]},
+		// {legendIndex: parseInt(100 - normal[0]), name: 'NORMAL', y: normal[0]}]
     }, 
 	]
 });

@@ -436,7 +436,7 @@ function uf_weekly_report($node,$weeknum){
        data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, voice_traffic_ul, 
        voice_erlangs_num, voice_erlangs_den, hsdpa_users, hsupa_users, 
        ps_nonhs_users, dch_users, pch_users, fach_users, thp_hsdpa, 
-       thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850, 'cidade'::text as type,2 as sortcol 
+       thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850, smp_5, smp_7, smp_8, smp_9, 'cidade'::text as type,2 as sortcol 
   FROM umts_kpi.vw_main_kpis_cidade_rate_weekly
   where week = ".$weeknum." and uf = '".$node."'
   order by sortcol,week, node
@@ -465,7 +465,7 @@ function cidade_weekly_report($node,$weeknum){
        data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, voice_traffic_ul, 
        voice_erlangs_num, voice_erlangs_den, hsdpa_users, hsupa_users, 
        ps_nonhs_users, dch_users, pch_users, fach_users, thp_hsdpa, 
-       thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850, 'cidade'::text as type,2 as sortcol 
+       thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850, smp_5, smp_7, smp_8, smp_9, 'cidade'::text as type,2 as sortcol 
   FROM umts_kpi.vw_main_kpis_cidade_rate_weekly
   where week = ".$weeknum." and uf = '".$uf."'
   order by sortcol,week, node
@@ -492,7 +492,7 @@ function user_cluster_weekly_report_dash($node,$weeknum){
        data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, voice_traffic_ul, 
        voice_erlangs_num, voice_erlangs_den, hsdpa_users, hsupa_users, 
        ps_nonhs_users, dch_users, pch_users, fach_users, thp_hsdpa, 
-       thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850, 'custom'::text as type,1 as sortcol 
+       thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850, smp_5, smp_7, smp_8, smp_9, 'custom'::text as type,1 as sortcol 
   FROM umts_kpi.vw_main_kpis_cluster_rate_weekly_2
   where week = ".$weeknum." and cluster_id = '".$cluster_id."'
   order by week,sortcol, node
@@ -521,7 +521,7 @@ function cluster_weekly_report($node,$weeknum){
        data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, voice_traffic_ul, 
        voice_erlangs_num, voice_erlangs_den, hsdpa_users, hsupa_users, 
        ps_nonhs_users, dch_users, pch_users, fach_users, thp_hsdpa, 
-       thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850, 'cluster'::text as type,2 as sortcol 
+       thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850, smp_5, smp_7, smp_8, smp_9, 'cluster'::text as type,2 as sortcol 
   FROM umts_kpi.vw_main_kpis_cluster_rate_weekly
   where week = ".$weeknum." and uf = '".$uf."'
   order by sortcol,week, node
@@ -566,7 +566,7 @@ function nodeb_weekly_report($node,$weeknum){
 		   hsupa_users, ps_nonhs_users, dch_users, pch_users, fach_users, 
 		   thp_hsdpa, thp_hsupa,'cell'::text as type,2 as sortcol
 	  FROM umts_kpi.vw_main_kpis_cell_rate_weekly
-			   where week = ".$weeknum."
+			   where week = ".$weeknum." and year = 2018
 			   and 
 			   CASE
 				WHEN left(nodebname,char_length(nodebname)- 2) like '%%S02%%' and char_length(nodebname)> 8 then concat('U',substring(nodebname,position('S02' in nodebname) + 3,(char_length(nodebname) - position('S02' in nodebname) + 3)))                       
@@ -622,7 +622,7 @@ end
 		   hsupa_users, ps_nonhs_users, dch_users, pch_users, fach_users, 
 		   thp_hsdpa, thp_hsupa,'cell'::text as type,2 as sortcol
 	  FROM umts_kpi.vw_main_kpis_cell_rate_weekly
-			   where week = ".$weeknum."
+			   where week = ".$weeknum." and year = '2018'
 			   and
 			   CASE
 WHEN left('".$node."',char_length('".$node."')- 3) like '%%S02%%' and char_length('".$node."')> 9 then concat('U',substring(left('".$node."',char_length('".$node."')- 1),position('S02' in left('".$node."',char_length('".$node."')- 1)) + 3,(char_length(left('".$node."',char_length('".$node."')- 1)) - (position('S02' in left('".$node."',char_length('".$node."')- 1)) + 3))))                       
@@ -721,10 +721,10 @@ order by year,week
 		$strdate = new DateTime($strreportdate);
 		$strweek = $strdate->format("W");
 		$stryear= $strdate->format("o");
-		$endyear = $date->format("o");		
+		$endyear = $date->format("o");	
 		#$weeknum_start = $weeknum -4;
 			 $query = $this->db->query(
-			 "SELECT week as date, concat(node,' - ',uf) as node, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
+			 "SELECT week as date, ibge, concat(node,' - ',uf) as node, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
        drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
        hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
        hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
@@ -732,11 +732,11 @@ order by year,week
        availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
        voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
        hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa, rtwp_2100, rtwp_1900, rtwp_850
-  FROM umts_kpi.vw_main_kpis_cidade_rate_weekly 
-WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
-  and node = '".$node."'
-order by year,week
-	;");	
+	   FROM umts_kpi.vw_main_kpis_cidade_rate_weekly 
+	   WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
+	   and ibge = ".$ibge."
+	   order by year,week
+		;");	
 
 	return $query->result();
 	}
@@ -1437,7 +1437,7 @@ order by date,node
 function network_hourly_report($reportdate){
 		$daterange = $reportdate;
 		$inidate = date('Y-m-d', strtotime($daterange.' -7 day'));
-		$findate = date('Y-m-d', strtotime($daterange));
+		$findate = date('Y-m-d', strtotime($daterange.' +1 day'));
 		#$weeknum_start = $weeknum -4;
 			 $query = $this->db->query(
 			 "SELECT week, date, node, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
@@ -1459,7 +1459,7 @@ function network_hourly_report($reportdate){
 	function region_hourly_report($node,$reportdate){
 		$daterange = $reportdate;
 		$inidate = date('Y-m-d', strtotime($daterange.' -7 day'));
-		$findate = date('Y-m-d', strtotime($daterange));	
+		$findate = date('Y-m-d', strtotime($daterange.' +1 day'));	
 			 $query = $this->db->query(
 			 "select * from umts_kpi.vw_main_kpis_region_rate_hourly
 	where date::date between '".$inidate."' and '".$findate."' 
@@ -1474,7 +1474,7 @@ function network_hourly_report($reportdate){
 	function uf_hourly_report($node,$reportdate){
 		$daterange = $reportdate;
 		$inidate = date('Y-m-d', strtotime($daterange.' -7 day'));
-		$findate = date('Y-m-d', strtotime($daterange));	
+		$findate = date('Y-m-d', strtotime($daterange.' +1 day'));	
 			 $query = $this->db->query(
 			 "select * from umts_kpi.vw_main_kpis_uf_rate_hourly
 	where date between '".$inidate."' and '".$findate." 23:30:00' 
@@ -1493,7 +1493,7 @@ function network_hourly_report($reportdate){
 		$uf = $cidade_info[0]->uf;
 		$daterange = $reportdate;
 		$inidate = date('Y-m-d', strtotime($daterange.' -7 day'));
-		$findate = date('Y-m-d', strtotime($daterange));	
+		$findate = date('Y-m-d', strtotime($daterange.' +1 day'));	
 			 $query = $this->db->query(
 			 "select week, date, uf, ibge, concat(node,' - ',uf) as node, acc_rrc, fails_acc_rrc, eff_cs, fails_acc_cs, 
        acc_cs, eff_ps, fails_acc_ps, acc_ps, eff_hsdpa, fails_acc_hsdpa, 
@@ -1523,7 +1523,7 @@ function network_hourly_report($reportdate){
 		$uf = $cluster_info[0]->uf;
 		$daterange = $reportdate;
 		$inidate = date('Y-m-d', strtotime($daterange.' -7 day'));
-		$findate = date('Y-m-d', strtotime($daterange));	
+		$findate = date('Y-m-d', strtotime($daterange.' +1 day'));	
 			 $query = $this->db->query(
 			 "select * from umts_kpi.vw_main_kpis_cluster_rate_hourly
 	where date between '".$inidate."' and '".$findate." 23:30:00' 
@@ -1554,7 +1554,7 @@ function network_hourly_report($reportdate){
 	function rnc_hourly_report($node,$reportdate){
 		$daterange = $reportdate;
 		$inidate = date('Y-m-d', strtotime($daterange.' -15 day'));
-		$findate = date('Y-m-d', strtotime($daterange));
+		$findate = date('Y-m-d', strtotime($daterange.' +1 day'));
 			 $query = $this->db->query(
 			 "SELECT week, date, region, node, acc_rrc, acc_cs, acc_ps, acc_hsdpa, 
        acc_hsdpa_f2h, drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, 
@@ -1582,7 +1582,7 @@ function network_hourly_report($reportdate){
 	function nodeb_hourly_report($node,$reportdate){
 		$daterange = $reportdate;
 		$inidate = date('Y-m-d', strtotime($daterange.' -20 day'));
-		$findate = date('Y-m-d', strtotime($daterange));
+		$findate = date('Y-m-d', strtotime($daterange.' +1 day'));
 			 $query = $this->db->query(
 			 "SELECT week, date, region, node, acc_rrc, acc_cs, acc_ps, acc_hsdpa, 
        acc_hsdpa_f2h, drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, 
@@ -1619,7 +1619,7 @@ function network_hourly_report($reportdate){
 		$rnc = $cell_array[0]->rncname;
 		$daterange = $reportdate;
 		$inidate = date('Y-m-d', strtotime($daterange.' -20 day'));
-		$findate = date('Y-m-d', strtotime($daterange));
+		$findate = date('Y-m-d', strtotime($daterange.' +1 day'));
 			 $query = $this->db->query(
 			 "SELECT week, date, region, node, acc_rrc, acc_cs, acc_ps, acc_hsdpa, 
        acc_hsdpa_f2h, drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, 

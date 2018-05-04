@@ -314,7 +314,7 @@ elseif (isset($weeknum)){
                 </button>
                 <a class="navbar-brand" href="http://support.huawei.com"><img src="/npsmart/images/huawei_logo_icon.png" style="padding:0px; top:0px; width:30px; margin-top:-15%; height:30px;"/></a>
                
-                <a class="navbar-brand" id="aTitleVersion" href="/npsmart/lte" style="width:170px;"><span id="aTitle">NPSmart</span>&nbsp; <span id="sVersion" style="font-size:12px; font-family:Calibri;">
+                <a class="navbar-brand" id="aTitleVersion" href="/npsmart/" style="width:170px;"><span id="aTitle">NPSmart</span>&nbsp; <span id="sVersion" style="font-size:12px; font-family:Calibri;">
                      v2.1</span></a>
             </div>
 
@@ -327,6 +327,7 @@ elseif (isset($weeknum)){
                             <li class="menuItemnqi"><a href="/npsmart/lte/">Main KPIs</a></li>
                             <li class="menuItemnqi"><a onclick='selectreportname(this)'>AMX NQI</a></li> 
                             <li class="menuItemnqi"><a href="/npsmart/lte/radar">AMX Radar</a></li>
+							<li class="menuItemnqi"><a href="/npsmart/lte/kpis_anatel_weekly">Anatel KPIs</a></li>
                             <!--<li class="menuItemnqi"><a href="/npsmart/umts/feature_phase2">Feature Report</a></li>-->
                         </ul>
                     </li>
@@ -342,6 +343,7 @@ elseif (isset($weeknum)){
                      <li id="menuItemwaf" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RNP<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
+						<li class="menuItemnqi"><a href="/npsmart/main_map/map_region_lte">Network Overview</a></li>
                               <li class="disabled"><a href="#">Cells Database</a></li>
                             <li class="menuItemnqi"><a href="/npsmart/lte/enodebcfg">eNodeB Configuration</a></li>  
                             <li class="menuItemnqi"><a href="/npsmart/umts/srancfg">Single-RAN Configuration</a></li> 
@@ -353,9 +355,10 @@ elseif (isset($weeknum)){
   
 
                      <li id="menuItemwaf" class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Baseline<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Consistency Check<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                               <li class="menuItemnqi"><a href="/npsmart/lte/baseline_enodeb">Baseline eNodeB Audit</a></li>
+							  <li class="menuItemnqi"><a href="/npsmart/lte/check_neighborhood">Neighbor Audit</a></li>
                         </ul>
                     </li>
 
@@ -366,7 +369,9 @@ elseif (isset($weeknum)){
                 <li id="menuItemwaf" class="dropdown">
                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Settings<span class="caret"></span></a>
                        <ul class="dropdown-menu" role="menu">
+							<li class="menuItemnqi"><a href="/npsmart/lte/baseline_configuration">Baseline Configuration</a></li>
                             <li class="disabled"><a href="#">Counters</a></li>
+							<li><a href="/npsmart/lte/process_monitoring">Database Process Monitoring</a></li>
                             <li class="disabled"><a href="#">KPIs Target</a></li>
                         </ul>
 				</li>
@@ -374,6 +379,17 @@ elseif (isset($weeknum)){
                 
                       <li class="disabled"><a href="#">Log</a></li>
 					  <li><a href="/npsmart/quickreport">Quick Report</a></li>
+					<li id="menuItemwaf" class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Auto Reports<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li id="ppt_cto" onmouseover="mostrar_cto()" onmouseout="esconder_cto()"><a href="#">Claro - CTO Meeting Presentation <span class="glyphicon glyphicon-chevron-down"></span></a>
+								<ul>
+									<li id="2018-16" class="cto" style="display:none;font-size: 18px;"><a href="/npsmart/AutoReport/CTO/Claro - CTO Meeting Presentation W16.pptx" download>Week 16</a></li>
+									<li id="2018-17" class="cto" style="display:none;font-size: 18px;"><a href="/npsmart/AutoReport/CTO/Claro - CTO Meeting Presentation W17.pptx" download>Week 17</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>					  
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">

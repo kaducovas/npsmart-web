@@ -249,8 +249,8 @@ class Gsm extends CI_Controller {
 
 		public function monthly()
 	{
-		$this->load->model('model_monitor');
-		$this->load->model('model_mainkpis');
+		$this->load->model('model_monitor_gsm');
+		$this->load->model('model_mainkpis_gsm');
 		$this->load->model('model_cellsinfo');
 		#$data['cells'] = $this->model_monitor->cells();
 		//Set Node
@@ -270,7 +270,7 @@ class Gsm extends CI_Controller {
 				$data['reportnetype'] = $netype;
 				#echo $netype;		
 		
-		$referencedate = $this->model_cellsinfo->reference_date($node);
+		$referencedate = $this->model_cellsinfo->reference_date_gsm($node);
 		
 		//Set Date and Weeknum
 		if($this->input->post('reportdate')){
@@ -289,55 +289,55 @@ class Gsm extends CI_Controller {
 		$data['reportagg'] = 'monthly';
 		$data['reportkpi'] = 'all';
 		
-		$data['rncs'] = $this->model_cellsinfo->rncs();
-		$data['regional'] = $this->model_cellsinfo->regional();
-		$data['cidades'] = $this->model_cellsinfo->cidades();
-		$data['clusters'] = $this->model_cellsinfo->clusters();
-		$data['nodebs'] = $this->model_cellsinfo->nodebs();
-		$data['ufs'] = $this->model_cellsinfo->ufs();
+		$data['bsc'] = $this->model_cellsinfo->bsc();
+		$data['regional_gsm'] = $this->model_cellsinfo->regional_gsm();
+		$data['cidades_gsm'] = $this->model_cellsinfo->cidades_gsm();
+		//$data['clusters'] = $this->model_cellsinfo->clusters();
+		$data['bts'] = $this->model_cellsinfo->bts();
+		$data['ufs'] = $this->model_cellsinfo->ufs_gsm();
 		
 		$regions = array("CO", "PRSC", "NE", "BASE","ES","MG");
 		
 		if($netype == 'network'){
-			$data['node_weekly_report'] = $this->model_mainkpis->network_monthly_report($reportdate);
-			$data['node_daily_report'] = $this->model_mainkpis->network_weekly_report_graph($reportdate);
+			$data['node_weekly_report'] = $this->model_mainkpis_gsm->network_monthly_report($reportdate);
+			$data['node_daily_report'] = $this->model_mainkpis_gsm->network_weekly_report_graph($reportdate);
 			$data['reportnetype'] = 'network';
 		}
 		elseif ($netype == 'region'){
-			$data['node_weekly_report'] = $this->model_mainkpis->region_monthly_report($node,$reportdate);
-			$data['node_daily_report'] = $this->model_mainkpis->region_weekly_report_graph($node,$reportdate);
+			$data['node_weekly_report'] = $this->model_mainkpis_gsm->region_monthly_report($node,$reportdate);
+			$data['node_daily_report'] = $this->model_mainkpis_gsm->region_weekly_report_graph($node,$reportdate);
 			$data['reportnetype'] = 'region';
 		}
-		elseif($netype == 'rnc'){
-			$data['node_weekly_report'] = $this->model_mainkpis->rnc_monthly_report($node,$reportdate);
-			$data['node_daily_report'] = $this->model_mainkpis->rnc_weekly_report_graph($node,$reportdate);
+		elseif($netype == 'bsc'){
+			$data['node_weekly_report'] = $this->model_mainkpis_gsm->bsc_monthly_report($node,$reportdate);
+			$data['node_daily_report'] = $this->model_mainkpis_gsm->bsc_weekly_report_graph($node,$reportdate);
 			$data['reportnetype'] = 'rnc';
 		}
-		elseif($netype == 'nodeb'){
-			$data['node_weekly_report'] = $this->model_mainkpis->nodeb_monthly_report($node,$reportdate);
-			$data['node_daily_report'] = $this->model_mainkpis->nodeb_weekly_report_graph($node,$reportdate);
+		elseif($netype == 'bts'){
+			$data['node_weekly_report'] = $this->model_mainkpis_gsm->bts_monthly_report($node,$reportdate);
+			$data['node_daily_report'] = $this->model_mainkpis_gsm->bts_weekly_report_graph($node,$reportdate);
 			#$data['reportnetype'] = 'rnc';
 		}
 		elseif($netype == 'cell'){
-			$data['node_weekly_report'] = $this->model_mainkpis->cell_monthly_report($node,$reportdate);
-			$data['node_daily_report'] = $this->model_mainkpis->cell_weekly_report_graph($node,$reportdate);
+			$data['node_weekly_report'] = $this->model_mainkpis_gsm->cell_monthly_report($node,$reportdate);
+			$data['node_daily_report'] = $this->model_mainkpis_gsm->cell_weekly_report_graph($node,$reportdate);
 			#$data['reportnetype'] = 'rnc';
 		}		
 		elseif($netype == 'uf'){
-			$data['node_weekly_report'] = $this->model_mainkpis->uf_monthly_report($node,$reportdate);
-			$data['node_daily_report'] = $this->model_mainkpis->uf_weekly_report_graph($node,$reportdate);
+			$data['node_weekly_report'] = $this->model_mainkpis_gsm->uf_monthly_report($node,$reportdate);
+			$data['node_daily_report'] = $this->model_mainkpis_gsm->uf_weekly_report_graph($node,$reportdate);
 			#$data['reportnetype'] = 'rnc';
 		}
 		elseif($netype == 'cidade'){
-			$data['node_weekly_report'] = $this->model_mainkpis->cidade_monthly_report($node,$reportdate);
-			$data['node_daily_report'] = $this->model_mainkpis->cidade_weekly_report_graph($node,$reportdate);
+			$data['node_weekly_report'] = $this->model_mainkpis_gsm->cidade_monthly_report($node,$reportdate);
+			$data['node_daily_report'] = $this->model_mainkpis_gsm->cidade_weekly_report_graph($node,$reportdate);
 			#$data['reportnetype'] = 'rnc';
 		}
-		elseif($netype == 'cluster'){
-			$data['node_weekly_report'] = $this->model_mainkpis->cluster_monthly_report($node,$reportdate);
-			$data['node_daily_report'] = $this->model_mainkpis->cluster_weekly_report_graph($node,$reportdate);
-			#$data['reportnetype'] = 'rnc';
-		}
+		// elseif($netype == 'cluster'){
+			// $data['node_weekly_report'] = $this->model_mainkpis_gsm->cluster_monthly_report($node,$reportdate);
+			// $data['node_daily_report'] = $this->model_mainkpis_gsm->cluster_weekly_report_graph($node,$reportdate);
+			// #$data['reportnetype'] = 'rnc';
+		// }
 
 		// else{
 			// if(substr($node,2,1) == '-'){
@@ -349,10 +349,11 @@ class Gsm extends CI_Controller {
 			// $data['reportnetype'] = 'city';
 		// }
 		
-		$this->load->view('view_header');
-		$this->load->view('view_nav',$data);
-		$this->load->view('view_mainkpis_chart',$data);
-		$this->load->view('view_mainkpis',$data);
+		$this->load->view('view_header_gsm');
+		$this->load->view('view_nav_gsm',$data);
+		#$this->load->view('view_theme_dark_unica');
+		$this->load->view('view_mainkpis_chart_gsm',$data);
+		$this->load->view('view_mainkpis_gsm',$data);
 	}	
 	
 	
@@ -2513,5 +2514,302 @@ $referencedate = $this->model_cellsinfo->reference_date_gsm($node);
 		$this->load->view('view_bsc_capacity_chart',$data);
 		}
 		$this->load->view('view_bsc_capacity',$data);	
+	}
+
+	public function process_monitoring(){
+		
+		$this->load->helper('form');
+		$this->load->model('model_monitor');
+		$this->load->model('model_mainkpis');
+		$this->load->model('model_process_monitoring');
+		$this->load->model('model_cellsinfo');
+				
+		//Set Date and Weeknum
+		$reportdate = date("Y-m-d");
+		$maxdate = $this->model_process_monitoring->maxdate_gsm($reportdate);
+		$referencedate = $maxdate[0]->date;
+
+		//Set Date and Weeknumkp
+		if($this->input->post('reportdate')){
+			$reportdate = $this->input->post('reportdate');
+			if(strtotime($reportdate) > strtotime($referencedate)){ //IF the date if greater than yesterday then it changes to the reference date
+				$reportdate = $referencedate;
+			}
+		} 
+		else {
+			$reportdate = $referencedate;
+		}
+				
+		$date = new DateTime($reportdate);
+		$data['reportdate'] = $reportdate;
+		$data['reportagg'] = 'daily';
+		
+		$data['main_monitoring'] = $this->model_process_monitoring->main_monitoring_gsm($reportdate);
+		$data['quant_of_files'] = $this->model_process_monitoring->quant_files($reportdate);
+		$data['quant_of_all_files'] = $this->model_process_monitoring->all_files_gsm();
+		
+		$this->load->view('view_header_monitoring_processing');
+		$this->load->view('view_nav_monitoring_processing_gsm',$data);
+		$this->load->view('view_monitoring_processing_gsm',$data);
+
+	}
+	
+	public function kpis_anatel(){
+		
+		$this->load->helper('form');
+		$this->load->model('model_monitor');
+		$this->load->model('model_main_kpis_anatel_gsm');
+		$this->load->model('model_cellsinfo');
+		
+		
+		//Set Node
+		if($this->input->post('reportnename')){
+			$node = $this->input->post('reportnename');
+		} else {
+			$node = 'NETWORK';
+		}
+		$data['reportnename'] = $node;
+		
+		
+		//Set Type
+		if($this->input->post('reportnetype')){
+			$netype = $this->input->post('reportnetype');
+		} else {
+			$netype = 'network';
+		}
+		$data['reportnetype'] = $netype;
+		
+		
+		$maxdate = $this->model_main_kpis_anatel_gsm->maxdate();
+		$referencedate = $maxdate[0]->date;
+		
+		//Set Date and Weeknumkp
+		if($this->input->post('reportdate')){
+			$reportdate = $this->input->post('reportdate');
+			if(strtotime($reportdate) > strtotime($referencedate)){ //IF the date if greater than yesterday then it changes to the reference date
+				$reportdate = $referencedate;
+			}
+		} 
+		else {
+			$reportdate = $referencedate;
+		}
+		
+		$date = date('Y-m-d', strtotime($reportdate.' - 5 day'));
+		
+		$data['reportdate'] = $reportdate;
+		$data['reportagg'] = 'daily';
+		$data['reportkpi'] = 'main_kpis_anatel';
+		
+		$data['bsc'] = $this->model_cellsinfo->bsc();
+		$data['regional_gsm'] = $this->model_cellsinfo->regional_gsm();
+		$data['cidades_gsm'] = $this->model_cellsinfo->cidades_gsm();
+		$data['bts'] = $this->model_cellsinfo->bts();
+		$data['ufs'] = $this->model_cellsinfo->ufs_gsm();
+	
+		$regions = array("PRSC","BASE","ES","MG");
+		
+		if($netype == 'network'){
+			$data['smp'] = $this->model_main_kpis_anatel_gsm->network($date,$reportdate);
+		 }
+		 elseif ($netype == 'region') {
+			$data['smp'] = $this->model_main_kpis_anatel_gsm->region($date,$reportdate,$node);
+		 }
+		 elseif($netype == 'bsc'){
+			$data['smp'] = $this->model_main_kpis_anatel_gsm->bsc($date,$reportdate,$node);
+		 }
+		 elseif($netype == 'uf'){
+			$data['smp'] = $this->model_main_kpis_anatel_gsm->uf($date,$reportdate,$node);
+		 }			
+		 elseif($netype == 'cidade'){ 
+			$cidade_aux = $this->model_cellsinfo->find_cidade_info_gsm($node);
+			$ibge = $cidade_aux[0]->ibge;
+			$uf = $cidade_aux[0]->uf;
+			$data['smp'] = $this->model_main_kpis_anatel_gsm->cidade($date,$reportdate,$ibge,$uf);
+		 }
+		 elseif($netype == 'bts'){
+			$data['smp'] = $this->model_main_kpis_anatel_gsm->bts($date,$reportdate,$node); 
+		 }
+		
+		$this->load->view('view_header_check_neighborhood_lte');
+		$this->load->view('view_nav_main_kpis_anatel_gsm',$data);
+		$this->load->view('view_theme_sand_signika');
+		$this->load->view('view_main_kpis_anatel_gsm',$data);
+		
+	}
+
+	public function kpis_anatel_weekly(){
+		
+		$this->load->helper('form');
+		$this->load->model('model_monitor');
+		$this->load->model('model_main_kpis_anatel_gsm');
+		$this->load->model('model_cellsinfo');
+		
+		
+		//Set Node
+		if($this->input->post('reportnename')){
+			$node = $this->input->post('reportnename');
+		} else {
+			$node = 'NETWORK';
+		}
+		$data['reportnename'] = $node;
+		
+		
+		//Set Type
+		if($this->input->post('reportnetype')){
+			$netype = $this->input->post('reportnetype');
+		} else {
+			$netype = 'network';
+		}
+		$data['reportnetype'] = $netype;
+		
+		
+		$maxdate = $this->model_main_kpis_anatel_gsm->maxdate();
+		$referencedate = $maxdate[0]->date;
+		
+		//Set Date and Weeknumkp
+		if($this->input->post('reportdate')){
+			$reportdate = $this->input->post('reportdate');
+			if(strtotime($reportdate) > strtotime($referencedate)){ //IF the date if greater than yesterday then it changes to the reference date
+				$reportdate = $referencedate;
+			}
+		} 
+		else {
+			$reportdate = $referencedate;
+		}
+		
+		$date = date('Y-m-d', strtotime($reportdate.' -25 day'));
+		
+		$data['reportdate'] = $reportdate;
+		$data['reportagg'] = 'weekly';
+		$data['reportkpi'] = 'main_kpis_anatel';
+		
+		$data['bsc'] = $this->model_cellsinfo->bsc();
+		$data['regional_gsm'] = $this->model_cellsinfo->regional_gsm();
+		$data['cidades_gsm'] = $this->model_cellsinfo->cidades_gsm();
+		$data['bts'] = $this->model_cellsinfo->bts();
+		$data['ufs'] = $this->model_cellsinfo->ufs_gsm();
+	
+		$regions = array("PRSC","BASE","ES","MG");
+		
+		if($netype == 'network'){
+			$data['smp'] = $this->model_main_kpis_anatel_gsm->weekly_network($date,$reportdate);
+		 }
+		 elseif ($netype == 'region') {
+			$data['smp'] = $this->model_main_kpis_anatel_gsm->weekly_region($date,$reportdate,$node);
+		 }
+		 elseif($netype == 'bsc'){
+			$data['smp'] = $this->model_main_kpis_anatel_gsm->weekly_bsc($date,$reportdate,$node);
+		 }
+		 elseif($netype == 'uf'){
+			$data['smp'] = $this->model_main_kpis_anatel_gsm->weekly_uf($date,$reportdate,$node);
+		 }			
+		 elseif($netype == 'cidade'){ 
+			$cidade_aux = $this->model_cellsinfo->find_cidade_info_gsm($node);
+			$ibge = $cidade_aux[0]->ibge;
+			$uf = $cidade_aux[0]->uf;
+			$data['smp'] = $this->model_main_kpis_anatel_gsm->weekly_cidade($date,$reportdate,$ibge,$uf);
+		 }
+		 elseif($netype == 'bts'){
+			$data['smp'] = $this->model_main_kpis_anatel_gsm->weekly_bts($date,$reportdate,$node); 
+		 }
+		
+		$this->load->view('view_header_check_neighborhood_lte');
+		$this->load->view('view_nav_main_kpis_anatel_gsm',$data);
+		$this->load->view('view_theme_sand_signika');
+		$this->load->view('view_main_kpis_anatel_gsm',$data);
+		
+	}	
+
+	public function kpis_anatel_monthly(){
+		
+		$this->load->helper('form');
+		$this->load->model('model_monitor');
+		$this->load->model('model_main_kpis_anatel_gsm');
+		$this->load->model('model_cellsinfo');
+		
+		
+		//Set Node
+		if($this->input->post('reportnename')){
+			$node = $this->input->post('reportnename');
+		} else {
+			$node = 'NETWORK';
+		}
+		$data['reportnename'] = $node;
+		
+		
+		//Set Type
+		if($this->input->post('reportnetype')){
+			$netype = $this->input->post('reportnetype');
+		} else {
+			$netype = 'network';
+		}
+		$data['reportnetype'] = $netype;
+		
+		
+		$maxdate = $this->model_main_kpis_anatel_gsm->maxdate();
+		$referencedate = $maxdate[0]->date;
+		
+		//Set Date and Weeknumkp
+		if($this->input->post('reportdate')){
+			$reportdate = $this->input->post('reportdate');
+			if(strtotime($reportdate) > strtotime($referencedate)){ //IF the date if greater than yesterday then it changes to the reference date
+				$reportdate = $referencedate;
+			}
+		} 
+		else {
+			$reportdate = $referencedate;
+		}
+		
+		$date = date('Y-m-d', strtotime($reportdate.' - 30 week'));
+		
+		$new_date = new DateTime($date);
+		$week = $new_date->format("W");
+		$year = $new_date->format("Y");
+		
+		$end = new DateTime($reportdate);
+		$final_week = $end->format("W");
+		$final_year = $end->format("Y");
+		
+		$data['weeknum'] = $final_week;
+							
+		$data['reportdate'] = $reportdate;
+		$data['reportagg'] = 'monthly';
+		$data['reportkpi'] = 'main_kpis_anatel';
+		
+		$data['bsc'] = $this->model_cellsinfo->bsc();
+		$data['regional_gsm'] = $this->model_cellsinfo->regional_gsm();
+		$data['cidades_gsm'] = $this->model_cellsinfo->cidades_gsm();
+		$data['bts'] = $this->model_cellsinfo->bts();
+		$data['ufs'] = $this->model_cellsinfo->ufs_gsm();
+	
+		$regions = array("PRSC","BASE","ES","MG");
+		
+		if($netype == 'network'){
+			$data['smp'] = $this->model_main_kpis_anatel_gsm->monthly_network($year,$week,$final_year,$final_week);
+		 }
+		 elseif ($netype == 'region') {
+			$data['smp'] = $this->model_main_kpis_anatel_gsm->monthly_region($year,$week,$final_year,$final_week,$node);
+		 }
+		 elseif($netype == 'bsc'){
+			$data['smp'] = $this->model_main_kpis_anatel_gsm->monthly_bsc($year,$week,$final_year,$final_week,$node);
+		 }
+		 elseif($netype == 'uf'){
+			$data['smp'] = $this->model_main_kpis_anatel_gsm->monthly_uf($year,$week,$final_year,$final_week,$node);
+		 }			
+		 elseif($netype == 'cidade'){ 
+			$cidade_aux = $this->model_cellsinfo->find_cidade_info_gsm($node);
+			$ibge = $cidade_aux[0]->ibge;
+			$uf = $cidade_aux[0]->uf;
+			$data['smp'] = $this->model_main_kpis_anatel_gsm->monthly_cidade($year,$week,$final_year,$final_week,$ibge,$uf);
+		 }
+		 elseif($netype == 'bts'){
+			$data['smp'] = $this->model_main_kpis_anatel_gsm->monthly_bts($year,$week,$final_year,$final_week,$node); 
+		 }
+		
+		$this->load->view('view_header_check_neighborhood_lte');
+		$this->load->view('view_nav_main_kpis_anatel_gsm',$data);
+		$this->load->view('view_theme_sand_signika');
+		$this->load->view('view_main_kpis_anatel_gsm',$data);
+		
 	}	
 }

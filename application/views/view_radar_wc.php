@@ -42,7 +42,21 @@ jQuery(window).load(function () {
 				<th rowspan="2" bgcolor='#394E58'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'>Node</font></th>
 				<th style='display:none;'rowspan="2" bgcolor='#394E58'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'>Node</font></th>
 				<?php
-				if($nekpi == 'process_tools') {
+				if($nekpi == 'sw_releases_features') {
+				if($reportnetype == 'cell' or $reportnetype == 'rnc' or $reportnetype == 'wc'){
+					echo "<th colspan='1' bgcolor='#909EA4' width='70px'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'><div class='vrt_radar'>ura_pch_radar</div></font></th>";	
+					echo "<th colspan='1' bgcolor='#909EA4' width='70px'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'><div class='vrt_radar'>amr_59_radar</div></font></th>";	
+					echo "<th colspan='1' bgcolor='#909EA4' width='70px'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'><div class='vrt_radar'>hsupa2ms_radar</div></font></th>";	
+					echo "<th colspan='1' bgcolor='#909EA4' width='70px'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'><div class='vrt_radar'>el2_64qam_radar</div></font></th>";						
+					echo "<th colspan='1' bgcolor='#909EA4' width='70px'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'><div class='vrt_radar'>ic_radar</div></font></th>";	
+					echo "<th colspan='1' bgcolor='#909EA4' width='70px'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'><div class='vrt_radar'>enhfd_radar</div></font></th>";	
+					echo "<th colspan='1' bgcolor='#909EA4' width='70px'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'><div class='vrt_radar'>srbonhs_radar</div></font></th>";	
+					echo "<th colspan='1' bgcolor='#909EA4' width='70px'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'><div class='vrt_radar'>efach_edrx_radar</div></font></th>";	
+					echo "<th colspan='1' bgcolor='#909EA4' width='70px'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'><div class='vrt_radar'>dc_radar</div></font></th>";	
+					echo "<th colspan='1' bgcolor='#909EA4' width='70px'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'><div class='vrt_radar'>cpc_radar</div></font></th>";	
+					echo "<th colspan='1' bgcolor='#909EA4' width='70px'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'><div class='vrt_radar'>RAN FEATURES SCORE</div></font></th>";	
+					echo "<th colspan='1' bgcolor='#909EA4' width='70px'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'><div class='vrt_radar'>RAN SW RELEASE SCORE</div></font></th>";	
+				}
 				echo "<th colspan='4' bgcolor='#394E58'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'>SW Release & Features Score</font></th>";
 				}
 				else if($nekpi == 'worst_aging_factor') {
@@ -85,7 +99,7 @@ jQuery(window).load(function () {
 				echo "<th colspan='4' bgcolor='#394E58'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'>Overshooters Score</font></th>";		
 				}
 				else if($nekpi == 'cpich_power_ratio') {
-				if($reportnetype == 'cell' or $reportnetype == 'rnc'){
+				if($reportnetype == 'cell' or $reportnetype == 'rnc' or $reportnetype == 'wc'){
 					echo "<th colspan='1' bgcolor='#909EA4' width='70px'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'><div class='vrt_radar'>Category</div></font></th>";	
 					echo "<th colspan='1' bgcolor='#909EA4' width='70px'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'><div class='vrt_radar'>CPICH Power Ratio (%)</div></font></th>";	
 					echo "<th colspan='1' bgcolor='#909EA4' width='70px'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'><div class='vrt_radar'>PrimaryCpichPower</div></font></th>";	
@@ -124,8 +138,13 @@ jQuery(window).load(function () {
 					else if (isset($weeknum))
 					{				
 					if($nekpi == 'cpich_power_ratio') {
-					if($reportnetype == 'cell' or $reportnetype == 'rnc'){
+					if($reportnetype == 'cell' or $reportnetype == 'rnc' or $reportnetype == 'wc'){
 					echo "<th colspan='4' bgcolor='#C1CCD2'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'>W".$week[3]."</font></th>";	
+					}
+					}
+					if($nekpi == 'sw_releases_features') {
+					if($reportnetype == 'cell' or $reportnetype == 'rnc' or $reportnetype == 'wc'){
+					echo "<th colspan='12' bgcolor='#C1CCD2'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'>W".$week[3]."</font></th>";	
 					}
 					}					
 							echo "<th bgcolor='#394E58'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt'>W".$week[0]."</font></th>";
@@ -156,10 +175,10 @@ jQuery(window).load(function () {
 					$array_rf_health_index = explode(",", $rf_health_index);	
 					$array_rf_health_index = array_merge($array_rf_health_index, $array_0);
 
-					$process_tools = $row->process_tools;
+					$sw_releases_features = $row->sw_releases_features;
 					$array_0 = array_fill(0, 3, 0);	
-					$array_process_tools = explode(",", $process_tools);	
-					$array_process_tools = array_merge($array_process_tools, $array_0);
+					$array_sw_releases_features = explode(",", $sw_releases_features);	
+					$array_sw_releases_features = array_merge($array_sw_releases_features, $array_0);
 					
 					$worst_aging_factor = $row->worst_aging_factor;
 					$array_0 = array_fill(0, 3, 0);	
@@ -240,11 +259,47 @@ jQuery(window).load(function () {
 					echo "<td value='".$row->node."'><font style='font-family: calibri; font-size:12pt'><a id='".$row->node."' onclick='selectne(this)' class='node' value='".$row->node."'>".$row->node."</a></font></td>";		
 					echo "<td style='display:none;'>".$row->type."</td>";	
 
-					if ($nekpi == 'process_tools'){
-					echo "<td bgcolor='".($array_process_tools[0] >= 8?$good:($array_process_tools[0] >= 6?$yellow:($array_process_tools[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_process_tools[0]."</font></td>";
-					echo "<td bgcolor='".($array_process_tools[1] >= 8?$good:($array_process_tools[1] >= 6?$yellow:($array_process_tools[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_process_tools[1]."</font></td>";
-					echo "<td bgcolor='".($array_process_tools[2] >= 8?$good:($array_process_tools[2] >= 6?$yellow:($array_process_tools[2] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_process_tools[2]."</font></td>";
-					echo "<td bgcolor='".($array_process_tools[3] >= 8?$good:($array_process_tools[3] >= 6?$yellow:($array_process_tools[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_process_tools[3]."</font></td>";
+					if ($nekpi == 'sw_releases_features'){
+					if($reportnetype == 'cell' or $reportnetype == 'rnc' or $reportnetype == 'wc'){
+						$total_cell = count($extra_info);
+						$j = 0;
+						for ($i = 0; $i < $total_cell; $i++) {
+								if($extra_info[$i]->node == $row->node){
+									echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>".$extra_info[$i]->ura_pch_radar."</font></td>";
+									echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>".$extra_info[$i]->amr_59_radar."</font></td>";
+									echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>".$extra_info[$i]->hsupa2ms_radar."</font></td>";
+									echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>".$extra_info[$i]->el2_64qam_radar."</font></td>";									
+									echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>".$extra_info[$i]->ic_radar."</font></td>";
+									echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>".$extra_info[$i]->enhfd_radar."</font></td>";
+									echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>".$extra_info[$i]->srbonhs_radar."</font></td>";
+									echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>".$extra_info[$i]->efach_edrx_radar."</font></td>";									
+									echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>".$extra_info[$i]->dc_radar."</font></td>";
+									echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>".$extra_info[$i]->cpc_radar."</font></td>";
+									echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>".$extra_info[$i]->ran_features_score."</font></td>";
+									echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>".$extra_info[$i]->ran_sw_release_score."</font></td>";
+									break;
+								}
+								$j = $j+1;
+						}
+						if ($j == $total_cell){
+							echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>-</font></td>";
+							echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>-</font></td>";
+							echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>-</font></td>";
+							echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>-</font></td>";							
+							echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>-</font></td>";
+							echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>-</font></td>";
+							echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>-</font></td>";
+							echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>-</font></td>";							
+							echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>-</font></td>";
+							echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>-</font></td>";
+							echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>-</font></td>";
+							echo "<td bgcolor='#FFFFFF'><font style='font-family: calibri; font-size:12pt'>-</font></td>";							
+						}
+					}
+					echo "<td bgcolor='".($array_sw_releases_features[0] >= 8?$good:($array_sw_releases_features[0] >= 6?$yellow:($array_sw_releases_features[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_sw_releases_features[0]."</font></td>";
+					echo "<td bgcolor='".($array_sw_releases_features[1] >= 8?$good:($array_sw_releases_features[1] >= 6?$yellow:($array_sw_releases_features[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_sw_releases_features[1]."</font></td>";
+					echo "<td bgcolor='".($array_sw_releases_features[2] >= 8?$good:($array_sw_releases_features[2] >= 6?$yellow:($array_sw_releases_features[2] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_sw_releases_features[2]."</font></td>";
+					echo "<td bgcolor='".($array_sw_releases_features[3] >= 8?$good:($array_sw_releases_features[3] >= 6?$yellow:($array_sw_releases_features[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_sw_releases_features[3]."</font></td>";
 					}
 					else if ($nekpi == 'worst_aging_factor'){
 					echo "<td bgcolor='".($array_worst_aging_factor[0] >= 8?$good:($array_worst_aging_factor[0] >= 6?$yellow:($array_worst_aging_factor[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_worst_aging_factor[0]."</font></td>";
@@ -333,7 +388,7 @@ jQuery(window).load(function () {
 					echo "<td bgcolor='".($array_overshooters[3] >= 8?$good:($array_overshooters[3] >= 6?$yellow:($array_overshooters[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_overshooters[3]."</font></td>";
 					}
 					else if ($nekpi == 'cpich_power_ratio'){
-					if($reportnetype == 'cell' or $reportnetype == 'rnc'){
+					if($reportnetype == 'cell' or $reportnetype == 'rnc' or $reportnetype == 'wc'){
 						$total_cell = count($extra_info);
 						$j = 0;
 						for ($i = 0; $i < $total_cell; $i++) {

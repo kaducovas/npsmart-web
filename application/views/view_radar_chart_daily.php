@@ -17,7 +17,7 @@
 		$cpich_power_ratio[] = $row-> cpich_power_ratio;
 		$worst_aging_factor[] = $row-> worst_aging_factor;
 		$traffic_load[] = $row-> traffic_load;
-		$process_tools[] = $row-> process_tools;
+		$sw_releases_features[] = $row-> sw_releases_features;
 		$composite[] = $row-> composite;
 		}	
 				 
@@ -66,7 +66,7 @@
 		$cpich_power_ratio = array_map("tonull2",$cpich_power_ratio);
 		$worst_aging_factor = array_map("tonull2",$worst_aging_factor);
 		$traffic_load = array_map("tonull2",$traffic_load);
-		$process_tools = array_map("tonull2",$process_tools);
+		$sw_releases_features = array_map("tonull2",$sw_releases_features);
 		$composite = array_map("tonull2",$composite);		
 		?>
 		
@@ -251,7 +251,11 @@ $(function () {
 					{
 						name: 'traffic_load',
 						data: [<?php echo join($traffic_load, ',') ?>]
-					},	
+					},
+					{
+						name: 'sw_releases_features',
+						data: [<?php echo join($sw_releases_features, ',') ?>]
+					},					
 					{
 						name: 'composite',
 						data: [<?php echo join($composite, ',') ?>]
@@ -1164,6 +1168,75 @@ $(function () {
 						name: 'traffic_load',
 						data: [<?php echo join($traffic_load, ',') ?>]
 					},		
+					]
+					
+		});
+
+//////////////////////////////////////////////////////////////////////////////////////////FIM//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  $('#export').click(function() {
+    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,sho_overhead,availability,rtwp]);
+});		
+  });	
+
+
+});}
+
+if (nekpi == "sw_releases_features") {
+$(function () {
+    var chart;
+    $(document).ready(function() {
+		var acc = new Highcharts.Chart({
+		chart: {
+				renderTo: 'acc',
+				alignTicks:false,
+				//backgroundColor:'transparent',
+				zoomType: 'xy',
+				},
+				//	colors: ['#000099', '#CC0000', '#006600', '#FFCC00', '#D9CDB6'],
+					credits: {
+					   enabled: false
+					},		
+					exporting: { 
+					enabled: true 
+					},
+					title: {
+						text: '<b>DAILY SCORE</b>',// - ' + node,
+					//	 floating: true,
+						x: -20, //center
+						//y: 0
+					},
+					subtitle: {
+						text: '<i>' + node + '</i>',
+						x: -20
+					},
+					xAxis: {
+						categories: [<?php echo join($date, ',') ?>]///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
+					},
+					yAxis: {
+						max: 10,
+						///min: 0,						//{  },
+						plotLines: [{
+							value: 0,
+							width: 1,
+							color: '#808080'
+						}]
+						
+					},
+					tooltip: {
+					shared: false
+					},
+					legend: {
+						layout: 'horizontal',
+						align: 'center',
+						verticalAlign: 'bottom',
+						floating: false,
+						borderWidth: 0
+					},	
+					
+					series: [{
+						name: 'sw_releases_features',
+						data: [<?php echo join($sw_releases_features, ',') ?>]
+					},							
 					]
 					
 		});

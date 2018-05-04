@@ -16,6 +16,7 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/stock/highstock.js"></script>
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">

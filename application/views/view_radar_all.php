@@ -39,7 +39,7 @@ jQuery(window).load(function () {
 			<tr>
 				<th rowspan="2" bgcolor="#394E58"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">Node</font></th>
 				<th style='display:none;'rowspan="2" bgcolor="#394E58"><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">Node</font></th>			
-				<th colspan="1" bgcolor="#394E58"><div class='vrt_radar'><font color="#B0B0B0" style="font-family: calibri; font-size:12pt">SW Release & Features</font></div></th>	
+				<th colspan="1" bgcolor="#394E58"><div class='vrt_radar'><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">SW Release & Features</font></div></th>	
 				<th colspan="1" bgcolor="#394E58"><div class='vrt_radar'><font color="#B0B0B0" style="font-family: calibri; font-size:12pt">Worst Aging Factor</font></div></th>	
 				<th colspan="1" bgcolor="#394E58"><div class='vrt_radar'><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">Baseline (Consistency Check)</font></div></th>
 				<th colspan="1" bgcolor="#394E58"><div class='vrt_radar'><font color="#FFFFFF" style="font-family: calibri; font-size:12pt">Throughput</font></div></th>
@@ -108,10 +108,10 @@ jQuery(window).load(function () {
 					$array_rf_health_index = explode(",", $rf_health_index);	
 					$array_rf_health_index = array_merge($array_rf_health_index, $array_0);
 
-					$process_tools = $row->process_tools;
+					$sw_releases_features = $row->sw_releases_features;
 					$array_0 = array_fill(0, 3, 0);	
-					$array_process_tools = explode(",", $process_tools);	
-					$array_process_tools = array_merge($array_process_tools, $array_0);
+					$array_sw_releases_features = explode(",", $sw_releases_features);	
+					$array_sw_releases_features = array_merge($array_sw_releases_features, $array_0);
 					
 					$worst_aging_factor = $row->worst_aging_factor;
 					$array_0 = array_fill(0, 3, 0);	
@@ -192,7 +192,7 @@ jQuery(window).load(function () {
 					echo "<td value='".$row->node."'><font style='font-family: calibri; font-size:12pt'><a id='".$row->node."' onclick='selectne(this)' class='node' value='".$row->node."'>".$row->node."</a></font></td>";		
 					echo "<td style='display:none;'>".$row->type."</td>";	
 				
-					echo "<td bgcolor='".($array_process_tools[3] >= 8?$good:($array_process_tools[3] >= 6?$yellow:($array_process_tools[3] >= 4?$orange:$bad)))."'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$array_process_tools[3]."</font></td>";
+					echo "<td bgcolor='".($array_sw_releases_features[3] >= 8?$good:($array_sw_releases_features[3] >= 6?$yellow:($array_sw_releases_features[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_sw_releases_features[3]."</font></td>";
 							
 					echo "<td bgcolor='".($array_worst_aging_factor[3] >= 8?$good:($array_worst_aging_factor[3] >= 6?$yellow:($array_worst_aging_factor[3] >= 4?$orange:$bad)))."'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$array_worst_aging_factor[3]."</font></td>";
 		

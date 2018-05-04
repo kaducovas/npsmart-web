@@ -120,7 +120,7 @@ Highcharts.getSVG = function(charts) {
         svg = svg.replace('</svg>', '</g>');
 
         top += chart.chartHeight;
-        width = Math.max(width, chart.chartWidth);
+        width = 600;
 
         svgArr.push(svg);
     });
@@ -180,6 +180,7 @@ $(function () {
 	var estado_sho = true;
 	var estado_avail = true;
 	var estado_rtwp = true;
+	var toogle_availability = false;
     $(document).ready(function() {
 		var acc = new Highcharts.Chart({
 		chart: {
@@ -1901,6 +1902,77 @@ $(function () {
 													
 							]							
 				});
+				
+var kpi = [];
+var scale = [];
+
+kpi[0] = "acc";
+kpi[1] = "drop";
+kpi[2] = "traffic";
+kpi[3] = "users";
+kpi[4] = "thp";
+kpi[5] = "retention";
+kpi[6] = "handover";
+kpi[7] = "sho_overhead";
+kpi[8] = "availability";
+kpi[9] = "rtwp";
+
+
+function altera_escala(iscale){
+
+	scale[iscale] = $("#"+kpi[iscale]+"").highcharts();
+	$( '<div id="'+kpi[iscale]+'" style="text-align:left; margin-left: 10px; display:none"><div style="display:inline-block">min Y: <input id="scale_min'+i+'" type="number" style="width:70px"/></div><div style="display:inline-block">max Y: <input id="scale_max'+i+'" type="number" style="width:70px"/></div></div>' ).insertBefore( "#content"+i+"" );
+	$('#scale_max'+iscale+'').val(scale[iscale].yAxis[0].getExtremes().dataMax);
+	$('#scale_min'+iscale+'').val(scale[iscale].yAxis[0].getExtremes().dataMin);
+	
+	$('#scale_max'+iscale+'').on('keyup mouseup', function(){
+
+		var x = $('#scale_max'+iscale+'').val();
+		if(x != ""){	
+		scale[iscale].yAxis[0].update({max: ""+x+""});
+		}else{
+		$('#scale_max'+iscale+'').val(scale[iscale].yAxis[0].getExtremes().dataMax);	
+		scale[iscale].yAxis[0].update({max: null});
+		}
+		
+	});
+	
+	$('#scale_min'+iscale+'').on('keyup mouseup', function(){
+		
+		var x = $('#scale_min'+iscale+'').val();
+		if(x != ""){	
+			scale[iscale].yAxis[0].update({min: ""+x+""});
+		}else{
+		$('#scale_min'+iscale+'').val(scale[iscale].yAxis[0].getExtremes().dataMin);	
+			scale[iscale].yAxis[0].update({min: null});
+		}
+		
+	});	
+}	
+
+for(i = 0; i < kpi.length; i++ ){
+
+altera_escala(i);
+
+}
+
+Highcharts.getOptions().exporting.buttons.contextButton.menuItems.push({
+	text: 'Scale Options',
+	onclick: function (e) {
+		for(i = 0; i < kpi.length; i++){		
+			if(toogle_availability == false){
+			$('#'+kpi[i]+'').show();
+			}else{
+			$('#'+kpi[i]+'').hide();
+			}	
+		}
+		if(toogle_availability == false){
+		toogle_availability = true;	
+		}else{
+		toogle_availability = false;	
+		}
+	}
+});				
 
 //////////////////////////////////////////////////////////////////////////////////////////FIM//////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $('#export').click(function() {

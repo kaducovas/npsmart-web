@@ -102,7 +102,7 @@ class Model_cellsinfo extends CI_Model{
 	
 	function ufs(){
 		$query = $this->db->query(
-		"select distinct substring(cluster,1,2) as node from umts_control.cells_database where cluster is not null order by substring(cluster,1,2);");
+		"select distinct uf as node from umts_control.cells_database order by 1;");
 
 	return $query->result();
 	}
@@ -127,10 +127,15 @@ class Model_cellsinfo extends CI_Model{
 		"SELECT distinct site as node from lte_control.cells order by node;");
 	return $query->result();
 	}
+	function enodebs_neighbor(){
+		$query = $this->db->query(
+		"SELECT distinct node as node from lte_control.cells order by node;");
+	return $query->result();
+	}
 	
 	function find_cellid_from_enodebs($node){
 		$query = $this->db->query(
-		"select site,cellid from lte_control.cells where cell = '".$node."';");
+		"select enodebid,cellid from lte_control.cells where cell = '".$node."';");
 
 	return $query->result();
 	}	
@@ -248,9 +253,17 @@ class Model_cellsinfo extends CI_Model{
 
 		return $query->result();
 		}
+		
 	function find_enodeb_from_cell($cell){
 			$query = $this->db->query(
-			"SELECT enodeb,enodebid,site FROM lte_control.cells where cell = '".$cell."' limit 1;");
+			"SELECT enodeb,enodebid FROM lte_control.cells where cell = '".$cell."';");
+
+		return $query->result();
+		}
+		
+	function find_bts_from_cell($cell){
+			$query = $this->db->query(
+			"SELECT bts FROM gsm_control.cells_db where cellname = '".$cell."' limit 1;");
 
 		return $query->result();
 		}
@@ -456,12 +469,45 @@ function reference_date_daily($node){
 		return $return;
 	}	
 	
-function reference_date_($node){
-			
+	function reference_date_($node){
+				
 		$query = $this->db->query(
-		"select max(date) date from umts_control.log_daily;");
+			"select max(date) date from umts_control.log_daily;");
+			
 		$return = $query->row(0)->date;
 		return $return;
-	}	
+	}
 	
+	function no_elements_umts(){
+		$query = $this->db->query(
+		"select * from (SELECT 1 as sortcol, 'NETWORK' as region,  count(distinct uf) as uf_no, count(distinct rnc) as rnc_no, count(distinct cluster) as cluster_no, count(distinct cidade) as cidade_no,count(distinct nodeb) as nodeb_no, count(distinct cell) as cell_no
+  FROM umts_control.cells_database
+UNION
+SELECT 2 as sortcol, region, count(distinct uf) as uf_no, count(distinct rnc) as rnc_no, count(distinct cluster) as cluster_no, count(distinct cidade) as cidade_no, count(distinct nodeb) as nodeb_no, count(distinct cell) as cell_no
+  FROM umts_control.cells_database group by region) f order by sortcol, region");
+
+	return $query->result();
+	}
+
+	function no_elements_lte(){
+		$query = $this->db->query(
+		"select * from (SELECT 1 as sortcol, 'NETWORK' as region,  count(distinct uf) as uf_no, count(distinct cluster) as cluster_no, count(distinct cidade) as cidade_no,count(distinct enodeb) as enodeb_no, count(distinct cell) as cell_no
+  FROM lte_control.cells
+UNION
+SELECT 2 as sortcol, region, count(distinct uf) as uf_no, count(distinct cluster) as cluster_no, count(distinct cidade) as cidade_no, count(distinct enodeb) as enodeb_no, count(distinct cell) as cell_no
+  FROM lte_control.cells group by region) f order by sortcol, region;");
+
+	return $query->result();
+	}
+	
+	function no_elements_gsm(){
+		$query = $this->db->query(
+		"select * from (SELECT 1 as sortcol, 'NETWORK' as region,  count(distinct uf) as uf_no, count(distinct bsc) as bsc_no, count(distinct cidade) as cidade_no,count(distinct bts) as bts_no, count(distinct cellname) as cell_no
+  FROM gsm_control.cells_db
+UNION
+SELECT 2 as sortcol, regional as region, count(distinct uf) as uf_no, count(distinct bsc) as bsc_no, count(distinct cidade) as cidade_no, count(distinct bts) as bts_no, count(distinct cellname) as cell_no
+  FROM gsm_control.cells_db group by region) f order by sortcol, region;");
+
+	return $query->result();
+	}
 }

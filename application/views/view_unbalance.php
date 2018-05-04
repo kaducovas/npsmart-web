@@ -31,7 +31,12 @@ jQuery(window).load(function () {
 </div>
 <div id="loading_table" align="center" style="visibility:hidden">
 	<table id="table_id" class="cell-border compact hover" border="1 solid black" cellspacing="0" width="98%">
-
+<?php 
+if ($reportnetype == 'nodeb') {
+echo "<div id='acc' style='min-width: 80%; max-width: 80%; height: 500px; margin: 0 auto'></div>";
+}
+?>
+<br>
 		<thead>
 			<tr>
 				<th rowspan="2" bgcolor="#436260" width="10%"><font color="#FFFFFF" style="font-size:20pt'">Node</font></th>

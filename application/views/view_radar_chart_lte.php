@@ -2,18 +2,18 @@
 	foreach($chart_weekly as $row){
 	    $week[] = $row->week;
 		$rf_health_index[] = $row->rf_health_index;
-		$baseline[] = $row->baseline;
+		$mobility[] = $row->mobility;
 		$throughput[] = $row->throughput;
-		$retention_3g[] = $row->retention_3g;
-		$ps_call_completion[] = $row->ps_call_completion;
-		$cs_call_completion[] = $row->cs_call_completion;
+		$retention_4g[] = $row->retention_4g;
+		$data_performance[] = $row->data_performance;
+		$voice_performance[] = $row->voice_performance;
 		$availability[] = $row->availability;
-		$hardware_nodeb[] = $row->hardware_nodeb;
-		$air_interface_ul[] = $row->air_interface_ul;
-		$air_interface_dl[] = $row-> air_interface_dl;	
-		$sho_overhead[] = $row-> sho_overhead;
+		$resources_blocking[] = $row->resources_blocking;
+		$efficiency[] = $row->efficiency;
+		$interface[] = $row-> interface;	
+		$quality_ul[] = $row-> quality_ul;
 		$overshooters[] = $row-> overshooters;
-		$cpich_power_ratio[] = $row-> cpich_power_ratio;
+		$quality_dl[] = $row-> quality_dl;
 		$worst_aging_factor[] = $row-> worst_aging_factor;
 		$traffic_load[] = $row-> traffic_load;
 		$process_tools[] = $row-> process_tools;
@@ -40,11 +40,11 @@ rf_health_index[1] = <?php echo $rf_health_index[1]; ?>;
 rf_health_index[2] = <?php echo $rf_health_index[2] ?>;
 rf_health_index[3] = <?php echo $rf_health_index[3]; ?>;
 
-baseline = new Array(4);
-baseline[0] = <?php echo $baseline[0]; ?>;
-baseline[1] = <?php echo $baseline[1]; ?>;
-baseline[2] = <?php echo $baseline[2]; ?>;
-baseline[3] = <?php echo $baseline[3]; ?>;
+mobility = new Array(4);
+mobility[0] = <?php echo $mobility[0]; ?>;
+mobility[1] = <?php echo $mobility[1]; ?>;
+mobility[2] = <?php echo $mobility[2]; ?>;
+mobility[3] = <?php echo $mobility[3]; ?>;
 
 throughput = new Array(4);
 throughput[0] = <?php echo $throughput[0]; ?>;
@@ -52,23 +52,23 @@ throughput[1] = <?php echo $throughput[1]; ?>;
 throughput[2] = <?php echo $throughput[2]; ?>;
 throughput[3] = <?php echo $throughput[3]; ?>;
 
-retention_3g = new Array(4);
-retention_3g[0] = <?php echo $retention_3g[0]; ?>;
-retention_3g[1] = <?php echo $retention_3g[1]; ?>;
-retention_3g[2] = <?php echo $retention_3g[2]; ?>;
-retention_3g[3] = <?php echo $retention_3g[3]; ?>;
+retention_4g = new Array(4);
+retention_4g[0] = <?php echo $retention_4g[0]; ?>;
+retention_4g[1] = <?php echo $retention_4g[1]; ?>;
+retention_4g[2] = <?php echo $retention_4g[2]; ?>;
+retention_4g[3] = <?php echo $retention_4g[3]; ?>;
 
-ps_call_completion = new Array(4);
-ps_call_completion[0] = <?php echo $ps_call_completion[0]; ?>;
-ps_call_completion[1] = <?php echo $ps_call_completion[1]; ?>;
-ps_call_completion[2] = <?php echo $ps_call_completion[2]; ?>;
-ps_call_completion[3] = <?php echo $ps_call_completion[3]; ?>;
+data_performance = new Array(4);
+data_performance[0] = <?php echo $data_performance[0]; ?>;
+data_performance[1] = <?php echo $data_performance[1]; ?>;
+data_performance[2] = <?php echo $data_performance[2]; ?>;
+data_performance[3] = <?php echo $data_performance[3]; ?>;
 
-cs_call_completion = new Array(4);
-cs_call_completion[0] = <?php echo $cs_call_completion[0]; ?>;
-cs_call_completion[1] = <?php echo $cs_call_completion[1]; ?>;
-cs_call_completion[2] = <?php echo $cs_call_completion[2]; ?>;
-cs_call_completion[3] = <?php echo $cs_call_completion[3]; ?>;
+voice_performance = new Array(4);
+voice_performance[0] = <?php echo $voice_performance[0]; ?>;
+voice_performance[1] = <?php echo $voice_performance[1]; ?>;
+voice_performance[2] = <?php echo $voice_performance[2]; ?>;
+voice_performance[3] = <?php echo $voice_performance[3]; ?>;
 
 availability = new Array(4);
 availability[0] = <?php echo $availability[0]; ?>;
@@ -76,29 +76,29 @@ availability[1] = <?php echo $availability[1]; ?>;
 availability[2] = <?php echo $availability[2]; ?>;
 availability[3] = <?php echo $availability[3]; ?>;
 
-hardware_nodeb = new Array(4);
-hardware_nodeb[0] = <?php echo $hardware_nodeb[0]; ?>;
-hardware_nodeb[1] = <?php echo $hardware_nodeb[1]; ?>;
-hardware_nodeb[2] = <?php echo $hardware_nodeb[2]; ?>;
-hardware_nodeb[3] = <?php echo $hardware_nodeb[3]; ?>;
+resources_blocking = new Array(4);
+resources_blocking[0] = <?php echo $resources_blocking[0]; ?>;
+resources_blocking[1] = <?php echo $resources_blocking[1]; ?>;
+resources_blocking[2] = <?php echo $resources_blocking[2]; ?>;
+resources_blocking[3] = <?php echo $resources_blocking[3]; ?>;
 
-air_interface_ul = new Array(4);
-air_interface_ul[0] = <?php echo $air_interface_ul[0]; ?>;
-air_interface_ul[1] = <?php echo $air_interface_ul[1]; ?>;
-air_interface_ul[2] = <?php echo $air_interface_ul[2]; ?>;
-air_interface_ul[3] = <?php echo $air_interface_ul[3]; ?>;
+efficiency = new Array(4);
+efficiency[0] = <?php echo $efficiency[0]; ?>;
+efficiency[1] = <?php echo $efficiency[1]; ?>;
+efficiency[2] = <?php echo $efficiency[2]; ?>;
+efficiency[3] = <?php echo $efficiency[3]; ?>;
 
-air_interface_dl = new Array(4);
-air_interface_dl[0] = <?php echo $air_interface_dl[0]; ?>;	
-air_interface_dl[1] = <?php echo $air_interface_dl[1]; ?>;	
-air_interface_dl[2] = <?php echo $air_interface_dl[2]; ?>;	
-air_interface_dl[3] = <?php echo $air_interface_dl[3]; ?>;	
+interface = new Array(4);
+interface[0] = <?php echo $interface[0]; ?>;	
+interface[1] = <?php echo $interface[1]; ?>;	
+interface[2] = <?php echo $interface[2]; ?>;	
+interface[3] = <?php echo $interface[3]; ?>;	
 
-sho_overhead = new Array(4);
-sho_overhead[0] = <?php echo $sho_overhead[0]; ?>;
-sho_overhead[1] = <?php echo $sho_overhead[1]; ?>;
-sho_overhead[2] = <?php echo $sho_overhead[2]; ?>;
-sho_overhead[3] = <?php echo $sho_overhead[3]; ?>;
+quality_ul = new Array(4);
+quality_ul[0] = <?php echo $quality_ul[0]; ?>;
+quality_ul[1] = <?php echo $quality_ul[1]; ?>;
+quality_ul[2] = <?php echo $quality_ul[2]; ?>;
+quality_ul[3] = <?php echo $quality_ul[3]; ?>;
 
 overshooters = new Array(4);
 overshooters[0] = <?php echo $overshooters[0]; ?>;
@@ -106,11 +106,11 @@ overshooters[1] = <?php echo $overshooters[1]; ?>;
 overshooters[2] = <?php echo $overshooters[2]; ?>;
 overshooters[3] = <?php echo $overshooters[3]; ?>;
 
-cpich_power_ratio = new Array(4);
-cpich_power_ratio[0] = <?php echo $cpich_power_ratio[0]; ?>;
-cpich_power_ratio[1] = <?php echo $cpich_power_ratio[1]; ?>;
-cpich_power_ratio[2] = <?php echo $cpich_power_ratio[2]; ?>;
-cpich_power_ratio[3] = <?php echo $cpich_power_ratio[3]; ?>;
+quality_dl = new Array(4);
+quality_dl[0] = <?php echo $quality_dl[0]; ?>;
+quality_dl[1] = <?php echo $quality_dl[1]; ?>;
+quality_dl[2] = <?php echo $quality_dl[2]; ?>;
+quality_dl[3] = <?php echo $quality_dl[3]; ?>;
 
 worst_aging_factor = new Array(4);
 worst_aging_factor[0] = <?php echo $worst_aging_factor[0]; ?>;
@@ -333,40 +333,40 @@ exporting: { enabled: false },
 	    type: 'line',
 		color: '#DF0101',
         name: 'W'+week[0],
-        data: [process_tools[0], worst_aging_factor[0], baseline[0], throughput[0], 
-		retention_3g[0], ps_call_completion[0], cs_call_completion[0], 
-		availability[0], traffic_load[0], hardware_nodeb[0], air_interface_ul[0], air_interface_dl[0], 
-		overshooters[0], sho_overhead[0], cpich_power_ratio[0], rf_health_index[0]],
+        data: [process_tools[0], worst_aging_factor[0], mobility[0], throughput[0], 
+		retention_4g[0], data_performance[0], voice_performance[0], 
+		availability[0], traffic_load[0], resources_blocking[0], efficiency[0], interface[0], 
+		overshooters[0], quality_ul[0], quality_dl[0], rf_health_index[0]],
     },{
 	    type: 'line',
 		color: 'green',
         name: 'W'+week[1],
-        data: [process_tools[1], worst_aging_factor[1], baseline[1], throughput[1], 
-		retention_3g[1], ps_call_completion[1], cs_call_completion[1], 
-		availability[1], traffic_load[1], hardware_nodeb[1], air_interface_ul[1], air_interface_dl[1], 
-		overshooters[1], sho_overhead[1], cpich_power_ratio[1], rf_health_index[1]],
+        data: [process_tools[1], worst_aging_factor[1], mobility[1], throughput[1], 
+		retention_4g[1], data_performance[1], voice_performance[1], 
+		availability[1], traffic_load[1], resources_blocking[1], efficiency[1], interface[1], 
+		overshooters[1], quality_ul[1], quality_dl[1], rf_health_index[1]],
     },{
 	    type: 'line',
 		color: '#000000',
         name: 'W'+week[2],
-        data: [process_tools[2], worst_aging_factor[2], baseline[2], throughput[2], 
-		retention_3g[2], ps_call_completion[2], cs_call_completion[2], 
-		availability[2], traffic_load[2], hardware_nodeb[2], air_interface_ul[2], air_interface_dl[2], 
-		overshooters[2], sho_overhead[2], cpich_power_ratio[2], rf_health_index[2]],
+        data: [process_tools[2], worst_aging_factor[2], mobility[2], throughput[2], 
+		retention_4g[2], data_performance[2], voice_performance[2], 
+		availability[2], traffic_load[2], resources_blocking[2], efficiency[2], interface[2], 
+		overshooters[2], quality_ul[2], quality_dl[2], rf_health_index[2]],
     },{
 	    type: 'line',
 		color: 'blue',
         name: 'W'+week[3],
-        data: [process_tools[3], worst_aging_factor[3], baseline[3], throughput[3], 
-		retention_3g[3], ps_call_completion[3], cs_call_completion[3], 
-		availability[3], traffic_load[3], hardware_nodeb[3], air_interface_ul[3], air_interface_dl[3], 
-		overshooters[3], sho_overhead[3], cpich_power_ratio[3], rf_health_index[3]],
+        data: [process_tools[3], worst_aging_factor[3], mobility[3], throughput[3], 
+		retention_4g[3], data_performance[3], voice_performance[3], 
+		availability[3], traffic_load[3], resources_blocking[3], efficiency[3], interface[3], 
+		overshooters[3], quality_ul[3], quality_dl[3], rf_health_index[3]],
     },]
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////FIM//////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $('#export').click(function() {
-    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,sho_overhead,availability,rtwp]);
+    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,quality_ul,availability,rtwp]);
 });		
   });	
 

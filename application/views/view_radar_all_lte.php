@@ -117,30 +117,30 @@ jQuery(window).load(function () {
 					$array_worst_aging_factor = explode(",", $worst_aging_factor);
 					$array_worst_aging_factor = array_merge($array_worst_aging_factor, $array_0);
 
-					$baseline = $row->baseline;
+					$mobility = $row->mobility;
 					$array_0 = array_fill(0, 3, 0);	
-					$array_baseline = explode(",", $baseline);
-					$array_baseline = array_merge($array_baseline, $array_0);	
+					$array_mobility = explode(",", $mobility);
+					$array_mobility = array_merge($array_mobility, $array_0);	
 					
 					$throughput = $row->throughput;
 					$array_0 = array_fill(0, 3, 0);	
 					$array_throughput = explode(",", $throughput);
 					$array_throughput = array_merge($array_throughput, $array_0);	
 					
-					$retention_3g = $row->retention_3g;
+					$retention_4g = $row->retention_4g;
 					$array_0 = array_fill(0, 3, 0);	
-					$array_retention_3g = explode(",", $retention_3g);
-					$array_retention_3g = array_merge($array_retention_3g, $array_0);	
+					$array_retention_4g = explode(",", $retention_4g);
+					$array_retention_4g = array_merge($array_retention_4g, $array_0);	
 					
-					$ps_call_completion = $row->ps_call_completion;
+					$data_performance = $row->data_performance;
 					$array_0 = array_fill(0, 3, 0);	
-					$array_ps_call_completion = explode(",", $ps_call_completion);
-					$array_ps_call_completion = array_merge($array_ps_call_completion, $array_0);	
+					$array_data_performance = explode(",", $data_performance);
+					$array_data_performance = array_merge($array_data_performance, $array_0);	
 					
-					$cs_call_completion = $row->cs_call_completion;
+					$voice_performance = $row->voice_performance;
 					$array_0 = array_fill(0, 3, 0);	
-					$array_cs_call_completion = explode(",", $cs_call_completion);
-					$array_cs_call_completion = array_merge($array_cs_call_completion, $array_0);	
+					$array_voice_performance = explode(",", $voice_performance);
+					$array_voice_performance = array_merge($array_voice_performance, $array_0);	
 					
 					$availability = $row->availability;
 					$array_0 = array_fill(0, 3, 0);	
@@ -152,35 +152,35 @@ jQuery(window).load(function () {
 					$array_traffic_load = explode(",", $traffic_load);
 					$array_traffic_load = array_merge($array_traffic_load, $array_0);
 					
-					$hardware_nodeb = $row->hardware_nodeb;
+					$resources_blocking = $row->resources_blocking;
 					$array_0 = array_fill(0, 3, 0);	
-					$array_hardware_nodeb = explode(",", $hardware_nodeb);
-					$array_hardware_nodeb = array_merge($array_hardware_nodeb, $array_0);	
+					$array_resources_blocking = explode(",", $resources_blocking);
+					$array_resources_blocking = array_merge($array_resources_blocking, $array_0);	
 					
-					$air_interface_ul = $row->air_interface_ul;
+					$efficiency = $row->efficiency;
 					$array_0 = array_fill(0, 3, 0);	
-					$array_air_interface_ul = explode(",", $air_interface_ul);
-					$array_air_interface_ul = array_merge($array_air_interface_ul, $array_0);
+					$array_efficiency = explode(",", $efficiency);
+					$array_efficiency = array_merge($array_efficiency, $array_0);
 					
-					$air_interface_dl = $row->air_interface_dl;
+					$interface = $row->interface;
 					$array_0 = array_fill(0, 3, 0);	
-					$array_air_interface_dl = explode(",", $air_interface_dl);
-					$array_air_interface_dl = array_merge($array_air_interface_dl, $array_0);	
+					$array_interface = explode(",", $interface);
+					$array_interface = array_merge($array_interface, $array_0);	
 					
-					$sho_overhead = $row->sho_overhead;
+					$quality_ul = $row->quality_ul;
 					$array_0 = array_fill(0, 3, 0);	
-					$array_sho_overhead = explode(",", $sho_overhead);
-					$array_sho_overhead = array_merge($array_sho_overhead, $array_0);
+					$array_quality_ul = explode(",", $quality_ul);
+					$array_quality_ul = array_merge($array_quality_ul, $array_0);
 					
 					$overshooters = $row->overshooters;
 					$array_0 = array_fill(0, 3, 0);	
 					$array_overshooters = explode(",", $overshooters);
 					$array_overshooters = array_merge($array_overshooters, $array_0);	
 					
-					$cpich_power_ratio = $row->cpich_power_ratio;
+					$quality_dl = $row->quality_dl;
 					$array_0 = array_fill(0, 3, 0);	
-					$array_cpich_power_ratio = explode(",", $cpich_power_ratio);
-					$array_cpich_power_ratio = array_merge($array_cpich_power_ratio, $array_0);
+					$array_quality_dl = explode(",", $quality_dl);
+					$array_quality_dl = array_merge($array_quality_dl, $array_0);
 					
 					$composite = $row->composite;
 					$array_0 = array_fill(0, 3, 0);	
@@ -195,36 +195,36 @@ jQuery(window).load(function () {
 							
 					echo "<td bgcolor='".($array_worst_aging_factor[3] >= 8?$good:($array_worst_aging_factor[3] >= 6?$yellow:($array_worst_aging_factor[3] >= 4?$orange:$bad)))."'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$array_worst_aging_factor[3]."</font></td>";
 		
-					echo "<td bgcolor='".($array_baseline[3] >= 8?$good:($array_baseline[3] >= 6?$yellow:($array_baseline[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_baseline[3]."</font></td>";
+					echo "<td bgcolor='".($array_mobility[3] >= 8?$good:($array_mobility[3] >= 6?$yellow:($array_mobility[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_mobility[3]."</font></td>";
 					
 					echo "<td bgcolor='".($array_throughput[3] >= 8?$good:($array_throughput[3] >= 6?$yellow:($array_throughput[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_throughput[3]."</font></td>";
 
-					echo "<td bgcolor='".($array_retention_3g[3] >= 8?$good:($array_retention_3g[3] >= 6?$yellow:($array_retention_3g[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_retention_3g[3]."</font></td>";
+					echo "<td bgcolor='".($array_retention_4g[3] >= 8?$good:($array_retention_4g[3] >= 6?$yellow:($array_retention_4g[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_retention_4g[3]."</font></td>";
 
-					echo "<td bgcolor='".($array_ps_call_completion[3] >= 8?$good:($array_ps_call_completion[3] >= 6?$yellow:($array_ps_call_completion[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_ps_call_completion[3]."</font></td>";
+					echo "<td bgcolor='".($array_data_performance[3] >= 8?$good:($array_data_performance[3] >= 6?$yellow:($array_data_performance[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_data_performance[3]."</font></td>";
 
-					echo "<td bgcolor='".($array_cs_call_completion[3] >= 8?$good:($array_cs_call_completion[3] >= 6?$yellow:($array_cs_call_completion[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_cs_call_completion[3]."</font></td>";
+					echo "<td bgcolor='".($array_voice_performance[3] >= 8?$good:($array_voice_performance[3] >= 6?$yellow:($array_voice_performance[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_voice_performance[3]."</font></td>";
 
 					echo "<td bgcolor='".($array_availability[3] >= 8?$good:($array_availability[3] >= 6?$yellow:($array_availability[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_availability[3]."</font></td>";
 
 					echo "<td bgcolor='".($array_traffic_load[3] >= 8?$good:($array_traffic_load[3] >= 6?$yellow:($array_traffic_load[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_traffic_load[3]."</font></td>";
 
-					if ($array_hardware_nodeb[3] == '-'){
-					echo "<td bgcolor='#E6E6E6'><font style='font-family: calibri; font-size:12pt'>".$array_hardware_nodeb[3]."</font></td>";
+					if ($array_resources_blocking[3] == '-'){
+					echo "<td bgcolor='#E6E6E6'><font style='font-family: calibri; font-size:12pt'>".$array_resources_blocking[3]."</font></td>";
 					}
 					else{
-					echo "<td bgcolor='".($array_hardware_nodeb[3] >= 8?$good:($array_hardware_nodeb[3] >= 6?$yellow:($array_hardware_nodeb[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_hardware_nodeb[3]."</font></td>";
+					echo "<td bgcolor='".($array_resources_blocking[3] >= 8?$good:($array_resources_blocking[3] >= 6?$yellow:($array_resources_blocking[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_resources_blocking[3]."</font></td>";
 					}
 					
-					echo "<td bgcolor='".($array_air_interface_ul[3] >= 8?$good:($array_air_interface_ul[3] >= 6?$yellow:($array_air_interface_ul[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_air_interface_ul[3]."</font></td>";
+					echo "<td bgcolor='".($array_efficiency[3] >= 8?$good:($array_efficiency[3] >= 6?$yellow:($array_efficiency[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_efficiency[3]."</font></td>";
 
-					echo "<td bgcolor='".($array_air_interface_dl[3] >= 8?$good:($array_air_interface_dl[3] >= 6?$yellow:($array_air_interface_dl[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_air_interface_dl[3]."</font></td>";
+					echo "<td bgcolor='".($array_interface[3] >= 8?$good:($array_interface[3] >= 6?$yellow:($array_interface[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_interface[3]."</font></td>";
 
 					echo "<td bgcolor='".($array_overshooters[3] >= 8?$good:($array_overshooters[3] >= 6?$yellow:($array_overshooters[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_overshooters[3]."</font></td>";
 
-					echo "<td bgcolor='".($array_sho_overhead[3] >= 8?$good:($array_sho_overhead[3] >= 6?$yellow:($array_sho_overhead[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_sho_overhead[3]."</font></td>";
+					echo "<td bgcolor='".($array_quality_ul[3] >= 8?$good:($array_quality_ul[3] >= 6?$yellow:($array_quality_ul[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_quality_ul[3]."</font></td>";
 
-					echo "<td bgcolor='".($array_cpich_power_ratio[3] >= 8?$good:($array_cpich_power_ratio[3] >= 6?$yellow:($array_cpich_power_ratio[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_cpich_power_ratio[3]."</font></td>";
+					echo "<td bgcolor='".($array_quality_dl[3] >= 8?$good:($array_quality_dl[3] >= 6?$yellow:($array_quality_dl[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_quality_dl[3]."</font></td>";
 
 					echo "<td bgcolor='".($array_rf_health_index[3] >= 8?$good:($array_rf_health_index[3] >= 6?$yellow:($array_rf_health_index[3] >= 4?$orange:$bad)))."'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$array_rf_health_index[3]."</font></td>";
 

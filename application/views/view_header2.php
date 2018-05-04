@@ -15,6 +15,7 @@
 	
 <title>Worst Cells</title>
 <script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
 
 <style type="text/css">
 

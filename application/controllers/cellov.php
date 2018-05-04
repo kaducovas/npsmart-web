@@ -10,6 +10,7 @@ public function index()
 		
  
 		$cellname='UACRBO10A';
+		$cellname2='';
 		$cellid=-1;
 		$rnc='RNCRNC';
 		$resno=15;
@@ -21,6 +22,13 @@ public function index()
 			$cellname = $this->input->post('cell');
 			$cellname=strtoupper($cellname);
 		}
+		
+		 if (strpos($cellname, ',') !== false) 
+		 {
+		 	$cellname2=explode(',',$cellname)[1];
+		 	$cellname=explode(',',$cellname)[0];
+		 }
+ 		
 		if ($this->input->post('resno'))  {
 			$resno = $this->input->post('resno');
 		}
@@ -36,7 +44,7 @@ public function index()
 		$res = $this->model_overshooting->getCellTech($cellname);
 		if ($res) $tech= $res[0]->tech; //3g or 4g 
 	  
-		$res = $this->model_overshooting->getRFSRData($cellname, $tech, $resno);
+		$res = $this->model_overshooting->getRFSRData($cellname, $tech, $resno, $cellname2);
 	    //s1 - over/undershoot distance, s2 - RF Shaping Rate
 		// TODO: error check
 		
@@ -146,6 +154,254 @@ public function index()
 
 }
 
+
+public function sran()
+{
+ //purpose of this function is to track coverage profile change within modernization
+		$this->load->model('model_overshooting');
+		
+ 
+		$cellname='UGOGNA79C';
+		$cellname2='32S01GOGNA7903';
+		$cellid=-1;
+		$rnc='RNCRNC';
+		$resno=15;
+		$showweekend=false;
+		$usenearest=false;
+		$showpd85=true;
+		$tech='2g';
+		
+		if ($this->input->post('cell'))  {
+			$cellname = $this->input->post('cell');
+			$cellname=strtoupper($cellname);
+		}
+		
+		if ($this->input->post('cell2'))  {
+			$cellname2 = $this->input->post('cell2');
+			$cellname2=strtoupper($cellname2);
+		}
+ 		
+		if ($this->input->post('resno'))  {
+			$resno = $this->input->post('resno');
+		}
+		if ($this->input->post('showweekend'))  {
+			$showweekend = $this->input->post('showweekend');
+		}
+		if ($this->input->post('usenearest'))  {
+			$usenearest = $this->input->post('usenearest');
+		}
+		if ($this->input->post('showpd85'))  {
+			$showpd85 = $this->input->post('showpd85');
+		}
+		
+		
+		
+		//determine which tech we are working with - 3G or 4G
+		$res = $this->model_overshooting->getCellTech($cellname2);
+		if ($res) $tech= $res[0]->tech; //3g or 4g 
+		
+		//first need to find last day where old style name was used - generate serie of days starting 7 days from this day
+		// next - find first time new style name has been used - count 7 days in front from this day
+		// and the last - find last time new style name has been used - cound 7 days back
+		
+		$where_dates = array();
+		$v_lastDay='';
+		$v_lastAvailableDay='';
+		$v_firstDay='';
+		
+		//get last day with old name
+		$res = $this->model_overshooting->getLastCellAppearence($cellname, $tech);
+		if (!$res) { 
+		echo "no data found for ".$tech." cell ".$cellname." for last ".$resno." days <br>";
+		return;
+		}
+		$v_lastDay=$res[0]->d;
+		
+		$res = $this->model_overshooting->getLastCellAppearence($cellname2, $tech);
+		if (!$res) { 
+		echo "no data found for ".$tech." cell ".$cellname." for last ".$resno." days <br>";
+		return;
+		}
+		$v_lastAvailableDay=$res[0]->d;
+		$rnc=$res[0]->rnc;
+
+		
+		//get first day with old name
+		$res = $this->model_overshooting->getFirstCellAppearence($cellname2, $tech);
+		if (!$res) { 
+		echo "no data found for ".$tech." cell ".$cellname." for last ".$resno." days <br>";
+		return;
+		}
+		$v_firstDay=$res[0]->d;
+		
+
+		//get 7 days before SRAN	
+		$res = $this->model_overshooting->getRFSRDaysBack($cellname, $cellname2, $rnc, $v_lastDay, $tech, 7);
+		foreach($res as $row){
+			if ($row->dateday!='') {
+				array_push($where_dates, $row->dateday);
+			}
+		}
+		
+		//get 7 days after SRAN	
+		$res = $this->model_overshooting->getRFSRDaysAhead($cellname2, $cellname, $rnc, $v_firstDay, $tech, 7);
+		foreach($res as $row){
+			if ($row->dateday!='') {
+				array_push($where_dates, $row->dateday);
+			}
+		}
+		
+		//get last 7 days
+		$res = $this->model_overshooting->getRFSRDaysBack($cellname2, $cellname, $rnc, $v_lastAvailableDay, $tech, 7);
+		foreach($res as $row){
+			if ($row->dateday!='') {
+				array_push($where_dates, $row->dateday);
+			}
+		}
+	  
+	  
+		$res = $this->model_overshooting->getRFSRDataForSRAN($cellname, $cellname2, $rnc, $tech, $where_dates);
+	    //s1 - over/undershoot distance, s2 - RF Shaping Rate
+		// TODO: error check
+		
+		$data['tableHTML']=array();
+ 
+		if (!$res) { 
+		echo "no data found for ".$tech." cell ".$cellname." for last ".$resno." days <br>";
+		return;
+		}
+		
+		$cellid = '0';
+		$cellid2 = '0';
+		
+		$data['sran_happened']=' between '.$v_lastDay.' and '.$v_firstDay.';';
+ 
+		$data['cellname']=$cellname;
+		$data['cellname2']=$cellname2;
+		$data['rnc']=$res[0]->rnc;
+		$data['cellid']=$res[0]->cellid;
+		$data['mindate']=$res[0]->dateday;
+		$data['resno']=$resno;
+		$data['showweekend']=$showweekend;
+		$data['usenearest']=$usenearest;
+		$data['showpd85']=$showpd85;
+		$data['tech']=$tech;
+ 
+		
+		$data['s1'] = array();
+		$data['s2'] = array();
+		$data['ee'] = array();
+		$data['colors'] = array();
+		$data['throughput'] = array();
+		$data['ticks'] = array();
+		$data['ticks2'] = array();
+ 	
+ 		
+		foreach($res as $row){
+			if ($row->dateday!='') {
+				if (!$showweekend)
+				{
+					if (date('N', strtotime($row->dateday)) >= 6) continue;
+				}
+				if (!$usenearest)
+				{
+					// default mode - using grid
+					if (!$showpd85)
+					{
+						array_push($data['s1'], $row->distance);
+					}
+					else
+					{
+						array_push($data['s1'], $row->pd_85);
+					}
+					
+					
+					array_push($data['colors'], $row->isovershooter == 'YES' ? '#C7754C' : '#00749F');
+				}
+				else
+				{
+					//using nearest instead of grid
+					if (!$showpd85)
+					{
+						array_push($data['s1'], $row->distance_nr);
+					}
+					else
+					{
+						array_push($data['s1'], $row->pd_85);
+					}
+					
+					array_push($data['colors'], $row->pd_85 > $row->nearest ? '#C7754C' : '#00749F');
+				}
+				
+				
+				array_push($data['s2'], $row->rfsr);
+				
+				array_push($data['ticks'], $row->tick); //$row->distance);
+				//array_push($data['s1'], $row->distance);
+				array_push($data['tableHTML'], '<tr><td>'.$row->cellname.'</td>
+				<td>'.$row->dateday.'</td><td>'.$row->pd_85.'</td>
+				<td>'.($usenearest ? $row->nearest : $row->grid).'</td>
+				<td>'.round($row->pd_85 - ($usenearest ? $row->nearest : $row->grid),2).'</td><td>'.$row->sitesincov.'</td>
+				<td>'.round($row->x1,2).'</td><td>'.round($row->x2,2).'</td><td>'.round($row->x3,2).'</td>
+				<td>'.round($row->x4,2).'</td><td>'.round($row->x5,2).'</td><td>'.round($row->rfsr,2).'</td>
+				</tr>');
+				$data['maxdate']=$row->dateday;
+				
+				if ($row->cellname==$cellname) 
+				{
+					$cellid=$row->cellid;
+				}
+				if ($row->cellname==$cellname2) 
+				{
+					$cellid2=$row->cellid;
+				}
+			}
+			
+		} 
+
+		
+		if ($tech=='3g') {
+			$res = $this->model_overshooting->getRFSRKPIsForSRAN($data['rnc'], $cellid, $cellid2, $tech, $where_dates);
+
+			if ($res) { 
+				foreach($res as $row){
+				if ($row->dateday!='') {
+					if (!$showweekend)
+					{
+						if (date('N', strtotime($row->dateday)) >= 6) continue;
+					}
+					array_push($data['throughput'], $row->throughput);
+					array_push($data['ee'], $row->ee);
+					array_push($data['ticks2'], $row->tick);  
+				}
+				
+			} 	
+			}
+		
+		//todo: for 4g select some diferent KPIs
+	 
+			$data['maxRadar'] = max($data['throughput']) + 0.3;
+			$data['minRadar'] = min($data['throughput']) - 0.3;
+		}
+		else
+		{
+			$data['maxRadar'] = 10;
+			$data['minRadar'] = 0;
+		}
+	 
+		//$data['s1'] = array(292.66,278.66,358.23,450.26,376.71,492.45,326.57,306.74,557.07,493.38,414.45,307.31,421.09,476.8,330.77,508.24,380.94,232.95,73.16,374.63,385.39,281.64,309.9,342.83);
+		//$data['s2'] = array(80.5,80.43,78.99,75.55,79.89,73.66,79.78,79.96,73.18,73.51,74.97,79.98,75.32,73.35,79.71,72.66,78.53,80.97,100,79.43,79.16,80.34,79.97,79.26);
+		//$data['colors'] = array('#C7754C','#C7754C','#C7754C','#C7754C','#C7754C','#C7754C','#C7754C','#C7754C','#C7754C','#C7754C','#C7754C','#C7754C','#C7754C','#C7754C','#C7754C','#C7754C','#C7754C','#C7754C','#00749F','#C7754C','#C7754C','#C7754C','#C7754C','#C7754C');
+		
+		//$data['sho'] = array(0,0,0); //array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5.42,5.06);
+		//$data['users'] = array(0,0,0); //array(13,15,16,15,12,12,14,11,10,12,14,14,14,13,13,11,13,12,11,12,12,12,12,16);
+		//$data['ticks'] = array('Sep-27','Sep-28','Sep-29','Oct-02','Oct-03','Oct-04','Oct-05','Oct-06','Oct-09','Oct-10','Oct-11','Oct-13','Oct-16','Oct-17','Oct-18','Oct-19','Oct-20','Oct-23','Oct-24','Oct-25','Oct-26','Oct-27','Oct-30','Oct-31');
+		
+		$this->load->view('view_header');
+		$this->load->view('view_cell_overshooting_sran.php',$data);
+
+}
+
 	function showCharts(){
 	$this->load->view('getuser');	
 	}
@@ -183,7 +439,7 @@ public function index()
 	function overshooting()
 	{
 		$this->load->model('model_overshooting');
-		$last4weeks = [6,5,4,3];
+		$last4weeks = [17,16,15,14];
 		$regions = ['BASE','CO','ES','MG','NE','PRSC'];
 		$data['regions'] = $regions;
 		$data['seriesCode'] = array();
@@ -326,7 +582,7 @@ public function index()
 	{
 		//
 		$this->load->model('model_overshooting');
-		$last4weeks = [6,5,4,3];
+		$last4weeks = [17,16,15,14];
 		$regions = ['CAMPINA GRANDE', 'RECIFE', 'CARUARU', 'PARNAMIRIM', 'JOÃO PESSOA', 'NATAL'];
 		$data['seriesCode'] = array();
 		$data['last4weeks'] = $last4weeks;
@@ -499,7 +755,7 @@ public function index()
 		//var_dump($fp);
 			
 	
-		$finfo = "cellname,week,azimuth,pd_85,grid,isovershooter,sitesincov,sites_str,X1,X2,X3,X4,X5,RF Shaping Rate\n";
+		$finfo = "region,cellname,week,azimuth,pd_85,grid,isovershooter,sitesincov,sites_str,X1,X2,X3,X4,X5,RF Shaping Rate\n";
 		fwrite($fp,  $finfo);
 	 	
 		foreach($res as $row){
@@ -609,6 +865,26 @@ public function index()
 		foreach($res as $row){
 				if ($row->nodebname!='') {
 					array_push($sites, '<td>'.$row->nodebname.'</td><td>'.$row->latitude.'</td><td>'.$row->longitude.'</td>');
+				}
+		}
+
+		echo "<b>Sites integrated within last 2-3 days:</b> <br><table border=1><tr><td>Site</td><td>Latitude</td><td>Longitude</td></tr><tr>".join("</tr><tr>",$sites)."</tr></table>";
+		
+	}
+	
+	
+	function new_sites_lte()
+	{
+		$table="";
+		$sites=array();
+		$this->load->model('model_overshooting');
+		$res= $this->model_overshooting->getNewSitesLTE();
+ 
+		
+	 	
+		foreach($res as $row){
+				if ($row->site!='') {
+					array_push($sites, '<td>'.$row->site.'</td><td>'.$row->latitude.'</td><td>'.$row->longitude.'</td>');
 				}
 		}
 

@@ -99,7 +99,9 @@
 				 // }			
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////				 
   ?>
-  
+  <head>
+	<title>Main KPIs UMTS</title>
+  </head>
  <div id="container" class="main"> 
 
 <form action="/npsmart/umts/worstcells" name="wcform" method="post">
@@ -249,16 +251,16 @@ foreach ($node as $k => $v) {
 
 <br><br>
 <div class="sortable1">
-<div id="content" class="chart_content"><div id="acc" class="chart1"></div></div>
-<div id="content" class="chart_content"><div id="drop" class="chart"></div></div>		
-<div id="content" class="chart_content"><div id="traffic" class="chart"></div></div>			
-<div id="content" class="chart_content"><div id="users" class="chart"></div></div>
-<div id="content" class="chart_content"><div id="thp" class="chart"></div></div>
-<div id="content" class="chart_content"><div id="retention" class="chart"></div></div>				
-<div id="content" class="chart_content"><div id="handover" class="chart"></div></div>
-<div id="content" class="chart_content"><div id="sho_overhead" class="chart"></div></div>		
-<div id="content" class="chart_content"><div id="availability" class="chart"></div></div>			
-<div id="content" class="chart_content"><div id="rtwp" class="chart"></div></div>	
+<div id="content0" class="chart_content"><div id="acc" class="chart1"></div></div>
+<div id="content1" class="chart_content"><div id="drop" class="chart"></div></div>		
+<div id="content2" class="chart_content"><div id="traffic" class="chart"></div></div>			
+<div id="content3" class="chart_content"><div id="users" class="chart"></div></div>
+<div id="content4" class="chart_content"><div id="thp" class="chart"></div></div>
+<div id="content5" class="chart_content"><div id="retention" class="chart"></div></div>				
+<div id="content6" class="chart_content"><div id="handover" class="chart"></div></div>
+<div id="content7" class="chart_content"><div id="sho_overhead" class="chart"></div></div>		
+<div id="content8" class="chart_content"><div id="availability" class="chart"></div></div>			
+<div id="content9" class="chart_content"><div id="rtwp" class="chart"></div></div>	
 </div>		
 <!--	<div id="content" class="chart_content"><div id="fails_rrc" class="chart1"></div></div>
 	<div id="content" class="chart_content"><div id="fails_hs" class="chart1"></div></div>
@@ -271,6 +273,8 @@ foreach ($node as $k => $v) {
 	<div style="clear: both;"></div>-->
 </form>
 </div>
-	<button id="export">Export all</button>
+		<div style="text-align:center">
+			<button class="button" id="export">Export all</button>
+		</div>
 </body>
 </html>

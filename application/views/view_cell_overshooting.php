@@ -349,6 +349,7 @@ outline:none;
 	<option value=25<?php if ($resno==25) echo " selected";?>>25 last days</option>
 	<option value=30<?php if ($resno==30) echo " selected";?>>30 last days</option>
 	<option value=60<?php if ($resno==60) echo " selected";?>>60 last days</option>
+	<option value=90<?php if ($resno==90) echo " selected";?>>90 last days</option>
 	</select> 
 	<input type=checkbox id=showweekend name=showweekend value=showweekend<?php if ($showweekend) echo " checked"?> > Weekends 
 	<input type=checkbox id=usenearest name=usenearest value=usenearest<?php if ($usenearest) echo " checked"?> > Nearest instead of Grid <br>

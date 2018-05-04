@@ -270,7 +270,6 @@ outline:none;
 }
 
 </style>
-<title>NPSmart GSM</title>
 </head>
 <body>
 <div id="txtHint2"></div>	
@@ -282,6 +281,8 @@ echo form_open('', $attributes);
 <input type="hidden" id="reportnetype" name="reportnetype" value="" />
 <input type="hidden" id="reportnename" name="reportnename" value="" />
 <input type="hidden" id="reportdate" name="reportdate" value="" />
+<input type="hidden" id="reportyear" name="reportyear" value="" />
+<input type="hidden" id="reportweek" name="reportweek" value="" />
 <input type="hidden" id="reportkpi" name="kpi" value="" />
 </form>
 
@@ -326,7 +327,7 @@ elseif (isset($weeknum)){
                 </button>
                 <a class="navbar-brand" href="http://support.huawei.com"><img src="/npsmart/images/huawei_logo_icon.png" style="padding:0px; top:0px; width:30px; margin-top:-15%; height:30px;"/></a>
                
-                <a class="navbar-brand" id="aTitleVersion" href="/npsmart/gsm/" style="width:170px;"><span id="aTitle">NPSmart</span>&nbsp; <span id="sVersion" style="font-size:12px; font-family:Calibri;">
+                <a class="navbar-brand" id="aTitleVersion" href="/npsmart/" style="width:170px;"><span id="aTitle">NPSmart</span>&nbsp; <span id="sVersion" style="font-size:12px; font-family:Calibri;">
                      v2.1</span></a>
             </div>
 
@@ -338,13 +339,13 @@ elseif (isset($weeknum)){
                         <ul class="dropdown-menu" role="menu">
                             <!--<li id="menuItemnqi"><a onclick='selecttimeagg(this)'>Commercial Hour Report</a></li>-->
                             <li class="menuItemnqi"><a href="/npsmart/gsm/">Main KPIs</a></li>
+							<li id="menuItemwaf"><a href="/npsmart/gsm/kpis_anatel_weekly">KPIs Anatel</a></li>
                             <!--<li class="menuItemnqi"><a onclick='selectreportname(this)'>AMX NQI HS</a></li>
                             <li class="menuItemnqi"><a onclick='selectreportname(this)'>AMX NQI CS</a></li>
                             <li class="menuItemnqi"><a href="/npsmart/umts/tx_integrity">TX Integrity</a></li>
                             <li class="menuItemnqi"><a href="/npsmart/umts/overshooters">Overshooters</a></li>
                             <!--<li class="menuItemnqi"><a href="/npsmart/umts/feature_phase2">Feature Report</a></li>-
-                            <li class="menuItemnqi"><a href="/npsmart/umts/radar">AMX Radar</a></li>
-                            <li class="menuItemnqi"><a href="/npsmart/umts/unbalance">EE/Load Unbalance</a></li>-->
+                            <li class="menuItemnqi"><a href="/npsmart/umts/radar">AMX Radar</a></li>-->
                         </ul>
                     </li>
 
@@ -358,14 +359,16 @@ elseif (isset($weeknum)){
                     <li id="menuItemwaf" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RNP<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
+						<li class="menuItemnqi"><a href="/npsmart/main_map/map_region_gsm">Network Overview</a></li>
 							<li class="menuItemnqi"><a href="/npsmart/umts/alarm">Alarm</a></li>
                         </ul>
                     </li>	
 
                     <li id="menuItemwaf" class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Baseline<span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Consistency Check<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li class="disabled"><a href="#">Baseline Cell & BSC Audit</a></li>
+							<li class="disabled"><a href="/npsmart/umts/check_neighborhood">Neighbor Audit</a></li>
                         </ul>
                     </li>
 					
@@ -374,13 +377,27 @@ elseif (isset($weeknum)){
 					<li id="menuItemwaf" class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Settings<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
+							<li class="disabled"><a href="/npsmart/umts/baseline_configuration">Baseline Configuration</a></li>
 							<li class="disabled"><a href="#">Counters</a></li>
+							<li><a href="/npsmart/gsm/process_monitoring">Database Process Monitoring</a></li>
 							<li class="disabled"><a href="#">KPIs Target</a></li>
                         </ul>
 					</li>
                 
                     <li href="/npsmart/welcome"><a href="#">Log</a></li>
 					<li><a href="/npsmart/quickreport">Quick Report</a></li>
+					
+					<li id="menuItemwaf" class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Auto Reports<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li id="ppt_cto" onmouseover="mostrar_cto()" onmouseout="esconder_cto()"><a href="#">Claro - CTO Meeting Presentation <span class="glyphicon glyphicon-chevron-down"></span></a>
+								<ul>
+									<li id="2018-16" class="cto" style="display:none;font-size: 18px;" onclick="gerar_ppt(this)"><a href="#">Week 16</a></li>
+									<li id="2018-17" class="cto" style="display:none;font-size: 18px;"><a href="/npsmart/AutoReport/CTO/Claro - CTO Meeting Presentation W17.pptx" download>Week 17</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>					
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
@@ -397,7 +414,8 @@ elseif (isset($weeknum)){
 	 <li class="dropdown" id="dateMenu1">
 	 <a style="text-transform: capitalize" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $reportagg ?> <span class="glyphicon glyphicon-calendar pull-left" style="margin-top:2px;margin-right:4px;"></span><span id="caretOptions1" class="caret"></span></a>
 		<ul class="dropdown-menu" role="menu">
-				<li class="disabled" id="menuItemnqi"><a href="#">Monthly</a></li>
+				
+				<li id="menuItemnqi"><a onclick='selecttimeagg(this)'>Monthly</a></li>
                 <li id="menuItemnqi"><a onclick='selecttimeagg(this)'>Weekly</a></li>
                 <li id="menuItemnqi"><a onclick='selecttimeagg(this)'>Daily</a></li>
         </ul>
@@ -448,6 +466,16 @@ echo "Network Node : <select name='parent_selection' id='parent_selection' style
     <option value='bsc'>BSC</option>
     <option value='uf'>UF</option>
     <option value='cidade'>City</option>
+    <!--<option value='cluster'>Cluster</option>-->
+</select>";}
+if ($reportagg == 'monthly') {
+echo "Network Node : <select name='parent_selection' id='parent_selection' style='width:200px;'>
+    <option value=''>-- Please Select --</option>
+    <option value='region'>Region</option>
+    <option value='bsc'>BSC</option>
+    <option value='uf'>UF</option>
+    <option value='cidade'>City</option>
+    <option value='bts'>BTS</option>
     <!--<option value='cluster'>Cluster</option>-->
 </select>";}
 ?>

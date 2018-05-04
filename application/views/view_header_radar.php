@@ -17,7 +17,7 @@
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="/npsmart/js/exporting.js"></script>
-<script src="/npsmart/js/export-csv.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="/npsmart/js/grouped-categories.js"></script>
 <!--<script src="https://code.highcharts.com/modules/multicolor_series.js"></script>-->
 <link rel="stylesheet" href="/npsmart/css/jquery-ui.css">
@@ -485,7 +485,8 @@ thead th {
 .vrt_radar {
   width: 10px;
   margin: 0 auto;
-  writing-mode: vertical-lr;
+  writing-mode: vertical-rl;
+  -webkit-transform:rotate(180deg);
   height: 230px;
 }
 
@@ -768,8 +769,13 @@ document.reportopt.action = '/npsmart/umts/baseline_nodeb';
 }		
 
 function selectkpiradar(obj) {
-	
-	if(obj.innerHTML == 'RF Health Index'){
+	if(obj.innerHTML == 'SW Release and Features'){
+		document.getElementById('reportkpi').value = 'sw_releases_features';
+		document.getElementById('reportnename').value = reportnename;
+		document.getElementById('reportdate').value = reportdate;
+		document.getElementById('reportnetype').value = reportnetype;
+	} 
+	else if(obj.innerHTML == 'RF Health Index'){
 		document.getElementById('reportkpi').value = 'rf_health_index';
 		document.getElementById('reportnename').value = reportnename;
 		document.getElementById('reportdate').value = reportdate;

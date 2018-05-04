@@ -147,6 +147,7 @@ $(function () {
 	var estado_smp_8 = true;
 	var estado_smp_9 = true;
 	var estado_traffic = true;
+	var toogle_availability = false;
     $(document).ready(function() {
 		var acc = new Highcharts.Chart({
 		chart: {
@@ -167,23 +168,11 @@ $(function () {
 						availability.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
 						retainability_cs.xAxis[0].options.plotLines[0].color = "red";
 						retainability_cs.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
-						smp_5.xAxis[0].options.plotLines[0].color = "red";
-						smp_5.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
-						smp_7.xAxis[0].options.plotLines[0].color = "red";
-						smp_7.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
-						smp_8.xAxis[0].options.plotLines[0].color = "red";
-						smp_8.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
-						smp_9.xAxis[0].options.plotLines[0].color = "red";
-						smp_9.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
 						traffic.xAxis[0].options.plotLines[0].color = "red";
 						traffic.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;					
 						acc.xAxis[0].update();
 						availability.xAxis[0].update();
 						retainability_cs.xAxis[0].update();
-						smp_5.xAxis[0].update();
-						smp_7.xAxis[0].update();
-						smp_8.xAxis[0].update();
-						smp_9.xAxis[0].update();
 						traffic.xAxis[0].update();					
 						}
       }
@@ -284,18 +273,10 @@ $(function () {
 						acc.xAxis[0].options.plotLines[0].color = "transparent";
 						availability.xAxis[0].options.plotLines[0].color = "transparent";
 						retainability_cs.xAxis[0].options.plotLines[0].color = "transparent";
-						smp_5.xAxis[0].options.plotLines[0].color = "transparent";
-						smp_7.xAxis[0].options.plotLines[0].color = "transparent";
-						smp_8.xAxis[0].options.plotLines[0].color = "transparent";
-						smp_9.xAxis[0].options.plotLines[0].color = "transparent";
 						traffic.xAxis[0].options.plotLines[0].color = "transparent";						
 						acc.xAxis[0].update();
 						availability.xAxis[0].update();
 						retainability_cs.xAxis[0].update();
-						smp_5.xAxis[0].update();
-						smp_7.xAxis[0].update();
-						smp_8.xAxis[0].update();
-						smp_9.xAxis[0].update();
 						traffic.xAxis[0].update();						
 						}else
 						if(this.visible == false){	
@@ -303,10 +284,6 @@ $(function () {
 						acc.xAxis[0].options.plotLines[0].color = "red";
 						availability.xAxis[0].options.plotLines[0].color = "red";
 						retainability_cs.xAxis[0].options.plotLines[0].color = "red";
-						smp_5.xAxis[0].options.plotLines[0].color = "red";
-						smp_7.xAxis[0].options.plotLines[0].color = "red";
-						smp_8.xAxis[0].options.plotLines[0].color = "red";
-						smp_9.xAxis[0].options.plotLines[0].color = "red";
 						traffic.xAxis[0].options.plotLines[0].color = "red";						
 						acc.xAxis[0].update();
 						availability.xAxis[0].update();
@@ -340,9 +317,8 @@ $(function () {
 						renderTo: 'availability',
 						alignTicks:false,
 						//backgroundColor:'transparent',
-						zoomType: 'xy'
-						,
-							events: {
+						zoomType: 'xy',
+						events: {
 						click: function(e) {
 						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
 						// alert(e.xAxis[0].value);
@@ -370,7 +346,7 @@ $(function () {
 							   enabled: false
 							},		
 							exporting: { 
-							enabled: true 
+							enabled: true,						
 							},
 							title: {
 								text: '<b>Availability</b>',// - ' + node,
@@ -452,7 +428,7 @@ $(function () {
 													
 							]							
 				});
-				
+								
 //////////////////////////////////////////////////////////////////////////////////////////RETAINABILITY CS//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		var retainability_cs = new Highcharts.Chart({
@@ -573,528 +549,528 @@ $(function () {
 							]							
 				});
 				
-/////////////////////////////////////////////////////////////////////////////////////////////////////SMP_5//////////////////////////
+// /////////////////////////////////////////////////////////////////////////////////////////////////////SMP_5//////////////////////////
 
-		var smp_5 = new Highcharts.Chart({
-		chart: {
-				renderTo: 'smp_5',
-				alignTicks:false,
-				//backgroundColor:'transparent',
-				zoomType: 'xy'
-				,
-					events: {
-						click: function(e) {
-						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
-						// alert(e.xAxis[0].value);
-						//acc.chart.series[1].show();
-						if(estado_smp_5 != false){
-						smp_5.xAxis[0].options.plotLines[0].color = "red";
-						smp_5.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
-						smp_5.xAxis[0].update();
-						}
-      }
-    }
-				//backgroundColor: {
-                //linearGradient: [0, 0, 500, 500],
-                //stops: [
-                //    [0, 'rgb(255, 255, 255)'],
-               //     [1, 'rgb(200, 200, 255)']
-              //  ]
-            //}
-				//borderWidth: 2		
-						///type: 'line',
-						///height: 195		
-				},
-				//	colors: ['#000099', '#CC0000', '#006600', '#FFCC00', '#D9CDB6'],
-					credits: {
-					   enabled: false
-					},		
-					exporting: { 
-					enabled: true 
-					},
-					title: {
-						text: '<b>SMP 5</b>',// - ' + node,
-					//	 floating: true,
-						x: -20, //center
-						//y: 0
-					},
-					subtitle: {
-						text: '<i>' + node + '</i>',
-						x: -20
-					},
-					xAxis: {
-						categories: [<?php echo join($date, ',') ?>],///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
-					plotLines: [{
-								color: '#FF0000',
-								width: 2,
-								dashStyle: 'dash',
-								color: 'red',
-								width: 2,
-								zIndex: 10
-							}]				
-					},
-					yAxis: {
-						max: 100,
-						//min: 99.4,
-						title: {
-							text: '%'
-						},
-						//{  },
-						plotLines: [{
-							value: 0,
-							width: 1,
-							color: '#808080'
-						}]
+		// var smp_5 = new Highcharts.Chart({
+		// chart: {
+				// renderTo: 'smp_5',
+				// alignTicks:false,
+				// //backgroundColor:'transparent',
+				// zoomType: 'xy'
+				// ,
+					// events: {
+						// click: function(e) {
+						// //console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// // alert(e.xAxis[0].value);
+						// //acc.chart.series[1].show();
+						// if(estado_smp_5 != false){
+						// smp_5.xAxis[0].options.plotLines[0].color = "red";
+						// smp_5.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						// smp_5.xAxis[0].update();
+						// }
+      // }
+    // }
+				// //backgroundColor: {
+                // //linearGradient: [0, 0, 500, 500],
+                // //stops: [
+                // //    [0, 'rgb(255, 255, 255)'],
+               // //     [1, 'rgb(200, 200, 255)']
+              // //  ]
+            // //}
+				// //borderWidth: 2		
+						// ///type: 'line',
+						// ///height: 195		
+				// },
+				// //	colors: ['#000099', '#CC0000', '#006600', '#FFCC00', '#D9CDB6'],
+					// credits: {
+					   // enabled: false
+					// },		
+					// exporting: { 
+					// enabled: true 
+					// },
+					// title: {
+						// text: '<b>SMP 5</b>',// - ' + node,
+					// //	 floating: true,
+						// x: -20, //center
+						// //y: 0
+					// },
+					// subtitle: {
+						// text: '<i>' + node + '</i>',
+						// x: -20
+					// },
+					// xAxis: {
+						// categories: [<?php echo join($date, ',') ?>],///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
+					// plotLines: [{
+								// color: '#FF0000',
+								// width: 2,
+								// dashStyle: 'dash',
+								// color: 'red',
+								// width: 2,
+								// zIndex: 10
+							// }]				
+					// },
+					// yAxis: {
+						// max: 100,
+						// //min: 99.4,
+						// title: {
+							// text: '%'
+						// },
+						// //{  },
+						// plotLines: [{
+							// value: 0,
+							// width: 1,
+							// color: '#808080'
+						// }]
 						
-					},
-					tooltip: {
-					valueSuffix: '%',
-					shared: false
-					},
-					legend: {
-						layout: 'horizontal',
-						align: 'center',
-						verticalAlign: 'bottom',
-						floating: false,
-						borderWidth: 0
-					},
+					// },
+					// tooltip: {
+					// valueSuffix: '%',
+					// shared: false
+					// },
+					// legend: {
+						// layout: 'horizontal',
+						// align: 'center',
+						// verticalAlign: 'bottom',
+						// floating: false,
+						// borderWidth: 0
+					// },
 
-					plotOptions: {
-						series: {
-							cursor: 'pointer',
-							events: {
+					// plotOptions: {
+						// series: {
+							// cursor: 'pointer',
+							// events: {
             
-						legendItemClick: function () {
-						if(this.name == "Marker"){
-						if(this.visible == true){
-						estado_smp_5 = false;		
-						smp_5.xAxis[0].options.plotLines[0].color = "transparent";
-						smp_5.xAxis[0].update();
-						}else
-						if(this.visible == false){	
-						estado_smp_5 = true;	
-						smp_5.xAxis[0].options.plotLines[0].color = "red";
-						smp_5.xAxis[0].update();
-						}	
-						}
-				}
-							}
-						}
-					},
+						// legendItemClick: function () {
+						// if(this.name == "Marker"){
+						// if(this.visible == true){
+						// estado_smp_5 = false;		
+						// smp_5.xAxis[0].options.plotLines[0].color = "transparent";
+						// smp_5.xAxis[0].update();
+						// }else
+						// if(this.visible == false){	
+						// estado_smp_5 = true;	
+						// smp_5.xAxis[0].options.plotLines[0].color = "red";
+						// smp_5.xAxis[0].update();
+						// }	
+						// }
+				// }
+							// }
+						// }
+					// },
 					
-					series: [{
-								name: 'Marker',
-								color:'red'
-							},{
-						name: 'SMP 5 Huawei',
-						data: [<?php echo join($smp_5, ',') ?>]
-					},
-					{
-						name: 'SMP 5 Ericsson',
-						data: [<?php echo join($smp_5_ericsson, ',') ?>]
-					},
-					{
-						name: 'SMP 5 Nokia',
-						data: [<?php echo join($smp_5_nokia, ',') ?>]
-					},
-					{
-						name: 'SMP 5 Siemens',
-						data: [<?php echo join($smp_5_siemens, ',') ?>]
-					}
-					]							
-		});
-//////////////////////////////////////////////////////////////////////////////////////////SMP_7//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+					// series: [{
+								// name: 'Marker',
+								// color:'red'
+							// },{
+						// name: 'SMP 5 Huawei',
+						// data: [<?php echo join($smp_5, ',') ?>]
+					// },
+					// {
+						// name: 'SMP 5 Ericsson',
+						// data: [<?php echo join($smp_5_ericsson, ',') ?>]
+					// },
+					// {
+						// name: 'SMP 5 Nokia',
+						// data: [<?php echo join($smp_5_nokia, ',') ?>]
+					// },
+					// {
+						// name: 'SMP 5 Siemens',
+						// data: [<?php echo join($smp_5_siemens, ',') ?>]
+					// }
+					// ]							
+		// });
+// //////////////////////////////////////////////////////////////////////////////////////////SMP_7//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		var smp_7 = new Highcharts.Chart({
-		chart: {
-				renderTo: 'smp_7',
-				alignTicks:false,
-				//backgroundColor:'transparent',
-				zoomType: 'xy'
-				,
-					events: {
-						click: function(e) {
-						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
-						// alert(e.xAxis[0].value);
-						//acc.chart.series[1].show();
-						if(estado_smp_7 != false){
-						smp_7.xAxis[0].options.plotLines[0].color = "red";
-						smp_7.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
-						smp_7.xAxis[0].update();
-						}
-      }
-    }
-				//backgroundColor: {
-                //linearGradient: [0, 0, 500, 500],
-                //stops: [
-                //    [0, 'rgb(255, 255, 255)'],
-               //     [1, 'rgb(200, 200, 255)']
-              //  ]
-            //}
-				//borderWidth: 2		
-						///type: 'line',
-						///height: 195		
-				},
-				//	colors: ['#000099', '#CC0000', '#006600', '#FFCC00', '#D9CDB6'],
-					credits: {
-					   enabled: false
-					},		
-					exporting: { 
-					enabled: true 
-					},
-					title: {
-						text: '<b>SMP 7</b>',// - ' + node,
-					//	 floating: true,
-						x: -20, //center
-						//y: 0
-					},
-					subtitle: {
-						text: '<i>' + node + '</i>',
-						x: -20
-					},
-					xAxis: {
-						categories: [<?php echo join($date, ',') ?>],///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
-					plotLines: [{
-								color: '#FF0000',
-								width: 2,
-								dashStyle: 'dash',
-								color: 'red',
-								width: 2,
-								zIndex: 10
-							}]				
-					},
-					yAxis: {
-						//max: 100,
-						//min: 99.4,
-						title: {
-							text: '%'
-						},
-						//{  },
-						plotLines: [{
-							value: 0,
-							width: 1,
-							color: '#808080'
-						}]
+		// var smp_7 = new Highcharts.Chart({
+		// chart: {
+				// renderTo: 'smp_7',
+				// alignTicks:false,
+				// //backgroundColor:'transparent',
+				// zoomType: 'xy'
+				// ,
+					// events: {
+						// click: function(e) {
+						// //console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// // alert(e.xAxis[0].value);
+						// //acc.chart.series[1].show();
+						// if(estado_smp_7 != false){
+						// smp_7.xAxis[0].options.plotLines[0].color = "red";
+						// smp_7.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						// smp_7.xAxis[0].update();
+						// }
+      // }
+    // }
+				// //backgroundColor: {
+                // //linearGradient: [0, 0, 500, 500],
+                // //stops: [
+                // //    [0, 'rgb(255, 255, 255)'],
+               // //     [1, 'rgb(200, 200, 255)']
+              // //  ]
+            // //}
+				// //borderWidth: 2		
+						// ///type: 'line',
+						// ///height: 195		
+				// },
+				// //	colors: ['#000099', '#CC0000', '#006600', '#FFCC00', '#D9CDB6'],
+					// credits: {
+					   // enabled: false
+					// },		
+					// exporting: { 
+					// enabled: true 
+					// },
+					// title: {
+						// text: '<b>SMP 7</b>',// - ' + node,
+					// //	 floating: true,
+						// x: -20, //center
+						// //y: 0
+					// },
+					// subtitle: {
+						// text: '<i>' + node + '</i>',
+						// x: -20
+					// },
+					// xAxis: {
+						// categories: [<?php echo join($date, ',') ?>],///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
+					// plotLines: [{
+								// color: '#FF0000',
+								// width: 2,
+								// dashStyle: 'dash',
+								// color: 'red',
+								// width: 2,
+								// zIndex: 10
+							// }]				
+					// },
+					// yAxis: {
+						// //max: 100,
+						// //min: 99.4,
+						// title: {
+							// text: '%'
+						// },
+						// //{  },
+						// plotLines: [{
+							// value: 0,
+							// width: 1,
+							// color: '#808080'
+						// }]
 						
-					},
-					tooltip: {
-					valueSuffix: '%',
-					shared: false
-					},
-					legend: {
-						layout: 'horizontal',
-						align: 'center',
-						verticalAlign: 'bottom',
-						floating: false,
-						borderWidth: 0
-					},
+					// },
+					// tooltip: {
+					// valueSuffix: '%',
+					// shared: false
+					// },
+					// legend: {
+						// layout: 'horizontal',
+						// align: 'center',
+						// verticalAlign: 'bottom',
+						// floating: false,
+						// borderWidth: 0
+					// },
 
-					plotOptions: {
-						series: {
-							cursor: 'pointer',
-							events: {
+					// plotOptions: {
+						// series: {
+							// cursor: 'pointer',
+							// events: {
                
-						legendItemClick: function () {
-						if(this.name == "Marker"){
-						if(this.visible == true){
-						estado_smp_7 = false;		
-						smp_7.xAxis[0].options.plotLines[0].color = "transparent";
-						smp_7.xAxis[0].update();
-						}else
-						if(this.visible == false){	
-						estado_smp_7 = true;	
-						smp_7.xAxis[0].options.plotLines[0].color = "red";
-						smp_7.xAxis[0].update();
-						}	
-						}
-				}
-							}
-						}
-					},
+						// legendItemClick: function () {
+						// if(this.name == "Marker"){
+						// if(this.visible == true){
+						// estado_smp_7 = false;		
+						// smp_7.xAxis[0].options.plotLines[0].color = "transparent";
+						// smp_7.xAxis[0].update();
+						// }else
+						// if(this.visible == false){	
+						// estado_smp_7 = true;	
+						// smp_7.xAxis[0].options.plotLines[0].color = "red";
+						// smp_7.xAxis[0].update();
+						// }	
+						// }
+				// }
+							// }
+						// }
+					// },
 					
-					series: [{
-								name: 'Marker',
-								color:'red'
-							},{
-						name: 'SMP 7 Huawei',
-						data: [<?php echo join($smp_7, ',') ?>]
-					},
-					{
-						name: 'SMP 7 Ericsson',
-						data: [<?php echo join($smp_7_ericsson, ',') ?>]
-					},
-					{
-						name: 'SMP 7 Nokia',
-						data: [<?php echo join($smp_7_nokia, ',') ?>]
-					},
-					{
-						name: 'SMP 7 Siemens',
-						data: [<?php echo join($smp_7_siemens, ',') ?>]
-					}
-					]						
-		});
+					// series: [{
+								// name: 'Marker',
+								// color:'red'
+							// },{
+						// name: 'SMP 7 Huawei',
+						// data: [<?php echo join($smp_7, ',') ?>]
+					// },
+					// {
+						// name: 'SMP 7 Ericsson',
+						// data: [<?php echo join($smp_7_ericsson, ',') ?>]
+					// },
+					// {
+						// name: 'SMP 7 Nokia',
+						// data: [<?php echo join($smp_7_nokia, ',') ?>]
+					// },
+					// {
+						// name: 'SMP 7 Siemens',
+						// data: [<?php echo join($smp_7_siemens, ',') ?>]
+					// }
+					// ]						
+		// });
 				
-//////////////////////////////////////////////////////////////////////////////////////////SMP_8//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////////////////////////SMP_8//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		var smp_8 = new Highcharts.Chart({
-		chart: {
-				renderTo: 'smp_8',
-				alignTicks:false,
-				//backgroundColor:'transparent',
-				zoomType: 'xy'
-				,
-					events: {
-						click: function(e) {
-						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
-						// alert(e.xAxis[0].value);
-						//acc.chart.series[1].show();
-						if(estado_smp_8 != false){
-						smp_8.xAxis[0].options.plotLines[0].color = "red";
-						smp_8.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
-						smp_8.xAxis[0].update();
-						}
-      }
-    }
-				//backgroundColor: {
-                //linearGradient: [0, 0, 500, 500],
-                //stops: [
-                //    [0, 'rgb(255, 255, 255)'],
-               //     [1, 'rgb(200, 200, 255)']
-              //  ]
-            //}
-				//borderWidth: 2		
-						///type: 'line',
-						///height: 195		
-				},
-				//	colors: ['#000099', '#CC0000', '#006600', '#FFCC00', '#D9CDB6'],
-					credits: {
-					   enabled: false
-					},		
-					exporting: { 
-					enabled: true 
-					},
-					title: {
-						text: '<b>SMP 8</b>',// - ' + node,
-					//	 floating: true,
-						x: -20, //center
-						//y: 0
-					},
-					subtitle: {
-						text: '<i>' + node + '</i>',
-						x: -20
-					},
-					xAxis: {
-						categories: [<?php echo join($date, ',') ?>],///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
-					plotLines: [{
-								color: '#FF0000',
-								width: 2,
-								dashStyle: 'dash',
-								color: 'red',
-								width: 2,
-								zIndex: 10
-							}]					
-					},
-					yAxis: {
-						max: 100,
-						//min: 99.4,
-						title: {
-							text: '%'
-						},
-						//{  },
-						plotLines: [{
-							value: 0,
-							width: 1,
-							color: '#808080'
-						}]
+		// var smp_8 = new Highcharts.Chart({
+		// chart: {
+				// renderTo: 'smp_8',
+				// alignTicks:false,
+				// //backgroundColor:'transparent',
+				// zoomType: 'xy'
+				// ,
+					// events: {
+						// click: function(e) {
+						// //console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// // alert(e.xAxis[0].value);
+						// //acc.chart.series[1].show();
+						// if(estado_smp_8 != false){
+						// smp_8.xAxis[0].options.plotLines[0].color = "red";
+						// smp_8.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						// smp_8.xAxis[0].update();
+						// }
+      // }
+    // }
+				// //backgroundColor: {
+                // //linearGradient: [0, 0, 500, 500],
+                // //stops: [
+                // //    [0, 'rgb(255, 255, 255)'],
+               // //     [1, 'rgb(200, 200, 255)']
+              // //  ]
+            // //}
+				// //borderWidth: 2		
+						// ///type: 'line',
+						// ///height: 195		
+				// },
+				// //	colors: ['#000099', '#CC0000', '#006600', '#FFCC00', '#D9CDB6'],
+					// credits: {
+					   // enabled: false
+					// },		
+					// exporting: { 
+					// enabled: true 
+					// },
+					// title: {
+						// text: '<b>SMP 8</b>',// - ' + node,
+					// //	 floating: true,
+						// x: -20, //center
+						// //y: 0
+					// },
+					// subtitle: {
+						// text: '<i>' + node + '</i>',
+						// x: -20
+					// },
+					// xAxis: {
+						// categories: [<?php echo join($date, ',') ?>],///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
+					// plotLines: [{
+								// color: '#FF0000',
+								// width: 2,
+								// dashStyle: 'dash',
+								// color: 'red',
+								// width: 2,
+								// zIndex: 10
+							// }]					
+					// },
+					// yAxis: {
+						// max: 100,
+						// //min: 99.4,
+						// title: {
+							// text: '%'
+						// },
+						// //{  },
+						// plotLines: [{
+							// value: 0,
+							// width: 1,
+							// color: '#808080'
+						// }]
 						
-					},
-					tooltip: {
-					valueSuffix: '%',
-					shared: false
-					},
-					legend: {
-						layout: 'horizontal',
-						align: 'center',
-						verticalAlign: 'bottom',
-						floating: false,
-						borderWidth: 0
-					},
+					// },
+					// tooltip: {
+					// valueSuffix: '%',
+					// shared: false
+					// },
+					// legend: {
+						// layout: 'horizontal',
+						// align: 'center',
+						// verticalAlign: 'bottom',
+						// floating: false,
+						// borderWidth: 0
+					// },
 
-					plotOptions: {
-						series: {
-							cursor: 'pointer',
-							events: {
+					// plotOptions: {
+						// series: {
+							// cursor: 'pointer',
+							// events: {
              
-						legendItemClick: function () {
-						if(this.name == "Marker"){
-						if(this.visible == true){
-						estado_smp_8 = false;		
-						smp_8.xAxis[0].options.plotLines[0].color = "transparent";
-						smp_8.xAxis[0].update();
-						}else
-						if(this.visible == false){	
-						estado_smp_8 = true;	
-						smp_8.xAxis[0].options.plotLines[0].color = "red";
-						smp_8.xAxis[0].update();
-						}	
-						}
-				}
-							}
-						}
-					},
+						// legendItemClick: function () {
+						// if(this.name == "Marker"){
+						// if(this.visible == true){
+						// estado_smp_8 = false;		
+						// smp_8.xAxis[0].options.plotLines[0].color = "transparent";
+						// smp_8.xAxis[0].update();
+						// }else
+						// if(this.visible == false){	
+						// estado_smp_8 = true;	
+						// smp_8.xAxis[0].options.plotLines[0].color = "red";
+						// smp_8.xAxis[0].update();
+						// }	
+						// }
+				// }
+							// }
+						// }
+					// },
 					
-					series: [{
-								name: 'Marker',
-								color:'red'
-							},{
-						name: 'SMP 8 Huawei',
-						data: [<?php echo join($smp_8, ',') ?>]
-					},
-					{
-						name: 'SMP 8 Ericsson',
-						data: [<?php echo join($smp_8_ericsson, ',') ?>]
-					},
-					{
-						name: 'SMP 8 Nokia',
-						data: [<?php echo join($smp_8_nokia, ',') ?>]
-					},
-					{
-						name: 'SMP 8 Siemens',
-						data: [<?php echo join($smp_8_siemens, ',') ?>]
-					}
-					]							
-		});				
+					// series: [{
+								// name: 'Marker',
+								// color:'red'
+							// },{
+						// name: 'SMP 8 Huawei',
+						// data: [<?php echo join($smp_8, ',') ?>]
+					// },
+					// {
+						// name: 'SMP 8 Ericsson',
+						// data: [<?php echo join($smp_8_ericsson, ',') ?>]
+					// },
+					// {
+						// name: 'SMP 8 Nokia',
+						// data: [<?php echo join($smp_8_nokia, ',') ?>]
+					// },
+					// {
+						// name: 'SMP 8 Siemens',
+						// data: [<?php echo join($smp_8_siemens, ',') ?>]
+					// }
+					// ]							
+		// });				
 
-//////////////////////////////////////////////////////////////////////////////////////////SMP_9//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////////////////////////SMP_9//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		var smp_9 = new Highcharts.Chart({
-		chart: {
-				renderTo: 'smp_9',
-				alignTicks:false,
-				//backgroundColor:'transparent',
-				zoomType: 'xy'
-				,
-					events: {
-						click: function(e) {
-						//console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
-						// alert(e.xAxis[0].value);
-						//acc.chart.series[1].show();
-						if(estado_smp_9 != false){
-						smp_9.xAxis[0].options.plotLines[0].color = "red";
-						smp_9.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
-						smp_9.xAxis[0].update();
-						}
-      }
-    }
-				//backgroundColor: {
-                //linearGradient: [0, 0, 500, 500],
-                //stops: [
-                //    [0, 'rgb(255, 255, 255)'],
-               //     [1, 'rgb(200, 200, 255)']
-              //  ]
-            //}
-				//borderWidth: 2		
-						///type: 'line',
-						///height: 195		
-				},
-				//	colors: ['#000099', '#CC0000', '#006600', '#FFCC00', '#D9CDB6'],
-					credits: {
-					   enabled: false
-					},		
-					exporting: { 
-					enabled: true 
-					},
-					title: {
-						text: '<b>SMP 9</b>',// - ' + node,
-					//	 floating: true,
-						x: -20, //center
-						//y: 0
-					},
-					subtitle: {
-						text: '<i>' + node + '</i>',
-						x: -20
-					},
-					xAxis: {
-						categories: [<?php echo join($date, ',') ?>],///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
-					plotLines: [{
-								color: '#FF0000',
-								width: 2,
-								dashStyle: 'dash',
-								color: 'red',
-								width: 2,
-								zIndex: 10
-							}]					
-					},
-					yAxis: {
-						//max: 100,
-						//min: 99.4,
-						title: {
-							text: '%'
-						},
-						//{  },
-						plotLines: [{
-							value: 0,
-							width: 1,
-							color: '#808080'
-						}]
+		// var smp_9 = new Highcharts.Chart({
+		// chart: {
+				// renderTo: 'smp_9',
+				// alignTicks:false,
+				// //backgroundColor:'transparent',
+				// zoomType: 'xy'
+				// ,
+					// events: {
+						// click: function(e) {
+						// //console.log(e.xAxis[0].axis.categories[Math.round(e.xAxis[0].value)])
+						// // alert(e.xAxis[0].value);
+						// //acc.chart.series[1].show();
+						// if(estado_smp_9 != false){
+						// smp_9.xAxis[0].options.plotLines[0].color = "red";
+						// smp_9.xAxis[0].options.plotLines[0].value = e.xAxis[0].value;
+						// smp_9.xAxis[0].update();
+						// }
+      // }
+    // }
+				// //backgroundColor: {
+                // //linearGradient: [0, 0, 500, 500],
+                // //stops: [
+                // //    [0, 'rgb(255, 255, 255)'],
+               // //     [1, 'rgb(200, 200, 255)']
+              // //  ]
+            // //}
+				// //borderWidth: 2		
+						// ///type: 'line',
+						// ///height: 195		
+				// },
+				// //	colors: ['#000099', '#CC0000', '#006600', '#FFCC00', '#D9CDB6'],
+					// credits: {
+					   // enabled: false
+					// },		
+					// exporting: { 
+					// enabled: true 
+					// },
+					// title: {
+						// text: '<b>SMP 9</b>',// - ' + node,
+					// //	 floating: true,
+						// x: -20, //center
+						// //y: 0
+					// },
+					// subtitle: {
+						// text: '<i>' + node + '</i>',
+						// x: -20
+					// },
+					// xAxis: {
+						// categories: [<?php echo join($date, ',') ?>],///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
+					// plotLines: [{
+								// color: '#FF0000',
+								// width: 2,
+								// dashStyle: 'dash',
+								// color: 'red',
+								// width: 2,
+								// zIndex: 10
+							// }]					
+					// },
+					// yAxis: {
+						// //max: 100,
+						// //min: 99.4,
+						// title: {
+							// text: '%'
+						// },
+						// //{  },
+						// plotLines: [{
+							// value: 0,
+							// width: 1,
+							// color: '#808080'
+						// }]
 						
-					},
-					tooltip: {
-					valueSuffix: '%',
-					shared: false
-					},
-					legend: {
-						layout: 'horizontal',
-						align: 'center',
-						verticalAlign: 'bottom',
-						floating: false,
-						borderWidth: 0
-					},
+					// },
+					// tooltip: {
+					// valueSuffix: '%',
+					// shared: false
+					// },
+					// legend: {
+						// layout: 'horizontal',
+						// align: 'center',
+						// verticalAlign: 'bottom',
+						// floating: false,
+						// borderWidth: 0
+					// },
 
-					plotOptions: {
-						series: {
-							cursor: 'pointer',
-							events: {
+					// plotOptions: {
+						// series: {
+							// cursor: 'pointer',
+							// events: {
            
-						legendItemClick: function () {
-						if(this.name == "Marker"){
-						if(this.visible == true){
-						estado_smp_9 = false;		
-						smp_9.xAxis[0].options.plotLines[0].color = "transparent";
-						smp_9.xAxis[0].update();
-						}else
-						if(this.visible == false){	
-						estado_smp_9 = true;	
-						smp_9.xAxis[0].options.plotLines[0].color = "red";
-						smp_9.xAxis[0].update();
-						}	
-						}
-				}
-							}
-						}
-					},
+						// legendItemClick: function () {
+						// if(this.name == "Marker"){
+						// if(this.visible == true){
+						// estado_smp_9 = false;		
+						// smp_9.xAxis[0].options.plotLines[0].color = "transparent";
+						// smp_9.xAxis[0].update();
+						// }else
+						// if(this.visible == false){	
+						// estado_smp_9 = true;	
+						// smp_9.xAxis[0].options.plotLines[0].color = "red";
+						// smp_9.xAxis[0].update();
+						// }	
+						// }
+				// }
+							// }
+						// }
+					// },
 					
-					series: [{
-								name: 'Marker',
-								color:'red'
-							},{
-						name: 'SMP 9 Huawei',
-						data: [<?php echo join($smp_9, ',') ?>]
-					},
-					{
-						name: 'SMP 9 Ericsson',
-						data: [<?php echo join($smp_9_ericsson, ',') ?>]
-					},
-					{
-						name: 'SMP 9 Nokia',
-						data: [<?php echo join($smp_9_nokia, ',') ?>]
-					},
-					{
-						name: 'SMP 9 Siemens',
-						data: [<?php echo join($smp_9_siemens, ',') ?>]
-					}
-					]							
-		});				
+					// series: [{
+								// name: 'Marker',
+								// color:'red'
+							// },{
+						// name: 'SMP 9 Huawei',
+						// data: [<?php echo join($smp_9, ',') ?>]
+					// },
+					// {
+						// name: 'SMP 9 Ericsson',
+						// data: [<?php echo join($smp_9_ericsson, ',') ?>]
+					// },
+					// {
+						// name: 'SMP 9 Nokia',
+						// data: [<?php echo join($smp_9_nokia, ',') ?>]
+					// },
+					// {
+						// name: 'SMP 9 Siemens',
+						// data: [<?php echo join($smp_9_siemens, ',') ?>]
+					// }
+					// ]							
+		// });				
 
 
 //////////////////////////////////////////////////////////////////////////////////////////TRAFFIC//////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1224,18 +1200,84 @@ $(function () {
 													
 							]							
 				});
+				
+var kpi = [];
+var scale = [];
 
+kpi[0] = "acc";
+kpi[1] = "availability";
+kpi[2] = "retainability_cs";
+// kpi[3] = "smp_5";
+// kpi[4] = "smp_7";
+// kpi[5] = "smp_8";
+// kpi[6] = "smp_9";
+kpi[3] = "traffic";
+
+function altera_escala(iscale){
+
+	scale[iscale] = $("#"+kpi[iscale]+"").highcharts();
+	$( '<div id="'+kpi[iscale]+'" style="text-align:left; margin-left: 10px; display:none"><div style="display:inline-block">min Y: <input id="scale_min'+i+'" type="number" style="width:70px"/></div><div style="display:inline-block">max Y: <input id="scale_max'+i+'" type="number" style="width:70px"/></div></div>' ).insertBefore( "#content"+i+"" );
+	$('#scale_max'+iscale+'').val(scale[iscale].yAxis[0].getExtremes().dataMax);
+	$('#scale_min'+iscale+'').val(scale[iscale].yAxis[0].getExtremes().dataMin);
+	
+	$('#scale_max'+iscale+'').on('keyup mouseup', function(){
+
+		var x = $('#scale_max'+iscale+'').val();
+		if(x != ""){	
+		scale[iscale].yAxis[0].update({max: ""+x+""});
+		}else{
+		$('#scale_max'+iscale+'').val(scale[iscale].yAxis[0].getExtremes().dataMax);	
+		scale[iscale].yAxis[0].update({max: null});
+		}
+		
+	});
+	
+	$('#scale_min'+iscale+'').on('keyup mouseup', function(){
+		
+		var x = $('#scale_min'+iscale+'').val();
+		if(x != ""){	
+			scale[iscale].yAxis[0].update({min: ""+x+""});
+		}else{
+		$('#scale_min'+iscale+'').val(scale[iscale].yAxis[0].getExtremes().dataMin);	
+			scale[iscale].yAxis[0].update({min: null});
+		}
+		
+	});	
+}	
+
+for(i = 0; i < kpi.length; i++ ){
+
+altera_escala(i);
+
+}
+
+Highcharts.getOptions().exporting.buttons.contextButton.menuItems.push({
+	text: 'Scale Options',
+	onclick: function (e) {
+		for(i = 0; i < kpi.length; i++){		
+			if(toogle_availability == false){
+			$('#'+kpi[i]+'').show();
+			}else{
+			$('#'+kpi[i]+'').hide();
+			}	
+		}
+		if(toogle_availability == false){
+		toogle_availability = true;	
+		}else{
+		toogle_availability = false;	
+		}
+	}
+});
+					
 //////////////////////////////////////////////////////////////////////////////////////////FIM//////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $('#export').click(function() {
-    Highcharts.exportCharts([acc,drop,traffic,users,thp,retention,handover,sho_overhead,availability,rtwp]);
-});		
-  });	
+    Highcharts.exportCharts([acc,availability,retainability_cs,traffic]);
+});
+	
+});	
 
-
-  });
-  
-
-
+});
+   
     $('.chart_content').bind('dblclick', function () {
         var $this = $(this);
         $this.toggleClass('modal');

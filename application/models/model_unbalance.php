@@ -199,6 +199,49 @@ FROM umts_kpi.load_ee
 
 	}
 
+	function unbalance_cell($node,$reportdate){
+		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
+		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
+		$dayweek3 = date('Y-m-d', strtotime($reportdate.' -7 day'));
+		$dayweek4 = date('Y-m-d', strtotime($reportdate.' 0 day'));		
+		$date1 = new DateTime($dayweek1);
+		$date2 = new DateTime($dayweek2);
+		$date3 = new DateTime($dayweek3);
+		$date4 = new DateTime($dayweek4);
+		$weeknum1= $date1->format("W");
+		$weeknum2= $date2->format("W");
+		$weeknum3 = $date3->format("W");
+		$weeknum4 = $date4->format("W");
+		$yearnum1= $date1->format("o");
+		$yearnum2= $date2->format("o");
+		$yearnum3 = $date3->format("o");
+		$yearnum4 = $date4->format("o");
+		
+		$query = $this->db->query(
+		"
+		select node, 'cell'::text as type,
+STRING_AGG(week::text, ',' order by year desc,week desc) AS weeks,
+STRING_AGG(region::text, ',' order by year desc,week desc) AS region,
+STRING_AGG(rnc::text, ',' order by year desc,week desc) AS rnc,
+STRING_AGG(nodeb::text, ',' order by year desc,week desc) AS nodeb,
+STRING_AGG(carrier::text, ',' order by year desc,week desc) AS carrier,
+STRING_AGG(azimuth::text, ',' order by year desc,week desc) AS azimuth,
+STRING_AGG(round(ee,2)::text, ',' order by year desc,week desc) AS ee,
+STRING_AGG(round(load,2)::text, ',' order by year desc,week desc) AS load,
+STRING_AGG(round(avg_ee,2)::text, ',' order by year desc,week desc) AS avg_ee,
+STRING_AGG(balanced::text, ',' order by year desc,week desc) AS balanced,
+STRING_AGG(highly_loaded_cell::text, ',' order by year desc,week desc) AS hl_cell
+FROM umts_kpi.load_ee
+		where (year,week) in ((".$yearnum4.",".$weeknum4."))	
+		and 
+		node = '".$node."'
+		group by node
+		order by nodeb,azimuth,carrier
+;");
+
+	return $query->result();
+
+	}
 function unbalance_chart($reportdate){
 		$dayweek1 = date('Y-m-d', strtotime($reportdate.' -21 day'));	
 		$dayweek2 = date('Y-m-d', strtotime($reportdate.' -14 day'));	
@@ -238,6 +281,33 @@ FROM umts_kpi.load_ee
 		group by region,azimuth, nodeb, balanced, year, week) t group by azimuth, region, nodeb, year, week))
 f group by node, year, week order by year, week, node
 ;");
+
+	return $query->result();
+
+	}
+	
+	function unbalance_daily($node,$reportdate){
+		
+		$query = $this->db->query(
+		"SELECT nodeb as node, 
+  a.rnc,
+  b.cell,
+  a.cellid, 
+  STRING_AGG(datetime::text, ',' order by datetime) as date,
+  STRING_AGG(ee::text, ',' order by datetime) as ee
+  FROM (select c.rnc, c.cellid, c.datetime, 
+  case when d.ee is null then 'null'::text 
+else d.ee::text
+end 
+from (select * from (select distinct rnc,cellid from umts_kpi.amx_load where datetime > '".$reportdate."'::timestamp - '10 days'::interval
+and (rnc,cellid) in (SELECT rnc,cellid from umts_control.cells_database where nodebname_norm = '".$node."')) a
+cross join (select distinct datetime from umts_kpi.amx_load where datetime > '".$reportdate."'::timestamp - '10 days'::interval
+and (rnc,cellid) in (SELECT rnc,cellid from umts_control.cells_database where nodebname_norm = '".$node."')) b) c
+left join (select * from umts_kpi.amx_load where datetime > '".$reportdate."'::timestamp - '10 days'::interval
+and (rnc,cellid) in (SELECT rnc,cellid from umts_control.cells_database where nodebname_norm = '".$node."')) d on c.datetime = d.datetime and c.cellid = d.cellid ) a
+  join (SELECT rnc,cellid,cell,nodeb from umts_control.cells_database where nodebname_norm = '".$node."') b on a.cellid = b.cellid
+ group by a.cellid, a.rnc, b.cell, nodeb order by cell
+ ;");
 
 	return $query->result();
 

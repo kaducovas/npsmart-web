@@ -24,7 +24,7 @@ class Model_mainkpis_lte extends CI_Model{
 			SELECT *,'region'::text as type,2 as sortcol 
 			   FROM lte_kpi.vw_main_kpis_region_rate_monthly 
 			   where month = ".$monthnum." and year = ".$year."
-			   and node != 'UNKNOWN'
+			   and node != 'UNKNOWN' and node != 'UNKN'
 			   order by sortcol,month, node
 	;");
 	
@@ -43,7 +43,7 @@ class Model_mainkpis_lte extends CI_Model{
 		// echo $endweek;
 		#$weeknum_start = $weeknum -4;
 			 $query = $this->db->query(
-			 "SELECT week as date, node, rrc_service, fails_rrc_service, 
+			 "SELECT year,week as date, node, rrc_service, fails_rrc_service, 
        rrc_signaling, fails_rrc_signaling, s1sig, fails_s1sig, e_rab, 
        fails_e_rab, call_setup, csfb, fails_csfb, availability, intra_freq_hoo_out, 
        inter_freq_hoo_out, handover_in, iratho_l2c, iratho_l2w, iratho_l2g, 
@@ -74,8 +74,9 @@ class Model_mainkpis_lte extends CI_Model{
 	  UNION
 			SELECT *,'region'::text as type,2 as sortcol 
 			   FROM lte_kpi.vw_main_kpis_region_rate_weekly 
-			   where week = ".$weeknum." and year = 2018
+			   where week = ".$weeknum." and year = 2018 and node != 'UNKN'
 			   order by sortcol,week, node
+			   
 	;");
 
 	return $query->result();
@@ -124,7 +125,7 @@ function region_weekly_report_graph($node,$reportdate){
 		$endyear = $date->format("o");		
 		#$weeknum_start = $weeknum -4;
 			 $query = $this->db->query(
-			 "SELECT week as date, node, rrc_service, fails_rrc_service, 
+			 "SELECT year,week as date, node, rrc_service, fails_rrc_service, 
        rrc_signaling, fails_rrc_signaling, s1sig, fails_s1sig, e_rab, 
        fails_e_rab, call_setup, csfb, fails_csfb, availability, intra_freq_hoo_out, 
        inter_freq_hoo_out, handover_in, iratho_l2c, iratho_l2w, iratho_l2g, 
@@ -167,7 +168,7 @@ function region_weekly_report_graph($node,$reportdate){
        rb_utilization_dl, rrc_signaling_ul, rb_preschedule_rb_urul, interference
 	  FROM lte_kpi.vw_main_kpis_enodeb_rate_monthly
 	  where month = ".$monthnum." and year = ".$year."
-	  and node = '".$node."'
+	  and enodebid = '".$enodebid."'
 	union
 	SELECT month, node,'cell'::text as type, rrc_service, fails_rrc_service, 
        rrc_signaling, fails_rrc_signaling, s1sig, fails_s1sig, e_rab, 
@@ -187,6 +188,9 @@ function region_weekly_report_graph($node,$reportdate){
 		}
 		
 	function enodeb_weekly_report_graph($node,$reportdate){
+		$this->load->model('model_cellsinfo');
+		$site_array = $this->model_cellsinfo->find_enodebid_from_enodeb($node);
+		$enodebid = $site_array[0]->enodebid;
 		$date = new DateTime($reportdate);
 		$endweek = $date->format("W");
 		$strreportdate = date('Y-m-d', strtotime($reportdate.' -150 day'));
@@ -196,7 +200,7 @@ function region_weekly_report_graph($node,$reportdate){
 		$endyear = $date->format("o");		
 		#$weeknum_start = $weeknum -4;
 			 $query = $this->db->query(
-			 "SELECT week as date, node, rrc_service, fails_rrc_service, 
+			 "SELECT year,week as date, node, rrc_service, fails_rrc_service, 
        rrc_signaling, fails_rrc_signaling, s1sig, fails_s1sig, e_rab, 
        fails_e_rab, call_setup, csfb, fails_csfb, availability, intra_freq_hoo_out, 
        inter_freq_hoo_out, handover_in, iratho_l2c, iratho_l2w, iratho_l2g, 
@@ -212,7 +216,7 @@ function region_weekly_report_graph($node,$reportdate){
 	   data_volume, data_volume_1800, data_volume_2600, data_volume_700
   FROM lte_kpi.vw_main_kpis_enodeb_rate_weekly 
   WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
-  and node = '".$node."'
+  and enodebid = '".$enodebid."'
 order by year,week
 	;");	
 
@@ -266,7 +270,7 @@ order by year,week
 		$endyear = $date->format("o");		
 		#$weeknum_start = $weeknum -4;
 			 $query = $this->db->query(
-			 "SELECT week as date, node, rrc_service, fails_rrc_service, 
+			 "SELECT year,week as date, node, rrc_service, fails_rrc_service, 
        rrc_signaling, fails_rrc_signaling, s1sig, fails_s1sig, e_rab, 
        fails_e_rab, call_setup, csfb, fails_csfb, availability, intra_freq_hoo_out, 
        inter_freq_hoo_out, handover_in, iratho_l2c, iratho_l2w, iratho_l2g, 
@@ -340,7 +344,7 @@ order by year,week
 		$endyear = $date->format("o");		
 		#$weeknum_start = $weeknum -4;
 			 $query = $this->db->query(
-			 "SELECT week as date, node, rrc_service, fails_rrc_service, 
+			 "SELECT year,week as date, node, rrc_service, fails_rrc_service, 
        rrc_signaling, fails_rrc_signaling, s1sig, fails_s1sig, e_rab, 
        fails_e_rab, call_setup, csfb, fails_csfb, availability, intra_freq_hoo_out, 
        inter_freq_hoo_out, handover_in, iratho_l2c, iratho_l2w, iratho_l2g, 
@@ -417,7 +421,7 @@ order by year,week
 		$endyear = $date->format("o");		
 		#$weeknum_start = $weeknum -4;
 			 $query = $this->db->query(
-			 "SELECT week as date, concat(node,' - ',uf) as node, rrc_service, fails_rrc_service, 
+			 "SELECT year,week as date, concat(node,' - ',uf) as node, rrc_service, fails_rrc_service, 
        rrc_signaling, fails_rrc_signaling, s1sig, fails_s1sig, e_rab, 
        fails_e_rab, call_setup, csfb, fails_csfb, availability, intra_freq_hoo_out, 
        inter_freq_hoo_out, handover_in, iratho_l2c, iratho_l2w, iratho_l2g, 
@@ -492,7 +496,7 @@ order by year,week
 		$endyear = $date->format("o");
 		#$weeknum_start = $weeknum -4;
 			 $query = $this->db->query(
-			 "SELECT week as date, node, rrc_service, fails_rrc_service, 
+			 "SELECT year,week as date, node, rrc_service, fails_rrc_service, 
        rrc_signaling, fails_rrc_signaling, s1sig, fails_s1sig, e_rab, 
        fails_e_rab, call_setup, csfb, fails_csfb, availability, intra_freq_hoo_out, 
        inter_freq_hoo_out, handover_in, iratho_l2c, iratho_l2w, iratho_l2g, 
@@ -544,7 +548,7 @@ order by year,week
        downlink_traffic_volume, uplink_traffic_volume, average_user_volume, 
        rb_utilization_dl, rrc_signaling_ul, rb_preschedule_rb_urul, interference
   from lte_kpi.vw_main_kpis_enodeb_rate_weekly
-  where week = ".$weeknum." and node = '".$node."' and year = 2018
+  where week = ".$weeknum." and enodebid = '".$enodebid."' and year = 2018
   union
   SELECT week, node,'cell'::text as type,2 as sortcol, rrc_service, fails_rrc_service, rrc_signaling, 
        fails_rrc_signaling, s1sig, fails_s1sig, e_rab, fails_e_rab, 
@@ -793,6 +797,9 @@ order by year,week
 	}
 
 	function enodeb_daily_report($node,$reportdate){
+		$this->load->model('model_cellsinfo');
+		$site_array = $this->model_cellsinfo->find_enodebid_from_enodeb($node);
+		$enodebid = $site_array[0]->enodebid;
 		$daterange = $reportdate;
 		$inidate = date('Y-m-d', strtotime($daterange.' -60 day'));
 		$findate = date('Y-m-d', strtotime($daterange));
@@ -812,7 +819,7 @@ order by year,week
 	   average_user_volume_2cc,average_user_volume_3cc,cell_downlink_avg_thp_ca,
 	   weighted_thp,interference_2600,interference_1800,interference_700,csfb_prep,data_volume, data_volume_1800, data_volume_2600, data_volume_700
   FROM lte_kpi.vw_main_kpis_enodeb_rate_daily
-  WHERE node = '".$node."'  
+  WHERE enodebid = '".$enodebid."'  
   and date between '".$inidate."' and '".$findate."' order by date
 	;");	
 
@@ -872,7 +879,7 @@ order by year,week
 		$site_array = $this->model_cellsinfo->find_enodebid_from_enodeb($node);
 		$enodebid = $site_array[0]->enodebid;
 			 $query = $this->db->query(
-			 "SELECT  
+			 "SELECT 
 			 date, '".$node."' node, 'enodebs'::text as type,1 as sortcol,rrc_service, fails_rrc_service, 
        rrc_signaling, fails_rrc_signaling, s1sig, fails_s1sig, e_rab, 
        fails_e_rab, call_setup, csfb, fails_csfb, availability, intra_freq_hoo_out, 
@@ -884,16 +891,46 @@ order by year,week
   FROM lte_kpi.vw_main_kpis_enodeb_rate_daily_2
   where date = '".$reportdate."' and enodebid = '".$enodebid."'
    union
-  SELECT date, node,'cell'::text as type,2 as sortcol, rrc_service, fails_rrc_service, rrc_signaling, 
-       fails_rrc_signaling, s1sig, fails_s1sig, e_rab, fails_e_rab, 
-       call_setup, csfb, fails_csfb, availability, intra_freq_hoo_out, 
-       inter_freq_hoo_out, handover_in, iratho_l2c, iratho_l2w, iratho_l2g, 
-       iratho_l2t, retention_4g, service_drop, cell_downlink_avg_thp, 
-       cell_uplink_avg_thp, rb_cell_downlink_avg_thp, rb_cell_uplink_avg_thp, 
-       downlink_traffic_volume, uplink_traffic_volume, average_user_volume, 
-       rb_utilization_dl, rrc_signaling_ul, rb_preschedule_rb_urul, interference
-  from lte_kpi.vw_main_kpis_cell_rate_daily_2
-  where  date = '".$reportdate."' and enodebid = ".$enodebid."
+  
+  SELECT 
+    main_kpis_lte.datetime::date AS date, main_kpis_lte.cellname AS node, 'cell'::text as type,2 as sortcol,        
+    round((100::real * COALESCE(sum(main_kpis_lte.rrc_service_num) / NULLIF(sum(main_kpis_lte.rrc_service_den), 0::real), 1::real))::numeric, 2) AS rrc_service,
+    sum(main_kpis_lte.rrc_service_den) - sum(main_kpis_lte.rrc_service_num) AS fails_rrc_service,
+    round((100::real * COALESCE(sum(main_kpis_lte.rrc_signaling_num) / NULLIF(sum(main_kpis_lte.rrc_signaling_den), 0::real), 1::real))::numeric, 2) AS rrc_signaling,
+    sum(main_kpis_lte.rrc_signaling_den) - sum(main_kpis_lte.rrc_signaling_num) AS fails_rrc_signaling,
+    round((100::real * COALESCE(sum(main_kpis_lte.s1sig_num) / NULLIF(sum(main_kpis_lte.s1sig_den), 0::real), 1::real))::numeric, 2) AS s1sig,
+    sum(main_kpis_lte.s1sig_den) - sum(main_kpis_lte.s1sig_num) AS fails_s1sig,
+    round((100::real * COALESCE(sum(main_kpis_lte.e_rab_num) / NULLIF(sum(main_kpis_lte.e_rab_den), 0::real), 1::real))::numeric, 2) AS e_rab,
+    sum(main_kpis_lte.e_rab_den) - sum(main_kpis_lte.e_rab_num) AS fails_e_rab,
+    round((100::real * COALESCE(sum(main_kpis_lte.rrc_service_num) / NULLIF(sum(main_kpis_lte.rrc_service_den), 0::real), 1::real) * COALESCE(sum(main_kpis_lte.s1sig_num) / NULLIF(sum(main_kpis_lte.s1sig_den), 0::real), 1::real) * COALESCE(sum(main_kpis_lte.e_rab_num) / NULLIF(sum(main_kpis_lte.e_rab_den), 0::real), 1::real))::numeric, 2) AS call_setup,
+    round((100::real * COALESCE(sum(main_kpis_lte.csfb_num) / NULLIF(sum(main_kpis_lte.csfb_den), 0::real), 1::real))::numeric, 2) AS csfb,
+    sum(main_kpis_lte.csfb_den) - sum(main_kpis_lte.csfb_num) AS fails_csfb,
+    round((100::real * (sum(main_kpis_lte.availability) / (sum(main_kpis_lte.gp) * 60)::double precision)::real)::numeric, 2) AS availability,
+    round((100::real * COALESCE(sum(main_kpis_lte.intra_freq_hoo_out_num) / NULLIF(sum(main_kpis_lte.intra_freq_hoo_out_den), 0::real), 1::real))::numeric, 2) AS intra_freq_hoo_out,
+    round((100::real * COALESCE(sum(main_kpis_lte.inter_freq_hoo_out_num) / NULLIF(sum(main_kpis_lte.inter_freq_hoo_out_den), 0::real), 1::real))::numeric, 2) AS inter_freq_hoo_out,
+    round((100::real * COALESCE(sum(main_kpis_lte.handover_in_num) / NULLIF(sum(main_kpis_lte.handover_in_den), 0::real), 1::real))::numeric, 2) AS handover_in,
+    round((100::real * COALESCE(sum(main_kpis_lte.iratho_l2c_num) / NULLIF(sum(main_kpis_lte.iratho_l2c_den), 0::real), 1::real))::numeric, 2) AS iratho_l2c,
+    round((100::real * COALESCE(sum(main_kpis_lte.iratho_l2w_num) / NULLIF(sum(main_kpis_lte.iratho_l2w_den), 0::real), 1::real))::numeric, 2) AS iratho_l2w,
+    round((100::real * COALESCE(sum(main_kpis_lte.iratho_l2g_num) / NULLIF(sum(main_kpis_lte.iratho_l2g_den), 0::real), 1::real))::numeric, 2) AS iratho_l2g,
+    round((100::real * COALESCE(sum(main_kpis_lte.iratho_l2t_num) / NULLIF(sum(main_kpis_lte.iratho_l2t_den), 0::real), 1::real))::numeric, 2) AS iratho_l2t,
+    round((100::real * (1::double precision - COALESCE(sum(main_kpis_lte.retention_4g_num) / NULLIF(sum(main_kpis_lte.retention_4g_den), 0::real), 1::real)))::numeric, 2) AS retention_4g,
+    round((100::real * (1::double precision - COALESCE(sum(main_kpis_lte.service_drop_num) / NULLIF(sum(main_kpis_lte.service_drop_den), 0::real), 1::real)))::numeric, 2) AS service_drop,
+    round(COALESCE(sum(main_kpis_lte.cell_downlink_avg_thp_num) / NULLIF(sum(main_kpis_lte.cell_downlink_avg_thp_den), 0::real) / 1000::double precision, 0::double precision)::numeric, 2) AS cell_downlink_avg_thp,
+    round(COALESCE(sum(main_kpis_lte.cell_uplink_avg_thp_num) / NULLIF(sum(main_kpis_lte.cell_uplink_avg_thp_den), 0::real) / 1000::double precision, 0::double precision)::numeric, 2) AS cell_uplink_avg_thp,
+    round(COALESCE((sum(main_kpis_lte.rb_cell_downlink_avg_thp_num) / NULLIF(sum(main_kpis_lte.rb_cell_downlink_avg_thp_den), 0::real))::double precision, 1::real::double precision)::numeric, 2) AS rb_cell_downlink_avg_thp,
+    round(COALESCE((sum(main_kpis_lte.rb_cell_uplink_avg_thp_num) / NULLIF(sum(main_kpis_lte.rb_cell_uplink_avg_thp_den), 0::real))::double precision, 1::real::double precision)::numeric, 2) AS rb_cell_uplink_avg_thp,
+    round((sum(main_kpis_lte.downlink_traffic_volume) / '8000000000'::bigint::double precision)::numeric, 2)::real AS downlink_traffic_volume,
+    round((sum(main_kpis_lte.uplink_traffic_volume) / '8000000000'::bigint::double precision)::numeric, 2)::real AS uplink_traffic_volume,
+    sum(main_kpis_lte.average_user_volume) AS average_user_volume,
+    round((100::real * COALESCE(sum(avg(main_kpis_lte.rb_utilization_dl_num) FILTER (WHERE main_kpis_lte.datetime::time without time zone >= '07:00:00'::time without time zone AND main_kpis_lte.datetime::time without time zone <= '22:00:00'::time without time zone)) OVER w / NULLIF(sum(avg(main_kpis_lte.rb_utilization_dl_den) FILTER (WHERE main_kpis_lte.datetime::time without time zone >= '07:00:00'::time without time zone AND main_kpis_lte.datetime::time without time zone <= '22:00:00'::time without time zone)) OVER w, 0::real), 1::real::double precision))::numeric, 2) AS rb_utilization_dl,
+    round((100::real * COALESCE(sum(avg(main_kpis_lte.rrc_signaling_ul_num) FILTER (WHERE main_kpis_lte.datetime::time without time zone >= '07:00:00'::time without time zone AND main_kpis_lte.datetime::time without time zone <= '22:00:00'::time without time zone)) OVER w / NULLIF(sum(avg(main_kpis_lte.rrc_signaling_ul_den) FILTER (WHERE main_kpis_lte.datetime::time without time zone >= '07:00:00'::time without time zone AND main_kpis_lte.datetime::time without time zone <= '22:00:00'::time without time zone)) OVER w, 0::real), 1::real::double precision))::numeric, 2) AS rrc_signaling_ul,
+    round((100::real * COALESCE(sum(avg(main_kpis_lte.rb_preschedule_rb_urul_num) FILTER (WHERE main_kpis_lte.datetime::time without time zone >= '07:00:00'::time without time zone AND main_kpis_lte.datetime::time without time zone <= '22:00:00'::time without time zone)) OVER w / NULLIF(sum(avg(main_kpis_lte.rb_preschedule_rb_urul_den) FILTER (WHERE main_kpis_lte.datetime::time without time zone >= '07:00:00'::time without time zone AND main_kpis_lte.datetime::time without time zone <= '22:00:00'::time without time zone)) OVER w, 0::real), 1::real::double precision))::numeric, 2) AS rb_preschedule_rb_urul,
+    round(sum(10::double precision * log(avg(power(10::double precision, main_kpis_lte.interference / 10::double precision)) FILTER (WHERE main_kpis_lte.datetime::time without time zone >= '07:00:00'::time without time zone AND main_kpis_lte.datetime::time without time zone <= '22:00:00'::time without time zone))) OVER w::numeric, 2) AS interference
+   FROM lte_kpi.main_kpis_lte
+   where datetime BETWEEN '".$reportdate."' AND '".$reportdate." 23:00' and enodebid = ".$enodebid."
+  GROUP BY (main_kpis_lte.datetime::date), enodebid, main_kpis_lte.enodeb, main_kpis_lte.locellid, main_kpis_lte.cellname
+  WINDOW w AS (PARTITION BY (main_kpis_lte.datetime::date), enodebid, main_kpis_lte.enodeb, main_kpis_lte.locellid, main_kpis_lte.cellname)
+  
   order by date,sortcol,node
 	;");	
 
@@ -918,16 +955,45 @@ order by year,week
   FROM lte_kpi.vw_main_kpis_enodeb_rate_daily_2
   where date = '".$reportdate."' and enodebid = ".$enodebid."
    union
-  SELECT date, node,'cell'::text as type,2 as sortcol, rrc_service, fails_rrc_service, rrc_signaling, 
-       fails_rrc_signaling, s1sig, fails_s1sig, e_rab, fails_e_rab, 
-       call_setup, csfb, fails_csfb, availability, intra_freq_hoo_out, 
-       inter_freq_hoo_out, handover_in, iratho_l2c, iratho_l2w, iratho_l2g, 
-       iratho_l2t, retention_4g, service_drop, cell_downlink_avg_thp, 
-       cell_uplink_avg_thp, rb_cell_downlink_avg_thp, rb_cell_uplink_avg_thp, 
-       downlink_traffic_volume, uplink_traffic_volume, average_user_volume, 
-       rb_utilization_dl, rrc_signaling_ul, rb_preschedule_rb_urul, interference
-  from lte_kpi.vw_main_kpis_cell_rate_daily_2
-  where  date = '".$reportdate."' and enodebid = ".$enodebid."
+SELECT 
+    main_kpis_lte.datetime::date AS date, main_kpis_lte.cellname AS node, 'cell'::text as type,2 as sortcol,        
+    round((100::real * COALESCE(sum(main_kpis_lte.rrc_service_num) / NULLIF(sum(main_kpis_lte.rrc_service_den), 0::real), 1::real))::numeric, 2) AS rrc_service,
+    sum(main_kpis_lte.rrc_service_den) - sum(main_kpis_lte.rrc_service_num) AS fails_rrc_service,
+    round((100::real * COALESCE(sum(main_kpis_lte.rrc_signaling_num) / NULLIF(sum(main_kpis_lte.rrc_signaling_den), 0::real), 1::real))::numeric, 2) AS rrc_signaling,
+    sum(main_kpis_lte.rrc_signaling_den) - sum(main_kpis_lte.rrc_signaling_num) AS fails_rrc_signaling,
+    round((100::real * COALESCE(sum(main_kpis_lte.s1sig_num) / NULLIF(sum(main_kpis_lte.s1sig_den), 0::real), 1::real))::numeric, 2) AS s1sig,
+    sum(main_kpis_lte.s1sig_den) - sum(main_kpis_lte.s1sig_num) AS fails_s1sig,
+    round((100::real * COALESCE(sum(main_kpis_lte.e_rab_num) / NULLIF(sum(main_kpis_lte.e_rab_den), 0::real), 1::real))::numeric, 2) AS e_rab,
+    sum(main_kpis_lte.e_rab_den) - sum(main_kpis_lte.e_rab_num) AS fails_e_rab,
+    round((100::real * COALESCE(sum(main_kpis_lte.rrc_service_num) / NULLIF(sum(main_kpis_lte.rrc_service_den), 0::real), 1::real) * COALESCE(sum(main_kpis_lte.s1sig_num) / NULLIF(sum(main_kpis_lte.s1sig_den), 0::real), 1::real) * COALESCE(sum(main_kpis_lte.e_rab_num) / NULLIF(sum(main_kpis_lte.e_rab_den), 0::real), 1::real))::numeric, 2) AS call_setup,
+    round((100::real * COALESCE(sum(main_kpis_lte.csfb_num) / NULLIF(sum(main_kpis_lte.csfb_den), 0::real), 1::real))::numeric, 2) AS csfb,
+    sum(main_kpis_lte.csfb_den) - sum(main_kpis_lte.csfb_num) AS fails_csfb,
+    round((100::real * (sum(main_kpis_lte.availability) / (sum(main_kpis_lte.gp) * 60)::double precision)::real)::numeric, 2) AS availability,
+    round((100::real * COALESCE(sum(main_kpis_lte.intra_freq_hoo_out_num) / NULLIF(sum(main_kpis_lte.intra_freq_hoo_out_den), 0::real), 1::real))::numeric, 2) AS intra_freq_hoo_out,
+    round((100::real * COALESCE(sum(main_kpis_lte.inter_freq_hoo_out_num) / NULLIF(sum(main_kpis_lte.inter_freq_hoo_out_den), 0::real), 1::real))::numeric, 2) AS inter_freq_hoo_out,
+    round((100::real * COALESCE(sum(main_kpis_lte.handover_in_num) / NULLIF(sum(main_kpis_lte.handover_in_den), 0::real), 1::real))::numeric, 2) AS handover_in,
+    round((100::real * COALESCE(sum(main_kpis_lte.iratho_l2c_num) / NULLIF(sum(main_kpis_lte.iratho_l2c_den), 0::real), 1::real))::numeric, 2) AS iratho_l2c,
+    round((100::real * COALESCE(sum(main_kpis_lte.iratho_l2w_num) / NULLIF(sum(main_kpis_lte.iratho_l2w_den), 0::real), 1::real))::numeric, 2) AS iratho_l2w,
+    round((100::real * COALESCE(sum(main_kpis_lte.iratho_l2g_num) / NULLIF(sum(main_kpis_lte.iratho_l2g_den), 0::real), 1::real))::numeric, 2) AS iratho_l2g,
+    round((100::real * COALESCE(sum(main_kpis_lte.iratho_l2t_num) / NULLIF(sum(main_kpis_lte.iratho_l2t_den), 0::real), 1::real))::numeric, 2) AS iratho_l2t,
+    round((100::real * (1::double precision - COALESCE(sum(main_kpis_lte.retention_4g_num) / NULLIF(sum(main_kpis_lte.retention_4g_den), 0::real), 1::real)))::numeric, 2) AS retention_4g,
+    round((100::real * (1::double precision - COALESCE(sum(main_kpis_lte.service_drop_num) / NULLIF(sum(main_kpis_lte.service_drop_den), 0::real), 1::real)))::numeric, 2) AS service_drop,
+    round(COALESCE(sum(main_kpis_lte.cell_downlink_avg_thp_num) / NULLIF(sum(main_kpis_lte.cell_downlink_avg_thp_den), 0::real) / 1000::double precision, 0::double precision)::numeric, 2) AS cell_downlink_avg_thp,
+    round(COALESCE(sum(main_kpis_lte.cell_uplink_avg_thp_num) / NULLIF(sum(main_kpis_lte.cell_uplink_avg_thp_den), 0::real) / 1000::double precision, 0::double precision)::numeric, 2) AS cell_uplink_avg_thp,
+    round(COALESCE((sum(main_kpis_lte.rb_cell_downlink_avg_thp_num) / NULLIF(sum(main_kpis_lte.rb_cell_downlink_avg_thp_den), 0::real))::double precision, 1::real::double precision)::numeric, 2) AS rb_cell_downlink_avg_thp,
+    round(COALESCE((sum(main_kpis_lte.rb_cell_uplink_avg_thp_num) / NULLIF(sum(main_kpis_lte.rb_cell_uplink_avg_thp_den), 0::real))::double precision, 1::real::double precision)::numeric, 2) AS rb_cell_uplink_avg_thp,
+    round((sum(main_kpis_lte.downlink_traffic_volume) / '8000000000'::bigint::double precision)::numeric, 2)::real AS downlink_traffic_volume,
+    round((sum(main_kpis_lte.uplink_traffic_volume) / '8000000000'::bigint::double precision)::numeric, 2)::real AS uplink_traffic_volume,
+    sum(main_kpis_lte.average_user_volume) AS average_user_volume,
+    round((100::real * COALESCE(sum(avg(main_kpis_lte.rb_utilization_dl_num) FILTER (WHERE main_kpis_lte.datetime::time without time zone >= '07:00:00'::time without time zone AND main_kpis_lte.datetime::time without time zone <= '22:00:00'::time without time zone)) OVER w / NULLIF(sum(avg(main_kpis_lte.rb_utilization_dl_den) FILTER (WHERE main_kpis_lte.datetime::time without time zone >= '07:00:00'::time without time zone AND main_kpis_lte.datetime::time without time zone <= '22:00:00'::time without time zone)) OVER w, 0::real), 1::real::double precision))::numeric, 2) AS rb_utilization_dl,
+    round((100::real * COALESCE(sum(avg(main_kpis_lte.rrc_signaling_ul_num) FILTER (WHERE main_kpis_lte.datetime::time without time zone >= '07:00:00'::time without time zone AND main_kpis_lte.datetime::time without time zone <= '22:00:00'::time without time zone)) OVER w / NULLIF(sum(avg(main_kpis_lte.rrc_signaling_ul_den) FILTER (WHERE main_kpis_lte.datetime::time without time zone >= '07:00:00'::time without time zone AND main_kpis_lte.datetime::time without time zone <= '22:00:00'::time without time zone)) OVER w, 0::real), 1::real::double precision))::numeric, 2) AS rrc_signaling_ul,
+    round((100::real * COALESCE(sum(avg(main_kpis_lte.rb_preschedule_rb_urul_num) FILTER (WHERE main_kpis_lte.datetime::time without time zone >= '07:00:00'::time without time zone AND main_kpis_lte.datetime::time without time zone <= '22:00:00'::time without time zone)) OVER w / NULLIF(sum(avg(main_kpis_lte.rb_preschedule_rb_urul_den) FILTER (WHERE main_kpis_lte.datetime::time without time zone >= '07:00:00'::time without time zone AND main_kpis_lte.datetime::time without time zone <= '22:00:00'::time without time zone)) OVER w, 0::real), 1::real::double precision))::numeric, 2) AS rb_preschedule_rb_urul,
+    round(sum(10::double precision * log(avg(power(10::double precision, main_kpis_lte.interference / 10::double precision)) FILTER (WHERE main_kpis_lte.datetime::time without time zone >= '07:00:00'::time without time zone AND main_kpis_lte.datetime::time without time zone <= '22:00:00'::time without time zone))) OVER w::numeric, 2) AS interference
+   FROM lte_kpi.main_kpis_lte
+   where datetime BETWEEN '".$reportdate."' AND '".$reportdate." 23:00' and enodebid = ".$enodebid."
+  GROUP BY (main_kpis_lte.datetime::date), enodebid, main_kpis_lte.enodeb, main_kpis_lte.locellid, main_kpis_lte.cellname
+  WINDOW w AS (PARTITION BY (main_kpis_lte.datetime::date), enodebid, main_kpis_lte.enodeb, main_kpis_lte.locellid, main_kpis_lte.cellname)
+  
   order by date,sortcol,node
 	;");	
 

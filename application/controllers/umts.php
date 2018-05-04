@@ -169,6 +169,7 @@ class Umts extends CI_Controller {
 		} else {
 			$node = 'NETWORK';
 		}
+				
 		$data['reportnename'] = $node;
 		
 		//Set Type
@@ -286,7 +287,7 @@ class Umts extends CI_Controller {
 			$node = 'NETWORK';
 		}
 		$data['reportnename'] = $node;
-		
+						
 		//Set Type
 				if($this->input->post('reportnetype')){
 					$netype = $this->input->post('reportnetype');
@@ -324,7 +325,7 @@ class Umts extends CI_Controller {
 		$data['custom'] = $this->model_cellsinfo->custom();
 		
 		$regions = array("CO", "PRSC", "NE", "BASE","ES","MG");
-		
+				
 		if($netype == 'network'){
 			$data['node_weekly_report'] = $this->model_mainkpis->network_monthly_report($reportdate);
 			$data['node_daily_report'] = $this->model_mainkpis->network_weekly_report_graph($reportdate);
@@ -4031,6 +4032,7 @@ public function radar()
 		elseif($netype == 'wc'){
 			$data['radar_weekly_region'] = $this->model_radar->radar_weekly_wc($node,$reportdate, $nekpi);
 			$data['node_daily_report'] = $this->model_radar->region_daily_report($node,$reportdate);
+			$data['extra_info'] = $this->model_radar->extra_info($node,$reportdate,$nekpi,$netype);
 		}
 			//$data['node_daily_report'] = $this->model_radar->nqi_daily_cell($node,$reportdate);
 			// // $data['reportnetype'] = 'rnc';
@@ -4067,7 +4069,7 @@ public function radar()
 			($nekpi ==  'cs_call_completion')or($nekpi ==  'availability')or($nekpi ==  'traffic_load')or
 			($nekpi ==  'hardware_nodeb')or($nekpi ==  'air_interface_ul')or($nekpi ==  'air_interface_dl')or
 			($nekpi ==  'sho_overhead')or($nekpi ==  'overshooters')or($nekpi ==  'cpich_power_ratio')or
-			($nekpi ==  'composite')){
+			($nekpi ==  'sw_releases_features')or($nekpi ==  'composite')){
 			$this->load->view('view_radar_chart_daily',$data);				
 			$this->load->view('view_radar_wc',$data);
 		}	
@@ -4224,6 +4226,11 @@ public function unbalance()
 		}
 		elseif($netype == 'nodeb'){
 		$data['unbalance_weekly'] = $this->model_unbalance->unbalance_nodeb($node,$reportdate);
+		$data['unbalance_daily'] = $this->model_unbalance->unbalance_daily($node,$reportdate);
+		}
+		elseif($netype == 'cell'){
+		$data['unbalance_weekly'] = $this->model_unbalance->unbalance_cell($node,$reportdate);
+		//$data['unbalance_cell_daily'] = $this->model_unbalance->unbalance_cell_daily($node,$reportdate);
 		}
 		
 		$this->load->view('view_header');	
@@ -4233,6 +4240,9 @@ public function unbalance()
 		$this->load->view('view_unbalance_menu',$data);		
 		}
 		else{
+		if($netype == 'nodeb'){
+		$this->load->view('view_unbalance_chart_daily',$data);
+		}
 		$this->load->view('view_unbalance',$data);	
 		}
 	}
@@ -4273,7 +4283,7 @@ public function triage()
 		if($this->input->post('reportcell')){
 			$reportcell = $this->input->post('reportcell');
 		} else {
-			$reportcell = false;
+			$reportcell = 'KPIOK';
 		}
 		$data['reportcell'] = $reportcell;	
 		
@@ -4317,40 +4327,43 @@ public function triage()
 		$regions = array("CO", "PRSC", "NE", "BASE","ES","MG");
 		
 		if($netype == 'network'){
-		$data['triage_chart'] = $this->model_triage->triage_network_chart($reportdate);
+		$data['triage_chart'] = $this->model_triage->triage_network_chart($reportdate,$nekpi);
 		$data['triage_week'] = $this->model_triage->triage_network($reportdate);
 		}
 		elseif($netype == 'region'){
-		$data['triage_chart'] = $this->model_triage->triage_region_chart($node,$reportdate);
+		$data['triage_chart'] = $this->model_triage->triage_region_chart($node,$reportdate,$nekpi);
 		$data['triage_week'] = $this->model_triage->triage_region($node,$reportdate);
 		}
 		elseif($netype == 'rnc'){
-		$data['triage_chart'] = $this->model_triage->triage_rnc_chart($node,$reportdate);
+		$data['triage_chart'] = $this->model_triage->triage_rnc_chart($node,$reportdate,$nekpi);
 		$data['triage_week'] = $this->model_triage->triage_rnc($node,$reportdate);
 		}
 		elseif($netype == 'nodeb'){
-		$data['triage_chart'] = $this->model_triage->triage_nodeb_chart($node,$reportdate);
+		$data['triage_chart'] = $this->model_triage->triage_nodeb_chart($node,$reportdate,$nekpi);
 		$data['triage_week'] = $this->model_triage->triage_nodeb($node,$reportdate);
 		}
 		elseif($netype == 'uf'){
-		$data['triage_chart'] = $this->model_triage->triage_uf_chart($node,$reportdate);
+		$data['triage_chart'] = $this->model_triage->triage_uf_chart($node,$reportdate,$nekpi);
 		$data['triage_week'] = $this->model_triage->triage_uf($node,$reportdate);
 		}
 		elseif($netype == 'cidade'){
-		$data['triage_chart'] = $this->model_triage->triage_cidade_chart($node,$reportdate);
+		$data['triage_chart'] = $this->model_triage->triage_cidade_chart($node,$reportdate,$nekpi);
 		$data['triage_week'] = $this->model_triage->triage_cidade($node,$reportdate);
 		}
 		elseif($netype == 'cluster'){
-		$data['triage_chart'] = $this->model_triage->triage_cluster_chart($node,$reportdate);
+		$data['triage_chart'] = $this->model_triage->triage_cluster_chart($node,$reportdate,$nekpi);
 		$data['triage_week'] = $this->model_triage->triage_cluster($node,$reportdate);
 		}
 		elseif($netype == 'cell'){
+		if($reportcell){
+		$this->model_triage->update_form($node,$reportdate,$reportcell);
+		}
 		$data['triage_week'] = $this->model_triage->triage_cell($node,$reportdate);	
 		}
 		
 		$this->load->view('view_header_triage');	
 		$this->load->view('view_nav_triage',$data);
-		if($nekpi == 'overview'){
+		if($nekpi == 'overview' or $nekpi == 'kpi_ok' or $nekpi == 'kpi_nok'){
 			$this->load->view('view_theme_triage');
 			$this->load->view('view_triage_chart',$data);
 			$this->load->view('view_triage_chart_evolution',$data);	
@@ -4580,7 +4593,593 @@ public function tx_integrity()
 		$this->load->view('view_capacity_wc_chart_daily',$data);
 		}
 		$this->load->view('view_capacity_wc',$data);
-	}		
+	}
+
+	public function process_monitoring(){
+		
+		$this->load->helper('form');
+		$this->load->model('model_monitor');
+		$this->load->model('model_mainkpis');
+		$this->load->model('model_process_monitoring');
+		$this->load->model('model_cellsinfo');
+				
+		//Set Date and Weeknum
+		$reportdate = date("Y-m-d");
+		$maxdate = $this->model_process_monitoring->maxdate($reportdate);
+		$referencedate = $maxdate[0]->date;
+
+		//Set Date and Weeknumkp
+		if($this->input->post('reportdate')){
+			$reportdate = $this->input->post('reportdate');
+			if(strtotime($reportdate) > strtotime($referencedate)){ //IF the date if greater than yesterday then it changes to the reference date
+				$reportdate = $referencedate;
+			}
+		} 
+		else {
+			$reportdate = $referencedate;
+		}
+				
+		$date = new DateTime($reportdate);
+		$data['reportdate'] = $reportdate;
+		$data['reportagg'] = 'daily';
+		
+		$data['main_monitoring'] = $this->model_process_monitoring->main_monitoring($reportdate);
+		$data['quant_of_files'] = $this->model_process_monitoring->quant_files($reportdate);
+		$data['quant_of_all_files'] = $this->model_process_monitoring->all_files();
+		
+		$this->load->view('view_header_monitoring_processing');
+		$this->load->view('view_nav_monitoring_processing',$data);
+		$this->load->view('view_monitoring_processing',$data);
+
+	}
+
+	public function baseline_configuration(){
+		
+		$this->load->helper('form');
+		$this->load->model('model_monitor');
+		$this->load->model('model_mainkpis');
+		$this->load->model('model_baseline_configuration');
+		$this->load->model('model_cellsinfo');
+				
+		// //Set Date and Weeknum
+		$reportdate = date("Y-m-d");
+		$referencedate = $reportdate;
+
+		// //Set Date and Weeknumkp
+		if($this->input->post('reportdate')){
+			$reportdate = $this->input->post('reportdate');
+			if(strtotime($reportdate) > strtotime($referencedate)){ //IF the date if greater than yesterday then it changes to the reference date
+				$reportdate = $referencedate;
+			}
+		} 
+		else {
+			$reportdate = $referencedate;
+		}
+				
+		$date = new DateTime($reportdate);
+		$data['reportdate'] = $reportdate;
+		$data['reportagg'] = 'daily';
+		
+		$data['main_rules'] = $this->model_baseline_configuration->main_rules();
+		$data['all_id'] = $this->model_baseline_configuration->all_id();
+		$data['last_row_id'] = $this->model_baseline_configuration->last_row_id();
+
+		$this->load->view('view_header_baseline_configuration');
+		$this->load->view('view_nav_baseline_configuration',$data);
+		$this->load->view('view_baseline_configuration',$data);
+
+	}
+	
+	public function ajax_baseline(){
+		
+		$this->load->view('ajax_baseline_configuration');	
+		
+	}	
+
+	public function check_neighborhood(){
+
+
+		$this->load->helper('form');
+		$this->load->model('model_monitor');
+		$this->load->model('model_check_neigh_umts');
+		$this->load->model('model_cellsinfo');
+		
+		
+		//Set Node
+		if($this->input->post('reportnename')){
+			$node = $this->input->post('reportnename');
+		} else {
+			$node = 'NETWORK';
+		}
+		$data['reportnename'] = $node;
+		
+		
+		//Set Type
+		if($this->input->post('reportnetype')){
+			$netype = $this->input->post('reportnetype');
+		} else {
+			$netype = 'network';
+		}
+		$data['reportnetype'] = $netype;
+		
+		
+		$maxdate = $this->model_check_neigh_umts->maxdate();
+		$referencedate = $maxdate[0]->date;
+		
+		//Set Date and Weeknumkp
+		if($this->input->post('reportdate')){
+			$reportdate = $this->input->post('reportdate');
+			if(strtotime($reportdate) > strtotime($referencedate)){ //IF the date if greater than yesterday then it changes to the reference date
+				$reportdate = $referencedate;
+			}
+		} 
+		else {
+			$reportdate = $referencedate;
+		}
+		
+		$data['reportdate'] = $reportdate;
+		$data['reportagg'] = 'daily';
+		$data['reportkpi'] = 'neighbor_umts';
+		
+		$data['rncs'] = $this->model_cellsinfo->rncs();
+		$data['regional'] = $this->model_cellsinfo->regional();
+		$data['cidades'] = $this->model_cellsinfo->cidades();
+		$data['clusters'] = $this->model_cellsinfo->clusters();
+		$data['nodebs'] = $this->model_cellsinfo->nodebs();
+		$data['ufs'] = $this->model_cellsinfo->ufs();
+		$data['custom'] = $this->model_cellsinfo->custom();	
+	
+		$regions = array("CO", "PRSC", "NE", "BASE","ES","MG");
+		
+		if($netype == 'network'){
+			$data['main'] = $this->model_check_neigh_umts->network($reportdate,$node);
+			$data['external'] = $this->model_check_neigh_umts->external_network($reportdate,$node);
+			$data['external_lte_to_lte'] = $this->model_check_neigh_umts->external_network_lte_to_lte($reportdate,$node);
+			$data['coSites_lte_to_umts'] = $this->model_check_neigh_umts->coSites_network_lte_to_umts($reportdate,$node);
+			$data['names_external_lte_to_umts'] = $this->model_check_neigh_umts->names_external_network_lte_to_umts($reportdate,$node);
+			$data['conf_blind_lte_to_umts'] = $this->model_check_neigh_umts->conf_blind_network_lte_to_umts($reportdate,$node);
+			$data['coSites_inter_lte_to_umts'] = $this->model_check_neigh_umts->coSites_inter_network_lte_to_umts($reportdate,$node);
+			$data['tabela'] = $this->model_check_neigh_umts->tabela_network($reportdate,$node);
+		 }
+		 elseif ($netype == 'region') {
+			$data['main'] = $this->model_check_neigh_umts->region($reportdate,$node);
+			$data['external'] = $this->model_check_neigh_umts->external_region($reportdate,$node);
+			$data['external_lte_to_lte'] = $this->model_check_neigh_umts->external_region_lte_to_lte($reportdate,$node);
+			$data['coSites_lte_to_umts'] = $this->model_check_neigh_umts->coSites_region_lte_to_umts($reportdate,$node);
+			$data['names_external_lte_to_umts'] = $this->model_check_neigh_umts->names_external_region_lte_to_umts($reportdate,$node);
+			$data['conf_blind_lte_to_umts'] = $this->model_check_neigh_umts->conf_blind_region_lte_to_umts($reportdate,$node);
+			$data['coSites_inter_lte_to_umts'] = $this->model_check_neigh_umts->coSites_inter_region_lte_to_umts($reportdate,$node);
+			$data['tabela'] = $this->model_check_neigh_umts->tabela_region($reportdate,$node);
+		 }
+		 // elseif($netype == 'nodeb'){
+			// $data['main'] = $this->model_check_neigh_umts->nodebs($reportdate,$node);
+			// $data['external'] = $this->model_check_neigh_umts->external_nodebs($reportdate,$node);
+			// $data['external_lte_to_lte'] = $this->model_check_neigh_umts->external_nodebs_lte_to_lte($reportdate,$node);
+			// $data['coSites_lte_to_umts'] = $this->model_check_neigh_umts->coSites_nodebs_lte_to_umts($reportdate,$node);
+			// $data['names_external_lte_to_umts'] = $this->model_check_neigh_umts->names_external_nodebs_lte_to_umts($reportdate,$node);
+			// $data['conf_blind_lte_to_umts'] = $this->model_check_neigh_umts->conf_blind_nodebs_lte_to_umts($reportdate,$node);
+			// $data['coSites_inter_lte_to_umts'] = $this->model_check_neigh_umts->coSites_inter_nodebs_lte_to_umts($reportdate,$node);
+			// $data['tabela'] = $this->model_check_neigh_umts->tabela_nodebs($reportdate,$node);
+		 // }
+		 elseif($netype == 'uf'){
+			$data['main'] = $this->model_check_neigh_umts->uf($reportdate,$node);
+			$data['external'] = $this->model_check_neigh_umts->external_uf($reportdate,$node);
+			$data['external_lte_to_lte'] = $this->model_check_neigh_umts->external_uf_lte_to_lte($reportdate,$node);
+			$data['coSites_lte_to_umts'] = $this->model_check_neigh_umts->coSites_uf_lte_to_umts($reportdate,$node);
+			$data['names_external_lte_to_umts'] = $this->model_check_neigh_umts->names_external_uf_lte_to_umts($reportdate,$node);
+			$data['conf_blind_lte_to_umts'] = $this->model_check_neigh_umts->conf_blind_uf_lte_to_umts($reportdate,$node);
+			$data['coSites_inter_lte_to_umts'] = $this->model_check_neigh_umts->coSites_inter_uf_lte_to_umts($reportdate,$node);
+			$data['tabela'] = $this->model_check_neigh_umts->tabela_uf($reportdate,$node);
+		 }			
+		 elseif($netype == 'cidade'){
+			$cidade_aux = $this->model_cellsinfo->find_cidade_info_lte($node);
+			$ibge = $cidade_aux[0]->ibge;
+			$uf = $cidade_aux[0]->uf;
+			$data['main'] = $this->model_check_neigh_umts->city($reportdate,$ibge,$uf);
+			$data['external'] = $this->model_check_neigh_umts->external_cidades($reportdate,$ibge,$uf);
+			$data['external_lte_to_lte'] = $this->model_check_neigh_umts->external_cidades_lte_to_lte($reportdate,$ibge,$uf);
+			$data['coSites_lte_to_umts'] = $this->model_check_neigh_umts->coSites_cidades_lte_to_umts($reportdate,$ibge,$uf);
+			$data['names_external_lte_to_umts'] = $this->model_check_neigh_umts->names_external_cidades_lte_to_umts($reportdate,$ibge,$uf);
+			$data['conf_blind_lte_to_umts'] = $this->model_check_neigh_umts->conf_blind_cidades_lte_to_umts($reportdate,$ibge,$uf);
+			$data['coSites_inter_lte_to_umts'] = $this->model_check_neigh_umts->coSites_inter_cidades_lte_to_umts($reportdate,$ibge,$uf);
+			$data['tabela'] = $this->model_check_neigh_umts->tabela_cidades($reportdate,$ibge,$uf);
+		 }
+		 elseif($netype == 'cluster'){
+			$data['main'] = $this->model_check_neigh_umts->cluster($reportdate,$node);
+			$data['external'] = $this->model_check_neigh_umts->external_cluster($reportdate,$node);
+			$data['external_lte_to_lte'] = $this->model_check_neigh_umts->external_clusters_lte_to_lte($reportdate,$node);
+			$data['coSites_lte_to_umts'] = $this->model_check_neigh_umts->coSites_clusters_lte_to_umts($reportdate,$node);
+			$data['names_external_lte_to_umts'] = $this->model_check_neigh_umts->names_external_clusters_lte_to_umts($reportdate,$node);
+			$data['conf_blind_lte_to_umts'] = $this->model_check_neigh_umts->conf_blind_clusters_lte_to_umts($reportdate,$node);
+			$data['coSites_inter_lte_to_umts'] = $this->model_check_neigh_umts->coSites_inter_clusters_lte_to_umts($reportdate,$node);
+			$data['tabela'] = $this->model_check_neigh_umts->tabela_clusters($reportdate,$node);
+		 }
+		 elseif($netype == 'rnc'){
+			$data['main'] = $this->model_check_neigh_umts->rnc($reportdate,$node);
+			$data['external'] = $this->model_check_neigh_umts->external_rnc($reportdate,$node);
+			$data['external_lte_to_lte'] = $this->model_check_neigh_umts->external_rnc_lte_to_lte($reportdate,$node);
+			$data['coSites_lte_to_umts'] = $this->model_check_neigh_umts->coSites_rnc_lte_to_umts($reportdate,$node);
+			$data['names_external_lte_to_umts'] = $this->model_check_neigh_umts->names_external_rnc_lte_to_umts($reportdate,$node);
+			$data['conf_blind_lte_to_umts'] = $this->model_check_neigh_umts->conf_blind_rnc_lte_to_umts($reportdate,$node);
+			$data['coSites_inter_lte_to_umts'] = $this->model_check_neigh_umts->coSites_inter_rnc_lte_to_umts($reportdate,$node);
+			$data['tabela'] = $this->model_check_neigh_umts->tabela_rnc($reportdate,$node);
+		 }
+		
+		$this->load->view('view_header_check_neighborhood_lte');
+		$this->load->view('view_nav_check_neighborhood_umts',$data);
+		$this->load->view('view_theme_sand_signika');
+		$this->load->view('view_check_neighborhood_umts',$data);
+
+	}
+	
+	public function printscreen(){
+
+
+		$this->load->helper('form');
+		$this->load->model('model_monitor');
+		$this->load->model('model_cellsinfo');
+		
+		$this->load->view('view_PrintScreen');
+
+	}
+	
+	public function genarate_ppt(){
+		
+		$this->load->helper('form');
+		
+		$this->load->model('model_cellsinfo');
+		$this->load->model('model_ppt');
+		
+		$referencedate = $this->model_ppt->maxdate();
+		
+		if($this->input->post('reportweek')){
+			
+			$reportyear = $this->input->post('reportyear');
+			$reportweek = $this->input->post('reportweek');
+						
+			$year = (int)$reportyear;
+			$w1 = (int)$reportweek;
+			$w4 = $w1 - 3;
+			
+			$data['weeknum'] = $w1;
+			
+			$data['w1'] = $w1;
+			$data['w2'] = $w1 - 1;
+			$data['w3'] = $w1 - 2;
+			$data['w4'] = $w1 - 3;
+						
+			//PRIMEIRO GRÁFICO (SLIDES 3,4,5,6,7,8)
+			$data['gsm_number_of_sites'] = $this->model_ppt->gsm_number_of_sites();
+			$data['umts_number_of_sites'] = $this->model_ppt->umts_number_of_sites();
+			$data['lte_number_of_sites'] = $this->model_ppt->lte_number_of_sites();
+			
+			$data['lte_2600_sites'] = $this->model_ppt->lte_2600_sites();
+			$data['lte_1800_sites'] = $this->model_ppt->lte_1800_sites();
+			$data['lte_700_sites'] = $this->model_ppt->lte_700_sites();
+			
+			//SEGUNDO, TERCEIRO E QUARTO GRÁFICO (SLIDES 3,4,5,6,7,8)
+			$data['lte_cities_dashboard'] = $this->model_ppt->lte_cities_dashboard($year,$w1,$w4);
+			
+			//TODOS OS GRÁFICOS DO SLIDE 9 
+			$data['lte_cities_nqi'] = $this->model_ppt->lte_cities_nqi($year,$w1,$w4);
+			$data['umts_cities_nqi_hs'] = $this->model_ppt->umts_cities_nqi_hs($year,$w1,$w4);
+			
+			//TRÊS TABELAS DE CQI (SLIDES 11,12,13)
+			$data['umts_kpi_cs'] = $this->model_ppt->umts_kpi_cs($year,$w1,$w4);
+			$data['umts_kpi_hs'] = $this->model_ppt->umts_kpi_hs($year,$w1,$w4);
+			$data['cqi_lte'] = $this->model_ppt->cqi_lte($year,$w1,$w4);
+
+			//TRÊS GRÁFICOS DE COLUNA DO CELL MAPPING (SLIDES 11,12,13)
+			$data['vw_cqi_cs'] = $this->model_ppt->vw_cqi_cs($year,$w1,$w4);
+			$data['vw_cqi_hs'] = $this->model_ppt->vw_cqi_hs($year,$w1,$w4);
+			$data['vw_cqi_lte'] = $this->model_ppt->vw_cqi_lte($year,$w1,$w4);
+			
+			//PIZZA (SLIDES 11,12,13)
+			// $data['vw_cell_maping_cs'] = $this->model_ppt->vw_cell_maping_cs($year,$w1,$w4);
+			// $data['vw_cell_maping_hs'] = $this->model_ppt->vw_cell_maping_hs($year,$w1,$w4);
+			// $data['vw_cell_maping_lte'] = $this->model_ppt->vw_cell_maping_lte($year,$w1,$w4);
+			
+			//PIZZA (SLIDE 14,15,16)
+			$data['cidades_cs'] = $this->model_ppt->cidades_cs($year,$w1,$w4);
+			$data['cidades_hs'] = $this->model_ppt->cidades_hs($year,$w1,$w4);
+			$data['cidades_lte'] = $this->model_ppt->cidades_lte($year,$w1,$w4);
+			
+			//GRAFICO (SLIDE 15)
+			$data['total_degradations'] = $this->model_ppt->total_degradations($year,$w1,$w4);
+			
+			//TABELA (SLIDE 15)
+			$data['nqi_impact_table'] = $this->model_ppt->nqi_impact_table($year,$w1,$w4);
+			
+			$this->load->view('view_header_ppt');
+			$this->load->view('view_theme_sand_signika');
+			$this->load->view('view_nav_ppt',$data);
+			$this->load->view('view_ppt',$data);			
+		} 
+	}
+	
+	public function kpis_anatel(){
+		
+		$this->load->helper('form');
+		$this->load->model('model_monitor');
+		$this->load->model('model_main_kpis_anatel');
+		$this->load->model('model_cellsinfo');
+		
+		
+		//Set Node
+		if($this->input->post('reportnename')){
+			$node = $this->input->post('reportnename');
+		} else {
+			$node = 'NETWORK';
+		}
+		$data['reportnename'] = $node;
+		
+		
+		//Set Type
+		if($this->input->post('reportnetype')){
+			$netype = $this->input->post('reportnetype');
+		} else {
+			$netype = 'network';
+		}
+		$data['reportnetype'] = $netype;
+		
+		
+		$maxdate = $this->model_main_kpis_anatel->maxdate();
+		$referencedate = $maxdate[0]->date;
+		
+		//Set Date and Weeknumkp
+		if($this->input->post('reportdate')){
+			$reportdate = $this->input->post('reportdate');
+			if(strtotime($reportdate) > strtotime($referencedate)){ //IF the date if greater than yesterday then it changes to the reference date
+				$reportdate = $referencedate;
+			}
+		} 
+		else {
+			$reportdate = $referencedate;
+		}
+		
+		$date = date('Y-m-d', strtotime($reportdate.' - 5 day'));
+		
+		$data['reportdate'] = $reportdate;
+		$data['reportagg'] = 'daily';
+		$data['reportkpi'] = 'main_kpis_anatel';
+		
+		$data['rncs'] = $this->model_cellsinfo->rncs();
+		$data['regional'] = $this->model_cellsinfo->regional();
+		$data['cidades'] = $this->model_cellsinfo->cidades();
+		$data['clusters'] = $this->model_cellsinfo->clusters();
+		$data['nodebs'] = $this->model_cellsinfo->nodebs();
+		$data['ufs'] = $this->model_cellsinfo->ufs();
+		$data['custom'] = $this->model_cellsinfo->custom();	
+	
+		$regions = array("CO", "PRSC", "NE", "BASE","ES","MG");
+		
+		if($netype == 'network'){
+			$data['smp'] = $this->model_main_kpis_anatel->network($date,$reportdate);
+		 }
+		 elseif ($netype == 'region') {
+			$data['smp'] = $this->model_main_kpis_anatel->region($date,$reportdate,$node);
+		 }
+		 elseif($netype == 'nodeb'){
+			$data['smp'] = $this->model_main_kpis_anatel->nodeb($date,$reportdate,$node);
+		 }
+		 elseif($netype == 'uf'){
+			$data['smp'] = $this->model_main_kpis_anatel->uf($date,$reportdate,$node);
+		 }			
+		 elseif($netype == 'cidade'){ 
+			$cidade_aux = $this->model_cellsinfo->find_cidade_info($node);
+			$ibge = $cidade_aux[0]->ibge;
+			$uf = $cidade_aux[0]->uf;
+			$data['smp'] = $this->model_main_kpis_anatel->cidade($date,$reportdate,$ibge,$uf);
+		 }
+		 elseif($netype == 'cluster'){
+			$cluster_aux = $this->model_cellsinfo->find_cluster_info($node);
+			$cluster_id = $cluster_aux[0]->cluster_id;
+			$uf = $cluster_aux[0]->uf;
+			$data['smp'] = $this->model_main_kpis_anatel->cluster($year,$week,$final_year,$final_week,$cluster_id,$uf);  
+		 }
+		 elseif($netype == 'rnc'){
+			$data['smp'] = $this->model_main_kpis_anatel->rnc($date,$reportdate,$node); 
+		 }
+		
+		$this->load->view('view_header_check_neighborhood_lte');
+		$this->load->view('view_nav_main_kpis_anatel',$data);
+		$this->load->view('view_theme_sand_signika');
+		$this->load->view('view_main_kpis_anatel',$data);
+		
+	}
+
+	public function kpis_anatel_weekly(){
+		
+		$this->load->helper('form');
+		$this->load->model('model_monitor');
+		$this->load->model('model_main_kpis_anatel');
+		$this->load->model('model_cellsinfo');
+		
+		
+		//Set Node
+		if($this->input->post('reportnename')){
+			$node = $this->input->post('reportnename');
+		} else {
+			$node = 'NETWORK';
+		}
+		$data['reportnename'] = $node;
+		
+		
+		//Set Type
+		if($this->input->post('reportnetype')){
+			$netype = $this->input->post('reportnetype');
+		} else {
+			$netype = 'network';
+		}
+		$data['reportnetype'] = $netype;
+		
+		
+		$maxdate = $this->model_main_kpis_anatel->maxdate();
+		$referencedate = $maxdate[0]->date;
+		
+		//Set Date and Weeknumkp
+		if($this->input->post('reportdate')){
+			$reportdate = $this->input->post('reportdate');
+			if(strtotime($reportdate) > strtotime($referencedate)){ //IF the date if greater than yesterday then it changes to the reference date
+				$reportdate = $referencedate;
+			}
+		} 
+		else {
+			$reportdate = $referencedate;
+		}
+		
+		$date = date('Y-m-d', strtotime($reportdate.' -25 day'));
+		
+		$data['reportdate'] = $reportdate;
+		$data['reportagg'] = 'weekly';
+		$data['reportkpi'] = 'main_kpis_anatel';
+		
+		$data['rncs'] = $this->model_cellsinfo->rncs();
+		$data['regional'] = $this->model_cellsinfo->regional();
+		$data['cidades'] = $this->model_cellsinfo->cidades();
+		$data['clusters'] = $this->model_cellsinfo->clusters();
+		$data['nodebs'] = $this->model_cellsinfo->nodebs();
+		$data['ufs'] = $this->model_cellsinfo->ufs();
+		$data['custom'] = $this->model_cellsinfo->custom();	
+	
+		$regions = array("CO", "PRSC", "NE", "BASE","ES","MG");
+		
+		if($netype == 'network'){
+			$data['smp'] = $this->model_main_kpis_anatel->weekly_network($date,$reportdate);
+		 }
+		 elseif ($netype == 'region') {
+			$data['smp'] = $this->model_main_kpis_anatel->weekly_region($date,$reportdate,$node);
+		 }
+		 elseif($netype == 'nodeb'){
+			$data['smp'] = $this->model_main_kpis_anatel->weekly_nodeb($date,$reportdate,$node);
+		 }
+		 elseif($netype == 'uf'){
+			$data['smp'] = $this->model_main_kpis_anatel->weekly_uf($date,$reportdate,$node);
+		 }			
+		 elseif($netype == 'cidade'){ 
+			$cidade_aux = $this->model_cellsinfo->find_cidade_info($node);
+			$ibge = $cidade_aux[0]->ibge;
+			$uf = $cidade_aux[0]->uf;
+			$data['smp'] = $this->model_main_kpis_anatel->weekly_cidade($date,$reportdate,$ibge,$uf);
+		 }
+		 elseif($netype == 'cluster'){
+			$cluster_aux = $this->model_cellsinfo->find_cluster_info($node);
+			$cluster_id = $cluster_aux[0]->cluster_id;
+			$uf = $cluster_aux[0]->uf;
+			$data['smp'] = $this->model_main_kpis_anatel->weekly_cluster($year,$week,$final_year,$final_week,$cluster_id,$uf);  
+		 }
+		 elseif($netype == 'rnc'){
+			$data['smp'] = $this->model_main_kpis_anatel->weekly_rnc($date,$reportdate,$node); 
+		 }
+		
+		$this->load->view('view_header_check_neighborhood_lte');
+		$this->load->view('view_nav_main_kpis_anatel',$data);
+		$this->load->view('view_theme_sand_signika');
+		$this->load->view('view_main_kpis_anatel',$data);
+		
+	}	
+
+	public function kpis_anatel_monthly(){
+		
+		$this->load->helper('form');
+		$this->load->model('model_monitor');
+		$this->load->model('model_main_kpis_anatel');
+		$this->load->model('model_cellsinfo');
+		
+		
+		//Set Node
+		if($this->input->post('reportnename')){
+			$node = $this->input->post('reportnename');
+		} else {
+			$node = 'NETWORK';
+		}
+		$data['reportnename'] = $node;
+		
+		
+		//Set Type
+		if($this->input->post('reportnetype')){
+			$netype = $this->input->post('reportnetype');
+		} else {
+			$netype = 'network';
+		}
+		$data['reportnetype'] = $netype;
+		
+		
+		$maxdate = $this->model_main_kpis_anatel->maxdate();
+		$referencedate = $maxdate[0]->date;
+		
+		//Set Date and Weeknumkp
+		if($this->input->post('reportdate')){
+			$reportdate = $this->input->post('reportdate');
+			if(strtotime($reportdate) > strtotime($referencedate)){ //IF the date if greater than yesterday then it changes to the reference date
+				$reportdate = $referencedate;
+			}
+		} 
+		else {
+			$reportdate = $referencedate;
+		}
+		
+		$date = date('Y-m-d', strtotime($reportdate.' - 30 week'));
+		
+		$new_date = new DateTime($date);
+		$week = $new_date->format("W");
+		$year = $new_date->format("Y");
+		
+		$end = new DateTime($reportdate);
+		$final_week = $end->format("W");
+		$final_year = $end->format("Y");
+		
+		$data['weeknum'] = $final_week;
+							
+		$data['reportdate'] = $reportdate;
+		$data['reportagg'] = 'monthly';
+		$data['reportkpi'] = 'main_kpis_anatel';
+		
+		$data['rncs'] = $this->model_cellsinfo->rncs();
+		$data['regional'] = $this->model_cellsinfo->regional();
+		$data['cidades'] = $this->model_cellsinfo->cidades();
+		$data['clusters'] = $this->model_cellsinfo->clusters();
+		$data['nodebs'] = $this->model_cellsinfo->nodebs();
+		$data['ufs'] = $this->model_cellsinfo->ufs();
+		$data['custom'] = $this->model_cellsinfo->custom();	
+	
+		$regions = array("CO", "PRSC", "NE", "BASE","ES","MG");
+		
+		if($netype == 'network'){
+			$data['smp'] = $this->model_main_kpis_anatel->monthly_network($year,$week,$final_year,$final_week);
+		 }
+		 elseif ($netype == 'region') {
+			$data['smp'] = $this->model_main_kpis_anatel->monthly_region($year,$week,$final_year,$final_week,$node);
+		 }
+		 elseif($netype == 'nodeb'){
+			$data['smp'] = $this->model_main_kpis_anatel->monthly_nodeb($year,$week,$final_year,$final_week,$node);
+		 }
+		 elseif($netype == 'uf'){
+			$data['smp'] = $this->model_main_kpis_anatel->monthly_uf($year,$week,$final_year,$final_week,$node);
+		 }			
+		 elseif($netype == 'cidade'){ 
+			$cidade_aux = $this->model_cellsinfo->find_cidade_info($node);
+			$ibge = $cidade_aux[0]->ibge;
+			$uf = $cidade_aux[0]->uf;
+			$data['smp'] = $this->model_main_kpis_anatel->monthly_cidade($year,$week,$final_year,$final_week,$ibge,$uf);
+		 }
+		 elseif($netype == 'cluster'){
+			$cluster_aux = $this->model_cellsinfo->find_cluster_info($node);
+			$cluster_id = $cluster_aux[0]->cluster_id;
+			$uf = $cluster_aux[0]->uf;
+			$data['smp'] = $this->model_main_kpis_anatel->monthly_cluster($year,$week,$final_year,$final_week,$cluster_id,$uf); 
+		 }
+		 elseif($netype == 'rnc'){
+			$data['smp'] = $this->model_main_kpis_anatel->monthly_rnc($year,$week,$final_year,$final_week,$node); 
+		 }
+		
+		$this->load->view('view_header_check_neighborhood_lte');
+		$this->load->view('view_nav_main_kpis_anatel',$data);
+		$this->load->view('view_theme_sand_signika');
+		$this->load->view('view_main_kpis_anatel',$data);
+		
+	}
+	
 }
 
 

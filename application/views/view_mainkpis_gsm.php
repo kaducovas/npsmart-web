@@ -77,7 +77,13 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////				 
   
   ?>
+   <head>
+	<title>Main KPIs GSM</title>
+  </head>
   
+<div class="dimmer">
+
+</div> 
  <div id="container" class="main"> 
 
 <form action="/npsmart/umts/worstcells" name="wcform" method="post">
@@ -185,15 +191,19 @@ foreach ($node as $k => $v) {
 
 <br><br>
 <div class="sortable1">
-<div id="content" class="chart_content"><div id="acc" class="chart1"></div></div>
-<div id="content" class="chart_content"><div id="availability" class="chart"></div></div>			
-<div id="content" class="chart_content"><div id="retainability_cs" class="chart"></div></div>
-<div id="content" class="chart_content"><div id="smp_5" class="chart"></div></div>			
-<div id="content" class="chart_content"><div id="smp_7" class="chart"></div></div>
-<div id="content" class="chart_content"><div id="smp_8" class="chart"></div></div>	
-<div id="content" class="chart_content"><div id="smp_9" class="chart"></div></div>
-<div id="content" class="chart_content"><div id="traffic" class="chart"></div></div>
-</div>			
+<div id="content0" class="chart_content"><div id="acc" class="chart1"></div></div>
+<div id="content1" class="chart_content"><div id="availability" class="chart"></div></div>			
+<div id="content2" class="chart_content"><div id="retainability_cs" class="chart"></div></div>
+<div id="content7" class="chart_content"><div id="traffic" class="chart"></div></div>
+</div>
+
+		<div style="text-align:center">
+			<button class="button" id="export">Export all</button>
+		</div>
+		
+<img id="loading_ppt" src="/npsmart/images/Loading_Red.gif" style="position:absolute; top: 40%; left: 45%; display: none; z-index: 999;"></img>
+<p id="creting_ppt"	style="font-family: 'Do Hyeon', sans-serif; font-size: 45px; color: white; font-weight: bold;position:absolute; top: 65%; left: 30%; display: none; z-index: 999;"></p>
+			
 <!--	<div id="content" class="chart_content"><div id="fails_rrc" class="chart1"></div></div>
 	<div id="content" class="chart_content"><div id="fails_hs" class="chart1"></div></div>
 	<div style="clear: both;"></div>
@@ -204,7 +214,5 @@ foreach ($node as $k => $v) {
 	<div id="content" class="chart_content"><div id="fails_ps" class="chart"></div></div>
 	<div style="clear: both;"></div>-->
 </form>
-</div>
-	<button id="export">Export all</button>
 </body>
 </html>

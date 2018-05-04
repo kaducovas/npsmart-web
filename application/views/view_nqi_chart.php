@@ -134,6 +134,7 @@ Highcharts.exportCharts = function(charts, options) {
 $(function () {
     var chart;
 	var estado_acc = true;
+	var toogle_availability = false;
     $(document).ready(function() {
 		var acc = new Highcharts.Chart({
 		chart: {
@@ -331,6 +332,67 @@ $(function () {
 															
 					]							
 		});
+		
+var kpi = [];
+var scale = [];
+
+kpi[0] = "acc";
+
+function altera_escala(iscale){
+
+	scale[iscale] = $("#"+kpi[iscale]+"").highcharts();
+	$( '<div id="'+kpi[iscale]+'" style="text-align:left; margin-left: 10px; display:none"><div style="display:inline-block">min Y: <input id="scale_min'+i+'" type="number" style="width:70px"/></div><div style="display:inline-block">max Y: <input id="scale_max'+i+'" type="number" style="width:70px"/></div></div>' ).insertBefore( "#content"+i+"" );
+	$('#scale_max'+iscale+'').val(scale[iscale].yAxis[0].getExtremes().dataMax);
+	$('#scale_min'+iscale+'').val(scale[iscale].yAxis[0].getExtremes().dataMin);
+	
+	$('#scale_max'+iscale+'').on('keyup mouseup', function(){
+
+		var x = $('#scale_max'+iscale+'').val();
+		if(x != ""){	
+		scale[iscale].yAxis[0].update({max: ""+x+""});
+		}else{
+		$('#scale_max'+iscale+'').val(scale[iscale].yAxis[0].getExtremes().dataMax);	
+		scale[iscale].yAxis[0].update({max: null});
+		}
+		
+	});
+	
+	$('#scale_min'+iscale+'').on('keyup mouseup', function(){
+		
+		var x = $('#scale_min'+iscale+'').val();
+		if(x != ""){	
+			scale[iscale].yAxis[0].update({min: ""+x+""});
+		}else{
+		$('#scale_min'+iscale+'').val(scale[iscale].yAxis[0].getExtremes().dataMin);	
+			scale[iscale].yAxis[0].update({min: null});
+		}
+		
+	});	
+}	
+
+for(i = 0; i < kpi.length; i++ ){
+
+altera_escala(i);
+
+}
+
+Highcharts.getOptions().exporting.buttons.contextButton.menuItems.push({
+	text: 'Scale Options',
+	onclick: function (e) {
+		for(i = 0; i < kpi.length; i++){		
+			if(toogle_availability == false){
+			$('#'+kpi[i]+'').show();
+			}else{
+			$('#'+kpi[i]+'').hide();
+			}	
+		}
+		if(toogle_availability == false){
+		toogle_availability = true;	
+		}else{
+		toogle_availability = false;	
+		}
+	}
+});			
 
 //////////////////////////////////////////////////////////////////////////////////////////FIM//////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $('#export').click(function() {

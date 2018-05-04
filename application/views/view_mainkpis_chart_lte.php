@@ -215,6 +215,7 @@ $(function () {
 	var estado_handover = true;
 	var estado_availability = true;
 	var estado_interference = true;
+	var toogle_availability = false;
     $(document).ready(function() {
 		var acc = new Highcharts.Chart({
 		chart: {
@@ -337,7 +338,15 @@ $(function () {
 						x: -20
 					},
 					xAxis: {
-						categories: [<?php echo join($date, ',') ?>],
+						categories: [<?php
+						if($reportagg == "monthly"){
+						foreach($node_daily_report as $row){
+							echo "'".$row->year ." - ".$row->date ."',";
+						}
+						}else{
+							echo join($date, ',');
+						}	
+						?>],
 						///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
 					plotLines: [{
 								color: '#FF0000',
@@ -386,10 +395,25 @@ $(function () {
 					plotOptions: {
 						series: {
 							cursor: 'pointer',
+							point: {
+								events: {
+									click: function () {
+										var date = this.category;
+										var date_str = String(date);
+										var fields = date_str.split(" - ");
+										var year = fields[0];
+										var week = fields[1];
+										var year_number = parseInt(year);
+										var week_number = parseInt(week);
+										alert('Ano: ' + year_number + ', Semana: ' + week_number);
+									}
+								}
+							},
 							events: {
 								click: function( event ) {
 								// Log to console
 								var kpi = this.name;
+								alert(kpi);
 								kpi = kpi.toLowerCase();
 								kpi = kpi.trim();
 								var strkpi = kpi.replace(/(^\s+|\s+$)/g, '');
@@ -624,7 +648,15 @@ $(function () {
 								x: -20
 							},
 							xAxis: {
-								categories: [<?php echo join($date, ',') ?>],
+								categories: [<?php
+						if($reportagg == "monthly"){
+						foreach($node_daily_report as $row){
+							echo "'".$row->year ." - ".$row->date ."',";
+						}
+						}else{
+							echo join($date, ',');
+						}	
+						?>],
 						///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
 					plotLines: [{
 								color: '#FF0000',
@@ -793,7 +825,15 @@ $(function () {
 						x: -20
 					},
 					xAxis: {
-						categories: [<?php echo join($date, ',') ?>],
+						categories: [<?php
+						if($reportagg == "monthly"){
+						foreach($node_daily_report as $row){
+							echo "'".$row->year ." - ".$row->date ."',";
+						}
+						}else{
+							echo join($date, ',');
+						}	
+						?>],
 						///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
 					plotLines: [{
 								color: '#FF0000',
@@ -960,7 +1000,15 @@ $(function () {
 								x: -20
 							},
 							xAxis: {
-								categories: [<?php echo join($date, ',') ?>],
+								categories: [<?php
+						if($reportagg == "monthly"){
+						foreach($node_daily_report as $row){
+							echo "'".$row->year ." - ".$row->date ."',";
+						}
+						}else{
+							echo join($date, ',');
+						}	
+						?>],
 						///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
 					plotLines: [{
 								color: '#FF0000',
@@ -1125,7 +1173,15 @@ $(function () {
 								x: -20
 							},
 							xAxis: {
-								categories: [<?php echo join($date, ',') ?>],
+								categories: [<?php
+						if($reportagg == "monthly"){
+						foreach($node_daily_report as $row){
+							echo "'".$row->year ." - ".$row->date ."',";
+						}
+						}else{
+							echo join($date, ',');
+						}	
+						?>],
 						///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
 					plotLines: [{
 								color: '#FF0000',
@@ -1221,16 +1277,15 @@ $(function () {
 								name: 'Data volume',
 								data: [<?php echo join($data_volume, ',') ?>]
 							},{
-								name: 'Data volume 700',
-								data: [<?php echo join($data_volume_700, ',') ?>]
+								name: 'Data volume 2600',
+								data: [<?php echo join($data_volume_2600, ',') ?>]
 							},{
 								name: 'Data volume 1800',
 								data: [<?php echo join($data_volume_1800, ',') ?>]
 							},{
-								name: 'Data volume 2600',
-								data: [<?php echo join($data_volume_2600, ',') ?>]
-							}													
-							]							
+								name: 'Data volume 700',
+								data: [<?php echo join($data_volume_700, ',') ?>]
+							}]							
 				});
 				
 //////////////////////////////////////////////////////////////////////////////////////////USERS//////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1290,7 +1345,15 @@ $(function () {
 								x: -20
 							},
 							xAxis: {
-								categories: [<?php echo join($date, ',') ?>],
+								categories: [<?php
+						if($reportagg == "monthly"){
+						foreach($node_daily_report as $row){
+							echo "'".$row->year ." - ".$row->date ."',";
+						}
+						}else{
+							echo join($date, ',');
+						}	
+						?>],
 						///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
 					plotLines: [{
 								color: '#FF0000',
@@ -1446,7 +1509,15 @@ $(function () {
 								x: -20
 							},
 							xAxis: {
-								categories: [<?php echo join($date, ',') ?>],
+								categories: [<?php
+						if($reportagg == "monthly"){
+						foreach($node_daily_report as $row){
+							echo "'".$row->year ." - ".$row->date ."',";
+						}
+						}else{
+							echo join($date, ',');
+						}	
+						?>],
 						///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
 					plotLines: [{
 								color: '#FF0000',
@@ -1637,7 +1708,15 @@ $(function () {
 								x: -20
 							},
 							xAxis: {
-								categories: [<?php echo join($date, ',') ?>],
+								categories: [<?php
+						if($reportagg == "monthly"){
+						foreach($node_daily_report as $row){
+							echo "'".$row->year ." - ".$row->date ."',";
+						}
+						}else{
+							echo join($date, ',');
+						}	
+						?>],
 						///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
 					plotLines: [{
 								color: '#FF0000',
@@ -1818,7 +1897,15 @@ $(function () {
 								x: -20
 							},
 							xAxis: {
-								categories: [<?php echo join($date, ',') ?>],
+								categories: [<?php
+						if($reportagg == "monthly"){
+						foreach($node_daily_report as $row){
+							echo "'".$row->year ." - ".$row->date ."',";
+						}
+						}else{
+							echo join($date, ',');
+						}	
+						?>],
 						///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
 					plotLines: [{
 								color: '#FF0000',
@@ -1955,7 +2042,15 @@ $(function () {
 								x: -20
 							},
 							xAxis: {
-								categories: [<?php echo join($date, ',') ?>],
+								categories: [<?php
+						if($reportagg == "monthly"){
+						foreach($node_daily_report as $row){
+							echo "'".$row->year ." - ".$row->date ."',";
+						}
+						}else{
+							echo join($date, ',');
+						}	
+						?>],
 						///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
 					plotLines: [{
 								color: '#FF0000',
@@ -2136,7 +2231,15 @@ $(function () {
 								x: -20
 							},
 							xAxis: {
-								categories: [<?php echo join($date, ',') ?>],
+								categories: [<?php
+						if($reportagg == "monthly"){
+						foreach($node_daily_report as $row){
+							echo "'".$row->year ." - ".$row->date ."',";
+						}
+						}else{
+							echo join($date, ',');
+						}	
+						?>],
 						///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
 					plotLines: [{
 								color: '#FF0000',
@@ -2303,7 +2406,15 @@ $(function () {
 						x: -20
 					},
 					xAxis: {
-						categories: [<?php echo join($date, ',') ?>],
+						categories: [<?php
+						if($reportagg == "monthly"){
+						foreach($node_daily_report as $row){
+							echo "'".$row->year ." - ".$row->date ."',";
+						}
+						}else{
+							echo join($date, ',');
+						}	
+						?>],
 						///["2015-09-06 07:00:00","2015-09-06 07:30:00","2015-09-06 08:00:00","2015-09-06 08:30:00","2015-09-06 09:00:00","2015-09-06 09:30:00","2015-09-06 10:00:00","2015-09-06 10:30:00","2015-09-06 11:00:00","2015-09-06 11:30:00","2015-09-06 12:00:00","2015-09-06 12:30:00"]
 					plotLines: [{
 								color: '#FF0000',
@@ -2420,10 +2531,82 @@ $(function () {
 											
 					]							
 		});
+		
+var kpi = [];
+var scale = [];
+
+kpi[0] = "acc";
+kpi[1] = "csfb";
+kpi[2] = "drop";
+kpi[3] = "retention";
+kpi[4] = "traffic";
+kpi[5] = "users";
+kpi[6] = "dlthp";
+kpi[7] = "ulthp";
+kpi[8] = "utilization";
+kpi[9] = "handover";
+kpi[10] = "availability";
+kpi[11] = "interference";
+
+function altera_escala(iscale){
+
+	scale[iscale] = $("#"+kpi[iscale]+"").highcharts();
+	$( '<div id="'+kpi[iscale]+'" style="text-align:left; margin-left: 10px; display:none"><div style="display:inline-block">min Y: <input id="scale_min'+i+'" type="number" style="width:70px"/></div><div style="display:inline-block">max Y: <input id="scale_max'+i+'" type="number" style="width:70px"/></div></div>' ).insertBefore( "#content"+i+"" );
+	$('#scale_max'+iscale+'').val(scale[iscale].yAxis[0].getExtremes().dataMax);
+	$('#scale_min'+iscale+'').val(scale[iscale].yAxis[0].getExtremes().dataMin);
+	
+	$('#scale_max'+iscale+'').on('keyup mouseup', function(){
+
+		var x = $('#scale_max'+iscale+'').val();
+		if(x != ""){	
+		scale[iscale].yAxis[0].update({max: ""+x+""});
+		}else{
+		$('#scale_max'+iscale+'').val(scale[iscale].yAxis[0].getExtremes().dataMax);	
+		scale[iscale].yAxis[0].update({max: null});
+		}
+		
+	});
+	
+	$('#scale_min'+iscale+'').on('keyup mouseup', function(){
+		
+		var x = $('#scale_min'+iscale+'').val();
+		if(x != ""){	
+			scale[iscale].yAxis[0].update({min: ""+x+""});
+		}else{
+		$('#scale_min'+iscale+'').val(scale[iscale].yAxis[0].getExtremes().dataMin);	
+			scale[iscale].yAxis[0].update({min: null});
+		}
+		
+	});	
+}	
+
+for(i = 0; i < kpi.length; i++ ){
+
+altera_escala(i);
+
+}
+
+Highcharts.getOptions().exporting.buttons.contextButton.menuItems.push({
+	text: 'Scale Options',
+	onclick: function (e) {
+		for(i = 0; i < kpi.length; i++){		
+			if(toogle_availability == false){
+			$('#'+kpi[i]+'').show();
+			}else{
+			$('#'+kpi[i]+'').hide();
+			}	
+		}
+		if(toogle_availability == false){
+		toogle_availability = true;	
+		}else{
+		toogle_availability = false;	
+		}
+	}
+});
 				
 //////////////////////////////////////////////////////////////////////////////////////////FIM//////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $('#export').click(function() {
-    Highcharts.exportCharts([acc,drop,traffic,users,dlthp,ulthp,retention,handover,availability,interference]);
+    Highcharts.exportCharts([acc,csfb,drop,retention,traffic,users,dlthp,ulthp,utilization,handover,availability,interference]);
 });		
   });	
 

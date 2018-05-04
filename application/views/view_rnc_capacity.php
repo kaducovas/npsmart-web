@@ -42,12 +42,14 @@ echo "<div id='content' class='chart_content_large'><div id='acc' class='chart1'
 				<th style='display:none;'rowspan="6" bgcolor="#3b5998"><font color="#FFFFFF" style="font-size:20pt'">Node</font></th>			
 				<th rowspan="6" bgcolor="#2A4641" width="3%"><font color="#FFFFFF" style="font-size:20pt'">Region</font></th>
 				<th rowspan="6" bgcolor="#2A4641" width="3%"><font color="#FFFFFF" style="font-size:20pt'">NE Type</font></th>
-				<th colspan="4" bgcolor="#2A4641" width="12%"><font color="#FFFFFF" style="font-family: calibri; font-size:14pt'">CPU Load</font></th>
-				<th colspan="4" bgcolor="#2A4641" width="12%"><font color="#FFFFFF" style="font-family: calibri; font-size:14pt'">DSP Load</th>
-				<th colspan="4" bgcolor="#2A4641" width="12%"><font color="#FFFFFF" style="font-family: calibri; font-size:14pt'">Interface Board CPU Load</font></th>
-				<th colspan="4" bgcolor="#2A4641" width="12%"><font color="#FFFFFF" style="font-family: calibri; font-size:14pt'">Interface Board Transload</font></th>
-				<th colspan="4" bgcolor="#2A4641" width="12%"><font color="#FFFFFF" style="font-family: calibri; font-size:14pt'">IuPS Utilizantion</font></th>
-				<th colspan="4" bgcolor="#2A4641" width="12%"><font color="#FFFFFF" style="font-family: calibri; font-size:14pt'">IuB Utilizantion</font></th>				
+				<th colspan="3" bgcolor="#2A4641" width="9%"><font color="#FFFFFF" style="font-family: calibri; font-size:14pt'">CPU Load</font></th>
+				<th colspan="3" bgcolor="#2A4641" width="9%"><font color="#FFFFFF" style="font-family: calibri; font-size:14pt'">DSP Load</th>
+				<th colspan="3" bgcolor="#2A4641" width="9%"><font color="#FFFFFF" style="font-family: calibri; font-size:14pt'">Interface Board CPU Load</font></th>
+				<th colspan="3" bgcolor="#2A4641" width="9%"><font color="#FFFFFF" style="font-family: calibri; font-size:14pt'">Interface Board Transload</font></th>
+				<th colspan="3" bgcolor="#2A4641" width="9%"><font color="#FFFFFF" style="font-family: calibri; font-size:14pt'">IuPS Utilizantion</font></th>
+				<th colspan="3" bgcolor="#2A4641" width="9%"><font color="#FFFFFF" style="font-family: calibri; font-size:14pt'">IuB Utilizantion</font></th>				
+				<th colspan="3" bgcolor="#2A4641" width="9%"><font color="#FFFFFF" style="font-family: calibri; font-size:14pt'">IuPS TX</font></th>				
+				<th colspan="3" bgcolor="#2A4641" width="9%"><font color="#FFFFFF" style="font-family: calibri; font-size:14pt'">IuB TX</font></th>				
 			</tr>
 				<tr><th colspan="24" bgcolor="#FF7272"><font style="font-family: calibri; font-size:10pt">Critical: > 80%</font></th></tr>
 				<tr><th colspan="24" bgcolor="#FDBD4F"><font style="font-family: calibri; font-size:10pt">Corrective: > 65% - <= 80%</font></th></tr>
@@ -66,9 +68,9 @@ echo "<div id='content' class='chart_content_large'><div id='acc' class='chart1'
 						$months = array (1=>'Jan',2=>'Feb',3=>'Mar',4=>'Apr',5=>'May',6=>'Jun',7=>'Jul',8=>'Aug',9=>'Sep',10=>'Oct',11=>'Nov',12=>'Dec');
 						#$months[(int)$monthnum]; 
 
-						for ($i = 1; $i <= 6; $i++) 
+						for ($i = 1; $i <= 8; $i++) 
 						{
-						echo "<th bgcolor='#8CA5A0' width='3%'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt''>".$months[(int)$week[3]]."</font></th>";
+						echo "<th bgcolor='#8CA5A0' width='3%'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt''>".$months[(int)$week[2]]."</font></th>";
 						echo "<th bgcolor='#8CA5A0' width='3%'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt''>".$months[(int)$week[2]]."</font></th>";
 						echo "<th bgcolor='#8CA5A0' width='3%'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt''>".$months[(int)$week[1]]."</font></th>";
 						echo "<th bgcolor='#8CA5A0' width='3%'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt''>".$months[(int)$week[0]]."</font></th>";
@@ -77,10 +79,10 @@ echo "<div id='content' class='chart_content_large'><div id='acc' class='chart1'
 					}
 					elseif (isset($weeknum))
 					{
-						for ($i = 1; $i <= 6; $i++) 
+						for ($i = 1; $i <= 8; $i++) 
 						{
-						echo "<th style='border-left-width: 1px; border-left-color: #2A4641;' bgcolor='#8CA5A0' width='3%'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt''>W".$week[3]."</font></th>";						
-						echo "<th bgcolor='#8CA5A0' width='3%'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt''>W".$week[2]."</font></th>";
+						echo "<th style='border-left-width: 1px; border-left-color: #2A4641;' bgcolor='#8CA5A0' width='3%'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt''>W".$week[2]."</font></th>";						
+						// echo "<th bgcolor='#8CA5A0' width='2.25%'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt''>W".$week[2]."</font></th>";
 						echo "<th bgcolor='#8CA5A0' width='3%'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt''>W".$week[1]."</font></th>";
 						echo "<th style='border-right-width: 1px; border-right-color: #2A4641;' bgcolor='#8CA5A0' width='3%'><font color='#FFFFFF' style='font-family: calibri; font-size:12pt''>W".$week[0]."</font></th>";
 						}
@@ -138,8 +140,17 @@ echo "<div id='content' class='chart_content_large'><div id='acc' class='chart1'
 					$array_0 = array_fill(0, 3, 0);	
 					$array_iub = explode(",", $iub);	
 					$array_iub = array_merge($array_iub, $array_0);	
+					
+					$iu_ps_tx = $row->iu_ps_tx;
+					$array_0 = array_fill(0, 3, 0);	
+					$array_iu_ps_tx = explode(",", $iu_ps_tx);
+					$array_iu_ps_tx = array_merge($array_iu_ps_tx, $array_0);	
 						
-
+					$iub_tx = $row->iub_tx;
+					$array_0 = array_fill(0, 3, 0);	
+					$array_iub_tx = explode(",", $iub_tx);	
+					$array_iub_tx = array_merge($array_iub_tx, $array_0);	
+					
 					echo "<tr>";		
 					echo "<td value='".$row->node."'><font style='font-family: calibri; font-size:12pt''><a id='".$row->node."' onclick='selectne(this)' class='node' value='".$row->node."'>".$row->node."</a></font></td>";		
 					echo "<td style='display:none;'>".$row->type."</td>";	
@@ -148,37 +159,47 @@ echo "<div id='content' class='chart_content_large'><div id='acc' class='chart1'
 
 					echo "<td><font style='font-family: calibri; font-size:12pt'>".$array_netype[0]."</font></td>";
 					
-				echo "<td style='border-left-width: 1px; border-left-color: #2A4641;' bgcolor='".($array_cpu_load[3] <= 50?$good:($array_cpu_load[3] <= 65?$yellow:($array_cpu_load[3] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_cpu_load[3]."%</font></td>";	
-				echo "<td bgcolor='".($array_cpu_load[2] <= 50?$good:($array_cpu_load[2] <= 65?$yellow:($array_cpu_load[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_cpu_load[2]."%</font></td>";	
+				echo "<td style='border-left-width: 1px; border-left-color: #2A4641;' bgcolor='".($array_cpu_load[2] <= 50?$good:($array_cpu_load[2] <= 65?$yellow:($array_cpu_load[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_cpu_load[2]."%</font></td>";	
+				// echo "<td bgcolor='".($array_cpu_load[2] <= 50?$good:($array_cpu_load[2] <= 65?$yellow:($array_cpu_load[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_cpu_load[2]."%</font></td>";	
 				echo "<td bgcolor='".($array_cpu_load[1] <= 50?$good:($array_cpu_load[1] <= 65?$yellow:($array_cpu_load[1] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_cpu_load[1]."%</font></td>";	
 				echo "<td style='border-right-width: 1px; border-right-color: #2A4641;' bgcolor='".($array_cpu_load[0] <= 50?$good:($array_cpu_load[0] <= 65?$yellow:($array_cpu_load[0] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_cpu_load[0]."%</font></td>";	
 				
-				echo "<td style='border-left-width: 1px; border-left-color: #2A4641;' bgcolor='".($array_dsp_load[3] <= 50?$good:($array_dsp_load[3] <= 65?$yellow:($array_dsp_load[3] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_dsp_load[3]."%</font></td>";		
-				echo "<td bgcolor='".($array_dsp_load[2] <= 50?$good:($array_dsp_load[2] <= 65?$yellow:($array_dsp_load[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_dsp_load[2]."%</font></td>";		
+				echo "<td style='border-left-width: 1px; border-left-color: #2A4641;' bgcolor='".($array_dsp_load[2] <= 50?$good:($array_dsp_load[2] <= 65?$yellow:($array_dsp_load[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_dsp_load[2]."%</font></td>";		
+				// echo "<td bgcolor='".($array_dsp_load[2] <= 50?$good:($array_dsp_load[2] <= 65?$yellow:($array_dsp_load[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_dsp_load[2]."%</font></td>";		
 				echo "<td bgcolor='".($array_dsp_load[1] <= 50?$good:($array_dsp_load[1] <= 65?$yellow:($array_dsp_load[1] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_dsp_load[1]."%</font></td>";		
 				echo "<td style='border-right-width: 1px; border-right-color: #2A4641;' bgcolor='".($array_dsp_load[0] <= 50?$good:($array_dsp_load[0] <= 65?$yellow:($array_dsp_load[0] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_dsp_load[0]."%</font></td>";		
 
-				echo "<td style='border-left-width: 1px; border-left-color: #2A4641;' bgcolor='".($array_ib_cpu_load[3] <= 50?$good:($array_ib_cpu_load[3] <= 65?$yellow:($array_ib_cpu_load[3] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_ib_cpu_load[3]."%</font></td>";
-				echo "<td bgcolor='".($array_ib_cpu_load[2] <= 50?$good:($array_ib_cpu_load[2] <= 65?$yellow:($array_ib_cpu_load[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_ib_cpu_load[2]."%</font></td>";
+				echo "<td style='border-left-width: 1px; border-left-color: #2A4641;' bgcolor='".($array_ib_cpu_load[2] <= 50?$good:($array_ib_cpu_load[2] <= 65?$yellow:($array_ib_cpu_load[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_ib_cpu_load[2]."%</font></td>";
+				// echo "<td bgcolor='".($array_ib_cpu_load[2] <= 50?$good:($array_ib_cpu_load[2] <= 65?$yellow:($array_ib_cpu_load[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_ib_cpu_load[2]."%</font></td>";
 				echo "<td bgcolor='".($array_ib_cpu_load[1] <= 50?$good:($array_ib_cpu_load[1] <= 65?$yellow:($array_ib_cpu_load[1] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_ib_cpu_load[1]."%</font></td>";
 				echo "<td style='border-right-width: 1px; border-right-color: #2A4641;' bgcolor='".($array_ib_cpu_load[0] <= 50?$good:($array_ib_cpu_load[0] <= 65?$yellow:($array_ib_cpu_load[0] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_ib_cpu_load[0]."%</font></td>";
 
-				echo "<td style='border-left-width: 1px; border-left-color: #2A4641;' bgcolor='".($array_ib_forward_load[3] <= 50?$good:($array_ib_forward_load[3] <= 65?$yellow:($array_ib_forward_load[3] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_ib_forward_load[3]."%</font></td>";
-				echo "<td bgcolor='".($array_ib_forward_load[2] <= 50?$good:($array_ib_forward_load[2] <= 65?$yellow:($array_ib_forward_load[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_ib_forward_load[2]."%</font></td>";
+				echo "<td style='border-left-width: 1px; border-left-color: #2A4641;' bgcolor='".($array_ib_forward_load[2] <= 50?$good:($array_ib_forward_load[2] <= 65?$yellow:($array_ib_forward_load[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_ib_forward_load[2]."%</font></td>";
+				// echo "<td bgcolor='".($array_ib_forward_load[2] <= 50?$good:($array_ib_forward_load[2] <= 65?$yellow:($array_ib_forward_load[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_ib_forward_load[2]."%</font></td>";
 				echo "<td bgcolor='".($array_ib_forward_load[1] <= 50?$good:($array_ib_forward_load[1] <= 65?$yellow:($array_ib_forward_load[1] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_ib_forward_load[1]."%</font></td>";
 				echo "<td style='border-right-width: 1px; border-right-color: #2A4641;' bgcolor='".($array_ib_forward_load[0] <= 50?$good:($array_ib_forward_load[0] <= 65?$yellow:($array_ib_forward_load[0] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_ib_forward_load[0]."%</font></td>";
 			
-				echo "<td style='border-left-width: 1px; border-left-color: #2A4641;' bgcolor='".($array_iu_ps[3] <= 50?$good:($array_iu_ps[3] <= 65?$yellow:($array_iu_ps[3] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_iu_ps[3]."%</font></td>";
-				echo "<td bgcolor='".($array_iu_ps[2] <= 50?$good:($array_iu_ps[2] <= 65?$yellow:($array_iu_ps[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_iu_ps[2]."%</font></td>";
+				echo "<td style='border-left-width: 1px; border-left-color: #2A4641;' bgcolor='".($array_iu_ps[2] <= 50?$good:($array_iu_ps[2] <= 65?$yellow:($array_iu_ps[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_iu_ps[2]."%</font></td>";
+				// echo "<td bgcolor='".($array_iu_ps[2] <= 50?$good:($array_iu_ps[2] <= 65?$yellow:($array_iu_ps[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_iu_ps[2]."%</font></td>";
 				echo "<td bgcolor='".($array_iu_ps[1] <= 50?$good:($array_iu_ps[1] <= 65?$yellow:($array_iu_ps[1] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_iu_ps[1]."%</font></td>";
 				echo "<td style='border-right-width: 1px; border-right-color: #2A4641;' bgcolor='".($array_iu_ps[0] <= 50?$good:($array_iu_ps[0] <= 65?$yellow:($array_iu_ps[0] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_iu_ps[0]."%</font></td>";
 			
-				echo "<td style='border-left-width: 1px; border-left-color: #2A4641;' bgcolor='".($array_iub[3] <= 50?$good:($array_iub[3] <= 65?$yellow:($array_iub[3] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_iub[3]."%</font></td>";					
-				echo "<td bgcolor='".($array_iub[2] <= 50?$good:($array_iub[2] <= 65?$yellow:($array_iub[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_iub[2]."%</font></td>";					
+				echo "<td style='border-left-width: 1px; border-left-color: #2A4641;' bgcolor='".($array_iub[2] <= 50?$good:($array_iub[2] <= 65?$yellow:($array_iub[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_iub[2]."%</font></td>";					
+				// echo "<td bgcolor='".($array_iub[2] <= 50?$good:($array_iub[2] <= 65?$yellow:($array_iub[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_iub[2]."%</font></td>";					
 				echo "<td bgcolor='".($array_iub[1] <= 50?$good:($array_iub[1] <= 65?$yellow:($array_iub[1] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_iub[1]."%</font></td>";					
 				echo "<td style='border-right-width: 1px; border-right-color: #2A4641;' bgcolor='".($array_iub[0] <= 50?$good:($array_iub[0] <= 65?$yellow:($array_iub[0] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_iub[0]."%</font></td>";					
-	
-					echo "</tr>";			
+
+				echo "<td style='border-left-width: 1px; border-left-color: #2A4641;' bgcolor='".($array_iu_ps_tx[2] <= 50?$good:($array_iu_ps_tx[2] <= 65?$yellow:($array_iu_ps_tx[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_iu_ps_tx[2]."%</font></td>";
+				// echo "<td bgcolor='".($array_iu_ps_tx[2] <= 50?$good:($array_iu_ps_tx[2] <= 65?$yellow:($array_iu_ps_tx[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_iu_ps_tx[2]."%</font></td>";
+				echo "<td bgcolor='".($array_iu_ps_tx[1] <= 50?$good:($array_iu_ps_tx[1] <= 65?$yellow:($array_iu_ps_tx[1] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_iu_ps_tx[1]."%</font></td>";
+				echo "<td style='border-right-width: 1px; border-right-color: #2A4641;' bgcolor='".($array_iu_ps_tx[0] <= 50?$good:($array_iu_ps_tx[0] <= 65?$yellow:($array_iu_ps_tx[0] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_iu_ps_tx[0]."%</font></td>";
+			
+				echo "<td style='border-left-width: 1px; border-left-color: #2A4641;' bgcolor='".($array_iub_tx[2] <= 50?$good:($array_iub_tx[2] <= 65?$yellow:($array_iub_tx[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_iub_tx[2]."%</font></td>";					
+				// echo "<td bgcolor='".($array_iub_tx[2] <= 50?$good:($array_iub_tx[2] <= 65?$yellow:($array_iub_tx[2] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_iub_tx[2]."%</font></td>";					
+				echo "<td bgcolor='".($array_iub_tx[1] <= 50?$good:($array_iub_tx[1] <= 65?$yellow:($array_iub_tx[1] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_iub_tx[1]."%</font></td>";					
+				echo "<td style='border-right-width: 1px; border-right-color: #2A4641;' bgcolor='".($array_iub_tx[0] <= 50?$good:($array_iub_tx[0] <= 65?$yellow:($array_iub_tx[0] <= 80?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$array_iub_tx[0]."%</font></td>";						
+				
+				echo "</tr>";			
 				}
 			?>
 	

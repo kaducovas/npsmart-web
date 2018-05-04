@@ -291,7 +291,7 @@ elseif (isset($weeknum)){
                 </button>
                 <a class="navbar-brand" href="http://support.huawei.com"><img src="/npsmart/images/huawei_logo_icon.png" style="padding:0px; top:0px; width:30px; margin-top:-15%; height:30px;"/></a>
                
-                <a class="navbar-brand" id="aTitleVersion" href="/npsmart/umts/" style="width:170px;"><span id="aTitle">NPSmart</span>&nbsp; <span id="sVersion" style="font-size:12px; font-family:Calibri;">
+                <a class="navbar-brand" id="aTitleVersion" href="/npsmart/" style="width:170px;"><span id="aTitle">NPSmart</span>&nbsp; <span id="sVersion" style="font-size:12px; font-family:Calibri;">
                      v2.1</span></a>
             </div>
 
@@ -308,7 +308,7 @@ elseif (isset($weeknum)){
                             <li class="menuItemnqi"><a href="/npsmart/umts/overshooters">Overshooters</a></li>
                             <!--<li class="menuItemnqi"><a href="/npsmart/umts/feature_phase2">Feature Report</a></li>-->
                             <li class="menuItemnqi"><a href="/npsmart/umts/radar">AMX Radar</a></li>
-                            <li class="menuItemnqi"><a href="/npsmart/umts/unbalance">EE/Load Unbalance</a></li>
+							<li class="menuItemnqi"><a href="/npsmart/umts/kpis_anatel_weekly">Anatel KPIs</a></li>
                         </ul>
                     </li>
 
@@ -316,13 +316,15 @@ elseif (isset($weeknum)){
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Capacity<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
 						<li class="menuItemnqi"><a href="/npsmart/umts/capacity">Cell & NodeB Capacity</a></li>
-						<li class="menuItemnqi"><a href="/npsmart/umts/rnc_capacity">RNC Capacity</a></li>
+						<li class="menuItemnqi"><a href="/npsmart/umts/rnc_capacity">RNC Capacity</a></li> 
+ 						<li class="menuItemnqi"><a href="/npsmart/umts/unbalance">EE/Load Unbalance</a></li>
                         </ul>
 						</li>	
   
                     <li id="menuItemwaf" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RNP<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
+						<li class="menuItemnqi"><a href="/npsmart/main_map/map_region_umts">Network Overview</a></li>
                             <li class="menuItemnqi"><a href="/npsmart/umts/rfpar">Cells Database</a></li>
                             <li><a href="/npsmart/umts/cfg">RNC & Cell Configuration</a></li>
                             <li class="menuItemnqi"><a href="/npsmart/umts/nodebcfg">NodeB Configuration</a></li>  
@@ -334,10 +336,11 @@ elseif (isset($weeknum)){
                     </li>	
 
                     <li id="menuItemwaf" class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Baseline<span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Consistency Check<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
 							<li class="menuItemnqi"><a href="/npsmart/umts/baseline_nodeb">Baseline NodeB Audit</a></li>
                             <li class="menuItemnqi"><a href="/npsmart/umts/baseline">Baseline Cell & RNC Audit</a></li>
+							<li class="menuItemnqi"><a href="/npsmart/umts/check_neighborhood">Neighbor Audit</a></li>
                         </ul>
                     </li>
 					
@@ -346,12 +349,15 @@ elseif (isset($weeknum)){
 					<li id="menuItemwaf" class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Settings<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
+							<li class="menuItemnqi"><a href="/npsmart/umts/baseline_configuration">Baseline Configuration</a></li>
 							<li class="disabled"><a href="#">Counters</a></li>
+							<li><a href="/npsmart/umts/process_monitoring">Database Process Monitoring</a></li>
 							<li class="disabled"><a href="#">KPIs Target</a></li>
                         </ul>
 					</li>
                 
                     <li class="disabled"><a href="#">Log</a></li>
+					<li><a href="/npsmart/quickreport">Quick Report</a></li>					
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">

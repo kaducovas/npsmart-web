@@ -830,6 +830,7 @@ STRING_AGG(nqi::text, ',' order by year,week) AS nqi
 		$this->load->model('model_cellsinfo');
 		$cidade_info = $this->model_cellsinfo->find_cidade_info_lte($node);
 		$ibge = $cidade_info[0]->ibge;
+		$uf = $cidade_info[0]->uf;
 		$date = new DateTime($reportdate);
 		$endweek = $date->format("W");
 		$strreportdate = date('Y-m-d', strtotime($reportdate.' -150 day'));
@@ -843,7 +844,7 @@ STRING_AGG(nqi::text, ',' order by year,week) AS nqi
        qde_ul, nqi
   FROM lte_kpi.vw_nqi_weekly_cidade
   WHERE (year,week) between (".$stryear.",'".$strweek."') and (".$endyear.",'".$endweek."')
-  and ibge = '".$ibge."'
+  and ibge = '".$ibge."' and uf = '".$uf."'
   order by year,week
 	;");	
 
@@ -1008,7 +1009,8 @@ STRING_AGG(nqi::text, ',' order by year,week) AS nqi
 	function cidade_daily_report($node,$reportdate){
 		$this->load->model('model_cellsinfo');
 		$cidade_info = $this->model_cellsinfo->find_cidade_info_lte($node);
-		$ibge = $cidade_info[0]->ibge;		
+		$ibge = $cidade_info[0]->ibge;
+		$uf = $cidade_info[0]->uf;
 		$daterange = $reportdate;
 		$inidate = date('Y-m-d', strtotime($daterange.' -30 day'));
 		$findate = date('Y-m-d', strtotime($daterange));
@@ -1018,7 +1020,7 @@ STRING_AGG(nqi::text, ',' order by year,week) AS nqi
        qde_ul, nqi
   FROM lte_kpi.vw_nqi_daily_cidade
   WHERE date between '".$inidate."' and '".$findate."'
-  and ibge = '".$ibge."'
+  and ibge = '".$ibge."' and uf = '".$uf."'
   order by date
 	;");	
 

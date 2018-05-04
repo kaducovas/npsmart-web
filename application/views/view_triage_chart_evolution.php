@@ -156,7 +156,7 @@ $(function () {
       plotBorderColor: '#606063'
     },
     title: {
-        text: '<b>Triage Weekly Evolution</b>',
+        text: '<b>Cell Mapping Weekly Evolution</b>',
 		style: {
          color: '#E0E0E3',
          textTransform: 'uppercase',

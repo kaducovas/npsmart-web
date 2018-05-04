@@ -29,11 +29,14 @@ $title = "#394E58";
 		$cpich_power_ratio[] = $row-> cpich_power_ratio;
 		$worst_aging_factor[] = $row-> worst_aging_factor;
 		$traffic_load[] = $row-> traffic_load;
-		$process_tools[] = $row-> process_tools;
+		$sw_releases_features[] = $row-> sw_releases_features;
         $composite[] = $row-> composite;			
 	}
 ?>
 </script>
+   <head>
+	<title>RADAR UMTS</title>
+  </head>
 <div class="radar_info">
 <div class="radar_menu"><font style="font-family: calibri; font-size:18pt" color="#525151">COVERAGE</font></div>
 <div align="right"><font style="font-family: calibri; font-size:18pt" color="#525151">INFORMATION</font></div>
@@ -76,13 +79,12 @@ $title = "#394E58";
 			</tr>
 			
 			<tr>
-			<th bgcolor="#FFFFFF"><font color = '#B0B0B0'>SW Release & Features</font></th>
+			<th bgcolor="#FFFFFF"><a style= "color:black" href='#' onclick='selectkpiradar(this)'>SW Release and Features</a></th>
 			<?php					
-				echo "<td bgcolor='orange'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$process_tools[0]."</font></td>";
-				echo "<td bgcolor='orange'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$process_tools[1]."</font></td>";
-				echo "<td bgcolor='orange'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$process_tools[2]."</font></td>";
-				echo "<td bgcolor='orange'><font color = '#B0B0B0' style='font-family: calibri; font-size:12pt'>".$process_tools[3]."</font></td>";
-				?>
+				echo "<td bgcolor='".($sw_releases_features[0] >= 8?$good:($sw_releases_features[0] >= 6?$yellow:($sw_releases_features[0] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$sw_releases_features[0]."</font></td>";
+				echo "<td bgcolor='".($sw_releases_features[1] >= 8?$good:($sw_releases_features[1] >= 6?$yellow:($sw_releases_features[1] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$sw_releases_features[1]."</font></td>";
+				echo "<td bgcolor='".($sw_releases_features[2] >= 8?$good:($sw_releases_features[2] >= 6?$yellow:($sw_releases_features[2] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$sw_releases_features[2]."</font></td>";
+				echo "<td bgcolor='".($sw_releases_features[3] >= 8?$good:($sw_releases_features[3] >= 6?$yellow:($sw_releases_features[3] >= 4?$orange:$bad)))."'><font style='font-family: calibri; font-size:12pt'>".$sw_releases_features[3]."</font></td>";				?>
 			</tr>
 
 

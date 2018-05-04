@@ -16,6 +16,13 @@
 		$ee_nok[] = $row->ee_nok;
 		$no_overshooter_nok[] = $row->no_overshooter_nok;
 		$parameter_check_nok[] = $row->parameter_check_nok;
+		$otm_no[] = $row->otm_no;
+		$otm_ok_no[] = $row->otm_ok_no;
+		$otm_nok_no[] = $row->otm_nok_no;
+		$rtwp_nok_no[] = $row->rtwp_nok_no;
+		$ee_nok_no[] = $row->ee_nok_no;
+		$no_overshooter_nok_no[] = $row->no_overshooter_nok_no;
+		$parameter_check_nok_no[] = $row->parameter_check_nok_no;
 		}	
 		?>
 <script>
@@ -79,7 +86,8 @@ otm_ok = new Array(1);
 otm_ok[0] = <?php echo $otm_ok[0]; ?>;
 
 otm_nok = new Array(1);
-otm_nok[0] = <?php echo $otm_nok[0]; ?>;
+otm_nok[0] = <?php echo $otm_nok[0]; ?> - otm[0];
+
 
 rtwp_nok = new Array(1);
 rtwp_nok[0] = <?php echo $rtwp_nok[0]; ?>;
@@ -93,6 +101,26 @@ no_overshooter_nok[0] = <?php echo $no_overshooter_nok[0]; ?>;
 parameter_check_nok = new Array(1);
 parameter_check_nok[0] = <?php echo $parameter_check_nok[0]; ?>;
 
+otm_no = new Array(1);
+otm_no[0] = <?php echo $otm_no[0]; ?>;
+
+otm_ok_no = new Array(1);
+otm_ok_no[0] = <?php echo $otm_ok_no[0]; ?>;
+
+otm_nok_no = new Array(1);
+otm_nok_no[0] = <?php echo $otm_nok_no[0]; ?> - otm_no[0];
+
+rtwp_nok_no = new Array(1);
+rtwp_nok_no[0] = <?php echo $rtwp_nok_no[0]; ?>;
+
+ee_nok_no = new Array(1);
+ee_nok_no[0] = <?php echo $ee_nok_no[0]; ?>;
+
+no_overshooter_nok_no = new Array(1);
+no_overshooter_nok_no[0] = <?php echo $no_overshooter_nok_no[0]; ?>;
+
+parameter_check_nok_no = new Array(1);
+parameter_check_nok_no[0] = <?php echo $parameter_check_nok_no[0]; ?>;
 
 /**
  * Create a global getSVG method that takes an array of charts as an argument
@@ -160,20 +188,22 @@ $(function () {
     var chart;
     $(document).ready(function() {
 		var otm_pie = new Highcharts.chart({
-   colors: ['#EE0000','#228B22'],
+   colors: ['#EE0000','orange','#228B22'],
    
     chart: {
 		renderTo: 'otm_pie',
 		type: 'pie',
 		options3d: {
             enabled: true,
-            alpha: 60,
+            alpha: 70,
         },
-		backgroundColor: "#F8F8F8"
+		backgroundColor: null,
       },
  
     title: {
         text: '<big><b>W'+week[0]+' OTM</b></big>',
+				y: 90,
+     floating: true,
     		style: {
          fontSize: '23px'
       }
@@ -183,32 +213,63 @@ $(function () {
 					},		
 	subtitle: {
 	 text: '<i>'+node+'</i>',
+	      y: 120,
+     floating: true,
 	 	 style: {
          textTransform: 'uppercase',
          fontSize: '15px'
       }
 	},
 	
+	legend: {
+	floating:true,
+	y: -50,
+	labelFormatter: function () {
+            return this.name.split('<br>')[0];
+        }
+	},
+	
 	 tooltip: {
-        pointFormat: ''
+ headerFormat: null,
+		 //enabled: false,
+        pointFormat: '{point.name} | {point.y}%'
     },
 	
     plotOptions: {
       pie: {
-         depth: 35,
-		 innerSize: 140
+		  allowPointSelect: true,
+		  cursor: 'pointer',
+         depth: 65,
+		 innerSize: 140,
+			showInLegend: true,
+            dataLabels: {
+            enabled: true,
+			//formart: '{point.name} <br> {point.y}%',
+            formatter: function () {
+        if (this.point.y != 0) {
+            return [this.point.name+' | '+this.point.y+'%'];
+        }
+    },
+style:{
+fontSize: '12px',
+}	,
+			connectorWidth:2,
+            },
     },
 	},
 	
     series: [
 	{	type: 'pie',
-		slicedOffset:15,
+		slicedOffset:30,
         name: 'W'+week[0],
         data:[
-            {   sliced: true, name: 'NOK '+otm_nok[0]+'%',
-                y: otm_nok[0]
+            {   sliced: true, name: 'NOK OTM <br>'+otm_no[0],
+                y: otm[0]
             },
-			{sliced: true, name: 'OK '+otm_ok[0]+'%', y: otm_ok[0]}]
+			{   sliced: true, name: 'NOK <br>'+otm_nok_no[0],
+                y: parseFloat(otm_nok[0].toFixed(2))
+            },
+			{sliced: true, name: 'OK <br>'+otm_ok_no[0], y: otm_ok[0]}]
     }, 
 	],
 	
@@ -225,7 +286,7 @@ $(function () {
       },
 
     title: {
-        text: '<b>OTM NOK</b>',
+        text: '<b>NOK OTM CAUSES</b>',
     },
 	
 	subtitle: {
@@ -235,7 +296,16 @@ $(function () {
 					   enabled: false
 					},		
     xAxis: {
-        categories: ['RTWP', 'EE Unbalanced', 'Overshooter', 'Parameter Check'],
+        categories: ['<b>Parameter Check</b><br><b>'+parameter_check_nok_no+' | '+parameter_check_nok+'%</b>',
+'<b>Overshooter</b><br><b>'+no_overshooter_nok_no+' | '+no_overshooter_nok+'%</b>', 
+'<b>EE Unbalanced</b><br><b>'+ee_nok_no+' | '+ee_nok+'%</b>', 
+'<b>RTWP</b><br><b>'+rtwp_nok_no+' | '+rtwp_nok+'%</b>'],
+		labels:{
+		style: {
+		color: 'black',
+		fontSize: '12px',
+		}
+		}
     },
 
     yAxis: {
@@ -254,24 +324,32 @@ $(function () {
 
 		plotOptions: {
         column: {
+			showInLegend: false,
             pointPadding: 0.1,
-            borderWidth: 0
+            borderWidth: 0,
+			// dataLabels: {
+                // enabled: true,
+                // color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || '#363636',
+				// formatter: function () {
+				// return this.y + ' %';
+				// }
+            // }
         },
 		},
 		
 		tooltip: {
-        headerFormat: '<span style="font-size:12px"><b>{point.key}</b></span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0"><b>{series.name}: </b></td>' +
-            '<td style="padding:0"><b>{point.y:.2f} %</b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true,
+		enabled: true,
+        //headerFormat: '<span style="font-size:12px"><b>{point.key}</b></span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0"></td>',
+        //footerFormat: '</table>',
+        //shared: true,
+        //useHTML: true,
     },
 	
     series: [
 	{
-        name: '% NOK',
-        data: [rtwp_nok[0], ee_nok[0], no_overshooter_nok[0], parameter_check_nok[0]]
+        name: 'NOK',
+        data: [parameter_check_nok[0], no_overshooter_nok[0], ee_nok[0], rtwp_nok[0]]
     }, 
 	
 	]

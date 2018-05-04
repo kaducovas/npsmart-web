@@ -20,7 +20,7 @@
 <script src="/npsmart/js/highcharts.js"></script>
 <script src="http://code.highcharts.com/highcharts-more.js"></script>
 <script src="/npsmart/js/exporting.js"></script>
-<script src="/npsmart/js/export-csv.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="/npsmart/js/grouped-categories.js"></script>
 <!--<script src="https://code.highcharts.com/modules/multicolor_series.js"></script>-->
 <link rel="stylesheet" href="/npsmart/css/jquery-ui.css">
@@ -480,19 +480,22 @@ thead th {
 }
 
 .vrt {
-  writing-mode: vertical-lr;
+  writing-mode: vertical-rl;
+  -webkit-transform:rotate(180deg);
   width: 10px;
 }
 
 .vrt_long_triage {
-  writing-mode: vertical-lr;
+  writing-mode: vertical-rl;
+  -webkit-transform:rotate(180deg);
   width: 10px;
   height: 200px;
 }
 
 .vrt_triage {
   margin: 0 auto;
-  writing-mode: vertical-lr;
+  writing-mode: vertical-rl;
+  -webkit-transform:rotate(180deg);
   height: 180px;
 }
 

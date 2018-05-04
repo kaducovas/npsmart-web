@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "umts";
+$route['default_controller'] = "main_map";
 $route['404_override'] = '';
 
 

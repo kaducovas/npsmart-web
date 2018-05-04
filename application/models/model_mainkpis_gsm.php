@@ -14,13 +14,15 @@ class Model_mainkpis_gsm extends CI_Model{
 	function network_monthly_report($reportdate){
 		$date = new DateTime($reportdate);
 		$monthnum = $date->format("m");
+		$year = $date->format("o");
 		#echo $monthnum;
 			 $query = $this->db->query(
-			 "SELECT *,'network'::text as type,1 as sortcol from umts_kpi.vw_main_kpis_network_rate_monthly where month = ".$monthnum."
+			 "SELECT *,'network'::text as type,1 as sortcol from gsm_kpi.vw_main_kpis_network_rate_monthly 
+			 where month = ".$monthnum." and year = ".$year."
 	  UNION
 			SELECT *,'region'::text as type,2 as sortcol 
-			   FROM umts_kpi.vw_main_kpis_region_rate_monthly 
-			   where month = ".$monthnum."
+			   FROM gsm_kpi.vw_main_kpis_region_rate_monthly 
+			   where month = ".$monthnum."  and year = ".$year."
 			   and node != 'UNKNOWN'
 			   order by sortcol,month, node
 	;");
@@ -46,30 +48,23 @@ class Model_mainkpis_gsm extends CI_Model{
 	function region_monthly_report($node,$reportdate){
 		$date = new DateTime($reportdate);
 		$monthnum = $date->format("m");
+		$year = $date->format("o");
 			$query = $this->db->query(
 			"	
-		SELECT month, node,'rnc'::text as type, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
-		   drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
-		   hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
-		   hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
-		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
-		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
-		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
-	  FROM umts_kpi.vw_main_kpis_rnc_rate_monthly
-	  where month = ".$monthnum." and region = '".$node."'
+		SELECT month, node, acc_cs, retainability_cs, availability, smp_5, 
+       smp_7, smp_8, smp_9, sdcch_traffic, tch_traffic_fr, tch_traffic_hr,smp_5_ericsson,smp_5_nokia,smp_5_siemens, 
+       smp_7_ericsson,smp_7_nokia,smp_7_siemens, smp_8_ericsson,smp_8_nokia,smp_8_siemens, 
+	   smp_9_ericsson,smp_9_nokia,smp_9_siemens,'bsc'::text as type,2 as sortcol
+	  FROM gsm_kpi.vw_main_kpis_bsc_rate_monthly
+	  where month = ".$monthnum." and region = '".$node."' and year = ".$year."
 	union
-	SELECT month, node,'region'::text as type, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
-		   drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
-		   hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
-		   hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
-		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
-		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
-		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
-	  FROM umts_kpi.vw_main_kpis_region_rate_monthly
-	  where month = ".$monthnum." and node = '".$node."'
-	  order by month, node
+	SELECT month, node, acc_cs, retainability_cs, availability, smp_5, 
+       smp_7, smp_8, smp_9, sdcch_traffic, tch_traffic_fr, tch_traffic_hr,smp_5_ericsson,smp_5_nokia,smp_5_siemens, 
+       smp_7_ericsson,smp_7_nokia,smp_7_siemens, smp_8_ericsson,smp_8_nokia,smp_8_siemens, 
+	   smp_9_ericsson,smp_9_nokia,smp_9_siemens,'region'::text as type,1 as sortcol
+	  FROM gsm_kpi.vw_main_kpis_region_rate_monthly
+	  where month = ".$monthnum." and node = '".$node."' and year = ".$year."
+	  order by sortcol, month, node
 	;");
 
 		return $query->result();
@@ -98,42 +93,26 @@ class Model_mainkpis_gsm extends CI_Model{
 		return $query->result();
 		}
 	
-	function rnc_monthly_report($node,$reportdate){
+	function bsc_monthly_report($node,$reportdate){
 		$date = new DateTime($reportdate);
 		$monthnum = $date->format("m");
+		$year = $date->format("o");
 			$query = $this->db->query(
 			"	
-		SELECT month, node,'rnc'::text as type, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
-		   drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
-		   hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
-		   hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
-		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
-		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
-		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
-	  FROM umts_kpi.vw_main_kpis_rnc_rate_monthly
-	  where month = ".$monthnum." and 
-	  region = 
-		CASE
-			WHEN substring('".$node."', 4, 2) = ANY (ARRAY['AC'::text, 'DF'::text, 'MS'::text, 'MT'::text, 'RO'::text, 'GO'::text]) THEN 'CO'::text
-			WHEN substring('".$node."', 4, 2) = ANY (ARRAY['AL'::text, 'CE'::text, 'PB'::text, 'PE'::text, 'PI'::text, 'RN'::text]) THEN 'NE'::text
-			WHEN substring('".$node."', 4, 2) = 'BA'::text THEN 'BASE'::text
-			WHEN substring('".$node."', 4, 2) = 'MG'::text THEN 'MG'::text
-			WHEN substring('".$node."', 4, 2) = ANY (ARRAY['PR'::text, 'SC'::text]) THEN 'PRSC'::text
-			WHEN substring('".$node."', 4, 2) = 'ES'::text THEN 'ES'::text
-		ELSE 'UNKNOWN'::text
-		END 
+		SELECT month, node, acc_cs, retainability_cs, availability, smp_5, 
+       smp_7, smp_8, smp_9, sdcch_traffic, tch_traffic_fr, tch_traffic_hr,smp_5_ericsson,smp_5_nokia,smp_5_siemens, 
+       smp_7_ericsson,smp_7_nokia,smp_7_siemens, smp_8_ericsson,smp_8_nokia,smp_8_siemens, 
+	   smp_9_ericsson,smp_9_nokia,smp_9_siemens,'bsc'::text as type,2 as sortcol
+	  FROM gsm_kpi.vw_main_kpis_bsc_rate_monthly
+	  where month = ".$monthnum." and year = ".$year." and
+	  node = '".$node."'
 	union
-	SELECT month, node,'region'::text as type, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
-		   drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
-		   hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
-		   hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
-		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
-		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
-		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
-	  FROM umts_kpi.vw_main_kpis_region_rate_monthly
-	  where month = ".$monthnum." and 
+	SELECT month, node, acc_cs, retainability_cs, availability, smp_5, 
+       smp_7, smp_8, smp_9, sdcch_traffic, tch_traffic_fr, tch_traffic_hr,smp_5_ericsson,smp_5_nokia,smp_5_siemens, 
+       smp_7_ericsson,smp_7_nokia,smp_7_siemens, smp_8_ericsson,smp_8_nokia,smp_8_siemens, 
+	   smp_9_ericsson,smp_9_nokia,smp_9_siemens,'region'::text as type,1 as sortcol
+	  FROM gsm_kpi.vw_main_kpis_region_rate_monthly
+	  where month = ".$monthnum." and year = ".$year." and
 	  node = 
 		CASE
 			WHEN substring('".$node."', 4, 2) = ANY (ARRAY['AC'::text, 'DF'::text, 'MS'::text, 'MT'::text, 'RO'::text, 'GO'::text]) THEN 'CO'::text
@@ -144,7 +123,7 @@ class Model_mainkpis_gsm extends CI_Model{
 			WHEN substring('".$node."', 4, 2) = 'ES'::text THEN 'ES'::text
 		ELSE 'UNKNOWN'::text
 		END 
-		order by month, node
+		order by sortcol,month, node
 	;");
 
 		return $query->result();
@@ -196,30 +175,23 @@ class Model_mainkpis_gsm extends CI_Model{
 	function uf_monthly_report($node,$reportdate){
 		$date = new DateTime($reportdate);
 		$monthnum = $date->format("m");
+		$year = $date->format("o");
 			$query = $this->db->query(
-			"	
-		SELECT month, node,'uf'::text as type, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
-		   drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
-		   hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
-		   hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
-		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
-		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
-		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
-	  FROM umts_kpi.vw_main_kpis_uf_rate_monthly
-	  where month = ".$monthnum." and node = '".$node."'
+			"SELECT month, node, acc_cs, retainability_cs, availability, smp_5, 
+       smp_7, smp_8, smp_9, sdcch_traffic, tch_traffic_fr, tch_traffic_hr,smp_5_ericsson,smp_5_nokia,smp_5_siemens, 
+       smp_7_ericsson,smp_7_nokia,smp_7_siemens, smp_8_ericsson,smp_8_nokia,smp_8_siemens, 
+	   smp_9_ericsson,smp_9_nokia,smp_9_siemens,'uf'::text as type, 1 as sortcol
+	  FROM gsm_kpi.vw_main_kpis_uf_rate_monthly
+	  where month = ".$monthnum." and node = '".$node."' and year = ".$year."
 	union
-	SELECT month, concat(node,' - ',uf) as node,'cidade'::text as type, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
-		   drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
-		   hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
-		   hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
-		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
-		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
-		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
-	  FROM umts_kpi.vw_main_kpis_cidade_rate_monthly
-	  where month = ".$monthnum." and uf = '".$node."'
-	  order by month, node
+	SELECT month, concat(node,' - ',uf) as node, acc_cs, retainability_cs, 
+		availability, smp_5, smp_7, smp_8, smp_9, sdcch_traffic, tch_traffic_fr, tch_traffic_hr, 
+		smp_5_ericsson, smp_5_nokia, smp_5_siemens, smp_7_ericsson, smp_7_nokia, smp_7_siemens, 
+		smp_8_ericsson, smp_8_nokia, smp_8_siemens, smp_9_ericsson, smp_9_nokia, smp_9_siemens,
+		'cidade'::text as type, 2 as sortcol
+	  FROM gsm_kpi.vw_main_kpis_cidade_rate_monthly
+	  where month = ".$monthnum." and uf = '".$node."' and year = ".$year."
+	  order by sortcol, month, node
 	;");
 
 		return $query->result();
@@ -232,30 +204,24 @@ class Model_mainkpis_gsm extends CI_Model{
 		$uf = $cidade_info[0]->uf;
 		$date = new DateTime($reportdate);
 		$monthnum = $date->format("m");
+		$year = $date->format("o");
 			$query = $this->db->query(
 			"	
-		SELECT month, node,'uf'::text as type, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
-		   drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
-		   hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
-		   hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
-		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
-		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
-		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
-	  FROM umts_kpi.vw_main_kpis_uf_rate_monthly
-	  where month = ".$monthnum." and node = '".$uf."'
+		SELECT month, node, acc_cs, retainability_cs, availability, smp_5, 
+       smp_7, smp_8, smp_9, sdcch_traffic, tch_traffic_fr, tch_traffic_hr,smp_5_ericsson,smp_5_nokia,smp_5_siemens, 
+       smp_7_ericsson,smp_7_nokia,smp_7_siemens, smp_8_ericsson,smp_8_nokia,smp_8_siemens, 
+	   smp_9_ericsson,smp_9_nokia,smp_9_siemens,'uf'::text as type,1 as sortcol
+	  FROM gsm_kpi.vw_main_kpis_uf_rate_monthly
+	  where month = ".$monthnum." and node = '".$uf."' and year = ".$year."
 	union
-	SELECT month, concat(node,' - ',uf) as node,'cidade'::text as type, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
-		   drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
-		   hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
-		   hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
-		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
-		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
-		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
-	  FROM umts_kpi.vw_main_kpis_cidade_rate_monthly
-	  where month = ".$monthnum." and uf = '".$uf."'
-	  order by month, node
+	SELECT month, concat(node,' - ',uf) as node, 
+		acc_cs, retainability_cs, availability, smp_5, smp_7, smp_8, smp_9, sdcch_traffic, 
+		tch_traffic_fr, tch_traffic_hr, smp_5_ericsson, smp_5_nokia, smp_5_siemens, 
+		smp_7_ericsson, smp_7_nokia, smp_7_siemens, smp_8_ericsson, smp_8_nokia, smp_8_siemens, 
+		smp_9_ericsson, smp_9_nokia, smp_9_siemens, 'cidade'::text as type,2 as sortcol
+	  FROM gsm_kpi.vw_main_kpis_cidade_rate_monthly
+	  where month = ".$monthnum." and uf = '".$uf."' and year = ".$year." and ibge = ".$ibge."
+	  order by sortcol,month, node
 	;");
 
 		return $query->result();
@@ -297,69 +263,45 @@ class Model_mainkpis_gsm extends CI_Model{
 		return $query->result();
 		}
 
-	function nodeb_monthly_report($node,$reportdate){
+	function bts_monthly_report($node,$reportdate){
 		$date = new DateTime($reportdate);
 		$monthnum = $date->format("m");
+		$year = $date->format("o");
 			$query = $this->db->query(
 			"	
-		SELECT month, node,'nodeb'::text as type, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
-		   drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
-		   hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
-		   hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
-		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
-		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
-		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
-	  FROM umts_kpi.vw_main_kpis_nodeb_rate_monthly
-	  where month = ".$monthnum." 
+		SELECT *,'bts'::text as type,1 as sortcol
+	  FROM gsm_kpi.vw_main_kpis_bts_rate_monthly
+	  where month = ".$monthnum." and year = ".$year."
 	  and node = '".$node."'
 	union
-	SELECT month, node,'cell'::text as type, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
-		   drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
-		   hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
-		   hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
-		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
-		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
-		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
+	SELECT *,'cell'::text as type,2 as sortcol
 	  FROM umts_kpi.vw_main_kpis_cell_rate_monthly
-	  where month = ".$monthnum." 
-	  and nodebname = '".$node."'
-	  order by month, node
+	  where month = ".$monthnum." and year = ".$year."
+	  and bts = '".$node."'
+	  order by sortcol,month, node
 	;");
 
 		return $query->result();
 		}
 
 	function cell_monthly_report($node,$reportdate){
+		$site_array = $this->model_cellsinfo->find_bts_from_cell($node);
+		$bts = $site_array[0]->bts;
 		$date = new DateTime($reportdate);
 		$monthnum = $date->format("m");
+		$year = $date->format("o");
 			$query = $this->db->query(
 			"	
-		SELECT month, node,'nodeb'::text as type, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
-		   drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
-		   hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
-		   hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
-		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
-		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
-		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
-	  FROM umts_kpi.vw_main_kpis_nodeb_rate_monthly
-	  where month = ".$monthnum." 
-	  and node = left('".$node."',8)
+		SELECT *,'bts'::text as type,1 as sortcol 
+	  FROM gsm_kpi.vw_main_kpis_bts_rate_monthly
+	  where month = ".$monthnum." and year = ".$year."
+	  and node = '".$bts."'
 	union
-	SELECT month, node,'cell'::text as type, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
-		   drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
-		   hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
-		   hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
-		   retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
-		   availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
-		   voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-		   hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
-	  FROM umts_kpi.vw_main_kpis_cell_rate_monthly
-	  where month = ".$monthnum." 
-	  and nodebname = left('".$node."',8)
-	  order by month, node
+	SELECT *,'cell'::text as type,2 as sortcol
+	  FROM gsm_kpi.vw_main_kpis_cell_rate_monthly
+	  where month = ".$monthnum." and year = ".$year."
+	  and bts = '".$bts."'
+	  order by sortcol,month, node
 	;");
 
 		return $query->result();
@@ -484,20 +426,16 @@ function cell_weekly_report($node,$weeknum){
 		$strreportdate = date('Y-m-d', strtotime($reportdate.' -150 day'));
 		$strdate = new DateTime($strreportdate);
 		$strweek = $strdate->format("W");
+		$stryear= $strdate->format("o");
+		$endyear = $date->format("o");
 		// echo $strweek;
 		// echo $endweek;
 		#$weeknum_start = $weeknum -4;
 			 $query = $this->db->query(
-			 "SELECT week as date, node, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
-       drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
-       hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
-       hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
-       retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
-       availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
-       voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
-  FROM umts_kpi.vw_main_kpis_network_rate_weekly 
-  WHERE week between '".$strweek."' and '".$endweek."' order by week
+			 "SELECT week as date,*
+  FROM gsm_kpi.vw_main_kpis_network_rate_weekly 
+  WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
+  order by year,week
 	;");	
 
 	return $query->result();
@@ -509,20 +447,15 @@ function cell_weekly_report($node,$weeknum){
 		$strreportdate = date('Y-m-d', strtotime($reportdate.' -150 day'));
 		$strdate = new DateTime($strreportdate);
 		$strweek = $strdate->format("W");
+		$stryear= $strdate->format("o");
+		$endyear = $date->format("o");
 		#$weeknum_start = $weeknum -4;
 			 $query = $this->db->query(
-			 "SELECT week as date, node, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
-       drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
-       hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
-       hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
-       retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
-       availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
-       voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
-  FROM umts_kpi.vw_main_kpis_uf_rate_weekly 
-  WHERE week between '".$strweek."' and '".$endweek."' 
+			 "SELECT week as date, *
+  FROM gsm_kpi.vw_main_kpis_uf_rate_weekly 
+  WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
   and node = '".$node."'
-  order by week
+order by year,week
 	;");	
 
 	return $query->result();
@@ -530,28 +463,27 @@ function cell_weekly_report($node,$weeknum){
 
 	function cidade_weekly_report_graph($node,$reportdate){
 		$this->load->model('model_cellsinfo');
-		$cidade_info = $this->model_cellsinfo->find_cidade_info_gsm($node);
-		$ibge = $cidade_info[0]->ibge;		
-		
+		$cidade_info = $this->model_cellsinfo->find_cidade_info_gsm($node); 
+		$ibge = $cidade_info[0]->ibge;
+		$uf = $cidade_info[0]->uf;
 		$date = new DateTime($reportdate);
 		$endweek = $date->format("W");
 		$strreportdate = date('Y-m-d', strtotime($reportdate.' -150 day'));
 		$strdate = new DateTime($strreportdate);
 		$strweek = $strdate->format("W");
+		$stryear= $strdate->format("o");
+		$endyear = $date->format("o");
 		#$weeknum_start = $weeknum -4;
-			 $query = $this->db->query(
-			 "SELECT week as date, concat(node,' - ',uf) as node, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
-       drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
-       hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
-       hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
-       retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
-       availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
-       voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
-  FROM umts_kpi.vw_main_kpis_cidade_rate_weekly 
-  WHERE week between '".$strweek."' and '".$endweek."' 
-  and ibge = '".$ibge."'
-  order by week
+		 $query = $this->db->query(
+		 "SELECT week as date, concat(node,' - ',uf) as node,
+			acc_cs, retainability_cs, availability, smp_5, smp_7, smp_8, smp_9, sdcch_traffic, 
+			tch_traffic_fr, tch_traffic_hr, smp_5_ericsson, smp_5_nokia, smp_5_siemens, 
+			smp_7_ericsson, smp_7_nokia, smp_7_siemens, smp_8_ericsson, smp_8_nokia, 
+			smp_8_siemens, smp_9_ericsson, smp_9_nokia, smp_9_siemens
+  FROM gsm_kpi.vw_main_kpis_cidade_rate_weekly 
+  WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
+  and uf = '".$uf."' and ibge = ".$ibge."
+order by year,week
 	;");	
 
 	return $query->result();
@@ -587,26 +519,21 @@ function cell_weekly_report($node,$weeknum){
 	return $query->result();
 	}
 
-	function nodeb_weekly_report_graph($node,$reportdate){
+	function bts_weekly_report_graph($node,$reportdate){
 		$date = new DateTime($reportdate);
 		$endweek = $date->format("W");
 		$strreportdate = date('Y-m-d', strtotime($reportdate.' -150 day'));
 		$strdate = new DateTime($strreportdate);
 		$strweek = $strdate->format("W");
+		$stryear= $strdate->format("o");
+		$endyear = $date->format("o");
 		#$weeknum_start = $weeknum -4;
 			 $query = $this->db->query(
-			 "SELECT week as date, node, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
-       drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
-       hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
-       hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
-       retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
-       availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
-       voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
-  FROM umts_kpi.vw_main_kpis_nodeb_rate_weekly 
-  WHERE week between '".$strweek."' and '".$endweek."' 
+			 "SELECT week as date, *
+  FROM gsm_kpi.vw_main_kpis_bts_rate_weekly 
+  WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."')
   and node = '".$node."'
-  order by week
+  order by year,week
 	;");	
 
 	return $query->result();
@@ -618,20 +545,15 @@ function cell_weekly_report($node,$weeknum){
 		$strreportdate = date('Y-m-d', strtotime($reportdate.' -150 day'));
 		$strdate = new DateTime($strreportdate);
 		$strweek = $strdate->format("W");
+		$stryear= $strdate->format("o");
+		$endyear = $date->format("o");
 		#$weeknum_start = $weeknum -4;
 			 $query = $this->db->query(
-			 "SELECT week as date, node, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
-       drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
-       hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
-       hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
-       retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
-       availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
-       voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
-  FROM umts_kpi.vw_main_kpis_cell_rate_weekly 
-  WHERE week between '".$strweek."' and '".$endweek."' 
+			 "SELECT week as date, *
+  FROM gsm_kpi.vw_main_kpis_cell_rate_weekly 
+  WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
   and node = '".$node."'
-  order by week
+  order by year,week
 	;");	
 
 	return $query->result();
@@ -643,45 +565,35 @@ function cell_weekly_report($node,$weeknum){
 		$strreportdate = date('Y-m-d', strtotime($reportdate.' -150 day'));
 		$strdate = new DateTime($strreportdate);
 		$strweek = $strdate->format("W");
+		$stryear= $strdate->format("o");
+		$endyear = $date->format("o");
 		#$weeknum_start = $weeknum -4;
 			 $query = $this->db->query(
-			 "SELECT week as date, node, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
-       drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
-       hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
-       hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
-       retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
-       availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
-       voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
-  FROM umts_kpi.vw_main_kpis_region_rate_weekly 
-  WHERE week between '".$strweek."' and '".$endweek."' 
+			 "SELECT week as date, *
+  FROM gsm_kpi.vw_main_kpis_region_rate_weekly 
+  WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
   and node = '".$node."'
-  order by week
+  order by year,week
 	;");	
 
 	return $query->result();
 	}
 
-	function rnc_weekly_report_graph($node,$reportdate){
+	function bsc_weekly_report_graph($node,$reportdate){
 		$date = new DateTime($reportdate);
 		$endweek = $date->format("W");
 		$strreportdate = date('Y-m-d', strtotime($reportdate.' -150 day'));
 		$strdate = new DateTime($strreportdate);
 		$strweek = $strdate->format("W");
+		$stryear= $strdate->format("o");
+		$endyear = $date->format("o");
 		#$weeknum_start = $weeknum -4;
 			 $query = $this->db->query(
-			 "SELECT week as date, node, acc_rrc, acc_cs, acc_ps, acc_hsdpa, acc_hsdpa_f2h, 
-       drop_cs, drop_ps, drop_hsdpa, drop_hsupa, sho_succ_rate, soft_hand_succ_rate, 
-       hho_intra_freq_succ_rate, cs_hho_intra_freq_rate, ps_hho_intra_freq_succ_rate, 
-       hho_inter_freq_succ_rate, iratho_cs_succ_rate, iratho_ps_succ_rate, 
-       retention_cs_succ_rate, retention_ps_succ_rate, sho_over, rtwp, 
-       availability, data_hsdpa, data_hsupa, ps_r99_ul, ps_r99_dl, voice_traffic_dl, 
-       voice_traffic_ul, voice_erlangs_num, voice_erlangs_den, hsdpa_users, 
-       hsupa_users,dch_users, pch_users,fach_users, ps_nonhs_users, thp_hsdpa, thp_hsupa
-  FROM umts_kpi.vw_main_kpis_rnc_rate_weekly 
-  WHERE week between '".$strweek."' and '".$endweek."' 
+			 "SELECT week as date, *
+  FROM gsm_kpi.vw_main_kpis_bsc_rate_weekly 
+  WHERE (year,week) between ('".$stryear."','".$strweek."') and ('".$endyear."','".$endweek."') 
   and node = '".$node."'
-  order by week
+    order by year,week 
 	;");	
 
 	return $query->result();
@@ -760,6 +672,7 @@ function network_commercial_hour_report($reportdate){
 		$this->load->model('model_cellsinfo');
 		$cidade_info = $this->model_cellsinfo->find_cidade_info_gsm($node);
 		$ibge = $cidade_info[0]->ibge;
+		$uf = $cidade_info[0]->uf;
 		$daterange = $reportdate;
 		$inidate = date('Y-m-d', strtotime($daterange.' -30 day'));
 		$findate = date('Y-m-d', strtotime($daterange));	
@@ -770,7 +683,7 @@ function network_commercial_hour_report($reportdate){
        smp_7_nokia, smp_7_siemens, smp_8_ericsson, smp_8_nokia, smp_8_siemens, 
        smp_9_ericsson, smp_9_nokia, smp_9_siemens from gsm_kpi.vw_main_kpis_cidade_rate_daily
 	where date between '".$inidate."' and '".$findate."' 
-	and ibge = ".$ibge."
+	and ibge = ".$ibge." and uf = '".$uf."'
 	order by date,node
 	;");	
 
@@ -1166,6 +1079,7 @@ function network_hourly_report($reportdate){
 		$this->load->model('model_cellsinfo');
 		$cidade_info = $this->model_cellsinfo->find_cidade_info_gsm($node);
 		$ibge = $cidade_info[0]->ibge;
+		$uf = $cidade_info[0]->uf;
 		$daterange = $reportdate;
 		$inidate = date('Y-m-d', strtotime($daterange.' -7 day'));
 		$findate = date('Y-m-d', strtotime($daterange));	
@@ -1176,7 +1090,7 @@ function network_hourly_report($reportdate){
        smp_7_nokia, smp_7_siemens, smp_8_ericsson, smp_8_nokia, smp_8_siemens, 
        smp_9_ericsson, smp_9_nokia, smp_9_siemens from gsm_kpi.vw_main_kpis_cidade_rate_hourly
 	where date between '".$inidate."' and '".$findate." 23:30:00' 
-	and ibge = '".$ibge."'
+	and ibge = '".$ibge."' and uf = '".$uf."'
 	order by date,node
 	;");	
 

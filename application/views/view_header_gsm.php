@@ -12,20 +12,19 @@
 <link rel="shortcut icon" href="http://freelogo2016cdn.b-cdn.net/wp-content/uploads/2016/12/huawei-logo.png">
 <meta charset="utf-8">
 
-<script src='/npsmart/js/jquery-2.1.3.min.js'></script>
-<script src="/npsmart/js/jquery-1.10.2.js"></script>
-<script src="/npsmart/js/jquery-ui.js"></script> 
-<script src="/npsmart/js/highcharts.js"></script>
-<script src="http://code.highcharts.com/highcharts-more.js"></script>
-<script src="/npsmart/js/exporting.js"></script>
-<script src="/npsmart/js/export-csv.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>-->
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="/npsmart/js/grouped-categories.js"></script>
 <!--<script src="https://code.highcharts.com/modules/multicolor_series.js"></script>-->
 <link rel="stylesheet" href="/npsmart/css/jquery-ui.css">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
  <link rel="stylesheet" type="text/css" href="/npsmart/DataTables-1.10.9/media/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="/npsmart/DataTables-1.10.9/media/js/jquery.dataTables.js"></script>
@@ -53,6 +52,8 @@
 <script src="/npsmart/js/buttons.html5.min.js"></script>
 <script src="/npsmart/js/dataTables.scroller.min.js"></script>
 <link rel="stylesheet" href="/npsmart/css/scroller.dataTables.min.css" />
+
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
 
 <!--<script type="text/javascript" charset="utf8" src="/npsmart/js/maplabel.js"></script>
 <script type="text/javascript" charset="utf8" src="/npsmart/js/maplabel-compiled.js"></script>-->
@@ -194,6 +195,7 @@
 .navbar-custom .navbar-link:hover {
   color: #C1CCD2;
 }
+
 </style>
  <style type="text/css">
 
@@ -479,12 +481,14 @@ thead th {
 }
 
 .vrt {
-  writing-mode: vertical-lr;
+  writing-mode: vertical-rl;
+  -webkit-transform:rotate(180deg);
   width: 10px;
 }
 
 .vrt_radar {
-  writing-mode: vertical-lr;
+  writing-mode: vertical-rl;
+  -webkit-transform:rotate(180deg);
   width: 10px;
   height: 230px;
 }
@@ -526,6 +530,43 @@ thead th {
 	min-width: 50%;
     height: 100%;
 }
+
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color:#1476e5 ;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #999;
+  margin-top: 20px;
+}
+
+.button:hover {background-color:#1f5fa8 }
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
+}
+
+.dimmer {
+  display: none;
+	background: #000;
+	opacity: 0.5;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -825,8 +866,39 @@ var node = $(obj).closest('tr').find('td:first').text();
 			}
 	
     }
+	
+function gerar_ppt(node){
 
- 
+var date = $(node).attr('id');
+var fields = date.split('-');
+var year = fields[0];
+var week = fields[1];
+var dimmer = $('.dimmer');
+
+document.getElementById('reportyear').value = year;
+document.getElementById('reportweek').value = week;
+dimmer.show();
+document.getElementById("loading_ppt").style.display = "block";
+document.getElementById("creting_ppt").innerHTML = "Creating CTO - Meeting W"+week+" Presentation";
+document.getElementById("creting_ppt").style.display = "block";
+
+document.reportopt.action = '/npsmart/umts/genarate_ppt';
+document.reportopt.submit();
+}
+
+function mostrar_cto(){
+	
+$('.cto').css('display','block');	
+	
+}
+
+function esconder_cto(){
+	
+$('.cto').css('display','none');	
+	
+}
+
+
 
 </script>
 <META HTTP-EQUIV="Pragma" CONTENT="no cache">

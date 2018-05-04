@@ -2,6 +2,11 @@
 <script type="text/javascript" >
 	
 $(document).ready( function () {
+	$('a[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
+        $.fn.dataTable.tables( {visible: true, api: true} )
+            .columns.adjust()
+            .responsive.recalc();
+    } );
 	
 	$('#table_id tfoot th').each( function (i) {
         var title = $('#table_id thead th').eq( $(this).index() ).text();
@@ -9,13 +14,16 @@ $(document).ready( function () {
     } );
 	
   var table = $('#table_id').removeAttr('width').DataTable ( {
-	scrollY:        "500px",
+	fixedColumns: {
+    leftColumns: 1
+  },
+	scrollY:        "400px",
     scrollX:        true,
 	scrollCollapse: true,
-	fixedColumns: true,
+	//fixedColumns: true,
 	"bPaginate": true,
 	"aaSorting": [],
-	"bInfo": false,
+	"bInfo": true,
 	"pageLength": 50,
 	dom: 'Bfrtip',
         buttons: [
@@ -30,7 +38,7 @@ $(document).ready( function () {
             {
                 text: "<b>KPI<b>",
 				action: function ( e, dt, node, config ) {
-				for (k=11; k<24; k++) {
+				for (k=11; k<26; k++) {
                 dt.column(k).visible( ! dt.column(k).visible() );
 				}
 				},
@@ -38,7 +46,7 @@ $(document).ready( function () {
             {
                 text: "<b>OMR<b>",
 				action: function ( e, dt, node, config ) {
-				for (k=25; k<28; k++) {
+				for (k=27; k<32; k++) {
                 dt.column(k).visible( ! dt.column(k).visible() );
                 }
 				}
@@ -46,7 +54,7 @@ $(document).ready( function () {
             {
                 text: "<b>TX/OMR<b>",
 				action: function ( e, dt, node, config ) {
-				for (k=29; k<41; k++) {
+				for (k=33; k<45; k++) {
                 dt.column(k).visible( ! dt.column(k).visible() );
                 }
 				}
@@ -54,7 +62,7 @@ $(document).ready( function () {
 			{
                 text: "<b>OTM<b>",
 				action: function ( e, dt, node, config ) {
-				for (k=42; k<50; k++) {
+				for (k=46; k<57; k++) {
                 dt.column(k).visible( ! dt.column(k).visible() );
                 }
 				}
@@ -62,7 +70,7 @@ $(document).ready( function () {
             {
                 text: "<b>CAPACITY<b>",
 				action: function ( e, dt, node, config ) {
-				for (k=51; k<61; k++) {
+				for (k=58; k<69; k++) {
                 dt.column(k).visible( ! dt.column(k).visible() );
                 }
 				}
@@ -70,7 +78,7 @@ $(document).ready( function () {
             {
                 text: "<b>PLAN/ENG RF<b>",
 				action: function ( e, dt, node, config ) {
-				for (k=62; k<67; k++) {
+				for (k=70; k<77; k++) {
                 dt.column(k).visible( ! dt.column(k).visible() );
                 }
 				}
@@ -78,7 +86,7 @@ $(document).ready( function () {
             {
                 text: "<b>IMP<b>",
 				action: function ( e, dt, node, config ) {
-				for (k=68; k<90; k++) {
+				for (k=78; k<101; k++) {
                 dt.column(k).visible( ! dt.column(k).visible() );
                 }
 				}
@@ -86,7 +94,7 @@ $(document).ready( function () {
             {
                 text: "<b>AREA/STATUS<b>",
 				action: function ( e, dt, node, config ) {
-				for (k=91; k<101; k++) {
+				for (k=102; k<112; k++) {
                 dt.column(k).visible( ! dt.column(k).visible() );
                 }
 				}
@@ -94,36 +102,68 @@ $(document).ready( function () {
             {
                 text: "<b>ACTION PLAN<b>",
 				action: function ( e, dt, node, config ) {
-				for (k=102; k<111; k++) {
+				for (k=113; k<122; k++) {
                 dt.column(k).visible( ! dt.column(k).visible() );
                 }
 				}
             },
+			{
+                text: "<b>INCIDENT<b>",
+				action: function ( e, dt, node, config ) {
+				for (k=123; k<128; k++) {
+                dt.column(k).visible( ! dt.column(k).visible() );
+                }
+				}
+            },
+			{
+				extend: 'colvisGroup',
+                text: "<b>HIDE ALL<b>",
+				show: [0,26,32,45,57,69,77,101,112,122,128],
+                hide: [1,2,3,4,5,6,7,8,9,10,
+11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,
+27,28,29,30,31,
+33,34,35,36,37,38,39,40,41,42,43,44,
+46,47,48,49,50,51,52,53,54,55,56,
+58,59,60,61,62,63,64,65,66,67,68,
+70,71,72,73,74,75,76,
+78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,
+102,103,104,105,106,107,108,109,110,111,
+113,114,115,116,117,118,119,120,121,
+123,124,125,126,127]
+				},
+			{
+				extend: 'colvisGroup',
+                text: "<b>SHOW ALL<b>",
+				show: ':hidden'
+				},
 
 			],
 		 columnDefs: [
-		 { width: 150, targets: [0,3,4,102]},
-		 { width: 100, targets: [5,6,29,30,31,32,33,34,35,36,37,38,39,48,49,51,52,53,54,55,56,57,58,59,60,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89]},
-		 { width: 30, targets: [24,28,41,50,61,67,90,91,92,93,94,95,96,97,98,99] },
-		 { width: 50, targets: [1,2,7,8,9,10,101,111,42,43,44,45,47]},
-		 { width: 40, targets: [11,12,13,14,15,16,17,18,19,20,21,22,23,25,63,64] },
+		 { width: 150, targets: [0,3,4]},
+		 //{ width: 100, targets: [5,6,31,32,33,34,35,36,37,38,39,40,41,55,56,57,58,59,60,61,62,63,64,74,75,76,77,78,79,80,81,82,83,84,85,86,87,87,89,90,91,92,93,94,95]},
+		 { width: 100, targets: [5,6]},
+		 { width: 30, targets: [26,32,45,57,69,77,101,112,122,128] },
+		 //{ width: 50, targets: [1,2,7,8,9,10,107,117,44,45,46,47,48,49,50,51,52,53]},
+		 { width: 50, targets: [1,2,7,8,9,10]},
+		 //{ width: 40, targets: [11,12,13,14,15,16,17,18,19,20,21,22,23,25,27,67,68] },
 		 //{ width: 350, targets: [26,27,40,66,62]},
 		 //{ width: 350, targets: [46,65,110]},
 		 //{ width: 550, targets: [100,103,104,105,106,107,108,109]},
 		 {
                 targets: [
-11,12,13,14,15,16,17,18,19,20,21,22,23,
-25,26,27,
-29,30,31,32,33,34,35,36,37,38,39,40,
-42,43,44,45,46,47,48,49,
-51,52,53,54,55,56,57,58,59,60,
-62,63,64,65,66,
-68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,
-91,92,93,94,95,96,97,98,99,100,
-102,103,104,105,106,107,108,109,110],
+11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,
+27,28,29,30,31,
+33,34,35,36,37,38,39,40,41,42,43,44,
+46,47,48,49,50,51,52,53,54,55,56,
+58,59,60,61,62,63,64,65,66,67,68,
+70,71,72,73,74,75,76,
+78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,
+102,103,104,105,106,107,108,109,110,111,
+113,114,115,116,117,118,119,120,121,
+123,124,125,126,127],
                 visible: false
             }
-        ]
+        ],
   } );
   
 $( table.table().container() ).on( 'keyup', 'tfoot input', function () {
@@ -135,7 +175,13 @@ $( table.table().container() ).on( 'keyup', 'tfoot input', function () {
 	 
     $('button').click( function() {
         var form = table.$('input, select').serialize();
-		alert(form);	
+		alert(form);
+		 document.getElementById('reportkpi').value = 'cellmapping';
+		 document.getElementById('reportnename').value = reportnename;
+		 document.getElementById('reportdate').value = reportdate;
+		 document.getElementById('reportnetype').value = reportnetype;
+		 document.getElementById('reportcell').value = form;
+		 document.reportopt.submit();
     } );
   } );
 
@@ -174,7 +220,7 @@ var cluster = <?php echo json_encode($clusters); ?>;
 //var cell = <?php #echo json_encode($cells); ?>;	
 var nodeb = <?php echo json_encode($nodebs); ?>;	
 var uf = <?php echo json_encode($ufs); ?>;	
-var custom = <?php echo json_encode($custom); ?>;	
+var custom = <?php echo json_encode($custom); ?>;
 
 // var chocolates = [
     // {display: "Dark chocolate", value: "dark-chocolate" },
@@ -325,9 +371,6 @@ outline:none;
 <?php
  $attributes = array('name' => 'reportopt', 'method' => 'post');
 echo form_open('', $attributes);
-$variavelphp = "<script>document.write(form)</script>";
-echo $variavelphp;
-echo 'oi';
 ?>
 <!--<input type="hidden" id="reportname" name="reportname" value="" />-->
 <input type="hidden" id="reportnetype" name="reportnetype" value="" />
@@ -347,7 +390,6 @@ elseif (isset($weeknum)){
 } else{
 	$calendarinfo = $reportdate;
 }
-
 #echo count($cells);
 		// foreach($cells as $row){
 			// $cellinfo[$row->cellname] = $row->cellid;
@@ -378,7 +420,7 @@ elseif (isset($weeknum)){
                 </button>
                 <a class="navbar-brand" href="http://support.huawei.com"><img src="/npsmart/images/huawei_logo_icon.png" style="padding:0px; top:0px; width:30px; margin-top:-15%; height:30px;"/></a>
                
-                <a class="navbar-brand" id="aTitleVersion" href="/npsmart/umts/" style="width:170px;"><span id="aTitle">NPSmart</span>&nbsp; <span id="sVersion" style="font-size:12px; font-family:Calibri;">
+                <a class="navbar-brand" id="aTitleVersion" href="/npsmart/" style="width:170px;"><span id="aTitle">NPSmart</span>&nbsp; <span id="sVersion" style="font-size:12px; font-family:Calibri;">
                      v2.1</span></a>
             </div>
 
@@ -395,7 +437,7 @@ elseif (isset($weeknum)){
                             <li class="menuItemnqi"><a href="/npsmart/umts/overshooters">Overshooters</a></li>
                             <!--<li class="menuItemnqi"><a href="/npsmart/umts/feature_phase2">Feature Report</a></li>-->
                             <li class="menuItemnqi"><a href="/npsmart/umts/radar">AMX Radar</a></li>
-                            <li class="menuItemnqi"><a href="/npsmart/umts/unbalance">EE/Load Unbalance</a></li>
+                            <li class="menuItemnqi"><a href="/npsmart/umts/kpis_anatel_weekly">Anatel KPIs</a></li>
                         </ul>
                     </li>
 
@@ -403,28 +445,31 @@ elseif (isset($weeknum)){
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Capacity<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
 						<li class="menuItemnqi"><a href="/npsmart/umts/capacity">Cell & NodeB Capacity</a></li>
-						<li class="menuItemnqi"><a href="/npsmart/umts/rnc_capacity">RNC Capacity</a></li>
+						<li class="menuItemnqi"><a href="/npsmart/umts/rnc_capacity">RNC Capacity</a></li> 
+ 						<li class="menuItemnqi"><a href="#" onclick='selectunbalance()'>EE/Load Unbalance</a></li>
                         </ul>
 						</li>	
   
                     <li id="menuItemwaf" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RNP<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
+						<li class="menuItemnqi"><a href="/npsmart/main_map/map_region_umts">Network Overview</a></li>
                             <li class="menuItemnqi"><a href="/npsmart/umts/rfpar">Cells Database</a></li>
                             <li><a href="/npsmart/umts/cfg">RNC & Cell Configuration</a></li>
                             <li class="menuItemnqi"><a href="/npsmart/umts/nodebcfg">NodeB Configuration</a></li>  
                             <li class="menuItemnqi"><a href="/npsmart/umts/srancfg">Single-RAN Configuration</a></li>  
 							<li class="menuItemnqi"><a href="/npsmart/umts/inventory">Inventory</a></li>							  
-							<li class="menuItemnqi"><a href="/npsmart/umts/gis">GIS</a></li>	
+							<li class="menuItemnqi"><a href="/npsmart/output/huawei_cell_mapping/Huawei - Cell Mapping.kmz">GIS</a></li>	
 							<li class="menuItemnqi"><a href="/npsmart/umts/alarm">Alarm</a></li>	
                         </ul>
                     </li>	
 
                     <li id="menuItemwaf" class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Baseline<span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Consistency Check<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
 							<li class="menuItemnqi"><a href="/npsmart/umts/baseline_nodeb">Baseline NodeB Audit</a></li>
                             <li class="menuItemnqi"><a href="/npsmart/umts/baseline">Baseline Cell & RNC Audit</a></li>
+							<li class="menuItemnqi"><a href="/npsmart/umts/check_neighborhood">Neighbor Audit</a></li>
                         </ul>
                     </li>
 					
@@ -433,12 +478,15 @@ elseif (isset($weeknum)){
 					<li id="menuItemwaf" class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Settings<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
+							<li class="menuItemnqi"><a href="/npsmart/umts/baseline_configuration">Baseline Configuration</a></li>
 							<li class="disabled"><a href="#">Counters</a></li>
+							<li><a href="/npsmart/umts/process_monitoring">Database Process Monitoring</a></li>
 							<li class="disabled"><a href="#">KPIs Target</a></li>
                         </ul>
 					</li>
                 
                     <li class="disabled"><a href="#">Log</a></li>
+					<li><a href="/npsmart/quickreport">Quick Report</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
@@ -533,4 +581,9 @@ Network Node : <select name="parent_selection" id="parent_selection" style="widt
             </div>
         </div>
     </nav>
-<p><a href='#' onclick='selectformtriage(".$reportnetype.")'><button>Submit</button></a></p>
+	
+<?php
+if ($reportnetype == 'cell'){
+echo "<p><button>Submit</button></p>";
+}
+?>

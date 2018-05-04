@@ -3,11 +3,38 @@
 class Model_overshooting extends CI_Model{
 	
 	
-	function getRFSRData($p_cellname, $p_tech, $p_resno)
+	function getRFSRData($p_cellname, $p_tech, $p_resno, $p_cellname2)
 	{
 		//using nested query to display last x days
 		$table = 'overshooters_v2_daily';
 		$rnc_enodeb = 'rnc';
+		$where2=''; 
+		if ($p_tech=='4g') {
+			$table = 'overshooters_lte_v2_daily';
+			$rnc_enodeb = 'enodeb';
+		}
+		if ($p_cellname2!='') {
+			$where2=' or cellname=\''.$p_cellname2.'\' ';
+		}
+		$query = $this->db->query(
+		"WITH t AS ( 
+		select distinct cellname, $rnc_enodeb as rnc, cellid, 
+		abs(grid-pd_85) as distance, abs(nearest-pd_85) as distance_nr, grid, pd_85, nearest, sitesincov, 
+		x1,x2,x3,x4,x5,  rfsr, isovershooter, to_char(dateday, 'Mon-DD') as tick, dateday 
+		from common_gis.$table where cellname = '$p_cellname' $where2 
+		order by dateday DESC LIMIT $p_resno 
+		)
+		SELECT * FROM t ORDER BY dateday ASC;");
+		return $query->result();
+	}
+	
+	
+	function getRFSRDataForSRAN($p_cellname, $p_cellname2, $p_rnc, $p_tech, $where_dates)
+	{
+		//using nested query to display last x days
+		$table = 'overshooters_v2_daily';
+		$rnc_enodeb = 'rnc';
+		$where_dates=" in ('".join($where_dates, "','")."') ";
 		if ($p_tech=='4g') {
 			$table = 'overshooters_lte_v2_daily';
 			$rnc_enodeb = 'enodeb';
@@ -17,7 +44,8 @@ class Model_overshooting extends CI_Model{
 		select distinct cellname, $rnc_enodeb as rnc, cellid, 
 		abs(grid-pd_85) as distance, abs(nearest-pd_85) as distance_nr, grid, pd_85, nearest, sitesincov, 
 		x1,x2,x3,x4,x5,  rfsr, isovershooter, to_char(dateday, 'Mon-DD') as tick, dateday 
-		from common_gis.$table where cellname = '$p_cellname' order by dateday DESC LIMIT $p_resno 
+		from common_gis.$table where rnc='$p_rnc' and cellname IN ('$p_cellname', '$p_cellname2') and dateday $where_dates 
+		order by dateday DESC 
 		)
 		SELECT * FROM t ORDER BY dateday ASC;");
 		return $query->result();
@@ -33,6 +61,46 @@ class Model_overshooting extends CI_Model{
 		where r.date between '$p_dateFrom' and '$p_dateTo' and m.date between '$p_dateFrom' and '$p_dateTo'
 		and m.rnc='$p_rnc' and m.cellid=$p_cellid and r.cellname='$p_cellname' and not r.sho_overhead_radar_score isnull
 		order by r.date ASC;");
+		return $query->result();
+	}
+	
+	
+	//function getRFSRKPIsForSRAN($p_cellname, $p_cellname2, $p_tech, $where_dates)
+	//{
+	//	$where_dates=" in ('".join($where_dates, "','")."') ";
+	//	$query = $this->db->query(
+	//	"select r.cellname, m.rnc, m.cellid, r.sho_overhead_radar_score, m.hsdpa_users, to_char(r.date, 'Mon-DD') as tick, r.date as dateday
+	//	from umts_kpi.radar_cell_daily as r
+	//	inner join umts_kpi.main_kpis_daily as m
+	//	on r.date=m.date and r.cellname=m.cellname
+	//	where r.date $where_dates and m.date $where_dates
+	//	and m.rnc='$p_rnc' and m.cellid=$p_cellid and (r.cellname='$p_cellname' or r.cellname='$p_cellname2') and not r.sho_overhead_radar_score isnull
+	//	order by r.date ASC;");
+	//	return $query->result();
+	//}
+	
+	//function getRFSRKPIsForSRAN($p_rnc, $p_cellid, $p_cellid2, $p_tech, $where_dates)
+	//{
+	//	$where_dates=" in ('".join($where_dates, "','")."') ";
+	//	$query = $this->db->query(
+	//	"select m.cellname, m.rnc, m.cellid, 5 as sho_overhead_radar_score, m.hsdpa_users, to_char(m.date, 'Mon-DD') as tick, m.date as dateday
+	//	from umts_kpi.main_kpis_daily as m
+	//	where m.date $where_dates
+	//	and m.rnc='$p_rnc' and (m.cellid=$p_cellid or m.cellid=$p_cellid2)  
+	//	order by m.date ASC;");
+	//	return $query->result();
+	//}
+	
+	function getRFSRKPIsForSRAN($p_rnc, $p_cellid, $p_cellid2, $p_tech, $where_dates)
+	{
+		$where_dates=" in ('".join($where_dates, "','")."') ";
+		$query = $this->db->query(
+		"select m.cellname, m.rnc, m.cellid, max(cell_dl_data_volume_mb) as throughput, max(m.ee) as ee, to_char(m.datetime, 'yyyy-mm-dd') as tick, to_char(m.datetime, 'yyyy-mm-dd') as dateday
+		from umts_kpi.amx_load as m
+		where to_char(m.datetime, 'yyyy-mm-dd') $where_dates
+		and m.rnc='$p_rnc' and (m.cellid=$p_cellid or m.cellid=$p_cellid2)  
+		group by m.cellname, m.rnc, m.cellid, to_char(m.datetime, 'yyyy-mm-dd')
+		order by to_char(m.datetime, 'yyyy-mm-dd') ASC;");
 		return $query->result();
 	}
 	
@@ -87,16 +155,18 @@ class Model_overshooting extends CI_Model{
 	{
 		$table = 'overshooters_v2_weekly';
 		$rnc_enodeb = 'rnc';
+		$regionWhereClause="and region = '".$p_region."'";
+		if ($p_region=='ALL') { $regionWhereClause=''; }
 		if ($p_tech=='4g') {
 			$table = 'overshooters_lte_v2_weekly';
 			$rnc_enodeb = 'enodeb';
 		}
 		$query = $this->db->query(
-		"SELECT cellname, week, azimuth, pd_85, grid, isovershooter, ov.sitesincov, sites_str, 
+		"SELECT region, cellname, week, azimuth, pd_85, grid, isovershooter, ov.sitesincov, sites_str, 
 		round(100*x1::numeric,2) X1, round(100*x2::numeric,2) X2, round(100*x3::numeric,2) X3, round(100*x4::numeric,2) X4, round(100*x5::numeric,2) X5,
 		CASE WHEN isovershooter='YES' THEN rfsr ELSE 100 END rfsr 
 		FROM common_gis.$table ov
-		where week=$p_week and region = '$p_region'
+		where week=$p_week $regionWhereClause
 		order by region, $rnc_enodeb, cellname;");
 		return $query->result();
 	}
@@ -138,7 +208,7 @@ class Model_overshooting extends CI_Model{
 		from
 		(select distinct to_char(datetime, 'YYYY-MM-DD') as dateday, nodebname, rncid, cellid, cellname from umts_configuration.ucellsetup) as d2
 		left join
-		(select distinct nodebname, rncid, cellid, cellname from umts_configuration.ucellsetup_history where datetime between NOW()::DATE-EXTRACT(DOW FROM NOW())::INTEGER-8   and NOW()::DATE-EXTRACT(DOW FROM NOW())::INTEGER-2   ) as d1
+		(select distinct nodebname, rncid, cellid, cellname from umts_configuration.ucellsetup_history where datetime between NOW()::DATE-EXTRACT(DOW FROM NOW())::INTEGER-8   and NOW()::DATE-EXTRACT(DOW FROM NOW())::INTEGER-3   ) as d1
 		on   d2.rncid=d1.rncid and d2.cellid=d1.cellid 
 		where d1.cellid isnull  
 		) missed2
@@ -150,6 +220,38 @@ class Model_overshooting extends CI_Model{
 	}
 	
 	
+	
+	function getNewSitesLTE()
+	{
+		$query = $this->db->query(
+		"select distinct missed1.site, geo.latitude, geo.longitude
+		from
+		(
+		select d2.site, d2.cell 
+		from
+		(select distinct site, cell from lte_control.cells) as d2
+		left join
+		(select distinct site, cell from lte_control.cells_history where date between NOW()::DATE-EXTRACT(DOW FROM NOW())::INTEGER-8   and NOW()::DATE-EXTRACT(DOW FROM NOW())::INTEGER-3   ) as d1
+		on  d2.cell = d1.cell
+		where  d1.cell isnull and d1.site isnull
+		) missed1
+		inner join 
+		(
+		select d2.site, d2.cellid, d2.cell 
+		from
+		(select distinct site, cellid, cell from lte_control.cells) as d2
+		left join
+		(select distinct site, cellid, cell from lte_control.cells_history where date between NOW()::DATE-EXTRACT(DOW FROM NOW())::INTEGER-8   and NOW()::DATE-EXTRACT(DOW FROM NOW())::INTEGER-2   ) as d1
+		on   d2.site=d1.site and d2.cellid=d1.cellid 
+		where d1.cellid isnull  
+		) missed2
+		on missed1.cell = missed2.cell
+		left join lte_control.cells  as geo
+		on missed1.cell = geo.cell
+		order by missed1.site;");
+		return $query->result();
+	}
+	
 	function who_covers($p_lat, $p_lon, $p_radius)
 	{
 		$query = $this->db->query("select * from common_gis.calculate_who_covers_point($p_lat, $p_lon, $p_radius);");
@@ -159,6 +261,58 @@ class Model_overshooting extends CI_Model{
 	function intersections($p_name)
 	{
 		$query = $this->db->query("select * from common_gis.calculate_coverage_intersection_plpgsql('$p_name', TRUE);");
+		return $query->result();
+	}
+	
+	function getLastCellAppearence($p_cellname, $p_tech)
+	{
+		//using nested query to display last x days
+		$table = 'overshooters_v2_daily';
+		if ($p_tech=='4g') {
+			$table = 'overshooters_lte_v2_daily';
+		}
+		$query = $this->db->query(
+		"select max(to_char(datetime, 'YYYY-MM-DD')) as d, rncname as rnc from umts_configuration.ucellsetup_history where cellname = '$p_cellname' group by rncname");
+		return $query->result();
+	}
+	
+	function getFirstCellAppearence($p_cellname, $p_tech)
+	{
+		//using nested query to display last x days
+		$table = 'overshooters_v2_daily';
+		if ($p_tech=='4g') {
+			$table = 'overshooters_lte_v2_daily';
+		}
+		$query = $this->db->query(
+		"select min(to_char(datetime, 'YYYY-MM-DD')) as d, rncname as rnc from umts_configuration.ucellsetup_history where cellname = '$p_cellname' group by rncname");
+		return $query->result();
+	}
+	
+	function getRFSRDaysBack($p_cellname, $p_cellname2, $p_rnc, $p_dateday, $p_tech, $p_resno)
+	{
+		//using nested query to display last x days
+		$table = 'overshooters_v2_daily';
+		if ($p_tech=='4g') {
+			$table = 'overshooters_lte_v2_daily';
+		}
+		$query = $this->db->query(
+		"select distinct dateday 
+		from common_gis.$table where rnc='$p_rnc' and cellname IN ('$p_cellname', '$p_cellname2') and dateday<='$p_dateday' 
+		order by dateday DESC LIMIT $p_resno ");
+		return $query->result();
+	}
+	
+	function getRFSRDaysAhead($p_cellname, $p_cellname2, $p_rnc, $p_dateday, $p_tech, $p_resno)
+	{
+		//using nested query to display last x days
+		$table = 'overshooters_v2_daily';
+		if ($p_tech=='4g') {
+			$table = 'overshooters_lte_v2_daily';
+		}
+		$query = $this->db->query(
+		"select distinct dateday 
+		from common_gis.$table where rnc='$p_rnc' and cellname IN ('$p_cellname', '$p_cellname2') and dateday>='$p_dateday' 
+		order by dateday ASC LIMIT $p_resno ");
 		return $query->result();
 	}
 	

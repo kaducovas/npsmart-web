@@ -18,7 +18,7 @@
 	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>-->
 <script src="https://code.highcharts.com/stock/highstock.js"></script>
 <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
-<script src="/npsmart/js/export-csv.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="/npsmart/js/grouped-categories.js"></script>
 <!--<script src="https://code.highcharts.com/modules/multicolor_series.js"></script>-->
 <link rel="stylesheet" href="/npsmart/css/jquery-ui.css">
@@ -482,13 +482,16 @@ thead th {
 .vrt {
   width: 10px;
   margin: 0 auto;
-  writing-mode: vertical-lr;
+  writing-mode: vertical-rl;
+  -webkit-transform:rotate(180deg);
+
 }
 
 .vrt_radar {
   width: 10px;
   margin: 0 auto;
-  writing-mode: vertical-lr;
+  writing-mode: vertical-rl;
+  -webkit-transform:rotate(180deg);
   height: 230px;
 }
 
@@ -569,6 +572,30 @@ thead th {
 .radar_menu_footer_right {
 	margin-left: 90%;
 	margin-top:560px;
+}
+
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color:#1476e5 ;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #999;
+  margin-top: 20px;
+}
+
+.button:hover {background-color:#1f5fa8 }
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
 }
 </style>
 
@@ -658,10 +685,10 @@ function selecttimeagg(obj) {
 		if(reportkpi == 'all'){
 			document.reportopt.action = '/npsmart/lte/main';	
 		}
-		else if(reportkpi == 'nqihs'){
+		else if(reportkpi == 'nqi'){
 			document.reportopt.action = '/npsmart/lte/nqi';
 		}
-		else if(reportkpi == 'nqics'){
+		else if(reportkpi == 'nqi'){
 			document.reportopt.action = '/npsmart/lte/nqi';
 		}
 	} else if(obj.innerHTML == 'Daily') {
@@ -1036,6 +1063,18 @@ function selectkpiradar(obj) {
 document.reportopt.action = '/npsmart/lte/radar';
 		document.reportopt.submit();
 	//}
+}
+
+function mostrar_cto(){
+	
+$('.cto').css('display','block');	
+	
+}
+
+function esconder_cto(){
+	
+$('.cto').css('display','none');	
+	
 }
  
 

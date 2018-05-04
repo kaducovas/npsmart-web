@@ -28,8 +28,8 @@
 <script src="https://code.highcharts.com/stock/highstock.js"></script>
 <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/offline-exporting.js"></script>
-<script src="/npsmart/js/export-csv.js"></script>
 <script src="/npsmart/js/grouped-categories.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
 <!--<script src="https://code.highcharts.com/modules/multicolor_series.js"></script>-->
 <link rel="stylesheet" href="/npsmart/css/jquery-ui.css">
 
@@ -38,15 +38,6 @@
 <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">	
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!--<script src="http://blacklabel.github.io/annotations/js/annotations.js"></script>-->
-
-
-<!--<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />-->
- 
-<!-- Include Date Range Picker 
-<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />-->
 
 <!--------------------------------------------------------------------------------------------------->
 
@@ -66,19 +57,18 @@
 <script src="/npsmart/js/bootstrap-datepicker.min.js"></script>
 
 <script src="/npsmart/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="/npsmart/css/jquery.dataTables.min.css" />
-<link rel="stylesheet" type="text/css" href="/npsmart/css/buttons.datatables.min.css">
-<!--<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.1.2/css/buttons.dataTables.min.css" />-->
 <script src="/npsmart/js/dataTables.buttons.min.js"></script>
-<script src="/npsmart/js/buttons.print.min.js"></script>
-<script src="/npsmart/js/buttons.colVis.min.js"></script>
 <script src="/npsmart/js/buttons.flash.min.js"></script>
 <script src="/npsmart/js/jszip.min.js"></script>
 <script src="/npsmart/js/pdfmake.min.js"></script>
 <script src="/npsmart/js/vfs_fonts.js"></script>
 <script src="/npsmart/js/buttons.html5.min.js"></script>
+<script src="/npsmart/js/buttons.print.min.js"></script>
+<script src="/npsmart/js/buttons.colVis.min.js"></script>
 <script src="/npsmart/js/dataTables.scroller.min.js"></script>
 <link rel="stylesheet" href="/npsmart/css/scroller.dataTables.min.css" />
+<link rel="stylesheet" href="/npsmart/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" type="text/css" href="/npsmart/css/buttons.datatables.min.css">
 
 <!--<script type="text/javascript" charset="utf8" src="/npsmart/js/maplabel.js"></script>
 <script type="text/javascript" charset="utf8" src="/npsmart/js/maplabel-compiled.js"></script>-->
@@ -445,6 +435,12 @@ thead th {
 	text-align: left;
 }
 
+a.dt-button.buttons-excel.buttons-html5 {
+
+display:inline-block;
+
+}	
+
 
 
 .shorty {
@@ -507,13 +503,16 @@ thead th {
 .vrt {
   width: 10px;
   margin: 0 auto;
-  writing-mode: vertical-lr;
+  writing-mode: vertical-rl;
+ -webkit-transform:rotate(180deg);
+
 }
 
 .vrt_radar {
   width: 10px;
   margin: 0 auto;
-  writing-mode: vertical-lr;
+  writing-mode: vertical-rl;
+  -webkit-transform:rotate(180deg);
   height: 230px;
 }
 
@@ -536,6 +535,26 @@ thead th {
     height: 800px;
 	clear:both;
     
+}
+
+.vrt {
+  writing-mode: vertical-rl;
+  -webkit-transform:rotate(180deg);
+  width: 10px;
+}
+
+.vrt_long_triage {
+  writing-mode: vertical-rl;
+  -webkit-transform:rotate(180deg);
+  width: 10px;
+  height: 200px;
+}
+
+.vrt_triage {
+  margin: 0 auto;
+  writing-mode: vertical-rl;
+  -webkit-transform:rotate(180deg);
+  height: 180px;
 }
 .radar_content {	
 	position: absolute;
@@ -595,6 +614,31 @@ thead th {
 	margin-left: 90%;
 	margin-top:560px;
 }
+
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color:#1476e5 ;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #999;
+  margin-top: 20px;
+}
+
+.button:hover {background-color:#1f5fa8 }
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
+}
+
 </style>
 
 <script type="text/javascript">
@@ -959,6 +1003,28 @@ var node = $(obj).closest('tr').find('td:first').text();
 			}
 	
     }
+	
+function selectne_unbalance(obj) {
+	document.getElementById('reportnename').value = obj.innerHTML;
+	document.getElementById('reportdate').value = reportdate;
+	document.getElementById('reportnetype').value = 'cell';
+	document.getElementById('reportkpi').value = reportkpi;
+	document.reportopt.action = '/npsmart/umts/unbalance';
+	document.reportopt.submit();
+    //alert(obj.innerHTML);
+}
+
+function mostrar_cto(){
+	
+$('.cto').css('display','block');	
+	
+}
+
+function esconder_cto(){
+	
+$('.cto').css('display','none');	
+	
+}
  
 
 </script>

@@ -4,6 +4,15 @@
 var reportnename = "<?php echo $reportnename; ?>";
 var reportdate = "<?php echo $reportdate; ?>";
 </script>
+   <head>
+	<title>NQI HS</title>
+	
+	<style>
+		#table_id{	
+			table-layout: fixed;
+		}	
+	</style>
+  </head>
 <div width="100%">
 
 <form action="/npsmart/umts/worstcells" name="wcform" method="post">
@@ -170,6 +179,6 @@ foreach($nqi_weekly_region as $row){
 </div>
 
 <br><br>
-<div id="content" class="chart_content_large"><div id="acc" class="chart1"></div></div>
+<div id="content0" class="chart_content_large"><div id="acc" class="chart1"></div></div>
 </body>
 </html>

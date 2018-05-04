@@ -34,15 +34,8 @@ if($reportnetype == 'custom'){
 		if($timeagg == "weekly"){
 		$rank = "worst_cells_main_kpis_rank_daily";
 		$fails = "worst_cells_main_kpis_fails_daily";
-	} elseif ($timeagg == "daily"){
-		$rank = "worst_cells_main_kpis_rank_hourly";
-		$fails = "worst_cells_main_kpis_fails_hourly";
-	} elseif ($timeagg == "monthly"){
-		$rank = "worst_cells_main_kpis_rank_weekly";
-		$fails = "worst_cells_main_kpis_fails_weekly";
-	}
-}	
-	 $query = $this->db->query(
+		
+		$query = $this->db->query(
 "select rank,date,r.node,r.cellname,r.locellid,round(100*r.cell_kpi::numeric,2) as kpi_cell_rate,r.cell_fails,round(100*r.impact::numeric,2) as impact,
  round(100*node_kpi::numeric,2) as kpi_node_rate,round(100*new_node_kpi::numeric,2) as new_node_kpi,dates,kpis as daily_kpi_cell_rate,fails as daily_cell_fails,impacts as daily_impact
  from
@@ -51,7 +44,45 @@ if($reportnetype == 'custom'){
  on r.enodeb = f.enodeb and r.locellid = f.locellid
  order by rank LIMIT 200");
 	 return $query->result();
-	 }	
+		
+	} elseif ($timeagg == "daily"){
+		$rank = "worst_cells_main_kpis_rank_hourly";
+		$fails = "worst_cells_main_kpis_fails_hourly";
+		
+	$query = $this->db->query(
+"select rank,date,r.node,r.cellname,r.locellid,round(100*r.cell_kpi::numeric,2) as kpi_cell_rate,r.cell_fails,round(100*r.impact::numeric,2) as impact,
+ round(100*node_kpi::numeric,2) as kpi_node_rate,round(100*new_node_kpi::numeric,2) as new_node_kpi,dates,kpis as daily_kpi_cell_rate,fails as daily_cell_fails,impacts as daily_impact
+ from
+ (select * from lte_kpi.".$rank."('".$reportnetype."', '".$kpi."', '".$reportdate."', '".$reportnename."')) r
+ inner join (select * from lte_kpi.".$fails."('".$reportnetype."', '".$kpi."', '".$reportdate."', '".$reportnename."')) f 
+ on r.enodeb = f.enodeb and r.locellid = f.locellid
+ order by rank LIMIT 200");
+	 return $query->result();
+		
+	} elseif ($timeagg == "monthly"){
+		$rank = "worst_cells_main_kpis_rank_weekly";
+		$fails = "worst_cells_main_kpis_fails_weekly";
+		if($reportdate > 24 ){
+		$year = 2017;
+		}else{
+		$year = 2018;
+		}	
+		
+	$query = $this->db->query(
+"select rank,week as date,r.node,r.cellname,r.locellid,round(100*r.cell_kpi::numeric,2) as kpi_cell_rate,r.cell_fails,round(100*r.impact::numeric,2) as impact,
+ round(100*node_kpi::numeric,2) as kpi_node_rate,round(100*new_node_kpi::numeric,2) as new_node_kpi,dates,kpis as daily_kpi_cell_rate,fails as daily_cell_fails,impacts as daily_impact
+ from
+ (select * from lte_kpi.".$rank."('".$reportnetype."', '".$kpi."', '".$reportdate."',".$year.", '".$reportnename."')) r
+ inner join (select * from lte_kpi.".$fails."('".$reportnetype."', '".$kpi."', '".$reportdate."',".$year.", '".$reportnename."')) f 
+ on r.enodeb = f.enodeb and r.locellid = f.locellid
+ order by rank LIMIT 200");
+	 return $query->result();
+		
+	}
+}	
+	 
+	 }
+
 
 function rncwcalt($kpi,$reportnename,$reportdate,$reportnetype,$timeagg){
 	
@@ -72,16 +103,8 @@ function rncwcalt($kpi,$reportnename,$reportdate,$reportnetype,$timeagg){
 		if($timeagg == "weekly"){
 		$rank = "worst_cells_main_kpis_rank_daily";
 		$fails = "worst_cells_main_kpis_fails_daily";
-	} elseif ($timeagg == "daily"){
-		$rank = "worst_cells_main_kpis_rank_hourly";
-		$fails = "worst_cells_main_kpis_fails_hourly";
-	} elseif ($timeagg == "monthly"){
-		$rank = "worst_cells_main_kpis_rank_weekly";
-		$fails = "worst_cells_main_kpis_fails_weekly";
-	}
-}
-
-	 $query = $this->db->query(
+		
+		$query = $this->db->query(
 		 "select rank,date,r.node,r.cellname,r.locellid,round(r.cell_kpi::numeric,2) as kpi_cell_rate,r.cell_fails,round(100*r.impact::numeric,2) as impact,
  round(node_kpi::numeric,2) as kpi_node_rate,round(new_node_kpi::numeric,2) as new_node_kpi,dates,kpis as daily_kpi_cell_rate,fails as daily_cell_fails,impacts as daily_impact
  from
@@ -89,6 +112,42 @@ function rncwcalt($kpi,$reportnename,$reportdate,$reportnetype,$timeagg){
  inner join (select * from lte_kpi.".$fails."('".$reportnetype."', '".$kpi."', '".$reportdate."', '".$reportnename."')) f 
  on r.enodeb = f.enodeb and r.locellid = f.locellid
  order by rank LIMIT 1000");
+		
+	} elseif ($timeagg == "daily"){
+		$rank = "worst_cells_main_kpis_rank_hourly";
+		$fails = "worst_cells_main_kpis_fails_hourly";
+		
+		$query = $this->db->query(
+		 "select rank,date,r.node,r.cellname,r.locellid,round(r.cell_kpi::numeric,2) as kpi_cell_rate,r.cell_fails,round(100*r.impact::numeric,2) as impact,
+ round(node_kpi::numeric,2) as kpi_node_rate,round(new_node_kpi::numeric,2) as new_node_kpi,dates,kpis as daily_kpi_cell_rate,fails as daily_cell_fails,impacts as daily_impact
+ from
+ (select * from lte_kpi.".$rank."('".$reportnetype."', '".$kpi."', '".$reportdate."', '".$reportnename."')) r
+ inner join (select * from lte_kpi.".$fails."('".$reportnetype."', '".$kpi."', '".$reportdate."', '".$reportnename."')) f 
+ on r.enodeb = f.enodeb and r.locellid = f.locellid
+ order by rank LIMIT 1000");
+		
+	} elseif ($timeagg == "monthly"){
+		$rank = "worst_cells_main_kpis_rank_weekly";
+		$fails = "worst_cells_main_kpis_fails_weekly";
+		if($reportdate > 24 ){
+		$year = 2017;
+		}else{
+		$year = 2018;
+		}
+		
+		$query = $this->db->query(
+		 "select rank,week as date,r.node,r.cellname,r.locellid,round(r.cell_kpi::numeric,2) as kpi_cell_rate,r.cell_fails,round(100*r.impact::numeric,2) as impact,
+ round(node_kpi::numeric,2) as kpi_node_rate,round(new_node_kpi::numeric,2) as new_node_kpi,dates,kpis as daily_kpi_cell_rate,fails as daily_cell_fails,impacts as daily_impact
+ from
+ (select * from lte_kpi.".$rank."('".$reportnetype."', '".$kpi."', '".$reportdate."',".$year.", '".$reportnename."')) r
+ inner join (select * from lte_kpi.".$fails."('".$reportnetype."', '".$kpi."', '".$reportdate."',".$year.", '".$reportnename."')) f 
+ on r.enodeb = f.enodeb and r.locellid = f.locellid
+ order by rank LIMIT 1000");
+		
+	}
+}
+
+	 
 			//--ORDER BY (regexp_split_to_array(t.dates, E','))[7]::timestamp without time zone DESC,
 			//--(regexp_split_to_array(daily_cell_fails, E','))[7]::integer DESC;
 	 return $query->result();

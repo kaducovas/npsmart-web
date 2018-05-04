@@ -489,7 +489,7 @@ echo "<font color='#000000' size='5'><b>Week ".$triage_week[0]->week."</b></font
 					echo "<td bgcolor='#FFFFFF'>".$neighbour_check."</td>";						
 					echo "<th bgcolor='".($otm == 'OK'?$good:$bad)."'>".$otm."</th>";
 
-					echo "<td bgcolor='".($ee <=38?$bggood:$bgbad)."'><font color='".($ee <=38?$good:$bad)."'>".$ee."</font></td>";
+					echo "<td bgcolor='".($ee <=15?$bggood:$ee <=40?$'#FFF788':$bgbad)."'><font color='".($ee <=15?$good:$ee <=40?$'#FFD500':$bad)."'>".$ee."</font></td>";
 					echo "<td bgcolor='".($load <=80?$bggood:$bgbad)."'><font color='".($load <=80?$good:$bad)."'>".$load."</font></td>";
 					echo "<td bgcolor='".($code_utilization <=70?$bggood:$bgbad)."'><font color='".($code_utilization <=70?$good:$bad)."'>".$code_utilization."</font></td>";
 					echo "<td bgcolor='".($dlpower_utilization <=70?$bggood:$bgbad)."'><font color='".($dlpower_utilization <=70?$good:$bad)."'>".$dlpower_utilization."</font></td>";

@@ -17,8 +17,11 @@ $(document).ready( function () {
             "infoFiltered": "(filtered from _MAX_ total records)"
         }
   } );
-} );
-
+  
+  var b = new $.fn.dataTable.Buttons( '#table-sparkline', {buttons: ['copy','excel','csv','pdf']} );
+$('#export_options').append(b.container());
+} );  
+ 
 var kpi = "<?php echo $this->input->post('kpi'); ?>";
 var wcdate = "<?php echo $this->input->post('wcdate'); ?>";
 var node = "<?php echo $this->input->post('node'); ?>";
@@ -88,7 +91,10 @@ var node = "<?php echo $this->input->post('node'); ?>";
     </tbody>
 </table>
 </div>
-<div style="clear: both;"></div>
+<div>
+<div style="display:inline-block; margin-left: 10px; position:relative"><h3><b>Export Options: </b></h3></div>
+<div id="export_options" style="display:inline-block"></div>
+</div>
 </div>
 </form>
 

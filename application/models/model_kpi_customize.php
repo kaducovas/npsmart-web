@@ -5,7 +5,7 @@ class Model_KPI_Customize extends CI_Model{
 	function kpi_customize_lte(){				
 		$query = $this->db->query(
 		"select INITCAP(column_name) as node from information_schema.columns where table_schema in ('lte_kpi') and table_name = 'vw_main_kpis_cell_rate_weekly'
-and ordinal_position > 9 order by node");
+and ordinal_position > 8 order by node");
 
 	return $query->result();
 	}
@@ -176,39 +176,35 @@ order by node");
 	
 	function kpi_customize_GSM_Elementos_Reg(){				
 		$query = $this->db->query(
-		"SELECT DISTINCT (node) as node FROM gsm_kpi.vw_main_kpis_region_rate_daily WHERE date = (SELECT MAX(date)FROM gsm_control.log_daily)::date and node not in ('UNKNOWN')
-		order by node");
+		"SELECT DISTINCT (regional) as node FROM gsm_control.cells_db order by node");
 
 	return $query->result();
 	}
 	
 	function kpi_customize_GSM_Elementos_BSC(){				
 		$query = $this->db->query(
-		"SELECT DISTINCT node FROM gsm_kpi.vw_main_kpis_bsc_rate_daily order by node");
+		"SELECT DISTINCT (bsc) as node FROM gsm_control.cells_db order by node");
 
 	return $query->result();
 	}
 	
 	function kpi_customize_GSM_Elementos_UF(){				
 		$query = $this->db->query(
-		"select distinct (substring(cluster,1,2)) as node from umts_control.cells_database where cluster is not null
-		order by node");
+		"SELECT DISTINCT (uf) as node FROM gsm_control.cells_db order by node");
 
 	return $query->result();
 	}
 	
 	function kpi_customize_GSM_Elementos_City(){				
 		$query = $this->db->query(
-		"SELECT DISTINCT (node) as node,uf FROM gsm_kpi.vw_main_kpis_cidade_rate_daily WHERE date = (SELECT MAX(date) FROM gsm_control.log_daily)::date
-		order by node");
+		"SELECT DISTINCT (cidade) as node,uf FROM gsm_control.cells_db order by node");
 
 	return $query->result();
 	}
 	
 	function kpi_customize_GSM_Elementos_BTS(){				
 		$query = $this->db->query(
-		"SELECT DISTINCT (node) as node FROM gsm_kpi.vw_main_kpis_bts_rate_daily WHERE date = (SELECT MAX(date) FROM gsm_control.log_daily)::date
-		order by node");
+		"SELECT DISTINCT (bts) as node FROM gsm_control.cells_db order by node");
 
 	return $query->result();
 	}
@@ -247,7 +243,7 @@ order by node");
 	
 	function kpi_customize_LTE_Elementos_UF(){				
 		$query = $this->db->query(
-		"select distinct (substring(cluster,1,2)) as node from umts_control.cells_database where cluster is not null and (substring(cluster,1,2)) not in ('')
+		"select distinct (uf) as node from lte_control.cells
 		order by node"); 
 
 	return $query->result();

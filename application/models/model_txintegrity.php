@@ -619,7 +619,7 @@ round(avg(ping_meandelay)::numeric,2) as ping_meandelay,
 null as atm_dl_utilization, 
 null as atm_ul_utilization 
 FROM umts_kpi.tx_integrity 
-where datetime between '".$inidate."' and '".$findate."' 
+where datetime > '".$reportdate."'::timestamp - '10 days'::interval
 and CASE
 WHEN left(node,char_length(node)- 2) like '%%S02%%' and char_length(node)> 8 then concat('U',substring(node,position('S02' in node) + 3,(char_length(node) - position('S02' in node) + 3)))                       
 WHEN left(node,char_length(node)- 2) like '%%S01%%' and char_length(node)> 8 then concat('U',substring(node,position('S01' in node) + 3,(char_length(node) - position('S01' in node) + 3)))
@@ -637,7 +637,7 @@ null as ping_meandelay,
 round((100::real * COALESCE(vs_atmdlmaxused_1 / NULLIF(vs_atmdltotal_1, 0::real), 0::real))::numeric, 2) AS atm_dl_utilization,
 round((100::real * COALESCE(vs_atmulmaxused_1 / NULLIF(vs_atmultotal_1, 0::real), 0::real))::numeric, 2) AS atm_ul_utilization
 FROM umts_kpi.tx_atm
-where datetime between '".$inidate."' and '".$findate."' 
+where datetime > '".$reportdate."'::timestamp - '10 days'::interval
 and CASE
 WHEN left(nodeb,char_length(nodeb)- 2) like '%%S02%%' and char_length(nodeb)> 8 then concat('U',substring(nodeb,position('S02' in nodeb) + 3,(char_length(nodeb) - position('S02' in nodeb) + 3)))                       
 WHEN left(nodeb,char_length(nodeb)- 2) like '%%S01%%' and char_length(nodeb)> 8 then concat('U',substring(nodeb,position('S01' in nodeb) + 3,(char_length(nodeb) - position('S01' in nodeb) + 3)))

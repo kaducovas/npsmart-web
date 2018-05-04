@@ -16,7 +16,7 @@
 		$cpich_power_ratio[] = $row-> cpich_power_ratio;
 		$worst_aging_factor[] = $row-> worst_aging_factor;
 		$traffic_load[] = $row-> traffic_load;
-		$process_tools[] = $row-> process_tools;
+		$sw_releases_features[] = $row-> sw_releases_features;
 		$node = $row->node;
 		}	
 				 // function tonull($n)
@@ -58,7 +58,7 @@
 		// $cpich_power_ratio = array_map("tonull2",$cpich_power_ratio);
 		// $worst_aging_factor = array_map("tonull2",$worst_aging_factor);
 		// $traffic_load = array_map("tonull2",$traffic_load);
-		// $process_tools = array_map("tonull2",$process_tools); 
+		// $sw_releases_features = array_map("tonull2",$sw_releases_features); 
 		?>
 		
 <script>
@@ -163,11 +163,11 @@ traffic_load[1] = <?php echo $traffic_load[1]; ?>;
 traffic_load[2] = <?php echo $traffic_load[2]; ?>;
 traffic_load[3] = <?php echo $traffic_load[3]; ?>;
 
-process_tools = new Array(4);
-process_tools[0] = <?php echo $process_tools[0]; ?>;
-process_tools[1] = <?php echo $process_tools[1]; ?>;
-process_tools[2] = <?php echo $process_tools[2]; ?>;
-process_tools[3] = <?php echo $process_tools[3]; ?>;
+sw_releases_features = new Array(4);
+sw_releases_features[0] = <?php echo $sw_releases_features[0]; ?>;
+sw_releases_features[1] = <?php echo $sw_releases_features[1]; ?>;
+sw_releases_features[2] = <?php echo $sw_releases_features[2]; ?>;
+sw_releases_features[3] = <?php echo $sw_releases_features[3]; ?>;
 //alert(node);
 ///alert(datetime[0]);
 
@@ -372,7 +372,7 @@ exporting: { enabled: false },
 	    type: 'line',
 		color: '#DF0101',
         name: 'W'+week[0],
-        data: [process_tools[0], worst_aging_factor[0], baseline[0], throughput[0], 
+        data: [sw_releases_features[0], worst_aging_factor[0], baseline[0], throughput[0], 
 		retention_3g[0], ps_call_completion[0], cs_call_completion[0], 
 		availability[0], traffic_load[0], hardware_nodeb[0], air_interface_ul[0], air_interface_dl[0], 
 		sho_overhead[0], overshooters[0], cpich_power_ratio[0], rf_health_index[0]],
@@ -380,7 +380,7 @@ exporting: { enabled: false },
 	    type: 'line',
 		color: 'green',
         name: 'W'+week[1],
-        data: [process_tools[1], worst_aging_factor[1], baseline[1], throughput[1], 
+        data: [sw_releases_features[1], worst_aging_factor[1], baseline[1], throughput[1], 
 		retention_3g[1], ps_call_completion[1], cs_call_completion[1], 
 		availability[1], traffic_load[1], hardware_nodeb[1], air_interface_ul[1], air_interface_dl[1], 
 		sho_overhead[1], overshooters[1], cpich_power_ratio[1], rf_health_index[1]],
@@ -388,7 +388,7 @@ exporting: { enabled: false },
 	    type: 'line',
 		color: '#000000',
         name: 'W'+week[2],
-        data: [process_tools[2], worst_aging_factor[2], baseline[2], throughput[2], 
+        data: [sw_releases_features[2], worst_aging_factor[2], baseline[2], throughput[2], 
 		retention_3g[2], ps_call_completion[2], cs_call_completion[2], 
 		availability[2], traffic_load[2], hardware_nodeb[2], air_interface_ul[2], air_interface_dl[2], 
 		sho_overhead[2], overshooters[2], cpich_power_ratio[2], rf_health_index[2]],
@@ -396,7 +396,7 @@ exporting: { enabled: false },
 	    type: 'line',
 		color: 'blue',
         name: 'W'+week[3],
-        data: [process_tools[3], worst_aging_factor[3], baseline[3], throughput[3], 
+        data: [sw_releases_features[3], worst_aging_factor[3], baseline[3], throughput[3], 
 		retention_3g[3], ps_call_completion[3], cs_call_completion[3], 
 		availability[3], traffic_load[3], hardware_nodeb[3], air_interface_ul[3], air_interface_dl[3], 
 		sho_overhead[3], overshooters[3], cpich_power_ratio[3], rf_health_index[3]],

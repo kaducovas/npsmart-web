@@ -9,6 +9,9 @@ $q6 = ($_GET['q6']);
 $q7 = ($_GET['q7']);
 $q8 = ($_GET['q8']);
 $q9 = ($_GET['q9']);
+$q10 = ($_GET['q10']);
+$q11 = ($_GET['q11']);
+$q12 = ($_GET['q12']);
 
 $d1 = ($_GET['d1']);
 $d2 = ($_GET['d2']);
@@ -19,6 +22,9 @@ $d6 = ($_GET['d6']);
 $d7 = ($_GET['d7']);
 $d8 = ($_GET['d8']);
 $d9 = ($_GET['d9']);
+$d10 = ($_GET['d7']);
+$d11 = ($_GET['d8']);
+$d12 = ($_GET['d9']);
 
 $c1 = ($_GET['c1']);
 $c2 = ($_GET['c2']);
@@ -29,6 +35,9 @@ $c6 = ($_GET['c6']);
 $c7 = ($_GET['c7']);
 $c8 = ($_GET['c8']);
 $c9 = ($_GET['c9']);
+$c10 = ($_GET['c10']);
+$c11 = ($_GET['c11']);
+$c12 = ($_GET['c12']);
 
 $t1 = ($_GET['t1']);
 $t2 = ($_GET['t2']);
@@ -39,6 +48,9 @@ $t6 = ($_GET['t6']);
 $t7 = ($_GET['t7']);
 $t8 = ($_GET['t8']);
 $t9 = ($_GET['t9']);
+$t10 = ($_GET['t10']);
+$t11 = ($_GET['t11']);
+$t12 = ($_GET['t12']);
 
 $f1 = ($_GET['f1']);
 $f2 = ($_GET['f2']);
@@ -49,6 +61,9 @@ $f6 = ($_GET['f6']);
 $f7 = ($_GET['f7']);
 $f8 = ($_GET['f8']);
 $f9 = ($_GET['f9']);
+$f10 = ($_GET['f10']);
+$f11 = ($_GET['f11']);
+$f12 = ($_GET['f12']);
 
 $ct1 = ($_GET['ct1']);
 $ct2 = ($_GET['ct2']);
@@ -59,6 +74,9 @@ $ct6 = ($_GET['ct6']);
 $ct7 = ($_GET['ct7']);
 $ct8 = ($_GET['ct8']);
 $ct9 = ($_GET['ct9']);
+$ct10 = ($_GET['ct10']);
+$ct11 = ($_GET['ct11']);
+$ct12 = ($_GET['ct12']);
 
 if($q1 != ""){	
 $kpi_query1 = $this->db->query("".$q1."");	
@@ -94,6 +112,18 @@ $kpi_query8 = $this->db->query("".$q8."");
 
 if($q9 != ""){
 $kpi_query9 = $this->db->query("".$q9."");
+}
+
+if($q10 != ""){
+$kpi_query10 = $this->db->query("".$q10."");
+}
+
+if($q11 != ""){
+$kpi_query11 = $this->db->query("".$q11."");
+}
+
+if($q12 != ""){
+$kpi_query12 = $this->db->query("".$q12."");
 }
 
 if(($ct1 == 1) && ($q1 != "")){
@@ -148,6 +178,24 @@ if(($ct9 == 1) && ($q9 != "")){
 $v9 = "true";	
 }else{
 $v9 = "false";
+}
+
+if(($ct10 == 1) && ($q10 != "")){
+$v10 = "true";	
+}else{
+$v10 = "false";
+}
+
+if(($ct11 == 1) && ($q11 != "")){
+$v11 = "true";	
+}else{
+$v11 = "false";
+}
+
+if(($ct12 == 1) && ($q12 != "")){
+$v12 = "true";	
+}else{
+$v12 = "false";
 }	
 
 ?>
@@ -343,6 +391,9 @@ font-family: 'Rubik', sans-serif;
 <p>Legend Item 7: <br><input id="txt_legend7" type="text"></input></p>
 <p>Legend Item 8: <br><input id="txt_legend8" type="text"></input></p>
 <p>Legend Item 9: <br><input id="txt_legend9" type="text"></input></p>
+<p>Legend Item 10: <br><input id="txt_legend10" type="text"></input></p>
+<p>Legend Item 11: <br><input id="txt_legend11" type="text"></input></p>
+<p>Legend Item 12: <br><input id="txt_legend12" type="text"></input></p>
 </div>
 </div>
 <div class="cs_menu_color">
@@ -357,6 +408,9 @@ font-family: 'Rubik', sans-serif;
 <p>Color Line 7: <br><input id="colorSelector7" type="text"></input></p>
 <p>Color Line 8: <br><input id="colorSelector8" type="text"></input></p>
 <p>Color Line 9: <br><input id="colorSelector9" type="text"></input></p>
+<p>Color Line 10: <br><input id="colorSelector10" type="text"></input></p>
+<p>Color Line 11: <br><input id="colorSelector11" type="text"></input></p>
+<p>Color Line 12: <br><input id="colorSelector12" type="text"></input></p>
 </div>
 </div>
 <div class="cs_menu_line_style">
@@ -490,6 +544,48 @@ font-family: 'Rubik', sans-serif;
 <option value="LongDashDot">LongDashDot</option>
 <option value="LongDashDotDot">LongDashDotDot</option>
 </select></p>
+<p>Line Style 10: <br><select id="linestyle10" type="text">
+<option value="" selected="selected">Select a type</option>
+<option value="Solid">Solid</option>
+<option value="ShortDash">ShortDash</option>
+<option value="ShortDot">ShortDot</option>
+<option value="ShortDashDot">ShortDashDot</option>
+<option value="ShortDashDotDot">ShortDashDotDot</option>
+<option value="Dot">Dot</option>
+<option value="Dash">Dash</option>
+<option value="LongDash">LongDash</option>
+<option value="DashDot">DashDot</option>
+<option value="LongDashDot">LongDashDot</option>
+<option value="LongDashDotDot">LongDashDotDot</option>
+</select></p>
+<p>Line Style 11: <br><select id="linestyle11" type="text">
+<option value="" selected="selected">Select a type</option>
+<option value="Solid">Solid</option>
+<option value="ShortDash">ShortDash</option>
+<option value="ShortDot">ShortDot</option>
+<option value="ShortDashDot">ShortDashDot</option>
+<option value="ShortDashDotDot">ShortDashDotDot</option>
+<option value="Dot">Dot</option>
+<option value="Dash">Dash</option>
+<option value="LongDash">LongDash</option>
+<option value="DashDot">DashDot</option>
+<option value="LongDashDot">LongDashDot</option>
+<option value="LongDashDotDot">LongDashDotDot</option>
+</select></p>
+<p>Line Style 12: <br><select id="linestyle12" type="text">
+<option value="" selected="selected">Select a type</option>
+<option value="Solid">Solid</option>
+<option value="ShortDash">ShortDash</option>
+<option value="ShortDot">ShortDot</option>
+<option value="ShortDashDot">ShortDashDot</option>
+<option value="ShortDashDotDot">ShortDashDotDot</option>
+<option value="Dot">Dot</option>
+<option value="Dash">Dash</option>
+<option value="LongDash">LongDash</option>
+<option value="DashDot">DashDot</option>
+<option value="LongDashDot">LongDashDot</option>
+<option value="LongDashDotDot">LongDashDotDot</option>
+</select></p>
 </div>
 <div style="display:inline-block">
 <p style="color:black; font-size: 14px">Width 1: <br><select id="linewidth1" type="text">
@@ -609,6 +705,45 @@ font-family: 'Rubik', sans-serif;
 <option value="9">9.0</option>
 <option value="10">10.0</option>
 </select></p>
+<p>Width 10: <br><select id="linewidth10" type="text">
+<option value="" selected="selected">Select a Width</option>
+<option value="1">1.0</option>
+<option value="2">2.0</option>
+<option value="3">3.0</option>
+<option value="4">4.0</option>
+<option value="5">5.0</option>
+<option value="6">6.0</option>
+<option value="7">7.0</option>
+<option value="8">8.0</option>
+<option value="9">9.0</option>
+<option value="10">10.0</option>
+</select></p>
+<p>Width 11: <br><select id="linewidth11" type="text">
+<option value="" selected="selected">Select a Width</option>
+<option value="1">1.0</option>
+<option value="2">2.0</option>
+<option value="3">3.0</option>
+<option value="4">4.0</option>
+<option value="5">5.0</option>
+<option value="6">6.0</option>
+<option value="7">7.0</option>
+<option value="8">8.0</option>
+<option value="9">9.0</option>
+<option value="10">10.0</option>
+</select></p>
+<p>Width 12: <br><select id="linewidth12" type="text">
+<option value="" selected="selected">Select a Width</option>
+<option value="1">1.0</option>
+<option value="2">2.0</option>
+<option value="3">3.0</option>
+<option value="4">4.0</option>
+<option value="5">5.0</option>
+<option value="6">6.0</option>
+<option value="7">7.0</option>
+<option value="8">8.0</option>
+<option value="9">9.0</option>
+<option value="10">10.0</option>
+</select></p>
 </div>
 </div>
 </div>
@@ -641,38 +776,20 @@ font-family: 'Rubik', sans-serif;
 <?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Hourly/div_hourly2.php'); ?>
 <?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Hourly/div_hourly3.php'); ?>
 <?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Hourly/div_hourly4.php'); ?>
-<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Hourly/div_hourly5.php'); ?>
-<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Hourly/div_hourly6.php'); ?>
-<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Hourly/div_hourly7.php'); ?>
-<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Hourly/div_hourly8.php'); ?>
-<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Hourly/div_hourly9.php'); ?>
 
 <?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Daily/div_daily2.php'); ?>
 <?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Daily/div_daily3.php'); ?>
 <?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Daily/div_daily4.php'); ?>
-<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Daily/div_daily5.php'); ?>
-<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Daily/div_daily6.php'); ?>
-<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Daily/div_daily7.php'); ?>
-<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Daily/div_daily8.php'); ?>
-<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Daily/div_daily9.php'); ?>
 
 <?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Weekly/div_weekly2.php'); ?>
 <?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Weekly/div_weekly3.php'); ?>
 <?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Weekly/div_weekly4.php'); ?>
-<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Weekly/div_weekly5.php'); ?>
-<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Weekly/div_weekly6.php'); ?>
-<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Weekly/div_weekly7.php'); ?>
-<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Weekly/div_weekly8.php'); ?>
-<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Weekly/div_weekly9.php'); ?>
 
 <?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Monthly/div_monthly2.php'); ?>
 <?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Monthly/div_monthly3.php'); ?>
 <?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Monthly/div_monthly4.php'); ?>
-<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Monthly/div_monthly5.php'); ?>
-<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Monthly/div_monthly6.php'); ?>
-<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Monthly/div_monthly7.php'); ?>
-<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Monthly/div_monthly8.php'); ?>
-<?php  $this->load->file('/var/www/html/npsmart/QuickReport/Charts_Monthly/div_monthly9.php'); ?>
+
+
 
 <script type="text/javascript" id="runscript_hourly">
 $(function () {
@@ -693,6 +810,9 @@ var legend_old6 = "<?php echo $f6; ?>";
 var legend_old7 = "<?php echo $f7; ?>";
 var legend_old8 = "<?php echo $f8; ?>";
 var legend_old9 = "<?php echo $f9; ?>";
+var legend_old10 = "<?php echo $f10; ?>";
+var legend_old11 = "<?php echo $f11; ?>";
+var legend_old12 = "<?php echo $f12; ?>";
 var pipoco = 0;
 var vis_theme = false;
 var vis_text = false;
@@ -966,6 +1086,7 @@ var acc = new Highcharts.stockChart({
 
     series: [{
 	name: 'Marker',
+	color: 'red'
 	
 	},{
 		type: '<?php
@@ -1263,6 +1384,102 @@ var acc = new Highcharts.stockChart({
 		showInLegend: <?php echo $v9 ?>,
 		
 		yAxis: <?php echo $c9 ?>
+    },{
+		type: '<?php
+						if($t10 == 1){
+						echo 'spline';	
+						}else if($t10 == 2){
+						echo 'areaspline';	
+						}else if($t10 == 3){
+						echo 'column';	
+						}
+						?>',
+						
+		name: '<?php echo $f10 ?>',
+		
+        data: [
+		<?php
+		if($ct10 == 1){
+        if($q10 != ""){    
+		for ($i = 0; $i < $kpi_query10->num_rows(); $i++) {
+		$row = $kpi_query10->row_array($i);
+		if($row['node'] == ""){	
+		$row['node'] = "null";
+		}		
+		echo "[Date.parse('".$row['date']." GMT-0000'), ".$row['node']."], ";	
+		}
+		}
+		}
+        ?>		
+        ],
+		
+		showInLegend: <?php echo $v10 ?>,
+		
+		yAxis: <?php echo $c10 ?>
+    },{
+		type: '<?php
+						if($t11 == 1){
+						echo 'spline';	
+						}else if($t11 == 2){
+						echo 'areaspline';	
+						}else if($t11 == 3){
+						echo 'column';	
+						}
+						?>',
+						
+		name: '<?php echo $f11 ?>',
+		
+        data: [
+		<?php
+		if($ct11 == 1){
+        if($q11 != ""){    
+		for ($i = 0; $i < $kpi_query11->num_rows(); $i++) {
+		$row = $kpi_query11->row_array($i);
+		if($row['node'] == ""){	
+		$row['node'] = "null";
+		}		
+		echo "[Date.parse('".$row['date']." GMT-0000'), ".$row['node']."], ";	
+		}
+		}
+		}
+        ?>		
+        ],
+		
+		showInLegend: <?php echo $v11 ?>,
+		
+		yAxis: <?php echo $c11 ?>
+    },{
+		type: '<?php
+						if($t12 == 1){
+						echo 'spline';	
+						}else if($t12 == 2){
+						echo 'areaspline';	
+						}else if($t12 == 3){
+						echo 'column';	
+						}
+						?>',
+						
+		name: '<?php echo $f12 ?>',
+		
+        data: [
+		<?php
+		if($ct12 == 1){
+        if($q12 != ""){    
+		for ($i = 0; $i < $kpi_query12->num_rows(); $i++) {
+		$row = $kpi_query12->row_array($i);
+		if($row['node'] == ""){	
+		$row['node'] = "null";
+		}		
+		echo "[Date.parse('".$row['date']." GMT-0000'), ".$row['node']."], ";	
+		}
+		}
+		}
+        ?>		
+        ],
+		
+		showInLegend: <?php echo $v12 ?>,
+		
+		yAxis: <?php echo $c12 ?>
     }
 	]
 });
@@ -1436,6 +1653,60 @@ $('#colorSelector9').ColorPicker({
 		$('#colorSelector9').css('backgroundColor', '#' + hex);
 		color[9] = hex;
 		acc.series[9].update({color: "#"+color[9]+""});
+	}
+});
+
+$('#colorSelector10').ColorPicker({
+	color: '#0000ff',
+	onShow: function (colpkr) {
+		$(colpkr).fadeIn(500);
+		return false;
+	},
+	onHide: function (colpkr) {
+		$(colpkr).fadeOut(500);
+		return false;
+	},
+	onChange: function (hsb, hex, rgb) {
+		var acc = $("#container").highcharts();
+		$('#colorSelector10').css('backgroundColor', '#' + hex);
+		color[10] = hex;
+		acc.series[10].update({color: "#"+color[10]+""});
+	}
+});
+
+$('#colorSelector11').ColorPicker({
+	color: '#0000ff',
+	onShow: function (colpkr) {
+		$(colpkr).fadeIn(500);
+		return false;
+	},
+	onHide: function (colpkr) {
+		$(colpkr).fadeOut(500);
+		return false;
+	},
+	onChange: function (hsb, hex, rgb) {
+		var acc = $("#container").highcharts();
+		$('#colorSelector11').css('backgroundColor', '#' + hex);
+		color[11] = hex;
+		acc.series[11].update({color: "#"+color[11]+""});
+	}
+});
+
+$('#colorSelector12').ColorPicker({
+	color: '#0000ff',
+	onShow: function (colpkr) {
+		$(colpkr).fadeIn(500);
+		return false;
+	},
+	onHide: function (colpkr) {
+		$(colpkr).fadeOut(500);
+		return false;
+	},
+	onChange: function (hsb, hex, rgb) {
+		var acc = $("#container").highcharts();
+		$('#colorSelector12').css('backgroundColor', '#' + hex);
+		color[12] = hex;
+		acc.series[12].update({color: "#"+color[12]+""});
 	}
 });
 
@@ -1613,6 +1884,36 @@ acc.legend.allItems[9].update({name:""+legend_old9+""});
 }	
 });
 
+$('#txt_legend10').on('keyup mouseup', function(){
+var acc = $("#container").highcharts();	
+if($("#txt_legend10").val() != ""){
+legend[10] = $("#txt_legend10").val();	
+acc.legend.allItems[10].update({name:""+legend[10]+""});
+}else{
+acc.legend.allItems[10].update({name:""+legend_old10+""});
+}	
+});
+
+$('#txt_legend11').on('keyup mouseup', function(){
+var acc = $("#container").highcharts();	
+if($("#txt_legend11").val() != ""){
+legend[11] = $("#txt_legend11").val();	
+acc.legend.allItems[11].update({name:""+legend[11]+""});
+}else{
+acc.legend.allItems[11].update({name:""+legend_old11+""});
+}	
+});
+
+$('#txt_legend12').on('keyup mouseup', function(){
+var acc = $("#container").highcharts();	
+if($("#txt_legend12").val() != ""){
+legend[12] = $("#txt_legend12").val();	
+acc.legend.allItems[12].update({name:""+legend[12]+""});
+}else{
+acc.legend.allItems[12].update({name:""+legend_old12+""});
+}	
+});
+
 //////////////////////////////////////////////////////////////// LINE STYLE ////////////////////////////////////////
 
 $('#linestyle1').change(function(){
@@ -1702,6 +2003,36 @@ typeline[9] = $("#linestyle9").val();
 acc.series[9].update({dashStyle: ""+typeline[9]+""});
 }else{
 acc.series[9].update({dashStyle: "Solid"});	
+}
+});
+
+$('#linestyle10').change(function(){
+var acc = $("#container").highcharts();
+if($("#linestyle10").val() != ""){
+typeline[10] = $("#linestyle10").val();
+acc.series[10].update({dashStyle: ""+typeline[10]+""});
+}else{
+acc.series[10].update({dashStyle: "Solid"});	
+}
+});
+
+$('#linestyle11').change(function(){
+var acc = $("#container").highcharts();
+if($("#linestyle11").val() != ""){
+typeline[11] = $("#linestyle11").val();
+acc.series[11].update({dashStyle: ""+typeline[11]+""});
+}else{
+acc.series[11].update({dashStyle: "Solid"});	
+}
+});
+
+$('#linestyle12').change(function(){
+var acc = $("#container").highcharts();
+if($("#linestyle12").val() != ""){
+typeline[12] = $("#linestyle12").val();
+acc.series[12].update({dashStyle: ""+typeline[12]+""});
+}else{
+acc.series[12].update({dashStyle: "Solid"});	
 }
 });
 
@@ -1803,6 +2134,39 @@ var int_width_line	= parseInt(width_line);
 acc.series[9].update({lineWidth: int_width_line});
 }else{
 acc.series[9].update({lineWidth: 2});	
+}
+});
+
+$('#linewidth10').change(function(){
+var acc = $("#container").highcharts();	
+if($("#linewidth10").val() != 0){
+var width_line = $("#linewidth10").val();
+var int_width_line	= parseInt(width_line);
+acc.series[10].update({lineWidth: int_width_line});
+}else{
+acc.series[10].update({lineWidth: 2});	
+}
+});
+
+$('#linewidth11').change(function(){
+var acc = $("#container").highcharts();	
+if($("#linewidth11").val() != 0){
+var width_line = $("#linewidth11").val();
+var int_width_line	= parseInt(width_line);
+acc.series[11].update({lineWidth: int_width_line});
+}else{
+acc.series[11].update({lineWidth: 2});	
+}
+});
+
+$('#linewidth12').change(function(){
+var acc = $("#container").highcharts();	
+if($("#linewidth12").val() != 0){
+var width_line = $("#linewidth12").val();
+var int_width_line	= parseInt(width_line);
+acc.series[12].update({lineWidth: int_width_line});
+}else{
+acc.series[12].update({lineWidth: 2});	
 }
 });
 
@@ -2099,6 +2463,9 @@ var legend_old6 = "<?php echo $f6; ?>";
 var legend_old7 = "<?php echo $f7; ?>";
 var legend_old8 = "<?php echo $f8; ?>";
 var legend_old9 = "<?php echo $f9; ?>";
+var legend_old10 = "<?php echo $f10; ?>";
+var legend_old11 = "<?php echo $f11; ?>";
+var legend_old12 = "<?php echo $f12; ?>";
 var pipoco = 0;
 var vis_theme = false;
 var vis_text = false;
@@ -2271,7 +2638,7 @@ var acc = new Highcharts.stockChart({
 		    labels: {
 				format: '{value:%Y-%m-%d}',
 				autoRotationLimit: 360
-					},
+			},
 			tickInterval: 24 * 3600 * 1000		
     },
 	
@@ -2354,7 +2721,8 @@ yAxis: [{
 	},
 	
     series: [{
-		name: 'Marker'
+		name: 'Marker',
+		color: 'red'
 			},{
 		type: '<?php
 						if($t1 == 1){
@@ -2629,6 +2997,96 @@ yAxis: [{
 		showInLegend: <?php echo $v9 ?>,
 		
 		yAxis: <?php echo $c9 ?>,
+    },{
+		type: '<?php
+						if($t10 == 1){
+						echo 'spline';	
+						}else if($t10 == 2){
+						echo 'areaspline';	
+						}else if($t10 == 3){
+						echo 'column';	
+						}
+						?>',
+						
+		name: '<?php echo $f10 ?>',
+
+        data: [<?php
+		if($ct10 == 1){
+        if($q10 != ""){    
+		for ($i = 0; $i < $kpi_query10->num_rows(); $i++) {
+		$row = $kpi_query10->row_array($i);
+		if($row['node'] == ""){	
+		$row['node'] = "null";
+		}		
+		echo "[Date.parse('".$row['date']."'), ".$row['node']."], ";	
+		}
+		}
+		}
+        ?>],
+		
+		showInLegend: <?php echo $v10 ?>,
+		
+		yAxis: <?php echo $c10 ?>,
+    },{
+		type: '<?php
+						if($t11 == 1){
+						echo 'spline';	
+						}else if($t11 == 2){
+						echo 'areaspline';	
+						}else if($t11 == 3){
+						echo 'column';	
+						}
+						?>',
+						
+		name: '<?php echo $f11 ?>',
+
+        data: [<?php
+		if($ct11 == 1){
+        if($q11 != ""){    
+		for ($i = 0; $i < $kpi_query11->num_rows(); $i++) {
+		$row = $kpi_query11->row_array($i);
+		if($row['node'] == ""){	
+		$row['node'] = "null";
+		}		
+		echo "[Date.parse('".$row['date']."'), ".$row['node']."], ";	
+		}
+		}
+		}
+        ?>],
+		
+		showInLegend: <?php echo $v11 ?>,
+		
+		yAxis: <?php echo $c11 ?>,
+    },{
+		type: '<?php
+						if($t12 == 1){
+						echo 'spline';	
+						}else if($t12 == 2){
+						echo 'areaspline';	
+						}else if($t12 == 3){
+						echo 'column';	
+						}
+						?>',
+						
+		name: '<?php echo $f12 ?>',
+
+        data: [<?php
+		if($ct12 == 1){
+        if($q12 != ""){    
+		for ($i = 0; $i < $kpi_query12->num_rows(); $i++) {
+		$row = $kpi_query12->row_array($i);
+		if($row['node'] == ""){	
+		$row['node'] = "null";
+		}		
+		echo "[Date.parse('".$row['date']."'), ".$row['node']."], ";	
+		}
+		}
+		}
+        ?>],
+		
+		showInLegend: <?php echo $v12 ?>,
+		
+		yAxis: <?php echo $c12 ?>,
     }
 	]
 });
@@ -2802,6 +3260,60 @@ $('#colorSelector9').ColorPicker({
 		$('#colorSelector9').css('backgroundColor', '#' + hex);
 		color[9] = hex;
 		acc.series[9].update({color: "#"+color[1]+""});
+	}
+});
+
+$('#colorSelector10').ColorPicker({
+	color: '#0000ff',
+	onShow: function (colpkr) {
+		$(colpkr).fadeIn(500);
+		return false;
+	},
+	onHide: function (colpkr) {
+		$(colpkr).fadeOut(500);
+		return false;
+	},
+	onChange: function (hsb, hex, rgb) {
+		var acc = $("#container").highcharts();
+		$('#colorSelector10').css('backgroundColor', '#' + hex);
+		color[10] = hex;
+		acc.series[10].update({color: "#"+color[1]+""});
+	}
+});
+
+$('#colorSelector11').ColorPicker({
+	color: '#0000ff',
+	onShow: function (colpkr) {
+		$(colpkr).fadeIn(500);
+		return false;
+	},
+	onHide: function (colpkr) {
+		$(colpkr).fadeOut(500);
+		return false;
+	},
+	onChange: function (hsb, hex, rgb) {
+		var acc = $("#container").highcharts();
+		$('#colorSelector11').css('backgroundColor', '#' + hex);
+		color[11] = hex;
+		acc.series[11].update({color: "#"+color[1]+""});
+	}
+});
+
+$('#colorSelector12').ColorPicker({
+	color: '#0000ff',
+	onShow: function (colpkr) {
+		$(colpkr).fadeIn(500);
+		return false;
+	},
+	onHide: function (colpkr) {
+		$(colpkr).fadeOut(500);
+		return false;
+	},
+	onChange: function (hsb, hex, rgb) {
+		var acc = $("#container").highcharts();
+		$('#colorSelector12').css('backgroundColor', '#' + hex);
+		color[12] = hex;
+		acc.series[12].update({color: "#"+color[1]+""});
 	}
 });
 
@@ -2979,6 +3491,36 @@ acc.legend.allItems[9].update({name:""+legend_old9+""});
 }	
 });
 
+$('#txt_legend10').on('keyup mouseup', function(){
+var acc = $("#container").highcharts();	
+if($("#txt_legend10").val() != ""){
+legend[10] = $("#txt_legend10").val();	
+acc.legend.allItems[10].update({name:""+legend[10]+""});
+}else{
+acc.legend.allItems[10].update({name:""+legend_old10+""});
+}	
+});
+
+$('#txt_legend11').on('keyup mouseup', function(){
+var acc = $("#container").highcharts();	
+if($("#txt_legend11").val() != ""){
+legend[11] = $("#txt_legend11").val();	
+acc.legend.allItems[11].update({name:""+legend[11]+""});
+}else{
+acc.legend.allItems[11].update({name:""+legend_old11+""});
+}	
+});
+
+$('#txt_legend12').on('keyup mouseup', function(){
+var acc = $("#container").highcharts();	
+if($("#txt_legend12").val() != ""){
+legend[12] = $("#txt_legend12").val();	
+acc.legend.allItems[12].update({name:""+legend[12]+""});
+}else{
+acc.legend.allItems[12].update({name:""+legend_old12+""});
+}	
+});
+
 //////////////////////////////////////////////////////////////// LINE STYLE ////////////////////////////////////////
 
 $('#linestyle1').change(function(){
@@ -3068,6 +3610,36 @@ typeline[9] = $("#linestyle9").val();
 acc.series[9].update({dashStyle: ""+typeline[9]+""});
 }else{
 acc.series[9].update({dashStyle: "Solid"});	
+}
+});
+
+$('#linestyle10').change(function(){
+var acc = $("#container").highcharts();
+if($("#linestyle10").val() != ""){
+typeline[10] = $("#linestyle10").val();
+acc.series[10].update({dashStyle: ""+typeline[10]+""});
+}else{
+acc.series[10].update({dashStyle: "Solid"});	
+}
+});
+
+$('#linestyle11').change(function(){
+var acc = $("#container").highcharts();
+if($("#linestyle11").val() != ""){
+typeline[11] = $("#linestyle11").val();
+acc.series[11].update({dashStyle: ""+typeline[11]+""});
+}else{
+acc.series[11].update({dashStyle: "Solid"});	
+}
+});
+
+$('#linestyle12').change(function(){
+var acc = $("#container").highcharts();
+if($("#linestyle12").val() != ""){
+typeline[12] = $("#linestyle12").val();
+acc.series[12].update({dashStyle: ""+typeline[12]+""});
+}else{
+acc.series[12].update({dashStyle: "Solid"});	
 }
 });
 
@@ -3169,6 +3741,39 @@ var int_width_line	= parseInt(width_line);
 acc.series[9].update({lineWidth: int_width_line});
 }else{
 acc.series[9].update({lineWidth: 2});	
+}
+});
+
+$('#linewidth10').change(function(){
+var acc = $("#container").highcharts();	
+if($("#linewidth10").val() != 0){
+var width_line = $("#linewidth10").val();
+var int_width_line	= parseInt(width_line);
+acc.series[10].update({lineWidth: int_width_line});
+}else{
+acc.series[10].update({lineWidth: 2});	
+}
+});
+
+$('#linewidth11').change(function(){
+var acc = $("#container").highcharts();	
+if($("#linewidth11").val() != 0){
+var width_line = $("#linewidth11").val();
+var int_width_line	= parseInt(width_line);
+acc.series[11].update({lineWidth: int_width_line});
+}else{
+acc.series[11].update({lineWidth: 2});	
+}
+});
+
+$('#linewidth12').change(function(){
+var acc = $("#container").highcharts();	
+if($("#linewidth12").val() != 0){
+var width_line = $("#linewidth12").val();
+var int_width_line	= parseInt(width_line);
+acc.series[12].update({lineWidth: int_width_line});
+}else{
+acc.series[12].update({lineWidth: 2});	
 }
 });
 
@@ -3464,6 +4069,9 @@ var legend_old6 = "<?php echo $f6; ?>";
 var legend_old7 = "<?php echo $f7; ?>";
 var legend_old8 = "<?php echo $f8; ?>";
 var legend_old9 = "<?php echo $f9; ?>";
+var legend_old10 = "<?php echo $f10; ?>";
+var legend_old11 = "<?php echo $f11; ?>";
+var legend_old12 = "<?php echo $f12; ?>";
 var pipoco = 0;
 var vis_theme = false;
 var vis_text = false;
@@ -3526,8 +4134,14 @@ var acc = new Highcharts.Chart({
 				// type: 'datetime',
 				// dateTimeLabelFormats: {
 				// day: '%d %b'    //ex- 01 Jan 2016
-			type: "category",	
-			tickInterval: 1,
+			categories:[
+			<?php
+			for ($i = 0; $i < $kpi_query1->num_rows(); $i++) {
+			$row = $kpi_query1->row_array($i);		
+			echo $row['week'].",";	
+			}
+			?>
+			],
 			tickmarkPlacement: 'on',
 			plotLines: [{
 			dashStyle: 'dash',
@@ -3618,7 +4232,8 @@ yAxis: [{
 	},
 	
     series: [{
-		name: 'Marker'
+		name: 'Marker',
+		color: 'red'
 		},{
 		type: '<?php
 						if($t1 == 1){
@@ -3640,7 +4255,7 @@ yAxis: [{
 		if($row['node'] == ""){	
 		$row['node'] = "null";
 		}		
-		echo "['".$row['week']."', ".$row['node']."], ";	
+		echo $row['node'].",";	
 		}
 		}
 		}
@@ -3670,7 +4285,7 @@ yAxis: [{
 		if($row['node'] == ""){	
 		$row['node'] = "null";
 		}		
-		echo "['".$row['week']."', ".$row['node']."], ";	
+		echo $row['node'].",";	
 		}
 		}
 		}
@@ -3700,7 +4315,7 @@ yAxis: [{
 		if($row['node'] == ""){	
 		$row['node'] = "null";
 		}		
-		echo "['".$row['week']."', ".$row['node']."], ";	
+		echo $row['node'].",";	
 		}
 		}
 		}
@@ -3730,7 +4345,7 @@ yAxis: [{
 		if($row['node'] == ""){	
 		$row['node'] = "null";
 		}		
-		echo "['".$row['week']."', ".$row['node']."], ";	
+		echo $row['node'].",";	
 		}
 		}
 		}
@@ -3760,7 +4375,7 @@ yAxis: [{
 		if($row['node'] == ""){	
 		$row['node'] = "null";
 		}		
-		echo "['".$row['week']."', ".$row['node']."], ";	
+		echo $row['node'].",";	
 		}
 		}
 		}
@@ -3790,7 +4405,7 @@ yAxis: [{
 		if($row['node'] == ""){	
 		$row['node'] = "null";
 		}		
-		echo "['".$row['week']."', ".$row['node']."], ";	
+		echo $row['node'].",";	
 		}
 		}
 		}
@@ -3820,7 +4435,7 @@ yAxis: [{
 		if($row['node'] == ""){	
 		$row['node'] = "null";
 		}		
-		echo "['".$row['week']."', ".$row['node']."], ";	
+		echo $row['node'].",";	
 		}
 		}
 		}
@@ -3850,7 +4465,7 @@ yAxis: [{
 		if($row['node'] == ""){	
 		$row['node'] = "null";
 		}		
-		echo "['".$row['week']."', ".$row['node']."], ";	
+		echo $row['node'].",";	
 		}
 		}
 		}
@@ -3880,7 +4495,7 @@ yAxis: [{
 		if($row['node'] == ""){	
 		$row['node'] = "null";
 		}		
-		echo "['".$row['week']."', ".$row['node']."], ";	
+		echo $row['node'].",";	
 		}
 		}
 		}
@@ -3889,6 +4504,96 @@ yAxis: [{
 		showInLegend: <?php echo $v9 ?>,
 		
 		yAxis: <?php echo $c9 ?>
+    },{
+		type: '<?php
+						if($t10 == 1){
+						echo 'spline';	
+						}else if($t10 == 2){
+						echo 'areaspline';	
+						}else if($t10 == 3){
+						echo 'column';	
+						}
+						?>',
+						
+		name: '<?php echo $f10 ?>',
+		
+        data: [<?php
+		if($ct10 == 1){		
+        if($q10 != ""){    
+		for ($i = 0; $i < $kpi_query10->num_rows(); $i++) {
+		$row = $kpi_query10->row_array($i);
+		if($row['node'] == ""){	
+		$row['node'] = "null";
+		}		
+		echo $row['node'].",";	
+		}
+		}
+		}
+        ?>],
+		
+		showInLegend: <?php echo $v10 ?>,
+		
+		yAxis: <?php echo $c10 ?>
+    },{
+		type: '<?php
+						if($t11 == 1){
+						echo 'spline';	
+						}else if($t11 == 2){
+						echo 'areaspline';	
+						}else if($t11 == 3){
+						echo 'column';	
+						}
+						?>',
+						
+		name: '<?php echo $f11 ?>',
+		
+        data: [<?php
+		if($ct11 == 1){		
+        if($q11 != ""){    
+		for ($i = 0; $i < $kpi_query11->num_rows(); $i++) {
+		$row = $kpi_query11->row_array($i);
+		if($row['node'] == ""){	
+		$row['node'] = "null";
+		}		
+		echo $row['node'].",";	
+		}
+		}
+		}
+        ?>],
+		
+		showInLegend: <?php echo $v11 ?>,
+		
+		yAxis: <?php echo $c11 ?>
+    },{
+		type: '<?php
+						if($t12 == 1){
+						echo 'spline';	
+						}else if($t12 == 2){
+						echo 'areaspline';	
+						}else if($t12 == 3){
+						echo 'column';	
+						}
+						?>',
+						
+		name: '<?php echo $f12 ?>',
+		
+        data: [<?php
+		if($ct12 == 1){		
+        if($q12 != ""){    
+		for ($i = 0; $i < $kpi_query12->num_rows(); $i++) {
+		$row = $kpi_query12->row_array($i);
+		if($row['node'] == ""){	
+		$row['node'] = "null";
+		}		
+		echo $row['node'].",";	
+		}
+		}
+		}
+        ?>],
+		
+		showInLegend: <?php echo $v12 ?>,
+		
+		yAxis: <?php echo $c12 ?>
     }
 	]
 });
@@ -4062,6 +4767,60 @@ $('#colorSelector9').ColorPicker({
 		$('#colorSelector9').css('backgroundColor', '#' + hex);
 		color[9] = hex;
 		acc.series[9].update({color: "#"+color[1]+""});
+	}
+});
+
+$('#colorSelector10').ColorPicker({
+	color: '#0000ff',
+	onShow: function (colpkr) {
+		$(colpkr).fadeIn(500);
+		return false;
+	},
+	onHide: function (colpkr) {
+		$(colpkr).fadeOut(500);
+		return false;
+	},
+	onChange: function (hsb, hex, rgb) {
+		var acc = $("#container").highcharts();
+		$('#colorSelector10').css('backgroundColor', '#' + hex);
+		color[10] = hex;
+		acc.series[10].update({color: "#"+color[1]+""});
+	}
+});
+
+$('#colorSelector11').ColorPicker({
+	color: '#0000ff',
+	onShow: function (colpkr) {
+		$(colpkr).fadeIn(500);
+		return false;
+	},
+	onHide: function (colpkr) {
+		$(colpkr).fadeOut(500);
+		return false;
+	},
+	onChange: function (hsb, hex, rgb) {
+		var acc = $("#container").highcharts();
+		$('#colorSelector11').css('backgroundColor', '#' + hex);
+		color[11] = hex;
+		acc.series[11].update({color: "#"+color[1]+""});
+	}
+});
+
+$('#colorSelector12').ColorPicker({
+	color: '#0000ff',
+	onShow: function (colpkr) {
+		$(colpkr).fadeIn(500);
+		return false;
+	},
+	onHide: function (colpkr) {
+		$(colpkr).fadeOut(500);
+		return false;
+	},
+	onChange: function (hsb, hex, rgb) {
+		var acc = $("#container").highcharts();
+		$('#colorSelector12').css('backgroundColor', '#' + hex);
+		color[12] = hex;
+		acc.series[12].update({color: "#"+color[1]+""});
 	}
 });
 
@@ -4239,6 +4998,36 @@ acc.legend.allItems[9].update({name:""+legend_old9+""});
 }	
 });
 
+$('#txt_legend10').on('keyup mouseup', function(){
+var acc = $("#container").highcharts();	
+if($("#txt_legend10").val() != ""){
+legend[10] = $("#txt_legend10").val();	
+acc.legend.allItems[10].update({name:""+legend[10]+""});
+}else{
+acc.legend.allItems[10].update({name:""+legend_old10+""});
+}	
+});
+
+$('#txt_legend11').on('keyup mouseup', function(){
+var acc = $("#container").highcharts();	
+if($("#txt_legend11").val() != ""){
+legend[11] = $("#txt_legend11").val();	
+acc.legend.allItems[11].update({name:""+legend[11]+""});
+}else{
+acc.legend.allItems[11].update({name:""+legend_old11+""});
+}	
+});
+
+$('#txt_legend12').on('keyup mouseup', function(){
+var acc = $("#container").highcharts();	
+if($("#txt_legend12").val() != ""){
+legend[12] = $("#txt_legend12").val();	
+acc.legend.allItems[12].update({name:""+legend[12]+""});
+}else{
+acc.legend.allItems[12].update({name:""+legend_old12+""});
+}	
+});
+
 //////////////////////////////////////////////////////////////// LINE STYLE ////////////////////////////////////////
 
 $('#linestyle1').change(function(){
@@ -4328,6 +5117,36 @@ typeline[9] = $("#linestyle9").val();
 acc.series[9].update({dashStyle: ""+typeline[9]+""});
 }else{
 acc.series[9].update({dashStyle: "Solid"});	
+}
+});
+
+$('#linestyle10').change(function(){
+var acc = $("#container").highcharts();
+if($("#linestyle10").val() != ""){
+typeline[10] = $("#linestyle10").val();
+acc.series[10].update({dashStyle: ""+typeline[10]+""});
+}else{
+acc.series[10].update({dashStyle: "Solid"});	
+}
+});
+
+$('#linestyle11').change(function(){
+var acc = $("#container").highcharts();
+if($("#linestyle11").val() != ""){
+typeline[11] = $("#linestyle11").val();
+acc.series[11].update({dashStyle: ""+typeline[11]+""});
+}else{
+acc.series[11].update({dashStyle: "Solid"});	
+}
+});
+
+$('#linestyle12').change(function(){
+var acc = $("#container").highcharts();
+if($("#linestyle12").val() != ""){
+typeline[12] = $("#linestyle12").val();
+acc.series[12].update({dashStyle: ""+typeline[12]+""});
+}else{
+acc.series[12].update({dashStyle: "Solid"});	
 }
 });
 
@@ -4429,6 +5248,39 @@ var int_width_line	= parseInt(width_line);
 acc.series[9].update({lineWidth: int_width_line});
 }else{
 acc.series[9].update({lineWidth: 2});	
+}
+});
+
+$('#linewidth10').change(function(){
+var acc = $("#container").highcharts();	
+if($("#linewidth10").val() != 0){
+var width_line = $("#linewidth10").val();
+var int_width_line	= parseInt(width_line);
+acc.series[10].update({lineWidth: int_width_line});
+}else{
+acc.series[10].update({lineWidth: 2});	
+}
+});
+
+$('#linewidth11').change(function(){
+var acc = $("#container").highcharts();	
+if($("#linewidth11").val() != 0){
+var width_line = $("#linewidth11").val();
+var int_width_line	= parseInt(width_line);
+acc.series[11].update({lineWidth: int_width_line});
+}else{
+acc.series[11].update({lineWidth: 2});	
+}
+});
+
+$('#linewidth12').change(function(){
+var acc = $("#container").highcharts();	
+if($("#linewidth12").val() != 0){
+var width_line = $("#linewidth12").val();
+var int_width_line	= parseInt(width_line);
+acc.series[12].update({lineWidth: int_width_line});
+}else{
+acc.series[12].update({lineWidth: 2});	
 }
 });
 
@@ -4725,6 +5577,9 @@ var legend_old6 = "<?php echo $f6; ?>";
 var legend_old7 = "<?php echo $f7; ?>";
 var legend_old8 = "<?php echo $f8; ?>";
 var legend_old9 = "<?php echo $f9; ?>";
+var legend_old10 = "<?php echo $f10; ?>";
+var legend_old11 = "<?php echo $f11; ?>";
+var legend_old12 = "<?php echo $f12; ?>";
 var pipoco = 0;
 var vis_theme = false;
 var vis_text = false;
@@ -4818,8 +5673,14 @@ var acc = new Highcharts.Chart({
 				// type: 'datetime',
 				// dateTimeLabelFormats: {
 				// day: '%d %b'    //ex- 01 Jan 2016
-			type: "category",	
-			tickInterval: 1,	
+			categories:[
+			<?php
+			for ($i = 0; $i < $kpi_query1->num_rows(); $i++) {
+			$row = $kpi_query1->row_array($i);		
+			echo $row['month'].",";	
+			}
+			?>
+			],			
 			tickmarkPlacement: 'on',
 			plotLines: [{
 			dashStyle: 'dash',
@@ -4833,7 +5694,7 @@ var acc = new Highcharts.Chart({
 			width: 2,
 			zIndex: 3
       
-			}],
+			}]
 		// }
      },
 	
@@ -4912,7 +5773,8 @@ yAxis: [{
 	},
 	
     series: [{
-		name: 'Marker',	
+		name: 'Marker',
+		color: 'red'	
 		},{
 		type: '<?php
 						if($t1 == 1){
@@ -4934,7 +5796,7 @@ yAxis: [{
 		if($row['node'] == ""){	
 		$row['node'] = "null";
 		}		
-		echo "['".$row['month']."', ".$row['node']."], ";	
+		echo $row['node'].",";	
 		}
 		}
 		}
@@ -4964,7 +5826,7 @@ yAxis: [{
 		if($row['node'] == ""){	
 		$row['node'] = "null";
 		}		
-		echo "['".$row['month']."', ".$row['node']."], ";	
+		echo $row['node'].",";	
 		}
 		}
 		}
@@ -4991,7 +5853,7 @@ yAxis: [{
         if($q3 != ""){    
 		for ($i = 0; $i < $kpi_query3->num_rows(); $i++) {
 		$row = $kpi_query3->row_array($i);
-		echo "['".$row['month']."', ".$row['node']."], ";	
+		echo $row['node'].",";	
 		}
 		}
 		}
@@ -5021,7 +5883,7 @@ yAxis: [{
 		if($row['node'] == ""){	
 		$row['node'] = "null";
 		}		
-		echo "['".$row['month']."', ".$row['node']."], ";	
+		echo $row['node'].",";	
 		}
 		}
 		}
@@ -5051,7 +5913,7 @@ yAxis: [{
 		if($row['node'] == ""){	
 		$row['node'] = "null";
 		}		
-		echo "['".$row['month']."', ".$row['node']."], ";	
+		echo $row['node'].",";	
 		}
 		}
 		}
@@ -5081,7 +5943,7 @@ yAxis: [{
 		if($row['node'] == ""){	
 		$row['node'] = "null";
 		}		
-		echo "['".$row['month']."', ".$row['node']."], ";	
+		echo $row['node'].",";	
 		}
 		}
 		}
@@ -5111,7 +5973,7 @@ yAxis: [{
 		if($row['node'] == ""){	
 		$row['node'] = "null";
 		}		
-		echo "['".$row['month']."', ".$row['node']."], ";	
+		echo $row['node'].",";	
 		}
 		}
 		}
@@ -5141,7 +6003,7 @@ yAxis: [{
 		if($row['node'] == ""){	
 		$row['node'] = "null";
 		}		
-		echo "['".$row['month']."', ".$row['node']."], ";	
+		echo $row['node'].",";	
 		}
 		}
 		}
@@ -5171,7 +6033,7 @@ yAxis: [{
 		if($row['node'] == ""){	
 		$row['node'] = "null";
 		}		
-		echo "['".$row['month']."', ".$row['node']."], ";	
+		echo $row['node'].",";	
 		}
 		}
 		}
@@ -5180,6 +6042,96 @@ yAxis: [{
 		showInLegend: <?php echo $v9 ?>,
 		
 		yAxis: <?php echo $c9 ?>
+    },{
+		type: '<?php
+						if($t10 == 1){
+						echo 'spline';	
+						}else if($t10 == 2){
+						echo 'area';	
+						}else if($t10 == 3){
+						echo 'column';	
+						}
+						?>',
+						
+		name: '<?php echo $f10 ?>',
+		
+        data: [<?php
+		if($ct10 == 1){
+        if($q10 != ""){    
+		for ($i = 0; $i < $kpi_query10->num_rows(); $i++) {
+		$row = $kpi_query10->row_array($i);
+		if($row['node'] == ""){	
+		$row['node'] = "null";
+		}		
+		echo $row['node'].",";	
+		}
+		}
+		}
+        ?>],
+		
+		showInLegend: <?php echo $v10 ?>,
+		
+		yAxis: <?php echo $c10 ?>
+    },{
+		type: '<?php
+						if($t11 == 1){
+						echo 'spline';	
+						}else if($t11 == 2){
+						echo 'area';	
+						}else if($t11 == 3){
+						echo 'column';	
+						}
+						?>',
+						
+		name: '<?php echo $f11 ?>',
+		
+        data: [<?php
+		if($ct11 == 1){
+        if($q11 != ""){    
+		for ($i = 0; $i < $kpi_query11->num_rows(); $i++) {
+		$row = $kpi_query11->row_array($i);
+		if($row['node'] == ""){	
+		$row['node'] = "null";
+		}		
+		echo $row['node'].",";	
+		}
+		}
+		}
+        ?>],
+		
+		showInLegend: <?php echo $v11 ?>,
+		
+		yAxis: <?php echo $c11 ?>
+    },{
+		type: '<?php
+						if($t12 == 1){
+						echo 'spline';	
+						}else if($t12 == 2){
+						echo 'area';	
+						}else if($t12 == 3){
+						echo 'column';	
+						}
+						?>',
+						
+		name: '<?php echo $f12 ?>',
+		
+        data: [<?php
+		if($ct12 == 1){
+        if($q12 != ""){    
+		for ($i = 0; $i < $kpi_query12->num_rows(); $i++) {
+		$row = $kpi_query12->row_array($i);
+		if($row['node'] == ""){	
+		$row['node'] = "null";
+		}		
+		echo $row['node'].",";	
+		}
+		}
+		}
+        ?>],
+		
+		showInLegend: <?php echo $v12 ?>,
+		
+		yAxis: <?php echo $c12 ?>
     }
 	]
 });
@@ -5353,6 +6305,60 @@ $('#colorSelector9').ColorPicker({
 		$('#colorSelector9').css('backgroundColor', '#' + hex);
 		color[9] = hex;
 		acc.series[9].update({color: "#"+color[1]+""});
+	}
+});
+
+$('#colorSelector10').ColorPicker({
+	color: '#0000ff',
+	onShow: function (colpkr) {
+		$(colpkr).fadeIn(500);
+		return false;
+	},
+	onHide: function (colpkr) {
+		$(colpkr).fadeOut(500);
+		return false;
+	},
+	onChange: function (hsb, hex, rgb) {
+		var acc = $("#container").highcharts();
+		$('#colorSelector10').css('backgroundColor', '#' + hex);
+		color[10] = hex;
+		acc.series[10].update({color: "#"+color[1]+""});
+	}
+});
+
+$('#colorSelector11').ColorPicker({
+	color: '#0000ff',
+	onShow: function (colpkr) {
+		$(colpkr).fadeIn(500);
+		return false;
+	},
+	onHide: function (colpkr) {
+		$(colpkr).fadeOut(500);
+		return false;
+	},
+	onChange: function (hsb, hex, rgb) {
+		var acc = $("#container").highcharts();
+		$('#colorSelector11').css('backgroundColor', '#' + hex);
+		color[11] = hex;
+		acc.series[11].update({color: "#"+color[1]+""});
+	}
+});
+
+$('#colorSelector12').ColorPicker({
+	color: '#0000ff',
+	onShow: function (colpkr) {
+		$(colpkr).fadeIn(500);
+		return false;
+	},
+	onHide: function (colpkr) {
+		$(colpkr).fadeOut(500);
+		return false;
+	},
+	onChange: function (hsb, hex, rgb) {
+		var acc = $("#container").highcharts();
+		$('#colorSelector12').css('backgroundColor', '#' + hex);
+		color[12] = hex;
+		acc.series[12].update({color: "#"+color[1]+""});
 	}
 });
 
@@ -5530,6 +6536,36 @@ acc.legend.allItems[9].update({name:""+legend_old9+""});
 }	
 });
 
+$('#txt_legend10').on('keyup mouseup', function(){
+var acc = $("#container").highcharts();	
+if($("#txt_legend10").val() != ""){
+legend[10] = $("#txt_legend10").val();	
+acc.legend.allItems[10].update({name:""+legend[10]+""});
+}else{
+acc.legend.allItems[10].update({name:""+legend_old10+""});
+}	
+});
+
+$('#txt_legend11').on('keyup mouseup', function(){
+var acc = $("#container").highcharts();	
+if($("#txt_legend11").val() != ""){
+legend[11] = $("#txt_legend11").val();	
+acc.legend.allItems[11].update({name:""+legend[11]+""});
+}else{
+acc.legend.allItems[11].update({name:""+legend_old11+""});
+}	
+});
+
+$('#txt_legend12').on('keyup mouseup', function(){
+var acc = $("#container").highcharts();	
+if($("#txt_legend12").val() != ""){
+legend[12] = $("#txt_legend12").val();	
+acc.legend.allItems[12].update({name:""+legend[12]+""});
+}else{
+acc.legend.allItems[12].update({name:""+legend_old12+""});
+}	
+});
+
 //////////////////////////////////////////////////////////////// LINE STYLE ////////////////////////////////////////
 
 $('#linestyle1').change(function(){
@@ -5619,6 +6655,36 @@ typeline[9] = $("#linestyle9").val();
 acc.series[9].update({dashStyle: ""+typeline[9]+""});
 }else{
 acc.series[9].update({dashStyle: "Solid"});	
+}
+});
+
+$('#linestyle10').change(function(){
+var acc = $("#container").highcharts();
+if($("#linestyle10").val() != ""){
+typeline[10] = $("#linestyle10").val();
+acc.series[10].update({dashStyle: ""+typeline[10]+""});
+}else{
+acc.series[10].update({dashStyle: "Solid"});	
+}
+});
+
+$('#linestyle11').change(function(){
+var acc = $("#container").highcharts();
+if($("#linestyle11").val() != ""){
+typeline[11] = $("#linestyle11").val();
+acc.series[11].update({dashStyle: ""+typeline[11]+""});
+}else{
+acc.series[11].update({dashStyle: "Solid"});	
+}
+});
+
+$('#linestyle12').change(function(){
+var acc = $("#container").highcharts();
+if($("#linestyle12").val() != ""){
+typeline[12] = $("#linestyle12").val();
+acc.series[12].update({dashStyle: ""+typeline[12]+""});
+}else{
+acc.series[12].update({dashStyle: "Solid"});	
 }
 });
 
@@ -5720,6 +6786,39 @@ var int_width_line	= parseInt(width_line);
 acc.series[9].update({lineWidth: int_width_line});
 }else{
 acc.series[9].update({lineWidth: 2});	
+}
+});
+
+$('#linewidth10').change(function(){
+var acc = $("#container").highcharts();	
+if($("#linewidth10").val() != 0){
+var width_line = $("#linewidth10").val();
+var int_width_line	= parseInt(width_line);
+acc.series[10].update({lineWidth: int_width_line});
+}else{
+acc.series[10].update({lineWidth: 2});	
+}
+});
+
+$('#linewidth11').change(function(){
+var acc = $("#container").highcharts();	
+if($("#linewidth11").val() != 0){
+var width_line = $("#linewidth11").val();
+var int_width_line	= parseInt(width_line);
+acc.series[11].update({lineWidth: int_width_line});
+}else{
+acc.series[11].update({lineWidth: 2});	
+}
+});
+
+$('#linewidth12').change(function(){
+var acc = $("#container").highcharts();	
+if($("#linewidth12").val() != 0){
+var width_line = $("#linewidth12").val();
+var int_width_line	= parseInt(width_line);
+acc.series[12].update({lineWidth: int_width_line});
+}else{
+acc.series[12].update({lineWidth: 2});	
 }
 });
 

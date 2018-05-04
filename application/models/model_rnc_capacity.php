@@ -30,10 +30,12 @@ STRING_AGG(dsp_load::text, ',' order by year desc,week desc) AS dsp_load,
 STRING_AGG(ib_cpu_load::text, ',' order by year desc,week desc) AS ib_cpu_load,
 STRING_AGG(ib_forward_load::text, ',' order by year desc,week desc) AS ib_forward_load,
 STRING_AGG(round((100*iu_ps::real)::numeric,2)::text, ',' order by year desc,week desc) AS iu_ps,
-STRING_AGG(round((iub::real/10)::numeric,2)::text, ',' order by year desc,week desc) AS iub
+STRING_AGG(round((iub::real/10)::numeric,2)::text, ',' order by year desc,week desc) AS iub,
+STRING_AGG(iups_tx::text, ',' order by year desc,week desc) AS iu_ps_tx,
+STRING_AGG(iub_tx::text, ',' order by year desc,week desc) AS iub_tx
 		FROM umts_capacity.vw_rnc_capacity
 		where (year,week) in ((".$yearnum4.",".$weeknum4."),(".$yearnum2.",".$weeknum2."),(".$yearnum3.",".$weeknum3."),(".$yearnum1.",".$weeknum1."))
-and rnc not in ('RNCPE01','RNCRJT2','RNCSC03')
+and rnc not in ('RNCPE01','RNCRJT2','RNCSC03','RNCDF02')
 		group by rnc order by rnc
 		;");
 
@@ -67,7 +69,9 @@ and rnc not in ('RNCPE01','RNCRJT2','RNCSC03')
 		ib_cpu_load,
 		ib_forward_load,
 		round((100*iu_ps::real)::numeric,2) as iu_ps,
-		round((iub::real/10)::numeric,2) as iub
+		round((iub::real/10)::numeric,2) as iub,
+		iups_tx,
+		iub_tx
     FROM umts_capacity.vw_rnc_capacity_daily
 	where (year,week) >= (".$yearnum1.",".$weeknum1.")
  	and rnc = '".$node."'

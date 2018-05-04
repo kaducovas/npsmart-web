@@ -20,7 +20,7 @@
 <script src="/npsmart/js/highcharts.js"></script>
 <script src="http://code.highcharts.com/highcharts-more.js"></script>
 <script src="/npsmart/js/exporting.js"></script>
-<script src="/npsmart/js/export-csv.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="/npsmart/js/grouped-categories.js"></script>
 <!--<script src="https://code.highcharts.com/modules/multicolor_series.js"></script>-->
 <link rel="stylesheet" href="/npsmart/css/jquery-ui.css">
@@ -480,19 +480,22 @@ thead th {
 }
 
 .vrt {
-  writing-mode: vertical-lr;
+  writing-mode: vertical-rl;
+  -webkit-transform:rotate(180deg);
   width: 10px;
 }
 
 .vrt_long_triage {
-  writing-mode: vertical-lr;
+  writing-mode: vertical-rl;
+  -webkit-transform:rotate(180deg);
   width: 10px;
   height: 200px;
 }
 
 .vrt_triage {
   margin: 0 auto;
-  writing-mode: vertical-lr;
+  writing-mode: vertical-rl;
+  -webkit-transform:rotate(180deg);
   height: 180px;
 }
 
@@ -552,8 +555,11 @@ thead th {
     height: 500px;
 	float: left;
 }
-.triage_menu {	
+.triage_menu_left {	
 	float: left;
+}
+.triage_menu_right {	
+	float: right;
 }
 .dataTables_wrapper .dt-buttons {
 position: absolute;
@@ -612,6 +618,16 @@ function selectne(obj) {
     //alert(obj.innerHTML);
 }
 
+function selectunbalance() {
+	document.getElementById('reportdate').value = reportdate;
+	document.getElementById('reportnename').value = reportnename;
+	document.getElementById('reportnetype').value = reportnetype;
+	document.getElementById('reportkpi').value = reportkpi;	
+	document.reportopt.action = '/npsmart/umts/unbalance';
+	document.reportopt.submit();
+    //alert(obj.innerHTML);
+}
+
 function selectnenav(obj,type) {
 	//alert(type);
 	document.getElementById('reportdate').value = reportdate;
@@ -631,7 +647,7 @@ function selectnenav_triage(obj,type) {
 	document.getElementById('reportnetype').value = type;
 	document.getElementById('reportkpi').value = reportkpi;
 	document.getElementById('reportnename').value = obj
-	if(type == ''){
+	if(type == '' && reportkpi == 'cellmapping'){
 		alert("Please, select some other option.")
 	} else {
 		document.reportopt.submit();
@@ -822,8 +838,42 @@ document.reportopt.action = '/npsmart/umts/triage';
 document.reportopt.submit();		
 }
 
+function selectkpiok() {
+	if (reportnetype == 'cell'){
+	 alert("Overview don't support Cell Level.")	 
+	 }
+	else{
+		document.getElementById('reportkpi').value = 'kpi_ok';
+		document.getElementById('reportnename').value = reportnename;
+		document.getElementById('reportdate').value = reportdate;
+		document.getElementById('reportnetype').value = reportnetype;
+		document.getElementById('reportcell').value = reportcell;
+		document.reportopt.action = '/npsmart/umts/triage';
+		document.reportopt.submit();
+	}
+}
+
+function selectkpinok() {
+	if (reportnetype == 'cell'){
+	 alert("Overview don't support Cell Level.")	 
+	 }
+	else{
+		document.getElementById('reportkpi').value = 'kpi_nok';
+		document.getElementById('reportnename').value = reportnename;
+		document.getElementById('reportdate').value = reportdate;
+		document.getElementById('reportnetype').value = reportnetype;
+		document.getElementById('reportcell').value = reportcell;
+		document.reportopt.action = '/npsmart/umts/triage';
+		document.reportopt.submit();
+	}
+}
+
 function selectkpitriage(obj) {
 	if(obj.innerHTML == 'Overview'){
+	if (reportnetype == 'cell'){
+	 alert("Overview don't support Cell Level.")	 
+	 }
+	else{
 		document.getElementById('reportkpi').value = 'overview';
 		document.getElementById('reportnename').value = reportnename;
 		document.getElementById('reportdate').value = reportdate;
@@ -831,7 +881,8 @@ function selectkpitriage(obj) {
 		document.getElementById('reportcell').value = reportcell;
 		document.reportopt.action = '/npsmart/umts/triage';
 		document.reportopt.submit();
-		} 
+	}
+		}
 	else if(obj.innerHTML == 'Cell Mapping') {
 	 if (reportnetype == 'network'){
 	 alert("Cell Mapping don't support Network Level.")	 
@@ -846,15 +897,29 @@ function selectkpitriage(obj) {
 		 document.reportopt.submit();	 
 	 }	
 	}
+	else{
+	if (reportnetype == 'cell'){
+	 alert("Overview don't support Cell Level.")	 
+	 }
+	else{
+		document.getElementById('reportkpi').value = 'overview';
+		document.getElementById('reportnename').value = reportnename;
+		document.getElementById('reportdate').value = reportdate;
+		document.getElementById('reportnetype').value = reportnetype;
+		document.getElementById('reportcell').value = reportcell;
+		document.reportopt.action = '/npsmart/umts/triage';
+		document.reportopt.submit();
+	}
+	}
 	//}
 }
 
-function selectformtriage(obj) {
+function selectformtriage() {
 		 document.getElementById('reportkpi').value = 'cellmapping';
 		 document.getElementById('reportnename').value = reportnename;
 		 document.getElementById('reportdate').value = reportdate;
 		 document.getElementById('reportnetype').value = reportnetype;
-		 document.getElementById('reportcell').value = obj;
+		 document.getElementById('reportcell').value = reportcell;
 		 document.reportopt.action = '/npsmart/umts/triage';
 		 document.reportopt.submit();	 
 }
